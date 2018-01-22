@@ -53,37 +53,37 @@
             </div>
 
             <ul class="nav">
-                <li>
+                <li id="Dashboard">
                     <a href="dashboard">
                         <i class="fa fa-dashboard"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
+                <li id="User">
                     <a href="user">
                         <i class="ti-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
-                <li  class="active">
+                <li  id="Inventory">
                     <a href="inventory">
                         <i class="fa fa-bars"></i>
                         <p>Inventory</p>
                     </a>
                 </li>
-                <li>
+                <li id="Department">
                     <a href="department">
                         <i class="fa fa-home"></i>
                         <p>Department</p>
                     </a>
                 </li>
-                <li>
+                <li id="Return">
                     <a href="return">
                         <i class="fa fa-reply"></i>
                         <p>Return</p>
                     </a>
                 </li>
-                <li>
+                <li id="Logs">
                     <a href="logs">
                         <i class="ti-agenda"></i>
                         <p>Logs</p>
@@ -92,7 +92,9 @@
             </ul>
         </div>
     </div>
-
+    <script>
+        $('#<?= $title?>').toggleClass('active');
+    </script>
     <div class="main-panel">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -103,7 +105,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Table List</a>
+                    <a class="navbar-brand" href="#"><?= $title?></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
