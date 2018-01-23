@@ -1,4 +1,3 @@
-
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -18,42 +17,28 @@
                         <!-- End of modal of add bulk -->
 
                         <div class="content table-responsive table-full-width">
-
                             <script type="text/javascript">
                                 $(document).ready(function () {
-                                    $('#table1').dataTable();
+
+                                    $('#table1').DataTable( {
+                                        "ajax": 'inventory/viewItem'
+                                    });
                                 });
                             </script>
+
                             <table id="table1" class="table table-striped" cellspacing="0" width="100%">
                                 <thead>
-                                <th>Item Name</th>
-                                <th>Description</th>
-                                <th>Quantity</th>
-                                <th>Unit</th>
-                                <th>Type</th>
-                                <th>Action</th>
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Unit</th>
+                                        <th>Type</th>
+                                        <th>Action</th>
+                                    </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Laptop</td>
-                                    <td>Dell 15 inches</td>
-                                    <td>5</td>
-                                    <td>Piece</td>
-                                    <td>CO</td>
-                                    <td>
-
-
-                                        <button class="btn btn-success" data-toggle="modal" data-target="#addqty"><span class="glyphicon glyphicon-plus"></span></button>
-                                        <button class="btn btn-warning" data-toggle="modal" data-target="#subqty"><span class="glyphicon glyphicon-minus"></span></button>
-                                        <button class="btn btn-danger"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#edit"></span></button>
-                                        <button class="btn btn-primary"><span class="glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#itemdetails"></span></button>
-
-                                    </td>
-                                </tr>
-
-                                </tbody>
+                                <tbody></tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
@@ -66,6 +51,9 @@
 
 <!-- start of modal of add item -->
 <!-- Modal -->
+
+<?php echo form_open('inventory/additem');?>
+
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
 
@@ -82,19 +70,18 @@
                 <table border="0" width="500" align="center" class="table">
                     <tr>
                         <td>Item Name</td>
-                        <td><input type="text"  class="InputBox" name="" value="" required></td>
+                        <td><input type="text"  class="InputBox" name="item" value="" required></td>
                     </tr>
                     <tr>
                         <td>Description</td>
-                        <td><input class="InputBox" name="" value="" required></td>
+                        <td><input class="InputBox" name="description" value="" required></td>
                     </tr>
 
 
                     <tr>
                         <td>Quantity</td>
-                        <td><input class="InputBox" name="" value="" min = 0 required></td>
+                        <td><input class="InputBox" name="quant" value="" min = 0 required></td>
                     </tr>
-
                     <tr>
                         <td>Unit</td>
                         <td>
@@ -123,43 +110,35 @@
                     </tr>
                     <tr>
                         <td>Delivery Date</td>
-                        <td><input type="date" name="" required></td>
+                        <td><input type="date" name="del" required></td>
                     </tr>
                     <tr>
                         <td>Date Received</td>
-                        <td><input type="date" name="" required></td>
+                        <td><input type="date" name="rec" required></td>
                     </tr>
                     <tr>
                         <td>Expiration Date</td>
-                        <td><input type="date" class=""  name=""  required></td>
+                        <td><input type="date" class=""  name="exp"  required></td>
                     </tr>
                     <tr>
                         <td>Unit Cost</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="" value="" required></td>
+                        <td><input type="number" min='0' step='any' class="InputBox" name="cost" value="" required></td>
                     </tr>
                     <tr>
                         <td>PO No.</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="" value="" required></td>
+                        <td><input type="number" min='0' step='any' class="InputBox" name="po" value="" required></td>
                     </tr>
                     <tr>
                         <td>PR No.</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="" value="" required></td>
+                        <td><input type="number" min='0' step='any' class="InputBox" name="pr" value="" required></td>
                     </tr>
                     <tr>
                         <td>OBR No.</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>Serial</td>
-                        <td><input class="InputBox" name="" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>Accountcode</td>
-                        <td><input class="InputBox" name="" value="" required></td>
+                        <td><input type="number" min='0' step='any' class="InputBox" name="obr" value="" required></td>
                     </tr>
                     <tr>
                         <td>Supplier</td>
-                        <td><input class="InputBox" name="" value="" required></td>
+                        <td><input class="InputBox" name="supp" value="" required></td>
                     </tr>
                 </table>
             </div>
@@ -172,7 +151,7 @@
     </div>
 </div>
 </div>
-
+</form>
 <!-- End of modal of add item  -->
 
 <!-- start of modal of add bulk items -->
@@ -418,7 +397,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" align="center"><b>Subtract Quantity<b></h4>
+                <h4 class="modal-title" align="center"><b>Distribute<b></h4>
             </div>
 
             <div class="modal-body">
