@@ -80,7 +80,7 @@
 
                     <tr>
                         <td>Quantity</td>
-                        <td><input class="InputBox" name="quant" value="" min = 0 required></td>
+                        <td><input type="number" class="InputBox" name="quant" value="" min = 0 required></td>
                     </tr>
                     <tr>
                         <td>Unit</td>
@@ -103,7 +103,7 @@
                         <td>Type</td>
                         <td>
                             <select id="type" list="typelist" name="Type" required>
-                                <option selected="true" value="CO">CO</option>
+                                <option selected="true" value="Capital Outlay">Capital Outlay</option>
                                 <option value="MOOE">MOOE</option>
                             </select>
                         </td>
@@ -124,18 +124,7 @@
                         <td>Unit Cost</td>
                         <td><input type="number" min='0' step='any' class="InputBox" name="cost" value="" required></td>
                     </tr>
-                    <tr>
-                        <td>PO No.</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="po" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>PR No.</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="pr" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>OBR No.</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="obr" value="" required></td>
-                    </tr>
+
                     <tr>
                         <td>Supplier</td>
                         <td><input class="InputBox" name="supp" value="" required></td>
@@ -179,9 +168,6 @@
                             <th style="width:150px;">Official Receipt</th>
                             <th style="width:150px;">Received By</th>
                             <th style="width:80px;">Cost per Unit</th>
-                            <th style="width:80px;">PO No.</th>
-                            <th style="width:80px;">PR No.</th>
-                            <th style="width:80px;">OBR No.</th>
                             <th style="width:80px;">Serial</th>
                             <th style="width:80px;">Account Code</th>
                             <th style="width:150px;">Supplier</th>
@@ -219,9 +205,6 @@
                             <td><input id="new_or" name="Item_OfficialReceipt[]" required style="width:150px;"></td>
                             <td><input type="text" id="new_receivedby" name="Item_Receivedby[]" required style="width:150px;"></td>
                             <td><input type="number" min="0" step='any' id="new_cost" name="Item_Cost[]" required style="width:80px;"></td>
-                            <td><input id="new_po" name="Item_PONo[]" required style="width:150px;"></td>
-                            <td><input id="new_pr" name="Item_PRNo[]" required style="width:150px;"></td>
-                            <td><input id="new_obr" name="Item_OBRNo[]" required style="width:150px;"></td>
                             <td><input id="new_serial" name="Item_Serial[]" required style="width:150px;"></td>
                             <td><input id="new_accountcode" name="Item_Accountcode[]" required style="width:150px;"></td>
                             <td><input type="text" id="new_supplier" name="Item_Supplier[]" required style="width:150px;"></td>
@@ -258,9 +241,6 @@
         var new_or=document.getElementById("new_or").value;
         var new_receivedby=document.getElementById("new_receivedby").value;
         var new_cost=document.getElementById("new_cost").value;
-        var new_po=document.getElementById("new_po").value;
-        var new_pr=document.getElementById("new_pr").value;
-        var new_obr=document.getElementById("new_obr").value;
         var new_serial=document.getElementById("new_serial").value;
         var new_accountcode=document.getElementById("new_accountcode").value;
         var new_supplier=document.getElementById("new_supplier").value;
@@ -297,9 +277,6 @@
             "<td id='or_row"+table_len+"'><input type='number' value='"+new_or+"' name='Item_OfficialReceipt[]' required='required' style='width:140px;'></td>" +
             "<td id='receivedby_row"+table_len+"'><input type='text' value='"+new_receivedby+"' name='Item_Receivedby[]' required='required' style='width:140px;'></td>" +
             "<td id='cost_row"+table_len+"'><input type='text' min='0' value='"+new_cost+"' name='Item_Cost[]' required='required' style='width:80px;'></td>" +
-            "<td id='po_row"+table_len+"'><input type='number' value='"+new_po+"' name='Item_PONo[]' required='required' style='width:140px;'></td>" +
-            "<td id='pr_row"+table_len+"'><input type='number' value='"+new_pr+"' name='Item_PRNo[]' required='required' style='width:140px;'></td>" +
-            "<td id='obr_row"+table_len+"'><input type='number' value='"+new_obr+"' name='Item_OBRNo[]' required='required' style='width:140px;'></td>" +
             "<td id='serial_row"+table_len+"'><input type='number' value='"+new_serial+"' name='Item_Serial[]' required='required' style='width:140px;'></td>" +
             "<td id='accountcode_row"+table_len+"'><input type='number' value='"+new_accountcode+"' name='Item_Accountcode[]' required='required' style='width:140px;'></td>" +
             "<td id='supplier_row"+table_len+"'><input type='text' value='"+new_supplier+"' name='Item_Supplier[]' required='required' style='width:140px;'></td>" +
@@ -313,9 +290,6 @@
         document.getElementById("new_datereceived").value="";
         document.getElementById("new_expdate").value="";
         document.getElementById("new_cost").value="";
-        document.getElementById("new_po").value="";
-        document.getElementById("new_pr").value="";
-        document.getElementById("new_obr").value="";
         document.getElementById("new_serial").value="";
         document.getElementById("new_accountcode").value="";
         document.getElementById("new_supplier").value="";
@@ -350,18 +324,6 @@
                         <td><input type="date" class="InputBox" name="exp" value="" required></td>
                     </tr>
 
-                    <tr>
-                        <td>PO No.</td>
-                        <td><input type="number" min = 0 class="InputBox" name="po" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>PR No.</td>
-                        <td><input type="text" class="InputBox" name="pr" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>OBR No.</td>
-                        <td><input type="date" class="datereceived" name="obr" value=""></td>
-                    </tr>
                     <tr>
                         <td>Delivery Date</td>
                         <td><input type="date" class="datereceived" name="del" value="" required></td>
@@ -410,7 +372,7 @@
                     </tr>
                     <tr>
                         <td>Quantity</td>
-                        <td><input type="text" class="InputBox" name="" value="" required></td>
+                        <td><input type="number" class="InputBox" name="" value="" required></td>
                     </tr>
 
                     <tr>
@@ -420,6 +382,18 @@
                     <tr>
                         <td>Account Code</td>
                         <td><input type="text" class="InputBox" name="" value="" required></td>
+                    </tr>
+                    <tr>
+                        <td>PO No.</td>
+                        <td><input type="number" min = 0 class="InputBox" name="po" value="" required></td>
+                    </tr>
+                    <tr>
+                        <td>PR No.</td>
+                        <td><input type="text" class="InputBox" name="pr" value="" required></td>
+                    </tr>
+                    <tr>
+                        <td>OBR No.</td>
+                        <td><input type="date" class="datereceived" name="obr" value=""></td>
                     </tr>
                 </table>
             </div>
