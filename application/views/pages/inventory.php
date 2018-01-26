@@ -505,7 +505,9 @@
     $(document).ready(function () {
         $('#itemdetails').on('show.bs.modal',function(e) {
             var item_id = $(e.relatedTarget).data('id');
+            var item_name = $(e.relatedTarget).data('name');
 
+            $('#detailTitle').html(item_name);
             $('#details').DataTable({
                 "ajax": 'inventory/detail/'+item_id,
                 "destroy": true
@@ -520,7 +522,7 @@
 
             <!-- Modal content-->
             <div class="modal-header">
-                <h4 class="modal-title" align="center"><b>Item Details<b></h4>
+                <h4 class="modal-title" align="center" id="detailTitle"><b>Item Details<b></h4>
             </div>
             <div class="modal-body" align="center">
 

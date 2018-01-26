@@ -38,7 +38,8 @@ class Inventory extends CI_Controller {
                       class=\"glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#edit\">
                       </span></button>" .
                     //item detail
-                     "<button class=\"btn btn-primary\"><span data-id='$item[item_id]' class=\"glyphicon glyphicon-info-sign\" 
+                     "<button class=\"btn btn-primary\"><span data-id='$item[item_id]'  data-name='$item[item_name]'
+                      class=\"glyphicon glyphicon-info-sign\" 
                       data-toggle=\"modal\" data-target=\"#itemdetails\"></span></button>";
             $data[] = $row;
         }
