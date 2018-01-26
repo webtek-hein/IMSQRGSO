@@ -56,4 +56,16 @@ class Inventory_model extends CI_Model{
             $this->db->insert('itemdetail',$data);
         }
     }
+    public function edititem(){
+        $item_id = $this->input->post('id');
+        $data = array(
+            'item_name' => $this->input->post('item'),
+            'item_description' => $this->input->post('description'),
+            'unit' => $this->input->post('Unit'),
+            'item_type' => $this->input->post('Type')
+        );
+        $this->db->set($data);
+        $this->db->where('item_id',$item_id);
+        $this->db->update('item');
+    }
 }

@@ -342,11 +342,11 @@
                 <button type="submit" class="btn btn-default" name="tempdata" id="quantsave" value="">Save</button>
                 <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
-            </form>
         </div>
-
     </div>
 </div>
+</form>
+
 <script>
     $('#addqty').on('show.bs.modal',function(e){
         var tempdata = $(e.relatedTarget).data('tempdata');
@@ -418,6 +418,8 @@
 <!-- modal of edit item  -->
 <!-- Modal -->
 
+<?php echo form_open('inventory/edititem');?>
+
 <div class="modal fade" id="edit" role="dialog">
     <div class="modal-dialog">
 
@@ -433,31 +435,65 @@
                 <table border="0" width="500" align="center" class="table">
                     <tr>
                         <td>Item Name</td>
-                        <td><input  class="InputBox" name="" value="" required></td>
+                        <td><input  class="InputBox" name="item" value="" required></td>
                     </tr>
                     <tr>
                         <td>Description</td>
-                        <td><input type="text" class="InputBox" name="" value="" required></td>
+                        <td><input type="text" class="InputBox" name="description" value="" required></td>
                     </tr>
 
                     <tr>
                         <td>Unit</td>
-                        <td><input type="number" min = 0 class="InputBox" name="" value="" required></td>
+                        <td>
+                            <input name="Unit" class="unit" list="list" required>
+                            <datalist id="list">
+                                <option value="piece">piece</option>
+                                <option value="box">box</option>
+                                <option value="set">set</option>
+                                <option value="ream">ream</option>
+                                <option value="dozen">dozen</option>
+                                <option value="bundle">bundle</option>
+                                <option value="sack">sack</option>
+                                <option value="others">others</option>
+                            </datalist>
+                        </td>
                     </tr>
+
                     <tr>
                         <td>Type</td>
-                        <td><input type="text" class="InputBox" name="" value="" required></td>
+                        <td>
+                            <select id="type" list="typelist" name="Type" required>
+                                <option selected="true" value="Capital Outlay">Capital Outlay</option>
+                                <option value="MOOE">MOOE</option>
+                            </select>
+                        </td>
                     </tr>
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success" id="save1">Save</button>
+                <button type="submit" name="id" class="btn btn-success" id="editsave" value="">Save</button>
                 <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
         </div>
 
     </div>
 </div>
+</form>
+<script>
+    $('#edit').on('show.bs.modal',function(e){
+        var item_id = $(e.relatedTarget).data('id');
+        var item_name = $(e.relatedTarget).data('name');
+        var item_description = $(e.relatedTarget).data('description');
+        var unit = $(e.relatedTarget).data('unit');
+        var item_type = $(e.relatedTarget).data('type');
+
+        $(e.currentTarget).find('#editsave').val(item_id)
+        $(e.currentTarget).find('input[name="item"]').val(item_name);
+        $(e.currentTarget).find('input[name="description"]').val(item_description);
+        $(e.currentTarget).find('input[name="Unit"]').val(unit);
+        $(e.currentTarget).find('input[name="Type"]').val(item_type);
+    });
+</script>
 <!-- End of modal of  edit -->
 
 <!-- start of modal of info -->

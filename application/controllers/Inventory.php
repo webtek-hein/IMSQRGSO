@@ -25,10 +25,21 @@ class Inventory extends CI_Controller {
             $row[] = $item['quantity'];
             $row[] = $item['unit'];
             $row[] = $item['item_type'];
-            $row[] = "<button class=\"btn btn-success\" data-tempdata = '$item[item_id],$item[item_type]' data-toggle=\"modal\" data-target=\"#addqty\"><span class=\"glyphicon glyphicon-plus\"></span></button>" .
-                     "<button class=\"btn btn-warning\" data-toggle=\"modal\" data-target=\"#subqty\"><span class=\"glyphicon glyphicon-minus\"></span></button>" .
-                     "<button class=\"btn btn-danger\"><span class=\"glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#edit\"></span></button>" .
-                     "<button class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-info-sign\" data-toggle=\"modal\" data-target=\"#itemdetails\"></span></button>";
+                    //add quantity
+            $row[] = "<button class=\"btn btn-success\" data-tempdata = '$item[item_id],$item[item_type]'
+                     data-toggle=\"modal\" data-target=\"#addqty\"><span class=\"glyphicon glyphicon-plus\"></span>
+                     </button>" .
+                    //subtract quantity
+                     "<button class=\"btn btn-warning\" data-toggle=\"modal\" data-target=\"#subqty\"><span 
+                      class=\"glyphicon glyphicon-minus\"></span></button>" .
+                    //edit item
+                     "<button class=\"btn btn-danger\"><span data-name='$item[item_name]' data-id='$item[item_id]'
+                      data-description='$item[item_description]' data-unit='$item[unit]' data-type='$item[item_type]' 
+                      class=\"glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#edit\">
+                      </span></button>" .
+                    //item detail
+                     "<button class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-info-sign\" 
+                      data-toggle=\"modal\" data-target=\"#itemdetails\"></span></button>";
             $data[] = $row;
         }
         $list = array('data' => $data);
@@ -36,6 +47,10 @@ class Inventory extends CI_Controller {
     }
     public function addquant(){
         $this->inv->addquant();
+        redirect('inventory');
+    }
+    public function edititem(){
+        $this->inv->edititem();
         redirect('inventory');
     }
 }
