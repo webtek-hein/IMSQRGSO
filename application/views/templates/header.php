@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/logo.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <title>GSO INVENTORY</title>
@@ -59,12 +59,6 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li id="User">
-                    <a href="user">
-                        <i class="ti-user"></i>
-                        <p>User Profile</p>
-                    </a>
-                </li>
                 <li  id="Inventory">
                     <a href="inventory">
                         <i class="fa fa-bars"></i>
@@ -95,6 +89,7 @@
     <script>
         $('#<?= $title?>').toggleClass('active');
     </script>
+
     <div class="main-panel">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -107,37 +102,22 @@
                     </button>
                     <a class="navbar-brand" href="#"><?= $title?></a>
                 </div>
+
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="ti-panel"></i>
-                                <p>Stats</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="ti-bell"></i>
-                                <p class="notification">5</p>
-                                <p>Notifications</p>
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="ti-settings"></i>
-                                <p>Settings</p>
-                            </a>
+                         <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-user"></i>
+                                    <p>Profile</p>
+                                    <b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="user.php">View Profile</a></li>
+                                <li><a href="#">Logout</a></li>
+                              </ul>
                         </li>
                     </ul>
-
                 </div>
+
             </div>
         </nav>

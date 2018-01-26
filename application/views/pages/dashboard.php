@@ -1,19 +1,4 @@
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $.notify({
-            icon: 'ti-gift',
-            message: "Welcome to <b>Paper Dashboard</b> - a beautiful Bootstrap freebie for your next project."
-
-        },{
-            type: 'success',
-            timer: 4000
-        });
-
-    });
-</script>
-
-
 <div class="content">
     <div class="container-fluid">
         <div class="row">
