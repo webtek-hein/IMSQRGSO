@@ -339,7 +339,7 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default" id="save1">Save</button>
+                <button type="submit" class="btn btn-default" name="tempdata" id="quantsave" value="">Save</button>
                 <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
             </form>
@@ -347,6 +347,13 @@
 
     </div>
 </div>
+<script>
+    $('#addqty').on('show.bs.modal',function(e){
+        var tempdata = $(e.relatedTarget).data('tempdata');
+
+        $(e.currentTarget).find('#quantsave').val(tempdata);
+    });
+</script>
 
 <!-- End of modal of add qty  -->
 
