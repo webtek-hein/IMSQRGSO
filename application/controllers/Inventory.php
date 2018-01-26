@@ -34,4 +34,8 @@ class Inventory extends CI_Controller {
         $list = array('data' => $data);
         echo json_encode($list);
     }
+    public function addquant(){
+        $this->inv->addquant();
+        redirect('inventory');
+    }
 }

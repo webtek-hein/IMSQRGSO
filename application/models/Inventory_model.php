@@ -30,4 +30,21 @@ class Inventory_model extends CI_Model{
         $query = $this->db->get('item');
         return $query->result_array();
     }
+    public function addquant($id = 1){
+        $quantity = $this->input->post('quant');
+        $this->db->set('quantity','quantity+'.$quantity,FALSE);
+        $this->db->where('item_id',$id);
+        $this->db->update('item');
+        $data = array(
+            'delivery_date' => $this->input->post('del'),
+            'date_received' => $this->input->post('rec'),
+            'unit_cost'=> $this->input->post('cost'),
+            'PO_no' => $this->input->post('po'),
+            'PR_no' => $this->input->post('pr'),
+            'OBR_no' => $this->input->post('obr'),
+            'expiration_date' => $this->input->post('exp'),
+            'supplier_id' => $this->input->post('supp'),
+            'item_id' => $id,
+        );
+    }
 }
