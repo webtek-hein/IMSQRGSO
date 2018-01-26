@@ -33,7 +33,10 @@ class Inventory_model extends CI_Model{
         $query = $this->db->get('item');
         return $query->result_array();
     }
-    public function addquant($id = 3,$type = 'Capital Outlay'){
+    public function addquant(){
+        $temp = explode(",",$this->input->post('tempdata'));
+        $id = $temp[0];
+        $type = $temp[1];
         $quantity = $this->input->post('quant');
         $this->db->set('quantity','quantity+'.$quantity,FALSE);
         $this->db->where('item_id',$id);
