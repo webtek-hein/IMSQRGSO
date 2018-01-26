@@ -38,7 +38,7 @@ class Inventory extends CI_Controller {
                       class=\"glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#edit\">
                       </span></button>" .
                     //item detail
-                     "<button class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-info-sign\" 
+                     "<button class=\"btn btn-primary\"><span data-id='$item[item_id]' class=\"glyphicon glyphicon-info-sign\" 
                       data-toggle=\"modal\" data-target=\"#itemdetails\"></span></button>";
             $data[] = $row;
         }
@@ -52,5 +52,24 @@ class Inventory extends CI_Controller {
     public function edititem(){
         $this->inv->edititem();
         redirect('inventory');
+    }
+    public function detail($id){
+        $details = $this->inv->viewdetail($id);
+        foreach ($details as $list){
+            $row = array();
+            $row[] = $list['serial'];
+            $row[] = $list['delivery_date'];
+            $row[] = $list['expiration_date'];
+            $row[] = $list['date_received'];
+            $row[] = $list['unit_cost'];
+            $row[] = $list['PO_no'];
+            $row[] = $list['PR_no'];
+            $row[] = $list['OBR_no'];
+            $row[] = $list['acc_code_id'];
+            $row[] = $list['supplier_id'];
+            $data[] = $row;
+        }
+        $list = array('data' => $data);
+        echo json_encode($list);
     }
 }

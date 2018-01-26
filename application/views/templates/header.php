@@ -112,7 +112,7 @@
                                     <b class="caret"></b>
                               </a>
                               <ul class="dropdown-menu">
-                                <li><a href="user.php">View Profile</a></li>
+                                <li><a href="user">View Profile</a></li>
                                 <li><a href="#">Logout</a></li>
                               </ul>
                         </li>

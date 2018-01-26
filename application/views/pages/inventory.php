@@ -18,6 +18,7 @@
 
                         <div class="content table-responsive table-full-width">
                             <script type="text/javascript">
+                                //data table in the inventory
                                 $(document).ready(function () {
 
                                     $('#table1').DataTable( {
@@ -45,7 +46,6 @@
             </div>
         </div>
     </div>
-
 </div>
 </div>
 
@@ -346,8 +346,8 @@
     </div>
 </div>
 </form>
-
 <script>
+    //script for add quantity
     $('#addqty').on('show.bs.modal',function(e){
         var tempdata = $(e.relatedTarget).data('tempdata');
 
@@ -480,6 +480,7 @@
 </div>
 </form>
 <script>
+    //script for edit
     $('#edit').on('show.bs.modal',function(e){
         var item_id = $(e.relatedTarget).data('id');
         var item_name = $(e.relatedTarget).data('name');
@@ -498,6 +499,21 @@
 
 <!-- start of modal of info -->
 <!-- Modal -->
+
+<script type="text/javascript">
+    //data table in the inventory
+    $(document).ready(function () {
+        $('#itemdetails').on('show.bs.modal',function(e) {
+            var item_id = $(e.relatedTarget).data('id');
+
+            $('#details').DataTable({
+                "ajax": 'inventory/detail/'+item_id,
+                "destroy": true
+            });
+        });
+    });
+</script>
+
 <div class="modal fade" id="itemdetails" role="dialog">
     <div class="modal-dialog" style="overflow-x:auto; width:auto ">
         <div class="container" style="background-color:white; width:auto; height: auto; size:50px;">
@@ -511,10 +527,7 @@
                 <table id="details" class="table table-bordered table-striped" width="100%">
                     <thead>
                     <tr>
-                        <th>Item Name</th>
-                        <th>Description</th>
-                        <th>Unit</th>
-                        <th>Type</th>
+                        <th>Serial No.</th>
                         <th>Delivery Date</th>
                         <th>Date Received</th>
                         <th>Exp. Date</th>
@@ -522,28 +535,11 @@
                         <th>PO No.</th>
                         <th>PR No.</th>
                         <th>OBR No.</th>
-                        <th>Serial No.</th>
                         <th>Account Code</th>
                         <th>Supplier</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th>Laptop</th>
-                        <th>Dell 15 inches</th>
-                        <th>Piece</th>
-                        <th>CO</th>
-                        <th>12-21-2017</th>
-                        <th>12-22-2017</th>
-                        <th>12-21-2035</th>
-                        <th>50,000</th>
-                        <th>1021-17.</th>
-                        <th>109</th>
-                        <th>208</th>
-                        <th></th>
-                        <th>1-07-01-010</th>
-                        <th>Samsung</th>
-                    </tr>
                     </tbody>
                 </table>
             </div>

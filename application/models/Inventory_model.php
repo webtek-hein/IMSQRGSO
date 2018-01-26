@@ -68,4 +68,11 @@ class Inventory_model extends CI_Model{
         $this->db->where('item_id',$item_id);
         $this->db->update('item');
     }
+    public function viewdetail($id){
+        $this->db->join('itemdetail','item.item_id = itemdetail.item_id','inner');
+        $this->db->where('item.item_id',$id);
+        $query = $this->db->get('item');
+        return $query->result_array();
+
+    }
 }
