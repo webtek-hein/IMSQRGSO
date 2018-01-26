@@ -124,7 +124,6 @@
                         <td>Unit Cost</td>
                         <td><input type="number" min='0' step='any' class="InputBox" name="cost" value="" required></td>
                     </tr>
-
                     <tr>
                         <td>Supplier</td>
                         <td><input class="InputBox" name="supp" value="" required></td>
