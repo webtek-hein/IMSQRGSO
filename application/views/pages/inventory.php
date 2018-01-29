@@ -21,6 +21,8 @@
                                 //data table in the inventory
                                 $(document).ready(function () {
 
+
+
                                     $('#table1').DataTable( {
                                         "ajax": 'inventory/viewItem'
                                     });
@@ -339,7 +341,7 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default" name="tempdata" id="quantsave" value="">Save</button>
+                <button type="submit" class="btn btn-default" name="id" id="quantsave" value="">Save</button>
                 <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -349,9 +351,9 @@
 <script>
     //script for add quantity
     $('#addqty').on('show.bs.modal',function(e){
-        var tempdata = $(e.relatedTarget).data('tempdata');
+        var id = $(e.relatedTarget).data('id');
 
-        $(e.currentTarget).find('#quantsave').val(tempdata);
+        $(e.currentTarget).find('#quantsave').val(id);
     });
 </script>
 
@@ -488,7 +490,7 @@
         var unit = $(e.relatedTarget).data('unit');
         var item_type = $(e.relatedTarget).data('type');
 
-        $(e.currentTarget).find('#editsave').val(item_id)
+        $(e.currentTarget).find('#editsave').val(item_id);
         $(e.currentTarget).find('input[name="item"]').val(item_name);
         $(e.currentTarget).find('input[name="description"]').val(item_description);
         $(e.currentTarget).find('input[name="Unit"]').val(unit);
@@ -554,3 +556,4 @@
     </div>
 </div>
 <!-- End of modal of info  -->
+

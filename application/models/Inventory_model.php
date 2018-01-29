@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Inventory_model extends CI_Model{
+    //Adding of Item to the inventory
     public function add_item(){
         $type = $this->input->post('Type');
         $quantity = $this->input->post('quant');
@@ -28,20 +29,31 @@ class Inventory_model extends CI_Model{
         }else{
             $this->db->insert('itemdetail',$data1);
         }
+        $this->db->insert('logs.increaselog',$data+$data1);
     }
+    //Select All items in the inventory
     public function select_item(){
         $query = $this->db->get('item');
         return $query->result_array();
     }
+    //Add quantity to a specific item
     public function addquant(){
-        $temp = explode(",",$this->input->post('tempdata'));
-        $id = $temp[0];
-        $type = $temp[1];
+        $id = $this->input->post('id');
         $quantity = $this->input->post('quant');
-        $this->db->set('quantity','quantity+'.$quantity,FALSE);
-        $this->db->where('item_id',$id);
-        $this->db->update('item');
-        $data = array(
+
+        $query=$this->db->get_where('item',array('item_id' => $id));
+        $item = $query->row();
+
+        $data=array(
+            'item_id' => $item->item_id,
+            'item_name' => $item->item_name,
+            'item_description' => $item->item_description,
+            'quantity' => $quantity,
+            'item_type' => $item->item_type,
+            'unit' => $item->unit,
+        );
+
+        $data1 = array(
             'delivery_date' => $this->input->post('del'),
             'date_received' => $this->input->post('rec'),
             'unit_cost'=> $this->input->post('cost'),
@@ -49,12 +61,19 @@ class Inventory_model extends CI_Model{
             'supplier_id' => $this->input->post('supp'),
             'item_id' => $id,
         );
-        if($type === 'Capital Outlay'){
-            $item_det = array_fill(1, $quantity, $data);
+        // Add item detail
+        if($item->item_type === 'Capital Outlay'){
+            $item_det = array_fill(1, $quantity, $data1);
             $this->db->insert_batch('itemdetail',$item_det);
         }else{
-            $this->db->insert('itemdetail',$data);
+            $this->db->insert('itemdetail',$data1);
         }
+        //Update quantity
+        $this->db->set('quantity','quantity+'.$quantity,FALSE);
+        $this->db->where('item_id',$id);
+        $this->db->update('item');
+
+        $this->db->insert('logs.increaselog',$data+$data1);
     }
     public function edititem(){
         $item_id = $this->input->post('id');
@@ -70,9 +89,7 @@ class Inventory_model extends CI_Model{
     }
     public function viewdetail($id){
         $this->db->join('itemdetail','item.item_id = itemdetail.item_id','inner');
-        $this->db->where('item.item_id',$id);
-        $query = $this->db->get('item');
+        $query = $this->db->get_where('item',array('item.item_id' => $id));
         return $query->result_array();
-
     }
 }

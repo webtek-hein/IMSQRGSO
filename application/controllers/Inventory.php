@@ -26,7 +26,7 @@ class Inventory extends CI_Controller {
             $row[] = $item['unit'];
             $row[] = $item['item_type'];
                     //add quantity
-            $row[] = "<button class=\"btn btn-success\" data-tempdata = '$item[item_id],$item[item_type]'
+            $row[] = "<button class=\"btn btn-success\" data-id = '$item[item_id]'
                      data-toggle=\"modal\" data-target=\"#addqty\"><span class=\"glyphicon glyphicon-plus\"></span>
                      </button>" .
                     //subtract quantity
