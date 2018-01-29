@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2018 at 02:02 AM
+-- Generation Time: Jan 29, 2018 at 12:46 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -28,7 +28,6 @@ USE `gsois`;
 -- Table structure for table `account_code`
 --
 
-DROP TABLE IF EXISTS `account_code`;
 CREATE TABLE `account_code` (
   `ac_id` int(3) NOT NULL,
   `account_code` varchar(15) NOT NULL,
@@ -46,7 +45,6 @@ TRUNCATE TABLE `account_code`;
 -- Table structure for table `department`
 --
 
-DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
   `dept_id` int(4) NOT NULL,
   `res_center_code` varchar(12) NOT NULL,
@@ -64,7 +62,6 @@ TRUNCATE TABLE `department`;
 -- Table structure for table `distribution`
 --
 
-DROP TABLE IF EXISTS `distribution`;
 CREATE TABLE `distribution` (
   `dist_id` int(15) NOT NULL,
   `date_acquired` date DEFAULT NULL,
@@ -86,7 +83,6 @@ TRUNCATE TABLE `distribution`;
 -- Table structure for table `item`
 --
 
-DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `item_id` int(15) NOT NULL,
   `quantity` int(9) DEFAULT NULL,
@@ -106,7 +102,8 @@ TRUNCATE TABLE `item`;
 --
 
 INSERT INTO `item` (`item_id`, `quantity`, `item_name`, `item_description`, `unit`, `item_type`) VALUES
-(1, 6, 'Laptop', 'new', 'piece', '');
+(1, 10, 'Test1', 'Test1', 'piece1', 'Capital Outlay'),
+(2, 10, 'Test2', 'Test2', 'piece', 'MOOE');
 
 -- --------------------------------------------------------
 
@@ -114,7 +111,6 @@ INSERT INTO `item` (`item_id`, `quantity`, `item_name`, `item_description`, `uni
 -- Table structure for table `itemdetail`
 --
 
-DROP TABLE IF EXISTS `itemdetail`;
 CREATE TABLE `itemdetail` (
   `item_det_id` int(15) NOT NULL,
   `delivery_date` date DEFAULT NULL,
@@ -142,7 +138,18 @@ TRUNCATE TABLE `itemdetail`;
 --
 
 INSERT INTO `itemdetail` (`item_det_id`, `delivery_date`, `date_received`, `unit_cost`, `PO_no`, `PR_no`, `OBR_no`, `serial`, `item_status`, `expiration_date`, `item_id`, `acc_code_id`, `dist_id`, `supplier_id`) VALUES
-(1, '2018-01-02', '2018-01-02', 1, 1, 1, 1, NULL, NULL, '2018-01-03', 1, NULL, NULL, 1);
+(1, '2018-01-29', '2018-01-29', 50, NULL, NULL, NULL, NULL, NULL, '2018-01-29', 1, NULL, NULL, 1),
+(2, '2018-01-29', '2018-01-29', 50, NULL, NULL, NULL, NULL, NULL, '2018-01-29', 1, NULL, NULL, 1),
+(3, '2018-01-29', '2018-01-29', 50, NULL, NULL, NULL, NULL, NULL, '2018-01-29', 1, NULL, NULL, 1),
+(4, '2018-01-29', '2018-01-29', 50, NULL, NULL, NULL, NULL, NULL, '2018-01-29', 1, NULL, NULL, 1),
+(5, '2018-01-29', '2018-01-29', 50, NULL, NULL, NULL, NULL, NULL, '2018-01-29', 1, NULL, NULL, 1),
+(6, '2018-01-29', '2018-01-29', 50, NULL, NULL, NULL, NULL, NULL, '2018-01-29', 1, NULL, NULL, 1),
+(7, '2018-01-29', '2018-01-29', 50, NULL, NULL, NULL, NULL, NULL, '2018-01-29', 1, NULL, NULL, 1),
+(8, '2018-01-29', '2018-01-29', 50, NULL, NULL, NULL, NULL, NULL, '2018-01-29', 1, NULL, NULL, 1),
+(9, '2018-01-29', '2018-01-29', 50, NULL, NULL, NULL, NULL, NULL, '2018-01-29', 1, NULL, NULL, 1),
+(10, '2018-01-29', '2018-01-29', 50, NULL, NULL, NULL, NULL, NULL, '2018-01-29', 1, NULL, NULL, 1),
+(11, '2018-01-29', '2018-01-29', 50, NULL, NULL, NULL, NULL, NULL, '2018-01-29', 2, NULL, NULL, 1),
+(12, '2018-01-29', '2018-01-29', 50, NULL, NULL, NULL, NULL, NULL, '2018-01-29', 2, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -150,7 +157,6 @@ INSERT INTO `itemdetail` (`item_det_id`, `delivery_date`, `date_received`, `unit
 -- Table structure for table `supplier`
 --
 
-DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE `supplier` (
   `supplier_id` int(15) NOT NULL,
   `supplier_name` varchar(60) NOT NULL,
@@ -176,7 +182,6 @@ INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `contact`, `location`) V
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `first_name` varchar(45) NOT NULL,
@@ -228,8 +233,7 @@ ALTER TABLE `distribution`
 --
 ALTER TABLE `item`
   ADD PRIMARY KEY (`item_id`),
-  ADD UNIQUE KEY `item_id_UNIQUE` (`item_id`),
-  ADD UNIQUE KEY `item_description_UNIQUE` (`item_description`);
+  ADD UNIQUE KEY `item_id_UNIQUE` (`item_id`);
 
 --
 -- Indexes for table `itemdetail`
@@ -281,12 +285,12 @@ ALTER TABLE `distribution`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `item_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `itemdetail`
 --
 ALTER TABLE `itemdetail`
-  MODIFY `item_det_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `item_det_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `supplier`
 --
