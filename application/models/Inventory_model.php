@@ -25,7 +25,9 @@ class Inventory_model extends CI_Model{
         );
         if($type === 'Capital Outlay'){
             $item_det = array_fill(1, $quantity, $data1);
+            $this->db->trans_start();
             $this->db->insert_batch('itemdetail',$item_det);
+            $this->db->trans_complete();
         }else{
             $this->db->insert('itemdetail',$data1);
         }
@@ -64,7 +66,9 @@ class Inventory_model extends CI_Model{
         // Add item detail
         if($item->item_type === 'Capital Outlay'){
             $item_det = array_fill(1, $quantity, $data1);
+            $this->db->trans_start();
             $this->db->insert_batch('itemdetail',$item_det);
+            $this->db->trans_complete();
         }else{
             $this->db->insert('itemdetail',$data1);
         }
@@ -90,6 +94,14 @@ class Inventory_model extends CI_Model{
     public function viewdetail($id){
         $this->db->join('itemdetail','item.item_id = itemdetail.item_id','inner');
         $query = $this->db->get_where('item',array('item.item_id' => $id));
+        return $query->result_array();
+    }
+    public function select_departments(){
+       $query = $this->db->get('department');
+        return $query->result_array();
+    }
+    public function select_acc_codes(){
+        $query = $this->db->get('account_code');
         return $query->result_array();
     }
 }

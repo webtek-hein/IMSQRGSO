@@ -376,7 +376,27 @@
                 <table border="0" width="500" align="center" class="table">
                     <tr>
                         <td>Department</td>
-                        <td><input  class="InputBox" name="" value="" required></td>
+
+                        <td>
+                            <select id="type" list="typelist" name="Type" required>
+                                <?php foreach($departments as $list) { ?>
+                                    <option value="<?php echo $list['dept_id']; ?>"><?php echo
+                                        $list['res_center_code']," ", $list['department']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Account Code</td>
+
+                        <td>
+                            <select id="code" list="typelist" name="Code" required>
+                                <?php foreach($ac_code as $list) { ?>
+                                    <option value="<?php echo $list['ac_id']; ?>"><?php echo
+                                        $list['account_code']," ", $list['description']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td>Quantity</td>
@@ -384,13 +404,10 @@
                     </tr>
 
                     <tr>
-                        <td>Received By</td>
-                        <td><input type="number" min = 0 class="InputBox" name="" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>Account Code</td>
+                        <td>Owner</td>
                         <td><input type="text" class="InputBox" name="" value="" required></td>
                     </tr>
+
                     <tr>
                         <td>PO No.</td>
                         <td><input type="number" min = 0 class="InputBox" name="po" value="" required></td>
@@ -401,7 +418,7 @@
                     </tr>
                     <tr>
                         <td>OBR No.</td>
-                        <td><input type="date" class="datereceived" name="obr" value=""></td>
+                        <td><input type="number" class="datereceived" name="obr" value=""></td>
                     </tr>
                 </table>
             </div>
@@ -413,6 +430,7 @@
 
     </div>
 </div>
+
 
 <!-- End of modal of sub qty  -->
 
