@@ -382,22 +382,15 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">Add Item</h4>
+                    <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal form-label-left" novalidate>
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Description<span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" required="required" type="text">
-                            </div>
-                        </div>
-                        <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="number" id="email" name="quant" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
