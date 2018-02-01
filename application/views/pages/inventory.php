@@ -148,42 +148,37 @@
                                             <a href="#step-1">
                                                 <span class="step_no">1</span>
                                                 <span class="step_descr">
-                                              Step 1<br />
-                                              <small>Step 1 description</small>
-                                          </span>
+                                                    Item 1<br />
+                                                </span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#step-2">
                                                 <span class="step_no">2</span>
                                                 <span class="step_descr">
-                                              Step 2<br />
-                                              <small>Step 2 description</small>
-                                          </span>
+                                                    Item 2<br />
+                                                </span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#step-3">
                                                 <span class="step_no">3</span>
                                                 <span class="step_descr">
-                                              Step 3<br />
-                                              <small>Step 3 description</small>
-                                          </span>
+                                                    Item 3<br />
+                                                </span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#step-4">
                                                 <span class="step_no">4</span>
                                                 <span class="step_descr">
-                                              Step 4<br />
-                                              <small>Step 4 description</small>
-                                          </span>
+                                                    Item 4<br />
+                                                </span>
                                             </a>
                                         </li>
                                     </ul>
                                     <div id="step-1">
                                         <form class="form-horizontal form-label-left">
-
                                             <div class="form-group">
                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
                                                 </label>
@@ -374,8 +369,7 @@
                 </div>
                 <!-- End SmartWizard Content -->
 
-                            </div>
-                        </div>
+
                     <!-- end of accordion -->
                 <div class="x_content">
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
