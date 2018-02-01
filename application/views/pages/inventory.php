@@ -390,7 +390,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" name="quant" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="number" name="quant" min=0 required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
@@ -490,7 +490,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" id="email" name="quant" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="number" id="email" name="quant" min=0 required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
@@ -510,21 +510,21 @@
                         <div class="item form-group">
                             <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">PO No.</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="password" name="password2" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
+                                <input type="number" name="po" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">PR No.<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="tel" name="phone" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                                <input type="number" name="pr" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">OBR No.<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="tel" name="phone" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                                <input type="number" name="obr" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                     </form>
@@ -555,28 +555,28 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Item Name<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" required="required" type="text">
+                                <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="item" required="required" type="text">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Description<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="text" name="description" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Unit<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="url" id="website" name="website" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="text" name="Unit" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Type<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="url" id="website" name="website" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="text" name="Type" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                     </form>
