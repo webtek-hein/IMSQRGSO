@@ -10,6 +10,33 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
+						
+						<!-- start of departments dropdown -->
+                             <select class="selectdept" id="type" list="typelist" name="Type" required>
+                                 <option selected="true" disabled>Departments</option>
+                                <?php foreach($departments as $list) { ?>
+                                    <option value="<?php echo $list['dept_id']; ?>"><?php echo
+                                        $list['res_center_code']," ", $list['department']; ?></option>
+                                <?php } ?>
+                            </select>
+                        <!-- end of departments dropdown -->
+
+                        <!-- start of departments dropdown css-->
+                        <style type="text/css">
+                        .selectdept{
+                          background-color:#5bc0de;
+                          color:white;
+                          height: 34px;
+                          border-radius: 4px;
+                          }
+
+                          .option{
+                            background-color:white;
+                            color:black;
+                          }
+                        </style>
+                        <!-- end of departments dropdown css-->
+						
                     <div class="content table-responsive table-full-width">
                         <table id="table1" class="table table-striped" cellspacing="0" width="100%">
                             <thead>
