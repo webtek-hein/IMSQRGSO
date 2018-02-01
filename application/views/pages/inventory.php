@@ -23,110 +23,67 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_content">
-                                            <br />
-                                            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                            <form class="form-horizontal form-label-left input_mask">
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess2" placeholder="Item Name">
+                                                </div>
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
+                                                </div>
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Description">
+                                                </div>
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="PO Number">
+                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Item Name<span class="required">*</span>
-                                                    </label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                    </div>
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Quantity">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name"> Description<span class="required">*</span>
-                                                    </label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                    </div>
+
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="PR Number">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Quantity</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                                                    </div>
+
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Unit">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Unit</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                                                    </div>
+
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="OBR Number">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"> Type</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                    </div>
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Type">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"> Delivery Date</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                    </div>
+
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="Serial">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Received</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                    </div>
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Expiration Date</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                    </div>
+
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="Account Code">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Unit Cost</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                    </div>
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Date Received">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">PO Number</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                    </div>
+
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="Supplier">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">PR Number</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">OBR Number</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial Number</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Account Code</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Supplier</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                    </div>
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
                                                         <button class="btn btn-primary" type="button"><i class="fa fa-close"></i> Cancel</button>
                                                         <button class="btn btn-danger" type="reset"><i class="fa fa-refresh"></i> Reset</button>
                                                         <button type="submit" class="btn btn-success"><i class="fa fa-send"></i> Submit</button>
                                                     </div>
                                                 </div>
-
                                             </form>
                                         </div>
                                     </div>
@@ -141,6 +98,10 @@
                         </a>
                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                             <div class="panel-body">
+
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+
                                 <!-- Smart Wizard -->
                                 <div id="wizard" class="form_wizard wizard_horizontal">
                                     <ul class="wizard_steps">
@@ -178,187 +139,213 @@
                                         </li>
                                     </ul>
                                     <div id="step-1">
-                                        <form class="form-horizontal form-label-left">
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
+                                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Item Name</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Item Name">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit Cost</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Unit Cost">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Description</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Description">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <div id="gender" class="btn-group" data-toggle="buttons">
-                                                        <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                                                        </label>
-                                                        <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="gender" value="female"> Female
-                                                        </label>
-                                                    </div>
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PO No.</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PO Number">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Quantity</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Quantity">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PR No.</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PR Number">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Unit">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">OBR No.</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="OBR Number">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Type">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Serial</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Serial">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Delivery Date</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Account Code</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Account Code">
                                             </div>
                                         </form>
 
                                     </div>
+
                                     <div id="step-2">
-                                        <form class="form-horizontal form-label-left">
-
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
+                                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Item Name</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Item Name">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit Cost</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Unit Cost">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Description</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Description">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <div id="gender" class="btn-group" data-toggle="buttons">
-                                                        <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                                                        </label>
-                                                        <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="gender" value="female"> Female
-                                                        </label>
-                                                    </div>
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PO No.</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PO Number">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Quantity</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Quantity">
                                             </div>
-
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PR No.</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PR Number">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Unit">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">OBR No.</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="OBR Number">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Type">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Serial</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Serial">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Delivery Date</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Account Code</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Account Code">
+                                            </div>
                                         </form>
                                     </div>
                                     <div id="step-3">
-                                        <h2 class="StepTitle">Step 3 Content</h2>
-                                        <form class="form-horizontal form-label-left">
-
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
+                                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Item Name</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Item Name">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit Cost</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Unit Cost">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Description</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Description">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <div id="gender" class="btn-group" data-toggle="buttons">
-                                                        <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                                                        </label>
-                                                        <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="gender" value="female"> Female
-                                                        </label>
-                                                    </div>
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PO No.</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PO Number">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Quantity</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Quantity">
                                             </div>
-
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PR No.</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PR Number">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Unit">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">OBR No.</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="OBR Number">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Type">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Serial</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Serial">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Delivery Date</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Account Code</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Account Code">
+                                            </div>
                                         </form>
                                     </div>
                                     <div id="step-4">
-                                        <form class="form-horizontal form-label-left">
-
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
+                                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Item Name</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Item Name">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit Cost</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Unit Cost">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Description</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Description">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <div id="gender" class="btn-group" data-toggle="buttons">
-                                                        <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                                                        </label>
-                                                        <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="gender" value="female"> Female
-                                                        </label>
-                                                    </div>
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PO No.</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PO Number">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                                </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Quantity</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Quantity">
                                             </div>
-
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PR No.</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PR Number">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Unit">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">OBR No.</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="OBR Number">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Type">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Serial</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Serial">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Delivery Date</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Account Code</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Account Code">
+                                            </div>
                                         </form>
                                     </div>
 
@@ -367,8 +354,12 @@
                         </div>
                     </div>
                 </div>
+                        </div>
+
+
                 <!-- End SmartWizard Content -->
 
+                
 
                     <!-- end of accordion -->
                 <div class="x_content">
