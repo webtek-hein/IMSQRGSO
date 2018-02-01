@@ -72,22 +72,22 @@
                 <table border="0" width="500" align="center" class="table">
                     <tr>
                         <td>Item Name</td>
-                        <td><input type="text"  class="InputBox" name="item" value="" required></td>
+                        <td><input type="text"  class="InputBox form-control" name="item" value="" required></td>
                     </tr>
                     <tr>
                         <td>Description</td>
-                        <td><input class="InputBox" name="description" value="" required></td>
+                        <td><input class="InputBox form-control" name="description" value="" required></td>
                     </tr>
 
 
                     <tr>
                         <td>Quantity</td>
-                        <td><input type="number" class="InputBox" name="quant" value="" min = 0 required></td>
+                        <td><input type="number" class="InputBox form-control" name="quant" value="" min = 0 required></td>
                     </tr>
                     <tr>
                         <td>Unit</td>
                         <td>
-                            <input name="Unit" class="unit" list="list" required>
+                            <input name="Unit" class="unit form-control" list="list" required>
                             <datalist id="list">
                                 <option value="piece">piece</option>
                                 <option value="box">box</option>
@@ -104,7 +104,7 @@
                     <tr>
                         <td>Type</td>
                         <td>
-                            <select id="type" list="typelist" name="Type" required>
+                            <select class="type form-control" id="type" list="typelist" name="Type" required>
                                 <option selected="true" value="Capital Outlay">Capital Outlay</option>
                                 <option value="MOOE">MOOE</option>
                             </select>
@@ -112,23 +112,23 @@
                     </tr>
                     <tr>
                         <td>Delivery Date</td>
-                        <td><input type="date" name="del" required></td>
+                        <td><input class="form-control" type="date" name="del" required></td>
                     </tr>
                     <tr>
                         <td>Date Received</td>
-                        <td><input type="date" name="rec" required></td>
+                        <td><input class="form-control" type="date" name="rec" required></td>
                     </tr>
                     <tr>
                         <td>Expiration Date</td>
-                        <td><input type="date" class=""  name="exp"  required></td>
+                        <td><input class="form-control" type="date" class=""  name="exp"  required></td>
                     </tr>
                     <tr>
                         <td>Unit Cost</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="cost" value="" required></td>
+                        <td><input class="form-control" type="number" min='0' step='any' class="InputBox" name="cost" value="" required></td>
                     </tr>
                     <tr>
                         <td>Supplier</td>
-                        <td><input class="InputBox" name="supp" value="" required></td>
+                        <td><input class="InputBox form-control" name="supp" value="" required></td>
                     </tr>
                 </table>
             </div>
@@ -314,29 +314,29 @@
                 <table border="0" width="500" align="center" class="table">
                     <tr>
                         <td>Quantity</td>
-                        <td><input type="number" class="expdate" name="quant" value="" required></td>
+                        <td><input type="number" class="expdate form-control" name="quant" value="" required></td>
                     </tr>
                     <tr>
                         <td>Supplier</td>
-                        <td><input  class="InputBox" name="supp" value="" required></td>
+                        <td><input  class="InputBox form-control" name="supp" value="" required></td>
                     </tr>
                     <tr>
                         <td>Expiration Date</td>
-                        <td><input type="date" class="InputBox" name="exp" value="" required></td>
+                        <td><input type="date" class="InputBox form-control" name="exp" value="" required></td>
                     </tr>
 
                     <tr>
                         <td>Delivery Date</td>
-                        <td><input type="date" class="datereceived" name="del" value="" required></td>
+                        <td><input type="date" class="datereceived form-control" name="del" value="" required></td>
                     </tr>
                     <tr>
                         <td>Date Received</td>
-                        <td><input type="date" class="expdate" name="rec" value="" required></td>
+                        <td><input type="date" class="expdate form-control" name="rec" value="" required></td>
                     </tr>
 
                     <tr>
                         <td>Unit Cost</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="cost" value="" required></td>
+                        <td><input type="number " min='0' step='any' class="InputBox form-control" name="cost" value="" required></td>
                     </tr>
                 </table>
             </div>
@@ -365,6 +365,8 @@
     <div class="modal-dialog">
 
         <!-- Modal content-->
+        <?php echo form_open('inventory/distribute');?>
+
 
         <div class="modal-content">
             <div class="modal-header">
@@ -378,7 +380,7 @@
                         <td>Department</td>
 
                         <td>
-                            <select id="type" list="typelist" name="Type" required>
+                            <select class = "form-control" id="department" list="typelist" name="dept" required>
                                 <?php foreach($departments as $list) { ?>
                                     <option value="<?php echo $list['dept_id']; ?>"><?php echo
                                         $list['res_center_code']," ", $list['department']; ?></option>
@@ -390,7 +392,7 @@
                         <td>Account Code</td>
 
                         <td>
-                            <select id="code" list="typelist" name="Code" required>
+                            <select class="form-control" id="code" list="typelist" name="Code" required>
                                 <?php foreach($ac_code as $list) { ?>
                                     <option value="<?php echo $list['ac_id']; ?>"><?php echo
                                         $list['account_code']," ", $list['description']; ?></option>
@@ -400,37 +402,81 @@
                     </tr>
                     <tr>
                         <td>Quantity</td>
-                        <td><input type="number" class="InputBox" name="" value="" required></td>
+                        <td><input type="number" class="InputBox form-control" name="quant" value="" required></td>
                     </tr>
 
                     <tr>
                         <td>Owner</td>
-                        <td><input type="text" class="InputBox" name="" value="" required></td>
+                        <td><input type="text" class="InputBox form-control" name="owner" value="" required></td>
                     </tr>
 
                     <tr>
                         <td>PO No.</td>
-                        <td><input type="number" min = 0 class="InputBox" name="po" value="" required></td>
+                        <td><input type="number" min = 0 class="InputBox form-control" name="po" value="" required></td>
                     </tr>
                     <tr>
                         <td>PR No.</td>
-                        <td><input type="text" class="InputBox" name="pr" value="" required></td>
+                        <td><input type="text" class="InputBox form-control" name="pr" value="" required></td>
                     </tr>
                     <tr>
                         <td>OBR No.</td>
-                        <td><input type="number" class="datereceived" name="obr" value=""></td>
+                        <td><input type="number" class="datereceived form-control" name="obr" value=""></td>
                     </tr>
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default" id="save1">Save</button>
+                <button type="submit" name="id" class="btn btn-default" id="subsave">Save</button>
                 <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
         </div>
 
     </div>
 </div>
+</form>
+<script>
+    $('#subqty').on('show.bs.modal', function(e) {
+        var id = $(e.relatedTarget).data('id');
 
+        $(e.currentTarget).find('#subsave').val(id);
+
+        $.ajax({
+            url: "inventory/getdept",
+            dataType: 'json',
+            type: 'post',
+            success: function (response) {
+                var len = response.length;
+                $('#department').empty();
+
+                for(var i = 0; i<len;i++){
+                    var dept_id = response[i]['dept_id'];
+                    var res_code = response[i]['res_center_code'];
+                    var department = response[i]['department'];
+
+                    $('#department').append("<option value='"+dept_id+"'>"+res_code+" "+department+"</option>");
+
+                }
+            }
+        });
+        $.ajax({
+            url: "inventory/getacccodes",
+            dataType: 'json',
+            type: 'post',
+            success: function (response) {
+                var len = response.length;
+                $('#code').empty();
+
+                for(var i = 0; i<len;i++){
+                    var ac_id = response[i]['ac_id'];
+                    var account_code = response[i]['account_code'];
+                    var description = response[i]['description'];
+
+                    $('#code').append("<option value='"+ac_id+"'>"+account_code+" "+description+"</option>");
+
+                }
+            }
+        });
+    });
+</script>
 
 <!-- End of modal of sub qty  -->
 
@@ -455,17 +501,17 @@
                 <table border="0" width="500" align="center" class="table">
                     <tr>
                         <td>Item Name</td>
-                        <td><input  class="InputBox" name="item" value="" required></td>
+                        <td><input  class="InputBox form-control" name="item" value="" required></td>
                     </tr>
                     <tr>
                         <td>Description</td>
-                        <td><input type="text" class="InputBox" name="description" value="" required></td>
+                        <td><input type="text" class="InputBox form-control" name="description" value="" required></td>
                     </tr>
 
                     <tr>
                         <td>Unit</td>
                         <td>
-                            <input name="Unit" class="unit" list="list" required>
+                            <input name="Unit" class="unit form-control" list="list" required>
                             <datalist id="list">
                                 <option value="piece">piece</option>
                                 <option value="box">box</option>
@@ -482,7 +528,7 @@
                     <tr>
                         <td>Type</td>
                         <td>
-                            <select id="type" list="typelist" name="Type" required>
+                            <select class="form-control" id="type" list="typelist" name="Type" required>
                                 <option selected="true" value="Capital Outlay">Capital Outlay</option>
                                 <option value="MOOE">MOOE</option>
                             </select>
@@ -542,8 +588,9 @@
 
             <!-- Modal content-->
             <div class="modal-header">
-                <h4 class="modal-title" align="center" id="detailTitle"><b>Item Details<b></h4>
+                 <h4 class="modal-title " align="center" id="detailTitle"></h4>
             </div>
+
             <div class="modal-body" align="center">
 
                 <table id="details" class="table table-bordered table-striped" width="100%">
@@ -557,7 +604,6 @@
                         <th>PO No.</th>
                         <th>PR No.</th>
                         <th>OBR No.</th>
-                        <th>Account Code</th>
                         <th>Supplier</th>
                     </tr>
                     </thead>

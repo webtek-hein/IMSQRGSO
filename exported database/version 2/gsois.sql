@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2018 at 02:53 PM
+-- Generation Time: Feb 01, 2018 at 05:51 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -17,8 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `inventory`
+-- Database: `gsois`
 --
+CREATE DATABASE IF NOT EXISTS `gsois` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `gsois`;
 
 -- --------------------------------------------------------
 
@@ -26,10 +28,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `account_code`
 --
 
+DROP TABLE IF EXISTS `account_code`;
 CREATE TABLE `account_code` (
-  `ac_id` int(11) NOT NULL,
-  `account_code` varchar(45) NOT NULL,
-  `description` varchar(70) NOT NULL
+  `ac_id` int(3) NOT NULL,
+  `account_code` varchar(15) NOT NULL,
+  `description` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -46,7 +49,7 @@ INSERT INTO `account_code` (`ac_id`, `account_code`, `description`) VALUES
 (7, '1-07-04-990', '	Other Structures'),
 (8, '1-07-05-020', '	Office Equipment'),
 (9, '1-07-07-010', '	Furniture and Fixtures'),
-(10, '1-07-05-030', 'Information and Communication Technology Equipment'),
+(10, '1-07-05-030', 'Information and Communication Technology Equi'),
 (12, '1-07-07-020', '	Books'),
 (13, '1-07-05-010', '	Machinery'),
 (14, '1-07-05-040', '	Agriculture and Forestry Equipment'),
@@ -70,19 +73,19 @@ INSERT INTO `account_code` (`ac_id`, `account_code`, `description`) VALUES
 (32, '5-02-03-040', '	Animal/Zoological Expenses'),
 (33, '5-02-03-050', '	Food Supplies Expenses'),
 (34, '5-02-03-070', '	Drugs and Medicines Expenses'),
-(35, '5-02-03-080', 'Medical, Dental and Laboratory Supplies Expenses'),
+(35, '5-02-03-080', 'Medical, Dental and Laboratory Supplies Expen'),
 (36, '5-02-03-090', 'Fuel, Oil and Lubricants Expenses'),
 (37, '5-02-03-100', '	Agricultural and Marine Supplies Expenses'),
 (38, '5-02-03-110', '	Textbooks and Instructional Materials Expens'),
-(39, '5-02-03-120', 'Military, Police and Traffic Supplies Expenses'),
+(39, '5-02-03-120', 'Military, Police and Traffic Supplies Expense'),
 (40, '5-02-03-990', '	Other Supplies and Materials Expenses'),
 (41, '5-02-04-010', '	Water Expenses'),
 (42, '5-02-04-020', 'Electricity Expenses'),
 (43, '5-02-05-010', 'Postage and Courier Services'),
 (44, '5-02-05-020', 'Telephone Expenses'),
 (45, '5-02-05-030', 'Internet Subscription Expenses'),
-(46, '5-02-05-040', 'Cable, Satellite, Telegraph and Radio Expenses'),
-(47, '5-02-99-060', 'Membership Dues and Contributions to Organization'),
+(46, '5-02-05-040', 'Cable, Satellite, Telegraph and Radio Expense'),
+(47, '5-02-99-060', 'Membership Dues and Contributions to Organiza'),
 (48, '5-02-06-010', '	Awards/Rewards Expenses'),
 (49, '5-02-99-010', '	Advertising Expenses'),
 (50, '5-02-99-020', '	Printing and Publication Expenses'),
@@ -98,13 +101,13 @@ INSERT INTO `account_code` (`ac_id`, `account_code`, `description`) VALUES
 (60, '5-02-12-030', '	Security Services'),
 (61, '5-02-11-990', '	Other Professional Services'),
 (62, '5-02-13-020', '	Repairs and Maintenance - Land Improvements'),
-(63, '5-02-13-030', 'Repairs and Maintenance - Infrastructure Assets'),
-(64, '5-02-13-040', 'Repairs and Maintenance - Buildings and Other Structures'),
-(65, '5-02-13-090', 'Repairs and Maintenance - Leased Assets Improvements'),
-(66, '5-02-13-050', 'Repairs and Maintenance - Machinery and Equipment'),
-(67, '5-02-13-070', 'Repairs and Maintenance - Furniture and Fixtures'),
-(68, '5-02-13-060', 'Repairs and Maintenance - Transportation Equipment'),
-(69, '5-02-13-990', 'Repairs and Maintenance - Other Property, Plant and Equipment'),
+(63, '5-02-13-030', 'Repairs and Maintenance - Infrastructure Asse'),
+(64, '5-02-13-040', 'Repairs and Maintenance - Buildings and Other'),
+(65, '5-02-13-090', 'Repairs and Maintenance - Leased Assets Impro'),
+(66, '5-02-13-050', 'Repairs and Maintenance - Machinery and Equip'),
+(67, '5-02-13-070', 'Repairs and Maintenance - Furniture and Fixtu'),
+(68, '5-02-13-060', 'Repairs and Maintenance - Transportation Equi'),
+(69, '5-02-13-990', 'Repairs and Maintenance - Other Property, Pla'),
 (70, '5-02-14-020', '	Subsidy to NGAs'),
 (71, '5-02-14-030', '	Subsidy to Other Local Government Units'),
 (72, '5-02-99-080', '	Donations'),
@@ -125,9 +128,10 @@ INSERT INTO `account_code` (`ac_id`, `account_code`, `description`) VALUES
 -- Table structure for table `department`
 --
 
+DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
-  `dept_id` int(11) NOT NULL,
-  `res_center_code` varchar(11) NOT NULL,
+  `dept_id` int(4) NOT NULL,
+  `res_center_code` varchar(12) NOT NULL,
   `department` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -173,16 +177,24 @@ INSERT INTO `department` (`dept_id`, `res_center_code`, `department`) VALUES
 -- Table structure for table `distribution`
 --
 
+DROP TABLE IF EXISTS `distribution`;
 CREATE TABLE `distribution` (
-  `dist_id` int(11) NOT NULL,
-  `quantity` varchar(45) NOT NULL,
-  `distrib_date` date DEFAULT NULL,
-  `dept_id` int(11) NOT NULL,
+  `dist_id` int(15) NOT NULL,
+  `quantity_distributed` int(15) DEFAULT NULL,
   `receivedby` varchar(45) DEFAULT NULL,
-  `user_distribute` varchar(45) NOT NULL,
-  `item_usage` varchar(60) DEFAULT NULL,
-  `account_id` int(11) DEFAULT NULL
+  `dept_id` int(5) DEFAULT NULL,
+  `ac_id` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `distribution`
+--
+
+INSERT INTO `distribution` (`dist_id`, `quantity_distributed`, `receivedby`, `dept_id`, `ac_id`) VALUES
+(1, 1, 'test', 11, 1),
+(2, 1, 'test', 11, 1),
+(3, 1, 'test', 11, 1),
+(4, 5, 'test', 11, 1);
 
 -- --------------------------------------------------------
 
@@ -190,30 +202,68 @@ CREATE TABLE `distribution` (
 -- Table structure for table `item`
 --
 
+DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
-  `item_id` int(11) NOT NULL,
-  `item_name` varchar(45) NOT NULL,
-  `quantity` bigint(20) NOT NULL,
-  `item_description` text NOT NULL,
-  `unit` varchar(11) NOT NULL,
-  `item_type` enum('CO','MOOE') DEFAULT 'CO'
+  `item_id` int(15) NOT NULL,
+  `quantity` int(9) DEFAULT NULL,
+  `item_name` varchar(60) NOT NULL,
+  `item_description` varchar(250) DEFAULT NULL,
+  `unit` varchar(20) DEFAULT NULL,
+  `item_type` enum('Capital Outlay','MOOE') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Triggers `item`
+-- Dumping data for table `item`
 --
+
+INSERT INTO `item` (`item_id`, `quantity`, `item_name`, `item_description`, `unit`, `item_type`) VALUES
+(3, 0, 'Desktop', 'Intel Core 2 Duo ', 'piece', 'Capital Outlay');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `itemdetail`
+--
+
+DROP TABLE IF EXISTS `itemdetail`;
+CREATE TABLE `itemdetail` (
+  `item_det_id` int(15) NOT NULL,
+  `delivery_date` date DEFAULT NULL,
+  `date_received` date DEFAULT NULL,
+  `unit_cost` int(20) DEFAULT NULL,
+  `PO_no` int(15) DEFAULT NULL,
+  `PR_no` int(15) DEFAULT NULL,
+  `OBR_no` int(15) DEFAULT NULL,
+  `serial` varchar(60) DEFAULT NULL,
+  `item_status` varchar(25) DEFAULT NULL,
+  `expiration_date` date DEFAULT NULL,
+  `item_id` int(15) DEFAULT NULL,
+  `dist_id` int(15) DEFAULT NULL,
+  `supplier_id` int(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `itemdetail`
+--
+
+INSERT INTO `itemdetail` (`item_det_id`, `delivery_date`, `date_received`, `unit_cost`, `PO_no`, `PR_no`, `OBR_no`, `serial`, `item_status`, `expiration_date`, `item_id`, `dist_id`, `supplier_id`) VALUES
+(13, '2018-01-31', '2018-01-31', 50000, 1, 1, 1, NULL, NULL, '2018-01-31', 3, 4, 1),
+(14, '2018-01-31', '2018-01-31', 50000, 1, 1, 1, NULL, NULL, '2018-01-31', 3, 4, 1),
+(15, '2018-01-31', '2018-01-31', 50000, 1, 1, 1, NULL, NULL, '2018-01-31', 3, 4, 1),
+(16, '2018-01-31', '2018-01-31', 50000, 1, 1, 1, NULL, NULL, '2018-01-31', 3, 4, 1),
+(17, '2018-01-31', '2018-01-31', 50000, 1, 1, 1, NULL, NULL, '2018-01-31', 3, 4, 1);
+
+--
+-- Triggers `itemdetail`
+--
+DROP TRIGGER IF EXISTS `quantity`;
 DELIMITER $$
-CREATE TRIGGER `item_detail` AFTER INSERT ON `item` FOR EACH ROW BEGIN
-		
-        SET @counter = 0;
-  		if (new.item_type = 'CO') then
-         while @counter < new.quantity do
-         	INSERT INTO item_detail (item_id) VALUES (NEW.item_id);
-		set @counter=@counter+1;
-    	end while ;
-        ELSE
-        INSERT INTO item_detail (item_id) VALUES (NEW.item_id);
-        end if;
+CREATE TRIGGER `quantity` AFTER UPDATE ON `itemdetail` FOR EACH ROW BEGIN	
+   IF (new.dist_id is not null) THEN
+   	UPDATE item set quantity = quantity-1;
+    ELSE 
+    UPDATE item set quantity = quantity+1;
+    END IF;
   END
 $$
 DELIMITER ;
@@ -221,48 +271,23 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item_detail`
+-- Table structure for table `supplier`
 --
 
-CREATE TABLE `item_detail` (
-  `item_det_id` int(11) NOT NULL,
-  `serial` varchar(30) DEFAULT NULL,
-  `exp_date` date DEFAULT NULL,
-  `supplier` varchar(60) DEFAULT NULL,
-  `official_receipt_no` varchar(60) DEFAULT NULL,
-  `del_date` datetime DEFAULT NULL,
-  `date_rec` datetime DEFAULT NULL,
-  `receivedby` varchar(60) DEFAULT NULL,
-  `unit_cost` double DEFAULT NULL,
-  `item_id` int(11) NOT NULL DEFAULT '1',
-  `dist_id` int(11) DEFAULT NULL,
-  `item_status` enum('returned','in_stock','expired') NOT NULL DEFAULT 'in_stock'
+DROP TABLE IF EXISTS `supplier`;
+CREATE TABLE `supplier` (
+  `supplier_id` int(15) NOT NULL,
+  `supplier_name` varchar(60) NOT NULL,
+  `contact` varchar(15) NOT NULL,
+  `location` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Triggers `item_detail`
+-- Dumping data for table `supplier`
 --
-DELIMITER $$
-CREATE TRIGGER `decrease_log` AFTER UPDATE ON `item_detail` FOR EACH ROW BEGIN
-	if new.dist_id is not null THEN
-   	INSERT INTO logs.decrease_log (item_det_id) VALUES (NEW.item_det_id);
-	end if;
-   
-  END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `increase_log` AFTER INSERT ON `item_detail` FOR EACH ROW BEGIN	
-   	INSERT INTO logs.increase_log (item_det_id) VALUES (NEW.item_det_id);
-  END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `item_detail_delete` BEFORE DELETE ON `item_detail` FOR EACH ROW BEGIN
-	UPDATE logs.increase_log set serial = old.serial, exp_date = old.exp_date, official_receipt_no = old.official_receipt_no, del_date = old.del_date, date_rec = old.date_rec, receivedby = old.receivedby, unit_cost = old.unit_cost, item_status = old.item_status, item_id = old.item_id, dist_id = old.dist_id where item_det_id = old.item_det_id;	
-  END
-$$
-DELIMITER ;
+
+INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `contact`, `location`) VALUES
+(1, 'test', '06065897', 'test');
 
 -- --------------------------------------------------------
 
@@ -270,38 +295,17 @@ DELIMITER ;
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `contact_no` varchar(12) NOT NULL,
-  `username` varchar(45) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `position` varchar(45) NOT NULL,
-  `image` varchar(255) NOT NULL DEFAULT 'default.png',
-  `dept_id` int(11) DEFAULT NULL,
-  `status` enum('pending','accepted','declined','deactivated') NOT NULL DEFAULT 'pending'
+  `email` varchar(60) NOT NULL,
+  `contact_no` varchar(15) NOT NULL,
+  `username` varchar(60) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `dept_id` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact_no`, `username`, `password`, `position`, `image`, `dept_id`, `status`) VALUES
-(2217, 'Heinrich', 'Bangui', 'heinrichbangui@gmail.com', '09082853679', 'admin', '$2y$12$oJfVN29fCo9ElEz2W1V5FOe2SqfcPRNmi/OaqVUN7.o3ueDeFcS3O', 'admin', 'logo.png', NULL, 'accepted'),
-(2218, 'Heinrich', 'Bangui', 'heinrichbangui@gmail.com', '09082853679', 'heinrich', '$2y$12$uvIqn78uh/0/H6KzwW8s9Ot.Z6E8JBPYONBinkz2A9g0knHyVXMLe', 'receiver', 'logo.png', 18, 'accepted'),
-(2220, 'Lyra', 'Ronquillo', 'lj@gmail.com', '09885468384', 'lyra', '$2y$12$JCT9E1LHGO2Q4JmTNqNnSe3bpFhK/HSCKY1n64PdWOUJxTZDVJdie', 'custodian', 'logo.png', NULL, 'accepted'),
-(2221, 'Joy', 'Cabildo', 'jc@gmail.com', '09073456679', 'joyc', '$2y$12$G19I/IbI1ixK./jm7RGa2ORINHkt9sj1u0YCvrJRnR7r8lXUWYPoG', 'department head', 'aww134_.jpg', 18, 'accepted'),
-(2222, 'rock', 'rock', 'rock@gmail.com', '09876556789', 'rock', '$2y$12$hVtiHK7k1V4lM5qi7aXlb.FIxfJt/7liTo70/j6gTKu8oY1FuUsxu', 'receiver', '', 26, 'accepted'),
-(2223, 'Heinrich', 'Bangui', 'heinrichbangui@gmail.com', '09082853679', 'rayls', '$2y$12$iwTOcjI8QOurSX1Rqknw0.HdkMSQp8pLpeHUI27.NdsA5xfQUvZqK', 'custodian', 'aww134_.jpg', NULL, 'accepted'),
-(2224, 'mark', 'test', 'sample@yahoo.com', '09215478763', 'mark', '$2y$12$UCaZiEqESztI6uVn5DzYxOrYbNFNusXOtVM89Pn1b6Qt4PLzGWwem', 'custodian', 'default.png', NULL, 'accepted'),
-(2225, 'Christine', 'Cabildo', 'joy@yahoo.com', '09053983127', 'recsample', '$2y$12$bYn.ctUKZvHSTuCoSPAyzuetp9pMTGH/8CLRa436Zg3Y5c3bz.Bje', 'receiver', 'default.png', 11, 'accepted'),
-(2226, 'sampl', 'sample', 'marck.carrera@yahoo.com.ph', '09053983127', 'joycabildo', '$2y$12$S3QJGkBDOxiGmppGMP1iOO.L0c9bNt7uhStHuH8YgO3NjE78X847.', 'receiver', 'default.png', 22, 'accepted'),
-(2227, 'sample', 'sample', 'sample@yahoo.com', '09547863214', 'depthead', '$2y$12$cPxXj2j/I73kZXbpqHwAC.TsN/TjhQzOH9GO3AX706Tc0gt5HRxlW', 'department head', 'default.png', 20, 'accepted'),
-(2228, 'sample', ' sampe', 'sample@yahoo.com', '09053983127', 'custodian', '$2y$12$BLKsjlpRb4q/l3i6R3buWOv3lGxfHocWI3c3d9Yb49kcrkKstU/9C', 'department head', 'default.png', 25, 'accepted'),
-(2229, 'sam', 'sam', 'sample@yahoo.com', '09053983127', 'depthead1', '$2y$12$lXidbuwnz8lpAMezmqBPnetQ5KSSEPhiTKtiBffqgGbkibXVUvvKO', 'department head', 'default.png', 11, 'accepted'),
-(2230, 'sample', 'sam', 'sample@yahoo.com', '09053983127', 'receiver1', '$2y$12$QC8hLOxP/a9vehWxNpn8wO6S8t4B0dR4dyHgHz/5WoOl68vN5bZES', 'receiver', 'default.png', 11, 'pending');
 
 --
 -- Indexes for dumped tables
@@ -312,45 +316,59 @@ INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact_no`,
 --
 ALTER TABLE `account_code`
   ADD PRIMARY KEY (`ac_id`),
-  ADD UNIQUE KEY `ac_id` (`ac_id`),
-  ADD KEY `acid` (`account_code`);
+  ADD UNIQUE KEY `ac_id_UNIQUE` (`ac_id`),
+  ADD UNIQUE KEY `account_code_UNIQUE` (`account_code`),
+  ADD UNIQUE KEY `description_UNIQUE` (`description`);
 
 --
 -- Indexes for table `department`
 --
 ALTER TABLE `department`
-  ADD PRIMARY KEY (`dept_id`);
+  ADD PRIMARY KEY (`dept_id`),
+  ADD UNIQUE KEY `dept_id_UNIQUE` (`dept_id`),
+  ADD UNIQUE KEY `res_center_code_UNIQUE` (`res_center_code`),
+  ADD UNIQUE KEY `department_UNIQUE` (`department`);
 
 --
 -- Indexes for table `distribution`
 --
 ALTER TABLE `distribution`
   ADD PRIMARY KEY (`dist_id`),
-  ADD KEY `depid_idx` (`dept_id`),
-  ADD KEY `account_idx_idx` (`account_id`);
+  ADD KEY `department_idx` (`dept_id`);
 
 --
 -- Indexes for table `item`
 --
 ALTER TABLE `item`
-  ADD PRIMARY KEY (`item_id`);
+  ADD PRIMARY KEY (`item_id`),
+  ADD UNIQUE KEY `item_id_UNIQUE` (`item_id`);
 
 --
--- Indexes for table `item_detail`
+-- Indexes for table `itemdetail`
 --
-ALTER TABLE `item_detail`
+ALTER TABLE `itemdetail`
   ADD PRIMARY KEY (`item_det_id`),
-  ADD UNIQUE KEY `serial` (`serial`),
-  ADD KEY `itemid_idx` (`item_id`),
-  ADD KEY `distid_idx` (`dist_id`),
-  ADD KEY `dist_idx` (`dist_id`),
-  ADD KEY `dist` (`dist_id`);
+  ADD UNIQUE KEY `item_det_id_UNIQUE` (`item_det_id`),
+  ADD UNIQUE KEY `serial_UNIQUE` (`serial`);
+
+--
+-- Indexes for table `supplier`
+--
+ALTER TABLE `supplier`
+  ADD PRIMARY KEY (`supplier_id`),
+  ADD UNIQUE KEY `supplier_name_UNIQUE` (`supplier_name`),
+  ADD UNIQUE KEY `contact_UNIQUE` (`contact`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_id_UNIQUE` (`user_id`),
+  ADD UNIQUE KEY `username_UNIQUE` (`username`),
+  ADD UNIQUE KEY `contact_no_UNIQUE` (`contact_no`),
+  ADD UNIQUE KEY `email_UNIQUE` (`email`),
+  ADD KEY `department_idx` (`dept_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -360,42 +378,46 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `account_code`
 --
 ALTER TABLE `account_code`
-  MODIFY `ac_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `ac_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 --
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `dept_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `dept_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 --
 -- AUTO_INCREMENT for table `distribution`
 --
 ALTER TABLE `distribution`
-  MODIFY `dist_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `dist_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `item_detail`
+-- AUTO_INCREMENT for table `itemdetail`
 --
-ALTER TABLE `item_detail`
-  MODIFY `item_det_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `itemdetail`
+  MODIFY `item_det_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `supplier`
+--
+ALTER TABLE `supplier`
+  MODIFY `supplier_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2231;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `distribution`
+-- Constraints for table `user`
 --
-ALTER TABLE `distribution`
-  ADD CONSTRAINT `account_idx` FOREIGN KEY (`account_id`) REFERENCES `account_code` (`ac_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `depid` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `user`
+  ADD CONSTRAINT `department` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

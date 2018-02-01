@@ -104,4 +104,24 @@ class Inventory_model extends CI_Model{
         $query = $this->db->get('account_code');
         return $query->result_array();
     }
+    public function distrib(){
+        $id = $this->input->post('id');
+        $quantity = $this->input->post('quant');
+        $data = array(
+            'dept_id' => $this->input->post('dept'),
+            'ac_id' => $this->input->post('Code'),
+            'quantity_distributed' => $quantity,
+            'receivedby' => $this->input->post('owner')
+        );
+        $this->db->insert('distribution',$data);
+        $insert_id = $this->db->insert_id();
+        $data1 = array(
+            'PO_no' => $this->input->post('po'),
+            'PR_no' => $this->input->post('pr'),
+            'OBR_no' => $this->input->post('obr'),
+            'dist_id' => $insert_id
+        );
+
+        $this->db->update('itemdetail',$data1,array('item_id' => $id),$quantity);
+    }
 }

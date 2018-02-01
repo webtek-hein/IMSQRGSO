@@ -30,8 +30,8 @@ class Inventory extends CI_Controller {
                      data-toggle=\"modal\" data-target=\"#addqty\"><span class=\"glyphicon glyphicon-plus\"></span>
                      </button>" .
                     //subtract quantity
-                     "<button class=\"btn btn-warning\" data-toggle=\"modal\" data-target=\"#subqty\"><span 
-                      class=\"glyphicon glyphicon-minus\"></span></button>" .
+                     "<button class=\"btn btn-warning\" data-id='$item[item_id]'  data-toggle=\"modal\" 
+                     data-target=\"#subqty\"><span class=\"glyphicon glyphicon-minus\"></span></button>" .
                     //edit item
                      "<button class=\"btn btn-danger\"><span data-name='$item[item_name]' data-id='$item[item_id]'
                       data-description='$item[item_description]' data-unit='$item[unit]' data-type='$item[item_type]' 
@@ -50,6 +50,9 @@ class Inventory extends CI_Controller {
         $this->inv->addquant();
         redirect('inventory');
     }
+    public function distribute(){
+        $this->inv->distrib();
+    }
     public function edititem(){
         $this->inv->edititem();
         redirect('inventory');
@@ -66,11 +69,32 @@ class Inventory extends CI_Controller {
             $row[] = $list['PO_no'];
             $row[] = $list['PR_no'];
             $row[] = $list['OBR_no'];
-            $row[] = $list['acc_code_id'];
             $row[] = $list['supplier_id'];
             $data[] = $row;
         }
         $list = array('data' => $data);
         echo json_encode($list);
+    }
+    function getdept(){
+        $departments = $this->inv->select_departments();
+        foreach ($departments as $list){
+            $data[] = array(
+                'dept_id' => $list['dept_id'],
+                'res_center_code' => $list['res_center_code'],
+                'department' => $list['department']
+            );
+        }
+        echo json_encode($data);
+    }
+    function getacccodes(){
+        $acc_code = $this->inv->select_acc_codes();
+        foreach ($acc_code as $list){
+            $data[] = array(
+                'ac_id' => $list['ac_id'],
+                'account_code' => $list['account_code'],
+                'description' => $list['description']
+            );
+        }
+        echo json_encode($data);
     }
 }
