@@ -17,6 +17,8 @@
 <script src="assets/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
 <script src="assets/vendors/nprogress/nprogress.js"></script>
+<!-- jQuery Smart Wizard -->
+<script src="assets/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
 <!-- Chart.js -->
 <script src="assets/vendors/Chart.js/dist/Chart.min.js"></script>
 <!-- gauge.js -->
