@@ -6,6 +6,7 @@ class Pages extends CI_Controller {
     {
         parent::__construct();
         $this->load->helper(array('form','url'));
+        $this->load->model('Inventory_model','inv');
     }
 
     public function view($page = 'dashboard')

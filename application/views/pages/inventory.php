@@ -18,7 +18,10 @@
 
                         <div class="content table-responsive table-full-width">
                             <script type="text/javascript">
+                                //data table in the inventory
                                 $(document).ready(function () {
+
+
 
                                     $('#table1').DataTable( {
                                         "ajax": 'inventory/viewItem'
@@ -45,7 +48,6 @@
             </div>
         </div>
     </div>
-
 </div>
 </div>
 
@@ -70,22 +72,22 @@
                 <table border="0" width="500" align="center" class="table">
                     <tr>
                         <td>Item Name</td>
-                        <td><input type="text"  class="InputBox" name="item" value="" required></td>
+                        <td><input type="text"  class="InputBox form-control" name="item" value="" required></td>
                     </tr>
                     <tr>
                         <td>Description</td>
-                        <td><input class="InputBox" name="description" value="" required></td>
+                        <td><input class="InputBox form-control" name="description" value="" required></td>
                     </tr>
 
 
                     <tr>
                         <td>Quantity</td>
-                        <td><input class="InputBox" name="quant" value="" min = 0 required></td>
+                        <td><input type="number" class="InputBox form-control" name="quant" value="" min = 0 required></td>
                     </tr>
                     <tr>
                         <td>Unit</td>
                         <td>
-                            <input name="Unit" class="unit" list="list" required>
+                            <input name="Unit" class="unit form-control" list="list" required>
                             <datalist id="list">
                                 <option value="piece">piece</option>
                                 <option value="box">box</option>
@@ -102,43 +104,31 @@
                     <tr>
                         <td>Type</td>
                         <td>
-                            <select id="type" list="typelist" name="Type" required>
-                                <option selected="true" value="CO">CO</option>
+                            <select class="type form-control" id="type" list="typelist" name="Type" required>
+                                <option selected="true" value="Capital Outlay">Capital Outlay</option>
                                 <option value="MOOE">MOOE</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>Delivery Date</td>
-                        <td><input type="date" name="del" required></td>
+                        <td><input class="form-control" type="date" name="del" required></td>
                     </tr>
                     <tr>
                         <td>Date Received</td>
-                        <td><input type="date" name="rec" required></td>
+                        <td><input class="form-control" type="date" name="rec" required></td>
                     </tr>
                     <tr>
                         <td>Expiration Date</td>
-                        <td><input type="date" class=""  name="exp"  required></td>
+                        <td><input class="form-control" type="date" class=""  name="exp"  required></td>
                     </tr>
                     <tr>
                         <td>Unit Cost</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="cost" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>PO No.</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="po" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>PR No.</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="pr" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>OBR No.</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="obr" value="" required></td>
+                        <td><input class="form-control" type="number" min='0' step='any' class="InputBox" name="cost" value="" required></td>
                     </tr>
                     <tr>
                         <td>Supplier</td>
-                        <td><input class="InputBox" name="supp" value="" required></td>
+                        <td><input class="InputBox form-control" name="supp" value="" required></td>
                     </tr>
                 </table>
             </div>
@@ -179,9 +169,6 @@
                             <th style="width:150px;">Official Receipt</th>
                             <th style="width:150px;">Received By</th>
                             <th style="width:80px;">Cost per Unit</th>
-                            <th style="width:80px;">PO No.</th>
-                            <th style="width:80px;">PR No.</th>
-                            <th style="width:80px;">OBR No.</th>
                             <th style="width:80px;">Serial</th>
                             <th style="width:80px;">Account Code</th>
                             <th style="width:150px;">Supplier</th>
@@ -219,9 +206,6 @@
                             <td><input id="new_or" name="Item_OfficialReceipt[]" required style="width:150px;"></td>
                             <td><input type="text" id="new_receivedby" name="Item_Receivedby[]" required style="width:150px;"></td>
                             <td><input type="number" min="0" step='any' id="new_cost" name="Item_Cost[]" required style="width:80px;"></td>
-                            <td><input id="new_po" name="Item_PONo[]" required style="width:150px;"></td>
-                            <td><input id="new_pr" name="Item_PRNo[]" required style="width:150px;"></td>
-                            <td><input id="new_obr" name="Item_OBRNo[]" required style="width:150px;"></td>
                             <td><input id="new_serial" name="Item_Serial[]" required style="width:150px;"></td>
                             <td><input id="new_accountcode" name="Item_Accountcode[]" required style="width:150px;"></td>
                             <td><input type="text" id="new_supplier" name="Item_Supplier[]" required style="width:150px;"></td>
@@ -258,9 +242,6 @@
         var new_or=document.getElementById("new_or").value;
         var new_receivedby=document.getElementById("new_receivedby").value;
         var new_cost=document.getElementById("new_cost").value;
-        var new_po=document.getElementById("new_po").value;
-        var new_pr=document.getElementById("new_pr").value;
-        var new_obr=document.getElementById("new_obr").value;
         var new_serial=document.getElementById("new_serial").value;
         var new_accountcode=document.getElementById("new_accountcode").value;
         var new_supplier=document.getElementById("new_supplier").value;
@@ -297,9 +278,6 @@
             "<td id='or_row"+table_len+"'><input type='number' value='"+new_or+"' name='Item_OfficialReceipt[]' required='required' style='width:140px;'></td>" +
             "<td id='receivedby_row"+table_len+"'><input type='text' value='"+new_receivedby+"' name='Item_Receivedby[]' required='required' style='width:140px;'></td>" +
             "<td id='cost_row"+table_len+"'><input type='text' min='0' value='"+new_cost+"' name='Item_Cost[]' required='required' style='width:80px;'></td>" +
-            "<td id='po_row"+table_len+"'><input type='number' value='"+new_po+"' name='Item_PONo[]' required='required' style='width:140px;'></td>" +
-            "<td id='pr_row"+table_len+"'><input type='number' value='"+new_pr+"' name='Item_PRNo[]' required='required' style='width:140px;'></td>" +
-            "<td id='obr_row"+table_len+"'><input type='number' value='"+new_obr+"' name='Item_OBRNo[]' required='required' style='width:140px;'></td>" +
             "<td id='serial_row"+table_len+"'><input type='number' value='"+new_serial+"' name='Item_Serial[]' required='required' style='width:140px;'></td>" +
             "<td id='accountcode_row"+table_len+"'><input type='number' value='"+new_accountcode+"' name='Item_Accountcode[]' required='required' style='width:140px;'></td>" +
             "<td id='supplier_row"+table_len+"'><input type='text' value='"+new_supplier+"' name='Item_Supplier[]' required='required' style='width:140px;'></td>" +
@@ -313,9 +291,6 @@
         document.getElementById("new_datereceived").value="";
         document.getElementById("new_expdate").value="";
         document.getElementById("new_cost").value="";
-        document.getElementById("new_po").value="";
-        document.getElementById("new_pr").value="";
-        document.getElementById("new_obr").value="";
         document.getElementById("new_serial").value="";
         document.getElementById("new_accountcode").value="";
         document.getElementById("new_supplier").value="";
@@ -334,56 +309,53 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title" align="center"><b>Add Quantity<b></h4>
             </div>
-
+            <?php echo form_open('inventory/addquant');?>
             <div class="modal-body">
                 <table border="0" width="500" align="center" class="table">
                     <tr>
+                        <td>Quantity</td>
+                        <td><input type="number" class="expdate form-control" name="quant" value="" required></td>
+                    </tr>
+                    <tr>
                         <td>Supplier</td>
-                        <td><input  class="InputBox" name="" value="" required></td>
+                        <td><input  class="InputBox form-control" name="supp" value="" required></td>
                     </tr>
                     <tr>
                         <td>Expiration Date</td>
-                        <td><input type="text" class="InputBox" name="" value="" required></td>
+                        <td><input type="date" class="InputBox form-control" name="exp" value="" required></td>
                     </tr>
 
                     <tr>
-                        <td>PO No.</td>
-                        <td><input type="number" min = 0 class="InputBox" name="" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>PR No.</td>
-                        <td><input type="text" class="InputBox" name="" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>OBR No.</td>
-                        <td><input type="date" class="datereceived" name="" value=""></td>
-                    </tr>
-                    <tr>
                         <td>Delivery Date</td>
-                        <td><input type="date" class="datereceived" name="" value="" required></td>
+                        <td><input type="date" class="datereceived form-control" name="del" value="" required></td>
                     </tr>
                     <tr>
                         <td>Date Received</td>
-                        <td><input type="date" class="expdate" name="" value="" required></td>
+                        <td><input type="date" class="expdate form-control" name="rec" value="" required></td>
                     </tr>
-                    <tr>
-                        <td>Quantity</td>
-                        <td><input type="date" class="expdate" name="" value="" required></td>
-                    </tr>
+
                     <tr>
                         <td>Unit Cost</td>
-                        <td><input type="number" min='0' step='any' class="InputBox" name="" value="" required></td>
+                        <td><input type="number " min='0' step='any' class="InputBox form-control" name="cost" value="" required></td>
                     </tr>
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default" id="save1">Save</button>
+                <button type="submit" class="btn btn-default" name="id" id="quantsave" value="">Save</button>
                 <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
         </div>
-
     </div>
 </div>
+</form>
+<script>
+    //script for add quantity
+    $('#addqty').on('show.bs.modal',function(e){
+        var id = $(e.relatedTarget).data('id');
+
+        $(e.currentTarget).find('#quantsave').val(id);
+    });
+</script>
 
 <!-- End of modal of add qty  -->
 
@@ -393,6 +365,8 @@
     <div class="modal-dialog">
 
         <!-- Modal content-->
+        <?php echo form_open('inventory/distribute');?>
+
 
         <div class="modal-content">
             <div class="modal-header">
@@ -404,37 +378,113 @@
                 <table border="0" width="500" align="center" class="table">
                     <tr>
                         <td>Department</td>
-                        <td><input  class="InputBox" name="" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>Quantity</td>
-                        <td><input type="text" class="InputBox" name="" value="" required></td>
-                    </tr>
 
-                    <tr>
-                        <td>Received By</td>
-                        <td><input type="number" min = 0 class="InputBox" name="" value="" required></td>
+                        <td>
+                            <select class = "form-control" id="department" list="typelist" name="dept" required>
+                                <?php foreach($departments as $list) { ?>
+                                    <option value="<?php echo $list['dept_id']; ?>"><?php echo
+                                        $list['res_center_code']," ", $list['department']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td>Account Code</td>
-                        <td><input type="text" class="InputBox" name="" value="" required></td>
+
+                        <td>
+                            <select class="form-control" id="code" list="typelist" name="Code" required>
+                                <?php foreach($ac_code as $list) { ?>
+                                    <option value="<?php echo $list['ac_id']; ?>"><?php echo
+                                        $list['account_code']," ", $list['description']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Quantity</td>
+                        <td><input type="number" class="InputBox form-control" name="quant" value="" required></td>
+                    </tr>
+
+                    <tr>
+                        <td>Owner</td>
+                        <td><input type="text" class="InputBox form-control" name="owner" value="" required></td>
+                    </tr>
+
+                    <tr>
+                        <td>PO No.</td>
+                        <td><input type="number" min = 0 class="InputBox form-control" name="po" value="" required></td>
+                    </tr>
+                    <tr>
+                        <td>PR No.</td>
+                        <td><input type="text" class="InputBox form-control" name="pr" value="" required></td>
+                    </tr>
+                    <tr>
+                        <td>OBR No.</td>
+                        <td><input type="number" class="datereceived form-control" name="obr" value=""></td>
                     </tr>
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default" id="save1">Save</button>
+                <button type="submit" name="id" class="btn btn-default" id="subsave">Save</button>
                 <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
         </div>
 
     </div>
 </div>
+</form>
+<script>
+    $('#subqty').on('show.bs.modal', function(e) {
+        var id = $(e.relatedTarget).data('id');
+
+        $(e.currentTarget).find('#subsave').val(id);
+
+        $.ajax({
+            url: "inventory/getdept",
+            dataType: 'json',
+            type: 'post',
+            success: function (response) {
+                var len = response.length;
+                $('#department').empty();
+
+                for(var i = 0; i<len;i++){
+                    var dept_id = response[i]['dept_id'];
+                    var res_code = response[i]['res_center_code'];
+                    var department = response[i]['department'];
+
+                    $('#department').append("<option value='"+dept_id+"'>"+res_code+" "+department+"</option>");
+
+                }
+            }
+        });
+        $.ajax({
+            url: "inventory/getacccodes",
+            dataType: 'json',
+            type: 'post',
+            success: function (response) {
+                var len = response.length;
+                $('#code').empty();
+
+                for(var i = 0; i<len;i++){
+                    var ac_id = response[i]['ac_id'];
+                    var account_code = response[i]['account_code'];
+                    var description = response[i]['description'];
+
+                    $('#code').append("<option value='"+ac_id+"'>"+account_code+" "+description+"</option>");
+
+                }
+            }
+        });
+    });
+</script>
 
 <!-- End of modal of sub qty  -->
 
 
 <!-- modal of edit item  -->
 <!-- Modal -->
+
+<?php echo form_open('inventory/edititem');?>
 
 <div class="modal fade" id="edit" role="dialog">
     <div class="modal-dialog">
@@ -451,52 +501,102 @@
                 <table border="0" width="500" align="center" class="table">
                     <tr>
                         <td>Item Name</td>
-                        <td><input  class="InputBox" name="" value="" required></td>
+                        <td><input  class="InputBox form-control" name="item" value="" required></td>
                     </tr>
                     <tr>
                         <td>Description</td>
-                        <td><input type="text" class="InputBox" name="" value="" required></td>
+                        <td><input type="text" class="InputBox form-control" name="description" value="" required></td>
                     </tr>
 
                     <tr>
                         <td>Unit</td>
-                        <td><input type="number" min = 0 class="InputBox" name="" value="" required></td>
+                        <td>
+                            <input name="Unit" class="unit form-control" list="list" required>
+                            <datalist id="list">
+                                <option value="piece">piece</option>
+                                <option value="box">box</option>
+                                <option value="set">set</option>
+                                <option value="ream">ream</option>
+                                <option value="dozen">dozen</option>
+                                <option value="bundle">bundle</option>
+                                <option value="sack">sack</option>
+                                <option value="others">others</option>
+                            </datalist>
+                        </td>
                     </tr>
+
                     <tr>
                         <td>Type</td>
-                        <td><input type="text" class="InputBox" name="" value="" required></td>
+                        <td>
+                            <select class="form-control" id="type" list="typelist" name="Type" required>
+                                <option selected="true" value="Capital Outlay">Capital Outlay</option>
+                                <option value="MOOE">MOOE</option>
+                            </select>
+                        </td>
                     </tr>
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success" id="save1">Save</button>
+                <button type="submit" name="id" class="btn btn-success" id="editsave" value="">Save</button>
                 <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
         </div>
 
     </div>
 </div>
+</form>
+<script>
+    //script for edit
+    $('#edit').on('show.bs.modal',function(e){
+        var item_id = $(e.relatedTarget).data('id');
+        var item_name = $(e.relatedTarget).data('name');
+        var item_description = $(e.relatedTarget).data('description');
+        var unit = $(e.relatedTarget).data('unit');
+        var item_type = $(e.relatedTarget).data('type');
+
+        $(e.currentTarget).find('#editsave').val(item_id);
+        $(e.currentTarget).find('input[name="item"]').val(item_name);
+        $(e.currentTarget).find('input[name="description"]').val(item_description);
+        $(e.currentTarget).find('input[name="Unit"]').val(unit);
+        $(e.currentTarget).find('input[name="Type"]').val(item_type);
+    });
+</script>
 <!-- End of modal of  edit -->
 
 <!-- start of modal of info -->
 <!-- Modal -->
+
+<script type="text/javascript">
+    //data table in the inventory
+    $(document).ready(function () {
+        $('#itemdetails').on('show.bs.modal',function(e) {
+            var item_id = $(e.relatedTarget).data('id');
+            var item_name = $(e.relatedTarget).data('name');
+
+            $('#detailTitle').html(item_name);
+            $('#details').DataTable({
+                "ajax": 'inventory/detail/'+item_id,
+                "destroy": true
+            });
+        });
+    });
+</script>
+
 <div class="modal fade" id="itemdetails" role="dialog">
     <div class="modal-dialog" style="overflow-x:auto; width:auto ">
         <div class="container" style="background-color:white; width:auto; height: auto; size:50px;">
 
             <!-- Modal content-->
             <div class="modal-header">
-                <h4 class="modal-title" align="center"><b>Item Details<b></h4>
+                 <h4 class="modal-title " align="center" id="detailTitle"></h4>
             </div>
+
             <div class="modal-body" align="center">
 
                 <table id="details" class="table table-bordered table-striped" width="100%">
                     <thead>
                     <tr>
-                        <th>Item Name</th>
-                        <th>Description</th>
-                        <th>Unit</th>
-                        <th>Type</th>
+                        <th>Serial No.</th>
                         <th>Delivery Date</th>
                         <th>Date Received</th>
                         <th>Exp. Date</th>
@@ -504,28 +604,10 @@
                         <th>PO No.</th>
                         <th>PR No.</th>
                         <th>OBR No.</th>
-                        <th>Serial No.</th>
-                        <th>Account Code</th>
                         <th>Supplier</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th>Laptop</th>
-                        <th>Dell 15 inches</th>
-                        <th>Piece</th>
-                        <th>CO</th>
-                        <th>12-21-2017</th>
-                        <th>12-22-2017</th>
-                        <th>12-21-2035</th>
-                        <th>50,000</th>
-                        <th>1021-17.</th>
-                        <th>109</th>
-                        <th>208</th>
-                        <th></th>
-                        <th>1-07-01-010</th>
-                        <th>Samsung</th>
-                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -538,3 +620,4 @@
     </div>
 </div>
 <!-- End of modal of info  -->
+
