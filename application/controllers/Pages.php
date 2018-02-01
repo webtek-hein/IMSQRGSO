@@ -15,11 +15,14 @@ class Pages extends CI_Controller {
             show_404();
         }
 
-        $data['title'] = ucfirst($page);
+        if($page == 'login'){
+            $this->load->view('pages/login');
+        }else {
+            $data['title'] = ucfirst($page);
 
-        $this->load->view('templates/header',$data);
-        $this->load->view('pages/'.$page, $data);
-        $this->load->view('templates/footer');
-
+            $this->load->view('templates/header', $data);
+            $this->load->view('pages/' . $page, $data);
+            $this->load->view('templates/footer');
+        }
     }
 }

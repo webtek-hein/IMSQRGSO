@@ -1,187 +1,410 @@
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="header">
-                        <!-- start of add item button -->
-                        <div class="container">
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Item</button>
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
-                            <!-- Trigger the modal with a button -->
-
-                        </div>
-
-                        <!-- end of add item button -->
-
-                        <!-- End of modal of add bulk -->
-
-                        <div class="content table-responsive table-full-width">
-                            <script type="text/javascript">
-                                //data table in the inventory
-                                $(document).ready(function () {
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
 
 
-
-                                    $('#table1').DataTable( {
-                                        "ajax": 'inventory/viewItem'
-                                    });
-                                });
-                            </script>
-
-                            <table id="table1" class="table table-striped" cellspacing="0" width="100%">
-                                <thead>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Inventory</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital Outlay</a>
+                            </li>
+                            <li role="presentation" class=""><a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
+                            </li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
+                                <table id="datatable-buttons" class="table table-striped table-bordered">
+                                    <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Item Name</th>
                                         <th>Description</th>
                                         <th>Quantity</th>
                                         <th>Unit</th>
-                                        <th>Type</th>
                                         <th>Action</th>
                                     </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>Edinburgh</td>
+                                        <td>61</td>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Garrett Winters</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>63</td>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Ashton Cox</td>
+                                        <td>Junior Technical Author</td>
+                                        <td>San Francisco</td>
+                                        <td>66</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Cedric Kelly</td>
+                                        <td>Senior Javascript Developer</td>
+                                        <td>Edinburgh</td>
+                                        <td>22</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Airi Satou</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>33</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Brielle Williamson</td>
+                                        <td>Integration Specialist</td>
+                                        <td>New York</td>
+                                        <td>61</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Herrod Chandler</td>
+                                        <td>Sales Assistant</td>
+                                        <td>San Francisco</td>
+                                        <td>59</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Rhona Davidson</td>
+                                        <td>Integration Specialist</td>
+                                        <td>Tokyo</td>
+                                        <td>55</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Colleen Hurst</td>
+                                        <td>Javascript Developer</td>
+                                        <td>San Francisco</td>
+                                        <td>39</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
+                                <table id="datatable-buttons" class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Item Name</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Unit</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>Edinburgh</td>
+                                        <td>61</td>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Garrett Winters</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>63</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Ashton Cox</td>
+                                        <td>Junior Technical Author</td>
+                                        <td>San Francisco</td>
+                                        <td>66</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Cedric Kelly</td>
+                                        <td>Senior Javascript Developer</td>
+                                        <td>Edinburgh</td>
+                                        <td>22</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Airi Satou</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>33</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Brielle Williamson</td>
+                                        <td>Integration Specialist</td>
+                                        <td>New York</td>
+                                        <td>61</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Herrod Chandler</td>
+                                        <td>Sales Assistant</td>
+                                        <td>San Francisco</td>
+                                        <td>59</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Rhona Davidson</td>
+                                        <td>Integration Specialist</td>
+                                        <td>Tokyo</td>
+                                        <td>55</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Colleen Hurst</td>
+                                        <td>Javascript Developer</td>
+                                        <td>San Francisco</td>
+                                        <td>39</td>
+                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
+                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                </i>
+                                            </a></td>
+                                    </tr>
+                                    </tbody>
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 
-<!-- start of modal of add item -->
-<!-- Modal -->
+    <!-- /page content -->
 
-<?php echo form_open('inventory/additem');?>
+    <!-- Modal -->
+    <!-- Add Item -->
+    <div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                <h4 class="modal-title" align="center"><b>Add Item<b></h4>
-            </div>
-
-            <div class="modal-body">
-                <table border="0" width="500" align="center" class="table">
-                    <tr>
-                        <td>Item Name</td>
-                        <td><input type="text"  class="InputBox form-control" name="item" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>Description</td>
-                        <td><input class="InputBox form-control" name="description" value="" required></td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Quantity</td>
-                        <td><input type="number" class="InputBox form-control" name="quant" value="" min = 0 required></td>
-                    </tr>
-                    <tr>
-                        <td>Unit</td>
-                        <td>
-                            <input name="Unit" class="unit form-control" list="list" required>
-                            <datalist id="list">
-                                <option value="piece">piece</option>
-                                <option value="box">box</option>
-                                <option value="set">set</option>
-                                <option value="ream">ream</option>
-                                <option value="dozen">dozen</option>
-                                <option value="bundle">bundle</option>
-                                <option value="sack">sack</option>
-                                <option value="others">others</option>
-                            </datalist>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Type</td>
-                        <td>
-                            <select class="type form-control" id="type" list="typelist" name="Type" required>
-                                <option selected="true" value="Capital Outlay">Capital Outlay</option>
-                                <option value="MOOE">MOOE</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Delivery Date</td>
-                        <td><input class="form-control" type="date" name="del" required></td>
-                    </tr>
-                    <tr>
-                        <td>Date Received</td>
-                        <td><input class="form-control" type="date" name="rec" required></td>
-                    </tr>
-                    <tr>
-                        <td>Expiration Date</td>
-                        <td><input class="form-control" type="date" class=""  name="exp"  required></td>
-                    </tr>
-                    <tr>
-                        <td>Unit Cost</td>
-                        <td><input class="form-control" type="number" min='0' step='any' class="InputBox" name="cost" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>Supplier</td>
-                        <td><input class="InputBox form-control" name="supp" value="" required></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" id="save1">Save</button>
-                <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-</div>
-</form>
-<!-- End of modal of add item  -->
-
-<!-- start of modal of add bulk items -->
-<div class="modal fade" id="myModal1" role="dialog">
-    <div class="modal-dialog" style="overflow-x:auto; width:auto ">
-
-        <!-- Modal content-->
-        <div class="container" style="background-color:white; width:2750px; height: auto; size:50px;">
-            <h4 class="modal-title" align="center"><b>Add Items<b></h4>
-
-            <div class="modal-body">
-
-                <div id="wrapper">
-                    <table align='center' id="data_table" class="table table-bordered table-striped">
-                        <tr>
-                            <th style="width:150px;"></th>
-                            <th style="width:150px;">Item Name</th>
-                            <th style="width:150px;">Description</th>
-                            <th style="width:80px;">Quantity</th>
-                            <th style="width:80px;">Unit</th>
-                            <th style="width:80px;">Type</th>
-                            <th style="width:140px;">Delivery Date</th>
-                            <th style="width:140px;">Date Received</th>
-                            <th style="width:140px;">Expiration Date</th>
-                            <th style="width:150px;">Official Receipt</th>
-                            <th style="width:150px;">Received By</th>
-                            <th style="width:80px;">Cost per Unit</th>
-                            <th style="width:80px;">Serial</th>
-                            <th style="width:80px;">Account Code</th>
-                            <th style="width:150px;">Supplier</th>
-                        </tr>
-
-                        <tr>
-                            <td><input type="button" class="btn btn-success" onclick="add_row();" value="Add Row"></td>
-                            <td><input type="text" id="new_itemname" name="Item_Name[]" required style="width:150px;"></td>
-                            <td><input id="new_description" name="Item_Description[]" required style="width:150px;"></td>
-                            <td><input type="number" min=0 id="new_qty" name="Item_Quantity[]" required style="width:80px;"></td>
-                            <td>
-
-                                <input type="text" id="new_unit" name="Item_Unit[]" list="list" required style="width:80px; height: 25px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Add Item</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal form-label-left" novalidate>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Description<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Unit<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input  required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list">
                                 <datalist id="list">
                                     <option value="piece">piece</option>
                                     <option value="box">box</option>
@@ -192,432 +415,183 @@
                                     <option value="sack">sack</option>
                                     <option value="others">others</option>
                                 </datalist>
-                            </td>
-                            <td><input type="text" id="new_type"  list="typelist" name="Item_Type[]" required style="width:80px;" pattern="CO|MOOE" title="Type must Be 'CO' or 'MOOE'">
-                                <span id="error"></span>
-                                <datalist id="typelist" >
-                                    <option value="CO">CO</option>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Type<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12"  required>
+                                    <option selected="true" value="CO">Capital Outlay</option>
                                     <option value="MOOE">MOOE</option>
-                                </datalist>
-                            </td>
-                            <td><input type="date"  id="new_deldate" value="" name="Item_Deliverydate[]" required style="width:140px;"></td>
-                            <td><input type="date"  id="new_datereceived" value="" name="Item_Datereceived[]" required style="width:140px;"></td>
-                            <td><input type="date"  id="new_expdate" value="" name="Item_Expirationdate[]" required style="width:140px;"></td>
-                            <td><input id="new_or" name="Item_OfficialReceipt[]" required style="width:150px;"></td>
-                            <td><input type="text" id="new_receivedby" name="Item_Receivedby[]" required style="width:150px;"></td>
-                            <td><input type="number" min="0" step='any' id="new_cost" name="Item_Cost[]" required style="width:80px;"></td>
-                            <td><input id="new_serial" name="Item_Serial[]" required style="width:150px;"></td>
-                            <td><input id="new_accountcode" name="Item_Accountcode[]" required style="width:150px;"></td>
-                            <td><input type="text" id="new_supplier" name="Item_Supplier[]" required style="width:150px;"></td>
-                        </tr>
-                    </table>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Delivery Date<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="url" id="website" name="website" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">Date Received<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="occupation" type="text" name="occupation" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="password" class="control-label col-md-3">Unit Cost</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="password" type="password" name="password" data-validate-length="6,8" class="form-control col-md-7 col-xs-12" required="required">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">PO No.</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="password2" type="password" name="password2" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">PR No.<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="tel" id="telephone" name="phone" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">OBR No.<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="tel" id="telephone" name="phone" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Supplier<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="tel" id="telephone" name="phone" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" id="save1">Save</button>
-                <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                    <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                </div>
 
-    </div>
-</div>
-<!-- End of modal of add bulk items  -->
-
-<!-- Start of add bulk items js -->
-<script>
-    function delete_row(no)
-    {
-        document.getElementById("row"+no+"").outerHTML="";
-    }
-    function add_row()
-    {
-        var new_itemname=document.getElementById("new_itemname").value;
-        var new_description=document.getElementById("new_description").value;
-        var new_qty=document.getElementById("new_qty").value;
-        var new_unit=document.getElementById("new_unit").value;
-        var new_type=document.getElementById("new_type").value;
-        var new_deldate=document.getElementById("new_deldate").value;
-        var new_datereceived=document.getElementById("new_datereceived").value;
-        var new_expdate=document.getElementById("new_expdate").value;
-        var new_or=document.getElementById("new_or").value;
-        var new_receivedby=document.getElementById("new_receivedby").value;
-        var new_cost=document.getElementById("new_cost").value;
-        var new_serial=document.getElementById("new_serial").value;
-        var new_accountcode=document.getElementById("new_accountcode").value;
-        var new_supplier=document.getElementById("new_supplier").value;
-        var table=document.getElementById("data_table");
-        var table_len=(table.rows.length)-1;
-        var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'>" +
-            "<td> <input type='button' value='Delete' class='btn btn-danger' onclick='delete_row("+table_len+")'></td>"+
-            "<td id='itemname_row"+table_len+"'><input type='text' value='"+new_itemname+"' name='Item_Name[]' required='required' style='width:150px;'></td>" +
-            "<td id='description_row"+table_len+"'><input type='text' value='"+new_description+"' name='Item_Description[]' required='required' style='width:150px;'></td>" +
-            "<td id='qty_row"+table_len+"'><input type='number' value='"+new_qty+"' name='Item_Quantity[]' required='required' style='width:150px;'></td>" +
-            "<td id='unit_row"+table_len+"'>" +
-            "<input type='text' list='unitlist' value='"+new_unit+"' name='Item_Unit[]' required='required' style='width:80px;'>" +
-            "<datalist id='unitlist'> " +
-            "<option value='piece'>piece</option> " +
-            "<option value='box'>box</option> " +
-            "<option value='set'>set</option>" +
-            " <option value='ream'>ream</option> " +
-            "<option value='dozen'>dozen</option> " +
-            "<option value='bundle'>bundle</option> " +
-            "<option value='sack'>sack</option> " +
-            "<option value='others'>others</option> " +
-            "</datalist>" +
-            "</td>" +
-            "<td id='type_row"+table_len+"'>" +
-            "<input type='text' list='typelist' value='"+new_type+"' name='Item_Type[]' required='required' style='width:80px;' pattern='CO|MOOE' title='Type must Be CO or MOOE'>" +
-            " <datalist id='typelist'>" +
-            " <option value='CO'>CO</option>" +
-            " <option value='MOOE'>MOOE</option>" +
-            " </datalist>" +
-            "</td>" +
-            "<td id='deldate_row"+table_len+"'><input type='date' value='"+new_deldate+"' name='Item_Deliverydate[]' required='required' style='width:140px;'></td>" +
-            "<td id='datereceived_row"+table_len+"'><input type='date' value='"+new_datereceived+"' name='Item_Datereceived[]' required='required' style='width:140px;'></td>" +
-            "<td id='expdate_row"+table_len+"'><input type='date' value='"+new_expdate+"' name='Item_Expirationdate[]' required='required' style='width:140px;'></td>" +
-            "<td id='or_row"+table_len+"'><input type='number' value='"+new_or+"' name='Item_OfficialReceipt[]' required='required' style='width:140px;'></td>" +
-            "<td id='receivedby_row"+table_len+"'><input type='text' value='"+new_receivedby+"' name='Item_Receivedby[]' required='required' style='width:140px;'></td>" +
-            "<td id='cost_row"+table_len+"'><input type='text' min='0' value='"+new_cost+"' name='Item_Cost[]' required='required' style='width:80px;'></td>" +
-            "<td id='serial_row"+table_len+"'><input type='number' value='"+new_serial+"' name='Item_Serial[]' required='required' style='width:140px;'></td>" +
-            "<td id='accountcode_row"+table_len+"'><input type='number' value='"+new_accountcode+"' name='Item_Accountcode[]' required='required' style='width:140px;'></td>" +
-            "<td id='supplier_row"+table_len+"'><input type='text' value='"+new_supplier+"' name='Item_Supplier[]' required='required' style='width:140px;'></td>" +
-            "</tr>";
-        document.getElementById("new_itemname").value="";
-        document.getElementById("new_description").value="";
-        document.getElementById("new_qty").value="";
-        document.getElementById("new_unit").value="";
-        document.getElementById("new_type").value="";
-        document.getElementById("new_deldate").value="";
-        document.getElementById("new_datereceived").value="";
-        document.getElementById("new_expdate").value="";
-        document.getElementById("new_cost").value="";
-        document.getElementById("new_serial").value="";
-        document.getElementById("new_accountcode").value="";
-        document.getElementById("new_supplier").value="";
-    }
-</script>
-<!-- End of add bulk items js -->
-<!-- start of modal of add qty -->
-<!-- Modal -->
-<div class="modal fade" id="addqty" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" align="center"><b>Add Quantity<b></h4>
-            </div>
-            <?php echo form_open('inventory/addquant');?>
-            <div class="modal-body">
-                <table border="0" width="500" align="center" class="table">
-                    <tr>
-                        <td>Quantity</td>
-                        <td><input type="number" class="expdate form-control" name="quant" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>Supplier</td>
-                        <td><input  class="InputBox form-control" name="supp" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>Expiration Date</td>
-                        <td><input type="date" class="InputBox form-control" name="exp" value="" required></td>
-                    </tr>
-
-                    <tr>
-                        <td>Delivery Date</td>
-                        <td><input type="date" class="datereceived form-control" name="del" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>Date Received</td>
-                        <td><input type="date" class="expdate form-control" name="rec" value="" required></td>
-                    </tr>
-
-                    <tr>
-                        <td>Unit Cost</td>
-                        <td><input type="number " min='0' step='any' class="InputBox form-control" name="cost" value="" required></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default" name="id" id="quantsave" value="">Save</button>
-                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
-</div>
-</form>
-<script>
-    //script for add quantity
-    $('#addqty').on('show.bs.modal',function(e){
-        var id = $(e.relatedTarget).data('id');
+    <!-- /Add Item -->
 
-        $(e.currentTarget).find('#quantsave').val(id);
-    });
-</script>
+    <!--Distribution-->
+    <div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-<!-- End of modal of add qty  -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Distribution</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal form-label-left" novalidate>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Received By<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="url" id="website" name="website" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Account Code<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="url" id="website" name="website" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                    <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                </div>
 
-<!-- start of modal of sub qty -->
-<!-- Modal -->
-<div class="modal fade" id="subqty" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <?php echo form_open('inventory/distribute');?>
-
-
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" align="center"><b>Distribute<b></h4>
-            </div>
-
-            <div class="modal-body">
-                <table border="0" width="500" align="center" class="table">
-                    <tr>
-                        <td>Department</td>
-
-                        <td>
-                            <select class = "form-control" id="department" list="typelist" name="dept" required>
-                                <?php foreach($departments as $list) { ?>
-                                    <option value="<?php echo $list['dept_id']; ?>"><?php echo
-                                        $list['res_center_code']," ", $list['department']; ?></option>
-                                <?php } ?>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Account Code</td>
-
-                        <td>
-                            <select class="form-control" id="code" list="typelist" name="Code" required>
-                                <?php foreach($ac_code as $list) { ?>
-                                    <option value="<?php echo $list['ac_id']; ?>"><?php echo
-                                        $list['account_code']," ", $list['description']; ?></option>
-                                <?php } ?>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Quantity</td>
-                        <td><input type="number" class="InputBox form-control" name="quant" value="" required></td>
-                    </tr>
-
-                    <tr>
-                        <td>Owner</td>
-                        <td><input type="text" class="InputBox form-control" name="owner" value="" required></td>
-                    </tr>
-
-                    <tr>
-                        <td>PO No.</td>
-                        <td><input type="number" min = 0 class="InputBox form-control" name="po" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>PR No.</td>
-                        <td><input type="text" class="InputBox form-control" name="pr" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>OBR No.</td>
-                        <td><input type="number" class="datereceived form-control" name="obr" value=""></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" name="id" class="btn btn-default" id="subsave">Save</button>
-                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
         </div>
-
     </div>
-</div>
-</form>
-<script>
-    $('#subqty').on('show.bs.modal', function(e) {
-        var id = $(e.relatedTarget).data('id');
+    <!-- /Distribution-->
 
-        $(e.currentTarget).find('#subsave').val(id);
+    <!--Edit-->
+    <div class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-        $.ajax({
-            url: "inventory/getdept",
-            dataType: 'json',
-            type: 'post',
-            success: function (response) {
-                var len = response.length;
-                $('#department').empty();
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Edit</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal form-label-left" novalidate>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Item Name<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Description<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Unit<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="url" id="website" name="website" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Type<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="url" id="website" name="website" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                    <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                </div>
 
-                for(var i = 0; i<len;i++){
-                    var dept_id = response[i]['dept_id'];
-                    var res_code = response[i]['res_center_code'];
-                    var department = response[i]['department'];
-
-                    $('#department').append("<option value='"+dept_id+"'>"+res_code+" "+department+"</option>");
-
-                }
-            }
-        });
-        $.ajax({
-            url: "inventory/getacccodes",
-            dataType: 'json',
-            type: 'post',
-            success: function (response) {
-                var len = response.length;
-                $('#code').empty();
-
-                for(var i = 0; i<len;i++){
-                    var ac_id = response[i]['ac_id'];
-                    var account_code = response[i]['account_code'];
-                    var description = response[i]['description'];
-
-                    $('#code').append("<option value='"+ac_id+"'>"+account_code+" "+description+"</option>");
-
-                }
-            }
-        });
-    });
-</script>
-
-<!-- End of modal of sub qty  -->
-
-
-<!-- modal of edit item  -->
-<!-- Modal -->
-
-<?php echo form_open('inventory/edititem');?>
-
-<div class="modal fade" id="edit" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" align="center"><b>Edit<b></h4>
-            </div>
-
-            <div class="modal-body">
-                <table border="0" width="500" align="center" class="table">
-                    <tr>
-                        <td>Item Name</td>
-                        <td><input  class="InputBox form-control" name="item" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>Description</td>
-                        <td><input type="text" class="InputBox form-control" name="description" value="" required></td>
-                    </tr>
-
-                    <tr>
-                        <td>Unit</td>
-                        <td>
-                            <input name="Unit" class="unit form-control" list="list" required>
-                            <datalist id="list">
-                                <option value="piece">piece</option>
-                                <option value="box">box</option>
-                                <option value="set">set</option>
-                                <option value="ream">ream</option>
-                                <option value="dozen">dozen</option>
-                                <option value="bundle">bundle</option>
-                                <option value="sack">sack</option>
-                                <option value="others">others</option>
-                            </datalist>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Type</td>
-                        <td>
-                            <select class="form-control" id="type" list="typelist" name="Type" required>
-                                <option selected="true" value="Capital Outlay">Capital Outlay</option>
-                                <option value="MOOE">MOOE</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" name="id" class="btn btn-success" id="editsave" value="">Save</button>
-                <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
         </div>
-
     </div>
-</div>
-</form>
-<script>
-    //script for edit
-    $('#edit').on('show.bs.modal',function(e){
-        var item_id = $(e.relatedTarget).data('id');
-        var item_name = $(e.relatedTarget).data('name');
-        var item_description = $(e.relatedTarget).data('description');
-        var unit = $(e.relatedTarget).data('unit');
-        var item_type = $(e.relatedTarget).data('type');
 
-        $(e.currentTarget).find('#editsave').val(item_id);
-        $(e.currentTarget).find('input[name="item"]').val(item_name);
-        $(e.currentTarget).find('input[name="description"]').val(item_description);
-        $(e.currentTarget).find('input[name="Unit"]').val(unit);
-        $(e.currentTarget).find('input[name="Type"]').val(item_type);
-    });
-</script>
-<!-- End of modal of  edit -->
+    <!--/Edit-->
+    <!-- /Mdal -->
 
-<!-- start of modal of info -->
-<!-- Modal -->
 
-<script type="text/javascript">
-    //data table in the inventory
-    $(document).ready(function () {
-        $('#itemdetails').on('show.bs.modal',function(e) {
-            var item_id = $(e.relatedTarget).data('id');
-            var item_name = $(e.relatedTarget).data('name');
-
-            $('#detailTitle').html(item_name);
-            $('#details').DataTable({
-                "ajax": 'inventory/detail/'+item_id,
-                "destroy": true
-            });
-        });
-    });
-</script>
-
-<div class="modal fade" id="itemdetails" role="dialog">
-    <div class="modal-dialog" style="overflow-x:auto; width:auto ">
-        <div class="container" style="background-color:white; width:auto; height: auto; size:50px;">
-
-            <!-- Modal content-->
-            <div class="modal-header">
-                 <h4 class="modal-title " align="center" id="detailTitle"></h4>
-            </div>
-
-            <div class="modal-body" align="center">
-
-                <table id="details" class="table table-bordered table-striped" width="100%">
-                    <thead>
-                    <tr>
-                        <th>Serial No.</th>
-                        <th>Delivery Date</th>
-                        <th>Date Received</th>
-                        <th>Exp. Date</th>
-                        <th>Cost</th>
-                        <th>PO No.</th>
-                        <th>PR No.</th>
-                        <th>OBR No.</th>
-                        <th>Supplier</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default" id="save1">Save</button>
-                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-<!-- End of modal of info  -->
 

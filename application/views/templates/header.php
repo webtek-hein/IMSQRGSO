@@ -1,123 +1,199 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/logo.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/ico" />
 
-    <title>GSO INVENTORY</title>
+    <title>Baguio City Hall</title>
 
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap -->
+    <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
-    <!-- Animation library for notifications   -->
-    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <!-- bootstrap-progressbar -->
+    <link href="assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
-    <!--  Paper Dashboard core CSS    -->
-    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
-
-
-
-    <!--  Fonts and icons     -->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/css/themify-icons.css" rel="stylesheet">
-
-    <link href="assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/dataTables.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">
-
-    <!-- Bootstrap core CSS     -->
-
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <script src="assets/js/jquery.min.js"></script>
-
+    <!-- Custom Theme Style -->
+    <link href="assets/build/css/custom.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
 
+                <div class="clearfix"></div>
 
-<div class="wrapper">
-    <div class="sidebar" data-background-color="black" data-active-color="danger">
-
-        <!--
-            Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
-            Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
-        -->
-
-        <div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="#" class="simple-text">
-                    GSO INVENTORY
-                </a>
-            </div>
-
-            <ul class="nav">
-                <li id="Dashboard">
-                    <a href="dashboard">
-                        <i class="fa fa-dashboard"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li  id="Inventory">
-                    <a href="inventory">
-                        <i class="fa fa-bars"></i>
-                        <p>Inventory</p>
-                    </a>
-                </li>
-                <li id="Department">
-                    <a href="department">
-                        <i class="fa fa-home"></i>
-                        <p>Department</p>
-                    </a>
-                </li>
-                <li id="Return">
-                    <a href="return">
-                        <i class="fa fa-reply"></i>
-                        <p>Return</p>
-                    </a>
-                </li>
-                <li id="Logs">
-                    <a href="logs">
-                        <i class="ti-agenda"></i>
-                        <p>Logs</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <script>
-        $('#<?= $title?>').toggleClass('active');
-    </script>
-
-    <div class="main-panel">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar bar1"></span>
-                        <span class="icon-bar bar2"></span>
-                        <span class="icon-bar bar3"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><?= $title?></a>
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        <img src="assets/images/img.jpg" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>Welcome,</span>
+                        <h2>John Doe</h2>
+                    </div>
                 </div>
+                <!-- /menu profile quick info -->
+                <br />
 
-                <div class="collapse navbar-collapse">
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <ul class="nav side-menu">
+                            <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+                            </li>
+                            <li><a href="Inventory"><i class="fa fa-book"></i>Inventory</span></a>
+                            </li>
+                            <li><a><i class="fa fa-home"></i>Departments<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a  href="Department"> Secretary to the Mayor</a></li>
+                                    <li><a href="#"> Accounting Office</a></li>
+                                    <li><a href="#"> Administrator's Office</a></li>
+                                    <li><a href="#"> Assessor's Office</a></li>
+                                    <li><a href="#"> Budget Office</a></li>
+                                    <li><a href="#"> Building & Architecture</a></li>
+                                    <li><a href="#"> Civil Registry</a></li>
+                                    <li><a href="#"> Engineering Office</a></li>
+                                    <li><a href="#"> City Environment & Parks Management Office</a></li>
+                                    <li><a href="#"> General Services Office</a></li>
+                                    <li><a href="#"> Health Service Office</a></li>
+                                    <li><a href="#"> Human Resource Management Office</a></li>
+                                    <li><a href="#"> Legal Office</a></li>
+                                    <li><a href="#"> City Library</a></li>
+                                    <li><a href="#"> Planning & Development Office</a></li>
+                                    <li><a href="#"> Social Welfare Office</a></li>
+                                    <li><a href="#"> Treasury Office</a></li>
+                                    <li><a href="#"> Veterinary Office</a></li>
+                                    <li><a href="#"> Regional Trial Court</a></li>
+                                    <li><a href="#"> City Prosecutor's Office</a></li>
+                                    <li><a href="#"> Municipal Trial Court in Cities</a></li>
+                                    <li><a href="#"> Baguio City Police Office</a></li>
+                                    <li><a href="#"> Bureau of Fire Prevention & Safety</a></li>
+                                    <li><a href="#"> Office of the City Jail Warden (Male)</a></li>
+                                    <li><a href="#"> Office of the City Jail Warden (Female)</a></li>
+                                    <li><a href="#"> City Auditor's Office</a></li>
+                                    <li><a href="#"> Register of Deeds</a></li>
+                                    <li><a href="#"> City Schools Division Office</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="Return"><i class="fa fa-undo"></i>Returns</a>
+                            </li>
+                            <li><a><i class="fa fa-file-text"></i>Logs<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="Increased">Increased</a></li>
+                                    <li><a href="Decreased">Decreased</a></li>
+                                    <li><a href="Edit">Edit</a></li>
+                                    <li><a href="Return_Log">Return Log</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /sidebar menu -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+
                     <ul class="nav navbar-nav navbar-right">
-                         <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="ti-user"></i>
-                                    <p>Profile</p>
-                                    <b class="caret"></b>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="user">View Profile</a></li>
-                                <li><a href="#">Logout</a></li>
-                              </ul>
+                        <li class="">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="assets/images/img.jpg" alt="">John Doe
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li><a href="profile">Profile</a></li>
+                                <li><a href="login"><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
+                            </ul>
+                        </li>
+
+                        <li role="presentation" class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="badge bg-green">6</span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="assets/images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="assets/images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="assets/images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="assets/images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="text-center">
+                                        <a>
+                                            <strong>See All Alerts</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
-                </div>
-
+                </nav>
             </div>
-        </nav>
+        </div>
+        <!-- /top navigation -->

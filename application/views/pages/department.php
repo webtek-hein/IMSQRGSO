@@ -1,108 +1,188 @@
-<script>
-    $(document).ready(function() {
-        $('#table1').DataTable();
-    } );
-</script>
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
 
-<div class="content">
-    <div class="container-fluid">
+        </div>
+
+        <div class="clearfix"></div>
+
         <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="header">
-						
-						<!-- start of departments dropdown -->
-                             <select class="selectdept" id="type" list="typelist" name="Type" required>
-                                 <option selected="true" disabled>Departments</option>
-                                <?php foreach($departments as $list) { ?>
-                                    <option value="<?php echo $list['dept_id']; ?>"><?php echo
-                                        $list['res_center_code']," ", $list['department']; ?></option>
-                                <?php } ?>
-                            </select>
-                        <!-- end of departments dropdown -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>--Department's Name--</h2>
 
-                        <!-- start of departments dropdown css-->
-                        <style type="text/css">
-                        .selectdept{
-                          background-color:#5bc0de;
-                          color:white;
-                          height: 34px;
-                          border-radius: 4px;
-                          }
-
-                          .option{
-                            background-color:white;
-                            color:black;
-                          }
-                        </style>
-                        <!-- end of departments dropdown css-->
-						
-                    <div class="content table-responsive table-full-width">
-                        <table id="table1" class="table table-striped" cellspacing="0" width="100%">
-                            <thead>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Salary</th>
-                            <th>Country</th>
-                            <th>City</th>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Dakota Rice</td>
-                                <td>$36,738</td>
-                                <td>Niger</td>
-                                <td>Oud-Turnhout</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Minerva Hooper</td>
-                                <td>$23,789</td>
-                                <td>Curaçao</td>
-                                <td>Sinaai-Waas</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Sage Rodriguez</td>
-                                <td>$56,142</td>
-                                <td>Netherlands</td>
-                                <td>Baileux</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Philip Chaney</td>
-                                <td>$38,735</td>
-                                <td>Korea, South</td>
-                                <td>Overland Park</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Doris Greene</td>
-                                <td>$63,542</td>
-                                <td>Malawi</td>
-                                <td>Feldkirchen in Kärnten</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Mason Porter</td>
-                                <td>$78,615</td>
-                                <td>Chile</td>
-                                <td>Gloucester</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div class="clearfix"></div>
                     </div>
+                    <div class="x_content">
 
+                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital Outlay</a>
+                                </li>
+                                <li role="presentation" class=""><a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
+                                </li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
+                                    <table id="datatable-buttons" class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Item Name</th>
+                                            <th>Description</th>
+                                            <th>Quantity</th>
+                                            <th>Unit</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Garrett Winters</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>63</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Ashton Cox</td>
+                                            <td>Junior Technical Author</td>
+                                            <td>San Francisco</td>
+                                            <td>66</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Cedric Kelly</td>
+                                            <td>Senior Javascript Developer</td>
+                                            <td>Edinburgh</td>
+                                            <td>22</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Brielle Williamson</td>
+                                            <td>Integration Specialist</td>
+                                            <td>New York</td>
+                                            <td>61</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Herrod Chandler</td>
+                                            <td>Sales Assistant</td>
+                                            <td>San Francisco</td>
+                                            <td>59</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Rhona Davidson</td>
+                                            <td>Integration Specialist</td>
+                                            <td>Tokyo</td>
+                                            <td>55</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Colleen Hurst</td>
+                                            <td>Javascript Developer</td>
+                                            <td>San Francisco</td>
+                                            <td>39</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
+                                    <table id="datatable-buttons" class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Item Name</th>
+                                            <th>Description</th>
+                                            <th>Quantity</th>
+                                            <th>Unit</th>
+                                        </tr>
+                                        <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Garrett Winters</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>63</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Ashton Cox</td>
+                                            <td>Junior Technical Author</td>
+                                            <td>San Francisco</td>
+                                            <td>66</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Cedric Kelly</td>
+                                            <td>Senior Javascript Developer</td>
+                                            <td>Edinburgh</td>
+                                            <td>22</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Airi Satou</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>33</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Brielle Williamson</td>
+                                            <td>Integration Specialist</td>
+                                            <td>New York</td>
+                                            <td>61</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Herrod Chandler</td>
+                                            <td>Sales Assistant</td>
+                                            <td>San Francisco</td>
+                                            <td>59</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Rhona Davidson</td>
+                                            <td>Integration Specialist</td>
+                                            <td>Tokyo</td>
+                                            <td>55</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Colleen Hurst</td>
+                                            <td>Javascript Developer</td>
+                                            <td>San Francisco</td>
+                                            <td>39</td>
+                                        </tr>
+                                        </tbody>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
+    <div class="clearfix"></div>
 </div>
-
-
-
-
-</div>
-</div>
+<!-- /page content -->
