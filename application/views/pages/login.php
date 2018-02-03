@@ -67,14 +67,48 @@
                 <form>
                     <h1>Create Account</h1>
                     <div>
-                        <input type="text" class="form-control" placeholder="Username" required="" />
+                        <input type="text" class="form-control" placeholder="First Name" required/>
                     </div>
                     <div>
-                        <input type="email" class="form-control" placeholder="Email" required="" />
+                        <input type="text" class="form-control" placeholder="Last Name" required />
                     </div>
                     <div>
-                        <input type="password" class="form-control" placeholder="Password" required="" />
+                        <input type="text" class="form-control" placeholder="Email" required/>
                     </div>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Contact #" required />
+                    </div>                                                            
+                    <div>
+                        <input type="email" class="form-control" placeholder="Username" required />
+                    </div>
+                    <div>
+                        <input type="password" class="form-control" placeholder="Password" required />
+                    </div>
+                    <div>
+                        <input type="password" class="form-control" placeholder="Repeat Password" required />
+                    </div> 
+                    <script>
+                        function select_dept() {
+                            if (document.getElementById('type').value === 'department head' || document.getElementById('type').value === 'receiver') {
+                                document.getElementById('dment').style.display  = 'block';
+                            } else {
+                                document.getElementById('dment').style.display = 'none';
+                            }
+                        }
+                    </script>
+                    <select class="form-control" align="center" id="type" name="type"  onclick='select_dept()' required>
+                        <option selected="true" disabled>--Choose Position--</option>
+                        <option value="custodian">Custodian</option>
+                        <option value="department head">Department Head</option>
+                        <option value="receiver">Receiver</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <select class="form-control" id="dment" name="dment" style="display:none;" align="center" >
+                        <option selected="true" disabled>--Choose Department--</option>
+                        <?php foreach ($departments as $dept): ?>
+                        <option value="<?php echo $dept['dept_id'] ?>"><?php echo $dept['res_center_code'] . ' ' . $dept['department'] ?></option>
+                        <?php endforeach; ?>
+                    </select>                                                                        
                     <div>
                         <a class="btn btn-default submit" href="index.html">Submit</a>
                     </div>
@@ -89,10 +123,6 @@
                         <div class="clearfix"></div>
                         <br />
 
-                        <div>
-                            <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                            <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                        </div>
                     </div>
                 </form>
             </section>
