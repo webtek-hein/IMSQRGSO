@@ -12,12 +12,12 @@
                 </div>
 
 
-                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="false">
                     <div class="panel">
                         <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             <h4 class="panel-title">Add Item</h4>
                         </a>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                             <div class="panel-body">
 
                                 <div class="col-md-12 col-sm-12 col-xs-12">
