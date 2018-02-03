@@ -37,20 +37,33 @@
                                                     <input type="number" name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="Unit" class="form-control" id="inputSuccess4" placeholder="Unit">
+                                                    <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
+                                                    <datalist id="list">
+                                                        <option value="piece">piece</option>
+                                                        <option value="box">box</option>
+                                                        <option value="set">set</option>
+                                                        <option value="ream">ream</option>
+                                                        <option value="dozen">dozen</option>
+                                                        <option value="bundle">bundle</option>
+                                                        <option value="sack">sack</option>
+                                                        <option value="others">others</option>
+                                                    </datalist>
                                                 </div>
 
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="Type" name="Type" class="form-control" id="inputSuccess4" placeholder="Type">
+                                                    <select id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12"  required placeholder="Type">
+                                                        <option value="Capital Outlay">Capital Outlay</option>
+                                                        <option value="MOOE">MOOE</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
+                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
+                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
+                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
                                                     <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
@@ -704,7 +717,7 @@
     <!-- /page content -->
 
     <!-- Modal -->
-    <!-- Add Item -->
+    <!-- Add Quantity -->
     <div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -715,7 +728,7 @@
                     <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal form-label-left" novalidate>
+                    <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
                             </label>
@@ -727,7 +740,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Unit<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input  required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list">
+                                <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list">
                                 <datalist id="list">
                                     <option value="piece">piece</option>
                                     <option value="box">box</option>
@@ -785,14 +798,14 @@
                             </div>
                         </div>
 
-                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                    <button type="submit" class="btn btn-primary" name="id" value="1" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
                     <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
                 </div>
 
             </div>
+            </form>
         </div>
     </div>
     <!-- /Add Item -->
