@@ -23,60 +23,38 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_content">
-                                            <form class="form-horizontal form-label-left input_mask">
+                                            <form class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess2" placeholder="Item Name">
+                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" placeholder="Item Name">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
+                                                    <input type="text" name="description" class="form-control" id="inputSuccess4" placeholder="Description">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Description">
+                                                    <input type="text" name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="PO Number">
+                                                    <input type="number" name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
                                                 </div>
-
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Quantity">
-                                                </div>
-
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="PR Number">
+                                                    <input type="text" name="Unit" class="form-control" id="inputSuccess4" placeholder="Unit">
                                                 </div>
 
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Unit">
-                                                </div>
-
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="OBR Number">
+                                                    <input type="text" name="Type" name="Type" class="form-control" id="inputSuccess4" placeholder="Type">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Type">
-                                                </div>
-
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="Serial">
+                                                    <input type="text" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
-                                                </div>
-
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="Account Code">
+                                                    <input type="text" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Date Received">
-                                                </div>
-
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="Supplier">
+                                                    <input type="text" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
+                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
                                                 </div>
-
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
                                                         <button class="btn btn-primary" type="button"><i class="fa fa-close"></i> Cancel</button>
