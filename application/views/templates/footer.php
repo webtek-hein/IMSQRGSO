@@ -58,7 +58,11 @@
                 $('#items tbody').append(this);
             });
         });
-
+        $.getJSON('departments/nav',function (data) {
+            $(data.department).each(function () {
+                $('#dept').append(this);
+            });
+        });
     });
 </script>
 </body>

@@ -164,7 +164,7 @@
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
 
                                     <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                                        <table class="table table-hover">
+                                        <table id="items" class="table table-hover">
                                             <thead>
                                             <tr>
                                                 <th>#</th>
@@ -176,18 +176,6 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <th>1</th>
-                                                <td><a role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne">Laptop</a></td>
-                                                <td>Dell</td>
-                                                <td>3</td>
-                                                <td>Piece</td>
-                                                <td>
-                                                    <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
-                                                    <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                                </td>
-                                            </tr>
-
                                             <!-- Item Details -->
                                             <tr>
                                                 <td colspan="12">
@@ -268,190 +256,6 @@
                                                 </td>
                                             </tr>
                                             <!--/Item Details-->
-
-                                            <!--Item Details-->
-                                            <tr>
-                                                <th>2</th>
-                                                <td><a role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#data2" aria-expanded="true" aria-controls="collapseTwo">TV</a></td>
-                                                <td>Sony</td>
-                                                <td>5</td>
-                                                <td>Piece</td>
-                                                <td>
-                                                    <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
-                                                    <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                                </td>
-                                            </tr>
-                                            <!-- Item Details -->
-                                            <tr>
-                                                <td colspan="12">
-                                                    <div id="data2" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwo">
-                                                        <div class="panel-body">
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <div class="x_content">
-
-                                                                        <div class="table-responsive">
-                                                                            <table class="table table-striped jambo_table bulk_action">
-                                                                                <thead>
-                                                                                <tr class="headings">
-                                                                                    <th>
-                                                                                        <input type="checkbox" id="check-all" class="flat">
-                                                                                    </th>
-                                                                                    <th class="column-title">Delivery Date</th>
-                                                                                    <th class="column-title">Date Received</th>
-                                                                                    <th class="column-title">Expiration Date</th>
-                                                                                    <th class="column-title">Cost</th>
-                                                                                    <th class="column-title">Account Code</th>
-                                                                                    <th class="column-title no-link last"><span class="nobr">Supplier</span>
-                                                                                    </th>
-                                                                                    <th class="bulk-actions" colspan="11">
-                                                                                        <a class="antoo" style="color:#fff; font-weight:00;">( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                                                                    </th>
-                                                                                </tr>
-                                                                                </thead>
-
-                                                                                <tbody>
-                                                                                <tr class="even pointer">
-                                                                                    <td class="a-center ">
-                                                                                        <input type="checkbox" class="flat" name="table_records">
-                                                                                    </td>
-                                                                                    <td class=" ">-01/03/18</td>
-                                                                                    <td class=" ">-01/03/18</td>
-                                                                                    <td class=" ">-03/03/18</td>
-                                                                                    <td class=" ">28,000</td>
-                                                                                    <td class="a-right a-right ">Office</td>
-                                                                                    <td class=" last">Sony<a href="#"></a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr class="odd pointer">
-                                                                                    <td class="a-center ">
-                                                                                        <input type="checkbox" class="flat" name="table_records">
-                                                                                    </td>
-                                                                                    <td class=" ">-05/20/18/</td>
-                                                                                    <td class=" "></td>
-                                                                                    <td class=" "></td>
-                                                                                    <td class=" "></td>
-                                                                                    <td class="a-right a-right "></td>
-                                                                                    <td class=" last"><a href="#"></a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr class="even pointer">
-                                                                                    <td class="a-center ">
-                                                                                        <input type="checkbox" class="flat" name="table_records">
-                                                                                    </td>
-                                                                                    <td class=" ">-09/10/18-</td>
-                                                                                    <td class=" "></td>
-                                                                                    <td class=" "></td>
-                                                                                    <td class=" "></td>
-                                                                                    <td class="a-right a-right "></td>
-                                                                                    <td class=" last"><a href="#"></a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                </tbody>
-                                                                            </table>
-
-                                                                            <div >
-                                                                                <div class="col-sm-12 text-center">
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-md"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <!--/Item Details-->
-                                            <!--Item Detail-->
-                                            <tr>
-                                                <th>3</th>
-                                                <td ><a role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#data3" aria-expanded="true" aria-controls="collapseThree">TV</a></td>
-                                                <td>Sony</td>
-                                                <td>1</td>
-                                                <td>Piece</td>
-                                                <td>
-                                                    <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
-                                                    <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                                </td>
-                                            </tr>
-                                            <!-- Item Details -->
-                                            <tr>
-                                                <td colspan="12">
-                                                    <div id="data3" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingThree">
-                                                        <div class="panel-body">
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <div class="x_content">
-                                                                        <div class="table-responsive">
-                                                                            <table class="table table-striped jambo_table bulk_action">
-                                                                                <thead>
-                                                                                <tr class="headings">
-                                                                                    <th>
-                                                                                        <input type="checkbox" id="check-all" class="flat">
-                                                                                    </th>
-                                                                                    <th class="column-title">Delivery Date</th>
-                                                                                    <th class="column-title">Date Received</th>
-                                                                                    <th class="column-title">Expiration Date</th>
-                                                                                    <th class="column-title">Cost</th>
-                                                                                    <th class="column-title">Account Code</th>
-                                                                                    <th class="column-title no-link last"><span class="nobr">Supplier</span>
-                                                                                    </th>
-                                                                                    <th class="bulk-actions" colspan="11">
-                                                                                        <a class="antoo" style="color:#fff; font-weight:00;">( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                                                                    </th>
-                                                                                </tr>
-                                                                                </thead>
-
-                                                                                <tbody>
-                                                                                <tr class="even pointer">
-                                                                                    <td class="a-center ">
-                                                                                        <input type="checkbox" class="flat" name="table_records">
-                                                                                    </td>
-                                                                                    <td class=" ">-01/03/18</td>
-                                                                                    <td class=" ">-01/03/18</td>
-                                                                                    <td class=" ">-03/03/18</td>
-                                                                                    <td class=" ">28,000</td>
-                                                                                    <td class="a-right a-right ">Office</td>
-                                                                                    <td class=" last">Sony<a href="#"></a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr class="odd pointer">
-                                                                                    <td class="a-center ">
-                                                                                        <input type="checkbox" class="flat" name="table_records">
-                                                                                    </td>
-                                                                                    <td class=" ">-05/20/18/</td>
-                                                                                    <td class=" "></td>
-                                                                                    <td class=" "></td>
-                                                                                    <td class=" "></td>
-                                                                                    <td class="a-right a-right "></td>
-                                                                                    <td class=" last"><a href="#"></a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr class="even pointer">
-                                                                                    <td class="a-center ">
-                                                                                        <input type="checkbox" class="flat" name="table_records">
-                                                                                    </td>
-                                                                                    <td class=" ">-09/10/18-</td>
-                                                                                    <td class=" "></td>
-                                                                                    <td class=" "></td>
-                                                                                    <td class=" "></td>
-                                                                                    <td class="a-right a-right "></td>
-                                                                                    <td class=" last"><a href="#"></a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                </tbody>
-                                                                            </table>
-
-                                                                            <div >
-                                                                                <div class="col-sm-12 text-center">
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-md"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>

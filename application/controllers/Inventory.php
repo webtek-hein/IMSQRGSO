@@ -25,24 +25,14 @@ class Inventory extends CI_Controller {
 
         foreach ($list as $item){
             $row = array();
-            $row[] = "<tr>
-                        <th>".$counter."</th>
-                        <td>
-                        <a onclick='detail($item[item_id])' role=\"tab\" id=\"headingOneM\" data-toggle=\"collapse\"
-                        data-parent=\"#accordion\" href=\"#data".$counter."\" aria-expanded=\"true\" 
-                        aria-controls=\"collapseOneM\">".$item['item_name']."</a></td>
-                        <td>".$item['item_description']."</td>
-                        <td>".$item['quantity']."</td>
-                        <td>".$item['unit']."</td>
-                        <td>
-                          <a href=\"#\" data-toggle=\"modal\" data-target=\".Add_Item\" class=\"btn btn-primary btn-xs\">
-                          <i class=\"fa fa-plus-circle\"></i> Add Quantity</a>
-                          <a href=\"#\" data-toggle=\"modal\" data-target=\".Edit\" class=\"btn btn-warning btn-xs\">
-                          <i class=\"fa fa-pencil-square-o\"></i> Edit</a>
-                          <a href=\"#\" data-toggle=\"modal\" data-target=\".Distribute\" class=\"btn btn-info btn-xs\">
-                          <i class=\"fa fa-minus-circle\"></i> Distribute</a>
-                        </td>
-                       </tr><div id=\"det".$item['item_id']."\"></div>";
+            $row[] = " <tr><th>".$counter."</th><td><a role=\"tab\" id=\"headingOne\" data-toggle=\"collapse\" 
+            data-parent=\"#accordion\" href=\"#data1\" aria-expanded=\"true\" 
+            aria-controls=\"collapseOne\">".$item['item_name']."</a></td><td>".$item['item_description']."</td>
+            <td>".$item['quantity']."</td><td>".$item['unit']."</td><td><a href=\"#\" data-toggle=\"modal\" 
+            data-target=\".Add_Item\" class=\"btn btn-primary btn-xs\">
+            <i class=\"fa fa-plus-circle\"></i> Add Quantity</a><a href=\"#\" data-toggle=\"modal\" 
+            data-target=\".Edit\" class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o\"></i> Edit</a>
+            </td></tr>";
 
             $data[] = $row;
             $counter++;

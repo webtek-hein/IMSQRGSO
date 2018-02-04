@@ -145,4 +145,5 @@ class Inventory_model extends CI_Model{
 
         $this->db->update('itemdetail',$data1,array('item_id' => $id),$quantity);
     }
+
 }
