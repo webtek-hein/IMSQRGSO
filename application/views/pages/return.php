@@ -14,7 +14,7 @@
                         <h2>Returns</h2>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="x_content">
+                    <div class="x_content" style="overflow-x:auto;">
                         <table id="datatable" class="table table-striped table-bordered">
                             <thead>
                             <tr>

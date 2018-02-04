@@ -23,60 +23,51 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_content">
-                                            <form class="form-horizontal form-label-left input_mask">
+                                            <form class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess2" placeholder="Item Name">
+                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" placeholder="Item Name">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
+                                                    <input type="text" name="description" class="form-control" id="inputSuccess4" placeholder="Description">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Description">
+                                                    <input type="text" name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="PO Number">
-                                                </div>
-
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Quantity">
-                                                </div>
-
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="PR Number">
-                                                </div>
-
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Unit">
-                                                </div>
-
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="OBR Number">
+                                                    <input type="number" name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Type">
+                                                    <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
+                                                    <datalist id="list">
+                                                        <option value="piece">piece</option>
+                                                        <option value="box">box</option>
+                                                        <option value="set">set</option>
+                                                        <option value="ream">ream</option>
+                                                        <option value="dozen">dozen</option>
+                                                        <option value="bundle">bundle</option>
+                                                        <option value="sack">sack</option>
+                                                        <option value="others">others</option>
+                                                    </datalist>
                                                 </div>
 
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="Serial">
+                                                    <select id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12"  required placeholder="Type">
+                                                        <option value="Capital Outlay">Capital Outlay</option>
+                                                        <option value="MOOE">MOOE</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
-                                                </div>
-
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="Account Code">
+                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Date Received">
-                                                </div>
-
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess5" placeholder="Supplier">
+                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
+                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
                                                 </div>
-
+                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
+                                                </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
                                                         <button class="btn btn-primary" type="button"><i class="fa fa-close"></i> Cancel</button>
@@ -103,6 +94,7 @@
                                     <div class="x_panel">
 
                                 <!-- Smart Wizard -->
+
                                 <div id="wizard" class="form_wizard wizard_horizontal">
                                     <ul class="wizard_steps">
                                         <li>
@@ -356,12 +348,10 @@
                 </div>
                         </div>
 
-
                 <!-- End SmartWizard Content -->
-
-                
-
                     <!-- end of accordion -->
+
+             <!-- Main Table Content-->
                 <div class="x_content">
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
@@ -372,349 +362,810 @@
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
-                                <table id="datatable-buttons" class="table table-striped table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Item Name</th>
-                                        <th>Description</th>
-                                        <th>Quantity</th>
-                                        <th>Unit</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>
-                                            <a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>
-                                            <a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Cedric Kelly</td>
-                                        <td>Senior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Airi Satou</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Brielle Williamson</td>
-                                        <td>Integration Specialist</td>
-                                        <td>New York</td>
-                                        <td>61</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Herrod Chandler</td>
-                                        <td>Sales Assistant</td>
-                                        <td>San Francisco</td>
-                                        <td>59</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Rhona Davidson</td>
-                                        <td>Integration Specialist</td>
-                                        <td>Tokyo</td>
-                                        <td>55</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Colleen Hurst</td>
-                                        <td>Javascript Developer</td>
-                                        <td>San Francisco</td>
-                                        <td>39</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+
+                                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Item Name</th>
+                                                    <th>Description</th>
+                                                    <th>Quantity</th>
+                                                    <th>Unit</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th>1</th>
+                                                    <td><a role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne">Laptop</a></td>
+                                                    <td>Dell</td>
+                                                    <td>3</td>
+                                                    <td>Piece</td>
+                                                    <td>
+                                                        <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                        <a href="#" data-toggle="modal" data-target=".Edit">
+                                                            <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                            </i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Item Details -->
+                                                <tr>
+                                                    <td colspan="12">
+                                                        <div id="data1" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                                                            <div class="panel-body">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="x_panel">
+                                                                    <div class="x_content">
+
+                                                                        <table class="table table-bordered">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>#</th>
+                                                                                <th>Delivery Date</th>
+                                                                                <th>Date Received</th>
+                                                                                <th>Expiration Date</th>
+                                                                                <th>Cost</th>
+                                                                                <th>PO Number</th>
+                                                                                <th>PR Number</th>
+                                                                                <th>OBR Number</th>
+                                                                                <th>Serial</th>
+                                                                                <th>Account Code</th>
+                                                                                <th>Supplier</th>
+                                                                                <th>Action</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <th scope="row">1</th>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th scope="row">2</th>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th scope="row">3</th>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                    <!--/Item Details-->
+
+                                                    <!--Item Details-->
+                                                <tr>
+                                                    <th>2</th>
+                                                    <td><a role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne">TV</a></td>
+                                                    <td>Sony</td>
+                                                    <td>5</td>
+                                                    <td>Piece</td>
+                                                    <td>
+                                                        <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                        <a href="#" data-toggle="modal" data-target=".Edit">
+                                                            <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                            </i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                    <!-- Item Details -->
+                                                <tr>
+                                                    <td colspan="12">
+                                                        <div id="data2" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwo">
+                                                            <div class="panel-body">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="x_panel">
+                                                                    <div class="x_title">
+                                                                        <div class="clearfix"></div>
+                                                                    </div>
+                                                                    <div class="x_content">
+
+                                                                        <table class="table table-bordered">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>#</th>
+                                                                                <th>Item Name</th>
+                                                                                <th>Description</th>
+                                                                                <th>Unit</th>
+                                                                                <th>Type</th>
+                                                                                <th>Delivery Date</th>
+                                                                                <th>Date Received</th>
+                                                                                <th>Expiration Date</th>
+                                                                                <th>Cost</th>
+                                                                                <th>PO Number</th>
+                                                                                <th>PR Number</th>
+                                                                                <th>OBR Number</th>
+                                                                                <th>Serial</th>
+                                                                                <th>Account Code</th>
+                                                                                <th>Supplier</th>
+                                                                                <th>Action</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <th scope="row">1</th>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
+                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                                                        </i>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th scope="row">2</th>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
+                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                                                        </i>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th scope="row">3</th>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
+                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                                                        </i>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th scope="row">4</th>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
+                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                                                        </i>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th scope="row">5</th>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
+                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                                                        </i>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                    <!--/Item Details-->
+                                                <!--Item Detail-->
+                                                    <tr>
+                                                        <th>3</th>
+                                                        <td ><a role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne">TV</a></td>
+                                                        <td>Sony</td>
+                                                        <td>1</td>
+                                                        <td>Piece</td>
+                                                        <td>
+                                                            <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                                </i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- Item Details -->
+                                                    <tr>
+                                                        <td colspan="12">
+                                                            <div id="data3" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingThree">
+                                                                <div class="panel-body">
+                                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                        <div class="x_panel">
+                                                                            <div class="x_title">
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                            <div class="x_content">
+
+                                                                                <table class="table table-bordered">
+                                                                                    <thead>
+                                                                                    <tr>
+                                                                                        <th>#</th>
+                                                                                        <th>Item Name</th>
+                                                                                        <th>Description</th>
+                                                                                        <th>Unit</th>
+                                                                                        <th>Type</th>
+                                                                                        <th>Delivery Date</th>
+                                                                                        <th>Date Received</th>
+                                                                                        <th>Expiration Date</th>
+                                                                                        <th>Cost</th>
+                                                                                        <th>PO Number</th>
+                                                                                        <th>PR Number</th>
+                                                                                        <th>OBR Number</th>
+                                                                                        <th>Serial</th>
+                                                                                        <th>Account Code</th>
+                                                                                        <th>Supplier</th>
+                                                                                        <th>Action</th>
+                                                                                    </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                    <tr>
+                                                                                        <th scope="row">1</th>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td>
+                                                                                            <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                            </a>
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    </tbody>
+                                                                                </table>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                </div>
+
                             </div>
 
 
                             <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
-                                <table id="datatable-buttons" class="table table-striped table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Item Name</th>
-                                        <th>Description</th>
-                                        <th>Quantity</th>
-                                        <th>Unit</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>
-                                            <a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Cedric Kelly</td>
-                                        <td>Senior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Airi Satou</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Brielle Williamson</td>
-                                        <td>Integration Specialist</td>
-                                        <td>New York</td>
-                                        <td>61</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Herrod Chandler</td>
-                                        <td>Sales Assistant</td>
-                                        <td>San Francisco</td>
-                                        <td>59</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Rhona Davidson</td>
-                                        <td>Integration Specialist</td>
-                                        <td>Tokyo</td>
-                                        <td>55</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Colleen Hurst</td>
-                                        <td>Javascript Developer</td>
-                                        <td>San Francisco</td>
-                                        <td>39</td>
-                                        <td><a href="#" data-toggle="modal" data-target=".Add_Item">
-                                                <i class="fa fa-plus-circle" style="font-size:20px;color:#0000FF;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                </i>
-                                            </a></td>
-                                    </tr>
-                                    </tbody>
-                                    </thead>
-                                </table>
+
+                                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Item Name</th>
+                                            <th>Description</th>
+                                            <th>Quantity</th>
+                                            <th>Unit</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <th>1</th>
+                                            <td><a role="tab" id="headingOneM" data-toggle="collapse" data-parent="#accordion" href="#data1M" aria-expanded="true" aria-controls="collapseOneM">Envelope</a></td>
+                                            <td>Brown, short</td>
+                                            <td>500</td>
+                                            <td>Piece</td>
+                                            <td>
+                                                <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                <a href="#" data-toggle="modal" data-target=".Edit">
+                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                    </i>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Item Details -->
+                                        <tr>
+                                            <td colspan="12">
+                                                <div id="data1M" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOneM">
+                                                    <div class="panel-body">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="x_panel">
+                                                                <div class="x_title">
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                                <div class="x_content">
+
+                                                                    <table class="table table-bordered">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>#</th>
+                                                                            <th>Delivery Date</th>
+                                                                            <th>Date Received</th>
+                                                                            <th>Expiration Date</th>
+                                                                            <th>Cost</th>
+                                                                            <th>PO Number</th>
+                                                                            <th>PR Number</th>
+                                                                            <th>OBR Number</th>
+                                                                            <th>Serial</th>
+                                                                            <th>Account Code</th>
+                                                                            <th>Supplier</th>
+                                                                            <th>Action</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <th scope="row">1</th>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                </a>
+
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="row">2</th>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="row">3</th>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                </a>
+
+                                                                            </td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!--/Item Details-->
+
+                                        <!--Item Details-->
+                                        <tr>
+                                            <th>2</th>
+                                            <td><a role="tab" id="headingOneM" data-toggle="collapse" data-parent="#accordion" href="#data1M" aria-expanded="true" aria-controls="collapseOneM">Bond Paper</a></td>
+                                            <td>A4</td>
+                                            <td>5</td>
+                                            <td>Ream</td>
+                                            <td>
+                                                <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                <a href="#" data-toggle="modal" data-target=".Edit">
+                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                    </i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <!-- Item Details -->
+                                        <tr>
+                                            <td colspan="12">
+                                                <div id="data2M" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwoM">
+                                                    <div class="panel-body">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="x_panel">
+                                                                <div class="x_title">
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                                <div class="x_content">
+
+                                                                    <table class="table table-bordered">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>#</th>
+                                                                            <th>Item Name</th>
+                                                                            <th>Description</th>
+                                                                            <th>Unit</th>
+                                                                            <th>Type</th>
+                                                                            <th>Delivery Date</th>
+                                                                            <th>Date Received</th>
+                                                                            <th>Expiration Date</th>
+                                                                            <th>Cost</th>
+                                                                            <th>PO Number</th>
+                                                                            <th>PR Number</th>
+                                                                            <th>OBR Number</th>
+                                                                            <th>Serial</th>
+                                                                            <th>Account Code</th>
+                                                                            <th>Supplier</th>
+                                                                            <th>Action</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <th scope="row">1</th>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                </a>
+
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="row">2</th>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                </a>
+                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
+                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                                                    </i>
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="row">3</th>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                </a>
+                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
+                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                                                    </i>
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="row">4</th>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                </a>
+                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
+                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                                                    </i>
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="row">5</th>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                </a>
+                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
+                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                                                    </i>
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!--/Item Details-->
+                                        <!--Item Detail-->
+                                        <tr>
+                                            <th>3</th>
+                                            <td><a role="tab" id="headingOneM" data-toggle="collapse" data-parent="#accordion" href="#data1M" aria-expanded="true" aria-controls="collapseOneM">Scotch Tape</a></td>
+                                            <td>Medium Size</td>
+                                            <td>10</td>
+                                            <td>Box</td>
+                                            <td>
+                                                <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                <a href="#" data-toggle="modal" data-target=".Edit">
+                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                    </i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <!-- Item Details -->
+                                        <tr>
+                                            <td colspan="12">
+                                                <div id="data3M" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingThreeM">
+                                                    <div class="panel-body">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="x_panel">
+                                                                <div class="x_title">
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                                <div class="x_content">
+
+                                                                    <table class="table table-bordered">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>#</th>
+                                                                            <th>Item Name</th>
+                                                                            <th>Description</th>
+                                                                            <th>Unit</th>
+                                                                            <th>Type</th>
+                                                                            <th>Delivery Date</th>
+                                                                            <th>Date Received</th>
+                                                                            <th>Expiration Date</th>
+                                                                            <th>Cost</th>
+                                                                            <th>PO Number</th>
+                                                                            <th>PR Number</th>
+                                                                            <th>OBR Number</th>
+                                                                            <th>Serial</th>
+                                                                            <th>Account Code</th>
+                                                                            <th>Supplier</th>
+                                                                            <th>Action</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <th scope="row">1</th>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
+                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
+                                                                                </a>
+                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
+                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                                                    </i>
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -726,7 +1177,7 @@
     <!-- /page content -->
 
     <!-- Modal -->
-    <!-- Add Item -->
+    <!-- Add Quantity -->
     <div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -737,7 +1188,7 @@
                     <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal form-label-left" novalidate>
+                    <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
                             </label>
@@ -749,7 +1200,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Unit<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input  required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list">
+                                <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list">
                                 <datalist id="list">
                                     <option value="piece">piece</option>
                                     <option value="box">box</option>
@@ -807,14 +1258,14 @@
                             </div>
                         </div>
 
-                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                    <button type="submit" class="btn btn-primary" name="id" value="1" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
                     <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
                 </div>
 
             </div>
+            </form>
         </div>
     </div>
     <!-- /Add Item -->
