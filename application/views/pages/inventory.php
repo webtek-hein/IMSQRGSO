@@ -383,7 +383,7 @@
                                                     <td>3</td>
                                                     <td>Piece</td>
                                                     <td>
-                                                        <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                        <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                         <a href="#" data-toggle="modal" data-target=".Edit">
                                                             <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
                                                             </i>
@@ -492,7 +492,7 @@
                                                     <td>5</td>
                                                     <td>Piece</td>
                                                     <td>
-                                                        <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                        <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                         <a href="#" data-toggle="modal" data-target=".Edit">
                                                             <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
                                                             </i>
@@ -682,7 +682,7 @@
                                                         <td>1</td>
                                                         <td>Piece</td>
                                                         <td>
-                                                            <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                            <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                             <a href="#" data-toggle="modal" data-target=".Edit">
                                                                 <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
                                                                 </i>
@@ -899,7 +899,7 @@
                                             <td>5</td>
                                             <td>Ream</td>
                                             <td>
-                                                <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                 <a href="#" data-toggle="modal" data-target=".Edit">
                                                     <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
                                                     </i>
@@ -1086,7 +1086,7 @@
                                             <td>10</td>
                                             <td>Box</td>
                                             <td>
-                                                <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                 <a href="#" data-toggle="modal" data-target=".Edit">
                                                     <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
                                                     </i>
