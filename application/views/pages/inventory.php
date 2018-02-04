@@ -25,19 +25,19 @@
                                         <div class="x_content">
                                             <form class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" placeholder="Item Name">
+                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" required="required" placeholder="Item Name">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="description" class="form-control" id="inputSuccess4" placeholder="Description">
+                                                    <input type="text" name="description" class="form-control" id="inputSuccess4" required="required" placeholder="Description">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
+                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" required="required" placeholder="Unit Cost">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
+                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" required="required" placeholder="Quantity">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
+                                                    <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" list="list" placeholder="Unit">
                                                     <datalist id="list">
                                                         <option value="piece">piece</option>
                                                         <option value="box">box</option>
@@ -51,24 +51,23 @@
                                                 </div>
 
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-
-                                                    <input id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12" class="unit" required="required" placeholder="Type">
+                                                    <input id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12" required="required" placeholder="Type">
                                                         <datalist id="typelist">
                                                             <option value="CO">CO</option>
                                                         <option value="MOOE">MOOE</option>
                                                     </datalist>
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="DeliveryDate">
+                                                    <input type="date" name="del1" class="form-control" id="deliverydate" placeholder="Delivery Date" required="required">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="DateReceived">
+                                                    <input type="date" name="rec1" class="form-control" id="inputSuccess4" placeholder="Date Received" required="required">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="ExpirationDate">
+                                                    <input type="date" name="exp1" class="form-control" id="inputSuccess4" placeholder="Expiration Date" required="required">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
+                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier" required="required">
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
@@ -84,6 +83,22 @@
                             </div>
                         </div>
                     </div>
+
+                    <style>
+                        input[type="date"]:not(.has-value):before{
+                            color: gray;
+                            content: attr(placeholder);
+                        }
+                        input[type="date"][name="del1"]{
+                            text-align: right;
+                        }
+                        input[type="date"][name="rec1"]{
+                            text-align: right;
+                        }
+                        input[type="date"][name="exp1"]{
+                            text-align: right;
+                        }
+                    </style>
 
                     <div class="panel">
                         <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -192,7 +207,6 @@
                                                         <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                         <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                                             <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                        </a>
                                                     </td>
                                                 </tr>
 
@@ -294,7 +308,6 @@
                                                         <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                         <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                                         <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                        </a>
                                                     </td>
                                                 </tr>
                                                     <!-- Item Details -->
@@ -453,7 +466,6 @@
                                                             <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                             <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                                             <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                            </a>
                                                         </td>
                                                     </tr>
                                                     <!-- Item Details -->
@@ -555,7 +567,6 @@
                                                 <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                 <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                                 <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                </a>
                                             </td>
                                         </tr>
 
@@ -659,7 +670,6 @@
                                                 <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                 <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                                 <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                </a>
                                             </td>
                                         </tr>
                                         <!-- Item Details -->
@@ -818,7 +828,6 @@
                                                 <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                 <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                                 <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                </a>
                                             </td>
                                         </tr>
                                         <!-- Item Details -->
@@ -915,14 +924,14 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" name="quant" min='0' required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="number" id="quantity" name="quant" min='0' required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Unit<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list">
+                                <input  name="Unit" required="required" id="unit" class="form-control col-md-7 col-xs-12" list="list">
                                 <datalist id="list">
                                     <option value="piece">piece</option>
                                     <option value="box">box</option>
@@ -939,10 +948,11 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Type<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12"  required>
-                                    <option selected="true" value="CO">Capital Outlay</option>
+                                <input id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12" required="required" placeholder="Type">
+                                <datalist id="typelist">
+                                    <option value="CO">CO</option>
                                     <option value="MOOE">MOOE</option>
-                                </select>
+                                </datalist>
                             </div>
                         </div>
                         <div class="item form-group">
@@ -985,9 +995,7 @@
                     <button type="submit" class="btn btn-primary" name="id" value="1" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
                     <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
                 </div>
-
             </div>
-            </form>
         </div>
     </div>
     <!-- /Add Item -->
