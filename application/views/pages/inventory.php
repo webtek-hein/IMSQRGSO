@@ -51,10 +51,12 @@
                                                 </div>
 
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <select id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12"  required placeholder="Type">
-                                                        <option value="Capital Outlay">Capital Outlay</option>
+
+                                                    <input id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12" class="unit" required="required" placeholder="Type">
+                                                        <datalist id="typelist">
+                                                            <option value="CO">CO</option>
                                                         <option value="MOOE">MOOE</option>
-                                                    </select>
+                                                    </datalist>
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
                                                     <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="DeliveryDate">
