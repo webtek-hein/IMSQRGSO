@@ -143,10 +143,11 @@
                 </div>
             </div>
             <!-- /page content -->
+
             <!-- MODAL -->
             <!-- Replace -->
             <div class="modal fade replace" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog">
                     <div class="modal-content">
 
                         <div class="modal-header">
@@ -189,3 +190,31 @@
             </div>
             <!-- /Replace -->
             <!-- /Modal -->
+
+            <!-- Ignore -->
+            <div class="modal fade ignore" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel"><b>Available Stock of this Item is 5</b></h4>
+                        </div>
+                        <div class="modal-body">
+                            <b>Are You sure you want to Ignore this Entry?</b>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Yes</button>
+                            <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /Ignore -->
+
+        </div>
+    </div>
+        <div class="clearfix"></div>
+    </div>

@@ -61,34 +61,11 @@
                             </li>
                             <li><a><i class="fa fa-home"></i>Departments<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a  href="Department"> Secretary to the Mayor</a></li>
-                                    <li><a href="#"> Accounting Office</a></li>
-                                    <li><a href="#"> Administrator's Office</a></li>
-                                    <li><a href="#"> Assessor's Office</a></li>
-                                    <li><a href="#"> Budget Office</a></li>
-                                    <li><a href="#"> Building & Architecture</a></li>
-                                    <li><a href="#"> Civil Registry</a></li>
-                                    <li><a href="#"> Engineering Office</a></li>
-                                    <li><a href="#"> City Environment & Parks Management Office</a></li>
-                                    <li><a href="#"> General Services Office</a></li>
-                                    <li><a href="#"> Health Service Office</a></li>
-                                    <li><a href="#"> Human Resource Management Office</a></li>
-                                    <li><a href="#"> Legal Office</a></li>
-                                    <li><a href="#"> City Library</a></li>
-                                    <li><a href="#"> Planning & Development Office</a></li>
-                                    <li><a href="#"> Social Welfare Office</a></li>
-                                    <li><a href="#"> Treasury Office</a></li>
-                                    <li><a href="#"> Veterinary Office</a></li>
-                                    <li><a href="#"> Regional Trial Court</a></li>
-                                    <li><a href="#"> City Prosecutor's Office</a></li>
-                                    <li><a href="#"> Municipal Trial Court in Cities</a></li>
-                                    <li><a href="#"> Baguio City Police Office</a></li>
-                                    <li><a href="#"> Bureau of Fire Prevention & Safety</a></li>
-                                    <li><a href="#"> Office of the City Jail Warden (Male)</a></li>
-                                    <li><a href="#"> Office of the City Jail Warden (Female)</a></li>
-                                    <li><a href="#"> City Auditor's Office</a></li>
-                                    <li><a href="#"> Register of Deeds</a></li>
-                                    <li><a href="#"> City Schools Division Office</a></li>
+                                    <li><a href="Department"> Accounting Office</a></li>
+                                    <li><a href="Department"> Administrator's Office</a></li>
+                                    <li><a href="Department"> Assessor's Office</a></li>
+                                    <li><a href="Department"> Budget Office</a></li>
+                                    <li><a href="Department"> Building & Architecture</a></li>
                                 </ul>
                             </li>
                             <li><a href="Return"><i class="fa fa-undo"></i>Returns</a>
