@@ -31,10 +31,10 @@
                                                     <input type="text" name="description" class="form-control" id="inputSuccess4" placeholder="Description">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
+                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="number" name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
+                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
                                                     <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
@@ -57,13 +57,13 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
+                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="DeliveryDate">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
+                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="DateReceived">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
+                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="ExpirationDate">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
                                                     <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
@@ -544,7 +544,7 @@
                                             <td>500</td>
                                             <td>Piece</td>
                                             <td>
-                                                <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                 <a href="#" data-toggle="modal" data-target=".Edit">
                                                     <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
                                                     </i>
@@ -911,7 +911,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" name="quant" min=0 required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="number" name="quant" min='0' required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
@@ -958,7 +958,7 @@
                         <div class="item form-group">
                             <label for="password" class="control-label col-md-3">Unit Cost</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" name="cost" data-validate-length="6,8" class="form-control col-md-7 col-xs-12" required="required">
+                                <input type="number" min='0' name="cost" data-validate-length="6,8" class="form-control col-md-7 col-xs-12" required="required">
                             </div>
                         </div>
                         <div class="item form-group">
@@ -1011,7 +1011,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" id="email" name="quant" min=0 required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="number" id="email" name="quant" min='0' required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
@@ -1031,21 +1031,21 @@
                         <div class="item form-group">
                             <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">PO No.</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" name="po" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
+                                <input type="number" min='0' name="po" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">PR No.<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" name="pr" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                                <input type="number" min='0' name="pr" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">OBR No.<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" name="obr" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                                <input type="number" min='0' name="obr" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                     </form>
