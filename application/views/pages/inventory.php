@@ -131,214 +131,18 @@
                                         </li>
                                     </ul>
                                     <div id="step-1">
-                                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Item Name</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Item Name">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit Cost</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Unit Cost">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Description</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Description">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PO No.</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PO Number">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Quantity</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Quantity">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PR No.</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PR Number">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Unit">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">OBR No.</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="OBR Number">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Type">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Serial</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Serial">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Delivery Date</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Account Code</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Account Code">
-                                            </div>
-                                        </form>
+
 
                                     </div>
 
                                     <div id="step-2">
-                                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Item Name</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Item Name">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit Cost</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Unit Cost">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Description</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Description">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PO No.</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PO Number">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Quantity</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Quantity">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PR No.</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PR Number">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Unit">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">OBR No.</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="OBR Number">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Type">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Serial</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Serial">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Delivery Date</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Account Code</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Account Code">
-                                            </div>
-                                        </form>
+
                                     </div>
                                     <div id="step-3">
-                                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Item Name</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Item Name">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit Cost</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Unit Cost">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Description</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Description">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PO No.</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PO Number">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Quantity</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Quantity">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PR No.</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PR Number">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Unit">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">OBR No.</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="OBR Number">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Type">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Serial</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Serial">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Delivery Date</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Account Code</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Account Code">
-                                            </div>
-                                        </form>
+
                                     </div>
                                     <div id="step-4">
-                                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Item Name</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Item Name">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit Cost</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Unit Cost">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Description</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Description">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PO No.</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PO Number">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Quantity</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Quantity">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">PR No.</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="PR Number">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Unit</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Unit">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">OBR No.</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="OBR Number">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Type">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Serial</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Serial">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Delivery Date</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
-                                            </div>
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">Account Code</label>
-                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                <input type="text" class="form-control" id="inputSuccess5" placeholder="Account Code">
-                                            </div>
-                                        </form>
+
                                     </div>
 
                                 </div>
@@ -384,10 +188,7 @@
                                                     <td>Piece</td>
                                                     <td>
                                                         <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
-                                                        <a href="#" data-toggle="modal" data-target=".Edit">
-                                                            <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                            </i>
-                                                        </a>
+                                                        <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                                     </td>
                                                 </tr>
 
@@ -431,9 +232,7 @@
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -449,9 +248,7 @@
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -467,9 +264,7 @@
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                                 </td>
                                                                             </tr>
                                                                             </tbody>
@@ -487,16 +282,13 @@
                                                     <!--Item Details-->
                                                 <tr>
                                                     <th>2</th>
-                                                    <td><a role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne">TV</a></td>
+                                                    <td><a role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#data2" aria-expanded="true" aria-controls="collapseTwo">TV</a></td>
                                                     <td>Sony</td>
                                                     <td>5</td>
                                                     <td>Piece</td>
                                                     <td>
                                                         <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
-                                                        <a href="#" data-toggle="modal" data-target=".Edit">
-                                                            <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                            </i>
-                                                        </a>
+                                                        <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                                     </td>
                                                 </tr>
                                                     <!-- Item Details -->
@@ -550,13 +342,7 @@
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                    </a>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                        </i>
-                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -576,13 +362,7 @@
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                    </a>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                        </i>
-                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -602,13 +382,7 @@
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                    </a>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                        </i>
-                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -628,13 +402,7 @@
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                    </a>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                        </i>
-                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -654,13 +422,7 @@
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                    </a>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                        </i>
-                                                                                    </a>
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                                 </td>
                                                                             </tr>
                                                                             </tbody>
@@ -677,16 +439,13 @@
                                                 <!--Item Detail-->
                                                     <tr>
                                                         <th>3</th>
-                                                        <td ><a role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne">TV</a></td>
+                                                        <td ><a role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#data3" aria-expanded="true" aria-controls="collapseThree">TV</a></td>
                                                         <td>Sony</td>
                                                         <td>1</td>
                                                         <td>Piece</td>
                                                         <td>
                                                             <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
-                                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                </i>
-                                                            </a>
+                                                            <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                                         </td>
                                                     </tr>
                                                     <!-- Item Details -->
@@ -836,10 +595,7 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td>
-                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                </a>
-
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -855,9 +611,7 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td>
-                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                </a>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -873,10 +627,7 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td>
-                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                </a>
-
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                             </td>
                                                                         </tr>
                                                                         </tbody>
@@ -894,7 +645,7 @@
                                         <!--Item Details-->
                                         <tr>
                                             <th>2</th>
-                                            <td><a role="tab" id="headingOneM" data-toggle="collapse" data-parent="#accordion" href="#data1M" aria-expanded="true" aria-controls="collapseOneM">Bond Paper</a></td>
+                                            <td><a role="tab" id="headingTwoM" data-toggle="collapse" data-parent="#accordion" href="#data2M" aria-expanded="true" aria-controls="collapseTwoM">Bond Paper</a></td>
                                             <td>A4</td>
                                             <td>5</td>
                                             <td>Ream</td>
@@ -957,10 +708,7 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td>
-                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                </a>
-
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -980,13 +728,7 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td>
-                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                </a>
-                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                    </i>
-                                                                                </a>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -1006,13 +748,7 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td>
-                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                </a>
-                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                    </i>
-                                                                                </a>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -1032,13 +768,7 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td>
-                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                </a>
-                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                    </i>
-                                                                                </a>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -1058,13 +788,7 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td>
-                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                </a>
-                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                    </i>
-                                                                                </a>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                             </td>
                                                                         </tr>
                                                                         </tbody>
@@ -1081,7 +805,7 @@
                                         <!--Item Detail-->
                                         <tr>
                                             <th>3</th>
-                                            <td><a role="tab" id="headingOneM" data-toggle="collapse" data-parent="#accordion" href="#data1M" aria-expanded="true" aria-controls="collapseOneM">Scotch Tape</a></td>
+                                            <td><a role="tab" id="headingThreeM" data-toggle="collapse" data-parent="#accordion" href="#data3M" aria-expanded="true" aria-controls="collapseThreeM">Scotch Tape</td>
                                             <td>Medium Size</td>
                                             <td>10</td>
                                             <td>Box</td>
@@ -1144,13 +868,7 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td>
-                                                                                <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                    <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                </a>
-                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                    </i>
-                                                                                </a>
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                             </td>
                                                                         </tr>
                                                                         </tbody>
