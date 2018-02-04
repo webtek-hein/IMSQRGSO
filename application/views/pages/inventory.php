@@ -379,11 +379,15 @@
                                                 <tr>
                                                     <th>1</th>
                                                     <td><a role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne">Laptop</a></td>
-                                                    <td>Dellt</td>
+                                                    <td>Dell</td>
                                                     <td>3</td>
                                                     <td>Piece</td>
                                                     <td>
                                                         <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                        <a href="#" data-toggle="modal" data-target=".Edit">
+                                                            <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                            </i>
+                                                        </a>
                                                     </td>
                                                 </tr>
 
@@ -400,10 +404,6 @@
                                                                             <thead>
                                                                             <tr>
                                                                                 <th>#</th>
-                                                                                <th>Item Name</th>
-                                                                                <th>Description</th>
-                                                                                <th>Unit</th>
-                                                                                <th>Type</th>
                                                                                 <th>Delivery Date</th>
                                                                                 <th>Date Received</th>
                                                                                 <th>Expiration Date</th>
@@ -430,17 +430,9 @@
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
                                                                                 <td>
                                                                                     <a href="#" data-toggle="modal" data-target=".Distribute">
                                                                                         <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                    </a>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                        </i>
                                                                                     </a>
                                                                                 </td>
                                                                             </tr>
@@ -456,17 +448,9 @@
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
                                                                                 <td>
                                                                                     <a href="#" data-toggle="modal" data-target=".Distribute">
                                                                                         <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                    </a>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                        </i>
                                                                                     </a>
                                                                                 </td>
                                                                             </tr>
@@ -482,17 +466,9 @@
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
                                                                                 <td>
                                                                                     <a href="#" data-toggle="modal" data-target=".Distribute">
                                                                                         <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                    </a>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                        <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                        </i>
                                                                                     </a>
                                                                                 </td>
                                                                             </tr>
@@ -517,6 +493,10 @@
                                                     <td>Piece</td>
                                                     <td>
                                                         <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                        <a href="#" data-toggle="modal" data-target=".Edit">
+                                                            <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                            </i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                     <!-- Item Details -->
@@ -703,6 +683,10 @@
                                                         <td>Piece</td>
                                                         <td>
                                                             <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                            <a href="#" data-toggle="modal" data-target=".Edit">
+                                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                                </i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                     <!-- Item Details -->
@@ -759,10 +743,7 @@
                                                                                             <a href="#" data-toggle="modal" data-target=".Distribute">
                                                                                                 <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
                                                                                             </a>
-                                                                                            <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                                <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                                </i>
-                                                                                            </a>
+
                                                                                         </td>
                                                                                     </tr>
                                                                                     </tbody>
@@ -805,6 +786,10 @@
                                             <td>Piece</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                <a href="#" data-toggle="modal" data-target=".Edit">
+                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                    </i>
+                                                </a>
                                             </td>
                                         </tr>
 
@@ -824,10 +809,6 @@
                                                                         <thead>
                                                                         <tr>
                                                                             <th>#</th>
-                                                                            <th>Item Name</th>
-                                                                            <th>Description</th>
-                                                                            <th>Unit</th>
-                                                                            <th>Type</th>
                                                                             <th>Delivery Date</th>
                                                                             <th>Date Received</th>
                                                                             <th>Expiration Date</th>
@@ -854,18 +835,11 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
                                                                             <td>
                                                                                 <a href="#" data-toggle="modal" data-target=".Distribute">
                                                                                     <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
                                                                                 </a>
-                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                    </i>
-                                                                                </a>
+
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -880,17 +854,9 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
                                                                             <td>
                                                                                 <a href="#" data-toggle="modal" data-target=".Distribute">
                                                                                     <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                </a>
-                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                    </i>
                                                                                 </a>
                                                                             </td>
                                                                         </tr>
@@ -906,18 +872,11 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
                                                                             <td>
                                                                                 <a href="#" data-toggle="modal" data-target=".Distribute">
                                                                                     <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
                                                                                 </a>
-                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                    </i>
-                                                                                </a>
+
                                                                             </td>
                                                                         </tr>
                                                                         </tbody>
@@ -941,6 +900,10 @@
                                             <td>Ream</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                <a href="#" data-toggle="modal" data-target=".Edit">
+                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                    </i>
+                                                </a>
                                             </td>
                                         </tr>
                                         <!-- Item Details -->
@@ -997,10 +960,7 @@
                                                                                 <a href="#" data-toggle="modal" data-target=".Distribute">
                                                                                     <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
                                                                                 </a>
-                                                                                <a href="#" data-toggle="modal" data-target=".Edit">
-                                                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                                                    </i>
-                                                                                </a>
+
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -1127,6 +1087,10 @@
                                             <td>Box</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                <a href="#" data-toggle="modal" data-target=".Edit">
+                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
+                                                    </i>
+                                                </a>
                                             </td>
                                         </tr>
                                         <!-- Item Details -->

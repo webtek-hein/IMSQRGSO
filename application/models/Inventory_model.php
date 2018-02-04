@@ -5,6 +5,7 @@ class Inventory_model extends CI_Model{
     //Adding of Item to the inventory
     public function add_item(){
         $type = $this->input->post('Type');
+        var_dump($type);
         $quantity = $this->input->post('quant');
         $data = array(
           'item_name' => $this->input->post('item'),
