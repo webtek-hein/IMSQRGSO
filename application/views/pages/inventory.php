@@ -499,10 +499,7 @@
                                                                                         <td></td>
                                                                                         <td></td>
                                                                                         <td>
-                                                                                            <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                                <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                            </a>
-
+                                                                                            <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                                                         </td>
                                                                                     </tr>
                                                                                     </tbody>
@@ -544,11 +541,8 @@
                                             <td>500</td>
                                             <td>Piece</td>
                                             <td>
-                                                <a href="#" data-toggle="modal" data-target=".Add_Item"" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
-                                                <a href="#" data-toggle="modal" data-target=".Edit">
-                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                    </i>
-                                                </a>
+                                                <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                             </td>
                                         </tr>
 
@@ -651,10 +645,7 @@
                                             <td>Ream</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
-                                                <a href="#" data-toggle="modal" data-target=".Edit">
-                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                    </i>
-                                                </a>
+                                                <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                             </td>
                                         </tr>
                                         <!-- Item Details -->
@@ -811,10 +802,7 @@
                                             <td>Box</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
-                                                <a href="#" data-toggle="modal" data-target=".Edit">
-                                                    <i class="fa fa-pencil-square-o" style="font-size:20px;color: #008000" data-toggle="modal" data-target="#edit">
-                                                    </i>
-                                                </a>
+                                                <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                             </td>
                                         </tr>
                                         <!-- Item Details -->
