@@ -17,33 +17,38 @@ class Inventory extends CI_Controller {
     }
     public function viewItem(){
         $list = $this->inv->select_item();
+        $list1 = $this->inv->selectdetails();
         $data = array();
+        $data1 = array();
+
+        $counter = 1;
+
         foreach ($list as $item){
             $row = array();
-            $row[] = $item['item_name'];
-            $row[] = $item['item_description'];
-            $row[] = $item['quantity'];
-            $row[] = $item['unit'];
-            $row[] = $item['item_type'];
-                    //add quantity
-            $row[] = "<button class=\"btn btn-success\" data-id = '$item[item_id]'
-                     data-toggle=\"modal\" data-target=\"#addqty\"><span class=\"glyphicon glyphicon-plus\"></span>
-                     </button>" .
-                    //subtract quantity
-                     "<button class=\"btn btn-warning\" data-id='$item[item_id]'  data-toggle=\"modal\" 
-                     data-target=\"#subqty\"><span class=\"glyphicon glyphicon-minus\"></span></button>" .
-                    //edit item
-                     "<button class=\"btn btn-danger\"><span data-name='$item[item_name]' data-id='$item[item_id]'
-                      data-description='$item[item_description]' data-unit='$item[unit]' data-type='$item[item_type]' 
-                      class=\"glyphicon glyphicon-pencil\" data-toggle=\"modal\" data-target=\"#edit\">
-                      </span></button>" .
-                    //item detail
-                     "<button class=\"btn btn-primary\"><span data-id='$item[item_id]'  data-name='$item[item_name]'
-                      class=\"glyphicon glyphicon-info-sign\" 
-                      data-toggle=\"modal\" data-target=\"#itemdetails\"></span></button>";
+            $row[] = "<tr>
+                        <th>".$counter."</th>
+                        <td>
+                        <a onclick='detail($item[item_id])' role=\"tab\" id=\"headingOneM\" data-toggle=\"collapse\"
+                        data-parent=\"#accordion\" href=\"#data".$counter."\" aria-expanded=\"true\" 
+                        aria-controls=\"collapseOneM\">".$item['item_name']."</a></td>
+                        <td>".$item['item_description']."</td>
+                        <td>".$item['quantity']."</td>
+                        <td>".$item['unit']."</td>
+                        <td>
+                          <a href=\"#\" data-toggle=\"modal\" data-target=\".Add_Item\" class=\"btn btn-primary btn-xs\">
+                          <i class=\"fa fa-plus-circle\"></i> Add Quantity</a>
+                          <a href=\"#\" data-toggle=\"modal\" data-target=\".Edit\" class=\"btn btn-warning btn-xs\">
+                          <i class=\"fa fa-pencil-square-o\"></i> Edit</a>
+                          <a href=\"#\" data-toggle=\"modal\" data-target=\".Distribute\" class=\"btn btn-info btn-xs\">
+                          <i class=\"fa fa-minus-circle\"></i> Distribute</a>
+                        </td>
+                       </tr><div id=\"det".$item['item_id']."\"></div>";
+
             $data[] = $row;
+            $counter++;
         }
-        $list = array('data' => $data);
+
+        $list = array('items'=>$data);
         echo json_encode($list);
     }
     public function addquant(){
@@ -58,21 +63,55 @@ class Inventory extends CI_Controller {
         redirect('inventory');
     }
     public function detail($id){
-        $details = $this->inv->viewdetail($id);
-        foreach ($details as $list){
-            $row = array();
-            $row[] = $list['serial'];
-            $row[] = $list['delivery_date'];
-            $row[] = $list['expiration_date'];
-            $row[] = $list['date_received'];
-            $row[] = $list['unit_cost'];
-            $row[] = $list['PO_no'];
-            $row[] = $list['PR_no'];
-            $row[] = $list['OBR_no'];
-            $row[] = $list['supplier_id'];
-            $data[] = $row;
+        $list = $this->inv->viewdetail($id);
+        $data=array();
+        foreach ($list as $detail){
+            $row[] ="<tr><td colspan=\"12\"><div id=\"data".$counter."\" class=\"panel-collapse collapse \" role=\"tabpanel\"
+                       aria-labelledby=\"headingOne\"><div class=\"panel-body\"><div class=\"col-md-12 col-sm-12 col-xs-12\">
+                        <div class=\"x_panel\"><div class=\"x_content\">
+                         <table class=\"table table-bordered\">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Delivery Date</th>
+                                    <th>Date Received</th>
+                                    <th>Expiration Date</th>
+                                    <th>Cost</th>
+                                    <th>PO Number</th>
+                                    <th>PR Number</th>
+                                    <th>OBR Number</th>
+                                    <th>Supplier</th>
+                                    <th>Action</th>
+                                 </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th scope=\"row\">1</th>
+                                <td>".$detail['delivery_date']."</td>
+                                <td>".$detail['date_received']."</td>
+                                <td>".$detail['expiration_date']."</td>
+                                <td>".$detail['unit_cost']."</td>
+                                <td>".$detail['PO_no']."</td>
+                                <td>".$detail['PR_no']."</td>
+                                <td>".$detail['OBR_no']."</td>
+                                <td>".$detail['delivery_date']."</td>
+            
+                                <td>".$detail['supplier_id']."</td>
+                                <td>
+                                <a href=\"#\" data-toggle=\"modal\" data-target=\".Distribute\" class=\"btn btn-info btn-xs\"><i class=\"fa fa-minus-circle\"></i> Distribute</a>
+                                </td>
+                                </tr>
+                                </tbody>
+                                </table>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </td></tr>";
+            $data1[] = $row;
         }
-        $list = array('data' => $data);
+        $list = array('detail' => $data);
         echo json_encode($list);
     }
     function getdept(){

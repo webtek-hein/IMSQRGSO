@@ -4,34 +4,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Inventory_model extends CI_Model{
     //Adding of Item to the inventory
     public function add_item(){
-        $type = $this->input->post('Type');
-        var_dump($type);
         $quantity = $this->input->post('quant');
         $data = array(
           'item_name' => $this->input->post('item'),
           'item_description' => $this->input->post('description'),
           'quantity' => $quantity,
           'unit' => $this->input->post('Unit'),
-          'item_type' => $type
+          'item_type' => $this->input->post('Type')
         );
+        //1. Insert into item
         $this->db->insert('item',$data);
+        //item insert id
         $insert_id = $this->db->insert_id();
+
         $data1 = array(
             'delivery_date' => $this->input->post('del'),
             'date_received' => $this->input->post('rec'),
             'unit_cost'=> $this->input->post('cost'),
+            'quantity' => $quantity,
             'expiration_date' => $this->input->post('exp'),
             'supplier_id' => $this->input->post('supp'),
             'item_id' => $insert_id,
         );
-        if($type === 'Capital Outlay'){
-            $item_det = array_fill(1, $quantity, $data1);
-            $this->db->trans_start();
-            $this->db->insert_batch('itemdetail',$item_det);
-            $this->db->trans_complete();
-        }else{
-            $this->db->insert('itemdetail',$data1);
-        }
+        //2. Insert to item detail
+
+        $this->db->insert('itemdetail',$data1);
+        //item detail isnert id
+        $insert_id = $this->db->insert_id();
+        //3. Insert into serial
+        $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
+        $this->db->insert_batch('serial',$serial);
+        //4. Insert into logs
         $this->db->insert('logs.increaselog',$data+$data1);
     }
     //Select All items in the inventory
@@ -42,6 +45,8 @@ class Inventory_model extends CI_Model{
     //Add quantity to a specific item
     public function addquant(){
         $id = $this->input->post('id');
+        $id=6;
+        //1. Get Quantity
         $quantity = $this->input->post('quant');
 
         $query=$this->db->get_where('item',array('item_id' => $id));
@@ -59,26 +64,30 @@ class Inventory_model extends CI_Model{
         $data1 = array(
             'delivery_date' => $this->input->post('del'),
             'date_received' => $this->input->post('rec'),
+            'quantity' => $quantity,
             'unit_cost'=> $this->input->post('cost'),
             'expiration_date' => $this->input->post('exp'),
             'supplier_id' => $this->input->post('supp'),
             'item_id' => $id,
         );
-        // Add item detail
-        if($item->item_type === 'Capital Outlay'){
-            $item_det = array_fill(1, $quantity, $data1);
-            $this->db->trans_start();
-            $this->db->insert_batch('itemdetail',$item_det);
-            $this->db->trans_complete();
-        }else{
-            $this->db->insert('itemdetail',$data1);
-        }
-        //Update quantity
+
+        //2. Insert to item detail
+        $this->db->insert('itemdetail',$data1);
+
+        //item detail isnert id
+        $insert_id = $this->db->insert_id();
+
+        //3. Insert into serial
+        $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
+        $this->db->insert_batch('serial',$serial);
+
+        //4. Insert into logs
+        $this->db->insert('logs.increaselog',$data+$data1);
+
+        //5. Update quantity
         $this->db->set('quantity','quantity+'.$quantity,FALSE);
         $this->db->where('item_id',$id);
         $this->db->update('item');
-
-        $this->db->insert('logs.increaselog',$data+$data1);
     }
     public function edititem(){
         $item_id = $this->input->post('id');
@@ -95,6 +104,11 @@ class Inventory_model extends CI_Model{
     public function viewdetail($id){
         $this->db->join('itemdetail','item.item_id = itemdetail.item_id','inner');
         $query = $this->db->get_where('item',array('item.item_id' => $id));
+        return $query->result_array();
+    }
+    public function selectdetails(){
+        $this->db->join('itemdetail','item.item_id = itemdetail.item_id','inner');
+        $query = $this->db->get('item');
         return $query->result_array();
     }
     public function select_departments(){

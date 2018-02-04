@@ -51,6 +51,15 @@
 
 <!-- Custom Theme Scripts -->
 <script src="assets/build/js/custom.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $.getJSON('inventory/viewitem',function (data) {
+            $(data.items).each(function () {
+                $('#items tbody').append(this);
+            });
+        });
 
+    });
+</script>
 </body>
 </html>

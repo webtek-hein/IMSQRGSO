@@ -31,10 +31,10 @@
                                                     <input type="text" name="description" class="form-control" id="inputSuccess4" placeholder="Description">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
+                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="number" name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
+                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
                                                     <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
@@ -151,10 +151,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- End SmartWizard Content -->
-                    <!-- end of accordion -->
-
                     <!-- Main Table Content-->
                     <div class="x_content">
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -265,7 +261,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
+                                                                </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -359,7 +355,6 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -766,8 +761,6 @@
             </div>
         </div>
 
-        <!-- /page content -->
-
         <!-- Modal -->
         <!-- Add Quantity -->
         <div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
@@ -849,18 +842,16 @@
                                     <input type="text" name="supp" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" name="id" value="1" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
                         <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
                     </div>
-
                 </div>
                 </form>
             </div>
         </div>
-        <!-- /Add Item -->
+        <!-- end of add quantity -->
 
         <!--Distribution-->
         <div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
@@ -913,16 +904,15 @@
                                 </div>
                             </div>
                         </form>
-
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
                             <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
                         </div>
-
                     </div>
                 </div>
             </div>
-            <!-- /Distribution-->
+        </div>
+            <!-- end of distribution-->
 
             <!--Edit-->
             <div class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
@@ -974,11 +964,12 @@
                     </div>
                 </div>
             </div>
+        <!--end of edit-->
+        <!-- /Modal -->
+
         </div>
         <div class="clearfix"></div>
     </div>
-    <!--/Edit-->
-    <!-- /Mdal -->
 
 
 
