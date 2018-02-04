@@ -31,10 +31,11 @@
                         <thead>
                         <tr>
                           <th>#</th>
-                          <th>Item Name</th>
-                          <th>Description</th>
-                          <th>Quantity</th>
-                          <th>Unit</th>
+                          <th>Date Return</th>
+                          <th>Reason</th>
+                          <th>Receive From</th>
+                          <th>Received By</th>
+                          <th>Status Return</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -43,57 +44,40 @@
                           <td>Tiger Nixon</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
-                          <td>61</td>
+                          <td>91</td>
+                          <td>91</td>
                         </tr>
                         <tr>
                           <td></td>
                           <td>Garrett Winters</td>
                           <td>Accountant</td>
                           <td>Tokyo</td>
-                          <td>63</td>
+                          <td>93</td>
+                          <td>91</td>
                         </tr>
                         <tr>
                           <td></td>
                           <td>Ashton Cox</td>
                           <td>Junior Technical Author</td>
                           <td>San Francisco</td>
-                          <td>66</td>
+                          <td>93</td>
+                          <td>91</td>
                         </tr>
                         <tr>
                           <td></td>
                           <td>Cedric Kelly</td>
                           <td>Senior Javascript Developer</td>
                           <td>Edinburgh</td>
-                          <td>22</td>
+                          <td>93</td>
+                          <td>91</td>
                         </tr>
                         <tr>
                           <td></td>
                           <td>Brielle Williamson</td>
                           <td>Integration Specialist</td>
                           <td>New York</td>
-                          <td>61</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Herrod Chandler</td>
-                          <td>Sales Assistant</td>
-                          <td>San Francisco</td>
-                          <td>59</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Rhona Davidson</td>
-                          <td>Integration Specialist</td>
-                          <td>Tokyo</td>
-                          <td>55</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Colleen Hurst</td>
-                          <td>Javascript Developer</td>
-                          <td>San Francisco</td>
-                          <td>39</td>
-                        </tr>
+                          <td>93</td>
+                          <td>91</td>
                       </tbody>
                       </table>
                         </div>
@@ -104,10 +88,11 @@
                         <thead>
                         <tr>
                           <th>#</th>
-                          <th>Item Name</th>
-                          <th>Description</th>
-                          <th>Quantity</th>
-                          <th>Unit</th>
+                          <th>Date Return</th>
+                          <th>Reason</th>
+                          <th>Receive From</th>
+                          <th>Received By</th>
+                          <th>Status Return</th>
                         </tr>
                         <tbody>
                         <tr>
@@ -115,64 +100,40 @@
                           <td>Tiger Nixon</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
-                          <td>61</td>
+                          <td>91</td>
+                          <td>91</td>
                         </tr>
                         <tr>
                           <td></td>
                           <td>Garrett Winters</td>
                           <td>Accountant</td>
                           <td>Tokyo</td>
-                          <td>63</td>
+                          <td>93</td>
+                          <td>91</td>
                         </tr>
                         <tr>
                           <td></td>
                           <td>Ashton Cox</td>
                           <td>Junior Technical Author</td>
                           <td>San Francisco</td>
-                          <td>66</td>
+                          <td>93</td>
+                          <td>91</td>
                         </tr>
                         <tr>
                           <td></td>
                           <td>Cedric Kelly</td>
                           <td>Senior Javascript Developer</td>
                           <td>Edinburgh</td>
-                          <td>22</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Airi Satou</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>33</td>
+                          <td>93</td>
+                          <td>91</td>
                         </tr>
                         <tr>
                           <td></td>
                           <td>Brielle Williamson</td>
                           <td>Integration Specialist</td>
                           <td>New York</td>
-                          <td>61</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Herrod Chandler</td>
-                          <td>Sales Assistant</td>
-                          <td>San Francisco</td>
-                          <td>59</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Rhona Davidson</td>
-                          <td>Integration Specialist</td>
-                          <td>Tokyo</td>
-                          <td>55</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Colleen Hurst</td>
-                          <td>Javascript Developer</td>
-                          <td>San Francisco</td>
-                          <td>39</td>
-                        </tr>
+                          <td>93</td>
+                          <td>91</td>
                       </tbody>
                       </thead>
                       </table>

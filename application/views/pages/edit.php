@@ -30,10 +30,15 @@
                         <thead>
                         <tr>
                           <th>#</th>
-                          <th>Item Name</th>
-                          <th>Description</th>
-                          <th>Quantity</th>
-                          <th>Unit</th>
+                          <th>Before Item Name</th>
+                          <th>After Item Name</th>
+                          <th>Before Description</th>
+                          <th>After Description</th>
+                          <th>Before Unit</th>
+                          <th>After Unit</th>
+                          <th>Before Item Type</th>
+                          <th>After Item Type</th>
+                          <th>Date</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -43,6 +48,11 @@
                           <td>System Architect</td>
                           <td>Edinburgh</td>
                           <td>61</td>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>01/02/2018</td>
                         </tr>
                         <tr>
                           <td></td>
@@ -50,6 +60,11 @@
                           <td>Accountant</td>
                           <td>Tokyo</td>
                           <td>63</td>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>01/02/2018</td>
                         </tr>
                         <tr>
                           <td></td>
@@ -57,6 +72,11 @@
                           <td>Junior Technical Author</td>
                           <td>San Francisco</td>
                           <td>66</td>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>01/03/2018</td>
                         </tr>
                         <tr>
                           <td></td>
@@ -64,6 +84,11 @@
                           <td>Senior Javascript Developer</td>
                           <td>Edinburgh</td>
                           <td>22</td>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>01/07/2018</td>
                         </tr>
                         <tr>
                           <td></td>
@@ -71,27 +96,11 @@
                           <td>Integration Specialist</td>
                           <td>New York</td>
                           <td>61</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Herrod Chandler</td>
-                          <td>Sales Assistant</td>
-                          <td>San Francisco</td>
-                          <td>59</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Rhona Davidson</td>
-                          <td>Integration Specialist</td>
-                          <td>Tokyo</td>
-                          <td>55</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Colleen Hurst</td>
-                          <td>Javascript Developer</td>
-                          <td>San Francisco</td>
-                          <td>39</td>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>01/10/2018</td>
                         </tr>
                       </tbody>
                       </table>
@@ -103,10 +112,15 @@
                         <thead>
                         <tr>
                           <th>#</th>
-                          <th>Item Name</th>
-                          <th>Description</th>
-                          <th>Quantity</th>
-                          <th>Unit</th>
+                          <th>Before Item Name</th>
+                          <th>After Item Name</th>
+                          <th>Before Description</th>
+                          <th>After Description</th>
+                          <th>Before Unit</th>
+                          <th>After Unit</th>
+                          <th>Before Item Type</th>
+                          <th>After Item Type</th>
+                          <th>Date</th>
                         </tr>
                         <tbody>
                         <tr>
@@ -115,6 +129,11 @@
                           <td>System Architect</td>
                           <td>Edinburgh</td>
                           <td>61</td>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>01/02/2018</td>
                         </tr>
                         <tr>
                           <td></td>
@@ -122,6 +141,11 @@
                           <td>Accountant</td>
                           <td>Tokyo</td>
                           <td>63</td>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>01/02/2018</td>
                         </tr>
                         <tr>
                           <td></td>
@@ -129,6 +153,11 @@
                           <td>Junior Technical Author</td>
                           <td>San Francisco</td>
                           <td>66</td>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>01/03/2018</td>
                         </tr>
                         <tr>
                           <td></td>
@@ -136,13 +165,11 @@
                           <td>Senior Javascript Developer</td>
                           <td>Edinburgh</td>
                           <td>22</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Airi Satou</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>33</td>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>01/07/2018</td>
                         </tr>
                         <tr>
                           <td></td>
@@ -150,27 +177,11 @@
                           <td>Integration Specialist</td>
                           <td>New York</td>
                           <td>61</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Herrod Chandler</td>
-                          <td>Sales Assistant</td>
-                          <td>San Francisco</td>
-                          <td>59</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Rhona Davidson</td>
-                          <td>Integration Specialist</td>
-                          <td>Tokyo</td>
-                          <td>55</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Colleen Hurst</td>
-                          <td>Javascript Developer</td>
-                          <td>San Francisco</td>
-                          <td>39</td>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>01/10/2018</td>
                         </tr>
                       </tbody>
                       </thead>
