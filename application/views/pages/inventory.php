@@ -25,19 +25,19 @@
                                         <div class="x_content">
                                             <form class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" required="required" placeholder="Item Name">
+                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" placeholder="Item Name">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="description" class="form-control" id="inputSuccess4" required="required" placeholder="Description">
+                                                    <input type="text" name="description" class="form-control" id="inputSuccess4" placeholder="Description">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" required="required" placeholder="Unit Cost">
+                                                    <input type="text" name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" required="required" placeholder="Quantity">
+                                                    <input type="number" name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" list="list" placeholder="Unit">
+                                                    <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
                                                     <datalist id="list">
                                                         <option value="piece">piece</option>
                                                         <option value="box">box</option>
@@ -51,23 +51,22 @@
                                                 </div>
 
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12" required="required" placeholder="Type">
-                                                    <datalist id="typelist">
-                                                        <option value="CO">CO</option>
+                                                    <select id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12"  required placeholder="Type">
+                                                        <option value="Capital Outlay">Capital Outlay</option>
                                                         <option value="MOOE">MOOE</option>
-                                                    </datalist>
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="del1" class="form-control" id="deliverydate" placeholder="Delivery Date" required="required">
+                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="rec1" class="form-control" id="inputSuccess4" placeholder="Date Received" required="required">
+                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="exp1" class="form-control" id="inputSuccess4" placeholder="Expiration Date" required="required">
+                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier" required="required">
+                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
@@ -83,23 +82,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <style>
-                        input[type="date"]:not(.has-value):before{
-                            color: gray;
-                            content: attr(placeholder);
-                        }
-                        input[type="date"][name="del1"]{
-                            text-align: right;
-                        }
-                        input[type="date"][name="rec1"]{
-                            text-align: right;
-                        }
-                        input[type="date"][name="exp1"]{
-                            text-align: right;
-                        }
-                    </style>
-
 
                     <div class="panel">
                         <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -207,7 +189,6 @@
                                                 <td>
                                                     <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                     <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                 </td>
                                             </tr>
 
@@ -217,83 +198,77 @@
                                                     <div id="data1" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
                                                         <div class="panel-body">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <div class="x_panel">
-                                                                    <div class="x_content">
-
-                                                                        <table class="table table-bordered">
+                                                                <div class="x_content">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-striped jambo_table bulk_action">
                                                                             <thead>
-                                                                            <tr>
-                                                                                <th>#</th>
-                                                                                <th>Delivery Date</th>
-                                                                                <th>Date Received</th>
-                                                                                <th>Expiration Date</th>
-                                                                                <th>Cost</th>
-                                                                                <th>PO Number</th>
-                                                                                <th>PR Number</th>
-                                                                                <th>OBR Number</th>
-                                                                                <th>Serial</th>
-                                                                                <th>Account Code</th>
-                                                                                <th>Supplier</th>
-                                                                                <th>Action</th>
+                                                                            <tr class="headings">
+                                                                                <th>
+                                                                                    <input type="checkbox" id="check-all" class="flat">
+                                                                                </th>
+                                                                                <th class="column-title">Delivery Date</th>
+                                                                                <th class="column-title">Date Received</th>
+                                                                                <th class="column-title">Expiration Date</th>
+                                                                                <th class="column-title">Cost</th>
+                                                                                <th class="column-title">Account Code</th>
+                                                                                <th class="column-title no-link last"><span class="nobr">Supplier</span>
+                                                                                </th>
+                                                                                <th class="bulk-actions" colspan="11">
+                                                                                    <a class="antoo" style="color:#fff; font-weight:00;">( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                                                                </th>
                                                                             </tr>
                                                                             </thead>
+
                                                                             <tbody>
-                                                                            <tr>
-                                                                                <th scope="row">1</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
+                                                                            <tr class="even pointer">
+                                                                                <td class="a-center ">
+                                                                                    <input type="checkbox" class="flat" name="table_records">
+                                                                                </td>
+                                                                                <td class=" ">-01/03/18</td>
+                                                                                <td class=" ">-01/03/18</td>
+                                                                                <td class=" ">-03/03/18</td>
+                                                                                <td class=" ">28,000</td>
+                                                                                <td class="a-right a-right ">Office</td>
+                                                                                <td class=" last">Sony<a href="#"></a>
                                                                                 </td>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <th scope="row">2</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
+                                                                            <tr class="odd pointer">
+                                                                                <td class="a-center ">
+                                                                                    <input type="checkbox" class="flat" name="table_records">
+                                                                                </td>
+                                                                                <td class=" ">-05/20/18/</td>
+                                                                                <td class=" "></td>
+                                                                                <td class=" "></td>
+                                                                                <td class=" "></td>
+                                                                                <td class="a-right a-right "></td>
+                                                                                <td class=" last"><a href="#"></a>
                                                                                 </td>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <th scope="row">3</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
+                                                                            <tr class="even pointer">
+                                                                                <td class="a-center ">
+                                                                                    <input type="checkbox" class="flat" name="table_records">
+                                                                                </td>
+                                                                                <td class=" ">-09/10/18-</td>
+                                                                                <td class=" "></td>
+                                                                                <td class=" "></td>
+                                                                                <td class=" "></td>
+                                                                                <td class="a-right a-right "></td>
+                                                                                <td class=" last"><a href="#"></a>
                                                                                 </td>
                                                                             </tr>
                                                                             </tbody>
                                                                         </table>
 
+                                                                        <div >
+                                                                            <div class="col-sm-12 text-center">
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-md"><i class="fa fa-minus-circle"></i> Distribute</a>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
                                                 </td>
                                             </tr>
                                             <!--/Item Details-->
@@ -308,7 +283,6 @@
                                                 <td>
                                                     <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                     <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                 </td>
                                             </tr>
                                             <!-- Item Details -->
@@ -317,139 +291,75 @@
                                                     <div id="data2" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwo">
                                                         <div class="panel-body">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <div class="x_panel">
-                                                                    <div class="x_title">
-                                                                        <div class="clearfix"></div>
-                                                                    </div>
                                                                     <div class="x_content">
 
-                                                                        <table class="table table-bordered">
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th>#</th>
-                                                                                <th>Item Name</th>
-                                                                                <th>Description</th>
-                                                                                <th>Unit</th>
-                                                                                <th>Type</th>
-                                                                                <th>Delivery Date</th>
-                                                                                <th>Date Received</th>
-                                                                                <th>Expiration Date</th>
-                                                                                <th>Cost</th>
-                                                                                <th>PO Number</th>
-                                                                                <th>PR Number</th>
-                                                                                <th>OBR Number</th>
-                                                                                <th>Serial</th>
-                                                                                <th>Account Code</th>
-                                                                                <th>Supplier</th>
-                                                                                <th>Action</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            <tr>
-                                                                                <th scope="row">1</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">2</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">3</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">4</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">5</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            </tbody>
-                                                                        </table>
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-striped jambo_table bulk_action">
+                                                                                <thead>
+                                                                                <tr class="headings">
+                                                                                    <th>
+                                                                                        <input type="checkbox" id="check-all" class="flat">
+                                                                                    </th>
+                                                                                    <th class="column-title">Delivery Date</th>
+                                                                                    <th class="column-title">Date Received</th>
+                                                                                    <th class="column-title">Expiration Date</th>
+                                                                                    <th class="column-title">Cost</th>
+                                                                                    <th class="column-title">Account Code</th>
+                                                                                    <th class="column-title no-link last"><span class="nobr">Supplier</span>
+                                                                                    </th>
+                                                                                    <th class="bulk-actions" colspan="11">
+                                                                                        <a class="antoo" style="color:#fff; font-weight:00;">( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                                                                    </th>
+                                                                                </tr>
+                                                                                </thead>
 
+                                                                                <tbody>
+                                                                                <tr class="even pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-01/03/18</td>
+                                                                                    <td class=" ">-01/03/18</td>
+                                                                                    <td class=" ">-03/03/18</td>
+                                                                                    <td class=" ">28,000</td>
+                                                                                    <td class="a-right a-right ">Office</td>
+                                                                                    <td class=" last">Sony<a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr class="odd pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-05/20/18/</td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class="a-right a-right "></td>
+                                                                                    <td class=" last"><a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr class="even pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-09/10/18-</td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class="a-right a-right "></td>
+                                                                                    <td class=" last"><a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                </tbody>
+                                                                            </table>
+
+                                                                            <div >
+                                                                                <div class="col-sm-12 text-center">
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-md"><i class="fa fa-minus-circle"></i> Distribute</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -466,7 +376,6 @@
                                                 <td>
                                                     <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                     <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                 </td>
                                             </tr>
                                             <!-- Item Details -->
@@ -475,62 +384,74 @@
                                                     <div id="data3" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingThree">
                                                         <div class="panel-body">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <div class="x_panel">
-                                                                    <div class="x_title">
-                                                                        <div class="clearfix"></div>
-                                                                    </div>
                                                                     <div class="x_content">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-striped jambo_table bulk_action">
+                                                                                <thead>
+                                                                                <tr class="headings">
+                                                                                    <th>
+                                                                                        <input type="checkbox" id="check-all" class="flat">
+                                                                                    </th>
+                                                                                    <th class="column-title">Delivery Date</th>
+                                                                                    <th class="column-title">Date Received</th>
+                                                                                    <th class="column-title">Expiration Date</th>
+                                                                                    <th class="column-title">Cost</th>
+                                                                                    <th class="column-title">Account Code</th>
+                                                                                    <th class="column-title no-link last"><span class="nobr">Supplier</span>
+                                                                                    </th>
+                                                                                    <th class="bulk-actions" colspan="11">
+                                                                                        <a class="antoo" style="color:#fff; font-weight:00;">( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                                                                    </th>
+                                                                                </tr>
+                                                                                </thead>
 
-                                                                        <table class="table table-bordered">
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th>#</th>
-                                                                                <th>Item Name</th>
-                                                                                <th>Description</th>
-                                                                                <th>Unit</th>
-                                                                                <th>Type</th>
-                                                                                <th>Delivery Date</th>
-                                                                                <th>Date Received</th>
-                                                                                <th>Expiration Date</th>
-                                                                                <th>Cost</th>
-                                                                                <th>PO Number</th>
-                                                                                <th>PR Number</th>
-                                                                                <th>OBR Number</th>
-                                                                                <th>Serial</th>
-                                                                                <th>Account Code</th>
-                                                                                <th>Supplier</th>
-                                                                                <th>Action</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            <tr>
-                                                                                <th scope="row">1</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute">
-                                                                                        <i class="fa fa-minus-circle" style="font-size:20px;color:#FF0000;"></i>
-                                                                                    </a>
+                                                                                <tbody>
+                                                                                <tr class="even pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-01/03/18</td>
+                                                                                    <td class=" ">-01/03/18</td>
+                                                                                    <td class=" ">-03/03/18</td>
+                                                                                    <td class=" ">28,000</td>
+                                                                                    <td class="a-right a-right ">Office</td>
+                                                                                    <td class=" last">Sony<a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr class="odd pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-05/20/18/</td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class="a-right a-right "></td>
+                                                                                    <td class=" last"><a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr class="even pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-09/10/18-</td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class="a-right a-right "></td>
+                                                                                    <td class=" last"><a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                </tbody>
+                                                                            </table>
 
-                                                                                </td>
-                                                                            </tr>
-                                                                            </tbody>
-                                                                        </table>
-
+                                                                            <div >
+                                                                                <div class="col-sm-12 text-center">
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-md"><i class="fa fa-minus-circle"></i> Distribute</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -567,7 +488,6 @@
                                                 <td>
                                                     <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                     <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                 </td>
                                             </tr>
 
@@ -577,83 +497,74 @@
                                                     <div id="data1M" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOneM">
                                                         <div class="panel-body">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <div class="x_panel">
-                                                                    <div class="x_title">
-                                                                        <div class="clearfix"></div>
-                                                                    </div>
                                                                     <div class="x_content">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-striped jambo_table bulk_action">
+                                                                                <thead>
+                                                                                <tr class="headings">
+                                                                                    <th>
+                                                                                        <input type="checkbox" id="check-all" class="flat">
+                                                                                    </th>
+                                                                                    <th class="column-title">Delivery Date</th>
+                                                                                    <th class="column-title">Date Received</th>
+                                                                                    <th class="column-title">Expiration Date</th>
+                                                                                    <th class="column-title">Cost</th>
+                                                                                    <th class="column-title">Account Code</th>
+                                                                                    <th class="column-title no-link last"><span class="nobr">Supplier</span>
+                                                                                    </th>
+                                                                                    <th class="bulk-actions" colspan="11">
+                                                                                        <a class="antoo" style="color:#fff; font-weight:00;">( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                                                                    </th>
+                                                                                </tr>
+                                                                                </thead>
 
-                                                                        <table class="table table-bordered">
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th>#</th>
-                                                                                <th>Delivery Date</th>
-                                                                                <th>Date Received</th>
-                                                                                <th>Expiration Date</th>
-                                                                                <th>Cost</th>
-                                                                                <th>PO Number</th>
-                                                                                <th>PR Number</th>
-                                                                                <th>OBR Number</th>
-                                                                                <th>Serial</th>
-                                                                                <th>Account Code</th>
-                                                                                <th>Supplier</th>
-                                                                                <th>Action</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            <tr>
-                                                                                <th scope="row">1</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">2</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">3</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            </tbody>
-                                                                        </table>
+                                                                                <tbody>
+                                                                                <tr class="even pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-01/03/18</td>
+                                                                                    <td class=" ">-01/03/18</td>
+                                                                                    <td class=" ">-03/03/18</td>
+                                                                                    <td class=" ">28,000</td>
+                                                                                    <td class="a-right a-right ">Office</td>
+                                                                                    <td class=" last">Sony<a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr class="odd pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-05/20/18/</td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class="a-right a-right "></td>
+                                                                                    <td class=" last"><a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr class="even pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-09/10/18-</td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class="a-right a-right "></td>
+                                                                                    <td class=" last"><a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                </tbody>
+                                                                            </table>
 
+                                                                            <div >
+                                                                                <div class="col-sm-12 text-center">
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-md"><i class="fa fa-minus-circle"></i> Distribute</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -671,7 +582,6 @@
                                                 <td>
                                                     <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                     <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                 </td>
                                             </tr>
                                             <!-- Item Details -->
@@ -680,139 +590,74 @@
                                                     <div id="data2M" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwoM">
                                                         <div class="panel-body">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <div class="x_panel">
-                                                                    <div class="x_title">
-                                                                        <div class="clearfix"></div>
-                                                                    </div>
                                                                     <div class="x_content">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-striped jambo_table bulk_action">
+                                                                                <thead>
+                                                                                <tr class="headings">
+                                                                                    <th>
+                                                                                        <input type="checkbox" id="check-all" class="flat">
+                                                                                    </th>
+                                                                                    <th class="column-title">Delivery Date</th>
+                                                                                    <th class="column-title">Date Received</th>
+                                                                                    <th class="column-title">Expiration Date</th>
+                                                                                    <th class="column-title">Cost</th>
+                                                                                    <th class="column-title">Account Code</th>
+                                                                                    <th class="column-title no-link last"><span class="nobr">Supplier</span>
+                                                                                    </th>
+                                                                                    <th class="bulk-actions" colspan="11">
+                                                                                        <a class="antoo" style="color:#fff; font-weight:00;">( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                                                                    </th>
+                                                                                </tr>
+                                                                                </thead>
 
-                                                                        <table class="table table-bordered">
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th>#</th>
-                                                                                <th>Item Name</th>
-                                                                                <th>Description</th>
-                                                                                <th>Unit</th>
-                                                                                <th>Type</th>
-                                                                                <th>Delivery Date</th>
-                                                                                <th>Date Received</th>
-                                                                                <th>Expiration Date</th>
-                                                                                <th>Cost</th>
-                                                                                <th>PO Number</th>
-                                                                                <th>PR Number</th>
-                                                                                <th>OBR Number</th>
-                                                                                <th>Serial</th>
-                                                                                <th>Account Code</th>
-                                                                                <th>Supplier</th>
-                                                                                <th>Action</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            <tr>
-                                                                                <th scope="row">1</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">2</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">3</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">4</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">5</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            </tbody>
-                                                                        </table>
+                                                                                <tbody>
+                                                                                <tr class="even pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-01/03/18</td>
+                                                                                    <td class=" ">-01/03/18</td>
+                                                                                    <td class=" ">-03/03/18</td>
+                                                                                    <td class=" ">28,000</td>
+                                                                                    <td class="a-right a-right ">Office</td>
+                                                                                    <td class=" last">Sony<a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr class="odd pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-05/20/18/</td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class="a-right a-right "></td>
+                                                                                    <td class=" last"><a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr class="even pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-09/10/18-</td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class="a-right a-right "></td>
+                                                                                    <td class=" last"><a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                </tbody>
+                                                                            </table>
 
+                                                                            <div >
+                                                                                <div class="col-sm-12 text-center">
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-md"><i class="fa fa-minus-circle"></i> Distribute</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -829,7 +674,6 @@
                                                 <td>
                                                     <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
                                                     <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
                                                 </td>
                                             </tr>
                                             <!-- Item Details -->
@@ -838,59 +682,74 @@
                                                     <div id="data3M" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingThreeM">
                                                         <div class="panel-body">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <div class="x_panel">
-                                                                    <div class="x_title">
-                                                                        <div class="clearfix"></div>
-                                                                    </div>
                                                                     <div class="x_content">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-striped jambo_table bulk_action">
+                                                                                <thead>
+                                                                                <tr class="headings">
+                                                                                    <th>
+                                                                                        <input type="checkbox" id="check-all" class="flat">
+                                                                                    </th>
+                                                                                    <th class="column-title">Delivery Date</th>
+                                                                                    <th class="column-title">Date Received</th>
+                                                                                    <th class="column-title">Expiration Date</th>
+                                                                                    <th class="column-title">Cost</th>
+                                                                                    <th class="column-title">Account Code</th>
+                                                                                    <th class="column-title no-link last"><span class="nobr">Supplier</span>
+                                                                                    </th>
+                                                                                    <th class="bulk-actions" colspan="11">
+                                                                                        <a class="antoo" style="color:#fff; font-weight:00;">( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                                                                    </th>
+                                                                                </tr>
+                                                                                </thead>
 
-                                                                        <table class="table table-bordered">
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th>#</th>
-                                                                                <th>Item Name</th>
-                                                                                <th>Description</th>
-                                                                                <th>Unit</th>
-                                                                                <th>Type</th>
-                                                                                <th>Delivery Date</th>
-                                                                                <th>Date Received</th>
-                                                                                <th>Expiration Date</th>
-                                                                                <th>Cost</th>
-                                                                                <th>PO Number</th>
-                                                                                <th>PR Number</th>
-                                                                                <th>OBR Number</th>
-                                                                                <th>Serial</th>
-                                                                                <th>Account Code</th>
-                                                                                <th>Supplier</th>
-                                                                                <th>Action</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            <tr>
-                                                                                <th scope="row">1</th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td>
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-xs"><i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            </tbody>
-                                                                        </table>
+                                                                                <tbody>
+                                                                                <tr class="even pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-01/03/18</td>
+                                                                                    <td class=" ">-01/03/18</td>
+                                                                                    <td class=" ">-03/03/18</td>
+                                                                                    <td class=" ">28,000</td>
+                                                                                    <td class="a-right a-right ">Office</td>
+                                                                                    <td class=" last">Sony<a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr class="odd pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-05/20/18/</td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class="a-right a-right "></td>
+                                                                                    <td class=" last"><a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr class="even pointer">
+                                                                                    <td class="a-center ">
+                                                                                        <input type="checkbox" class="flat" name="table_records">
+                                                                                    </td>
+                                                                                    <td class=" ">-09/10/18-</td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class=" "></td>
+                                                                                    <td class="a-right a-right "></td>
+                                                                                    <td class=" last"><a href="#"></a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                </tbody>
+                                                                            </table>
 
+                                                                            <div >
+                                                                                <div class="col-sm-12 text-center">
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-md"><i class="fa fa-minus-circle"></i> Distribute</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -950,11 +809,10 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Type<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12" required="required" placeholder="Type">
-                                    <datalist id="typelist">
-                                        <option value="CO">CO</option>
+                                    <select id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12"  required>
+                                        <option selected="true" value="CO">Capital Outlay</option>
                                         <option value="MOOE">MOOE</option>
-                                    </datalist>
+                                    </select>
                                 </div>
                             </div>
                             <div class="item form-group">
@@ -1015,6 +873,16 @@
                         <h4 class="modal-title" id="myModalLabel">Distribution</h4>
                     </div>
                     <div class="modal-body">
+                        <b>Distribute Item with Serial:</b>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">6161d6sdcd</br>
+                                <input type="checkbox" value="">6161d6sdcd</br>
+                                <input type="checkbox" value="">6161d6sdcd</br>
+                                <input type="checkbox" value="">6161d6sdcd
+                            </label>
+                        </div>
+                        <b>To</b>
                         <form class="form-horizontal form-label-left" novalidate>
                             <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department<span class="required">*</span>
@@ -1024,113 +892,93 @@
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">PO Number<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="number" id="email" name="quant" min=0 required="required" class="form-control col-md-7 col-xs-12">
+                                    <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text">
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Received By<span class="required">*</span>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">PR Number<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="website" name="owner" required="required" class="form-control col-md-7 col-xs-12">
+                                    <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text">
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Account Code<span class="required">*</span>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">OBR Number<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="website" name="Code" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">PO No.</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="number" name="po" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">PR No.<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="number" name="pr" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">OBR No.<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="number" name="obr" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                                    <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text">
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
-                        <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
-                    </div>
 
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                            <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /Distribution-->
+
+            <!--Edit-->
+            <div class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Edit</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal form-label-left" novalidate>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Item Name<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="item" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Description<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" name="description" required="required" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Unit<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" name="Unit" required="required" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Type<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" name="Type" required="required" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                            <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- /Distribution-->
-
-        <!--Edit-->
-        <div class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Edit</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal form-label-left" novalidate>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Item Name<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="item" required="required" type="text">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Description<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="description" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Unit<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="Unit" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Type<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="Type" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
-                        <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+        <div class="clearfix"></div>
     </div>
-    <div class="clearfix"></div>
-</div>
-<!--/Edit-->
-<!-- /Mdal -->
+    <!--/Edit-->
+    <!-- /Mdal -->
 
 
 
