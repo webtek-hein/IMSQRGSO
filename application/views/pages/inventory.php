@@ -888,7 +888,7 @@
     <!-- Modal -->
     <!-- Add Quantity -->
     <div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
@@ -981,7 +981,7 @@
 
     <!--Distribution-->
     <div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
@@ -1053,7 +1053,7 @@
 
     <!--Edit-->
     <div class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">

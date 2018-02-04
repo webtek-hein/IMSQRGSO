@@ -54,9 +54,7 @@
                                                         <div id="Ddata1" class="panel-collapse collapse " role="tabpanel" aria-labelledby="DheadingOne">
                                                             <div class="panel-body">
                                                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <div class="x_panel">
                                                                         <div class="x_content">
-
                                                                             <table class="table table-bordered">
                                                                                 <thead>
                                                                                 <tr>
@@ -117,7 +115,6 @@
                                                                             </table>
 
                                                                         </div>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -139,12 +136,7 @@
                                                         <div id="Ddata2" class="panel-collapse collapse " role="tabpanel" aria-labelledby="DheadingTwo">
                                                             <div class="panel-body">
                                                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <div class="x_panel">
-                                                                        <div class="x_title">
-                                                                            <div class="clearfix"></div>
-                                                                        </div>
                                                                         <div class="x_content">
-
                                                                             <table class="table table-bordered">
                                                                                 <thead>
                                                                                 <tr>
@@ -255,7 +247,6 @@
                                                                             </table>
 
                                                                         </div>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -276,12 +267,7 @@
                                                         <div id="Ddata3" class="panel-collapse collapse " role="tabpanel" aria-labelledby="DheadingThree">
                                                             <div class="panel-body">
                                                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <div class="x_panel">
-                                                                        <div class="x_title">
-                                                                            <div class="clearfix"></div>
-                                                                        </div>
                                                                         <div class="x_content">
-
                                                                             <table class="table table-bordered">
                                                                                 <thead>
                                                                                 <tr>
@@ -322,9 +308,7 @@
                                                                                 </tr>
                                                                                 </tbody>
                                                                             </table>
-
                                                                         </div>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -365,12 +349,7 @@
                                                         <div id="Ddata1M" class="panel-collapse collapse " role="tabpanel" aria-labelledby="DheadingOneM">
                                                             <div class="panel-body">
                                                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <div class="x_panel">
-                                                                        <div class="x_title">
-                                                                            <div class="clearfix"></div>
-                                                                        </div>
                                                                         <div class="x_content">
-
                                                                             <table class="table table-bordered">
                                                                                 <thead>
                                                                                 <tr>
@@ -429,9 +408,7 @@
                                                                                 </tr>
                                                                                 </tbody>
                                                                             </table>
-
                                                                         </div>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -453,12 +430,7 @@
                                                         <div id="Ddata2M" class="panel-collapse collapse " role="tabpanel" aria-labelledby="DheadingTwoM">
                                                             <div class="panel-body">
                                                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <div class="x_panel">
-                                                                        <div class="x_title">
-                                                                            <div class="clearfix"></div>
-                                                                        </div>
                                                                         <div class="x_content">
-
                                                                             <table class="table table-bordered">
                                                                                 <thead>
                                                                                 <tr>
@@ -567,9 +539,7 @@
                                                                                 </tr>
                                                                                 </tbody>
                                                                             </table>
-
                                                                         </div>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -590,12 +560,7 @@
                                                         <div id="Ddata3M" class="panel-collapse collapse " role="tabpanel" aria-labelledby="DheadingThreeM">
                                                             <div class="panel-body">
                                                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <div class="x_panel">
-                                                                        <div class="x_title">
-                                                                            <div class="clearfix"></div>
-                                                                        </div>
                                                                         <div class="x_content">
-
                                                                             <table class="table table-bordered">
                                                                                 <thead>
                                                                                 <tr>
@@ -638,7 +603,6 @@
                                                                             </table>
 
                                                                         </div>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
