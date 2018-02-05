@@ -11,7 +11,9 @@
     <title>Baguio City Hall</title>
 
     <!-- Bootstrap -->
-    <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Tables-->
+    <link rel="stylesheet" href="assets/css/bootstrap-table.css">
     <!-- Font Awesome -->
     <link href="assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->

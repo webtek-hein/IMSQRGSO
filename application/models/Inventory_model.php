@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Inventory_model extends CI_Model{
     //Adding of Item to the inventory
+    public function  viewincrease(){
+        $query = $this->db->get('item');
+        return $query->result_array();
+
+    }
     public function add_item(){
         $quantity = $this->input->post('quant');
         $data = array(

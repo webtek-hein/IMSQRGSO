@@ -164,29 +164,60 @@
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
 
                                     <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                                        <table  id="items" class="table table-hover">
+                                    <!-- Implement Bootsrap table-->
+                                        <table data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
                                             <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Item Name</th>
-                                                <th>Description</th>
-                                                <th>Quantity</th>
-                                                <th>Unit</th>
-                                                <th>Action</th>
+                                                <!-- Data-field for getting data  -->
+                                            <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
+                                                <th data-sortable="true" data-field="number">#</th>
+                                                <th data-sortable="true" data-field="item">Item Name</th>
+                                                <th data-sortable="true" data-field="description">Description</th>
+                                                <th data-sortable="true" data-field="quantity">Quantity</th>
+                                                <th data-sortable="true" data-field="unit">Unit</th>
+                                                <th data-sortable="true" data-field="type">Item Type</th>
+                                                <th data-field="action">Action</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                            <!-- Item Details -->
-
+                                            <!-- start of Item Details -->
+                                            <tr>
+                                                <td colspan="12">
+                                                    <div id="accordion" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                                        <div class="panel-body">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="x_content">
+                                                                    <div class="table-responsive">
+                                                                        <table id="details">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th data-sortable="true" data-field="del" class="column-title">Delivery Date</th>
+                                                                                    <th data-sortable="true" data-field="rec" class="column-title">Date Received</th>
+                                                                                    <th data-sortable="true" data-field="exp" class="column-title">Expiration Date</th>
+                                                                                    <th data-sortable="true" data-field="cost" class="column-title">Cost</th>
+                                                                                    <th data-sortable="true" data-field="sup" class="column-title no-link last">
+                                                                                        <span class="nobr">Supplier</span>
+                                                                                    </th>
+                                                                                    <th class="bulk-actions" colspan="11">
+                                                                                        <a class="antoo" style="color:#fff; font-weight:00;"> ( <span class="action-cnt"> </span> )
+                                                                                            <i class="fa fa-chevron-down"></i>
+                                                                                        </a>
+                                                                                    </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <div>
+                                                                                <div class="col-sm-12 text-center">
+                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-md">
+                                                                                        <i class="fa fa-minus-circle"></i> Distribute</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </table>
                                                                     </div>
-                                                                </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
                                                 </td>
                                             </tr>
-                                            <!--/Item Details-->
-                                            </tbody>
+                                            <!-- end of Item Details-->
                                         </table>
                                     </div>
                                 </div>

@@ -11,6 +11,12 @@
 
 <!-- jQuery -->
 <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
+<!-- bootstrap js -->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- bootstrap table js -->
+<script src="assets/js/bootstrap-table.js"></script>
+<-- localization -->
+<script src="assets/js/bootstrap-table-en-US.js"></script>
 <!-- Bootstrap -->
 <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
@@ -63,7 +69,6 @@
                 $('#dept').append(this);
             });
         });
-
 
     });
     function detail(id) {
