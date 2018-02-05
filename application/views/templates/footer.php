@@ -63,7 +63,17 @@
                 $('#dept').append(this);
             });
         });
+
+
     });
+    function detail(id) {
+        $.getJSON('inventory/detail/'+id,function (data) {
+            $(data.detail).each(function () {
+                $('#det'+id).replaceWith(this);
+            });
+        });
+
+    }
 </script>
 </body>
 </html>

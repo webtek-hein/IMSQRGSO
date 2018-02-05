@@ -45,7 +45,7 @@ class Inventory_model extends CI_Model{
     //Add quantity to a specific item
     public function addquant(){
         $id = $this->input->post('id');
-        $id=6;
+        $id=1;
         //1. Get Quantity
         $quantity = $this->input->post('quant');
 
@@ -101,9 +101,9 @@ class Inventory_model extends CI_Model{
         $this->db->where('item_id',$item_id);
         $this->db->update('item');
     }
-    public function viewdetail($id){
+    public function viewdetail($id = 1){
         $this->db->join('itemdetail','item.item_id = itemdetail.item_id','inner');
-        $query = $this->db->get_where('item',array('item.item_id' => $id));
+        $query = $this->db->get_where('item',array('item.item_id'=>$id));;
         return $query->result_array();
     }
     public function selectdetails(){
