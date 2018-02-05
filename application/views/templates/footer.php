@@ -54,7 +54,15 @@
 <!-- bootstrap-daterangepicker -->
 <script src="assets/vendors/moment/min/moment.min.js"></script>
 <script src="assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-
+<!-- data tables -->
+<script src="assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/chartjs/Chart.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap-dialog.min.js"></script>
+<!-- AdminLTE App -->
+<script src="assets/dist/js/app.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="assets/build/js/custom.min.js"></script>
 <script>

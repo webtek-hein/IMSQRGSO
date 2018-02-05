@@ -24,19 +24,16 @@
                                     <div class="x_panel">
                                         <div class="x_content">
                                             <form class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                     <input type="text" name="item" class="form-control" id="inputSuccess2" placeholder="Item Name">
                                                 </div>
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="description" class="form-control" id="inputSuccess4" placeholder="Description" required="required">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
                                                 </div>
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost" required="required">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
                                                 </div>
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity" required="required">
-                                                </div>
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                     <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
                                                     <datalist id="list">
                                                         <option value="piece">piece</option>
@@ -49,25 +46,27 @@
                                                         <option value="others">others</option>
                                                     </datalist>
                                                 </div>
-
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12" required="required" placeholder="Type">
-                                                    <datalist id="typelist">
-                                                        <option value="CO">CO</option>
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <select id="type" list="typelist" name="Type" class="form-control"  required placeholder="Type">
+                                                        <option value="Capital Outlay">Capital Outlay</option>
                                                         <option value="MOOE">MOOE</option>
-                                                    </datalist>
+                                                    </select>
                                                 </div>
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="del1" class="form-control" id="inputSuccess4" placeholder="Delivery Date" required="required">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
                                                 </div>
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="rec1" class="form-control" id="inputSuccess4" placeholder="Date Received" required="required">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
                                                 </div>
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="exp1" class="form-control" id="inputSuccess4" placeholder="Expiration Date" required="required">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
                                                 </div>
-                                                <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier" required="required">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                              data-parsley-validation-threshold="10" placeholder="Description"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
@@ -83,6 +82,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     <div class="panel">
                         <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
