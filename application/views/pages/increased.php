@@ -34,6 +34,8 @@
                           <th data-sortable="true" data-field="description">Description</th>
                           <th data-sortable="true" data-field="quantity">Quantity</th>
                           <th data-sortable="true" data-field="unit">Unit</th>
+                          <th data-sortable="true" data-field="datereceiived">Date Received</th>
+                          <th data-sortable="true" data-field="cost">Cost</th>
                         </tr>
                       </thead>
                       <tbody data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
