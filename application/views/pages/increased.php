@@ -29,70 +29,15 @@
                         <table id="datatable-buttons" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th>#</th>
-                          <th>Item Name</th>
-                          <th>Description</th>
-                          <th>Quantity</th>
-                          <th>Unit</th>
+                          <th data-sortable="true" data-field="number">#</th>
+                          <th data-sortable="true" data-field="item">Item Name</th>
+                          <th data-sortable="true" data-field="description">Description</th>
+                          <th data-sortable="true" data-field="quantity">Quantity</th>
+                          <th data-sortable="true" data-field="unit">Unit</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td></td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Garrett Winters</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>63</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Ashton Cox</td>
-                          <td>Junior Technical Author</td>
-                          <td>San Francisco</td>
-                          <td>66</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Cedric Kelly</td>
-                          <td>Senior Javascript Developer</td>
-                          <td>Edinburgh</td>
-                          <td>22</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Brielle Williamson</td>
-                          <td>Integration Specialist</td>
-                          <td>New York</td>
-                          <td>61</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Herrod Chandler</td>
-                          <td>Sales Assistant</td>
-                          <td>San Francisco</td>
-                          <td>59</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Rhona Davidson</td>
-                          <td>Integration Specialist</td>
-                          <td>Tokyo</td>
-                          <td>55</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Colleen Hurst</td>
-                          <td>Javascript Developer</td>
-                          <td>San Francisco</td>
-                          <td>39</td>
-                        </tr>
+                      <tbody data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
+                        
                       </tbody>
                       </table>
                         </div>
@@ -102,76 +47,14 @@
                       <table id="datatable-buttons" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th>#</th>
-                          <th>Item Name</th>
-                          <th>Description</th>
-                          <th>Quantity</th>
-                          <th>Unit</th>
+                          <th data-sortable="true" data-field="number">#</th>
+                          <th data-sortable="true" data-field="item">Item Name</th>
+                          <th data-sortable="true" data-field="description">Description</th>
+                          <th data-sortable="true" data-field="quantity">Quantity</th>
+                          <th data-sortable="true" data-field="unit">Unit</th>
                         </tr>
-                        <tbody>
-                        <tr>
-                          <td></td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Garrett Winters</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>63</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Ashton Cox</td>
-                          <td>Junior Technical Author</td>
-                          <td>San Francisco</td>
-                          <td>66</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Cedric Kelly</td>
-                          <td>Senior Javascript Developer</td>
-                          <td>Edinburgh</td>
-                          <td>22</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Airi Satou</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>33</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Brielle Williamson</td>
-                          <td>Integration Specialist</td>
-                          <td>New York</td>
-                          <td>61</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Herrod Chandler</td>
-                          <td>Sales Assistant</td>
-                          <td>San Francisco</td>
-                          <td>59</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Rhona Davidson</td>
-                          <td>Integration Specialist</td>
-                          <td>Tokyo</td>
-                          <td>55</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Colleen Hurst</td>
-                          <td>Javascript Developer</td>
-                          <td>San Francisco</td>
-                          <td>39</td>
-                        </tr>
+                        <tbody data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
+                        
                       </tbody>
                       </thead>
                       </table>

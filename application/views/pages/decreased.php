@@ -29,19 +29,19 @@
                         <table id="datatable-buttons" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th>#</th>
-                          <th>Decrease Date</th>
-                          <th>Item Name</th>
-                          <th>Description</th>
-                          <th>Serial</th>
-                          <th>Date Acquired</th>
-                          <th>Received By</th>
-                          <th>Received From</th>
-                          <th>Account Code</th>
-                          <th>Department</th>
-                          <th>Unit</th>
-                          <th>Type</th>
-                          <th>Item Status</th>
+                          <th data-sortable="true" data-field="number">#</th>
+                          <th data-sortable="true" data-field="decreasedate">Decrease Date</th>
+                          <th data-sortable="true" data-field="item">Item Name</th>
+                          <th data-sortable="true" data-field="description">Description</th>
+                          <th data-sortable="true" data-field="serial">Serial</th>
+                          <th data-sortable="true" data-field="dateaquired">Date Acquired</th>
+                          <th data-sortable="true" data-field="recby">Received By</th>
+                          <th data-sortable="true" data-field="recfrom">Received From</th>
+                          <th data-sortable="true" data-field="acccode">Account Code</th>
+                          <th data-sortable="true" data-field="dept">Department</th>
+                          <th data-sortable="true" data-field="unit">Unit</th>
+                          <th data-sortable="true" data-field="type">Type</th>
+                          <th data-sortable="true" data-field="status">Item Status</th>
                         </tr>
                       </thead>
                       <tbody>
