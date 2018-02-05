@@ -21,4 +21,15 @@ class Logs extends CI_Controller {
             redirect('decreased');
     }
 
+        public function editLog()
+    {
+        $this->logs->edit_log();
+        redirect('edit');
+    }
+
+        public function returnLog()
+    {
+        $this->logs->return_log();
+        redirect('return');
+    }
  }

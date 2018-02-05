@@ -30,55 +30,19 @@
                         <table id="datatable-buttons" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th>#</th>
-                          <th>Date Return</th>
-                          <th>Reason</th>
-                          <th>Receive From</th>
-                          <th>Received By</th>
-                          <th>Status Return</th>
+                          <th data-sortable="true" data-field="number">#</th>
+                          <th data-sortable="true" data-field="item">Item Name</th>
+                          <th data-sortable="true" data-field="description">Item Description</th>
+                          <th data-sortable="true" data-field="datereturn">Date Return</th>
+                          <th data-sortable="true" data-field="reason">Reason</th>
+                          <th data-sortable="true" data-field="receivedfrom">Received From</th>
+                          <th data-sortable="true" data-field="receivedby">Received By</th>
+                          <th data-sortable="true" data-field="status">Status Return</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td></td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>91</td>
-                          <td>91</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Garrett Winters</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>93</td>
-                          <td>91</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Ashton Cox</td>
-                          <td>Junior Technical Author</td>
-                          <td>San Francisco</td>
-                          <td>93</td>
-                          <td>91</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Cedric Kelly</td>
-                          <td>Senior Javascript Developer</td>
-                          <td>Edinburgh</td>
-                          <td>93</td>
-                          <td>91</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Brielle Williamson</td>
-                          <td>Integration Specialist</td>
-                          <td>New York</td>
-                          <td>93</td>
-                          <td>91</td>
-                      </tbody>
+                            <tbody data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
+
+                            </tbody>
                       </table>
                         </div>
 
@@ -87,54 +51,18 @@
                       <table id="datatable-buttons" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th>#</th>
-                          <th>Date Return</th>
-                          <th>Reason</th>
-                          <th>Receive From</th>
-                          <th>Received By</th>
-                          <th>Status Return</th>
+                            <th data-sortable="true" data-field="number">#</th>
+                            <th data-sortable="true" data-field="item">Item Name</th>
+                            <th data-sortable="true" data-field="description">Item Description</th>
+                            <th data-sortable="true" data-field="datereturn">Date Return</th>
+                            <th data-sortable="true" data-field="reason">Reason</th>
+                            <th data-sortable="true" data-field="receivedfrom">Received From</th>
+                            <th data-sortable="true" data-field="receivedby">Received By</th>
+                            <th data-sortable="true" data-field="status">Status Return</th>
                         </tr>
-                        <tbody>
-                        <tr>
-                          <td></td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>91</td>
-                          <td>91</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Garrett Winters</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>93</td>
-                          <td>91</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Ashton Cox</td>
-                          <td>Junior Technical Author</td>
-                          <td>San Francisco</td>
-                          <td>93</td>
-                          <td>91</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Cedric Kelly</td>
-                          <td>Senior Javascript Developer</td>
-                          <td>Edinburgh</td>
-                          <td>93</td>
-                          <td>91</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Brielle Williamson</td>
-                          <td>Integration Specialist</td>
-                          <td>New York</td>
-                          <td>93</td>
-                          <td>91</td>
-                      </tbody>
+                          <tbody data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
+
+                          </tbody>
                       </thead>
                       </table>
                         </div>

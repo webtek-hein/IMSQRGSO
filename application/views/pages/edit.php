@@ -29,80 +29,21 @@
                         <table id="datatable-buttons" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th>#</th>
-                          <th>Before Item Name</th>
-                          <th>After Item Name</th>
-                          <th>Before Description</th>
-                          <th>After Description</th>
-                          <th>Before Unit</th>
-                          <th>After Unit</th>
-                          <th>Before Item Type</th>
-                          <th>After Item Type</th>
-                          <th>Date</th>
+                          <th data-sortable="true" data-field="number">#</th>
+                          <th data-sortable="true" data-field="beforeitem">Before Item Name</th>
+                          <th data-sortable="true" data-field="afteritem">After Item Name</th>
+                          <th data-sortable="true" data-field="beforedescription">Before Description</th>
+                          <th data-sortable="true" data-field="afterdescription">After Description</th>
+                          <th data-sortable="true" data-field="beforeunit">Before Unit</th>
+                          <th data-sortable="true" data-field="afterunit">After Unit</th>
+                          <th data-sortable="true" data-field="beforetype">Before Item Type</th>
+                          <th data-sortable="true" data-field="aftertype">After Item Type</th>
+                          <th data-sortable="true" data-field="date">Date</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td></td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>01/02/2018</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Garrett Winters</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>63</td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>01/02/2018</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Ashton Cox</td>
-                          <td>Junior Technical Author</td>
-                          <td>San Francisco</td>
-                          <td>66</td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>01/03/2018</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Cedric Kelly</td>
-                          <td>Senior Javascript Developer</td>
-                          <td>Edinburgh</td>
-                          <td>22</td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>01/07/2018</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Brielle Williamson</td>
-                          <td>Integration Specialist</td>
-                          <td>New York</td>
-                          <td>61</td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>01/10/2018</td>
-                        </tr>
-                      </tbody>
+                            <tbody data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
+
+                            </tbody>
                       </table>
                         </div>
 
@@ -111,79 +52,20 @@
                       <table id="datatable-buttons" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th>#</th>
-                          <th>Before Item Name</th>
-                          <th>After Item Name</th>
-                          <th>Before Description</th>
-                          <th>After Description</th>
-                          <th>Before Unit</th>
-                          <th>After Unit</th>
-                          <th>Before Item Type</th>
-                          <th>After Item Type</th>
-                          <th>Date</th>
+                            <th data-sortable="true" data-field="number">#</th>
+                            <th data-sortable="true" data-field="beforeitem">Before Item Name</th>
+                            <th data-sortable="true" data-field="afteritem">After Item Name</th>
+                            <th data-sortable="true" data-field="beforedescription">Before Description</th>
+                            <th data-sortable="true" data-field="afterdescription">After Description</th>
+                            <th data-sortable="true" data-field="beforeunit">Before Unit</th>
+                            <th data-sortable="true" data-field="afterunit">After Unit</th>
+                            <th data-sortable="true" data-field="beforetype">Before Item Type</th>
+                            <th data-sortable="true" data-field="aftertype">After Item Type</th>
+                            <th data-sortable="true" data-field="date">Date</th>
                         </tr>
-                        <tbody>
-                        <tr>
-                          <td></td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>01/02/2018</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Garrett Winters</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>63</td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>01/02/2018</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Ashton Cox</td>
-                          <td>Junior Technical Author</td>
-                          <td>San Francisco</td>
-                          <td>66</td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>01/03/2018</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Cedric Kelly</td>
-                          <td>Senior Javascript Developer</td>
-                          <td>Edinburgh</td>
-                          <td>22</td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>01/07/2018</td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>Brielle Williamson</td>
-                          <td>Integration Specialist</td>
-                          <td>New York</td>
-                          <td>61</td>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>01/10/2018</td>
-                        </tr>
-                      </tbody>
+                          <tbody data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
+
+                          </tbody>
                       </thead>
                       </table>
                         </div>
