@@ -1,0 +1,13 @@
+input[type="date"]:not(.has-value):before{
+    color: #9e9999;
+    content: attr(placeholder);
+}
+input[type="date"][name="del1"]{
+    text-align: right;
+}
+input[type="date"][name="rec1"]{
+    text-align: right;
+}
+input[type="date"][name="exp1"]{
+    text-align: right;
+}

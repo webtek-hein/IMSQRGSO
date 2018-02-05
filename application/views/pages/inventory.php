@@ -28,13 +28,13 @@
                                                     <input type="text" name="item" class="form-control" id="inputSuccess2" placeholder="Item Name">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="description" class="form-control" id="inputSuccess4" placeholder="Description">
+                                                    <input type="text" name="description" class="form-control" id="inputSuccess4" placeholder="Description" required="required">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
+                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost" required="required">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
+                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity" required="required">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
                                                     <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
@@ -51,22 +51,23 @@
                                                 </div>
 
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <select id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12"  required placeholder="Type">
-                                                        <option value="Capital Outlay">Capital Outlay</option>
+                                                    <input id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12" required="required" placeholder="Type">
+                                                    <datalist id="typelist">
+                                                        <option value="CO">CO</option>
                                                         <option value="MOOE">MOOE</option>
-                                                    </select>
+                                                    </datalist>
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
+                                                    <input type="date" name="del1" class="form-control" id="inputSuccess4" placeholder="Delivery Date" required="required">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
+                                                    <input type="date" name="rec1" class="form-control" id="inputSuccess4" placeholder="Date Received" required="required">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
+                                                    <input type="date" name="exp1" class="form-control" id="inputSuccess4" placeholder="Expiration Date" required="required">
                                                 </div>
                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group">
-                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
+                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier" required="required">
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
@@ -540,14 +541,14 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="number" name="quant" min=0 required="required" class="form-control col-md-7 col-xs-12">
+                                    <input type="number" name="quant" min=0 required="required" class="form-control col-md-7 col-xs-12" placeholder="Quantity">
                                 </div>
                             </div>
                             <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Unit<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list">
+                                    <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
                                     <datalist id="list">
                                         <option value="piece">piece</option>
                                         <option value="box">box</option>
@@ -564,10 +565,11 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Type<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12"  required>
-                                        <option selected="true" value="CO">Capital Outlay</option>
+                                    <input id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12" required="required" placeholder="Type">
+                                    <datalist id="typelist">
+                                        <option value="CO">CO</option>
                                         <option value="MOOE">MOOE</option>
-                                    </select>
+                                    </datalist>
                                 </div>
                             </div>
                             <div class="item form-group">
@@ -587,7 +589,7 @@
                             <div class="item form-group">
                                 <label for="password" class="control-label col-md-3">Unit Cost</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="number" name="cost" data-validate-length="6,8" class="form-control col-md-7 col-xs-12" required="required">
+                                    <input type="number" name="cost" data-validate-length="6,8" class="form-control col-md-7 col-xs-12" required="required" placeholder="Unit Cost">
                                 </div>
                             </div>
                             <div class="item form-group">
@@ -601,7 +603,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Supplier<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="supp" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                                    <input type="text" name="supp" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12" placeholder="Supplier">
                                 </div>
                             </div>
                     </div>
@@ -641,28 +643,28 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text">
+                                    <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="Department">
                                 </div>
                             </div>
                             <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">PO Number<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text">
+                                    <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="PO Number">
                                 </div>
                             </div>
                             <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">PR Number<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text">
+                                    <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="PR Number">
                                 </div>
                             </div>
                             <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">OBR Number<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text">
+                                    <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="OBR Number">
                                 </div>
                             </div>
                         </form>
@@ -692,28 +694,28 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Item Name<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="item" required="required" type="text">
+                                        <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="item" required="required" type="text" placeholder="Item Name">
                                     </div>
                                 </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Description<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" name="description" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" name="description" required="required" class="form-control col-md-7 col-xs-12" placeholder="Description">
                                     </div>
                                 </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Unit<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" name="Unit" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" name="Unit" required="required" class="form-control col-md-7 col-xs-12" placeholder="Unit">
                                     </div>
                                 </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Type<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" name="Type" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" name="Type" required="required" class="form-control col-md-7 col-xs-12" placeholder="Type">
                                     </div>
                                 </div>
                             </form>

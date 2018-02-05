@@ -161,21 +161,21 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Account Code<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="accountcode" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="AccountCode" required="required" type="text">
+                                        <input id="accountcode" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="AccountCode" required="required" type="text" placeholder="Account Code">
                                     </div>
                                 </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Serial Number<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="serialno" name="SerialNumber" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="serialno" name="SerialNumber" required="required" class="form-control col-md-7 col-xs-12" placeholder="Serial Number">
                                     </div>
                                 </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Received By<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="receivedby" name="ReceivedBy" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="receivedby" name="ReceivedBy" required="required" class="form-control col-md-7 col-xs-12" placeholder="Received By">
                                     </div>
                                 </div>
                             </form>

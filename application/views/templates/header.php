@@ -27,9 +27,10 @@
     <link href="assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
     <!-- Custom Theme Style -->
     <link href="assets/build/css/custom.min.css" rel="stylesheet">
+    <!-- Placeholder for Dates Style -->
+    <link href="assets/css/placeholder-date.css" rel="stylesheet">
 </head>
 
 <body class="nav-md">
