@@ -166,7 +166,8 @@
 
                                     <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                                     <!-- Implement Bootsrap table-->
-                                        <table data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
+                                        <div class="x_panel">
+                                        <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
                                             <thead>
                                                 <!-- Data-field for getting data  -->
                                             <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
@@ -180,6 +181,7 @@
                                             </tr>
                                             </thead>
                                             <!-- start of Item Details -->
+                                            <tbody>
                                             <tr>
                                                 <td colspan="12">
                                                     <div id="accordion" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -218,8 +220,22 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            </tbody>
+                                            <tfoot>
+                                            <!-- Data-field for getting data  -->
+                                            <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
+                                                <th data-sortable="true" data-field="number">#</th>
+                                                <th data-sortable="true" data-field="item">Item Name</th>
+                                                <th data-sortable="true" data-field="description">Description</th>
+                                                <th data-sortable="true" data-field="quantity">Quantity</th>
+                                                <th data-sortable="true" data-field="unit">Unit</th>
+                                                <th data-sortable="true" data-field="type">Item Type</th>
+                                                <th data-field="action">Action</th>
+                                            </tr>
+                                            </tfoot>
                                             <!-- end of Item Details-->
                                         </table>
+                                        </div>
                                     </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
@@ -260,9 +276,6 @@
                                                                             <table class="table table-striped jambo_table bulk_action">
                                                                                 <thead>
                                                                                 <tr class="headings">
-                                                                                    <th>
-                                                                                        <input type="checkbox" id="check-all" class="flat">
-                                                                                    </th>
                                                                                     <th class="column-title">Delivery Date</th>
                                                                                     <th class="column-title">Date Received</th>
                                                                                     <th class="column-title">Expiration Date</th>
@@ -278,9 +291,6 @@
 
                                                                                 <tbody>
                                                                                 <tr class="even pointer">
-                                                                                    <td class="a-center ">
-                                                                                        <input type="checkbox" class="flat" name="table_records">
-                                                                                    </td>
                                                                                     <td class=" ">-01/03/18</td>
                                                                                     <td class=" ">-01/03/18</td>
                                                                                     <td class=" ">-03/03/18</td>
@@ -290,9 +300,6 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr class="odd pointer">
-                                                                                    <td class="a-center ">
-                                                                                        <input type="checkbox" class="flat" name="table_records">
-                                                                                    </td>
                                                                                     <td class=" ">-05/20/18/</td>
                                                                                     <td class=" "></td>
                                                                                     <td class=" "></td>
@@ -302,9 +309,6 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr class="even pointer">
-                                                                                    <td class="a-center ">
-                                                                                        <input type="checkbox" class="flat" name="table_records">
-                                                                                    </td>
                                                                                     <td class=" ">-09/10/18-</td>
                                                                                     <td class=" "></td>
                                                                                     <td class=" "></td>
@@ -513,6 +517,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <!-- /Item Details -->
                                             </tbody>
                                         </table>
                                     </div>
