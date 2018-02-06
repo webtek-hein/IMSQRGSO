@@ -82,77 +82,102 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
                 <!--ADD BULK-->
                 <div class="panel">
-                        <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <h4 class="panel-title">Add Bulk</h4>
-                        </a>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="panel-body">
-
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="x_panel">
-
-                                        <!-- Smart Wizard -->
-
-                                        <div id="wizard" class="form_wizard wizard_horizontal">
-                                            <ul class="wizard_steps">
-                                                <li>
-                                                    <a href="#step-1">
-                                                        <span class="step_no">1</span>
-                                                        <span class="step_descr">
-                                                    Item 1<br />
-                                                </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#step-2">
-                                                        <span class="step_no">2</span>
-                                                        <span class="step_descr">
-                                                    Item 2<br />
-                                                </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#step-3">
-                                                        <span class="step_no">3</span>
-                                                        <span class="step_descr">
-                                                    Item 3<br />
-                                                </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#step-4">
-                                                        <span class="step_no">4</span>
-                                                        <span class="step_descr">
-                                                    Item 4<br />
-                                                </span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <div id="step-1">
-
-
+                    <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <h4 class="panel-title">Add Bulk</h4>
+                    </a>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_panel">
+                                    <div class="x_content">
+                                        <form class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                <input type="text" name="item" class="form-control" id="inputSuccess2" placeholder="Item Name">
                                             </div>
-
-                                            <div id="step-2">
-
+                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
                                             </div>
-                                            <div id="step-3">
-
+                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
                                             </div>
-                                            <div id="step-4">
-
+                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
+                                                <datalist id="list">
+                                                    <option value="piece">piece</option>
+                                                    <option value="box">box</option>
+                                                    <option value="set">set</option>
+                                                    <option value="ream">ream</option>
+                                                    <option value="dozen">dozen</option>
+                                                    <option value="bundle">bundle</option>
+                                                    <option value="sack">sack</option>
+                                                    <option value="others">others</option>
+                                                </datalist>
                                             </div>
-
-                                        </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                <select id="type" list="typelist" name="Type" class="form-control"  required placeholder="Type">
+                                                    <option value="Capital Outlay">Capital Outlay</option>
+                                                    <option value="MOOE">MOOE</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <textarea id="message" required="required" class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                              data-parsley-validation-threshold="10" placeholder="Description"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
+                                                    <button type="button" class="btn btn-primary"><i class="fa fa-mail-reply"></i> Previous</button>
+                                                    <button type="submit" class="btn btn-success"><i class="fa fa-send"></i> Submit</button>
+                                                    <button type="button" class="btn btn-primary"><i class="fa fa-mail-forward"></i> Next</button>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <nav>
+                                                    <ul class="pagination pg-blue">
+                                                        <li class="page-item disabled">
+                                                            <a class="page-link" href="#" aria-label="Previous">
+                                                                <span aria-hidden="true">&laquo;</span>
+                                                                <span class="sr-only">Previous</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="page-item active">
+                                                            <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                                                        </li>
+                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                                        <li class="page-item">
+                                                            <a class="page-link" href="#" aria-label="Next">
+                                                                <span aria-hidden="true">&raquo;</span>
+                                                                <span class="sr-only">Next</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <!-- /ADD BULK-->
 
                 <!-- Main Table Content-->
                 <div class="x_content">
@@ -785,7 +810,7 @@
             </div>
             <!--end of edit-->
             <!-- /Modal -->
-
+        </div>
         <div class="clearfix"></div>
     </div>
 </div>
