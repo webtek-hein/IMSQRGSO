@@ -140,12 +140,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
-                                                    <button type="button" class="btn btn-primary"><i class="fa fa-mail-reply"></i> Previous</button>
-                                                    <button type="submit" class="btn btn-success"><i class="fa fa-send"></i> Submit</button>
-                                                    <button type="button" class="btn btn-primary"><i class="fa fa-mail-forward"></i> Next</button>
+                                                    <button type="button" class="btn btn-default"><i class="fa fa-mail-reply"></i> Privious</button>
+                                                    <button type="submit" class="btn btn-success"><i class="fa fa-send"></i> Submit</a></button>
+                                                    <button type="button" class="btn btn-default"><i class="fa fa-mail-forward"></i> Next</button>
                                                 </div>
                                             </div>
-                                            <div>
                                                 <nav>
                                                     <ul class="pagination pg-blue">
                                                         <li class="page-item disabled">
@@ -161,6 +160,7 @@
                                                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                                                         <li class="page-item"><a class="page-link" href="#">4</a></li>
                                                         <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
                                                         <li class="page-item">
                                                             <a class="page-link" href="#" aria-label="Next">
                                                                 <span aria-hidden="true">&raquo;</span>
@@ -169,7 +169,6 @@
                                                         </li>
                                                     </ul>
                                                 </nav>
-                                            </div>
                                         </form>
                                     </div>
                                 </div>

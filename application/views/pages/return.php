@@ -205,7 +205,7 @@
                             <b>Are You sure you want to Ignore this Entry?</b>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Yes</button>
+                            <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-check-square-o"></i> Yes</button>
                             <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
                         </div>
 
