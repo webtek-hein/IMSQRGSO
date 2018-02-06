@@ -34,7 +34,26 @@ class Logs extends CI_Controller {
         public function decreaseLog()
     {
             $this->logs->decrease_log();
-            redirect('decreased');
+            $counter = 1;
+            foreach ($dec as $list){
+                $row = array();
+                $row['decreasedate'] = $list['decrease_date'];
+                $row['item'] = $list['item_name'];
+                $row['description'] = $list['item_description'];
+                $row['serial'] = $list['serial'];
+                $row['dateacquired'] = $list['date_acquired'];
+                $row['receivedby'] = $list['receivedby'];
+                $row['receivedfrom'] = $list['received_from'];
+                $row['accountcode'] = $list['account_code'];
+                $row['department'] = $list['department'];
+                $row['unit'] = $list['unit'];
+                $row['type'] = $list['item_type'];
+                $row['status'] = $list['item_status'];
+
+                $data[] = $row;
+                $counter++;
+            }
+            echo json_encode($dec);
     }
 
         public function editLog()

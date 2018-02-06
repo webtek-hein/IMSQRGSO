@@ -27,7 +27,7 @@
                       <div id="myTabContent" class="tab-content" style="overflow-x:auto;">
                         <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
 
-                            <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
+                            <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="logs/increaseLog" data-show-toggle="true" class="table table-hover">
                                 <thead>
                                 <!-- Data-field for getting data  -->
                                 <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
@@ -47,7 +47,7 @@
 
 
                     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
-                      <table id="datatable-buttons" class="table table-striped table-bordered">
+                      <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table" data-url="logs/increaseLog" data-show-toggle="true" class="table table-striped table-bordered">
                         <thead>
                         <tr>
                           <th data-sortable="true" data-field="number">#</th>
