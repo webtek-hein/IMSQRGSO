@@ -12,8 +12,24 @@ class Logs extends CI_Controller {
     }
         public function increaseLog()
     {
-            $this->logs->increase_log();
-            redirect('increased');
+            $inc = $this->logs->increase_log();
+            $counter = 1;
+            foreach ($inc as $list){
+                $row = array();
+                $row['item'] = $list['item_name'];
+                $row['description'] = $list['item_description'];
+                $row['type'] = $list['item_type'];
+                $row['quantity'] = $list['quantity'];
+                $row['unit'] = $list['unit'];
+                $row['delivery_date'] = $list['delivery_date'];
+                $row[''] = $list['date_received'];
+                $row[''] = $list['expiration_date'];
+                $row['cost'] = $list['unit_cost'];
+
+                $data[] = $row;
+                $counter++;
+            }
+            echo json_encode($inc);
     }
         public function decreaseLog()
     {

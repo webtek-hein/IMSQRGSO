@@ -11,7 +11,7 @@
                     <div class="clearfix"></div>
                 </div>
 
-
+                <!--ADD ITEM-->
                 <div class="accordion" id="accordion" role="tablist" aria-multiselectable="false">
                     <div class="panel">
                         <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -65,7 +65,7 @@
                                                     <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                    <textarea id="message" required="required" class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                                                               data-parsley-validation-threshold="10" placeholder="Description"></textarea>
                                                 </div>
                                                 <div class="form-group">
@@ -82,9 +82,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-
-                    <div class="panel">
+                <!--ADD BULK-->
+                <div class="panel">
                         <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             <h4 class="panel-title">Add Bulk</h4>
                         </a>
@@ -152,8 +153,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Main Table Content-->
-                    <div class="x_content">
+
+                <!-- Main Table Content-->
+                <div class="x_content">
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
                             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                                 <li role="presentation" class="active"><a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital Outlay</a>
@@ -161,13 +163,15 @@
                                 <li role="presentation" class=""><a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
                                 </li>
                             </ul>
+
                             <div id="myTabContent" class="tab-content">
+                                <!-- Capital Outaly tab-->
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
 
                                     <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                                     <!-- Implement Bootsrap table-->
                                         <div class="x_panel">
-                                        <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
+                                        <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-no-bordered table-hover">
                                             <thead>
                                                 <!-- Data-field for getting data  -->
                                             <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
@@ -176,7 +180,6 @@
                                                 <th data-sortable="true" data-field="description">Description</th>
                                                 <th data-sortable="true" data-field="quantity">Quantity</th>
                                                 <th data-sortable="true" data-field="unit">Unit</th>
-                                                <th data-sortable="true" data-field="type">Item Type</th>
                                                 <th data-field="action">Action</th>
                                             </tr>
                                             </thead>
@@ -184,44 +187,112 @@
                                             <tbody>
                                             <tr>
                                                 <td colspan="12">
-                                                    <div id="accordion" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                                    <div id="data1M" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOneM">
                                                         <div class="panel-body">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <div class="x_content">
-                                                                    <div class="table-responsive">
-                                                                        <table id="details">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th data-sortable="true" data-field="del" class="column-title">Delivery Date</th>
-                                                                                    <th data-sortable="true" data-field="rec" class="column-title">Date Received</th>
-                                                                                    <th data-sortable="true" data-field="exp" class="column-title">Expiration Date</th>
-                                                                                    <th data-sortable="true" data-field="cost" class="column-title">Cost</th>
-                                                                                    <th data-sortable="true" data-field="sup" class="column-title no-link last">
-                                                                                        <span class="nobr">Supplier</span>
-                                                                                    </th>
-                                                                                    <th class="bulk-actions" colspan="11">
-                                                                                        <a class="antoo" style="color:#fff; font-weight:00;"> ( <span class="action-cnt"> </span> )
-                                                                                            <i class="fa fa-chevron-down"></i>
-                                                                                        </a>
-                                                                                    </th>
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-striped jambo_table bulk_action">
+                                                                        <thead>
+                                                                            <tr class="headings">
+                                                                                <th data-sortable="true" data-field="del" class="column-title">Delivery Date</th>
+                                                                                <th data-sortable="true" data-field="rec" class="column-title">Date Received</th>
+                                                                                <th data-sortable="true" data-field="exp" class="column-title">Expiration Date</th>
+                                                                                <th data-sortable="true" data-field="cost" class="column-title">Cost</th>
+                                                                                <th data-sortable="true" data-field="sup" class="column-title no-link last">
+                                                                                    <span class="nobr">Supplier</span>
+                                                                                </th>
+                                                                                <th class="bulk-actions" colspan="11">
+                                                                                    <a class="antoo" style="color:#fff; font-weight:00;"> ( <span class="action-cnt"> </span> )
+                                                                                        <i class="fa fa-chevron-down"></i>
+                                                                                    </a>
+                                                                                </th>
                                                                                 </tr>
                                                                             </thead>
-                                                                            <div>
-                                                                                <div class="col-sm-12 text-center">
-                                                                                    <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-md">
-                                                                                        <i class="fa fa-minus-circle"></i> Distribute</a>
-                                                                                </div>
-                                                                            </div>
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <td colspan="12">
+                                                                                    <div id="data1M" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOneM">
+                                                                                        <div class="panel-body">
+                                                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                                                <div class="x_content">
+                                                                                                    <div class="table-responsive">
+                                                                                                        <table class="table table-striped jambo_table bulk_action">
+                                                                                                            <thead>
+                                                                                                            <tr class="headings">
+                                                                                                                <th class="column-title">Delivery Date</th>
+                                                                                                                <th class="column-title">Date Received</th>
+                                                                                                                <th class="column-title">Expiration Date</th>
+                                                                                                                <th class="column-title">Cost</th>
+                                                                                                                <th class="column-title">Account Code</th>
+                                                                                                                <th class="column-title no-link last"><span class="nobr">Supplier</span>
+                                                                                                                </th>
+                                                                                                                <th class="bulk-actions" colspan="11">
+                                                                                                                    <a class="antoo" style="color:#fff; font-weight:00;">( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                                                                                                </th>
+                                                                                                            </tr>
+                                                                                                            </thead>
+
+                                                                                                            <tbody>
+                                                                                                            <tr class="even pointer">
+                                                                                                                <td class=" ">-01/03/18</td>
+                                                                                                                <td class=" ">-01/03/18</td>
+                                                                                                                <td class=" ">-03/03/18</td>
+                                                                                                                <td class=" ">28,000</td>
+                                                                                                                <td class="a-right a-right ">Office</td>
+                                                                                                                <td class=" last">Sony<a href="#"></a>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr class="odd pointer">
+                                                                                                                <td class=" ">-05/20/18/</td>
+                                                                                                                <td class=" "></td>
+                                                                                                                <td class=" "></td>
+                                                                                                                <td class=" "></td>
+                                                                                                                <td class="a-right a-right "></td>
+                                                                                                                <td class=" last"><a href="#"></a>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr class="even pointer">
+                                                                                                                <td class=" ">-09/10/18-</td>
+                                                                                                                <td class=" "></td>
+                                                                                                                <td class=" "></td>
+                                                                                                                <td class=" "></td>
+                                                                                                                <td class="a-right a-right "></td>
+                                                                                                                <td class=" last"><a href="#"></a>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+
+                                                                                                        <div >
+                                                                                                            <div class="col-sm-12 text-center">
+                                                                                                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-info btn-md"><i class="fa fa-minus-circle"></i> Distribute</a>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
                                                                         </table>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
                                                 </td>
                                             </tr>
                                             </tbody>
-                                            <tfoot>
+                                        </table>
+                                        </div>
+                                    </div>
+                                    </div>
+                                <!--MOOE Tab-->
+                                <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
+                                    <!-- Implement Bootsrap table-->
+                                    <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                                        <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
+                                        <thead>
                                             <!-- Data-field for getting data  -->
                                             <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
                                                 <th data-sortable="true" data-field="number">#</th>
@@ -229,27 +300,7 @@
                                                 <th data-sortable="true" data-field="description">Description</th>
                                                 <th data-sortable="true" data-field="quantity">Quantity</th>
                                                 <th data-sortable="true" data-field="unit">Unit</th>
-                                                <th data-sortable="true" data-field="type">Item Type</th>
                                                 <th data-field="action">Action</th>
-                                            </tr>
-                                            </tfoot>
-                                            <!-- end of Item Details-->
-                                        </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
-
-                                    <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                                        <table class="table table-hover">
-                                            <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Item Name</th>
-                                                <th>Description</th>
-                                                <th>Quantity</th>
-                                                <th>Unit</th>
-                                                <th>Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -264,7 +315,6 @@
                                                     <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                                 </td>
                                             </tr>
-
                                             <!-- Item Details -->
                                             <tr>
                                                 <td colspan="12">
@@ -333,7 +383,6 @@
                                                 </td>
                                             </tr>
                                             <!--/Item Details-->
-
                                             <!--Item Details-->
                                             <tr>
                                                 <th>2</th>
@@ -523,15 +572,16 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
-                </div>
+
             </div>
         </div>
 
-        <!-- Modal -->
-        <!-- Add Quantity -->
-        <div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <!-- Modals -->
+            <!-- Add Quantity -->
+            <div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -620,10 +670,10 @@
                 </form>
             </div>
         </div>
-        <!-- end of add quantity -->
+            <!-- end of add quantity -->
 
-        <!--Distribution-->
-        <div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
+            <!--Distribution-->
+            <div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -733,12 +783,10 @@
                     </div>
                 </div>
             </div>
-        <!--end of edit-->
-        <!-- /Modal -->
+            <!--end of edit-->
+            <!-- /Modal -->
 
-        </div>
         <div class="clearfix"></div>
     </div>
-
-
+</div>
 

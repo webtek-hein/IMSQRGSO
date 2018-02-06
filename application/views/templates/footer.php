@@ -15,7 +15,7 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <!-- bootstrap table js -->
 <script src="assets/js/bootstrap-table.js"></script>
-<-- localization -->
+<!-- localization -->
 <script src="assets/js/bootstrap-table-en-US.js"></script>
 <!-- Bootstrap -->
 <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -55,38 +55,15 @@
 <script src="assets/vendors/moment/min/moment.min.js"></script>
 <script src="assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- data tables -->
-<script src="assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="assets/plugins/chartjs/Chart.min.js"></script>
+<!--<script src="assets/plugins/jQuery/jquery-2.2.3.min.js"></script>-->
 <!-- Bootstrap 3.3.6 -->
 <script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/bootstrap-dialog.min.js"></script>
-<!-- AdminLTE App -->
-<script src="assets/dist/js/app.min.js"></script>
+<!--<script src="assets/js/bootstrap-dialog.min.js"></script>-->
+
 <!-- Custom Theme Scripts -->
 <script src="assets/build/js/custom.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $.getJSON('inventory/viewitem',function (data) {
-            $(data.items).each(function () {
-                $('#items tbody').append(this);
-            });
-        });
-        $.getJSON('departments/nav',function (data) {
-            $(data.department).each(function () {
-                $('#dept').append(this);
-            });
-        });
 
-    });
-    function detail(id) {
-        $.getJSON('inventory/detail/'+id,function (data) {
-            $(data.detail).each(function () {
-                $('#det'+id).replaceWith(this);
-            });
-        });
-
-    }
 </script>
 </body>
 </html>

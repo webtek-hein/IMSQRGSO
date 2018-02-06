@@ -26,22 +26,23 @@
                       </ul>
                       <div id="myTabContent" class="tab-content" style="overflow-x:auto;">
                         <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
-                        <table id="datatable-buttons" class="table table-striped table-bordered">
-                        <thead>
-                        <tr>
-                          <th data-sortable="true" data-field="number">#</th>
-                          <th data-sortable="true" data-field="item">Item Name</th>
-                          <th data-sortable="true" data-field="description">Description</th>
-                          <th data-sortable="true" data-field="quantity">Quantity</th>
-                          <th data-sortable="true" data-field="unit">Unit</th>
-                          <th data-sortable="true" data-field="datereceiived">Date Received</th>
-                          <th data-sortable="true" data-field="cost">Cost</th>
-                        </tr>
-                      </thead>
-                      <tbody data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
-                        
-                      </tbody>
-                      </table>
+
+                            <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
+                                <thead>
+                                <!-- Data-field for getting data  -->
+                                <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
+                                    <th data-sortable="true" data-field="number">#</th>
+                                    <th data-sortable="true" data-field="item">Item Name</th>
+                                    <th data-sortable="true" data-field="description">Description</th>
+                                    <th data-sortable="true" data-field="quantity">Quantity</th>
+                                    <th data-sortable="true" data-field="unit">Unit</th>
+                                    <th data-sortable="true" data-field="type">Item Type</th>
+                                    <th data-sortable="true" data-field="delivery_date">Delivery Date</th>
+                                    <th data-sortable="true" data-field="date_received">Date Received</th>
+                                    <th data-sortable="true" data-field="cost">Unit Cost</th>
+
+                                </tr>
+                                </thead>
                         </div>
 
 

@@ -25,12 +25,12 @@ class Inventory extends CI_Controller {
         foreach ($list as $item){
             $row = array();
             $row['number'] = $counter;
-            $row['item'] =  "<a data-toggle=\"collapse\" href=\"#collapseExample\" 
-            role=\"button\" aria-expanded=\"false\" aria-controls=\"collapseExample\">".$item['item_name']."</a>";
+            $row['item'] =  "<a role=\"tab\" id=\"headingOneM\" data-toggle=\"collapse\" data-parent=\"#accordion\" 
+                             href=\"#data1M\" aria-expanded=\"false\" aria-controls=\"collapseOneM\">".
+                             $item['item_name']."</a>";
             $row['description'] = $item['item_description'];
             $row['quantity'] = $item['quantity'];
             $row['unit'] = $item['unit'];
-            $row['type'] = $item['item_type'];
             //ADD Quantity Action button
             $row['action'] = "<a href=\"#\" data-toggle=\"modal\" data-target=\".Add_Item\" 
                               class=\"btn btn-primary btn-xs\"><i class=\"fa fa-plus-circle\">
