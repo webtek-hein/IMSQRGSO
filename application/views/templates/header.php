@@ -119,7 +119,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                 <li><a href="profile">Profile</a></li>
-                                <li><a href="login"><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
+                                <li><a href="signup"><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
                             </ul>
                         </li>
 
