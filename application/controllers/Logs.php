@@ -33,7 +33,7 @@ class Logs extends CI_Controller {
     }
         public function decreaseLog()
     {
-            $this->logs->decrease_log();
+            $dec = $this->logs->decrease_log();
             $counter = 1;
             foreach ($dec as $list){
                 $row = array();
@@ -58,8 +58,24 @@ class Logs extends CI_Controller {
 
         public function editLog()
     {
-        $this->logs->edit_log();
-        redirect('edit');
+        $edit = $this->logs->edit_log();
+            $this->logs->decrease_log();
+            $counter = 1;
+            foreach ($edit as $list){
+                $row = array();
+                $row['beforeitem'] = $list['before_item_name'];
+                $row['afteritem'] = $list['after_item_name'];
+                $row['beforedescription'] = $list['before_item_description'];
+                $row['afterdescription'] = $list['after_item_description'];
+                $row['beforeunit'] = $list['before_unit'];
+                $row['afterunit'] = $list['after_unit'];
+                $row['beforetype'] = $list['before_item_type'];
+                $row['aftertype'] = $list['after_item_type'];
+
+                $data[] = $row;
+                $counter++;
+            }
+            echo json_encode($edit);
     }
 
         public function returnLog()
