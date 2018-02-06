@@ -27,7 +27,7 @@
                       </ul>
                       <div id="myTabContent" class="tab-content" style="overflow-x:auto;">
                         <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
-                        <table id="datatable-buttons" class="table table-striped table-bordered">
+                        <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table" data-url="logs/returnLog" data-show-toggle="true" class="table table-striped table-bordered">
                         <thead>
                         <tr>
                           <th data-sortable="true" data-field="number">#</th>
@@ -40,15 +40,12 @@
                           <th data-sortable="true" data-field="status">Status Return</th>
                         </tr>
                       </thead>
-                            <tbody data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
-
-                            </tbody>
                       </table>
                         </div>
 
 
                     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
-                      <table id="datatable-buttons" class="table table-striped table-bordered">
+                        <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table" data-url="logs/returnLog" data-show-toggle="true" class="table table-striped table-bordered">
                         <thead>
                         <tr>
                             <th data-sortable="true" data-field="number">#</th>
@@ -60,9 +57,6 @@
                             <th data-sortable="true" data-field="receivedby">Received By</th>
                             <th data-sortable="true" data-field="status">Status Return</th>
                         </tr>
-                          <tbody data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
-
-                          </tbody>
                       </thead>
                       </table>
                         </div>
