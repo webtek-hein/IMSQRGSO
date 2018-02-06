@@ -11,14 +11,10 @@
 
 <!-- jQuery -->
 <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
-<!-- bootstrap js -->
-
 <!-- bootstrap table js -->
 <script src="assets/js/bootstrap-table.js"></script>
 <!-- localization -->
 <script src="assets/js/bootstrap-table-en-US.js"></script>
-<!-- Bootstrap -->
-
 <!-- FastClick -->
 <script src="assets/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
