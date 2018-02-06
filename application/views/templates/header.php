@@ -86,6 +86,8 @@
                             </li>
                             <li><a href="Supplier"><i class="fa fa-book"></i>Supplier</span></a>
                             </li>
+                            <li><a href="Serial"><i class="fa fa-book"></i>Serial</span></a>
+                            </li>
                             <li><a><i class="fa fa-file-text"></i>Logs<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="Increased">Increased</a></li>
