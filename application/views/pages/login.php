@@ -68,10 +68,11 @@
 
         <div id="register" class="animate form registration_form">
             <section class="login_content">
-               <h1> SIGN UP</h1>
+               
         <?php echo validation_errors(); ?>
         <?php echo form_open('login'); ?>
             <table border="0" width="500" align="center" class="table">
+                <h1> SIGN UP</h1>
                 <tr>
                     <td align="center"><input type="text" class="form-control" name="FirstName" required value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>" placeholder= "First Name"></td>
                 </tr>
@@ -123,7 +124,7 @@
                 </td>
                 </tr>
                 <tr>
-                    <td><input type="submit" class="btn btn-primary btn-block btn-small" name="createaccount" value="Register" ></td>
+                 <td><input type="submit" class="btn btn-primary btn-block btn-small" name="createaccount" value="Register" ></td>
                     </tr>
                 <tr>
                     <td><input type="button" class="btn btn-primary btn-block btn-small" name="cancel" value="Cancel" onclick=" relocate_home()"></td>
