@@ -120,8 +120,7 @@ class Inventory_model extends CI_Model{
        $query = $this->db->get('department');
         return $query->result_array();
     }
-    public function get_department_list()
-    {
+    public function get_department_list(){
         $this->db->order_by('res_center_code');
         $query = $this->db->get('department');
         return $query->result_array();
