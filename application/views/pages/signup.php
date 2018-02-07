@@ -70,13 +70,14 @@
         		</td>
 				</tr>
 				<tr>
-					<td><input type="submit" class="btn btn-primary btn-block btn-small" name="createaccount" value="Register" ></td>
+					<td><input type="submit" name="createaccount" value="Register" ></td>
 					</tr>
 				<tr>
-					<td><input type="button" class="btn btn-primary btn-block btn-small" name="cancel" value="Cancel" onclick=" relocate_home()"></td>
+					<td><input type="button" name="cancel" value="Cancel" onclick=" relocate_home()"></td>
 				</tr>
 				
 			</table>
 	</body>
+
 
 </html>
