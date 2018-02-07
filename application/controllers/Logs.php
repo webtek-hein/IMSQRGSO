@@ -59,7 +59,6 @@ class Logs extends CI_Controller {
         public function editLog()
     {
         $edit = $this->logs->edit_log();
-            $this->logs->decrease_log();
             $counter = 1;
             foreach ($edit as $list){
                 $row = array();
@@ -80,7 +79,7 @@ class Logs extends CI_Controller {
 
     public function returnLog()
     {
-        $this->logs->return_log();
+        $ret = $this->logs->return_log();
         $counter = 1;
         foreach ($ret as $list){
             $row = array();

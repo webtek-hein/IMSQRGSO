@@ -92,4 +92,22 @@ class Inventory extends CI_Controller {
         }
         echo json_encode($data);
     }
+            public function returnitem()
+    {
+            $rec = $this->inv->return_item();
+            $counter = 1;
+            foreach ($rec as $list){
+                $row = array();
+                $row['item'] = $list['item_name'];
+                $row['description'] = $list['item_description'];
+                $row['datereturn'] = $list['date_return'];
+                $row['reason'] = $list['reason'];
+                $row['receivedfrom'] = $list['received_from'];
+                $row['action'] = $list['action'];
+
+                $data[] = $row;
+                $counter++;
+            }
+            echo json_encode($rec);
+    }
 }
