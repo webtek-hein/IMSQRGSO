@@ -207,11 +207,69 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            <tr>
+                                                <th>1</th>
+                                                <td><a role="tab" id="headingOneC" data-toggle="collapse" data-parent="#accordion" href="#data1C" aria-expanded="true" aria-controls="collapseOneC">Envelope</a></td>
+                                                <td>Brown, short</td>
+                                                <td>500</td>
+                                                <td>Piece</td>
+                                                <td>
+                                                    <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
+                                                    <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="12">
+                                                    <div id="data1C" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOneC">
+                                                        <div class="panel-body">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="x_content">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-striped jambo_table bulk_action">
+                                                                            <thead>
+                                                                            <tr class="headings">
+                                                                                <th class="column-title">Delivery Date</th>
+                                                                                <th class="column-title">Date Received</th>
+                                                                                <th class="column-title">Expiration Date</th>
+                                                                                <th class="column-title">Cost</th>
+                                                                                <th class="column-title">Account Code</th>
+                                                                                <th class="column-title">Supplier</th>
+                                                                                <th class="column-title no-link last"><span class="nobr">Add Quantity</span>
+                                                                                </th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <tr class="even pointer">
+                                                                                <td class=" ">-01/03/18</td>
+                                                                                <td class=" ">-01/03/18</td>
+                                                                                <td class=" ">-03/03/18</td>
+                                                                                <td class=" ">28,000</td>
+                                                                                <td class="a-right a-right ">Office</td>
+                                                                                <td class=" last">Sony<a href="#"></a></td>
+                                                                                <td><a href="#" data-toggle="modal" data-target=".Add_Quantity" class="btn btn-default btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a></td>
+                                                                            </tr>
+                                                                            <tr class="odd pointer">
+                                                                                <td class=" ">-05/20/18/</td>
+                                                                                <td class=" "></td>
+                                                                                <td class=" "></td>
+                                                                                <td class=" "></td>
+                                                                                <td class="a-right a-right "></td>
+                                                                                <td class=" last"><a href="#"></a></td>
+                                                                                <td> <a href="#" data-toggle="modal" data-target=".Add_Quantity" class="btn btn-default btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a></td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                        <div >
+                                                                            <div class="col-sm-12 text-center">
+                                                                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-default btn-md"><i class="fa fa-minus-circle"></i> Distribute</a>
+                                                                            </div>
+                                                                        </div>
                                             </tbody>
                                         </table>
                                         </div>
                                     </div>
                                 </div>
+
                                 <!--MOOE Tab-->
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
                                     <!-- Implement Bootsrap table-->
@@ -240,7 +298,6 @@
                                                     <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                                 </td>
                                             </tr>
-
                                             </tbody>
                                         </table>
                                     </div>
@@ -253,7 +310,7 @@
 
 
                  <!-- Modals -->
-            <!-- Add Quantity -->
+            <!-- Add Item -->
             <div id="addquant" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -343,7 +400,7 @@
                 </form>
             </div>
         </div>
-            <!-- end of add quantity -->
+            <!-- end of add Item -->
 
             <!--Distribution-->
             <div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
@@ -457,6 +514,37 @@
                 </div>
             </div>
             <!--end of edit-->
+
+            <!-- Add Quantity -->
+            <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="number" name="quant" min=0 required="required" class="form-control col-md-7 col-xs-12" placeholder="Quantity">
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn-modal btn btn-primary" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
+                            <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <!-- end of add quantity -->
+
             <!-- /Modal -->
         </div>
 
