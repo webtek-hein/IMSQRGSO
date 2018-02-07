@@ -50,7 +50,6 @@ class Inventory_model extends CI_Model{
     //Add quantity to a specific item
     public function addquant(){
         $id = $this->input->post('id');
-        $id=1;
         //1. Get Quantity
         $quantity = $this->input->post('quant');
 

@@ -31,12 +31,14 @@
     <link href="assets/build/css/custom.min.css" rel="stylesheet">
     <!-- Placeholder for Dates Style -->
     <link href="assets/css/placeholder-date.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
 </head>
 
-<body class="nav-md">
+<body class="nav-md fixed-top footer_fixed">
 <div class="container body">
     <div class="main_container">
-        <div class="col-md-3 left_col">
+        <div class=" menu_fixed col-md-3 left_col">
             <div class="left_col scroll-view">
 
                 <div class="clearfix"></div>
@@ -55,7 +57,7 @@
                 <br />
 
                 <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div id="sidebar-menu" class="main_menu_side  hidden-print main_menu">
                     <div class="menu_section">
                         <ul class="nav side-menu">
                             <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>

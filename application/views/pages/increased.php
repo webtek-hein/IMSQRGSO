@@ -2,7 +2,6 @@
 <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
-
             </div>
 
             <div class="clearfix"></div>
@@ -11,7 +10,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>--Department's Name--</h2>
+                    <h2>Increase Logs</h2>
 
                     <div class="clearfix"></div>
                   </div>
@@ -43,33 +42,17 @@
 
                                 </tr>
                                 </thead>
-                        </div>
-
-
-                    <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
-                      <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table" data-url="logs/increaseLog" data-show-toggle="true" class="table table-striped table-bordered">
-                        <thead>
-                        <tr>
-                          <th data-sortable="true" data-field="number">#</th>
-                          <th data-sortable="true" data-field="item">Item Name</th>
-                          <th data-sortable="true" data-field="description">Description</th>
-                          <th data-sortable="true" data-field="quantity">Quantity</th>
-                          <th data-sortable="true" data-field="unit">Unit</th>
-                        </tr>
-                        <tbody data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
-                        
-                      </tbody>
-                      </thead>
-                      </table>
+                            </table>
                         </div>
                         </div>
                       </div>
-                  </div>
+                      </div>
                 </div>
               </div>
             </div>
-          </div>
-          </div>
+
           <div class="clearfix"></div>
-        </div>
-        <!-- /page content -->
+          </div>
+</div>
+
+ <!-- /page content -->

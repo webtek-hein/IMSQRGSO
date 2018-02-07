@@ -25,14 +25,15 @@ class Inventory extends CI_Controller {
         foreach ($list as $item){
             $row = array();
             $row['number'] = $counter;
-            $row['item'] =  "<a role=\"tab\" id=\"headingOneM\" data-toggle=\"collapse\" data-parent=\"#accordion\" 
-                             href=\"#data1M\" aria-expanded=\"false\" aria-controls=\"collapseOneM\">".
+            $row['item'] =  "<a role=\"tab\" id=\"item\" data-toggle=\"collapse\" 
+                            data-parent=\"#accordion\" href=\"#accordion_detail\" aria-expanded=\"true\" 
+                            aria-controls=\"collapseOne\">".
                              $item['item_name']."</a>";
             $row['description'] = $item['item_description'];
             $row['quantity'] = $item['quantity'];
             $row['unit'] = $item['unit'];
             //ADD Quantity Action button
-            $row['action'] = "<a href=\"#\" data-toggle=\"modal\" data-target=\".Add_Item\" 
+            $row['action'] = "<a href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\"#addquant\" 
                               class=\"btn btn-primary btn-xs\"><i class=\"fa fa-plus-circle\">
                               </i> Add Quantity</a>".
                              "<a href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\".Edit\" 
