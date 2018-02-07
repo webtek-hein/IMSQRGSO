@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2018 at 02:54 PM
+-- Generation Time: Feb 07, 2018 at 05:49 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -260,6 +260,7 @@ CREATE TABLE `user` (
   `contact_no` varchar(15) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(60) NOT NULL,
+  `position` enum('Admin','Custodian','Department Head') NOT NULL,
   `dept_id` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
