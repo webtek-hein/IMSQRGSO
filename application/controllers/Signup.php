@@ -48,7 +48,7 @@ class Signup extends CI_Controller {
 
             $this->Signup_model->register($data);
             $this->session->set_flashdata('msg', 'Registration sent! Please wait for confirmation.');
-            $this->load->view('login');
+            $this->load->view('signup');
         }
     }
 }
