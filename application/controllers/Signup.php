@@ -28,7 +28,7 @@ class Signup extends CI_Controller {
         }
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('signup',$data);
+            $this->load->view('login#signup',$data);
         }
         else
         {
@@ -48,7 +48,7 @@ class Signup extends CI_Controller {
 
             $this->Signup_model->register($data);
             $this->session->set_flashdata('msg', 'Registration sent! Please wait for confirmation.');
-            $this->load->view('signup');
+            $this->load->view('login#signup');
         }
     }
 }

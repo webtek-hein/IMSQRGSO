@@ -70,7 +70,7 @@
             <section class="login_content">
                
         <?php echo validation_errors(); ?>
-        <?php echo form_open('login'); ?>
+        <?php echo form_open('login#signup'); ?>
             <table border="0" width="500" align="center" class="table">
                 <h1> SIGN UP</h1>
                 <tr>
@@ -97,7 +97,7 @@
                 <tr>
                 <script>
                     function select_dept() {
-                        if (document.getElementById('type').value === 'department head' || document.getElementById('type').value === 'receiver') {
+                        if (document.getElementById('type').value === 'department head') {
                             document.getElementById('dment').style.display  = 'block';
                         } else {
                             document.getElementById('dment').style.display = 'none';
