@@ -28,7 +28,6 @@
         <input type="text" name="username" id="name" placeholder="username" required/>
         <input type="password" name="password" id="password" placeholder="password" required/>
         <input type="submit" class="btn btn-primary btn-block btn-large" value=" Login " name="submit"/><br />
-        <a href="<?php echo base_url() ?>signup" >Click Here To Sign Up </a> <br><br>
         <a href="<?php echo base_url() ?>forget">forgot password? </a>
         <?php echo form_close(); ?>
     </div>
