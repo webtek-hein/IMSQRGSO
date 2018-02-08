@@ -73,7 +73,8 @@ class Inventory extends CI_Controller {
     }
     function getdept(){
         $departments = $this->inv->select_departments();
-        foreach ($departments as $list){
+        $data = array();
+         foreach ($departments as $list){
             $data[] = array(
                 'dept_id' => $list['dept_id'],
                 'res_center_code' => $list['res_center_code'],
