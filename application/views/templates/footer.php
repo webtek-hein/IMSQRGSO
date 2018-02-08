@@ -78,7 +78,8 @@
 
         });
         function detail(id) {
-                        $('#itemdet').bootstrapTable({
+                $('#itemdet').bootstrapTable('destroy');
+                $('#itemdet').bootstrapTable({
                             url: 'inventory/detail/'+id,
                             columns: [{
                                 field: 'del',
