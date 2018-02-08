@@ -16,20 +16,22 @@ class Logs extends CI_Controller {
             $counter = 1;
             foreach ($inc as $list){
                 $row = array();
+                $row['number']=$counter;
+                $row['timestamp']= $list['timestamp'];
                 $row['item'] = $list['item_name'];
                 $row['description'] = $list['item_description'];
-                $row['type'] = $list['item_type'];
                 $row['quantity'] = $list['quantity'];
                 $row['unit'] = $list['unit'];
-                $row['delivery_date'] = $list['delivery_date'];
-                $row[''] = $list['date_received'];
-                $row[''] = $list['expiration_date'];
+                $row['type'] = $list['item_type'];
+                $row['delivery_date'] = $list['date_delivered'];
+                $row['date_received'] = $list['date_received'];
+                $row['expiration_date'] = $list['expiration_date'];
                 $row['cost'] = $list['unit_cost'];
 
                 $data[] = $row;
                 $counter++;
             }
-            echo json_encode($inc);
+            echo json_encode($data);
     }
         public function decreaseLog()
     {
@@ -53,7 +55,7 @@ class Logs extends CI_Controller {
                 $data[] = $row;
                 $counter++;
             }
-            echo json_encode($dec);
+            echo json_encode($data);
     }
 
         public function editLog()
@@ -74,7 +76,7 @@ class Logs extends CI_Controller {
                 $data[] = $row;
                 $counter++;
             }
-            echo json_encode($edit);
+            echo json_encode($data);
     }
 
     public function returnLog()
@@ -94,6 +96,6 @@ class Logs extends CI_Controller {
             $data[] = $row;
             $counter++;
         }
-        echo json_encode($ret);
+        echo json_encode($data);
     }
 }
