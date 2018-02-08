@@ -240,35 +240,196 @@
                  <!-- Modals -->
 
             <!-- Item Detail -->
-            <div id="Item_Detail" class="modal fade" tabindex="" role="dialog" aria-hidden="true">
-                <div class="modal-dialog-md">
+            <div id="Item_Detail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog-lg">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                            </button>
-                            <h4 class="modal-title" id="myModalLabel">Item Detail</h4>
-                        </div>
-                        <div class="modal-body">
-                            <table id="datatable"  data-pagination="true" data-search="true" data-url="inventory/detail/1" data-toggle="table" data-show-toggle="true" class="table table-no-bordered table-hover">
-                            <thead>
-                                <tr class="headings">
-                                    <th data-field="del">Delivery Date</th>
-                                    <th data-field="rec">Date Received</th>
-                                    <th data-field="exp">Expiration Date</th>
-                                    <th data-field="cost" >Cost</th>
-                                    <th data-field="sup" >Supplier</th>
-                                    <th data-field="action" class="column-title no-link last"><span class="nobr">Add Quantity</span>
-                                    </th>
-                                </tr>
-                                </thead>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Item Details</h2>
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                    </button>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="col-xs-2">
+                                        <h4><b>Item Name:</b></h4>
+                                            <p>Laptop</p>
+                                        <br>
+                                        <h4><b>Description:</b></h4>
+                                        <p>Dell Latitude E6420 </br> 14" </br> Core i5 2520M </br> 4 GB RAM</br> 320 GB HDD </br> English</p>
 
-                            </table>
+                                    </div>
 
-                        <div class="modal-footer" >
-                            <div class="col-sm-12 text-center">
-                                <a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-default btn-md"><i class="fa fa-minus-circle"></i> Distribute</a>
+                                    <div class="col-xs-10">
+                                        <div class="accordion" id="accordion" role="tablist" aria-multiselectable="false">
+                                            <div class="panel">
+                                                <a class="panel-heading" role="tab" id="headingItemD" data-toggle="collapse" data-parent="#accordion" href="#collapseItemD" aria-expanded="true" aria-controls="collapseItemD">
+                                                    <h4 class="panel-title">Destribute</h4>
+                                                </a>
+                                                <div id="collapseItemD" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingItemD">
+                                                    <div class="panel-body">
+
+                                                        <div class="col-6 col-sm-6 col-xs-6">
+                                                            <div class="x_panel">
+                                                                <div class="x_content">
+                                                                    <b>Distribute Item with Serial:</b>
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                                                            <input type="checkbox" value="">6161d6sdcd</br>
+                                                                            <input type="checkbox" value="">6161d6sdcd</br>
+                                                                            <input type="checkbox" value="">6161d6sdcd</br>
+                                                                            <input type="checkbox" value="">6161d6sdcd
+                                                                        </label>
+                                                                    </div>
+                                                                    <b>To</b>
+                                                                    <form class="form-horizontal form-label-left" novalidate>
+                                                                        <div class="item form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department<span class="required">*</span>
+                                                                            </label>
+                                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="Department">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="item form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">PO Number<span class="required">*</span>
+                                                                            </label>
+                                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="PO Number">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="item form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">PR Number<span class="required">*</span>
+                                                                            </label>
+                                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="PR Number">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="item form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">OBR Number<span class="required">*</span>
+                                                                            </label>
+                                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="OBR Number">
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                    <div class="modal-footer">
+                                                                        <button type="submit" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                                                                        <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                        <table id="datatable" class="table table-striped table-bordered">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Delivery Date</th>
+                                                                <th>Date Received</th>
+                                                                <th>Expiration Date</th>
+                                                                <th>Cost</th>
+                                                                <th>Account Code</th>
+                                                                <th>Supplier</th>
+                                                                <th>Add Quantity</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>-01/03/18</td>
+                                                                <td>-01/03/18</td>
+                                                                <td>-03/03/18</td>
+                                                                <td>28,000</td>
+                                                                <td>Office</td>
+                                                                <td>Sony</td>
+                                                                <td><a href="#" data-toggle="modal" data-target=".Add_Quantity" class="btn btn-default btn-xs">
+                                                                        <i class="fa fa-plus-circle"></i> Add Quantity
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>-05/20/18/</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td><a href="#" data-toggle="modal" data-target=".Add_Quantity" class="btn btn-default btn-xs">
+                                                                        <i class="fa fa-plus-circle"></i> Add Quantity
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>-05/20/18/</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td><a href="#" data-toggle="modal" data-target=".Add_Quantity" class="btn btn-default btn-xs">
+                                                                        <i class="fa fa-plus-circle"></i> Add Quantity
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>-05/20/18/</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td><a href="#" data-toggle="modal" data-target=".Add_Quantity" class="btn btn-default btn-xs">
+                                                                        <i class="fa fa-plus-circle"></i> Add Quantity
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>-05/20/18/</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td><a href="#" data-toggle="modal" data-target=".Add_Quantity" class="btn btn-default btn-xs">
+                                                                        <i class="fa fa-plus-circle"></i> Add Quantity
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>-05/20/18/</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td><a href="#" data-toggle="modal" data-target=".Add_Quantity" class="btn btn-default btn-xs">
+                                                                        <i class="fa fa-plus-circle"></i> Add Quantity
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>-05/20/18/</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td><a href="#" data-toggle="modal" data-target=".Add_Quantity" class="btn btn-default btn-xs">
+                                                                        <i class="fa fa-plus-circle"></i> Add Quantity
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>
