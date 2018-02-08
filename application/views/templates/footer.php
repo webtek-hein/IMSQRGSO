@@ -97,7 +97,7 @@
                                 title: 'Supplier'
                             },{
                                 field: 'quant',
-                                title: 'Q`uantity'
+                                title: 'Quantity'
                             },{
                                 field: 'action',
                                 title: 'Action'
