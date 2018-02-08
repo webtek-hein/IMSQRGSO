@@ -66,7 +66,8 @@ class Inventory extends CI_Controller {
             $row['exp']  = $detail['expiration_date'];
             $row['cost'] = $detail['unit_cost'];
             $row['sup']  = $detail['supplier_id'];
-            $row['action']="<a href=\"#\" data-toggle=\"modal\" data-target=\".Add_Quantity\" class=\"btn btn-default btn-xs\"><i class=\"fa fa-plus-circle\"></i> Add Quantity</a>";
+            $row['action']="<a href=\"#\" data-toggle=\"modal\" data-target=\".Add_Quantity\" class=\"btn btn-default btn-xs\">
+                            <i class=\"fa fa-plus-circle\"></i> Add Quantity</a>";
 
             $data[] = $row;
         }
