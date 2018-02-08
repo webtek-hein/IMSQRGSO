@@ -20,8 +20,10 @@
 
     <!-- Custom Theme Style -->
     <link href="assets/build/css/custom.min.css" rel="stylesheet">
+    <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
 
-        <link rel="stylesheet" href="<?php echo base_url() ?>assets/js/normalize.min.css">
+
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/js/normalize.min.css">
         <script>
             function relocate_home()
             {
@@ -97,15 +99,25 @@
                 <tr>
                 <script>
                     function select_dept() {
-                        if (document.getElementById('type').value === 'department head') {
-                            document.getElementById('dment').style.display  = 'block';
-                        } else {
-                            document.getElementById('dment').style.display = 'none';
+                        $('.position').change(function () {
+                            position = $('.position').val();
+                            if(position === 'department head'){
+                                $('#dment').css({
+                                    "display": "block"
+                                });
+                                $.getJSON( "inventory/getdept", function( data ) {
+                                    alert(data);
+                                }
+                            }else {
+                                $('#dment').css({
+                                    "display": "none"
+                                });
+                            }
+                        });
                         }
-                    }
                 </script>
                     <td align="center">
-                        <select class="form-control" align="center" id="type" name="type"  onclick='select_dept()' required>
+                        <select class="position form-control" align="center" id="type" name="type"  onclick='select_dept()' required>
                         <option selected="true" disabled>--Choose Position--</option>
                         <option value="custodian">Custodian</option>
                         <option value="department head">Department Head</option>

@@ -55,6 +55,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="assets/build/js/custom.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $('.modal').on('show.bs.modal',function (e) {

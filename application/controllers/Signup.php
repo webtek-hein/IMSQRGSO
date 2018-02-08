@@ -2,15 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Signup extends CI_Controller {
-    
+
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Signup_model');
-        $this->load->model('Inventory_model');
+        $this->load->helper(array('form','url'));
         $this->load->library('form_validation');
+        $this->load->model('Inventory_model');
     }
 
+    public function test(){
+        $list = $this->Inventory_model->get_department_list();
+        json_encode($list);
+    }
     public function index()
     {
         $data['departments'] = $this->Inventory_model->get_department_list();
@@ -45,6 +49,7 @@ class Signup extends CI_Controller {
             'position' => $this->input->post('type'),
             'dept_id' => $this->input->post('dment'),
             );
+
 
             $this->Signup_model->register($data);
             $this->session->set_flashdata('msg', 'Registration sent! Please wait for confirmation.');
