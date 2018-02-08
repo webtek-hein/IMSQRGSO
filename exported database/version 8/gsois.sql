@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2018 at 12:45 PM
+-- Generation Time: Feb 08, 2018 at 02:02 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -215,7 +215,6 @@ CREATE TABLE `itemdetail` (
   `PR_no` varchar(15) NOT NULL,
   `OBR_no` varchar(15) NOT NULL,
   `expiration_date` date NOT NULL,
-  `status` enum('Active','Inactive') NOT NULL DEFAULT 'Active',
   `item_id` int(15) NOT NULL,
   `supplier_id` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -290,15 +289,15 @@ ALTER TABLE `department`
 -- Indexes for table `distribution`
 --
 ALTER TABLE `distribution`
-  ADD PRIMARY KEY (`dist_id`),
-  ADD KEY `department_idx` (`dept_id`);
+  ADD PRIMARY KEY (`dist_id`);
 
 --
 -- Indexes for table `item`
 --
 ALTER TABLE `item`
   ADD PRIMARY KEY (`item_id`),
-  ADD UNIQUE KEY `item_id_UNIQUE` (`item_id`);
+  ADD UNIQUE KEY `item_id_UNIQUE` (`item_id`),
+  ADD UNIQUE KEY `item_name` (`item_name`);
 
 --
 -- Indexes for table `itemdetail`

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2018 at 12:46 PM
+-- Generation Time: Feb 08, 2018 at 02:03 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -41,7 +41,6 @@ CREATE TABLE `decreaselog` (
   `department` varchar(60) NOT NULL,
   `received_from` varchar(30) NOT NULL,
   `received_by` varchar(30) NOT NULL,
-  `status` enum('Active','Inactive') NOT NULL DEFAULT 'Active',
   `userid` int(15) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
