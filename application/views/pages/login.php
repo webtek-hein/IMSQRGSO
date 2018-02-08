@@ -4,17 +4,16 @@
     <link href="<?php echo base_url(); ?>assets/css/font.css" rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/login.css">
-    <link rel="icon" href="<?php echo base_url() ?>assets/css/logo.png">
+    <link rel="icon" href="<?php echo base_url() ?>assets/images/logo.png">
    
 </head>
 <body>
 
-<?php if($this->session->flashdata('msg')): ?>
-    <p><?php echo $this->session->flashdata('msg'); ?></p>
-<?php endif; ?>
+
 <div id="main">
 
     <div id="login">
+
         <h1>Login</h1>
         <?php echo form_open('Login/user_login_process'); ?>
         <?php

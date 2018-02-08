@@ -9,7 +9,6 @@ class Login extends CI_Controller {
     // Load database
         $this->load->model('user_db');
         $this->load->library('form_validation');
-  		$this->load->library('session');       
 
     }
 
@@ -17,7 +16,7 @@ class Login extends CI_Controller {
     public function index()
     {
         if (isset($this->session->userdata['logged_in'])) {
-            redirect(base_url().'index');
+            redirect(base_url().'dashboard');
         } else {
             $this->load->view('login');
         }
