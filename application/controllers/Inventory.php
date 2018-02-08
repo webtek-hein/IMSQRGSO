@@ -16,8 +16,8 @@ class Inventory extends CI_Controller {
             $this->inv->add_item();
             redirect('inventory');
     }
-    public function viewItem(){
-        $list = $this->inv->select_item();
+    public function viewItem($type){
+        $list = $this->inv->select_item($type);
         $data = array();
         //counter initialize
         $counter = 1;

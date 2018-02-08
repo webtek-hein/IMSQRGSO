@@ -194,7 +194,7 @@
                                     <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                                     <!-- Implement Bootsrap table-->
                                         <div class="x_panel">
-                                        <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-no-bordered table-hover">
+                                        <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem/CO" data-show-toggle="true" class="table table-no-bordered table-hover">
                                             <thead>
                                                 <!-- Data-field for getting data  -->
                                             <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
@@ -215,7 +215,7 @@
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
                                     <!-- Implement Bootsrap table-->
                                     <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                                        <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-no-bordered table-hover">
+                                        <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem/MOOE" data-show-toggle="true" class="table table-no-bordered table-hover">
                                         <thead>
                                             <!-- Data-field for getting data  -->
                                             <tr  data-toggle="collapse" data-target="#accordion" class="clickable">

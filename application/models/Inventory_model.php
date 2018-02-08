@@ -43,7 +43,8 @@ class Inventory_model extends CI_Model{
         $this->db->insert('logs.increaselog',$data+$data1);
     }
     //Select All items in the inventory
-    public function select_item(){
+    public function select_item($type){
+        $this->db->where('item_type',$type);
         $query = $this->db->get('item');
         return $query->result_array();
     }
@@ -103,7 +104,7 @@ class Inventory_model extends CI_Model{
         $this->db->where('item_id',$item_id);
         $this->db->update('item');
     }
-    public function viewdetail($id = 1){
+    public function viewdetail($id){
         $this->db->join('itemdetail','item.item_id = itemdetail.item_id','inner');
         $query = $this->db->get_where('item',array('item.item_id'=>$id));;
         return $query->result_array();
