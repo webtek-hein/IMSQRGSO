@@ -73,7 +73,9 @@
                 $('#description').val(description);
                 $('#Unit').val(unit);
                 $('#Type').val(type);
-
+            });
+            $('#Item_Detail').on('show.bs.modal',function (e) {
+                $('#tabledetail').attr('data-url','url:inventory/detail/'+item_id);
             });
         });
     </script>

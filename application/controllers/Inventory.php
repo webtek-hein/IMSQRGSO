@@ -56,20 +56,20 @@ class Inventory extends CI_Controller {
         $this->inv->edititem();
         redirect('inventory');
     }
-    public function detail($id = 1){
+    public function detail($id){
         $list = $this->inv->viewdetail($id);
         $data=array();
         foreach ($list as $detail){
-            $row['del']  = $detail['delivery_date'];
+            $row['del']  = $detail['date_delivered'];
             $row['rec']  = $detail['date_received'];
             $row['exp']  = $detail['expiration_date'];
             $row['cost'] = $detail['unit_cost'];
             $row['sup']  = $detail['supplier_id'];
+            $row['action']="<a href=\"#\" data-toggle=\"modal\" data-target=\".Add_Quantity\" class=\"btn btn-default btn-xs\"><i class=\"fa fa-plus-circle\"></i> Add Quantity</a>";
 
             $data[] = $row;
         }
-        $list = array('detail' => $data);
-        echo json_encode($list);
+        echo json_encode($data);
     }
     function getdept(){
         $departments = $this->inv->select_departments();
