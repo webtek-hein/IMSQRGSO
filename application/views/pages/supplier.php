@@ -69,7 +69,7 @@
 
                                 <div class="x_content">
 
-                                    <table id="datatable" class="table table-striped table-bordered"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
+                                    <table id="datatable" class="table table-striped table-bordered"  class="table table-hover">
                                         <thead>
                                         <!-- Data-field for getting data  -->
                                         <tr >
@@ -86,7 +86,7 @@
                                             <td></td>
                                             <td></td>
                                         </tr>
-                                        </tbody>
+
                                         <tfoot>
                                         <!-- Data-field for getting data  -->
                                         <tr >
@@ -95,6 +95,7 @@
                                             <th >Contact Number</th>
                                         </tr>
                                         </tfoot>
+                                        </tbody>
                                         <!-- end of Item Details-->
                                     </table>
                             </div>
@@ -103,6 +104,7 @@
         </div>
     </div>
     </div>
+
         <!-- Add Supplier -->
         <div class="modal fade Supplier" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
@@ -193,6 +195,7 @@
                 </form>
             </div>
         </div>
+</div>
         <!-- end of add Supplier -->
 </div>
     <div class="clearfix"></div>
