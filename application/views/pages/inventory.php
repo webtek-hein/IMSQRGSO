@@ -47,7 +47,7 @@
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                     <select id="type" list="typelist" name="Type" class="form-control"  required placeholder="Type">
-                                                        <option value="Capital Outlay">Capital Outlay</option>
+                                                        <option value="CO">Capital Outlay</option>
                                                         <option value="MOOE">MOOE</option>
                                                     </select>
                                                 </div>
@@ -206,19 +206,6 @@
                                                 <th data-field="action">Action</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                            <tr>
-                                                <th>1</th>
-                                                <td><a href="#" data-toggle="modal" data-target="#Item_Detail">Envelope</a></td>
-                                                <td>Brown, short</td>
-                                                <td>500</td>
-                                                <td>Piece</td>
-                                                <td>
-                                                    <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
-                                                    <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
                                         </table>
                                         </div>
                                     </div>
@@ -228,8 +215,8 @@
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
                                     <!-- Implement Bootsrap table-->
                                     <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                                        <table data-pagination="true" data-search="true"  data-url="inventory/viewitem" data-show-toggle="true" class="table table-hover">
-                                            <thead>
+                                        <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem" data-show-toggle="true" class="table table-no-bordered table-hover">
+                                        <thead>
                                             <!-- Data-field for getting data  -->
                                             <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
                                                 <th data-sortable="true" data-field="number">#</th>
@@ -240,19 +227,6 @@
                                                 <th data-field="action">Action</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                            <tr>
-                                                <th>1</th>
-                                                <td><a href="#" data-toggle="modal" data-target="#Item_Detail">Envelope</a></td>
-                                                <td>Brown, short</td>
-                                                <td>500</td>
-                                                <td>Piece</td>
-                                                <td>
-                                                    <a href="#" data-toggle="modal" data-target=".Add_Item" class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
-                                                    <a href="#" data-toggle="modal" data-target=".Edit" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -316,10 +290,12 @@
                             </div>
                         </div>
                         </div>
+                    </div>
+                </div>
             </div>
             <!-- end of Item Detail -->
 
-            <!-- Add Item -->
+            <!-- Add Quantity -->
             <div id="addquant" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -332,7 +308,7 @@
                     <div class="modal-body">
                         <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
                             <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Quantity<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="number" name="quant" min=0 required="required" class="form-control col-md-7 col-xs-12" placeholder="Quantity">
@@ -409,7 +385,7 @@
                 </form>
             </div>
         </div>
-            <!-- end of add Item -->
+            <!-- end of add quantity -->
 
             <!--Distribution-->
             <div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
@@ -483,7 +459,7 @@
                             <h4 class="modal-title" id="myModalLabel">Edit</h4>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal form-label-left" novalidate>
+                            <form class="form-horizontal form-label-left" method="POST" action="inventory/edititem" novalidate>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Item Name<span class="required">*</span>
                                     </label>
@@ -492,7 +468,7 @@
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Description<span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" name="description" required="required" class="form-control col-md-7 col-xs-12" placeholder="Description">
@@ -512,14 +488,14 @@
                                         <input type="text" name="Type" required="required" class="form-control col-md-7 col-xs-12" placeholder="Type">
                                     </div>
                                 </div>
-                            </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                            <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
                             <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
                         </div>
 
                     </div>
+                    </form>
                 </div>
             </div>
             <!--end of edit-->
@@ -556,6 +532,5 @@
 
             <!-- /Modal -->
         </div>
-
     </div>
 </div>

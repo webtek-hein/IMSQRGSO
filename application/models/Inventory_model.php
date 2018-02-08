@@ -20,24 +20,24 @@ class Inventory_model extends CI_Model{
         //1. Insert into item
         $this->db->insert('item',$data);
         //item insert id
-        $insert_id = $this->db->insert_id();
+        $insert_id = array('item_id' => $this->db->insert_id());
+
 
         $data1 = array(
-            'delivery_date' => $this->input->post('del'),
+            'date_delivered' => $this->input->post('del'),
             'date_received' => $this->input->post('rec'),
             'unit_cost'=> $this->input->post('cost'),
             'quantity' => $quantity,
             'expiration_date' => $this->input->post('exp'),
-            'supplier_id' => $this->input->post('supp'),
-            'item_id' => $insert_id,
+           // 'supplier_id' => $this->input->post('supp'),
         );
         //2. Insert to item detail
 
-        $this->db->insert('itemdetail',$data1);
+        $this->db->insert('itemdetail',$data1+$insert_id);
         //item detail isnert id
-        $insert_id = $this->db->insert_id();
+        $insert_id = array('item_det_id' => $this->db->insert_id());
         //3. Insert into serial
-        $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
+        $serial = array_fill(1, $quantity,$insert_id);
         $this->db->insert_batch('serial',$serial);
         //4. Insert into logs
         $this->db->insert('logs.increaselog',$data+$data1);
@@ -57,26 +57,24 @@ class Inventory_model extends CI_Model{
         $item = $query->row();
 
         $data=array(
-            'item_id' => $item->item_id,
             'item_name' => $item->item_name,
             'item_description' => $item->item_description,
             'quantity' => $quantity,
             'item_type' => $item->item_type,
             'unit' => $item->unit,
         );
-
+        $item_id = array('item_id' => $id);
         $data1 = array(
-            'delivery_date' => $this->input->post('del'),
+            'date_delivered' => $this->input->post('del'),
             'date_received' => $this->input->post('rec'),
             'quantity' => $quantity,
             'unit_cost'=> $this->input->post('cost'),
             'expiration_date' => $this->input->post('exp'),
-            'supplier_id' => $this->input->post('supp'),
-            'item_id' => $id,
+            //'supplier_id' => $this->input->post('supp'),
         );
 
         //2. Insert to item detail
-        $this->db->insert('itemdetail',$data1);
+        $this->db->insert('itemdetail',$data1+$item_id);
 
         //item detail isnert id
         $insert_id = $this->db->insert_id();

@@ -63,6 +63,18 @@
                 //assign to a button with a class btn-modal
                 $('.btn-modal').val(item_id);
             });
+            $('#edit_modal').on('show.bs.modal',function (e) {
+                item_name = $(e.relatedTarget).data('name');
+                description = $(e.relatedTarget).data('description');
+                unit = $(e.relatedTarget).data('unit');
+                type = $(e.relatedTarget).data('type');
+
+                $('input[name="item"]').val(item_name);
+                $('input[name="description"]').val(description);
+                $('input[name="Unit"]').val(unit);
+                $('input[name="Type"]').val(type);
+
+            });
         });
     </script>
 </footer>

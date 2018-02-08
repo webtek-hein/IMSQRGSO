@@ -25,9 +25,7 @@ class Inventory extends CI_Controller {
         foreach ($list as $item){
             $row = array();
             $row['number'] = $counter;
-            $row['item'] =  "<a role=\"tab\" id=\"item\" data-toggle=\"collapse\" 
-                            data-parent=\"#accordion\" href=\"#accordion_detail\" aria-expanded=\"true\" 
-                            aria-controls=\"collapseOne\">".
+            $row['item'] =  "<a href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\"#Item_Detail\">".
                              $item['item_name']."</a>";
             $row['description'] = $item['item_description'];
             $row['quantity'] = $item['quantity'];
@@ -36,7 +34,9 @@ class Inventory extends CI_Controller {
             $row['action'] = "<a href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\"#addquant\" 
                               class=\"btn btn-primary btn-xs\"><i class=\"fa fa-plus-circle\">
                               </i> Add Quantity</a>".
-                             "<a href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\".Edit\" 
+                             "<a href=\"#\" data-name=\"".$item['item_name']."\" data-id=\"".$item['item_id']."\" 
+                              data-description=\"".$item['item_description']."\" data-unit=\"".$item['unit']."\"
+                              data-type=\"".$item['item_type']."\" data-toggle=\"modal\" data-target=\".Edit\" 
                               class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o\"></i> Edit</a></td>";
             $data[] = $row;
             $counter++;
