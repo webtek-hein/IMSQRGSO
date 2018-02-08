@@ -249,19 +249,7 @@
                             <h4 class="modal-title" id="myModalLabel">Item Detail</h4>
                         </div>
                         <div class="modal-body">
-                            <table id="datatable"  data-pagination="true" data-search="true" data-url="inventory/detail/1" data-toggle="table" data-show-toggle="true" class="table table-no-bordered table-hover">
-                            <thead>
-                                <tr class="headings">
-                                    <th data-field="del">Delivery Date</th>
-                                    <th data-field="rec">Date Received</th>
-                                    <th data-field="exp">Expiration Date</th>
-                                    <th data-field="cost" >Cost</th>
-                                    <th data-field="sup" >Supplier</th>
-                                    <th data-field="action" class="column-title no-link last"><span class="nobr">Add Quantity</span>
-                                    </th>
-                                </tr>
-                                </thead>
-
+                            <table id="itemdet"  data-pagination="true" data-search="true" data-show-toggle="true" class="table table-no-bordered table-hover">
                             </table>
 
                         <div class="modal-footer" >
@@ -292,34 +280,6 @@
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="number" name="quant" min=0 required="required" class="form-control col-md-7 col-xs-12" placeholder="Quantity">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Unit<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
-                                    <datalist id="list">
-                                        <option value="piece">piece</option>
-                                        <option value="box">box</option>
-                                        <option value="set">set</option>
-                                        <option value="ream">ream</option>
-                                        <option value="dozen">dozen</option>
-                                        <option value="bundle">bundle</option>
-                                        <option value="sack">sack</option>
-                                        <option value="others">others</option>
-                                    </datalist>
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Type<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12" required="required" placeholder="Type">
-                                    <datalist id="typelist">
-                                        <option value="CO">CO</option>
-                                        <option value="MOOE">MOOE</option>
-                                    </datalist>
                                 </div>
                             </div>
                             <div class="item form-group">

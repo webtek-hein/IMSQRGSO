@@ -25,7 +25,7 @@ class Inventory extends CI_Controller {
         foreach ($list as $item){
             $row = array();
             $row['number'] = $counter;
-            $row['item'] =  "<a href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\"#Item_Detail\">".
+            $row['item'] =  "<a href=\"#\" onclick=\"detail($item[item_id])\" data-toggle=\"modal\" data-target=\"#Item_Detail\">".
                              $item['item_name']."</a>";
             $row['description'] = $item['item_description'];
             $row['quantity'] = $item['quantity'];
@@ -60,6 +60,7 @@ class Inventory extends CI_Controller {
         $list = $this->inv->viewdetail($id);
         $data=array();
         foreach ($list as $detail){
+            $row['quant']  = $detail['quantity'];
             $row['del']  = $detail['date_delivered'];
             $row['rec']  = $detail['date_received'];
             $row['exp']  = $detail['expiration_date'];

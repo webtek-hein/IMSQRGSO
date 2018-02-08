@@ -75,10 +75,42 @@
                 $('#Unit').val(unit);
                 $('#Type').val(type);
             });
-            $('#Item_Detail').on('show.bs.modal',function (e) {
-                $('#tabledetail').attr('data-url','url:inventory/detail/'+item_id);
-            });
+
         });
+        function detail(id) {
+                $.ajax({
+                    url: 'inventory/detail/'+id,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        $('#itemdet').bootstrapTable({
+                            columns: [{
+                                field: 'del',
+                                title: 'Delivery Date'
+                            }, {
+                                field: 'rec',
+                                title: 'Date Received'
+                            }, {
+                                field: 'exp',
+                                title: 'Expiration Date'
+                            },{
+                                field: 'cost',
+                                title: 'Cost'
+                            },{
+                                field: 'sup',
+                                title: 'Supplier'
+                            },{
+                                field: 'quant',
+                                title: 'Q`uantity'
+                            },{
+                                field: 'action',
+                                title: 'Action'
+                            }],
+                            data: data
+                        });
+                    }
+                });
+        }
     </script>
 </footer>
 </body>
