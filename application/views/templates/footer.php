@@ -75,10 +75,12 @@
                 $('#Unit').val(unit);
                 $('#Type').val(type);
             });
+            $('#Item_Detail').on('hidden.bs.modal',function () {
+                $('#itemdet').bootstrapTable('destroy');
+            });
 
         });
         function detail(id) {
-                $('#itemdet').bootstrapTable('destroy');
                 $('#itemdet').bootstrapTable({
                             url: 'inventory/detail/'+id,
                             columns: [{
