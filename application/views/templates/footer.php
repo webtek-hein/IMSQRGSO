@@ -69,10 +69,10 @@
                 unit = $(e.relatedTarget).data('unit');
                 type = $(e.relatedTarget).data('type');
 
-                $('input[name="item"]').val(item_name);
-                $('input[name="description"]').val(description);
-                $('input[name="Unit"]').val(unit);
-                $('input[name="Type"]').val(type);
+                $('#item').val(item_name);
+                $('#description').val(description);
+                $('#Unit').val(unit);
+                $('#Type').val(type);
 
             });
         });

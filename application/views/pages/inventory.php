@@ -464,28 +464,28 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Item Name<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="item" required="required" type="text" placeholder="Item Name">
+                                        <input id="item" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="item" required="required" type="text" placeholder="Item Name">
                                     </div>
                                 </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" name="description" required="required" class="form-control col-md-7 col-xs-12" placeholder="Description">
+                                        <input id="description" type="text" name="description" required="required" class="form-control col-md-7 col-xs-12" placeholder="Description">
                                     </div>
                                 </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Unit<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" name="Unit" required="required" class="form-control col-md-7 col-xs-12" placeholder="Unit">
+                                        <input id="Unit"  type="text" name="Unit" required="required" class="form-control col-md-7 col-xs-12" placeholder="Unit">
                                     </div>
                                 </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Type<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" name="Type" required="required" class="form-control col-md-7 col-xs-12" placeholder="Type">
+                                        <input id="Type" type="text" name="Type" required="required" class="form-control col-md-7 col-xs-12" placeholder="Type">
                                     </div>
                                 </div>
                         </div>
