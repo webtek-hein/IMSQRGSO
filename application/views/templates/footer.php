@@ -78,12 +78,8 @@
 
         });
         function detail(id) {
-                $.ajax({
-                    url: 'inventory/detail/'+id,
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log(data);
                         $('#itemdet').bootstrapTable({
+                            url: 'inventory/detail/'+id,
                             columns: [{
                                 field: 'del',
                                 title: 'Delivery Date'
@@ -106,11 +102,8 @@
                                 field: 'action',
                                 title: 'Action'
                             }],
-                            data: data
                         });
                     }
-                });
-        }
     </script>
 </footer>
 </body>
