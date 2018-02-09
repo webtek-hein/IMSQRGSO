@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+if (isset($this->session->userdata['logged_in'])) {
+    $username = ($this->session->userdata['logged_in']['username']);
+    $firstname = ($this->session->userdata['user_in']['firstname']);
+    $lastname = ($this->session->userdata['user_in']['lastname']);
+    $position = ($this->session->userdata['logged_in']['position']);
+    $department = ($this->session->userdata['logged_in']['department']);
+} else {
+    redirect("logout");
+}
+?>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -9,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="assets/images/favicon.ico" type="image/ico" />
 
-    <title>Baguio City Hall</title>
+    <title>GSO Baguio City Hall</title>
 
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -34,6 +44,8 @@
     <link href="assets/css/placeholder-date.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
+    <link rel="icon" href="assets/images/logo.png">
+    
 </head>
 
 <body class="nav-md fixed-top footer_fixed">
@@ -51,7 +63,7 @@
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>John Doe</h2>
+                        <h2><?= $firstname.' '.$lastname?></h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -117,12 +129,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="assets/images/img.jpg" alt="">John Doe
+                                <img src="assets/images/img.jpg" alt=""><?= $firstname.' '.$lastname?>
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                 <li><a href="profile">Profile</a></li>
-                                <li><a href="login"><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
+                                <li><a href="logout"><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
                             </ul>
                         </li>
 
