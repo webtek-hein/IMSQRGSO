@@ -43,30 +43,102 @@
                                                             <div class="x_content">
                                                               <div class="">
                                                                 <ul class="to_do">
+                                                                  <div class="col-md-3 col-sm-6 col-xs-12">
                                                                   <li>
                                                                     <p>
-                                                                      <input type="checkbox" class="flat"> Laptop </p>
+                                                                      <input type="checkbox" class="flat"> Heavy Equipment </p>
                                                                   </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
                                                                   <li>
                                                                     <p>
-                                                                      <input type="checkbox" class="flat"> TV </p>
+                                                                      <input type="checkbox" class="flat"> Harness </p>
                                                                   </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
                                                                   <li>
                                                                     <p>
                                                                       <input type="checkbox" class="flat"> Xerox Machine</p>
                                                                   </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
                                                                   <li>
                                                                     <p>
                                                                       <input type="checkbox" class="flat"> Water Tank</p>
                                                                   </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
                                                                   <li>
                                                                     <p>
                                                                       <input type="checkbox" class="flat"> Winshield</p>
                                                                   </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
                                                                   <li>
                                                                     <p>
                                                                       <input type="checkbox" class="flat"> X-Ray Machine</p>
                                                                   </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Laptop</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Air Bike</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat">Thermos </p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Hammer</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Adapter</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Mosquito Net</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Gun Holster</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Compass</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Amplifier</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Banner</p>
+                                                                  </li>
+                                                                </div>
                                                                 </ul>
                                                               </div>
                                                             </div>
@@ -81,30 +153,102 @@
                                                             <div class="x_content">
                                                               <div class="">
                                                                 <ul class="to_do">
+                                                                  <div class="col-md-3 col-sm-6 col-xs-12">
                                                                   <li>
                                                                     <p>
-                                                                      <input type="checkbox" class="flat"> Laptop </p>
+                                                                      <input type="checkbox" class="flat"> Lapto </p>
                                                                   </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
                                                                   <li>
                                                                     <p>
-                                                                      <input type="checkbox" class="flat"> Thermos</p>
+                                                                      <input type="checkbox" class="flat"> Bassinet </p>
                                                                   </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
                                                                   <li>
                                                                     <p>
-                                                                      <input type="checkbox" class="flat"> Hammer</p>
+                                                                      <input type="checkbox" class="flat"> Battery Pack</p>
                                                                   </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
                                                                   <li>
                                                                     <p>
-                                                                      <input type="checkbox" class="flat"> Table Coffee</p>
+                                                                      <input type="checkbox" class="flat"> Battery Tester</p>
                                                                   </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
                                                                   <li>
                                                                     <p>
-                                                                      <input type="checkbox" class="flat"> Stool</p>
+                                                                      <input type="checkbox" class="flat"> Bench</p>
                                                                   </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
                                                                   <li>
                                                                     <p>
-                                                                      <input type="checkbox" class="flat"> Treadmill</p>
+                                                                      <input type="checkbox" class="flat"> Water Tank</p>
                                                                   </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Wrench</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Valance </p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat">Tuner </p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Tucker</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> T-Squaare</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> UPS</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Suncscreen</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Tester</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Threader</p>
+                                                                  </li>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                  <li>
+                                                                    <p>
+                                                                      <input type="checkbox" class="flat"> Tank</p>
+                                                                  </li>
+                                                                </div>
                                                                 </ul>
                                                               </div>
                                                             </div>
