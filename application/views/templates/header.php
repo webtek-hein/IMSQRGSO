@@ -31,7 +31,7 @@
     <!-- Custom Theme Style -->
     <link href="assets/build/css/custom.min.css" rel="stylesheet">
     <!-- Placeholder for Dates Style -->
-    <link href="assets/css/placeholder-date.css" rel="stylesheet">
+    <link href="assets/css/deptnav.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
 </head>

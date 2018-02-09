@@ -52,13 +52,13 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
+                                                    <input type="text" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date" onfocus="(this.type='date')" onblur="(this.type='text')">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
+                                                    <input type="text" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received" onfocus="(this.type='date')" onblur="(this.type='text')">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
+                                                    <input type="text" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date" onfocus="(this.type='date')" onblur="(this.type='text')">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                     <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
@@ -122,13 +122,13 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
+                                                    <input type="text" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date" onfocus="(this.type='date')" onblur="(this.type='text')">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
+                                                    <input type="text" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received" onfocus="(this.type='date')" onblur="(this.type='text')">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
+                                                    <input type="text" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date" onfocus="(this.type='date')" onblur="(this.type='text')">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                     <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
