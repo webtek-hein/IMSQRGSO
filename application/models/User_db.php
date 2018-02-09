@@ -8,15 +8,11 @@ class User_db extends CI_Model {
             ->where('username', $data['username'])
             ->limit(1);
         $q = $this->db->get('user')->row();
-
-        $password = $data['password'];
-
-        if ($q == true) {
-            if (password_verify($password, $q->password)) {
+        if (isset($q)) {
                 return true;
-            }
-        }
+        }else{
             return false;
+        }
     }
 
 

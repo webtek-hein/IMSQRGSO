@@ -265,7 +265,7 @@
                                         <div class="accordion" id="accordion" role="tablist" aria-multiselectable="false">
                                             <div class="panel">
                                                 <a class="panel-heading" role="tab" id="headingItemD" data-toggle="collapse" data-parent="#accordion" href="#collapseItemD" aria-expanded="true" aria-controls="collapseItemD">
-                                                    <h4 class="panel-title">Destribute</h4>
+                                                    <h4 class="panel-title">Distribute</h4>
                                                 </a>
                                                 <div id="collapseItemD" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingItemD">
                                                     <div class="panel-body">
@@ -359,31 +359,10 @@
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Unit<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Unit Cost<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
-                            <datalist id="list">
-                                <option value="piece">piece</option>
-                                <option value="box">box</option>
-                                <option value="set">set</option>
-                                <option value="ream">ream</option>
-                                <option value="dozen">dozen</option>
-                                <option value="bundle">bundle</option>
-                                <option value="sack">sack</option>
-                                <option value="others">others</option>
-                            </datalist>
-                        </div>
-                    </div>
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Type<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="type" list="typelist" name="Type" class="form-control col-md-7 col-xs-12" required="required" placeholder="Type">
-                            <datalist id="typelist">
-                                <option value="CO">CO</option>
-                                <option value="MOOE">MOOE</option>
-                            </datalist>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                            <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
                         </div>
                     </div>
                     <div class="item form-group">
@@ -400,12 +379,7 @@
                             <input type="date" name="rec" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
                         </div>
                     </div>
-                    <div class="item form-group">
-                        <label for="password" class="control-label col-md-3">Unit Cost</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="number" name="cost" data-validate-length="6,8" class="form-control col-md-7 col-xs-12" required="required" placeholder="Unit Cost">
-                        </div>
-                    </div>
+
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">Expiration Date<span class="required">*</span>
                         </label>
