@@ -258,7 +258,9 @@
                                                     </div>
                                                     <!-- start to do list -->
                                                     <div class="x_content">
-
+                                                      <div class=".col-xs-6 .col-md-4">
+                                                            <h2 >Add Category</h2>
+                                                        </div>
                                                         <form class="form-horizontal form-label-left" novalidate>
                                                           <div class="item form-group">
                                                             <label class="control-label col-md-3 col-sm-3 col-xs-7" for="name">Serial no. <span class="required"></span>
