@@ -6,18 +6,13 @@ class User_db extends CI_Model {
 
         $this->db->select('*')
             ->where('username', $data['username'])
-            ->where('status', 'accepted')
             ->limit(1);
         $q = $this->db->get('user')->row();
-
-        $password = $data['password'];
-
-        if ($q == true) {
-            if (password_verify($password, $q->password)) {
+        if (isset($q)) {
                 return true;
-            }
-        }
+        }else{
             return false;
+        }
     }
 
 
@@ -35,28 +30,6 @@ class User_db extends CI_Model {
         }
     }
 
-
-    public function get_pending_users()
-    {
-        $query = $this->db->get('user');
-        return $query->result_array();
-    }
-
-    public function accept_user($id)
-    {
-        $this->db->set('status','accepted')
-            ->where('status','pending')
-            ->where('user_id',$id)
-            ->update('user');
-    }
-
-    public function decline_user($id)
-    {
-        $this->db->set('status','declined')
-            ->where('status','pending')
-            ->where('user_id',$id)
-            ->update('user');
-    }
 
     public function deactivate_user($id)
     {

@@ -1,3 +1,96 @@
+<style>
+      /* Base for label styling */
+      [type="checkbox"]:not(:checked),
+      [type="checkbox"]:checked {
+        position: absolute;
+        left: -9999px;
+      }
+      [type="checkbox"]:not(:checked) + label,
+      [type="checkbox"]:checked + label {
+        position: relative;
+        padding-left: 25px;
+        cursor: pointer;
+      }
+
+      /* checkbox aspect */
+
+      [type="checkbox"]:checked + label:before {
+        content: '';
+        position: absolute;
+        left:0; top: 0px;
+        width: 20px; height: 20px;
+        //border: 1px solid #aaa;
+        background: #09ad7e;
+        border-radius: 3px;
+        //box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
+      }
+      [type="checkbox"]:not(:checked) + label:before {
+      content: '';
+        position: absolute;
+        left:0; top: 0px;
+        width: 20px; height: 20px;
+        //border: 1px solid #fff;
+        background: #eee;
+        border-radius: 3px;
+        //box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
+      }
+      /* checked mark aspect */
+
+      [type="checkbox"]:checked + label:after {
+        content: '✔';
+        position: absolute;
+        top: 0; left: 4px;
+        font-size: 14px;
+        color: #f8f8f8;
+        transition: all .2s;
+      }
+      [type="checkbox"]:not(:checked) + label:after {
+      content: '✔';
+        position: absolute;
+        top: 0; left: 4px;
+        font-size: 14px;
+        color: #ddd;
+        transition: all .2s;
+
+      }
+      /* checked mark aspect changes */
+      [type="checkbox"]:not(:checked) + label:after {
+        opacity: 1;
+        transform: scale(1);
+      }
+      [type="checkbox"]:checked + label:after {
+        opacity: 1;
+        transform: scale(1);
+      }
+      /* disabled checkbox */
+      [type="checkbox"]:disabled:not(:checked) + label:before,
+      [type="checkbox"]:disabled:checked + label:before {
+        box-shadow: none;
+        border-color: #bbb;
+        background-color: #ddd;
+      }
+      [type="checkbox"]:disabled:checked + label:after {
+        color: #999;
+      }
+      [type="checkbox"]:disabled + label {
+        color: #aaa;
+      }
+      /* accessibility */
+      [type="checkbox"]:checked:focus + label:before,
+      [type="checkbox"]:not(:checked):focus + label:before {
+       outline: none !important;
+      }
+
+      /* hover style just for information */
+      label:hover:before {
+        //border: 1px solid #4778d9!important;
+      }
+
+      [type="checkbox"]:not(:checked) + label {
+      color: #000;
+      }
+</style>
+
 <!-- page content -->
 <div class="right_col" role="main">
     <div class="">
@@ -43,30 +136,38 @@
                                                             <div class="x_content">
                                                               <div class="">
                                                                 <ul class="to_do">
-                                                                  <li>
-                                                                    <p>
-                                                                      <input type="checkbox" class="flat"> Laptop </p>
-                                                                  </li>
-                                                                  <li>
-                                                                    <p>
-                                                                      <input type="checkbox" class="flat"> TV </p>
-                                                                  </li>
-                                                                  <li>
-                                                                    <p>
-                                                                      <input type="checkbox" class="flat"> Xerox Machine</p>
-                                                                  </li>
-                                                                  <li>
-                                                                    <p>
-                                                                      <input type="checkbox" class="flat"> Water Tank</p>
-                                                                  </li>
-                                                                  <li>
-                                                                    <p>
-                                                                      <input type="checkbox" class="flat"> Winshield</p>
-                                                                  </li>
-                                                                  <li>
-                                                                    <p>
-                                                                      <input type="checkbox" class="flat"> X-Ray Machine</p>
-                                                                  </li>
+                                                                  <!--start for modal of serial-->
+                                                                  <input type="checkbox" id="test6"/>
+                                                                    <label for="test6">Laptop</label>
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                      <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                          <div class="modal-header">
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                            <h4 class="modal-title" id="myModalLabel">Serial no.</h4>
+                                                                          </div>
+                                                                          <div class="modal-body">
+                                                                             <!-- start to do list -->
+                                                                                  <form class="form-horizontal form-label-left" novalidate>
+                                                                                    <div class="item form-group">
+                                                                                      <label class="control-label col-md-3 col-sm-3 col-xs-7" for="name">Serial no. <span class="required"></span>
+                                                                                      </label>
+                                                                                      <div class="col-md-7 col-sm-10 col-xs-10">
+                                                                                        <input id="name" class="form-control col-md-7 col-xs-7" data-validate-length-range="30" data-validate-words="2" name="name" placeholder="Item name" required="required" type="text">
+                                                                                      </div>
+                                                                                    </div>
+                                                                                </form>
+                                                                              <!-- End to do list -->
+                                                                          </div>
+                                                                          <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                                                            <button type="button" class="btn btn-success">Save changes</button>
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                    <!--end for modal of serial-->
                                                                 </ul>
                                                               </div>
                                                             </div>
@@ -81,30 +182,7 @@
                                                             <div class="x_content">
                                                               <div class="">
                                                                 <ul class="to_do">
-                                                                  <li>
-                                                                    <p>
-                                                                      <input type="checkbox" class="flat"> Laptop </p>
-                                                                  </li>
-                                                                  <li>
-                                                                    <p>
-                                                                      <input type="checkbox" class="flat"> Thermos</p>
-                                                                  </li>
-                                                                  <li>
-                                                                    <p>
-                                                                      <input type="checkbox" class="flat"> Hammer</p>
-                                                                  </li>
-                                                                  <li>
-                                                                    <p>
-                                                                      <input type="checkbox" class="flat"> Table Coffee</p>
-                                                                  </li>
-                                                                  <li>
-                                                                    <p>
-                                                                      <input type="checkbox" class="flat"> Stool</p>
-                                                                  </li>
-                                                                  <li>
-                                                                    <p>
-                                                                      <input type="checkbox" class="flat"> Treadmill</p>
-                                                                  </li>
+
                                                                 </ul>
                                                               </div>
                                                             </div>
@@ -114,8 +192,8 @@
                                                     </div>
                                                     <!-- start to do list -->
                                                     <div class="x_content">
-
                                                         <form class="form-horizontal form-label-left" novalidate>
+<<<<<<< HEAD
                                                         <div class="item form-group">
                                                             <label class="control-label col-md-3 col-sm-3 col-xs-7" for="name">Item Name <span class="required"></span>
                                                             </label>
@@ -125,6 +203,10 @@
                                                           </div>
                                                           <div class="item form-group">
                                                             <label class="control-label col-md-3 col-sm-3 col-xs-7" for="name">Serial no. <span class="required"></span>
+=======
+                                                          <div class="item form-group">
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-7" for="name">Add Category <span class="required"></span>
+>>>>>>> 2846fcfab41f2c4f0a195b35e9a32458949acca6
                                                             </label>
                                                             <div class="col-md-5 col-sm-7 col-xs-7">
                                                               <input type="text" id="name" class="form-control col-md-7 col-xs-7" data-validate-length-range="30" data-validate-words="2" name="name" placeholder="serial" required="required">
@@ -137,7 +219,6 @@
                                                     <div class="form-group">
                                                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
                                                             <button class="btn btn-primary" type="button"><i class="fa fa-close"></i> Cancel</button>
-                                                            <button class="btn btn-danger" type="reset"><i class="fa fa-refresh"></i> Reset</button>
                                                             <button type="submit" class="btn btn-success"><i class="fa fa-send"></i> Add Category</button>
                                                         </div>
                                                     </div>
@@ -162,12 +243,12 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>71357</td>
-                                <td>TV</td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td>98547</td>
-                                <td>Laptop</td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             </tbody>
                             <tfoot>
@@ -186,3 +267,10 @@
     <div class="clearfix"></div>
 </div>
 <!-- /page content -->
+<script>
+$('input[type="checkbox"]').on('change', function(e){
+   if(e.target.checked){
+     $('#myModal').modal();
+   }
+});
+</script>

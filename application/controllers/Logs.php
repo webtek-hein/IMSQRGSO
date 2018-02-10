@@ -64,14 +64,10 @@ class Logs extends CI_Controller {
             $counter = 1;
             foreach ($edit as $list){
                 $row = array();
-                $row['beforeitem'] = $list['before_item_name'];
-                $row['afteritem'] = $list['after_item_name'];
-                $row['beforedescription'] = $list['before_item_description'];
-                $row['afterdescription'] = $list['after_item_description'];
-                $row['beforeunit'] = $list['before_unit'];
-                $row['afterunit'] = $list['after_unit'];
-                $row['beforetype'] = $list['before_item_type'];
-                $row['aftertype'] = $list['after_item_type'];
+                $row['timestamp'] = $list['timestamp'];
+                $row['fieldedited'] = $list['field_edited'];
+                $row['oldvalue'] = $list['old_value'];
+                $row['newvalue'] = $list['new_value'];
 
                 $data[] = $row;
                 $counter++;
@@ -85,13 +81,14 @@ class Logs extends CI_Controller {
         $counter = 1;
         foreach ($ret as $list){
             $row = array();
+            $row['timestamp'] = $list['timestamp'];
             $row['item'] = $list['item_name'];
             $row['description'] = $list['item_description'];
-            $row['datereturn'] = $list['date_return'];
+            $row['datereturned'] = $list['date_returned'];
             $row['reason'] = $list['reason'];
-            $row['receivedfrom'] = $list['received_from'];
+            $row['returnedby'] = $list['returned_by'];
             $row['receivedby'] = $list['received_by'];
-            $row['status'] = $list['status_return'];
+            $row['status'] = $list['returned_status'];
 
             $data[] = $row;
             $counter++;
