@@ -30,15 +30,10 @@
                         <thead>
                         <tr>
                           <th data-sortable="true" data-field="number">#</th>
-                          <th data-sortable="true" data-field="beforeitem">Before Item Name</th>
-                          <th data-sortable="true" data-field="afteritem">After Item Name</th>
-                          <th data-sortable="true" data-field="beforedescription">Before Description</th>
-                          <th data-sortable="true" data-field="afterdescription">After Description</th>
-                          <th data-sortable="true" data-field="beforeunit">Before Unit</th>
-                          <th data-sortable="true" data-field="afterunit">After Unit</th>
-                          <th data-sortable="true" data-field="beforetype">Before Item Type</th>
-                          <th data-sortable="true" data-field="aftertype">After Item Type</th>
-                          <th data-sortable="true" data-field="date">Date</th>
+                          <th data-sortable="true" data-field="timestamp">Timestamp</th>
+                          <th data-sortable="true" data-field="fieldedited">Field Edited</th>
+                          <th data-sortable="true" data-field="oldvalue">Old Value</th>
+                          <th data-sortable="true" data-field="newvalue">New Value</th>
                         </tr>
                       </table>
                         </div>
@@ -49,15 +44,10 @@
                         <thead>
                         <tr>
                             <th data-sortable="true" data-field="number">#</th>
-                            <th data-sortable="true" data-field="beforeitem">Before Item Name</th>
-                            <th data-sortable="true" data-field="afteritem">After Item Name</th>
-                            <th data-sortable="true" data-field="beforedescription">Before Description</th>
-                            <th data-sortable="true" data-field="afterdescription">After Description</th>
-                            <th data-sortable="true" data-field="beforeunit">Before Unit</th>
-                            <th data-sortable="true" data-field="afterunit">After Unit</th>
-                            <th data-sortable="true" data-field="beforetype">Before Item Type</th>
-                            <th data-sortable="true" data-field="aftertype">After Item Type</th>
-                            <th data-sortable="true" data-field="date">Date</th>
+                            <th data-sortable="true" data-field="timestamp">Timestamp</th>
+                            <th data-sortable="true" data-field="fieldedited">Field Edited</th>
+                            <th data-sortable="true" data-field="oldvalue">Old Value</th>
+                            <th data-sortable="true" data-field="newvalue">New Value</th>
                         </tr>
                       </thead>
                       </table>
