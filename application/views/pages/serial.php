@@ -116,18 +116,18 @@
                                                     <div class="x_content">
 
                                                         <form class="form-horizontal form-label-left" novalidate>
+                                                        <div class="item form-group">
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-7" for="name">Item Name <span class="required"></span>
+                                                            </label>
+                                                            <div class="col-md-5 col-sm-7 col-xs-7">
+                                                              <input id="name" class="form-control col-md-7 col-xs-7" data-validate-length-range="30" data-validate-words="2" name="name" placeholder="Item name" required="required" type="text">
+                                                            </div>
+                                                          </div>
                                                           <div class="item form-group">
                                                             <label class="control-label col-md-3 col-sm-3 col-xs-7" for="name">Serial no. <span class="required"></span>
                                                             </label>
                                                             <div class="col-md-5 col-sm-7 col-xs-7">
                                                               <input type="text" id="name" class="form-control col-md-7 col-xs-7" data-validate-length-range="30" data-validate-words="2" name="name" placeholder="serial" required="required">
-                                                            </div>
-                                                          </div>
-                                                          <div class="item form-group">
-                                                            <label class="control-label col-md-3 col-sm-3 col-xs-7" for="name">Item Name <span class="required"></span>
-                                                            </label>
-                                                            <div class="col-md-5 col-sm-7 col-xs-7">
-                                                              <input id="name" class="form-control col-md-7 col-xs-7" data-validate-length-range="30" data-validate-words="2" name="name" placeholder="Item name" required="required" type="text">
                                                             </div>
                                                           </div>
                                                       </form>
