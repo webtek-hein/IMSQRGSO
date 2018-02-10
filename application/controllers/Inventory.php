@@ -21,7 +21,6 @@ class Inventory extends CI_Controller {
         $data = array();
         //counter initialize
         $counter = 1;
-
         foreach ($list as $item){
             $row = array();
             $row['number'] = $counter;
@@ -67,7 +66,11 @@ class Inventory extends CI_Controller {
             $row['cost'] = $detail['unit_cost'];
             $row['sup']  = $detail['supplier_id'];
             $row['action']="<a href=\"#\" data-toggle=\"modal\" data-target=\".Add_Quantity\" class=\"btn btn-default btn-xs\">
-                            <i class=\"fa fa-plus-circle\"></i> Add Quantity</a>";
+                            <i class=\"fa fa-plus-circle\"></i> Add Quantity</a>".
+                            "<a href=\"#\" data-toggle=\"modal\" data-target=\".View_serial\" class=\"btn btn-default btn-xs\">
+                            <i class=\"fa fa-plus-circle\"></i> View Serial</a>".
+                            "<a href=\"#\" data-toggle=\"modal\" data-target=\".Distribute\" class=\"btn btn-default btn-xs\">
+                            <i class=\"fa fa-plus-circle\"></i> Distribute</a>";
 
             $data[] = $row;
         }

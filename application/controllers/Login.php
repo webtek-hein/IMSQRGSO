@@ -33,7 +33,7 @@ class Login extends CI_Controller {
             if(isset($this->session->userdata['logged_in'])){
                 $this->load->view('templates/header');
             }else{
-                $this->load->view('login');
+                $this->load->view('pages/login');
             }
         } else {
             $data = array(
@@ -41,31 +41,32 @@ class Login extends CI_Controller {
                 'password' => $this->input->post('password')
             );
             $result = $this->user_db->login($data);
-            var_dump($result);
             if ($result == TRUE) {
+
                 $username = $this->input->post('username');
                 $result = $this->user_db->read_user_information($username);
-                $session_data = array(
+                if ($result != false) {
+                    $session_data = array(
                         'username' => $result[0]->username,
                         'position' => $result[0]->position,
                         'userid' => $result[0]->user_id,
                         'department' => $result[0]->department,
                         'dept_id' => $result[0]->dept_id,
                         'password' => $result[0]->password,
-                );
+                    );
 // Add user data in session
                     $user_data = array(
                         'firstname' => $result[0]->first_name,
                         'lastname' => $result[0]->last_name,
                         'email' => $result[0]->email,
-                        'contact_no' => $result[0]->contact_no);
+                        'contact_no' => $result[0]->contact_no,);
 
-//                    $image_data = array('image' => $result[0]->image);
 
                     $this->session->set_userdata('user_in',$user_data);
                     $this->session->set_userdata('logged_in', $session_data);
-//                    $this->session->set_userdata('image_in', $image_data);
-                redirect('dashboard');
+                    $this->session->set_userdata('image_in', $image_data);
+                    redirect(base_url().'dashboard');
+                }
             } else {
                 $data = array(
                     'error_message' => 'Invalid Username or Password'
@@ -74,10 +75,8 @@ class Login extends CI_Controller {
             }
         }
     }
-
 // Logout from admin page
     public function logout() {
-
 // Removing session data
         $sess_array = array(
             'username' => ''
@@ -85,6 +84,6 @@ class Login extends CI_Controller {
         $this->session->unset_userdata('logged_in', $sess_array);
         $this->session->sess_destroy();
         $data['message_display'] = 'Successfully Logout';
-        $this->load->view('pages/login', $data);
+        redirect('login');
     }
 }
