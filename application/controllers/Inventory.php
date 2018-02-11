@@ -22,26 +22,22 @@ class Inventory extends CI_Controller {
         //counter initialize
         $counter = 1;
         foreach ($list as $item){
-            $row = array();
-            $row['number'] = $counter;
-            $row['item'] =  "<a href=\"#\" onclick=\"detail($item[item_id])\" data-toggle=\"modal\" data-target=\"#Item_Detail\">".
-                             $item['item_name']."</a>";
-            $row['description'] = $item['item_description'];
-            $row['quantity'] = $item['quantity'];
-            $row['unit'] = $item['unit'];
-            //ADD Quantity Action button
-            $row['action'] = "<a href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\"#addquant\" 
+            $data[] = array(
+                'number'    => $counter,
+                'item'      =>  "<a href=\"#\" onclick=\"detail($item[item_id])\" data-toggle=\"modal\" data-target=\"#Item_Detail\">".
+                                $item['item_name']."</a>",
+                'description'=> $item['item_description'],
+                'quantity'   => $item['quantity'],
+                'unit'       => $item['unit'],
+                'action' => "<a href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\"#addquant\" 
                               class=\"btn btn-primary btn-xs\"><i class=\"fa fa-plus-circle\">
                               </i> Add Quantity</a>".
                              "<a href=\"#\" data-name=\"".$item['item_name']."\" data-id=\"".$item['item_id']."\" 
                               data-description=\"".$item['item_description']."\" data-unit=\"".$item['unit']."\"
                               data-type=\"".$item['item_type']."\" data-toggle=\"modal\" data-target=\".Edit\" 
-                              class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o\"></i> Edit</a></td>";
-            $data[] = $row;
+                              class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o\"></i> Edit</a></td>");
             $counter++;
         }
-
-//        $list = array('items'=>$data);
         echo json_encode($data);
     }
     public function addquant(){
@@ -60,16 +56,15 @@ class Inventory extends CI_Controller {
         $list = $this->inv->viewdetail($id);
         $data=array();
         foreach ($list as $detail){
-            $row['quant']  = $detail['quantity'];
-            $row['del']  = $detail['date_delivered'];
-            $row['rec']  = $detail['date_received'];
-            $row['exp']  = $detail['expiration_date'];
-            $row['cost'] = $detail['unit_cost'];
-            $row['sup']  = $detail['supplier_name'];
-            $row['action']="<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".Distribute\" class=\"btn btn-modal btn-default btn-xs\">
-                            <i class=\"fa fa-plus-circle\"></i> Distribute</a>";
-
-            $data[] = $row;
+            $data[] = array('quant'  => $detail['quantity'],
+            'del'  => $detail['date_delivered'],
+            'rec'  => $detail['date_received'],
+            'exp' => $detail['expiration_date'],
+            'cost' => $detail['unit_cost'],
+            'sup'  => $detail['supplier_name'],
+            'action' => "<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".Distribute\" class=\"btn btn-modal btn-default btn-xs\">
+                            <i class=\"fa fa-plus-circle\"></i> Distribute</a>"
+            );
         }
         echo json_encode($data);
     }
@@ -101,25 +96,23 @@ class Inventory extends CI_Controller {
             $rec = $this->inv->return_item();
             $counter = 1;
             foreach ($rec as $list){
-                $row = array();
-                $row['item'] = $list['item_name'];
-                $row['description'] = $list['item_description'];
-                $row['datereturn'] = $list['date_return'];
-                $row['reason'] = $list['reason'];
-                $row['receivedfrom'] = $list['received_from'];
-                $row['action'] = $list['action'];
-
-                $data[] = $row;
+                $data[] = array(
+                    'item' => $list['item_name'],
+                    'description' => $list['item_description'],
+                    'datereturn' => $list['date_return'],
+                    'reason' => $list['reason'],
+                    'receivedfrom' => $list['received_from'],
+                    'action' => $list['action']);
                 $counter++;
             }
-            echo json_encode($rec);
+            echo json_encode($data);
     }
     //get serial
     public function getSerial($det_id){
         $list = $this->inv->getSerial($det_id);
+        $data = array();
         foreach ($list as $serial){
-           $row[] = $serial['serial'];
-           $data = $row;
+           $data[] = array($serial['serial']);
         }
         echo json_encode($data);
     }
