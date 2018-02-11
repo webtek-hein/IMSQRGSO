@@ -146,6 +146,9 @@
                                 title: 'Action'
                             }],
                         });
+        $('.btn-hide').on('click',function () {
+           $('#firststep').css('display','none');
+        });
         }
         function serial(det_id) {
             $('#serial').on('show.bs.modal',function () {

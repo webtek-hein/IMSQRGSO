@@ -509,7 +509,7 @@
 <!-- end of distribution-->
 
 <!--Serial and Department Number-->
-<div class="modal fade distQuestion" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="firststep" class="modal fade distQuestion" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
@@ -533,7 +533,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-info btn-md" href="#" data-target=".Distribute" data-toggle="modal" aria-hidden="true">Next</button>
+                <button type="submit" class="btn-hide btn btn-info btn-md" href="#" data-target=".Distribute" data-toggle="modal" aria-hidden="true">Next</button>
             </div>
 
         </div>
