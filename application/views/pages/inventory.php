@@ -61,7 +61,8 @@
                                                     <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
+                                                    <select list="typelist"  name="supp" class="supplieropt form-control"  required placeholder="Type">
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                     <textarea id="message" required="required" class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
@@ -326,10 +327,11 @@
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Supplier<span class="required">*</span>
+                        <label class=" control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Supplier<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="supp" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12" placeholder="Supplier">
+                            <select list="typelist"  name="supp" class="supplieropt form-control"  required placeholder="Type">
+                            </select>
                         </div>
                     </div>
             </div>

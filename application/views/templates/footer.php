@@ -78,7 +78,19 @@
             $('#Item_Detail').on('hidden.bs.modal',function () {
                 $('#itemdet').bootstrapTable('destroy');
             });
-
+            $.ajax({
+                url: 'supplier/supplieroption',
+                dataType: 'JSON',
+                success: function (data) {
+                    $('.supplieroption').empty();
+                    var counter = 0;
+                    $.each(data,function () {
+                        option = "<option value="+data[counter].id+">"+data[counter].supplier+"<br>";
+                        $('.supplieropt').append(option);
+                        counter++;
+                    });
+                }
+            });
         });
         function detail(id) {
                 $('#itemdet').bootstrapTable({

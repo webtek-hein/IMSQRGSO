@@ -20,7 +20,9 @@ class Inventory_model extends CI_Model{
         //1. Insert into item
         $this->db->insert('item',$data);
         //item insert id
-        $insert_id = array('item_id' => $this->db->insert_id());
+        $insert_id = array('item_id' => $this->db->insert_id(),
+            'supplier_id' => $this->input->post('supp'),
+        );
 
 
         $data1 = array(
@@ -29,7 +31,6 @@ class Inventory_model extends CI_Model{
             'unit_cost'=> $this->input->post('cost'),
             'quantity' => $quantity,
             'expiration_date' => $this->input->post('exp'),
-           // 'supplier_id' => $this->input->post('supp'),
         );
         //2. Insert to item detail
 
@@ -64,14 +65,15 @@ class Inventory_model extends CI_Model{
             'item_type' => $item->item_type,
             'unit' => $item->unit,
         );
-        $item_id = array('item_id' => $id);
+        $item_id = array('item_id' => $id,
+            'supplier_id' => $this->input->post('supp'),
+        );
         $data1 = array(
             'date_delivered' => $this->input->post('del'),
             'date_received' => $this->input->post('rec'),
             'quantity' => $quantity,
             'unit_cost'=> $this->input->post('cost'),
             'expiration_date' => $this->input->post('exp'),
-            //'supplier_id' => $this->input->post('supp'),
         );
 
         //2. Insert to item detail
@@ -106,6 +108,7 @@ class Inventory_model extends CI_Model{
     }
     public function viewdetail($id){
         $this->db->join('itemdetail','item.item_id = itemdetail.item_id','inner');
+        $this->db->join('supplier','supplier.supplier_id = itemdetail.supplier_id','inner');
         $query = $this->db->get_where('item',array('item.item_id'=>$id));;
         return $query->result_array();
     }
