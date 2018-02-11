@@ -20,7 +20,9 @@ class Inventory_model extends CI_Model{
         //1. Insert into item
         $this->db->insert('item',$data);
         //item insert id
-        $insert_id = array('item_id' => $this->db->insert_id());
+        $insert_id = array('item_id' => $this->db->insert_id(),
+            'supplier_id' => $this->input->post('supp'),
+        );
 
 
         $data1 = array(
@@ -29,7 +31,6 @@ class Inventory_model extends CI_Model{
             'unit_cost'=> $this->input->post('cost'),
             'quantity' => $quantity,
             'expiration_date' => $this->input->post('exp'),
-           // 'supplier_id' => $this->input->post('supp'),
         );
         //2. Insert to item detail
 
@@ -64,14 +65,15 @@ class Inventory_model extends CI_Model{
             'item_type' => $item->item_type,
             'unit' => $item->unit,
         );
-        $item_id = array('item_id' => $id);
+        $item_id = array('item_id' => $id,
+            'supplier_id' => $this->input->post('supp'),
+        );
         $data1 = array(
             'date_delivered' => $this->input->post('del'),
             'date_received' => $this->input->post('rec'),
             'quantity' => $quantity,
             'unit_cost'=> $this->input->post('cost'),
             'expiration_date' => $this->input->post('exp'),
-            //'supplier_id' => $this->input->post('supp'),
         );
 
         //2. Insert to item detail
@@ -94,6 +96,21 @@ class Inventory_model extends CI_Model{
     }
     public function edititem(){
         $item_id = $this->input->post('id');
+        // select item
+        $item = $this->db->get_where('item',array('item_id' => $item_id));
+
+        // convert to array
+        $data1 = array();
+        foreach ($item->result() as $row)
+        {
+            $data1 = array(
+                'item_name' => $row->item_name,
+                'item_description'  => $row->item_description,
+                'unit'  => $row->unit,
+                'item_type' => $row->item_type
+            );
+        }
+        // update item
         $data = array(
             'item_name' => $this->input->post('item'),
             'item_description' => $this->input->post('description'),
@@ -103,9 +120,27 @@ class Inventory_model extends CI_Model{
         $this->db->set($data);
         $this->db->where('item_id',$item_id);
         $this->db->update('item');
+
+        // compare data
+        $result1 = array_diff($data1 , $data);
+        $result2 = array_diff($data , $data1);
+
+        //convert array to string
+        $old = implode($result1);
+        $new = implode($result2);
+
+        // place values to an array
+        $values = array(
+            'field_edited' =>(key ($result1)),
+             'old_value' => ($old),
+              'new_value' =>($new),
+       );
+        //insert to edit log table
+        $this->db->insert('logs.editLog', $values);
     }
     public function viewdetail($id){
         $this->db->join('itemdetail','item.item_id = itemdetail.item_id','inner');
+        $this->db->join('supplier','supplier.supplier_id = itemdetail.supplier_id','inner');
         $query = $this->db->get_where('item',array('item.item_id'=>$id));;
         return $query->result_array();
     }
@@ -134,8 +169,8 @@ class Inventory_model extends CI_Model{
         $data = array(
             'dept_id' => $this->input->post('dept'),
             'ac_id' => $this->input->post('Code'),
-            'quantity_distributed' => $quantity,
-            'receivedby' => $this->input->post('owner')
+            'quantity_distributed'=> $this->input->post('quantity'),
+            'received_by' => $this->input->post('owner')
         );
         $this->db->insert('distribution',$data);
         $insert_id = $this->db->insert_id();
@@ -143,7 +178,7 @@ class Inventory_model extends CI_Model{
             'PO_no' => $this->input->post('po'),
             'PR_no' => $this->input->post('pr'),
             'OBR_no' => $this->input->post('obr'),
-            'dist_id' => $insert_id
+          //  'dist_id' => $insert_id
         );
 
         $this->db->update('itemdetail',$data1,array('item_id' => $id),$quantity);
@@ -159,5 +194,4 @@ class Inventory_model extends CI_Model{
         $query = $this->db->get('serial');
         return $query->result_array();
     }
-
 }

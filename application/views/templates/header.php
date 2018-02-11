@@ -78,23 +78,7 @@ if (isset($this->session->userdata['logged_in'])) {
                             <li><a href="Inventory"><i class="fa fa-book"></i>Inventory</span></a>
                             </li>
                             <li><a><i class="fa fa-home"></i>Departments<span class="fa fa-chevron-down"></span></a>
-                                <ul id="dept" class="nav child_menu" class="scrollbar">
-                                    <li><a href="Department"> Accounting Office</a></li>
-                                    <li><a href="Department"> Administrator's Office</a></li>
-                                    <li><a href="Department"> Assessor's Office</a></li>
-                                    <li><a href="Department"> Budget Office</a></li>
-                                    <li><a href="Department"> Building & Architecture</a></li>
-                                    <li><a href="Department"> Accounting Office</a></li>
-                                    <li><a href="Department"> Administrator's Office</a></li>
-                                    <li><a href="Department"> Assessor's Office</a></li>
-                                    <li><a href="Department"> Budget Office</a></li>
-                                    <li><a href="Department"> Building & Architecture</a></li>
-                                    <li><a href="Department"> Building & Architecture</a></li>
-                                    <li><a href="Department"> Accounting Office</a></li>
-                                    <li><a href="Department"> Administrator's Office</a></li>
-                                    <li><a href="Department"> Assessor's Office</a></li>
-                                    <li><a href="Department"> Budget Office</a></li>
-                                    <li><a href="Department"> Building & Architecture</a></li>
+                                <ul id="dept" class="deptlist nav child_menu" class="scrollbar">
                                 </ul>
                             </li>
                             <li><a href="Return"><i class="fa fa-undo"></i>Returns</a>

@@ -26,4 +26,29 @@ class Supplier extends CI_Controller {
         }
         echo json_encode($data);
     }
+    public function viewAccountCode(){
+        $list = $this->supp->getAccountCodes();
+        $data = array();
+
+        foreach ($list as $suppliers){
+            $row = array();
+            $row['supplier'] = $suppliers['supplier_name'];
+            $row['contact'] = $suppliers['contact'];
+            $row['address'] = $suppliers['location'];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
+    public function supplierOption(){
+        $list = $this->supp->getSupplier();
+        $data = array();
+        foreach ($list as $supplier){
+            $row = array();
+            $row['id'] = $supplier['supplier_id'];
+            $row['supplier'] = $supplier['supplier_name'];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+
+    }
 }

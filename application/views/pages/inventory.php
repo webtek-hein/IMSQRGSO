@@ -61,7 +61,10 @@
                                                     <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
+                                                    <select list="typelist"  name="supp" class="supplieropt form-control"  required placeholder="Type">
+                                                        <option value="CO">supplier 1</option>
+                                                        <option value="MOOE">supplier 2</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                     <textarea id="message" required="required" class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
@@ -275,6 +278,7 @@
         </div>
     </div>
 </div>
+
 <!-- end of Item Detail -->
 
 <!-- Add Quantity -->
@@ -326,10 +330,11 @@
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Supplier<span class="required">*</span>
+                        <label class=" control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Supplier<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="supp" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12" placeholder="Supplier">
+                            <select list="typelist"  name="supp" class="supplieropt form-control"  required placeholder="Type">
+                            </select>
                         </div>
                     </div>
             </div>
@@ -410,7 +415,7 @@
 <!-- end of view serial -->
 
 <!--Distribution-->
-<div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="myModal" class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -423,75 +428,85 @@
                 <p><small>Inputed 3 out 5 serial.</small></p>
                 <b>Distribute Item with Serial:</b>
                 <div class="checkbox">
-                   <ul id="list">
-                       <li></li>
-                       <li></li>
-                       <li></li>
+                   <ul>
+                       <li>123456</li>
+                       <li>123485</li>
+                       <li>741595</li>
                    </ul>
-                <b>To</b>
-                <form class="form-horizontal" novalidate>
-                    <div class="item form-group" class="control-label col-md-6 col-sm-6 col-xs-12">
-                        <label for="name">PO Number<span class="required">*</span>
-                        </label>
-                            <input id="website" class="form-control col-md-7 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="PO Number">
-                    </div>
-                    <div class="item form-group"  class="col-md-3 col-sm-3 col-xs-8">
-                        <label for="name">PR Number<span class="required">*</span>
-                        </label>
-                            <input id="website" class="form-control col-md-7 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="PR Number">
-                    </div>
-                    <div class="item form-group" class="col-md-3 col-sm-3 col-xs-8">
-                        <label for="name">OBR Number<span class="required">*</span>
-                        </label>
-                            <input id="website" class="form-control col-md-7 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="OBR Number">
-                    </div>
-                </form>
-                <div class="modal-footer">
-                    <button type="submit" class="btn-modal btn btn-default" id="save1"><i class="fa fa-reply-all"></i> Distribute</button>
-                    <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
                 </div>
+                <b>To</b>
+
+                <form class="form-horizontal form-label-left" method="POST" action="inventory/distribute"  novalidate>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Quantity<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="quantity" required="required" type="text" placeholder="Qauntity">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Serial<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="serial" required="required" type="text" placeholder="Serial">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department<span class="required">*</span>
+                        </label>
+                        <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                            <select list="typelist"  name="dept" class="deptopt form-control"  required placeholder="Type">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Account Code<span class="required">*</span>
+                        </label>
+                        <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                            <select list="typelist"  name="Code" class="accode form-control"  required placeholder="Account Code">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Receiving Person<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="owner" required="required" type="text" placeholder="Receiving Person">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3" for="po">PO Number<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="po" required="required" type="text" placeholder="PO Number">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">PR Number<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="pr" required="required" type="text" placeholder="PR Number">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">OBR Number<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="obr" required="required" type="text" placeholder="OBR Number">
+                        </div>
+                    </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                    <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                </div>
+                </form>
             </div>
+
         </div>
     </div>
 </div>
 <!-- end of distribution-->
-
-
-    <!--Serial and Department Number-->
-    <div class="modal fade distQuestion" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel2"></h4>
-                </div>
-                <div class="modal-body">
-                    <div class="item form-group" class="control-label col-md-6 col-sm-6 col-xs-12">
-                        <label for="name">Distribute "_#ofItems_" to<span class="required">*</span></label>
-                        <input id="addSerial" class="form-control col-md-7 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="Serial">
-                    </div>
-                    <div class="item form-group" class="control-label col-md-6 col-sm-6 col-xs-12">
-                        <label  for="name">Department<span class="required">*</span>
-                        </label>
-                        <input id="website" class="form-control col-md-5 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="Department">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-    <!--end of Serial and Department Number-->
 
 <!--Edit-->
 <div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
