@@ -79,7 +79,7 @@ class Inventory extends CI_Controller {
             $data[] = array(
                 'dept_id' => $list['dept_id'],
                 'res_center_code' => $list['res_center_code'],
-                'department' => $list['department']
+                'department' => ucwords(strtolower($list['department']))
             );
         }
         echo json_encode($data);

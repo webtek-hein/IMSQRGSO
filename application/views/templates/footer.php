@@ -91,6 +91,21 @@
                     });
                 }
             });
+            $.ajax({
+                url: 'inventory/getdept',
+                dataType: 'JSON',
+                success: function (data) {
+                    $('.deptopt').empty();
+                    var counter = 0;
+                    $.each(data,function () {
+                        option = "<option value="+data[counter].dept_id+">"+data[counter].department+"<br>";
+                        list = "<li>"+data[counter].department+"<li>";
+                        $('.deptopt').append(option);
+                        $('.deptlist').append(list);
+                        counter++;
+                    });
+                }
+            });
         });
         function detail(id) {
                 $('#itemdet').bootstrapTable({
