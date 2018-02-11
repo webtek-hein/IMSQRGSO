@@ -78,7 +78,34 @@
             $('#Item_Detail').on('hidden.bs.modal',function () {
                 $('#itemdet').bootstrapTable('destroy');
             });
-
+            $.ajax({
+                url: 'supplier/supplieroption',
+                dataType: 'JSON',
+                success: function (data) {
+                    $('.supplieroption').empty();
+                    var counter = 0;
+                    $.each(data,function () {
+                        option = "<option value="+data[counter].id+">"+data[counter].supplier+"<br>";
+                        $('.supplieropt').append(option);
+                        counter++;
+                    });
+                }
+            });
+            $.ajax({
+                url: 'inventory/getdept',
+                dataType: 'JSON',
+                success: function (data) {
+                    $('.deptopt').empty();
+                    var counter = 0;
+                    $.each(data,function () {
+                        option = "<option value="+data[counter].dept_id+">"+data[counter].department+"<br>";
+                        list = "<li><a href=Department>"+data[counter].department+"</a><li>";
+                        $('.deptopt').append(option);
+                        $('.deptlist').append(list);
+                        counter++;
+                    });
+                }
+            });
         });
         function detail(id) {
                 $('#itemdet').bootstrapTable({
