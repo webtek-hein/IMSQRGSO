@@ -96,6 +96,21 @@ class Inventory_model extends CI_Model{
     }
     public function edititem(){
         $item_id = $this->input->post('id');
+        // select item
+        $item = $this->db->get_where('item',array('item_id' => $item_id));
+
+        // convert to array
+        $data1 = array();
+        foreach ($item->result() as $row)
+        {
+            $data1 = array(
+                'item_name' => $row->item_name,
+                'item_description'  => $row->item_description,
+                'unit'  => $row->unit,
+                'item_type' => $row->item_type
+            );
+        }
+        // update item
         $data = array(
             'item_name' => $this->input->post('item'),
             'item_description' => $this->input->post('description'),
@@ -105,6 +120,23 @@ class Inventory_model extends CI_Model{
         $this->db->set($data);
         $this->db->where('item_id',$item_id);
         $this->db->update('item');
+
+        // compare data
+        $result1 = array_diff($data1 , $data);
+        $result2 = array_diff($data , $data1);
+
+        //convert array to string
+        $old = implode($result1);
+        $new = implode($result2);
+
+        // place values to an array
+        $values = array(
+            'field_edited' =>(key ($result1)),
+             'old_value' => ($old),
+              'new_value' =>($new),
+       );
+        //insert to edit log table
+        $this->db->insert('logs.editLog', $values);
     }
     public function viewdetail($id){
         $this->db->join('itemdetail','item.item_id = itemdetail.item_id','inner');
