@@ -508,6 +508,37 @@
 </div>
 <!-- end of distribution-->
 
+<!--Serial and Department Number-->
+<div class="modal fade distQuestion" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel2"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="item form-group" class="control-label col-md-6 col-sm-6 col-xs-12">
+                    <label for="name">Distribute "_#ofItems_" to<span class="required">*</span></label>
+                    <input id="addSerial" class="form-control col-md-7 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="Serial">
+                </div>
+                <div class="item form-group" class="control-label col-md-6 col-sm-6 col-xs-12">
+                    <label  for="name">Department<span class="required">*</span>
+                    </label>
+                    <input id="website" class="form-control col-md-5 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="Department">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--end of Serial and Department Number-->
 <!--Edit-->
 <div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
