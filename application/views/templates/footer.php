@@ -147,7 +147,7 @@
                             }],
                         });
         $('.btn-hide').on('click',function () {
-           $('#firststep').css('display','none');
+           $('#firststep').modal('hide');
         });
         }
         function serial(det_id) {
