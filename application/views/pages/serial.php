@@ -197,7 +197,7 @@
                                                             <label class="control-label col-md-3 col-sm-3 col-xs-7" for="name">Add Category <span class="required"></span>
                                                             </label>
                                                             <div class="col-md-5 col-sm-7 col-xs-7">
-                                                              <input type="text" id="name" class="form-control col-md-7 col-xs-7" data-validate-length-range="30" data-validate-words="2" name="name" placeholder="serial" required="required">
+                                                              <input type="text" id="name" class="form-control col-md-7 col-xs-7" data-validate-length-range="30" data-validate-words="2" name="name" required placeholder="serial">
                                                             </div>
                                                           </div>
                                                       </form>
