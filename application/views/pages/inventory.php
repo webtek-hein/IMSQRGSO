@@ -95,83 +95,334 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_content">
-                                            <form class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
-                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" required placeholder="Item Name">
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" required placeholder="Quantity">
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input  name="Unit" required class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
-                                                    <datalist id="list">
-                                                        <option value="piece">piece</option>
-                                                        <option value="box">box</option>
-                                                        <option value="set">set</option>
-                                                        <option value="ream">ream</option>
-                                                        <option value="dozen">dozen</option>
-                                                        <option value="bundle">bundle</option>
-                                                        <option value="sack">sack</option>
-                                                        <option value="others">others</option>
-                                                    </datalist>
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <select id="type" list="typelist" name="Type" class="form-control"  required placeholder="Type">
-                                                        <option value="Capital Outlay">Capital Outlay</option>
-                                                        <option value="MOOE">MOOE</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" required placeholder="Delivery Date">
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" required placeholder="Date Received">
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" required laceholder="Expiration Date">
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" required placeholder="Supplier">
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
-                                                              data-parsley-validation-threshold="10" placeholder="Description"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
-                                                        <button type="button" class="btn btn-default"><i class="fa fa-mail-reply"></i> Privious</button>
-                                                        <button type="submit" class="btn btn-success"><i class="fa fa-send"></i> Submit</a></button>
-                                                        <button type="button" class="btn btn-default"><i class="fa fa-mail-forward"></i> Next</button>
-                                                    </div>
-                                                </div>
-                                                <nav>
-                                                    <ul class="pagination pg-blue">
-                                                        <li class="page-item disabled">
-                                                            <a class="page-link" href="#" aria-label="Previous">
-                                                                <span aria-hidden="true">&laquo;</span>
-                                                                <span class="sr-only">Previous</span>
+                                            <div class="wizard">
+                                                <div class="wizard-inner">
+                                                    <div class="connecting-line"></div>
+                                                    <ul class="nav nav-tabs" role="tablist">
+                                                        <li role="presentation" class="active">
+                                                            <a href="#step1B" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                                                                <span class="round-tab">
+                                                                    <b>Item 1</b>
+                                                                </span>
                                                             </a>
                                                         </li>
-                                                        <li class="page-item active">
-                                                            <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                                                        <li role="presentation" class="disabled">
+                                                            <a href="#step2B" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                                                                <span class="round-tab">
+                                                                    <b>Item 2</b>
+                                                                </span>
+                                                            </a>
                                                         </li>
-                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                                        <li class="page-item">
-                                                            <a class="page-link" href="#" aria-label="Next">
-                                                                <span aria-hidden="true">&raquo;</span>
-                                                                <span class="sr-only">Next</span>
+                                                        <li role="presentation" class="disabled">
+                                                            <a href="#step3B" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                                                                <span class="round-tab">
+                                                                    <b>Item 3</b>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li role="presentation" class="disabled">
+                                                            <a href="#step4B" data-toggle="tab" aria-controls="step4" role="tab" title="Step 4">
+                                                                <span class="round-tab">
+                                                                    <b>Item 4</b>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li role="presentation" class="disabled">
+                                                            <a href="#step5B" data-toggle="tab" aria-controls="step5" role="tab" title="Step 5">
+                                                                <span class="round-tab">
+                                                                    <b>Item 5</b>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li role="presentation" class="disabled">
+                                                            <a href="#step6B" data-toggle="tab" aria-controls="step6" role="tab" title="Step 6">
+                                                                <span class="round-tab">
+                                                                    <b>Item 6</b>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+
+                                                        <li role="presentation" class="disabled">
+                                                            <a href="#step7B" data-toggle="tab" aria-controls="step7" role="tab" title="Step 7">
+                                                                <span class="round-tab">
+                                                                    <b>Item 7</b>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li role="presentation" class="disabled">
+                                                            <a href="#step8B" data-toggle="tab" aria-controls="step8" role="tab" title="Step 8">
+                                                                <span class="round-tab">
+                                                                    <b>Item 8</b>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li role="presentation" class="disabled">
+                                                            <a href="#step9B" data-toggle="tab" aria-controls="step9" role="tab" title="Step 9">
+                                                                <span class="round-tab">
+                                                                    <b>Item 9</b>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li role="presentation" class="disabled">
+                                                            <a href="#step10B" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                                                                <span class="round-tab">
+                                                                    <b>Item 10</b>
+                                                                </span>
                                                             </a>
                                                         </li>
                                                     </ul>
-                                                </nav>
-                                            </form>
+                                                </div>
+                                                <div class="modal-body">
+                                                <form role="form" class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" role="tabpanel" id="step1B">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="text" name="item" class="form-control" id="inputSuccess2" required placeholder="Item Name">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" required placeholder="Quantity">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input  name="Unit" required class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
+                                                                <datalist id="list">
+                                                                    <option value="piece">piece</option>
+                                                                    <option value="box">box</option>
+                                                                    <option value="set">set</option>
+                                                                    <option value="ream">ream</option>
+                                                                    <option value="dozen">dozen</option>
+                                                                    <option value="bundle">bundle</option>
+                                                                    <option value="sack">sack</option>
+                                                                    <option value="others">others</option>
+                                                                </datalist>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <select id="type" list="typelist" name="Type" class="form-control"  required placeholder="Type">
+                                                                    <option value="Capital Outlay">Capital Outlay</option>
+                                                                    <option value="MOOE">MOOE</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="date" name="del" class="form-control" id="inputSuccess4" required placeholder="Delivery Date">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="date" name="rec" class="form-control" id="inputSuccess4" required placeholder="Date Received">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="date" name="exp" class="form-control" id="inputSuccess4" required laceholder="Expiration Date">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="text" name="supp" class="form-control" id="inputSuccess5" required placeholder="Supplier">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                              data-parsley-validation-threshold="10" placeholder="Description"></textarea>
+                                                            </div>
+                                                            <ul class="list-inline pull-right">
+                                                                <li ><button type="button" class="btn btn-default next-step"><i class="fa fa-arrow-down"></i> Save and continue</button></li>
+                                                            </ul>
+                                                        </div>
+
+                                                        <div class="tab-pane" role="tabpanel" id="step2B">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="text" name="item" class="form-control" id="inputSuccess2" required placeholder="Item Name">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" required placeholder="Quantity">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input  name="Unit" required class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
+                                                                <datalist id="list">
+                                                                    <option value="piece">piece</option>
+                                                                    <option value="box">box</option>
+                                                                    <option value="set">set</option>
+                                                                    <option value="ream">ream</option>
+                                                                    <option value="dozen">dozen</option>
+                                                                    <option value="bundle">bundle</option>
+                                                                    <option value="sack">sack</option>
+                                                                    <option value="others">others</option>
+                                                                </datalist>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <select id="type" list="typelist" name="Type" class="form-control"  required placeholder="Type">
+                                                                    <option value="Capital Outlay">Capital Outlay</option>
+                                                                    <option value="MOOE">MOOE</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="date" name="del" class="form-control" id="inputSuccess4" required placeholder="Delivery Date">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="date" name="rec" class="form-control" id="inputSuccess4" required placeholder="Date Received">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="date" name="exp" class="form-control" id="inputSuccess4" required laceholder="Expiration Date">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="text" name="supp" class="form-control" id="inputSuccess5" required placeholder="Supplier">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                              data-parsley-validation-threshold="10" placeholder="Description"></textarea>
+                                                            </div>
+                                                            <ul class="list-inline pull-right">
+                                                                <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                                                <li ><button type="button" class="btn btn-default next-step"><i class="fa fa-arrow-down"></i> Save and continue</button></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-pane" role="tabpanel" id="step3B">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="text" name="item" class="form-control" id="inputSuccess2" required placeholder="Item Name">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" required placeholder="Quantity">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input  name="Unit" required class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
+                                                                <datalist id="list">
+                                                                    <option value="piece">piece</option>
+                                                                    <option value="box">box</option>
+                                                                    <option value="set">set</option>
+                                                                    <option value="ream">ream</option>
+                                                                    <option value="dozen">dozen</option>
+                                                                    <option value="bundle">bundle</option>
+                                                                    <option value="sack">sack</option>
+                                                                    <option value="others">others</option>
+                                                                </datalist>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <select id="type" list="typelist" name="Type" class="form-control"  required placeholder="Type">
+                                                                    <option value="Capital Outlay">Capital Outlay</option>
+                                                                    <option value="MOOE">MOOE</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="date" name="del" class="form-control" id="inputSuccess4" required placeholder="Delivery Date">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="date" name="rec" class="form-control" id="inputSuccess4" required placeholder="Date Received">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="date" name="exp" class="form-control" id="inputSuccess4" required laceholder="Expiration Date">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="text" name="supp" class="form-control" id="inputSuccess5" required placeholder="Supplier">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                              data-parsley-validation-threshold="10" placeholder="Description"></textarea>
+                                                            </div>
+                                                            <ul class="list-inline pull-right">
+                                                                <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                                                <li ><button type="button" class="btn btn-default next-step"><i class="fa fa-arrow-down"></i> Save and continue</button></li>
+                                                            </ul>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-pane" role="tabpanel" id="step4B">
+                                                            <p>Kunwari may Detail</p>
+                                                            <ul class="list-inline pull-right">
+                                                                <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                                                <li ><button type="button" class="btn btn-default next-step"><i class="fa fa-arrow-down"></i> Save and continue</button></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-pane" role="tabpanel" id="stepB">
+                                                            <p>Kunwari may Detail</p>
+                                                            <ul class="list-inline pull-right">
+                                                                <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                                                <li ><button type="button" class="btn btn-default next-step"><i class="fa fa-arrow-down"></i> Save and continue</button></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-pane" role="tabpanel" id="step6B">
+                                                            <p>Kunwari may Detail</p>
+                                                            <ul class="list-inline pull-right">
+                                                                <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                                                <li ><button type="button" class="btn btn-default next-step"><i class="fa fa-arrow-down"></i> Save and continue</button></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-pane" role="tabpanel" id="step7B">
+                                                            <p>Kunwari may Detail</p>
+                                                            <ul class="list-inline pull-right">
+                                                                <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                                                <li ><button type="button" class="btn btn-default next-step"><i class="fa fa-arrow-down"></i> Save and continue</button></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-pane" role="tabpanel" id="step8B">
+                                                            <p>Kunwari may Detail</p>
+                                                            <ul class="list-inline pull-right">
+                                                                <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                                                <li ><button type="button" class="btn btn-default next-step"><i class="fa fa-arrow-down"></i> Save and continue</button></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-pane" role="tabpanel" id="step9B">
+                                                            <p>Kunwari may Detail</p>
+                                                            <ul class="list-inline pull-right">
+                                                                <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                                                <li ><button type="button" class="btn btn-default next-step"><i class="fa fa-arrow-down"></i> Save and continue</button></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-pane" role="tabpanel" id="step10B">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="text" name="item" class="form-control" id="inputSuccess2" required placeholder="Item Name">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" required placeholder="Quantity">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input  name="Unit" required class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
+                                                                <datalist id="list">
+                                                                    <option value="piece">piece</option>
+                                                                    <option value="box">box</option>
+                                                                    <option value="set">set</option>
+                                                                    <option value="ream">ream</option>
+                                                                    <option value="dozen">dozen</option>
+                                                                    <option value="bundle">bundle</option>
+                                                                    <option value="sack">sack</option>
+                                                                    <option value="others">others</option>
+                                                                </datalist>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <select id="type" list="typelist" name="Type" class="form-control"  required placeholder="Type">
+                                                                    <option value="Capital Outlay">Capital Outlay</option>
+                                                                    <option value="MOOE">MOOE</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="date" name="del" class="form-control" id="inputSuccess4" required placeholder="Delivery Date">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="date" name="rec" class="form-control" id="inputSuccess4" required placeholder="Date Received">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="date" name="exp" class="form-control" id="inputSuccess4" required laceholder="Expiration Date">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <input type="text" name="supp" class="form-control" id="inputSuccess5" required placeholder="Supplier">
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                    <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                              data-parsley-validation-threshold="10" placeholder="Description"></textarea>
+                                                            </div>
+                                                            <ul class="list-inline pull-right">
+                                                                <li><button class="btn btn-primary" type="button"><i class="fa fa-close"></i> Cancel</button></li>
+                                                                <li><button type="submit" class="btn btn-success"><i class="fa fa-send"></i> Submit</button></li>
+                                                            </ul>
+                                                        </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </form>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
