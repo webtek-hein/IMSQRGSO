@@ -512,26 +512,28 @@
 <div class="modal fade distQuestion" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel2"></h4>
+                <p><small>Inputed 3 Items.</small></p>
             </div>
             <div class="modal-body">
                 <div class="item form-group" class="control-label col-md-6 col-sm-6 col-xs-12">
-                    <label for="name">Distribute "_#ofItems_" to<span class="required">*</span></label>
-                    <input id="addSerial" class="form-control col-md-7 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" type="text" required placeholder="Serial">
+                    <label for="name">Ditribute<span class="required">*</span></label>
+                    <p><small>Enter # of Items</small></p>
+                    <input id="addSerial" class="form-control col-md-7 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="# of Items">
                 </div>
+                <b>To</b>
+
                 <div class="item form-group" class="control-label col-md-6 col-sm-6 col-xs-12">
                     <label  for="name">Department<span class="required">*</span>
                     </label>
-                    <input id="website" class="form-control col-md-5 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" type="text" required placeholder="Department">
+                    <input id="website" class="form-control col-md-5 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="Department">
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-info btn-md" href="#" data-target=".Distribute" data-toggle="modal" aria-hidden="true">Next</button>
             </div>
 
         </div>
