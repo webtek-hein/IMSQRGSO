@@ -46,6 +46,7 @@ class Inventory extends CI_Controller {
     }
     public function distribute(){
         $this->inv->distrib();
+        redirect('inventory');
     }
     public function edititem(){
         $this->inv->edititem();

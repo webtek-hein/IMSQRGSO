@@ -415,7 +415,7 @@
 <!-- end of view serial -->
 
 <!--Distribution-->
-<div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="myModal" class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -441,7 +441,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Quantity<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="quantity" required="required" type="text" placeholder="Serial">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="quantity" required="required" type="text" placeholder="Qauntity">
                         </div>
                     </div>
                     <div class="item form-group">
