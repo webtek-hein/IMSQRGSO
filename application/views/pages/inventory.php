@@ -1,5 +1,5 @@
 <!-- page content -->
-<div class="right_col" role="main">
+<div class="right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
     <div class="">
 
 
@@ -240,7 +240,7 @@
             <!-- Modals -->
 
             <!-- Item Detail -->
-            <div id="Item_Detail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div id="Item_Detail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="height:500px;">
                 <div class="modal-dialog-lg">
                     <div class="modal-content">
                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -262,68 +262,6 @@
                                     </div>
 
                                     <div class="col-xs-10">
-                                        <div class="accordion" id="accordion" role="tablist" aria-multiselectable="false">
-                                            <div class="panel">
-                                                <a class="panel-heading" role="tab" id="headingItemD" data-toggle="collapse" data-parent="#accordion" href="#collapseItemD" aria-expanded="true" aria-controls="collapseItemD">
-                                                    <h4 class="panel-title">Distribute</h4>
-                                                </a>
-                                                <div id="collapseItemD" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingItemD">
-                                                    <div class="panel-body">
-
-                                                        <div class="col-6 col-sm-6 col-xs-6">
-                                                            <div class="x_panel">
-                                                                <div class="x_content">
-                                                                    <b>Distribute Item with Serial:</b>
-                                                                    <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox" value="">6161d6sdcd</br>
-                                                                            <input type="checkbox" value="">6161d6sdcd</br>
-                                                                            <input type="checkbox" value="">6161d6sdcd</br>
-                                                                            <input type="checkbox" value="">6161d6sdcd
-                                                                        </label>
-                                                                    </div>
-                                                                    <b>To</b>
-                                                                    <form class="form-horizontal form-label-left" novalidate>
-                                                                        <div class="item form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department<span class="required">*</span>
-                                                                            </label>
-                                                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="Department">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="item form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">PO Number<span class="required">*</span>
-                                                                            </label>
-                                                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="PO Number">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="item form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">PR Number<span class="required">*</span>
-                                                                            </label>
-                                                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="PR Number">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="item form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">OBR Number<span class="required">*</span>
-                                                                            </label>
-                                                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="OBR Number">
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                    <div class="modal-footer">
-                                                                        <button type="submit" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
-                                                                        <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <table id="itemdet" class="table table-striped table-no-bordered">
                                         </table>
                                     </div>
@@ -482,17 +420,24 @@
                 <h4 class="modal-title" id="myModalLabel">Distribution</h4>
             </div>
             <div class="modal-body">
+                <p><small>Inputed 3 out 5 serial.</small></p>
                 <b>Distribute Item with Serial:</b>
                 <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="">6161d6sdcd</br>
-                        <input type="checkbox" value="">6161d6sdcd</br>
-                        <input type="checkbox" value="">6161d6sdcd</br>
-                        <input type="checkbox" value="">6161d6sdcd
-                    </label>
+                   <ul>
+                       <li>123456</li>
+                       <li>123485</li>
+                       <li>741595</li>
+                   </ul>
                 </div>
                 <b>To</b>
                 <form class="form-horizontal form-label-left" novalidate>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Serial<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="Department">
+                        </div>
+                    </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department<span class="required">*</span>
                         </label>
