@@ -430,7 +430,8 @@
                    </ul>
                 </div>
                 <b>To</b>
-                <form class="form-horizontal form-label-left" novalidate>
+
+                <form class="form-horizontal form-label-left" method="POST" action="inventory/distribute"  novalidate>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Serial<span class="required">*</span>
                         </label>
@@ -466,12 +467,13 @@
                             <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="OBR Number">
                         </div>
                     </div>
-                </form>
+
                 <div class="modal-footer">
                     <button type="submit" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
                     <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>
