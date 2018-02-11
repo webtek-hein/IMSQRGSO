@@ -453,6 +453,14 @@
                         </div>
                     </div>
                     <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Account Code<span class="required">*</span>
+                        </label>
+                        <div class="col-md-8 col-sm-8 col-xs-8 form-group">
+                            <select list="typelist"  name="dept" class="accode form-control"  required placeholder="Account Code">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3" for="po">PO Number<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">

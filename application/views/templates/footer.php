@@ -106,6 +106,19 @@
                     });
                 }
             });
+            $.ajax({
+                url: 'inventory/getacccodes',
+                dataType: 'JSON',
+                success: function (data) {
+                    $('.accode').empty();
+                    var counter = 0;
+                    $.each(data,function () {
+                        option = "<option value="+data[counter].ac_id+">"+data[counter].account_code+" "+data[counter].description+"<br>";
+                        $('.accode').append(option);
+                        counter++;
+                    });
+                }
+            });
         });
         function detail(id) {
                 $('#itemdet').bootstrapTable({

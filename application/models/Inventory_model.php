@@ -162,5 +162,4 @@ class Inventory_model extends CI_Model{
         $query = $this->db->get('serial');
         return $query->result_array();
     }
-
 }
