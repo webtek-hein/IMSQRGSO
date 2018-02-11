@@ -99,7 +99,7 @@
                     var counter = 0;
                     $.each(data,function () {
                         option = "<option value="+data[counter].dept_id+">"+data[counter].department+"<br>";
-                        list = "<li>"+data[counter].department+"<li>";
+                        list = "<li><a href=Department>"+data[counter].department+"</a><li>";
                         $('.deptopt').append(option);
                         $('.deptlist').append(list);
                         counter++;
