@@ -44,7 +44,7 @@ class Inventory extends CI_Controller {
         $this->inv->addquant();
         redirect('inventory');
     }
-    public function distribute(){
+        public function distribute(){
         $this->inv->distrib();
         redirect('inventory');
     }
@@ -62,7 +62,7 @@ class Inventory extends CI_Controller {
             'exp' => $detail['expiration_date'],
             'cost' => $detail['unit_cost'],
             'sup'  => $detail['supplier_name'],
-            'action' => "<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".Distribute\" class=\"btn btn-modal btn-default btn-xs\">
+            'action' => "<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".distQuestion\" class=\"btn btn-modal btn-default btn-xs\">
                             <i class=\"fa fa-plus-circle\"></i> Distribute</a>"
             );
         }
