@@ -62,6 +62,8 @@
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                     <select list="typelist"  name="supp" class="supplieropt form-control"  required placeholder="Type">
+                                                        <option value="CO">supplier 1</option>
+                                                        <option value="MOOE">supplier 2</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
@@ -276,6 +278,7 @@
         </div>
     </div>
 </div>
+
 <!-- end of Item Detail -->
 
 <!-- Add Quantity -->
@@ -475,8 +478,9 @@
                     <button type="submit" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
                     <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
                 </div>
+                </form>
             </div>
-            </form>
+
         </div>
     </div>
 </div>
