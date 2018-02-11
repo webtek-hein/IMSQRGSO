@@ -153,5 +153,11 @@ class Inventory_model extends CI_Model{
         $query = $this->db->get('return');
         return $query->result_array();
     }
+    public function getSerial($det_id){
+        $this->db->where('item_status !=','Distributed');
+        $this->db->where('item_det_id',$det_id);
+        $query = $this->db->get('serial');
+        return $query->result_array();
+    }
 
 }

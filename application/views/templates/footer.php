@@ -106,7 +106,22 @@
                                 title: 'Action'
                             }],
                         });
+        }
+        function serial(det_id) {
+            $('#serial').on('show.bs.modal',function () {
+                $.ajax({
+                    url: 'inventory/getSerial/'+det_id,
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $('#serialinput').empty();
+                            $.each(data,function () {
+                                input = '<input type="text" name="item" class="form-control" id="inputSuccess2"><br>';
+                                $('#serialinput').append(input);
+                        });
                     }
+                });
+            });
+        }
     </script>
 </footer>
 </body>

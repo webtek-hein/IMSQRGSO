@@ -65,11 +65,7 @@ class Inventory extends CI_Controller {
             $row['exp']  = $detail['expiration_date'];
             $row['cost'] = $detail['unit_cost'];
             $row['sup']  = $detail['supplier_id'];
-            $row['action']="<a href=\"#\" data-toggle=\"modal\" data-target=\".Add_Quantity\" class=\"btn btn-default btn-xs\">
-                            <i class=\"fa fa-plus-circle\"></i> Add Quantity</a>".
-                            "<a href=\"#\" data-toggle=\"modal\" data-target=\".View_serial\" class=\"btn btn-default btn-xs\">
-                            <i class=\"fa fa-plus-circle\"></i> View Serial</a>".
-                            "<a href=\"#\" data-toggle=\"modal\" data-target=\".Distribute\" class=\"btn btn-default btn-xs\">
+            $row['action']="<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".Distribute\" class=\"btn btn-modal btn-default btn-xs\">
                             <i class=\"fa fa-plus-circle\"></i> Distribute</a>";
 
             $data[] = $row;
@@ -116,5 +112,14 @@ class Inventory extends CI_Controller {
                 $counter++;
             }
             echo json_encode($rec);
+    }
+    //get serial
+    public function getSerial($det_id){
+        $list = $this->inv->getSerial($det_id);
+        foreach ($list as $serial){
+           $row[] = $serial['serial'];
+           $data = $row;
+        }
+        echo json_encode($data);
     }
 }
