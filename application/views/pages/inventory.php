@@ -24,16 +24,16 @@
                                         <div class="x_content">
                                             <form class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" placeholder="Item Name">
+                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" required placeholder="Item Name">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
+                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
+                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" required placeholder="Quantity">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
+                                                    <input  name="Unit" class="form-control col-md-7 col-xs-12" class="unit" list="list" required placeholder="Unit">
                                                     <datalist id="list">
                                                         <option value="piece">piece</option>
                                                         <option value="box">box</option>
@@ -52,13 +52,13 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
+                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" required placeholder="Delivery Date">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
+                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" required placeholder="Date Received">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
+                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" required placeholder="Expiration Date">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                     <select list="typelist"  name="supp" class="supplieropt form-control"  required placeholder="Type">
@@ -67,7 +67,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <textarea id="message" required="required" class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                    <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                                                               data-parsley-validation-threshold="10" placeholder="Description"></textarea>
                                                 </div>
                                                 <div class="form-group">
@@ -97,16 +97,16 @@
                                         <div class="x_content">
                                             <form class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" placeholder="Item Name">
+                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" required placeholder="Item Name">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
+                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" placeholder="Quantity">
+                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" required placeholder="Quantity">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input  name="Unit" required="required" class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
+                                                    <input  name="Unit" required class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
                                                     <datalist id="list">
                                                         <option value="piece">piece</option>
                                                         <option value="box">box</option>
@@ -125,19 +125,19 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" placeholder="Delivery Date">
+                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" required placeholder="Delivery Date">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" placeholder="Date Received">
+                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" required placeholder="Date Received">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" placeholder="Expiration Date">
+                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" required laceholder="Expiration Date">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" placeholder="Supplier">
+                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" required placeholder="Supplier">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <textarea id="message" required="required" class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                    <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                                                               data-parsley-validation-threshold="10" placeholder="Description"></textarea>
                                                 </div>
                                                 <div class="form-group">
@@ -297,28 +297,28 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Quantity<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="number" name="quant" min=0 required="required" class="form-control col-md-7 col-xs-12" placeholder="Quantity">
+                            <input type="number" name="quant" min=0 required class="form-control col-md-7 col-xs-12" placeholder="Quantity">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Unit Cost<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                            <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" placeholder="Unit Cost">
+                            <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Delivery Date<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="date" name="del" required="required" class="form-control col-md-7 col-xs-12">
+                            <input type="date" name="del" required class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">Date Received<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="date" name="rec" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
+                            <input type="date" name="rec" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12" required>
                         </div>
                     </div>
 
@@ -326,14 +326,14 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">Expiration Date<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="date" name="exp" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
+                            <input type="date" name="exp" data-validate-length-range="5,20" required class="optional form-control col-md-7 col-xs-12">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class=" control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Supplier<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select list="typelist"  name="supp" class="supplieropt form-control"  required placeholder="Type">
+                            <select list="typelist"  name="supp" class="supplieropt form-control" required placeholder="Type">
                             </select>
                         </div>
                     </div>
@@ -364,42 +364,42 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="quant" min=0 required="required" value="6161d6sdcd" class="form-control col-md-7 col-xs-12">
+                            <input type="text" name="quant" min=0 required value="6161d6sdcd" class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="quant" min=0 required="required" value="6161d6sdcd" class="form-control col-md-7 col-xs-12">
+                            <input type="text" name="quant" min=0 required value="6161d6sdcd" class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="quant" min=0 value="6161d6sdcd" required="required" class="form-control col-md-7 col-xs-12">
+                            <input type="text" name="quant" min=0 value="6161d6sdcd" required class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="quant" min=0 value="6161d6sdcd" required="required" class="form-control col-md-7 col-xs-12">
+                            <input type="text" name="quant" min=0 value="6161d6sdcd" required class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="quant" min=0 value="6161d6sdcd" required="required" class="form-control col-md-7 col-xs-12">
+                            <input type="text" name="quant" min=0 value="6161d6sdcd" required class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="quant" min=0 value="6161d6sdcd" required="required" class="form-control col-md-7 col-xs-12" >
+                            <input type="text" name="quant" min=0 value="6161d6sdcd" required class="form-control col-md-7 col-xs-12" >
                         </div>
                     </div>
 
@@ -441,21 +441,21 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Quantity<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="quantity" required="required" type="text" placeholder="Qauntity">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="quantity" required type="text" placeholder="Qauntity">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Serial<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="serial" required="required" type="text" placeholder="Serial">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="serial" required type="text" placeholder="Serial">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department<span class="required">*</span>
                         </label>
                         <div class="col-md-8 col-sm-8 col-xs-8 form-group">
-                            <select list="typelist"  name="dept" class="deptopt form-control"  required placeholder="Type">
+                            <select list="typelist"  name="dept" class="deptopt form-control" required placeholder="Type">
                             </select>
                         </div>
                     </div>
@@ -463,7 +463,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Account Code<span class="required">*</span>
                         </label>
                         <div class="col-md-8 col-sm-8 col-xs-8 form-group">
-                            <select list="typelist"  name="Code" class="accode form-control"  required placeholder="Account Code">
+                            <select list="typelist"  name="Code" class="accode form-control" required placeholder="Account Code">
                             </select>
                         </div>
                     </div>
@@ -471,28 +471,28 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Receiving Person<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="owner" required="required" type="text" placeholder="Receiving Person">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text" placeholder="Receiving Person">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3" for="po">PO Number<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="po" required="required" type="text" placeholder="PO Number">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="po" required type="text" placeholder="PO Number">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">PR Number<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="pr" required="required" type="text" placeholder="PR Number">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="pr" required type="text" placeholder="PR Number">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">OBR Number<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="obr" required="required" type="text" placeholder="OBR Number">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="obr" required type="text" placeholder="OBR Number">
                         </div>
                     </div>
 
@@ -521,12 +521,12 @@
             <div class="modal-body">
                 <div class="item form-group" class="control-label col-md-6 col-sm-6 col-xs-12">
                     <label for="name">Distribute "_#ofItems_" to<span class="required">*</span></label>
-                    <input id="addSerial" class="form-control col-md-7 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="Serial">
+                    <input id="addSerial" class="form-control col-md-7 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" type="text" required placeholder="Serial">
                 </div>
                 <div class="item form-group" class="control-label col-md-6 col-sm-6 col-xs-12">
                     <label  for="name">Department<span class="required">*</span>
                     </label>
-                    <input id="website" class="form-control col-md-5 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="Department">
+                    <input id="website" class="form-control col-md-5 col-xs-8" data-validate-length-range="6" data-validate-words="2" name="dept" type="text" required placeholder="Department">
                 </div>
             </div>
             <div class="modal-footer">
@@ -555,28 +555,28 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Item Name<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="item" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="item" required="required" type="text" placeholder="Item Name">
+                            <input id="item" class="form-control col-md-7 col-xs-12" data-validate-length-range="20" data-validate-words="2" name="item" type="text" required placeholder="Item Name">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="description" type="text" name="description" required="required" class="form-control col-md-7 col-xs-12" placeholder="Description">
+                            <input id="description" type="text" name="description" class="form-control col-md-7 col-xs-12" required placeholder="Description">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Unit<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="Unit"  type="text" name="Unit" required="required" class="form-control col-md-7 col-xs-12" placeholder="Unit">
+                            <input id="Unit"  type="text" name="Unit" class="form-control col-md-7 col-xs-12" required placeholder="Unit">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Type<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="Type" type="text" name="Type" required="required" class="form-control col-md-7 col-xs-12" placeholder="Type">
+                            <input id="Type" type="text" name="Type" class="form-control col-md-7 col-xs-12" required placeholder="Type">
                         </div>
                     </div>
             </div>
@@ -607,7 +607,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="number" name="quant" min=0 required="required" class="form-control col-md-7 col-xs-12" placeholder="Quantity">
+                            <input type="number" name="quant" min=0 class="form-control col-md-7 col-xs-12" required placeholder="Quantity">
                         </div>
                     </div>
             </div>
