@@ -438,10 +438,17 @@
 
                 <form class="form-horizontal form-label-left" method="POST" action="inventory/distribute"  novalidate>
                     <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Quantity<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="quantity" required="required" type="text" placeholder="Serial">
+                        </div>
+                    </div>
+                    <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Serial<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="Department">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="serial" required="required" type="text" placeholder="Serial">
                         </div>
                     </div>
                     <div class="item form-group">
@@ -456,29 +463,36 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Account Code<span class="required">*</span>
                         </label>
                         <div class="col-md-8 col-sm-8 col-xs-8 form-group">
-                            <select list="typelist"  name="dept" class="accode form-control"  required placeholder="Account Code">
+                            <select list="typelist"  name="Code" class="accode form-control"  required placeholder="Account Code">
                             </select>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Receiving Person<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="owner" required="required" type="text" placeholder="Receiving Person">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3" for="po">PO Number<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="PO Number">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="po" required="required" type="text" placeholder="PO Number">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">PR Number<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="PR Number">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="pr" required="required" type="text" placeholder="PR Number">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">OBR Number<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="dept" required="required" type="text" placeholder="OBR Number">
+                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="obr" required="required" type="text" placeholder="OBR Number">
                         </div>
                     </div>
 

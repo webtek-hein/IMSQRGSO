@@ -137,8 +137,8 @@ class Inventory_model extends CI_Model{
         $data = array(
             'dept_id' => $this->input->post('dept'),
             'ac_id' => $this->input->post('Code'),
-            'quantity_distributed' => $quantity,
-            'receivedby' => $this->input->post('owner')
+            'quantity_distributed'=> $this->input->post('quantity'),
+            'received_by' => $this->input->post('owner')
         );
         $this->db->insert('distribution',$data);
         $insert_id = $this->db->insert_id();
@@ -146,7 +146,7 @@ class Inventory_model extends CI_Model{
             'PO_no' => $this->input->post('po'),
             'PR_no' => $this->input->post('pr'),
             'OBR_no' => $this->input->post('obr'),
-            'dist_id' => $insert_id
+          //  'dist_id' => $insert_id
         );
 
         $this->db->update('itemdetail',$data1,array('item_id' => $id),$quantity);
