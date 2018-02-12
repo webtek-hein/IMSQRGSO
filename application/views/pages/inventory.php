@@ -62,8 +62,6 @@
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                     <select list="typelist"  name="supp" class="supplieropt form-control"  required placeholder="Type">
-                                                        <option value="CO">supplier 1</option>
-                                                        <option value="MOOE">supplier 2</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
