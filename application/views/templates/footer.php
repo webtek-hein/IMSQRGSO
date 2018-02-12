@@ -99,6 +99,22 @@
                 }
             });
 
+            //add another item
+            var counter =1;
+            var list;
+            $('#addanother').on('click',function () {
+                counter++;
+                list = "<li role=\"presentation\" class=\"disabled\"><a href=\"#step"+counter+"B\" data-toggle=\"tab\" aria-controls=\"step"+counter+"\" role=\"tab\" title=\"Step"+counter+"\">" +
+                    "<span class=\"round-tab\">" +
+                    "<b>Item"+counter+"</b>" +
+                    "</span>" +
+                    "</a>" +
+                    "</li>";
+                $('.clone-tab').clone().attr('id','step'+counter+'B').appendTo('#bulkdiv');
+                $('#bulk').append(list);
+
+            });
+
             $('.modal').on('show.bs.modal',function (e) {
                //get data-id
                 item_id = $(e.relatedTarget).data('id');

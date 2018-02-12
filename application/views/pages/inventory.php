@@ -34,7 +34,7 @@
                                                 <div class="modal-body">
                                                     <form role="form" class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
                                                         <div id="bulkdiv" class="tab-content">
-                                                            <div class="tab-pane active" role="tabpanel" id="step1B">
+                                                            <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                                     <input type="text" name="item" class="form-control" id="inputSuccess2" required placeholder="Item Name">
                                                                 </div>
@@ -81,7 +81,7 @@
                                                                 </div>
                                                                 <ul class="list-inline pull-right">
                                                                     <li ><button type="submit" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save</button></li>
-                                                                    <li ><button type="button" class="btn btn-default next-step"><i class="fa fa-arrow-down"></i> Save and continue</button></li>
+                                                                    <li><button type="button" id="addanother" class="btn btn-default"><i class="fa fa-arrow-down"></i>Add another item</button></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /ADD BULK-->
+                    <!-- /ADD item-->
                 </div>
                 <!-- Main Table Content-->
                 <div class="x_content">
