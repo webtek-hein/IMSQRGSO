@@ -331,6 +331,7 @@
 </div>
 <!-- end of view serial -->
 
+
 <!--Distribution-->
 <div id="myModal" class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -375,70 +376,69 @@
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="step1">
                                 <div class="modal-body">
-                                    <form class="form-horizontal" novalidate>
-
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Distribute<p><small>Enter # of Items</small></p></label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="website" class="form-control col-md-3 col-sm-3 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text" placeholder="Quantity">
-                                            </div>
+                                    <div class="form-group">
+                                        <label class="col-md-8 "  for="name"><b>Distribute</b></br><p><small>Enter # of Items</small></p></label>
+                                        <div class="col-md-6 ">
+                                            <input id="website" class="form-control" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text" placeholder="Quantity">
                                         </div>
-
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department<span class="required">*</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-8 "  for="name">Department<span class="required">*</span>
                                         </label>
-                                        <div class="col-md-8 col-sm-8 col-xs-8 form-group">
-                                            <select list="typelist"  name="dept" id="deptopt" class="form-control" required placeholder="Type">
+                                        <div class="col-md-6">
+                                            <select list="typelist"  name="dept" class="deptopt form-control" required placeholder="Type">
                                             </select>
                                         </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Account Code<span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 form-group">
-                                                <select list="typelist"  id="accode" name="Code" class="form-control" required placeholder="Account Code">
-                                                </select>
-                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-8  " for="name">Account Code<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6  ">
+                                            <select list="typelist"  name="Code" class="accode form-control" required placeholder="Account Code">
+                                            </select>
                                         </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Receiving Person<span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text" placeholder="Receiving Person">
-                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-8 " for="po">PO Number<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 ">
+                                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="po" required type="text" placeholder="PO Number">
                                         </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-3" for="po">PO Number<span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="po" required type="text" placeholder="PO Number">
-                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-8 " for="name">PR Number<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 ">
+                                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="pr" required type="text" placeholder="PR Number">
                                         </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">PR Number<span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="pr" required type="text" placeholder="PR Number">
-                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-8 " for="name">OBR Number<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 ">
+                                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="obr" required type="text" placeholder="OBR Number">
                                         </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">OBR Number<span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="obr" required type="text" placeholder="OBR Number">
-                                            </div>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
                                 <ul class="list-inline pull-right">
-                                    <li><button type="button" class="btn btn-default next-step"><i class="fa fa-arrow-down"></i> Save and continue</button></li>
+                                    <li><button type="submit" class="btn btn-default next-step"><i class="fa fa-arrow-down"></i> Save and continue</button></li>
                                 </ul>
                             </div>
 
                             <div class="tab-pane" role="tabpanel" id="step2">
                                 <div class="item form-group">
-                                    <label class="control-label col-md-1 col-sm-1 col-xs-6" for="name">Serial<span class="required">*</span>
+                                    <label class="col-md-8" for="name">Serial<span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="col-md-6">
                                         <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="serial" required type="text" placeholder="Serial">
+                                    </div>
+                                    </br>
+                                    <div class="item form-group">
+                                        <label class="col-md-8" for="name">Receiving Person<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6">
+                                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text" placeholder="Receiving Person">
+                                        </div>
                                     </div>
                                 </div>
                                 <ul class="list-inline pull-right">
@@ -448,11 +448,18 @@
                             </div>
 
                             <div class="tab-pane" role="tabpanel" id="step3">
-                                <div class="item form-group">
-                                    <label class="control-label col-md-1 col-sm-1 col-xs-6" for="name">Serial<span class="required">*</span>
+                                <div class="form-group">
+                                    <label class="col-md-8" for="name">Serial<span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="col-md-6">
                                         <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="serial" required type="text" placeholder="Serial">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-8" for="name">Receiving Person<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6">
+                                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text" placeholder="Receiving Person">
+                                        </div>
                                     </div>
                                 </div>
                                 <ul class="list-inline pull-right">
