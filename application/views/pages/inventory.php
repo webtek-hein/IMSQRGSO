@@ -387,14 +387,14 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department<span class="required">*</span>
                                         </label>
                                         <div class="col-md-8 col-sm-8 col-xs-8 form-group">
-                                            <select list="typelist"  name="dept" class="deptopt form-control" required placeholder="Type">
+                                            <select list="typelist"  name="dept" id="deptopt" class="form-control" required placeholder="Type">
                                             </select>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Account Code<span class="required">*</span>
                                             </label>
                                             <div class="col-md-8 col-sm-8 col-xs-8 form-group">
-                                                <select list="typelist"  name="Code" class="accode form-control" required placeholder="Account Code">
+                                                <select list="typelist"  id="accode" name="Code" class="form-control" required placeholder="Account Code">
                                                 </select>
                                             </div>
                                         </div>
