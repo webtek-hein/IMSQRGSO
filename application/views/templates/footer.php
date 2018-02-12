@@ -58,8 +58,10 @@
 
     <script>
         $(document).ready(function () {
-            var option = [];
-            var list = [];
+            var department = [];
+            var deptlist = [];
+            var supplier = [];
+            var accountCode = [];
 
             //Show departments list and option
             $.ajax({
@@ -67,11 +69,11 @@
                 dataType: 'JSON',
                 success: function (data) {
                     for (i=0;i<data.length;i++){
-                        option += "<option value="+data[i].dept_id+">"+data[i].department+"<br>";
-                        list += "<li><a href=Department>"+data[i].department+"</a><li>";
+                        department += "<option value="+data[i].dept_id+">"+data[i].department+"<br>";
+                        deptlist += "<li><a href=Department>"+data[i].department+"</a><li>";
                     }
-                    $('#deptopt').html(option);
-                    $('ul #deptlist').html(list);
+                    $('#deptopt').html(department);
+                    $('#deptlist').html(deptlist);
                 }
             });
             //show supplier options
@@ -80,9 +82,9 @@
                 dataType: 'JSON',
                 success: function (data) {
                     for (i=0;i<data.length;i++){
-                        option += "<option value="+data[i].id+">"+data[i].supplier+"<br>";;
+                        supplier += "<option value="+data[i].id+">"+data[i].supplier+"<br>";;
                     }
-                    $('#supplieropt').html(option);
+                    $('#supplieropt').html(supplier);
                 }
             });
             //show account code options
@@ -91,9 +93,9 @@
                 dataType: 'JSON',
                 success: function (data) {
                     for (i=0;i<data.length;i++){
-                        option += "<option value="+data[i].ac_id+">"+data[i].account_code+" "+data[i].description+"<br>";
+                        accountCode += "<option value="+data[i].ac_id+">"+data[i].account_code+" "+data[i].description+"<br>";
                     }
-                    $('#accode').html(option);
+                    $('#accode').html(accountCode);
                 }
             });
 
