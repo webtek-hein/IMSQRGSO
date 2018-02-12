@@ -5,6 +5,7 @@
 
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
+                    <div class="clearfix"></div>
                 <!--Accordion-->
                 <div class="accordion" id="accordion" role="tablist" aria-multiselectable="false">
                     <!--ADD Item-->
