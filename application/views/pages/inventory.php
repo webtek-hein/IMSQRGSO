@@ -5,10 +5,10 @@
 
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
-                <div class="x_title">
-                    <h2>Inventory</h2>
-                    <div class="clearfix"></div>
-                </div>
+<!--                <div class="x_title">-->
+<!--                    <h2>Inventory</h2>-->
+<!--                    <div class="clearfix"></div>-->
+<!--                </div>-->
                 <!--Accordion-->
                 <div class="accordion" id="accordion" role="tablist" aria-multiselectable="false">
                     <!--ADD ITEM-->
@@ -61,7 +61,7 @@
                                                     <input type="date" name="exp" class="form-control" id="inputSuccess4" required placeholder="Expiration Date">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <select list="typelist"  name="supp" class="supplieropt form-control"  required placeholder="Type">
+                                                    <select list="typelist"  name="supp" id="supplieropt" class="form-control"  required placeholder="Type">
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
@@ -688,14 +688,14 @@
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department<span class="required">*</span>
                     </label>
                     <div class="col-md-8 col-sm-8 col-xs-8 form-group">
-                        <select list="typelist"  name="dept" class="deptopt form-control" required placeholder="Type">
+                        <select list="typelist"  name="dept" id="deptopt" class="form-control" required placeholder="Type">
                         </select>
                     </div>
                 <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Account Code<span class="required">*</span>
                     </label>
                     <div class="col-md-8 col-sm-8 col-xs-8 form-group">
-                        <select list="typelist"  name="Code" class="accode form-control" required placeholder="Account Code">
+                        <select list="typelist" id="accode" name="Code" class="form-control" required placeholder="Account Code">
                         </select>
                     </div>
                 </div>

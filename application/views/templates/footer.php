@@ -58,12 +58,52 @@
 
     <script>
         $(document).ready(function () {
+            var option = [];
+            var list = [];
+
+            //Show departments list and option
+            $.ajax({
+                url: 'inventory/getdept',
+                dataType: 'JSON',
+                success: function (data) {
+                    for (i=0;i<data.length;i++){
+                        option += "<option value="+data[i].dept_id+">"+data[i].department+"<br>";
+                        list += "<li><a href=Department>"+data[i].department+"</a><li>";
+                    }
+                    $('#deptopt').html(option);
+                    $('ul #deptlist').html(list);
+                }
+            });
+            //show supplier options
+            $.ajax({
+                url: 'supplier/supplieroption',
+                dataType: 'JSON',
+                success: function (data) {
+                    for (i=0;i<data.length;i++){
+                        option += "<option value="+data[i].id+">"+data[i].supplier+"<br>";;
+                    }
+                    $('#supplieropt').html(option);
+                }
+            });
+            //show account code options
+            $.ajax({
+                url: 'inventory/getacccodes',
+                dataType: 'JSON',
+                success: function (data) {
+                    for (i=0;i<data.length;i++){
+                        option += "<option value="+data[i].ac_id+">"+data[i].account_code+" "+data[i].description+"<br>";
+                    }
+                    $('#accode').html(option);
+                }
+            });
+
             $('.modal').on('show.bs.modal',function (e) {
                //get data-id
                 item_id = $(e.relatedTarget).data('id');
                 //assign to a button with a class btn-modal
                 $('.btn-modal').val(item_id);
             });
+
             $('#edit_modal').on('show.bs.modal',function (e) {
                 item_name = $(e.relatedTarget).data('name');
                 description = $(e.relatedTarget).data('description');
@@ -78,47 +118,9 @@
             $('#Item_Detail').on('hidden.bs.modal',function () {
                 $('#itemdet').bootstrapTable('destroy');
             });
-            $.ajax({
-                url: 'supplier/supplieroption',
-                dataType: 'JSON',
-                success: function (data) {
-                    $('.supplieroption').empty();
-                    var counter = 0;
-                    $.each(data,function () {
-                        option = "<option value="+data[counter].id+">"+data[counter].supplier+"<br>";
-                        $('.supplieropt').append(option);
-                        counter++;
-                    });
-                }
-            });
-            $.ajax({
-                url: 'inventory/getdept',
-                dataType: 'JSON',
-                success: function (data) {
-                    $('.deptopt').empty();
-                    var counter = 0;
-                    $.each(data,function () {
-                        option = "<option value="+data[counter].dept_id+">"+data[counter].department+"<br>";
-                        list = "<li><a href=Department>"+data[counter].department+"</a><li>";
-                        $('.deptopt').append(option);
-                        $('.deptlist').append(list);
-                        counter++;
-                    });
-                }
-            });
-            $.ajax({
-                url: 'inventory/getacccodes',
-                dataType: 'JSON',
-                success: function (data) {
-                    $('.accode').empty();
-                    var counter = 0;
-                    $.each(data,function () {
-                        option = "<option value="+data[counter].ac_id+">"+data[counter].account_code+" "+data[counter].description+"<br>";
-                        $('.accode').append(option);
-                        counter++;
-                    });
-                }
-            });
+
+
+
         });
         function detail(id) {
                 $('#itemdet').bootstrapTable({
@@ -166,6 +168,53 @@
             });
         }
         $(document).ready(function () {
+            $('.Distribute').on('show.bs.modal',function (e) {
+                $('#listdist').empty();
+                quantity = $('#distquant').val();
+
+                skip = 1;
+                counter =1
+                active='active';
+
+                while (skip <= quantity){
+                    input = "<input class=\"form-control col-md-7 col-xs-12\" data-validate-length-range=\"6\" data-validate-words=\"2\" name=\"serial\" required type=\"text\" placeholder=\"Serial\">";
+                    list = "<li role=\"presentation\" class="+active+">" +
+                        "<a href=\"#step"+counter+"\" data-toggle=\"tab\" aria-controls=\"step"+counter+"\" role=\"tab\" title=\"Step"+counter+"\">" +
+                        "<span class=\"round-tab\">" +
+                        "<b>Tab"+counter+"</b>" +
+                        "</span>" +
+                        "</a>" +
+                        "</li>";
+                    $('#listdist').append(list);
+                    skip += 10;
+                    active = 'disabled';
+                    arrayinput = [];
+                    incount = 1;
+                    while (counter != 0){
+                        while(incount<=10){
+                            arrayinput[counter] = input;
+                            incount++;
+                        }
+                        div="<div class=\"tab-pane active\" role=\"tabpanel\" id=\"step"+counter+"\">" +
+                            "<div class=\"item form-group\">" +
+                            "<label class=\"control-label col-md-1 col-sm-1 col-xs-6\" for=\"name\">Serial<span class=\"required\">*</span>" +
+                            "</label>" +
+                            "<div id="+counter+" class=\"col-md-6 col-sm-6 col-xs-6\">" +
+                                arrayinput+
+                            "</div>" +
+                            "</div>" +
+                            "<ul class=\"list-inline pull-right\">" +
+                            "<li><button type=\"button\" class=\"btn btn-default next-step\">Save and continue</button></li>" +
+                            "</ul>" +
+                            "</div>";
+                        $('#serialtab').append(div);
+                        counter--;
+                    }
+
+                    counter++;
+                }
+
+            });
             //Initialize tooltips
             $('.nav-tabs > li a[title]').tooltip();
 
@@ -193,6 +242,7 @@
 
             });
         });
+
 
         function nextTab(elem) {
             $(elem).next().find('a[data-toggle="tab"]').click();
