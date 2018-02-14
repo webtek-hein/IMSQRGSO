@@ -17,7 +17,7 @@ class Inventory extends CI_Controller {
         redirect('inventory');
     }
     public function saveAll(){
-        echo 'save all';
+        $this->inv->saveAll();
     }
     public function viewItem($type){
         $list = $this->inv->select_item($type);
