@@ -11,10 +11,13 @@ class Inventory extends CI_Controller {
         $this->load->model('Inventory_model','inv');
     }
 
-    public function addItem()
+    public function save($counter)
     {
-            $this->inv->add_item();
-            redirect('inventory');
+        $this->inv->add_item($counter-1);
+        redirect('inventory');
+    }
+    public function saveAll(){
+        echo 'save all';
     }
     public function viewItem($type){
         $list = $this->inv->select_item($type);
@@ -97,15 +100,15 @@ class Inventory extends CI_Controller {
             $counter = 1;
             foreach ($rec as $list){
                 $data[] = array(
-                    'timestamp' => $list['timestamp'];
-                    'serial' => $list['serial'];
-                    'item' => $list['item_name'];
-                    'description' => $list['item_description'];
-                    'datereturned' => $list['date_returned'];
-                    'reason' => $list['reason'];
-                    'returnedby' => $list['returned_by'];
-                    'receivedby' => $list['received_by'];
-                    'status' => $list['returned_status'];
+                    'timestamp' => $list['timestamp'],
+                    'serial' => $list['serial'],
+                    'item' => $list['item_name'],
+                    'description' => $list['item_description'],
+                    'datereturned' => $list['date_returned'],
+                    'reason' => $list['reason'],
+                    'returnedby' => $list['returned_by'],
+                    'receivedby' => $list['received_by'],
+                    'status' => $list['returned_status'],
                     'action' => $list['action']);
                 $counter++;
             }

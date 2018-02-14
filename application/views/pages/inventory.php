@@ -32,20 +32,20 @@
                                                     </ul>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form role="form" class="form-horizontal form-label-left" action="inventory/additem" method="POST">
+                                                    <form role="form" class="form-horizontal form-label-left" method="POST">
                                                         <div id="bulkdiv" class="tab-content">
                                                             <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
                                                                 <div class="col-md-6 col-sm-6 col-xs-12  form-group">
-                                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" required placeholder="Item Name">
+                                                                    <input type="text" name="item[]" class="form-control" id="inputSuccess2"  placeholder="Item Name">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="number" min='0' name="cost[]" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
+                                                                    <input type="number" min='0' name="cost[]" class="form-control" id="inputSuccess3"  placeholder="Unit Cost">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="number" min='0' name="quant[]" class="form-control" id="inputSuccess4" required placeholder="Quantity">
+                                                                    <input type="number" min='0' name="quant[]" class="form-control" id="inputSuccess4"  placeholder="Quantity">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input  name="Unit[]" required class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
+                                                                    <input  name="Unit[]"  class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
                                                                     <datalist id="list">
                                                                         <option value="piece">piece</option>
                                                                         <option value="box">box</option>
@@ -58,37 +58,39 @@
                                                                     </datalist>
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <select id="type" list="typelist" name="Type[]" class="form-control"  required placeholder="Type">
+                                                                    <select id="type" list="typelist" name="Type[]" class="form-control"  placeholder="Type">
                                                                         <option value="CO">Capital Outlay</option>
                                                                         <option value="MOOE">MOOE</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="date" name="del[]" class="form-control" id="inputSuccess4" required placeholder="Delivery Date">
+                                                                    <input type="date" name="del[]" class="form-control" id="inputSuccess4"  placeholder="Delivery Date">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="date" name="rec[]" class="form-control" id="inputSuccess4" required placeholder="Date Received">
+                                                                    <input type="date" name="rec[]" class="form-control" id="inputSuccess4"  placeholder="Date Received">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="date" name="exp[]" class="form-control" id="inputSuccess4" required laceholder="Expiration Date">
+                                                                    <input type="date" name="exp[]" class="form-control" id="inputSuccess4"  laceholder="Expiration Date">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <select list="typelist"  name="supp" class="supplieropt form-control" required placeholder="Type">
+                                                                    <select list="typelist"  name="supp" class="supplieropt form-control"  placeholder="Type">
                                                                     </select>
                                                                 </div>
                                                                   <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" required placeholder="Official Receipt">
+                                                                    <input type="text" name="or[]" class="form-control" id="inputSuccess5"  placeholder="Official Receipt">
                                                                 </div>
                                                                 <div class="col-md-12 col-sm-12 col-xs-12 form-group">
-                                                    <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                    <textarea id="message" class="form-control" name="description[]" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                                                               data-parsley-validation-threshold="10" placeholder="Description"></textarea>
+                                                                    <button type="submit" formaction="inventory/save/1" class="savebtn btn btn-default"><i class="fa fa-arrow-down"></i>Save</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <ul class="list-inline pull-right">
-                                                            <li ><button type="submit" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save</button></li>
+                                                            <li ><button type="submit" name="action" formaction="inventory/saveall" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save All</button></li>
                                                             <li><button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-arrow-down"></i>Add another item</button></li>
                                                         </ul>
+
                                                         <div class="clearfix"></div>
                                                 </div>
                                                 </form>
@@ -254,7 +256,7 @@
                         <label class=" control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Supplier<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select list="typelist"  name="supp" class="supplieropt form-control" required placeholder="Type">
+                            <select list="typelist"  name="supp[]" class="supplieropt form-control" required placeholder="Type">
                             </select>
                         </div>
                     </div>
@@ -505,7 +507,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="description" type="text" name="description" class="form-control col-md-7 col-xs-12" required placeholder="Description">
+                            <input id="description" type="text" name="description" class="form-control col-md-7 col-xs-12"  placeholder="Description">
                         </div>
                     </div>
                     <div class="item form-group">

@@ -102,9 +102,11 @@
             //add another item
             var counter =1;
             var div = $('.clone-tab');
+            var button = $('.savebtn');
             var list;
             $('#addanother').on('click',function () {
                 counter++;
+
                 list = "<li role=\"presentation\" class=\"disabled\"><a href=\"#step"+counter+"B\" data-toggle=\"tab\" aria-controls=\"step"+counter+"\" role=\"tab\" title=\"Step"+counter+"\">" +
                     "<span class=\"round-tab\">" +
                     "<b>Item"+counter+"</b>" +
@@ -112,9 +114,9 @@
                     "</a>" +
                     "</li>";
                 $('#bulk').append(list);
-                div.clone().find('input,textarea').val("").end().attr('id','step'+counter+'B').appendTo('#bulkdiv').removeClass('active');
-
-
+                button.attr('id','buttonCounter'+counter);
+                $('#buttonCounter'+counter).attr('formaction','inventory/save/'+counter);
+                div.clone().find('input,textarea').val("").toggleClass('required').end().attr('id','step'+counter+'B').appendTo('#bulkdiv').removeClass('active');
             });
 
             $('.modal').on('show.bs.modal',function (e) {
@@ -247,11 +249,12 @@
                     return false;
                 }
             });
+            var div = $('.clone-tab');
 
             $(".next-step").click(function (e) {
-
                 var $active = $('.wizard .nav-tabs li.active');
                 $active.next().removeClass('disabled');
+                $active.closest('form').find('input,textarea').attr('required',true);
                 nextTab($active);
 
             });
