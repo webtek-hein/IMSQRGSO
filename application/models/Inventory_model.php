@@ -9,39 +9,46 @@ class Inventory_model extends CI_Model{
 
     }
     public function add_item(){
-        $quantity = $this->input->post('quant');
-        $data = array(
-          'item_name' => $this->input->post('item'),
-          'item_description' => $this->input->post('description'),
-          'quantity' => $quantity,
-          'unit' => $this->input->post('Unit'),
-          'item_type' => $this->input->post('Type')
-        );
-        //1. Insert into item
-        $this->db->insert('item',$data);
-        //item insert id
-        $insert_id = array('item_id' => $this->db->insert_id(),
-            'supplier_id' => $this->input->post('supp'),
-        );
-
-
-        $data1 = array(
-            'date_delivered' => $this->input->post('del'),
-            'date_received' => $this->input->post('rec'),
-            'unit_cost'=> $this->input->post('cost'),
-            'quantity' => $quantity,
-            'expiration_date' => $this->input->post('exp'),
-        );
-        //2. Insert to item detail
-
-        $this->db->insert('itemdetail',$data1+$insert_id);
-        //item detail isnert id
-        $insert_id = array('item_det_id' => $this->db->insert_id());
-        //3. Insert into serial
-        $serial = array_fill(1, $quantity,$insert_id);
-        $this->db->insert_batch('serial',$serial);
-        //4. Insert into logs
-        $this->db->insert('logs.increaselog',$data+$data1);
+        $item_name = $this->input->post('item');
+        $data = array();
+        foreach ($item_name as $key => $value){
+            $data[] = array(
+                'item_name' => $item_name[$key],
+                'quantity' => $this->input->post('quant')[$key],
+                'item_description' => $this->input->post('description')[$key],
+                'unit' => $this->input->post('Unit')[$key],
+                'item_type' => $this->input->post('Type')[$key],
+                );
+            }
+            //  1. Insert into item
+           $count = count($data);
+           $this->db->insert_batch('item',$data);
+           $id = $this->db->insert_id();
+            //item insert id
+            $last_insert_id = ($count-1) + $id;
+                $insert_id [] = range($id,$last_insert_id);
+            var_dump($insert_id);
+//            'supplier_id' => $this->input->post('supp')[0],
+//        );
+//
+//
+//        $data1 = array(
+//            'date_delivered' => $this->input->post('del')[0],
+//            'date_received' => $this->input->post('rec')[0],
+//            'unit_cost'=> $this->input->post('cost')[0],
+//            'quantity' => $quantity,
+//            'expiration_date' => $this->input->post('exp')[0],
+//        );
+//        //2. Insert to item detail
+//
+//        $this->db->insert('itemdetail',$data1+$insert_id);
+//        //item detail isnert id
+//        $insert_id = array('item_det_id' => $this->db->insert_id());
+//        //3. Insert into serial
+//        $serial = array_fill(1, $quantity,$insert_id);
+//        $this->db->insert_batch('serial',$serial);
+//        //4. Insert into logs
+//        $this->db->insert('logs.increaselog',$data+$data1);
     }
     //Select All items in the inventory
     public function select_item($type){

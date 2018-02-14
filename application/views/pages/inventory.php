@@ -19,6 +19,7 @@
                                     <div class="x_panel">
                                         <div class="x_content">
                                             <div class="wizard">
+
                                                 <div class="wizard-inner">
                                                     <div class="connecting-line"></div>
                                                     <ul id="bulk" class="nav nav-tabs" role="tablist">
@@ -33,19 +34,19 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <form role="form" class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
-                                                        <div id="bulkdiv" class="tab-content">
+                                                    <div id="bulkdiv" class="tab-content">
                                                             <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" required placeholder="Item Name">
+                                                                    <input type="text" name="item[]" class="form-control" id="inputSuccess2" required placeholder="Item Name">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
+                                                                    <input type="number" min='0' name="cost[]" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="number" min='0' name="quant" class="form-control" id="inputSuccess4" required placeholder="Quantity">
+                                                                    <input type="number" min='0' name="quant[]" class="form-control" id="inputSuccess4" required placeholder="Quantity">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input  name="Unit" required class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
+                                                                    <input  name="Unit[]" required class="form-control col-md-7 col-xs-12" class="unit" list="list" placeholder="Unit">
                                                                     <datalist id="list">
                                                                         <option value="piece">piece</option>
                                                                         <option value="box">box</option>
@@ -58,33 +59,34 @@
                                                                     </datalist>
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <select id="type" list="typelist" name="Type" class="form-control"  required placeholder="Type">
-                                                                        <option value="Capital Outlay">Capital Outlay</option>
+                                                                    <select id="type" list="typelist" name="Type[]" class="form-control"  required placeholder="Type">
+                                                                        <option value="CO">Capital Outlay</option>
                                                                         <option value="MOOE">MOOE</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="date" name="del" class="form-control" id="inputSuccess4" required placeholder="Delivery Date">
+                                                                    <input type="date" name="del[]" class="form-control" id="inputSuccess4" required placeholder="Delivery Date">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="date" name="rec" class="form-control" id="inputSuccess4" required placeholder="Date Received">
+                                                                    <input type="date" name="rec[]" class="form-control" id="inputSuccess4" required placeholder="Date Received">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="date" name="exp" class="form-control" id="inputSuccess4" required laceholder="Expiration Date">
+                                                                    <input type="date" name="exp[]" class="form-control" id="inputSuccess4" required laceholder="Expiration Date">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" required placeholder="Supplier">
+                                                                    <select list="typelist"  name="supp" class="supplieropt form-control" required placeholder="Type">
+                                                                    </select>
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                    <textarea id="message" required class="form-control" name="description[]" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                                                               data-parsley-validation-threshold="10" placeholder="Description"></textarea>
                                                                 </div>
-                                                                <ul class="list-inline pull-right">
-                                                                    <li ><button type="submit" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save</button></li>
-                                                                    <li><button type="button" id="addanother" class="btn btn-default"><i class="fa fa-arrow-down"></i>Add another item</button></li>
-                                                                </ul>
                                                             </div>
                                                         </div>
+                                                        <ul class="list-inline pull-right">
+                                                            <li ><button type="submit" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save</button></li>
+                                                            <li><button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-arrow-down"></i>Add another item</button></li>
+                                                        </ul>
                                                         <div class="clearfix"></div>
                                                 </div>
                                                 </form>

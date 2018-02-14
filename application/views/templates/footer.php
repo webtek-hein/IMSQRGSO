@@ -84,7 +84,7 @@
                     for (i=0;i<data.length;i++){
                         supplier += "<option value="+data[i].id+">"+data[i].supplier+"<br>";;
                     }
-                    $('#supplieropt').html(supplier);
+                    $('.supplieropt').html(supplier);
                 }
             });
             //show account code options
@@ -101,6 +101,7 @@
 
             //add another item
             var counter =1;
+            var div = $('.clone-tab');
             var list;
             $('#addanother').on('click',function () {
                 counter++;
@@ -110,8 +111,9 @@
                     "</span>" +
                     "</a>" +
                     "</li>";
-                $('.clone-tab').clone().attr('id','step'+counter+'B').appendTo('#bulkdiv');
                 $('#bulk').append(list);
+                div.clone().find('input').val("").end().attr('id','step'+counter+'B').appendTo('#bulkdiv').removeClass('active');
+
 
             });
 
