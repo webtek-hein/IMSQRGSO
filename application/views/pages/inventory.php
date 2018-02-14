@@ -83,12 +83,12 @@
                                                     <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                                                               data-parsley-validation-threshold="10" placeholder="Description"></textarea>
                                                                 </div>
-                                                                <ul class="list-inline pull-right">
-                                                                    <li ><button type="submit" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save</button></li>
-                                                                    <li><button type="button" id="addanother" class="btn btn-default"><i class="fa fa-arrow-down"></i>Add another item</button></li>
-                                                                </ul>
                                                             </div>
                                                         </div>
+                                                        <ul class="list-inline pull-right">
+                                                            <li ><button type="submit" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save</button></li>
+                                                            <li><button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-arrow-down"></i>Add another item</button></li>
+                                                        </ul>
                                                         <div class="clearfix"></div>
                                                 </div>
                                                 </form>
