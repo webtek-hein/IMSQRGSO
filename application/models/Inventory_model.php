@@ -11,9 +11,8 @@ class Inventory_model extends CI_Model{
     public function add_item($counter){
         $item_name = $this->input->post('item')[$counter];
         $quantity = $this->input->post('quant')[$counter];
-        $supplier_id = $this->input->post('supp')[$counter];
+        $supplier_id = $this->input->post('supp');
 
-        var_dump($supplier_id);
         $this->db->select('supplier_name');
         $this->db->where('supplier_id',$supplier_id);
         $query = $this->db->get('supplier');
