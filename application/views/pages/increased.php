@@ -23,7 +23,7 @@
                         <li role="presentation" class=""><a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
                         </li>
                       </ul>
-                      <div id="myTabContent" class="tab-content" style="overflow-x:auto;">
+                      <div id="myTabContent" class="tab-content">
                         <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
 
                             <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="logs/increaseLog" data-show-toggle="true" class="table table-hover">

@@ -77,7 +77,7 @@ if (isset($this->session->userdata['logged_in'])) {
                             </li>
                             <li><a href="Inventory"><i class="fa fa-book"></i>Inventory</span></a>
                             </li>
-                            <li><a><i class="fa fa-home"></i>Departments<span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-file-text"></i>Departments<span class="fa fa-chevron-down"></span></a>
                                 <ul id="deptlist" class="nav child_menu" class="scrollbar">
                                 </ul>
                             </li>

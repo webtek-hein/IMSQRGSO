@@ -19,7 +19,6 @@
                                     <div class="x_panel">
                                         <div class="x_content">
                                             <div class="wizard">
-
                                                 <div class="wizard-inner">
                                                     <div class="connecting-line"></div>
                                                     <ul id="bulk" class="nav nav-tabs" role="tablist">
@@ -33,11 +32,11 @@
                                                     </ul>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form role="form" class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
-                                                    <div id="bulkdiv" class="tab-content">
+                                                    <form role="form" class="form-horizontal form-label-left" action="inventory/additem" method="POST">
+                                                        <div id="bulkdiv" class="tab-content">
                                                             <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
-                                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                                    <input type="text" name="item[]" class="form-control" id="inputSuccess2" required placeholder="Item Name">
+                                                                <div class="col-md-6 col-sm-6 col-xs-12  form-group">
+                                                                    <input type="text" name="item" class="form-control" id="inputSuccess2" required placeholder="Item Name">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                                     <input type="number" min='0' name="cost[]" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
@@ -77,16 +76,19 @@
                                                                     <select list="typelist"  name="supp" class="supplieropt form-control" required placeholder="Type">
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                                    <textarea id="message" required class="form-control" name="description[]" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                                  <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" required placeholder="Official Receipt">
+                                                                </div>
+                                                                <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                                    <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                                                               data-parsley-validation-threshold="10" placeholder="Description"></textarea>
                                                                 </div>
+                                                                <ul class="list-inline pull-right">
+                                                                    <li ><button type="submit" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save</button></li>
+                                                                    <li><button type="button" id="addanother" class="btn btn-default"><i class="fa fa-arrow-down"></i>Add another item</button></li>
+                                                                </ul>
                                                             </div>
                                                         </div>
-                                                        <ul class="list-inline pull-right">
-                                                            <li ><button type="submit" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save</button></li>
-                                                            <li><button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-arrow-down"></i>Add another item</button></li>
-                                                        </ul>
                                                         <div class="clearfix"></div>
                                                 </div>
                                                 </form>
@@ -388,7 +390,7 @@
                                         <label class="col-md-8 "  for="name">Department<span class="required">*</span>
                                         </label>
                                         <div class="col-md-6">
-                                            <select list="typelist"  name="dept" class="deptopt form-control" required placeholder="Type">
+                                            <select list="typelist"   name="dept" class="deptopt form-control" required placeholder="Type">
                                             </select>
                                         </div>
                                     </div>
