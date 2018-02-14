@@ -112,7 +112,7 @@
                     "</a>" +
                     "</li>";
                 $('#bulk').append(list);
-                div.clone().find('input').val("").end().attr('id','step'+counter+'B').appendTo('#bulkdiv').removeClass('active');
+                div.clone().find('input,textarea').val("").end().attr('id','step'+counter+'B').appendTo('#bulkdiv').removeClass('active');
 
 
             });
