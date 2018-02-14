@@ -14,14 +14,13 @@
                         <h2>Returns</h2>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="x_content" style="overflow-x:auto;">
+                    <div class="x_content">
                         <table id="datatable" data-pagination="true" data-search="true" data-toggle="table" data-url="invetory/returnitem" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th data-sortable="true" data-field="number">#</th>
                                 <th data-sortable="true" data-field="item">Item Name</th>
                                 <th data-sortable="true" data-field="description">Item Description</th>
-                                <th data-sortable="true" data-field="datereturn">Date Return</th>
+                                <th data-sortable="true" data-field="datereturn">Date Returned</th>
                                 <th data-sortable="true" data-field="reason">Reason</th>
                                 <th data-sortable="true" data-field="receivedfrom">Received From</th>
                                 <th data-sortable="true" data-field="action">Action</th>

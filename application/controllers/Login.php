@@ -18,7 +18,7 @@ class Login extends CI_Controller {
         if (isset($this->session->userdata['logged_in'])) {
             redirect(base_url().'dashboard');
         } else {
-            $this->load->view('login');
+            $this->load->view('pages/login');
         }
     }
 
@@ -84,6 +84,6 @@ class Login extends CI_Controller {
         $this->session->unset_userdata('logged_in', $sess_array);
         $this->session->sess_destroy();
         $data['message_display'] = 'Successfully Logout';
-        redirect('login');
+        redirect('pages/login');
     }
 }

@@ -32,10 +32,10 @@
                                                     </ul>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form role="form" class="form-horizontal form-label-left input_mask" action="inventory/additem" method="POST">
+                                                    <form role="form" class="form-horizontal form-label-left" action="inventory/additem" method="POST">
                                                         <div id="bulkdiv" class="tab-content">
                                                             <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
-                                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                <div class="col-md-6 col-sm-6 col-xs-12  form-group">
                                                                     <input type="text" name="item" class="form-control" id="inputSuccess2" required placeholder="Item Name">
                                                                 </div>
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
@@ -75,7 +75,10 @@
                                                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                                     <input type="text" name="supp" class="form-control" id="inputSuccess5" required placeholder="Supplier">
                                                                 </div>
-                                                                <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                  <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                    <input type="text" name="supp" class="form-control" id="inputSuccess5" required placeholder="Official Receipt">
+                                                                </div>
+                                                                <div class="col-md-12 col-sm-12 col-xs-12 form-group">
                                                     <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                                                               data-parsley-validation-threshold="10" placeholder="Description"></textarea>
                                                                 </div>
@@ -386,7 +389,7 @@
                                         <label class="col-md-8 "  for="name">Department<span class="required">*</span>
                                         </label>
                                         <div class="col-md-6">
-                                            <select list="typelist"  name="dept" class="deptopt form-control" required placeholder="Type">
+                                            <select list="typelist"   name="dept" class="deptopt form-control" required placeholder="Type">
                                             </select>
                                         </div>
                                     </div>
