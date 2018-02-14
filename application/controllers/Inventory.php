@@ -97,11 +97,15 @@ class Inventory extends CI_Controller {
             $counter = 1;
             foreach ($rec as $list){
                 $data[] = array(
-                    'item' => $list['item_name'],
-                    'description' => $list['item_description'],
-                    'datereturn' => $list['date_return'],
-                    'reason' => $list['reason'],
-                    'receivedfrom' => $list['received_from'],
+                    'timestamp' => $list['timestamp'];
+                    'serial' => $list['serial'];
+                    'item' => $list['item_name'];
+                    'description' => $list['item_description'];
+                    'datereturned' => $list['date_returned'];
+                    'reason' => $list['reason'];
+                    'returnedby' => $list['returned_by'];
+                    'receivedby' => $list['received_by'];
+                    'status' => $list['returned_status'];
                     'action' => $list['action']);
                 $counter++;
             }
