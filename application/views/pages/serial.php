@@ -254,6 +254,7 @@
 </div>
     <div class="clearfix"></div>
 </div>
+</div>
 <!-- /page content -->
 <script>
 $('input[type="checkbox"]').on('change', function(e){

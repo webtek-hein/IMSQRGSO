@@ -30,41 +30,36 @@
                         <thead>
                         <tr>
                           <th data-sortable="true" data-field="number">#</th>
-                          <th data-sortable="true" data-field="decreasedate">Decrease Date</th>
+                          <th data-sortable="true" data-field="timestamp">Timestamp</th>
                           <th data-sortable="true" data-field="item">Item Name</th>
                           <th data-sortable="true" data-field="description">Description</th>
-                          <th data-sortable="true" data-field="serial">Serial</th>
-                          <th data-sortable="true" data-field="dateaquired">Date Acquired</th>
-                          <th data-sortable="true" data-field="receivedby">Received By</th>
-                          <th data-sortable="true" data-field="receivedfrom">Received From</th>
-                          <th data-sortable="true" data-field="accountcode">Account Code</th>
+                          <th data-sortable="true" data-field="type">Item Type</th>
                           <th data-sortable="true" data-field="department">Department</th>
+                          <th data-sortable="true" data-field="dateaquired">Date Acquired</th>
+                          <th data-sortable="true" data-field="accountcode">Account Code</th>
                           <th data-sortable="true" data-field="unit">Unit</th>
-                          <th data-sortable="true" data-field="type">Type</th>
-                          <th data-sortable="true" data-field="status">Item Status</th>
+                          <th data-sortable="true" data-field="quantity">Quantity</th>
+                          <th data-sortable="true" data-field="receivedfrom">Received From</th>
                         </tr>
                       </thead>
                       </table>
                         </div>
-
 
                     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
                       <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table" data-url="logs/decreaseLog" data-show-toggle="true" class="table table-striped table-bordered">
                         <thead>
                         <tr>
                           <th data-sortable="true" data-field="number">#</th>
-                          <th data-sortable="true" data-field="decreasedate">Decrease Date</th>
+                          <th data-sortable="true" data-field="timestamp">Timestamp</th>
                           <th data-sortable="true" data-field="item">Item Name</th>
                           <th data-sortable="true" data-field="description">Description</th>
-                          <th data-sortable="true" data-field="serial">Serial</th>
-                          <th data-sortable="true" data-field="dateaquired">Date Acquired</th>
-                          <th data-sortable="true" data-field="receivedby">Received By</th>
-                          <th data-sortable="true" data-field="receivedfrom">Received From</th>
-                          <th data-sortable="true" data-field="accountcode">Account Code</th>
+                          <th data-sortable="true" data-field="type">Item Type</th>
                           <th data-sortable="true" data-field="department">Department</th>
+                          <th data-sortable="true" data-field="dateaquired">Date Acquired</th>
+                          <th data-sortable="true" data-field="accountcode">Account Code</th>
                           <th data-sortable="true" data-field="unit">Unit</th>
-                          <th data-sortable="true" data-field="type">Type</th>
-                          <th data-sortable="true" data-field="status">Item Status</th>
+                          <th data-sortable="true" data-field="quantity">Quantity</th>
+                          <th data-sortable="true" data-field="receivedfrom">Received From</th>
                         </tr>
                         </thead>
                       </table>

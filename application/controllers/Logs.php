@@ -39,19 +39,17 @@ class Logs extends CI_Controller {
             $counter = 1;
             foreach ($dec as $list){
                 $row = array();
-                $row['decreasedate'] = $list['decrease_date'];
+                $row['number']=$counter;
+                $row['timestamp']= $list['timestamp'];
                 $row['item'] = $list['item_name'];
                 $row['description'] = $list['item_description'];
-                $row['serial'] = $list['serial'];
-                $row['dateacquired'] = $list['date_acquired'];
-                $row['receivedby'] = $list['receivedby'];
-                $row['receivedfrom'] = $list['received_from'];
-                $row['accountcode'] = $list['account_code'];
-                $row['department'] = $list['department'];
-                $row['unit'] = $list['unit'];
                 $row['type'] = $list['item_type'];
-                $row['status'] = $list['item_status'];
-
+                $row['department'] = $list['department'];
+                $row['dateacquired'] = $list['date_acquired'];
+                $row['accountcode'] = $list['account_code'];
+                $row['unit'] = $list['unit'];
+                $row['quantity'] = $list['quantity'];
+                $row['receivedfrom'] = $list['received_from'];
                 $data[] = $row;
                 $counter++;
             }
