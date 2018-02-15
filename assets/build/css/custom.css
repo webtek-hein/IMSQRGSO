@@ -4265,7 +4265,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     background-color: #40E0D0;
     border-color:black;
 }
-.accordion .panel-heading h4{
+.accordion #headingTwo h4{
     margin-top:-5px;
     color:black;
 }
