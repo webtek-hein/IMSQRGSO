@@ -102,19 +102,21 @@
             //add another item
             var counter =1;
             var div = $('.clone-tab');
+            var button = $('.savebtn');
             var list;
             $('#addanother').on('click',function () {
                 counter++;
-                list = "<li role=\"presentation\" class=\"disabled\"><a href=\"#step"+counter+"B\" data-toggle=\"tab\" aria-controls=\"step"+counter+"\" role=\"tab\" title=\"Step"+counter+"\">" +
+
+                list = "<li id=\"list"+counter+"\" role=\"presentation\" class=\"disabled\"><a href=\"#step"+counter+"B\" data-toggle=\"tab\" aria-controls=\"step"+counter+"\" role=\"tab\" title=\"Step"+counter+"\">" +
                     "<span class=\"round-tab\">" +
                     "<b>Item"+counter+"</b>" +
                     "</span>" +
                     "</a>" +
                     "</li>";
                 $('#bulk').append(list);
-                div.clone().find('input,textarea').val("").end().attr('id','step'+counter+'B').appendTo('#bulkdiv').removeClass('active');
-
-
+                button.attr('id','buttonCounter'+counter);
+                $('#buttonCounter'+counter).attr('onclick','save('+counter+')');
+                div.clone().find('input,textarea').val("").toggleClass('required').end().attr('id','step'+counter+'B').appendTo('#bulkdiv').removeClass('active');
             });
 
             $('.modal').on('show.bs.modal',function (e) {
@@ -142,6 +144,24 @@
 
 
         });
+        //on submit
+        function save(counter){
+            $.ajax({
+                type: 'POST',
+                url: 'inventory/save/' + counter,
+                data: $('#addItemForm').serializeArray(),
+                success: function () {
+                    if(counter === 1){
+                        $('#addItemForm').find('input,textarea').val('');
+                    }else{
+                        $('#list'+counter).remove();
+                        $('#step'+counter+'B').remove();
+                        counter -= 1;
+                        $('#step'+counter+'B').toggleClass('active');
+                    }
+                }
+            });
+        }
         function detail(id) {
                 $('#itemdet').bootstrapTable({
                             url: 'inventory/detail/'+id,
@@ -247,9 +267,9 @@
                     return false;
                 }
             });
+            var div = $('.clone-tab');
 
             $(".next-step").click(function (e) {
-
                 var $active = $('.wizard .nav-tabs li.active');
                 $active.next().removeClass('disabled');
                 nextTab($active);

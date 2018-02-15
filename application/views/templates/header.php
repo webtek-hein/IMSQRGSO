@@ -40,6 +40,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <link href="assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="assets/build/css/custom.min.css" rel="stylesheet">
+    <link href="assets/build/css/custom.css" rel="stylesheet">
     <!-- Placeholder for Dates Style -->
     <link href="assets/css/deptnav.css" rel="stylesheet">
     <!-- jQuery -->
@@ -130,49 +131,41 @@ if (isset($this->session->userdata['logged_in'])) {
                                 <li>
                                     <a>
                                         <span class="image"><img src="assets/images/img.jpg" alt="Profile Image" /></span>
-                                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
                                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                         </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a>
                                         <span class="image"><img src="assets/images/img.jpg" alt="Profile Image" /></span>
-                                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
                                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a>
                                         <span class="image"><img src="assets/images/img.jpg" alt="Profile Image" /></span>
-                                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
                                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a>
                                         <span class="image"><img src="assets/images/img.jpg" alt="Profile Image" /></span>
-                                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
                                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
                                     </a>
                                 </li>
                                 <li>

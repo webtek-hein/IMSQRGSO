@@ -4254,6 +4254,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 /** /bootstrap-datetimepicker **/
 
+<<<<<<< HEAD
 /*--Header--*/
 .menu_section a{
     font-size:10px;
@@ -4262,3 +4263,66 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 
 /*--End Header--*/
+=======
+/*--Inventory Add Item--*/
+.nav_menu{
+    height:50px;
+}
+.accordion #headingTwo{
+    border-radius:5px;
+    height: 30px;
+    width: 100px;
+    background-color: #40E0D0;
+    border-color:black;
+}
+.accordion #headingTwo h4{
+    margin-top:-5px;
+    color:black;
+}
+.accordion .wizard-inner{
+  margin-top: -10px;
+}
+.accordion .wizard-inner a{
+    font-size:10px;
+}
+#ModalI label{
+    font-size: 13px;
+    color:black;
+}
+#ModalI form{
+    margin-left: 100px;
+}
+.modal-body #AddS{
+    background-color: #F08080;
+    border-color: black;
+}
+.modal-body #addanother{
+    background-color: #90EE90;
+    border-color: black;
+}
+/*--End Inventory Add Item--*/
+
+/*--Inventory Main Content--*/
+.x_content a{
+    font-size:12px;
+    font-weight: bold;
+}
+.x_content .bar_tabs{
+    background-color: white;
+}
+.x_panel table th {
+    height: 10px;
+}
+/*--End Inventory Main Content--*/
+
+/*--Modal Item Detail--*/
+#ModalIDetail{
+    height: 2000px;
+    width: 1300px;
+}
+#ModalIDetail h2{
+    font-size: 20px;
+    margin-left: 500px;
+}
+/*--End Modal Item Detail--*/
+>>>>>>> 083d1277bc2018e65a270af5bc1a3af9ab985a7f

@@ -41,6 +41,7 @@ class Logs extends CI_Controller {
                 $row = array();
                 $row['number']=$counter;
                 $row['timestamp']= $list['timestamp'];
+                $row['serial'] = $list['serial'];
                 $row['item'] = $list['item_name'];
                 $row['description'] = $list['item_description'];
                 $row['type'] = $list['item_type'];
@@ -80,6 +81,7 @@ class Logs extends CI_Controller {
         foreach ($ret as $list){
             $row = array();
             $row['timestamp'] = $list['timestamp'];
+            $row['serial'] = $list['serial'];
             $row['item'] = $list['item_name'];
             $row['description'] = $list['item_description'];
             $row['datereturned'] = $list['date_returned'];

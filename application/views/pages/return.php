@@ -18,11 +18,16 @@
                         <table id="datatable" data-pagination="true" data-search="true" data-toggle="table" data-url="invetory/returnitem" class="table table-striped table-bordered">
                             <thead>
                             <tr>
+                                <th data-sortable="true" data-field="number">#</th>
+                                <th data-sortable="true" data-field="timestamp">Timestamp</th>
+                                <th data-sortable="true" data-field="serial">Serial no.</th>
                                 <th data-sortable="true" data-field="item">Item Name</th>
                                 <th data-sortable="true" data-field="description">Item Description</th>
-                                <th data-sortable="true" data-field="datereturn">Date Returned</th>
+                                <th data-sortable="true" data-field="datereturned">Date Returned</th>
                                 <th data-sortable="true" data-field="reason">Reason</th>
-                                <th data-sortable="true" data-field="receivedfrom">Received From</th>
+                                <th data-sortable="true" data-field="returnedby">Returned By</th>
+                                <th data-sortable="true" data-field="receivedby">Received By</th>
+                                <th data-sortable="true" data-field="status">Returned Status</th>
                                 <th data-sortable="true" data-field="action">Action</th>
                             </tr>
                             </thead>

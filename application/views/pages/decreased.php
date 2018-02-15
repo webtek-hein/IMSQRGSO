@@ -31,6 +31,7 @@
                         <tr>
                           <th data-sortable="true" data-field="number">#</th>
                           <th data-sortable="true" data-field="timestamp">Timestamp</th>
+                          <th data-sortable="true" data-field="serial">Serial no.</th>
                           <th data-sortable="true" data-field="item">Item Name</th>
                           <th data-sortable="true" data-field="description">Description</th>
                           <th data-sortable="true" data-field="type">Item Type</th>

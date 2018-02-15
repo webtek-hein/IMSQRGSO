@@ -41,6 +41,8 @@
                                     <th data-sortable="true" data-field="date_received">Date Received</th>
                                     <th data-sortable="true" data-field="expiration_date">Date Received</th>
                                     <th data-sortable="true" data-field="cost">Unit Cost</th>
+                                    <th data-sortable="true" data-field="expiration_date">Expiration Date</th>
+
 
                                 </tr>
                                 </thead>
