@@ -1,9 +1,5 @@
 <!-- page content -->
 <div class="right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
-    <div class="">
-
-
-        <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                     <div class="clearfix"></div>
                 <!--Accordion-->
@@ -90,10 +86,9 @@
                                                             <li ><button type="submit" name="action" formaction="inventory/saveall" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save All</button></li>
                                                             <li><button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-arrow-down"></i>Add another item</button></li>
                                                         </ul>
-
                                                         <div class="clearfix"></div>
+                                                    </form>
                                                 </div>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -102,9 +97,8 @@
                         </div>
                     </div>
                     <!-- /ADD item-->
-                </div>
-                <!-- Main Table Content-->
-                <div class="x_content">
+                    <!-- Main Table Content-->
+                    <div class="x_content">
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                             <li role="presentation" class="active"><a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital Outlay</a>
@@ -157,16 +151,17 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
                 <!-- end of Main Table Content-->
             </div>
+                    <!-- /Main Table Content-->
+                </div>
+            </div>
 
 
-            <!-- Modals -->
-
-            <!-- Item Detail -->
-            <div id="Item_Detail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="height:500px;">
+        <!-- Modals -->
+                    <!-- Item Detail -->
+                    <div id="Item_Detail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="height:500px;">
                 <div class="modal-dialog-lg">
                     <div class="modal-content">
                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -194,17 +189,13 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+                        <!-- /Item Detail -->
 
-<!-- end of Item Detail -->
-
-<!-- Add Quantity -->
+                    <!-- Add Quantity -->
 <div id="addquant" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -269,9 +260,9 @@
         </form>
     </div>
 </div>
-<!-- end of add quantity -->
+                    <!-- end of add quantity -->
 
-<!-- View Serial -->
+                    <!-- View Serial -->
 <div id="addquant" class="modal fade View_serial" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -335,10 +326,10 @@
         </div>
     </div>
 </div>
-<!-- end of view serial -->
+                    <!-- end of view serial -->
 
 
-<!--Distribution-->
+                    <!--Distribution-->
 <div id="myModal" class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -482,9 +473,9 @@
         </div>
     </div>
 </div>
-<!-- end of distribution-->
+                    <!-- end of distribution-->
 
-<!--Edit-->
+                    <!--Edit-->
 <div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -534,9 +525,9 @@
         </form>
     </div>
 </div>
-<!--end of edit-->
+                    <!--end of edit-->
 
-<!-- Add Quantity -->
+                    <!-- Add Quantity -->
 <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -564,9 +555,5 @@
         </form>
     </div>
 </div>
-<!-- end of add quantity -->
-
-<!-- /Modal -->
-</div>
-</div>
-</div>
+                    <!-- end of add quantity -->
+                    <!-- /Modals -->
