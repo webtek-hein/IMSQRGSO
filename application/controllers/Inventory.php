@@ -22,6 +22,7 @@ class Inventory extends CI_Controller {
     public function viewItem($type){
         $list = $this->inv->select_item($type);
         $data = array();
+
         //counter initialize
         $counter = 1;
         foreach ($list as $item){
