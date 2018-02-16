@@ -28,7 +28,7 @@
                                             </ul>
                                         </div>
                                         <div class="modal-body" id="ModalI">
-                                            <form role="form" action="inventory/additem" method="POST">
+                                            <form id="addItemForm" role="form" action="inventory/additem" method="POST">
 
                                                 <div id="bulkdiv" class="tab-content">
 
@@ -36,17 +36,17 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Item Name</label>
-                                                            <input type="text" name="item" class="form-control" required>
-                                                        </div>
-
-                                                        <div class="col-md-5 col-sm-6 col-xs-12 form-group">
-                                                            <label>Unit Cost</label>
-                                                            <input type="number" min='0' name="cost[]" class="form-control" required>
+                                                            <input type="text" name="item[]" class="form-control">
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Quantity</label>
                                                             <input type="number" min='0' name="quant[]" class="form-control" required>
+                                                        </div>
+
+                                                        <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+                                                            <label>Unit Cost</label>
+                                                            <input type="number" min='0' name="cost[]" class="form-control" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
@@ -89,33 +89,34 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Type</label>
-                                                            <select list="typelist"  name="supp" class="supplieropt form-control" required>
+                                                            <select list="typelist"  name="supp[]" class="supplieropt form-control" required>
                                                             </select>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Official Receipt</label>
-                                                            <input type="text" name="supp" class="form-control" required>
+                                                            <input type="text" name="or[]" class="form-control" required>
                                                         </div>
 
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
                                                             <label>Description</label>
-                                                            <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                            <textarea name="description[]" id="message" required class="form-control" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                                                                       data-parsley-validation-threshold="10"></textarea>
                                                         </div>
-                                                        <div class="clearfix"></div>
-                                                        <button type="button" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save</button<br>
-                                                        <button type="submit" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save All</button>
+                                                        <div class="col-md-10 col-sm-12 col-xs-12 form-group">
+                                                            <button type="button" onclick="save(1)" class="savebtn btn btn-default"><i class="fa fa-arrow-down"></i>Save</button>
+                                                            <button type="submit" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save All</button>
+                                                        </div>
                                                     </div>
-                                        </div>
-
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="list-inline pull-right">
+                                                    <button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-plus-circle"></i> Add another item</button>
+                                                </div>
                                             </form>
 
                                     </div>
-                                        <ul class="list-inline pull-right">
-                                            <li ></li>
-                                            <li><button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-plus-circle"></i> Add another item</button></li>
-                                        </ul>
+
                                 </div>
 
                             </div>

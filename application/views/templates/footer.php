@@ -150,7 +150,7 @@
                 type: 'POST',
                 url: 'inventory/save/' + counter,
                 data: $('#addItemForm').serializeArray(),
-                success: function () {
+                success: function (response) {
                     if(counter === 1){
                         $('#addItemForm').find('input,textarea').val('');
                     }else{
@@ -162,6 +162,7 @@
                 }
             });
         }
+
         function detail(id) {
                 $('#itemdet').bootstrapTable({
                             url: 'inventory/detail/'+id,

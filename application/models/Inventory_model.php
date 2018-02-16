@@ -11,7 +11,7 @@ class Inventory_model extends CI_Model{
     public function add_item($counter){
         $item_name = $this->input->post('item')[$counter];
         $quantity = $this->input->post('quant')[$counter];
-        $supplier_id = $this->input->post('supp');
+        $supplier_id = $this->input->post('supp')[$counter];
 
         $this->db->select('supplier_name');
         $this->db->where('supplier_id',$supplier_id);
@@ -34,7 +34,6 @@ class Inventory_model extends CI_Model{
             'expiration_date' => $this->input->post('exp')[$counter],
 //            'or_no' => $this->input->post('or')[$counter]
         );
-        $this->db->trans_start();
         //  1. Insert into item
         $this->db->insert('item',$data);
         //item insert id
@@ -43,12 +42,8 @@ class Inventory_model extends CI_Model{
         $this->db->insert('itemdetail',$data1+$insert_id+array('supplier_id' => $supplier_id));
         //item detail insert id
         $insert_id = $this->db->insert_id();
-        // 3. Insert into serial
-        $serial = array_fill(1, $quantity,$insert_id);
-        $this->db->insert_batch('serial',$serial);
-        // 4. Insert into logs
+        // 3. Insert into logs
         $this->db->insert('logs.increaselog',$data+$data1+$supplier_name);
-        $this->db->trans_complete();
     }
 
     public function saveAll(){
