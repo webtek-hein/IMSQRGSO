@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2018 at 07:32 AM
+-- Generation Time: Feb 16, 2018 at 07:55 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `account_code`
 --
 
+DROP TABLE IF EXISTS `account_code`;
 CREATE TABLE `account_code` (
   `ac_id` int(15) NOT NULL,
   `account_code` varchar(15) NOT NULL,
@@ -125,6 +126,7 @@ INSERT INTO `account_code` (`ac_id`, `account_code`, `description`) VALUES
 -- Table structure for table `department`
 --
 
+DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
   `dept_id` int(15) NOT NULL,
   `res_center_code` varchar(15) NOT NULL,
@@ -173,6 +175,7 @@ INSERT INTO `department` (`dept_id`, `res_center_code`, `department`) VALUES
 -- Table structure for table `distribution`
 --
 
+DROP TABLE IF EXISTS `distribution`;
 CREATE TABLE `distribution` (
   `dist_id` int(15) NOT NULL,
   `quantity_distributed` int(15) NOT NULL,
@@ -187,6 +190,7 @@ CREATE TABLE `distribution` (
 -- Table structure for table `item`
 --
 
+DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `item_id` int(15) NOT NULL,
   `quantity` int(15) NOT NULL,
@@ -282,7 +286,13 @@ INSERT INTO `item` (`item_id`, `quantity`, `unit`, `item_name`, `item_descriptio
 (79, 1, 'piece', 'Pantry Closet', 'Glass Door Pantry Closet', 'CO'),
 (80, 5, 'piece', 'Wok', 'Titanium Heavy Duty Wok', 'CO'),
 (81, 5, 'piece', 'Frying Pan', 'Titanium Non-stick Frying Pan', 'CO'),
-(82, 10, 'piece', 'Pipe', '10 mm pipe', 'CO');
+(82, 10, 'piece', 'Pipe', '10 mm pipe', 'CO'),
+(83, 10, 'piece', 'TV', 'LCD Samsung 11"', 'CO'),
+(91, 3, 'piece', 'Truck', 'Dumspter for garbage collection', 'CO'),
+(92, 25, 'piece', 'Gun', '25 mm with silencer', 'CO'),
+(96, 100, 'piece', 'Guitar', 'Acoustic', 'CO'),
+(97, 5, 'box', 'Cloth', 'for donations', 'CO'),
+(98, 1, 'piece', 'Remote Control', 'for misplaced TV', 'CO');
 
 -- --------------------------------------------------------
 
@@ -290,6 +300,7 @@ INSERT INTO `item` (`item_id`, `quantity`, `unit`, `item_name`, `item_descriptio
 -- Table structure for table `itemdetail`
 --
 
+DROP TABLE IF EXISTS `itemdetail`;
 CREATE TABLE `itemdetail` (
   `item_det_id` int(15) NOT NULL,
   `date_delivered` date NOT NULL,
@@ -392,11 +403,18 @@ INSERT INTO `itemdetail` (`item_det_id`, `date_delivered`, `date_received`, `qua
 (80, '2018-02-12', '2018-02-12', 1, 12000, NULL, NULL, NULL, NULL, '2023-02-12', 79, 2),
 (81, '2018-02-12', '2018-02-12', 5, 1200, NULL, NULL, NULL, NULL, '2028-02-12', 80, 2),
 (82, '2018-02-12', '2018-02-12', 5, 800, NULL, NULL, NULL, NULL, '2028-02-12', 81, 2),
-(83, '2018-02-16', '2018-02-16', 10, 99, NULL, NULL, NULL, NULL, '2018-02-16', 82, 1);
+(83, '2018-02-16', '2018-02-16', 10, 99, NULL, NULL, NULL, NULL, '2018-02-16', 82, 1),
+(84, '2018-01-01', '2018-01-01', 10, 50000, NULL, NULL, NULL, NULL, '2018-01-01', 83, 1),
+(85, '2018-02-16', '2018-02-16', 3, 800000, NULL, NULL, NULL, NULL, '2018-02-16', 91, 1),
+(86, '2018-02-16', '2018-02-16', 25, 200000, NULL, NULL, NULL, NULL, '2018-02-16', 92, 1),
+(87, '2018-02-16', '2018-02-16', 100, 5000, NULL, NULL, NULL, NULL, '2018-02-16', 96, 1),
+(88, '2018-02-16', '2018-02-16', 5, 5000, NULL, NULL, NULL, NULL, '2018-02-16', 97, 1),
+(89, '2018-02-16', '2018-02-16', 1, 500, NULL, NULL, NULL, NULL, '2018-02-16', 98, 1);
 
 --
 -- Triggers `itemdetail`
 --
+DROP TRIGGER IF EXISTS `item_detail`;
 DELIMITER $$
 CREATE TRIGGER `item_detail` AFTER INSERT ON `itemdetail` FOR EACH ROW BEGIN
         SET @counter = 0;
@@ -414,6 +432,7 @@ DELIMITER ;
 -- Table structure for table `serial`
 --
 
+DROP TABLE IF EXISTS `serial`;
 CREATE TABLE `serial` (
   `serial` varchar(30) DEFAULT NULL,
   `end_user` varchar(30) DEFAULT NULL,
@@ -5479,7 +5498,151 @@ INSERT INTO `serial` (`serial`, `end_user`, `item_status`, `dist_id`, `item_det_
 (NULL, NULL, 'In-stock', NULL, 83),
 (NULL, NULL, 'In-stock', NULL, 83),
 (NULL, NULL, 'In-stock', NULL, 83),
-(NULL, NULL, 'In-stock', NULL, 83);
+(NULL, NULL, 'In-stock', NULL, 83),
+(NULL, NULL, 'In-stock', NULL, 84),
+(NULL, NULL, 'In-stock', NULL, 84),
+(NULL, NULL, 'In-stock', NULL, 84),
+(NULL, NULL, 'In-stock', NULL, 84),
+(NULL, NULL, 'In-stock', NULL, 84),
+(NULL, NULL, 'In-stock', NULL, 84),
+(NULL, NULL, 'In-stock', NULL, 84),
+(NULL, NULL, 'In-stock', NULL, 84),
+(NULL, NULL, 'In-stock', NULL, 84),
+(NULL, NULL, 'In-stock', NULL, 84),
+(NULL, NULL, 'In-stock', NULL, 85),
+(NULL, NULL, 'In-stock', NULL, 85),
+(NULL, NULL, 'In-stock', NULL, 85),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 86),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 87),
+(NULL, NULL, 'In-stock', NULL, 88),
+(NULL, NULL, 'In-stock', NULL, 88),
+(NULL, NULL, 'In-stock', NULL, 88),
+(NULL, NULL, 'In-stock', NULL, 88),
+(NULL, NULL, 'In-stock', NULL, 88),
+(NULL, NULL, 'In-stock', NULL, 89);
 
 -- --------------------------------------------------------
 
@@ -5487,6 +5650,7 @@ INSERT INTO `serial` (`serial`, `end_user`, `item_status`, `dist_id`, `item_det_
 -- Table structure for table `supplier`
 --
 
+DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE `supplier` (
   `supplier_id` int(15) NOT NULL,
   `supplier_name` varchar(30) NOT NULL,
@@ -5512,6 +5676,7 @@ INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `contact`, `location`) V
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(15) NOT NULL,
   `first_name` varchar(30) NOT NULL,
@@ -5616,12 +5781,12 @@ ALTER TABLE `distribution`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `item_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 --
 -- AUTO_INCREMENT for table `itemdetail`
 --
 ALTER TABLE `itemdetail`
-  MODIFY `item_det_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `item_det_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 --
 -- AUTO_INCREMENT for table `supplier`
 --
