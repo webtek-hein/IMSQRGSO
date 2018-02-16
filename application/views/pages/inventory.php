@@ -29,7 +29,9 @@
                                         </div>
                                         <div class="modal-body" id="ModalI">
                                             <form role="form" action="inventory/additem" method="POST">
+
                                                 <div id="bulkdiv" class="tab-content">
+
                                                     <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
@@ -101,17 +103,21 @@
                                                             <textarea id="message" required class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                                                                       data-parsley-validation-threshold="10"></textarea>
                                                         </div>
+                                                        <div class="clearfix"></div>
+                                                        <button type="button" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save</button<br>
+                                                        <button type="submit" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save All</button>
                                                     </div>
-                                                </div>
-                                                <ul class="list-inline pull-right">
-                                                    <li ><button type="submit" id="AddS" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save</button></li>
-                                                    <li><button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-plus-circle"></i> Add another item</button></li>
-                                                </ul>
-                                                <div class="clearfix"></div>
-                                            </form>
                                         </div>
+
+                                            </form>
+
                                     </div>
+                                        <ul class="list-inline pull-right">
+                                            <li ></li>
+                                            <li><button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-plus-circle"></i> Add another item</button></li>
+                                        </ul>
                                 </div>
+
                             </div>
                         </div>
                     </div>

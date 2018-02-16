@@ -34,6 +34,7 @@ class Inventory_model extends CI_Model{
             'expiration_date' => $this->input->post('exp')[$counter],
 //            'or_no' => $this->input->post('or')[$counter]
         );
+        $this->db->trans_start();
         //  1. Insert into item
         $this->db->insert('item',$data);
         //item insert id
@@ -47,16 +48,13 @@ class Inventory_model extends CI_Model{
         $this->db->insert_batch('serial',$serial);
         // 4. Insert into logs
         $this->db->insert('logs.increaselog',$data+$data1+$supplier_name);
+        $this->db->trans_complete();
     }
 
     public function saveAll(){
         $item_name = $this->input->post('item');
-        $supplier_id = $this->input->post('supp');
+        $supplier_id = array();
 
-        $this->db->select('supplier_name');
-        $this->db->where_in('supplier_id',$supplier_id);
-        $query = $this->db->get('supplier');
-        $supplier_name = $query->row_array();
 
         foreach ($item_name as $key => $value){
             $quantity = $this->input->post('quant')[$key];
@@ -67,7 +65,7 @@ class Inventory_model extends CI_Model{
                 'unit' => $this->input->post('Unit')[$key],
                 'item_type' => $this->input->post('Type')[$key],
             );
-            $data1 = array(
+            $data1[] = array(
                 'date_delivered' => $this->input->post('del')[$key],
                 'date_received' => $this->input->post('rec')[$key],
                 'unit_cost'=> $this->input->post('cost')[$key],
@@ -75,9 +73,16 @@ class Inventory_model extends CI_Model{
                 'expiration_date' => $this->input->post('exp')[$key],
 //            'or_no' => $this->input->post('or')[$key]
             );
-            $supplier =  array('supplier_id' => $this->input->post('supp'));
-
+            $supplier_id[] = array('supplier_id' => $this->input->post('supp')[$key]);
         }
+
+        $this->db->select('supplier_name');
+        $this->db->where_in($supplier_id);
+        $query = $this->db->get('supplier');
+        $supplier_name = $query->row_array();
+        var_dump($supplier_id);
+
+        $this->db->trans_start();
             // 1. Insert into item
            $count = count($data);
            $this->db->insert_batch('item',$data);
@@ -95,7 +100,7 @@ class Inventory_model extends CI_Model{
            $this->db->insert_batch('serial',$serial);
            // 4. Insert into logs
         $this->db->insert_batch('logs.increaselog',$data+$data1+$supplier_name);
-
+        $this->db->trans_complete();
 
     }
 
