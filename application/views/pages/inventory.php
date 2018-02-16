@@ -409,7 +409,7 @@
 
 
                                         <ul class="list-inline pull-right">
-                                            <li><button id="next" onclick="addinputFields()" type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                            <li><button id="next" onclick="addinputFields()" name="id" type="button" class="btn btn-primary next-step">Save and continue</button></li>
                                         </ul>
                                     </div>
 
@@ -429,7 +429,7 @@
 
                                         <ul class="list-inline pull-right">
                                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                                            <li><button  type="submit" class="btn btn-primary next-step">Save and continue</button></li>
+                                            <li><button  id="save1" name="id" type="submit" class="btn-modal btn btn-primary">Save</button></li>
                                         </ul>
                                     </div>
 
