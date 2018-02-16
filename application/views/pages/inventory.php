@@ -371,7 +371,7 @@
                             </ul>
                         </div>
                         <div class="modal-body">
-                            <form role="form" class="form-horizontal form-label-left">
+                            <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST">
                                 <div class="tab-content">
                                     <div class="tab-pane active" role="tabpanel" id="step1">
 
@@ -394,22 +394,22 @@
 
                                         <div class="col-md-6 ">
                                             <label for="po">PO Number</label>
-                                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="po" required type="text" placeholder="PO Number">
+                                            <input id="po" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="po" required type="text" placeholder="PO Number">
                                         </div>
 
                                         <div class="col-md-6 ">
                                             <label class="col-md-8">PR Number</label>
-                                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="pr" required type="text" placeholder="PR Number">
+                                            <input id="pr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="pr" required type="text" placeholder="PR Number">
                                         </div>
 
                                         <div class="col-md-6">
                                             <label for="name">OBR Number</label>
-                                            <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="obr" required type="text" placeholder="OBR Number">
+                                            <input id="obr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="obr" required type="text" placeholder="OBR Number">
                                         </div>
 
 
                                         <ul class="list-inline pull-right">
-                                            <li><button onclick="addinputFields()" type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                            <li><button id="next" onclick="addinputFields()" type="button" class="btn btn-primary next-step">Save and continue</button></li>
                                         </ul>
                                     </div>
 
@@ -423,39 +423,16 @@
                                             <div id="container2" class="col-md-6">
                                                 <label for="name">Receiving Person</label>
                                             </div>
+                                            <div id="container3" class="col-md-6">
+                                            </div>
                                         </div>
 
                                         <ul class="list-inline pull-right">
                                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                            <li><button  type="submit" class="btn btn-primary next-step">Save and continue</button></li>
                                         </ul>
                                     </div>
-                                    <script>
-                                        function addinputFields(){
-                                            var number = document.getElementById("dist").value;
 
-                                            for (i=0;i<number;i++){
-
-                                                var input = document.createElement("input");
-                                                input.type = "text";
-                                                input.setAttribute('class', 'form-control col-md-7 col-xs-12');
-                                                input.setAttribute('name', 'serial');
-                                                container1.appendChild(input);
-                                                container1.appendChild(document.createElement("br"));
-
-                                            }
-                                            for (i=0;i<number;i++){
-
-                                                var input = document.createElement("input");
-                                                input.type = "text";
-                                                input.setAttribute('class', 'form-control col-md-7 col-xs-12');
-                                                input.setAttribute('name', 'owner');
-                                                container2.appendChild(input);
-                                                container2.appendChild(document.createElement("br"));
-
-                                            }
-                                        }
-                                    </script>
                                 </div>
                             </form>
                         </div>

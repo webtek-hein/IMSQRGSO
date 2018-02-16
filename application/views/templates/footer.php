@@ -298,6 +298,119 @@
             $(elem).prev().find('a[data-toggle="tab"]').click();
         }
     </script>
+
+    <!--distribute-->
+    <script>
+        function addinputFields(){
+            var number = document.getElementById("dist").value;
+
+            for (i=0;i<number;i++){
+
+                var input = document.createElement("input");
+                input.type = "text";
+                input.setAttribute('class', 'form-control col-md-7 col-xs-12');
+                input.setAttribute('name', 'serial');
+                container1.appendChild(input);
+
+            }
+            for (i=0;i<number;i++){
+
+                var input = document.createElement("input");
+                input.type = "text";
+                input.setAttribute('class', 'form-control col-md-7 col-xs-12');
+                input.setAttribute('name', 'owner');
+                container2.appendChild(input);
+            }
+
+
+            //quan
+            var quantity = document.createElement("input");
+            quantity.type = "text";
+            quantity.setAttribute('name', 'quant');
+            quantity.setAttribute('id', 'quan');
+            quantity.setAttribute('disabled', 'true');
+            //name.setAttribute('hidden', 'true');
+            container3.appendChild(quantity);
+            $('#next').click("input",function() {
+                var dist_quantity = $('#dist').val();
+                $('#quan').val(dist_quantity);
+            });
+
+            //deptopt
+            var department = document.createElement("input");
+            department.type = "text";
+            department.setAttribute('name', 'dept');
+            department.setAttribute('id', 'dept');
+            department.setAttribute('disabled', 'true');
+            //department.setAttribute('hidden', 'true');
+
+            container3.appendChild(department);
+            $('#next').click("input",function() {
+                var department_no = $('#deptopt').val();
+                $('#dept').val(department_no);
+            });
+
+            //accode
+            var code = document.createElement("input");
+            code.type = "text";
+            code.setAttribute('name', 'Code');
+            code.setAttribute('id', 'code');
+            code.setAttribute('disabled', 'true');
+            //name.setAttribute('hidden', 'true');
+
+            container3.appendChild(code);
+            $('#next').click("input",function() {
+                var accode = $('#accode').val();
+                $('#code').val(accode);
+            });
+
+            //po
+            var purchase_no = document.createElement("input");
+            purchase_no.type = "text";
+            purchase_no.setAttribute('name', 'po');
+            purchase_no.setAttribute('id', 'p_o');
+            purchase_no.setAttribute('disabled', 'true');
+            //name.setAttribute('hidden', 'true');
+
+            container3.appendChild(purchase_no);
+            $('#next').click("input",function() {
+                var po = $('#po').val();
+                $('#p_o').val(po);
+            });
+
+            //pr
+            var purchase_req = document.createElement("input");
+            purchase_req.type = "text";
+            purchase_req.setAttribute('name', 'pr');
+            purchase_req.setAttribute('id', 'p_r');
+            purchase_req.setAttribute('disabled', 'true');
+            //name.setAttribute('hidden', 'true');
+
+            container3.appendChild(purchase_req);
+            $('#next').click("input",function() {
+                var pr = $('#pr').val();
+                $('#p_r').val(pr);
+            });
+
+            //obr
+            var obl_r = document.createElement("input");
+            obl_r.type = "text";
+            obl_r.setAttribute('name', 'obr');
+            obl_r.setAttribute('id', 'o_b_r');
+            obl_r.setAttribute('disabled', 'true');
+            //name.setAttribute('hidden', 'true');
+
+            container3.appendChild(obl_r);
+            $('#next').click("input",function() {
+                var obr = $('#obr').val();
+                $('#o_b_r').val(obr);
+            });
+
+
+
+
+        }
+    </script>
 </footer>
 </body>
 </html>
