@@ -377,7 +377,7 @@
 
                                         <div class="col-md-6 ">
                                             <label for="name">Distribute</label>
-                                            <input id="website" class="form-control" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text" placeholder="Quantity">
+                                            <input id="dist" class="form-control" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text" placeholder="Quantity">
                                         </div>
 
                                         <div class="col-md-6">
@@ -409,39 +409,19 @@
 
 
                                         <ul class="list-inline pull-right">
-                                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                            <li><button onclick="addinputFields()" type="button" class="btn btn-primary next-step">Save and continue</button></li>
                                         </ul>
                                     </div>
 
                                     <div class="tab-pane" role="tabpanel" id="step2">
                                         <div class="item form-group">
 
-                                            <div class="col-md-6">
+                                            <div id="container1" class="col-md-6">
                                                 <label for="name">Serial</label>
-                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="serial" required type="text">
                                             </div>
 
-                                            <div class="col-md-6">
+                                            <div id="container2" class="col-md-6">
                                                 <label for="name">Receiving Person</label>
-                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="name">Serial</label>
-                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="serial" required type="text">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label for="name">Receiving Person</label>
-                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="name">Serial</label>
-                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="serial" required type="text">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label for="name">Receiving Person</label>
-                                                <input id="website" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text">
                                             </div>
                                         </div>
 
@@ -450,7 +430,32 @@
                                             <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
                                         </ul>
                                     </div>
+                                    <script>
+                                        function addinputFields(){
+                                            var number = document.getElementById("dist").value;
 
+                                            for (i=0;i<number;i++){
+
+                                                var input = document.createElement("input");
+                                                input.type = "text";
+                                                input.setAttribute('class', 'form-control col-md-7 col-xs-12');
+                                                input.setAttribute('name', 'serial');
+                                                container1.appendChild(input);
+                                                container1.appendChild(document.createElement("br"));
+
+                                            }
+                                            for (i=0;i<number;i++){
+
+                                                var input = document.createElement("input");
+                                                input.type = "text";
+                                                input.setAttribute('class', 'form-control col-md-7 col-xs-12');
+                                                input.setAttribute('name', 'owner');
+                                                container2.appendChild(input);
+                                                container2.appendChild(document.createElement("br"));
+
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </form>
                         </div>
