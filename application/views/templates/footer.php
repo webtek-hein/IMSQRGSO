@@ -146,7 +146,6 @@
         });
         //on submit
         function save(counter){
-            e.preventDefault();
             $.ajax({
                 type: 'POST',
                 url: 'inventory/save/' + counter,
