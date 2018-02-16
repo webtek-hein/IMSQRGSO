@@ -146,13 +146,20 @@
         });
         //on submit
         function save(counter){
+            e.preventDefault();
             $.ajax({
                 type: 'POST',
                 url: 'inventory/save/' + counter,
                 data: $('#addItemForm').serializeArray(),
                 success: function (response) {
                     if(counter === 1){
-                        $('#addItemForm').find('input,textarea').val('');
+                        if($('#bulk li').length === 1){
+                            $('#addItemForm').find('input,textarea').val('');
+                            $('.accordion a').removeClass('collapsed').attr('aria-expanded','false');
+                            $('.accordion #collapseTwo').removeClass('in');
+                        }else{
+                            $('#addItemForm').find('input,textarea').val('');
+                        }
                     }else{
                         $('#list'+counter).remove();
                         $('#step'+counter+'B').remove();

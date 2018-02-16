@@ -36,7 +36,7 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Item Name</label>
-                                                            <input type="text" name="item[]" class="form-control">
+                                                            <input required type="text" name="item[]" class="form-control">
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
