@@ -328,8 +328,9 @@
             quantity.type = "text";
             quantity.setAttribute('name', 'quant');
             quantity.setAttribute('id', 'quan');
-            quantity.setAttribute('disabled', 'true');
+           // quantity.setAttribute('disabled', 'true');
             //name.setAttribute('hidden', 'true');
+
             container3.appendChild(quantity);
             $('#next').click("input",function() {
                 var dist_quantity = $('#dist').val();
