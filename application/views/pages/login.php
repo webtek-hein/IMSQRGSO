@@ -1,8 +1,6 @@
 <html>
 <head>
     <title>Login</title>
-    <link href="assets/css/font.css" rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="assets/css/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/login.css">
     <link rel="icon" href="assets/images/logo.png">
    
@@ -14,8 +12,9 @@
 <div id="main">
 
     <div id="login">
-
+        <img src="assets/images/logogso.png" alt=" " class="img-circle profile_img" height="250" width="265">
         <h1>Login</h1>
+
         <?php echo form_open('Login/user_login_process'); ?>
         <?php
         echo "<div class='error_msg'>";
