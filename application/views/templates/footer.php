@@ -309,7 +309,7 @@
                 var input = document.createElement("input");
                 input.type = "text";
                 input.setAttribute('class', 'form-control col-md-7 col-xs-12');
-                input.setAttribute('name', 'serial');
+                input.setAttribute('name', 'serial'+[i]);
                 container1.appendChild(input);
 
             }
@@ -329,7 +329,7 @@
             quantity.setAttribute('name', 'quant');
             quantity.setAttribute('id', 'quan');
            // quantity.setAttribute('disabled', 'true');
-            //name.setAttribute('hidden', 'true');
+            name.setAttribute('hidden', 'true');
 
             container3.appendChild(quantity);
             $('#next').click("input",function() {
@@ -343,7 +343,7 @@
             department.setAttribute('name', 'dept');
             department.setAttribute('id', 'dept');
             department.setAttribute('disabled', 'true');
-            //department.setAttribute('hidden', 'true');
+            department.setAttribute('hidden', 'true');
 
             container3.appendChild(department);
             $('#next').click("input",function() {
@@ -357,7 +357,7 @@
             code.setAttribute('name', 'Code');
             code.setAttribute('id', 'code');
             code.setAttribute('disabled', 'true');
-            //name.setAttribute('hidden', 'true');
+            code.setAttribute('hidden', 'true');
 
             container3.appendChild(code);
             $('#next').click("input",function() {
@@ -371,7 +371,7 @@
             purchase_no.setAttribute('name', 'po');
             purchase_no.setAttribute('id', 'p_o');
             purchase_no.setAttribute('disabled', 'true');
-            //name.setAttribute('hidden', 'true');
+            purchase_no.setAttribute('hidden', 'true');
 
             container3.appendChild(purchase_no);
             $('#next').click("input",function() {
@@ -385,7 +385,7 @@
             purchase_req.setAttribute('name', 'pr');
             purchase_req.setAttribute('id', 'p_r');
             purchase_req.setAttribute('disabled', 'true');
-            //name.setAttribute('hidden', 'true');
+            purchase_req.setAttribute('hidden', 'true');
 
             container3.appendChild(purchase_req);
             $('#next').click("input",function() {
@@ -399,7 +399,7 @@
             obl_r.setAttribute('name', 'obr');
             obl_r.setAttribute('id', 'o_b_r');
             obl_r.setAttribute('disabled', 'true');
-            //name.setAttribute('hidden', 'true');
+            obl_r.setAttribute('hidden', 'true');
 
             container3.appendChild(obl_r);
             $('#next').click("input",function() {

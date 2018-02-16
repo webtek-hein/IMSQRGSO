@@ -227,7 +227,6 @@ class Inventory_model extends CI_Model{
             'quantity_distributed' => $this->input->post('quant')
 
         );
-        $owner = $this->input->post('owner');
 
         $this->db->insert('distribution',$data);
         $insert_id = $this->db->insert_id();
@@ -235,10 +234,16 @@ class Inventory_model extends CI_Model{
             'PO_no' => $this->input->post('po'),
             'PR_no' => $this->input->post('pr'),
             'OBR_no' => $this->input->post('obr'),
-          //  'dist_id' => $insert_id
         );
 
-        $this->db->update('itemdetail',$data1,array('item_id' => $id),$quantity);
+        $serial_data = array(
+          'end_user' => $this->input->post('owner'),
+            'serial' => $this->input->post('serial'),
+            'dist_id' => $insert_id
+        );
+        $this->db->limit($quantity);
+        $this->db->update('serial',$serial_data,array('item_det_id' => $id,));
+        $this->db->update('itemdetail',$data1,array('item_det_id' => $id));
     }
 
     public function return_item(){
