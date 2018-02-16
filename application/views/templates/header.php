@@ -17,7 +17,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="assets/images/favicon.ico" type="image/ico" />
+    <link rel="icon" href="assets/images/logogso.png" type="image/ico" />
 
     <title>GSO Baguio City Hall</title>
 
