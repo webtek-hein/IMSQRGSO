@@ -88,7 +88,7 @@
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
-                                                            <label>Type</label>
+                                                            <label>Supplier</label>
                                                             <select list="typelist"  name="supp[]" class="supplieropt form-control" required>
                                                             </select>
                                                         </div>
