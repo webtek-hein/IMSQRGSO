@@ -23,6 +23,16 @@ class Inventory extends CI_Controller {
         $list = $this->inv->select_item($type);
         $data = array();
 
+        //supply officer
+        $position = $this->session->userdata['logged_in']['position'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
+
+        if ($position === 'supplyofficer') {
+            $inventory = $this->department_model->get_distributed_per_department($dept_id);
+        } else {
+            $inventory = $this->Inventory_model->select_item();
+        }
+
         //counter initialize
         $counter = 1;
         foreach ($list as $item){
@@ -33,13 +43,15 @@ class Inventory extends CI_Controller {
                 'description'=> $item['item_description'],
                 'quantity'   => $item['quantity'],
                 'unit'       => $item['unit'],
-                'action' => "<a href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\"#addquant\" 
-                              class=\"btn btn-primary btn-xs\"><i class=\"fa fa-plus-circle\">
-                              </i> Add Quantity</a>".
-                             "<a href=\"#\" data-name=\"".$item['item_name']."\" data-id=\"".$item['item_id']."\" 
-                              data-description=\"".$item['item_description']."\" data-unit=\"".$item['unit']."\"
-                              data-type=\"".$item['item_type']."\" data-toggle=\"modal\" data-target=\".Edit\" 
-                              class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o\"></i> Edit</a></td>");
+                    'action' => "<a href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\"#addquant\" 
+                     class=\"btn btn-primary btn-xs\"><i class=\"fa fa-plus-circle\">
+                     </i> Add Quantity</a>".
+                     "<a href=\"#\" data-name=\"".$item['item_name']."\" data-id=\"".$item['item_id']."\" 
+                     data-description=\"".$item['item_description']."\" data-unit=\"".$item['unit']."\"
+                     data-type=\"".$item['item_type']."\" data-toggle=\"modal\" data-target=\".Edit\" 
+                      class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o\"></i> Edit</a></td>");
+                }
+
             $counter++;
         }
         echo json_encode($data);
@@ -97,6 +109,15 @@ class Inventory extends CI_Controller {
     }
             public function returnitem()
     {
+        //supply officer
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['userid'];
+
+        if($position == 'supplyofficer'){
+            $return = $this->Inventory_model->get_returned_per_user($user_id);
+        }else{
+            $return = $this->Inventory_model->return_item;
+        }
             $rec = $this->inv->return_item();
             $counter = 1;
             foreach ($rec as $list){

@@ -62,10 +62,14 @@ class Login extends CI_Controller {
                         'contact_no' => $result[0]->contact_no,);
 
 
-                    $this->session->set_userdata('user_in',$user_data);
+                    $this->session->set_userdata('user_in', $user_data);
                     $this->session->set_userdata('logged_in', $session_data);
                     $this->session->set_userdata('image_in', $image_data);
-                    redirect(base_url().'dashboard');
+                    if ($result[0]->position == 'supplyofficer') {
+                        redirect(base_url() . 'supplyofficer/dashboard');
+                    } else {
+                        redirect(base_url() . 'dashboard');
+                    }
                 }
             } else {
                 $data = array(
