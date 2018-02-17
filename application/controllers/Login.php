@@ -60,8 +60,6 @@ class Login extends CI_Controller {
                         'lastname' => $result[0]->last_name,
                         'email' => $result[0]->email,
                         'contact_no' => $result[0]->contact_no,);
-
-
                     $this->session->set_userdata('user_in',$user_data);
                     $this->session->set_userdata('logged_in', $session_data);
                     $this->session->set_userdata('image_in', $image_data);
