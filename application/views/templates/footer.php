@@ -58,6 +58,10 @@
 
     <script>
         $(document).ready(function () {
+            //form validation
+           // window.Parsley
+           //     .addValidator();
+            //end of form validation
             var department = [];
             var deptlist = [];
             var supplier = [];
@@ -146,24 +150,32 @@
         });
         //on submit
         function save(counter){
+            if(counter === 1){
+                $('#step1B').addClass('active');
+                $('#list1B').addClass('active');
+            }
             $.ajax({
                 type: 'POST',
                 url: 'inventory/save/' + counter,
                 data: $('#addItemForm').serializeArray(),
                 success: function (response) {
                     if(counter === 1){
+
                         if($('#bulk li').length === 1){
                             $('#addItemForm').find('input,textarea').val('');
                             $('.accordion a').removeClass('collapsed').attr('aria-expanded','false');
                             $('.accordion #collapseTwo').removeClass('in');
                         }else{
+                            $('#step1B').addClass('active');
+                            $('#list1B').addClass('active');
                             $('#addItemForm').find('input,textarea').val('');
                         }
                     }else{
                         $('#list'+counter).remove();
                         $('#step'+counter+'B').remove();
                         counter -= 1;
-                        $('#step'+counter+'B').toggleClass('active');
+                        $('#step'+counter+'B').addClass('active');
+                        $('#list'+counter).addClass('active');
                     }
                 }
             });

@@ -34,12 +34,12 @@
                           <th data-sortable="true" data-field="serial">Serial no.</th>
                           <th data-sortable="true" data-field="item">Item Name</th>
                           <th data-sortable="true" data-field="description">Description</th>
-                          <th data-sortable="true" data-field="type">Item Type</th>
+                          <th data-sortable="true" data-field="type">Type</th>
                           <th data-sortable="true" data-field="department">Department</th>
                           <th data-sortable="true" data-field="dateaquired">Date Acquired</th>
                           <th data-sortable="true" data-field="accountcode">Account Code</th>
                           <th data-sortable="true" data-field="unit">Unit</th>
-                          <th data-sortable="true" data-field="quantity">Quantity</th>
+                          <th data-sortable="true" data-field="quantity">Qty</th>
                           <th data-sortable="true" data-field="receivedfrom">Received From</th>
                         </tr>
                       </thead>
@@ -54,12 +54,12 @@
                           <th data-sortable="true" data-field="timestamp">Timestamp</th>
                           <th data-sortable="true" data-field="item">Item Name</th>
                           <th data-sortable="true" data-field="description">Description</th>
-                          <th data-sortable="true" data-field="type">Item Type</th>
+                          <th data-sortable="true" data-field="type">Type</th>
                           <th data-sortable="true" data-field="department">Department</th>
                           <th data-sortable="true" data-field="dateaquired">Date Acquired</th>
                           <th data-sortable="true" data-field="accountcode">Account Code</th>
                           <th data-sortable="true" data-field="unit">Unit</th>
-                          <th data-sortable="true" data-field="quantity">Quantity</th>
+                          <th data-sortable="true" data-field="quantity">Qty</th>
                           <th data-sortable="true" data-field="receivedfrom">Received From</th>
                         </tr>
                         </thead>
