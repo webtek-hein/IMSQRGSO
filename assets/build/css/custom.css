@@ -1,16 +1,16 @@
 
 html , body{
-	
+
  height:100%;
- 
+
 }
- 
+
 .full-width {
-	
+
  width:100%;
- 
+
  }
- 
+
 .full-height{
  height:100%;
  }
@@ -4240,7 +4240,7 @@ ul.notifications {
 table thead .checkbox { margin-top:-7px;margin-top:-21px; }
 table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 */
-			
+
 .daterangepicker.xdisplay { width:228px; }
 
 .dataTables_wrapper > .row{
@@ -4254,7 +4254,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 /** /bootstrap-datetimepicker **/
 
-<<<<<<< HEAD
+ HEAD
 /*--Header--*/
 .menu_section a{
     font-size:10px;
@@ -4263,7 +4263,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 
 /*--End Header--*/
-=======
 /*--Inventory Add Item--*/
 .nav_menu{
     height:50px;
@@ -4271,13 +4270,13 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 .accordion #headingTwo{
     border-radius:5px;
     height: 30px;
-    width: 100px;
-    background-color: #40E0D0;
+    width: 110px;
+    background-color:#808080;
     border-color:black;
 }
 .accordion #headingTwo h4{
     margin-top:-5px;
-    color:black;
+    color:	#FFFAF0;
 }
 .accordion .wizard-inner{
   margin-top: -10px;
@@ -4308,11 +4307,12 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     font-weight: bold;
 }
 .x_content .bar_tabs{
-    background-color: white;
+
 }
 .x_panel table th {
     height: 10px;
 }
+
 /*--End Inventory Main Content--*/
 
 /*--Modal Item Detail--*/
@@ -4325,4 +4325,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     margin-left: 500px;
 }
 /*--End Modal Item Detail--*/
->>>>>>> 083d1277bc2018e65a270af5bc1a3af9ab985a7f
+
+/*--Header--*/
+
+/*--End Header--*/

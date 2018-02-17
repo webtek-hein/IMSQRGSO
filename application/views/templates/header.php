@@ -55,7 +55,7 @@ if (isset($this->session->userdata['logged_in'])) {
 <body class="nav-md fixed-top footer_fixed">
 <div class="container body">
     <div class="main_container">
-        <div class=" menu_fixed col-md-3 left_col">
+        <div class="menu_fixed col-md-3 left_col" id="HeaderNav">
             <div class="left_col scroll-view">
 
                 <div class="clearfix"></div>

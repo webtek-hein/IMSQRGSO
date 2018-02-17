@@ -8,7 +8,7 @@
                 <!--ADD Item-->
                 <div class="panel">
                     <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <h4 class="panel-title">Add Item</h4>
+                        <h4 class="panel-title"><i class="fa fa-plus-circle"></i> Add Item</h4>
                     </a>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="panel-body">
@@ -173,7 +173,7 @@
                                         <th data-sortable="true" data-field="description">Description</th>
                                         <th data-sortable="true" data-field="quantity">Quantity</th>
                                         <th data-sortable="true" data-field="unit">Unit</th>
-                                        <th data-field="action">Action</th>
+                                        <th data-field="action" id="ActionMain">Action</th>
                                     </tr>
                                     </thead>
                                 </table>
