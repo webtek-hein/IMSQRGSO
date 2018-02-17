@@ -28,7 +28,7 @@ class Inventory extends CI_Controller {
         foreach ($list as $item){
             $data[] = array(
                 'number'    => $counter,
-                'item'      =>  "<a href=\"#\" onclick=\"detail($item[item_id])\" data-toggle=\"modal\" data-target=\"#Item_Detail\">".
+                'item'      =>  "<a href=\"details\" onclick=\"detail($item[item_id])\">".
                                 $item['item_name']."</a>",
                 'description'=> $item['item_description'],
                 'quantity'   => $item['quantity'],
