@@ -12,8 +12,6 @@
     <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/vendors/animate/animate.css">
-<!--===============================================================================================-->  
-    <link rel="stylesheet" type="text/css" href="assets/vendors/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/vendors/select2/select2.min.css">
 <!--===============================================================================================-->
@@ -50,7 +48,7 @@
                         <input class="input100" type="text" name="username" id="name" placeholder="username" required/>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>
                         </span>
                     </div>
                      
@@ -91,6 +89,8 @@
     <script src="assets/vendors/select2/select2.min.js"></script>
 <!--===============================================================================================-->
     <script src="assets/vendors/tilt/tilt.jquery.min.js"></script>
+ <!--===============================================================================================-->
+
     <script >
         $('.js-tilt').tilt({
             scale: 1.1

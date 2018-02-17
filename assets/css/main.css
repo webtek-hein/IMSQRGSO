@@ -1,43 +1,14 @@
 
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-@font-face {
-  font-family: Poppins-Regular;
-  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
-}
-
-@font-face {
-  font-family: Poppins-Bold;
-  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
-}
-
-@font-face {
-  font-family: Poppins-Medium;
-  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
-}
-
-@font-face {
-  font-family: Montserrat-Bold;
-  src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
-}
-
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
-
 * {
 	margin: 0px; 
 	padding: 0px; 
 	box-sizing: border-box;
 }
 
-body, html {
-	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
-  background:url('../images/bg.jpg') no-repeat fixed bottom; 
+body {
+  background:url('assets/images/bg.jpg') no-repeat fixed bottom; 
+  height: 100%;
+  font-family: Poppins-Regular, sans-serif;
 }
 
 /*---------------------------------------------*/
@@ -166,10 +137,8 @@ button:hover {
   align-items: center;
   padding: 15px;
   background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-135deg, grey, #000);
+
 }
 
 .wrap-login100 {
