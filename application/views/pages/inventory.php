@@ -28,7 +28,7 @@
                                             </ul>
                                         </div>
                                         <div class="modal-body" id="ModalI">
-                                            <form id="addItemForm" role="form" action="inventory/additem" method="POST">
+                                            <form id="addItemForm" role="form" action="inventory/saveAll" method="POST">
 
                                                 <div id="bulkdiv" class="tab-content">
 
@@ -36,22 +36,22 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Item Name</label>
-                                                            <input required type="text" name="item[]" class="form-control">
+                                                            <input  type="text" name="item[]" class="form-control">
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Quantity</label>
-                                                            <input type="number" min='0' name="quant[]" class="form-control" required>
+                                                            <input type="number" min='0' name="quant[]" class="form-control" >
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Unit Cost</label>
-                                                            <input type="number" min='0' name="cost[]" class="form-control" required>
+                                                            <input type="number" min='0' name="cost[]" class="form-control" >
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Unit</label>
-                                                            <input  name="Unit[]" required class="form-control col-md-7 col-xs-12" class="unit" list="list">
+                                                            <input  name="Unit[]"  class="form-control col-md-7 col-xs-12" class="unit" list="list">
                                                             <datalist id="list">
                                                                 <option value="piece">piece</option>
                                                                 <option value="box">box</option>
@@ -66,7 +66,7 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Type</label>
-                                                            <select id="type" list="typelist" name="Type[]" class="form-control"  required>
+                                                            <select id="type" list="typelist" name="Type[]" class="form-control"  >
                                                                 <option value="CO">Capital Outlay</option>
                                                                 <option value="MOOE">MOOE</option>
                                                             </select>
@@ -74,38 +74,38 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Delivery Date</label>
-                                                            <input type="date" name="del[]" class="form-control" required>
+                                                            <input type="date" name="del[]" class="form-control" >
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Date Received</label>
-                                                            <input type="date" name="rec[]" class="form-control" required placeholder="Date Received">
+                                                            <input type="date" name="rec[]" class="form-control"  placeholder="Date Received">
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Expiration Date</label>
-                                                            <input type="date" name="exp[]" class="form-control" required >
+                                                            <input type="date" name="exp[]" class="form-control"  >
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Supplier</label>
-                                                            <select list="typelist"  name="supp[]" class="supplieropt form-control" required>
+                                                            <select list="typelist"  name="supp[]" class="supplieropt form-control" >
                                                             </select>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Official Receipt</label>
-                                                            <input type="text" name="or[]" class="form-control" required>
+                                                            <input type="text" name="or[]" class="form-control" >
                                                         </div>
 
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
                                                             <label>Description</label>
-                                                            <textarea name="description[]" id="message" required class="form-control" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                                                            <textarea name="description[]" id="message"  class="form-control" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                                                                       data-parsley-validation-threshold="10"></textarea>
                                                         </div>
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
                                                             <button type="button" onclick="save(1)" class="savebtn btn btn-default"><i class="fa fa-arrow-down"></i>Save</button>
-                                                            <button type="submit" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save All</button>
+                                                            <button type="submit" id="saveALL" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save All</button>
                                                         </div>
                                                     </div>
                                                     <div class="clearfix"></div>
@@ -233,32 +233,32 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <label>Quantity</label>
-                                <input type="number" name="quant" min=0 required class="form-control col-md-7 col-xs-12" placeholder="Quantity">
+                                <input type="number" name="quant" min=0  class="form-control col-md-7 col-xs-12" placeholder="Quantity">
                             </div>
 
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                 <label>Unit Cost</label>
-                                <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3" required placeholder="Unit Cost">
+                                <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3"  placeholder="Unit Cost">
                             </div>
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <label>Delivery Date</label>
-                                <input type="date" name="del" required class="form-control col-md-7 col-xs-12">
+                                <input type="date" name="del"  class="form-control col-md-7 col-xs-12">
                             </div>
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <label>Date Received</label>
-                                <input type="date" name="rec" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12" required>
+                                <input type="date" name="rec" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12" >
                             </div>
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <label>Expiration Date</label>
-                                <input type="date" name="exp" data-validate-length-range="5,20" required class="optional form-control col-md-7 col-xs-12">
+                                <input type="date" name="exp" data-validate-length-range="5,20"  class="optional form-control col-md-7 col-xs-12">
                             </div>
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <label>Supplier</label>
-                                <select list="typelist"  name="supp" class="supplieropt form-control" required placeholder="Type">
+                                <select list="typelist"  name="supp" class="supplieropt form-control"  placeholder="Type">
                                 </select>
                             </div>
                     </div>

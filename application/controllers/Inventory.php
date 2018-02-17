@@ -14,10 +14,10 @@ class Inventory extends CI_Controller {
     public function save($counter)
     {
         $this->inv->add_item($counter-1);
-        redirect('inventory');
     }
     public function saveAll(){
         $this->inv->saveAll();
+//        redirect('inventory');
     }
     public function viewItem($type){
         $list = $this->inv->select_item($type);
