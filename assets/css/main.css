@@ -37,6 +37,7 @@
 body, html {
 	height: 100%;
 	font-family: Poppins-Regular, sans-serif;
+  background:url('../images/bg.jpg') no-repeat fixed bottom; 
 }
 
 /*---------------------------------------------*/
@@ -124,10 +125,6 @@ button {
 
 button:hover {
 	cursor: pointer;
-}
-
-iframe {
-	border: none !important;
 }
 
 

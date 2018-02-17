@@ -25,7 +25,6 @@
     <?php if($this->session->flashdata('msg')): ?>
     <p><?php echo $this->session->flashdata('msg'); ?></p>
 <?php endif; ?>
-
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
@@ -33,7 +32,7 @@
                     <img src="assets/images/logogso.png" alt="IMG">
                 </div>
 
-                <form class="login100-form validate-form">
+                <method="POST" action="login/user_login_process">
                     <span class="login100-form-title">
                         Member Login
                     </span>
@@ -76,7 +75,6 @@
                         </a>
                         <?php echo form_close(); ?>
                     </div>
-                </form>
             </div>
         </div>
     </div>
