@@ -15,12 +15,11 @@ class Logs extends CI_Controller {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
-        $user_id = $this->session->userdata['logged_in']['userid'];
 
-        if ($position === 'supplyofficer') {
-            $increase = $this->department_model->get_increase_log_per_department($dept_id);
+        if($position == 'custodian' || $position == 'admin'){
+            $increase = $this->Logs_model->increase_log;
         } else {
-            $increase = $this->Logs_model->get_increase_log_per_user($user_id);
+            $increase = $this->department_model->get_increase_log_per_department($dept_id);
         }
 
             $inc = $this->logs->increase_log();
@@ -49,14 +48,12 @@ class Logs extends CI_Controller {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
-        $user_id = $this->session->userdata['logged_in']['userid'];
 
-        if ($position === 'supplyofficer') {
-            $decrease= $this->department_model->get_deacre_log_per_department($dept_id);
+        if($position == 'custodian' || $position == 'admin'){
+            $decrease = $this->Logs_model->decrease_log;
         } else {
-            $decrease = $this->Logs_model->get_decrease_log_per_user($user_id);
+            $decrease = $this->department_model->get_decrease_log_per_department($dept_id);
         }
-
             $dec = $this->logs->decrease_log();
             $counter = 1;
             foreach ($dec as $list){
