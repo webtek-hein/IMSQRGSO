@@ -45,6 +45,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <link href="assets/css/deptnav.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
+<!--    <script src="assets/js/parsley.min.js"></script>-->
     <link rel="icon" href="assets/images/logo.png">
     <!--table design-->
     <link href="assets/css/tabledesign.css" rel="stylesheet">
