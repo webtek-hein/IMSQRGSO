@@ -309,7 +309,7 @@
                 var input = document.createElement("input");
                 input.type = "text";
                 input.setAttribute('class', 'form-control col-md-7 col-xs-12');
-                input.setAttribute('name', 'serial'+[i]);
+                input.setAttribute('name', 'serial'+'['+[i]+']');
                 container1.appendChild(input);
 
             }
@@ -318,7 +318,7 @@
                 var input = document.createElement("input");
                 input.type = "text";
                 input.setAttribute('class', 'form-control col-md-7 col-xs-12');
-                input.setAttribute('name', 'owner');
+                input.setAttribute('name', 'owner'+'['+[i]+']');
                 container2.appendChild(input);
             }
 
@@ -329,7 +329,7 @@
             quantity.setAttribute('name', 'quant');
             quantity.setAttribute('id', 'quan');
            // quantity.setAttribute('disabled', 'true');
-            name.setAttribute('hidden', 'true');
+            quantity.setAttribute('hidden', 'true');
 
             container3.appendChild(quantity);
             $('#next').click("input",function() {

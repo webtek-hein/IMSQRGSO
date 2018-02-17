@@ -220,6 +220,7 @@ class Inventory_model extends CI_Model{
     }
     public function distrib(){
         $id = $this->input->post('id');
+        print_r($id);
         $quantity = $this->input->post('quant');
         $data = array(
             'dept_id' => $this->input->post('dept'),
@@ -235,14 +236,20 @@ class Inventory_model extends CI_Model{
             'PR_no' => $this->input->post('pr'),
             'OBR_no' => $this->input->post('obr'),
         );
+        $ser = $this->input->post('serial');
 
-        $serial_data = array(
-          'end_user' => $this->input->post('owner'),
-            'serial' => $this->input->post('serial'),
-            'dist_id' => $insert_id
-        );
-        $this->db->limit($quantity);
-        $this->db->update('serial',$serial_data,array('item_det_id' => $id,));
+
+        for($i=0; $i < sizeof($ser); $i++){
+            $serial_data = array(
+                'end_user' => $this->input->post('owner')[$i],
+                'serial' => $this->input->post('serial')[$i],
+                'dist_id' => $insert_id
+            );
+            print_r($serial_data);
+            $this->db->limit($quantity);
+            $this->db->update('serial',$serial_data,array('item_det_id' => $id,));
+        }
+
         $this->db->update('itemdetail',$data1,array('item_det_id' => $id));
     }
 
