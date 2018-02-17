@@ -10,8 +10,7 @@
     <p><?php echo $this->session->flashdata('msg'); ?></p>
 <?php endif; ?>
 <div id="main">
-
-    <div id="login">
+    <div id="login" style="height: 550px; top: 30%;">
         <img src="assets/images/logogso.png" alt=" " class="img-circle profile_img" height="250" width="265">
         <h1>Login</h1>
 
@@ -25,12 +24,14 @@
         echo "</div>";
         ?>
 
+
         <input type="text" name="username" id="name" placeholder="username" required/>
         <input type="password" name="password" id="password" placeholder="password" required/>
         <input type="submit" class="btn btn-primary btn-block btn-large" value=" Login " name="submit"/><br />
         <a href="forget">forgot password? </a>
         <?php echo form_close(); ?>
     </div>
+</div>
 </div>
 </body>
 </html>

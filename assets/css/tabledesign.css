@@ -1,0 +1,12 @@
+div[role=tabpanel].togle{
+    background: grey;
+}
+
+th {
+    background: grey;
+    color: white;
+}
+
+table[role=inc]{
+    overflow-x: hidden;
+}

@@ -46,6 +46,8 @@ if (isset($this->session->userdata['logged_in'])) {
     <!-- jQuery -->
     <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
     <link rel="icon" href="assets/images/logo.png">
+    <!--table design-->
+    <link href="assets/css/tabledesign.css" rel="stylesheet">
     
 </head>
 
