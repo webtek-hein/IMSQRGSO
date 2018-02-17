@@ -3,17 +3,20 @@ class User_db extends CI_Model {
 // Read data using username and password
     public function login($data)
     {
+        $condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password'] . "'";
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where($condition);
+        $this->db->limit(1);
+        $query = $this->db->get();
 
-        $this->db->select('*')
-            ->where('username', $data['username'])
-            ->limit(1);
-        $q = $this->db->get('user')->row();
-        if (isset($q)) {
-                return true;
-        }else{
-            return false;
+        if ($query->num_rows() == 1) {
+        return true;
+        } else {
+        return false;
         }
-    }
+        }
+
 
 
 // Read data from database to show data in admin page
