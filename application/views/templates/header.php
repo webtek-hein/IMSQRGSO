@@ -22,27 +22,27 @@ if (isset($this->session->userdata['logged_in'])) {
     <title>GSO Baguio City Hall</title>
 
     <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Tables-->
-    <link rel="stylesheet" href="assets/css/bootstrap-table.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap-table.css">
     <!-- Font Awesome -->
-    <link href="assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
     <!-- bootstrap-progressbar -->
-    <link href="assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url() ?>assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- Custom Theme Style -->
-    <link href="assets/build/css/custom.min.css" rel="stylesheet">
-    <link href="assets/build/css/custom.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/build/css/custom.css" rel="stylesheet">
     <!-- Placeholder for Dates Style -->
-    <link href="assets/css/deptnav.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/deptnav.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
 <!--    <script src="assets/js/parsley.min.js"></script>-->

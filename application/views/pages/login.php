@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->  
-    <link rel="icon" type="image/png" href="assets/images/logo.png"/>
+    <link rel="icon" type="image/png" href="<?php echo base_url() ?>assets/images/logo.png"/>
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="assets/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/vendors/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="assets/vendors/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/vendors/animate/animate.css">
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/vendors/select2/select2.min.css">
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="assets/css/util.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/main.css">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -27,7 +27,7 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt>
-                    <img src="assets/images/logogso.png" alt="IMG">
+                    <img src="<?php echo base_url() ?>assets/images/logogso.png" alt="IMG">
                 </div>
 
                 <method="POST" action="login/user_login_process">
