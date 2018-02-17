@@ -99,7 +99,8 @@ class Inventory_model extends CI_Model{
         foreach ($data1 as $key => $value){
             unset($data1[$key]['supplier_id']);
             unset($data1[$key]['item_id']);
-            $data = $data[$key]+$data1[$key]+$supplier_name[$key];
+            $row[] = $data[$key]+$data1[$key]+$supplier_name[$key];
+            $data = $row;
         }
         $this->db->insert_batch('logs.increaselog',$data);
         $this->db->trans_complete();
