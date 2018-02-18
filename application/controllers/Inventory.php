@@ -20,20 +20,24 @@ class Inventory extends CI_Controller {
         redirect('inventory');
     }
     public function viewItem($type){
+
         $list = $this->inv->select_item($type);
         $data = array();
-
 
         //counter initialize
         $counter = 1;
         foreach ($list as $item){
             $data[] = array(
-                'number'    => $counter,
+                'number'    => "<a href=\"details\" onclick=\"detail($item[item_id])\">".
+                                $counter,
                 'item'      =>  "<a href=\"details\" onclick=\"detail($item[item_id])\">".
                                 $item['item_name']."</a>",
-                'description'=> $item['item_description'],
-                'quantity'   => $item['quantity'],
-                'unit'       => $item['unit'],
+                'description'=> "<a href=\"details\" onclick=\"detail($item[item_id])\">".
+                                $item['item_description']."</a>",
+                'quantity'   => "<a href=\"details\" onclick=\"detail($item[item_id])\">".
+                                $item['quantity']."</a>",
+                'unit'       => "<a href=\"details\" onclick=\"detail($item[item_id])\">".
+                                $item['unit']."</a>",
                     'action' => "<a href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\"#addquant\" 
                      class=\"btn btn-primary btn-xs\"><i class=\"fa fa-plus-circle\">
                      </i> Add Quantity</a>".
@@ -41,7 +45,6 @@ class Inventory extends CI_Controller {
                      data-description=\"".$item['item_description']."\" data-unit=\"".$item['unit']."\"
                      data-type=\"".$item['item_type']."\" data-toggle=\"modal\" data-target=\".Edit\" 
                       class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o\"></i> Edit</a></td>");
-
             $counter++;
         }
         echo json_encode($data);
@@ -103,8 +106,8 @@ class Inventory extends CI_Controller {
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['userid'];
 
-        if($position == 'custodian' || $position == 'admin'){
-            $return = $this->Inventory_model->return_item;
+        if($position == 'Custodian' || $position == 'Admin'){
+            $return = $this->Inventory_model->return_item();
         }else{
             $return = $this->Inventory_model->get_returned_per_user($user_id);
         }
@@ -128,6 +131,14 @@ class Inventory extends CI_Controller {
     }
     //get serial
     public function getSerial($det_id){
+        //supply officer
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['userid'];
+
+        if($position == 'Custodian'){
+            $serial = $this->Inventory_model->getSerial($user_id);
+        }
+
         $list = $this->inv->getSerial($det_id);
         $data = array();
         foreach ($list as $serial){

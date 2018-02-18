@@ -65,6 +65,8 @@ class Login extends CI_Controller {
                     $this->session->set_userdata('image_in', $image_data);
                     if ($result[0]->position == 'supplyofficer') {
                         redirect(base_url() . 'supplyofficer/dashboard');
+                    }else if ($result[0]->position == 'admin') {
+                        redirect(base_url() . 'admin/dashboard');
                     } else {
                         redirect(base_url() . 'dashboard');
                     }

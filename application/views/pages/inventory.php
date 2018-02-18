@@ -7,9 +7,11 @@
             <div class="accordion" id="accordion" role="tablist" aria-multiselectable="false">
                 <!--ADD Item-->
                 <div class="panel">
-                    <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <h4 class="panel-title">Add Item</h4>
-                    </a>
+                <?php $position = $this->session->userdata['logged_in']['position'];
+                if ($position === 'Admin' || $position === 'Custodian') {
+                    echo '<a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4 class="panel-title">Add Item</h4></a>';
+                }
+                    ?>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="panel-body">
                             <div class="x_panel">
@@ -145,13 +147,17 @@
                                     <table data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem/CO" data-show-toggle="true" class="table table-no-bordered table-hover">
                                         <thead>
                                         <!-- Data-field for getting data  -->
-                                        <tr >
+                                        <tr>
                                             <th data-sortable="true" data-field="number">#</th>
                                             <th data-sortable="true" data-field="item">Item Name</th>
                                             <th data-sortable="true" data-field="description">Description</th>
                                             <th data-sortable="true" data-field="quantity">Quantity</th>
                                             <th data-sortable="true" data-field="unit">Unit</th>
-                                            <th data-field="action">Action</th>
+                                            <?php $position = $this->session->userdata['logged_in']['position'];
+                                            if ($position === 'Admin' || $position === 'Custodian'){
+                                            echo'<th data-field="action">Action</th>';
+                                                }
+                                                ?>
                                         </tr>
                                         </thead>
                                     </table>
@@ -173,7 +179,11 @@
                                         <th data-sortable="true" data-field="description">Description</th>
                                         <th data-sortable="true" data-field="quantity">Quantity</th>
                                         <th data-sortable="true" data-field="unit">Unit</th>
-                                        <th data-field="action">Action</th>
+                                        <?php $position = $this->session->userdata['logged_in']['position'];
+                                        if ($position === 'Admin' || $position === 'Custodian'){
+                                            echo'<th data-field="action">Action</th>';
+                                        }
+                                        ?>
                                     </tr>
                                     </thead>
                                 </table>
@@ -187,8 +197,7 @@
 
 
         <!-- Modals -->
-
-        <!-- Item Detail -->
+        <!-- Item Detail-->
         <div id="Item_Detail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" id="ModalIDetail">
                 <div class="modal-content">

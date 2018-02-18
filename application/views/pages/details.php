@@ -15,7 +15,14 @@
                 <table id="datatable" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th>Add Serial</th>
+                        <?php $position = $this->session->userdata['logged_in']['position'];
+                        if ($position === 'Admin' || $position === 'Custodian') {
+                            echo '<th>Add Serial</th>';
+
+                        }else{
+                            echo'<th>Serial</th>';
+                        }
+                        ?>
                         <th>Date Delivered</th>
                         <th>Date Received</th>
                         <th>Expiration Date</th>
@@ -26,8 +33,14 @@
                     </thead>
                     <tbody>
                     <tr role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne">
-                        <td>Add Serial</td>
-                        <td>2018-02-17</td>
+                        <?php $position = $this->session->userdata['logged_in']['position'];
+                        if ($position === 'Admin' || $position === 'Custodian'){
+                            echo'<td>Add Serial</td>';
+                            }else{
+                            echo'<td>12345</td>';
+                        }
+                        ?>
+                        <td>2018-02-1d</td>
                         <td>2018-02-17</td>
                         <td>2018-02-17</td>
                         <td>61</td>
@@ -40,54 +53,51 @@
                         <td colspan="12">
                             <div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="panel-body">
-                                    <form class="form-horizontal form-label-left" method="POST" >
 
-                                        <div class="col-md-3 col-sm-3 col-xs-10">
-                                            <label>Serial 1</label>
-                                            <input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-3 col-xs-10">
-                                            <label>Serial 2</label>
-                                            <input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-3 col-xs-10">
-                                            <label>Serial 3</label>
-                                            <input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-3 col-xs-10">
-                                            <label>Serial 4</label>
-                                            <input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-3 col-xs-10">
-                                            <label>Serial 5</label>
-                                            <input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-3 col-xs-10">
-                                            <label>Serial 6</label>
-                                            <input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-3 col-xs-10">
-                                            <label>Serial 7</label>
-                                            <input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-3 col-xs-10">
-                                            <label>Serial 8</label>
-                                            <input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">
-                                        </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn-modal btn btn-default" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
-                                    <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </div>
-                            </form>
+                                    <?php $position = $this->session->userdata['logged_in']['position'];
+                                    if ($position === 'Admin' || $position === 'Custodian'){
+                                    echo '<form class="form-horizontal form-label-left" method="POST" >'.
+                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
+                                            '<label>Serial 1</label>'.
+                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
+                                        '</div>'.
+                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
+                                            '<label>Serial 2</label>'.
+                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
+                                        '</div>'.
+                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
+                                            '<label>Serial 3</label>'.
+                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
+                                        '</div>'.
+                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
+                                            '<label>Serial 4</label>'.
+                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
+                                        '</div>'.
+                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
+                                            '<label>Serial 5</label>'.
+                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
+                                        '</div>'.
+                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
+                                            '<label>Serial 6</label>'.
+                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
+                                        '</div>'.
+                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
+                                            '<label>Serial 7</label>'.
+                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
+                                        '</div>'.
+                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
+                                            '<label>Serial 8</label>'.
+                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
+                                        '</div>'.
+                                '</div>'.
+                                '<div class="modal-footer">'.
+                                    '<button type="submit" class="btn-modal btn btn-default" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>'.
+                                    '<button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>'.
+                                '</div>'.
+                            '</div>'.
+                            '</form>';
+                                      }
+                                      ?>
                                 </div>
                             </div>
                         </td>
@@ -103,6 +113,7 @@
                 <!-- Modals -->
 
                 <!--Distribution-->
+
                     <div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -113,39 +124,53 @@
                                     <h4 class="modal-title" id="myModalLabel">Distribution</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <b>Distribute Item with Serial:</b>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" value="">6161d6sdcd</br>
-                                            <input type="checkbox" value="">6161d6sdcd</br>
-                                            <input type="checkbox" value="">6161d6sdcd</br>
-                                            <input type="checkbox" value="">6161d6sdcd
-                                        </label>
-                                    </div>
-                                    <b>To</b>
-                                    <form role="form" class="form-horizontal form-label-left" >
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label for="name">Department</label>
-                                                <input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">
-                                            </div>
 
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label for="name">PO Number</label>
-                                                <input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">
-                                            </div>
+                                    <?php $position = $this->session->userdata['logged_in']['position'];
+                                    if ($position === 'Admin' || $position === 'Custodian'){
 
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label for="name">PR Number</label>
-                                                <input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">
-                                            </div>
+                                        echo '<b>Distribute Item with Serial:</b>'.
+                                    '<div class="checkbox">'.
+                                        '<label>'.
+                                            '<input type="checkbox" value="">6161d6sdcd</br>'.
+                                            '<input type="checkbox" value="">6161d6sdcd</br>'.
+                                            '<input type="checkbox" value="">6161d6sdcd</br>'.
+                                            '<input type="checkbox" value="">6161d6sdcd'.
+                                        '</label>'.
+                                    '</div>'.
+                                    '<b>To</b>'.
+                                    '<form role="form" class="form-horizontal form-label-left" >'.
+                                            '<div class="col-md-6 col-sm-6 col-xs-12">'.
+                                                '<label for="name">Department</label>'.
+                                                '<input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">'.
+                                            '</div>'.
+                                            '<div class="col-md-6 col-sm-6 col-xs-12">'.
+                                                '<label for="name">PO Number</label>'.
+                                                '<input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">'.
+                                            '</div>'.
+                                            '<div class="col-md-6 col-sm-6 col-xs-12">'.
+                                                '<label for="name">PR Number</label>'.
+                                                '<input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">'.
+                                            '</div>'.
+                                            '<div class="col-md-6 col-sm-6 col-xs-12">'.
+                                                '<label for="name">OBR Number</label>'.
+                                                '<input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">'.
+                                            '</div>'.
+                                            '</div>'.
+                                    '</form>';
 
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label for="name">OBR Number</label>
-                                                <input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">
-                                            </div>
-                                    </form>
+                                    }else{
+                                        echo '<form><div class="col-md-6 col-sm-6 col-xs-12" >'.
+                                            '<label for="name">Employee Name</label>'.
+                                            '<input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">'.
+                                        '</div>'.
+                                    '</div>'.
+                                    '</form>';
+                            }
+                            ?>
+
+
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn-modal btn btn-default" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                                        <button type="submit" class="btn-modal btn btn-success" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
                                         <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>

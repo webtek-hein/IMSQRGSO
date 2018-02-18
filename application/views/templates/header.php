@@ -79,29 +79,30 @@ if (isset($this->session->userdata['logged_in'])) {
                         <ul class="nav side-menu">
                             <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
                             </li>
-                            <li><a href="Inventory"><i class="fa fa-book"></i>Inventory</span></a>
+                            <li><a href="Inventory"><i class="fa fa-book"></i>Inventory</a>
                             </li>
-                            <li><a><i class="fa fa-file-text"></i>Departments<span class="fa fa-chevron-down"></span></a>
-                                <ul id="deptlist" class="nav child_menu" class="scrollbar">
-                                </ul>
-                            </li>
-                            <li><a href="Return"><i class="fa fa-undo"></i>Returns</a>
-                            </li>
-                            <li><a href="Supplier"><i class="fa fa-book"></i>Supplier</span></a>
-                            </li>
-                            <li><a href="Serial"><i class="fa fa-book"></i>Serial</span></a>
-                            </li>
-                            <li><a><i class="fa fa-file-text"></i>Logs<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="Increased">Increased</a></li>
-                                    <li><a href="Decreased">Decreased</a></li>
-                                    <li><a href="Edit">Edit</a></li>
-                                    <li><a href="Return_Log">Return Log</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
+                            <?php $position = $this->session->userdata['logged_in']['position'];
+                            if ($position === 'Admin' || $position === 'Custodian'){
+                            echo '<li id="dept"><a ><i class="fa fa-file-text"></i>Departments</a><ul id="deptlist" class="nav child_menu" class="scrollbar"></ul></li>'.
+                                '<li><a href="Supplier"><i class="fa fa-book"></i>Supplier</a></li>'.
+                                    '<li><a href="Serial"><i class="fa fa-book"></i>Serial</a></li>';
+                            }
+                                echo '<li><a href="Return"><i class="fa fa-undo"></i>Returns</a></li>';
+                             ?>
+                            <li><a><i class="fa fa-file-text"></i>Logs</a>
+                                <?php
+                                echo '<ul class="nav child_menu">';
+                                    echo '<li><a href=' . base_url() . 'increased>Increased</a></li>'.
+                                         '<li><a href=' . base_url() . 'decreased>Decreased</a></li>';
+                                if ($position === 'Admin' || $position === 'Custodian') {
+                                    echo '<li><a href=' . base_url() . 'edit>Edit</a></li>';
+                                }
+                                    echo '<li><a href=' . base_url() . 'return_log>Return Log</a></li>';
+                                    echo '</ul></li></ul></div></div>';
+                                ?>
+
+
                 <!-- /sidebar menu -->
             </div>
         </div>
