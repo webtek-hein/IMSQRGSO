@@ -175,6 +175,9 @@
                     }else{
                           location.reload();
                       }
+                },
+                fail: function(){
+
                 }
             });
         }
