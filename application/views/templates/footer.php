@@ -159,20 +159,17 @@
                 data: $('#addItemForm').serializeArray(),
                 success: function () {
                     if($('#bulk li').length > 1) {
-                        if (!list.prev.length < 1) {
+                        if (!list.prev().length < 1) {
                             list.prev().addClass('active');
                             step.prev().addClass('active');
-                            list.remove();
-                            step.remove();
                         } else {
                             list.next().addClass('active');
                             step.next().addClass('active');
                         }
+                        list.remove();
+                        step.remove();
                     }else{
-                          $('#addItemForm').find('input,textarea').val('');
-                          $('#headingTwo').addClass('collapsed').attr('aria-expanded','false');
-                          $('#collapseTwo').removeClass('in');
-                          counter = 0;
+                          location.reload();
                       }
                 }
             });
