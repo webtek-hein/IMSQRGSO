@@ -4255,11 +4255,13 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 /** /bootstrap-datetimepicker **/
 
 HEAD
-    /*--Header--*/
+    /*--Header--
 .menu_section a{
     font-size:10px;
 }
-
+.left_col{
+    color: #8a8a8a;
+}
 
 
 /*--End Header--*/
@@ -4326,5 +4328,12 @@ HEAD
 }
 /*--End Modal Item Detail--*/
 
-/*--Header--*/
-/*--End Header--*/
+
+/*--Side-Menu--
+.left_col #sidebar-menu{
+    width:150px;
+}
+.left_col #sidebar-menu li{
+    border: 5px solid white;
+}
+/*--End Side-Menu--*/

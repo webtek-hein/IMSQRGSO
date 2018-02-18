@@ -7,10 +7,10 @@
             <div class="accordion" id="accordion" role="tablist" aria-multiselectable="false">
                 <!--ADD Item-->
                 <div class="panel">
-                <?php $position = $this->session->userdata['logged_in']['position'];
-                if ($position === 'Admin' || $position === 'Custodian') {
-                    echo '<a  class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4><i class="fa fa-plus-circle" ></i> Add Item</h4></a>';
-                }
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if ($position === 'Admin' || $position === 'Custodian') {
+                        echo '<a  class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4><i class="fa fa-plus-circle" ></i> Add Item</h4></a>';
+                    }
                     ?>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="panel-body">
@@ -116,426 +116,425 @@
                                                 </div>
                                             </form>
 
+                                        </div>
+
                                     </div>
 
                                 </div>
-
                             </div>
                         </div>
                     </div>
+                    <!-- /ADD item-->
                 </div>
-                <!-- /ADD item-->
-            </div>
-            <!-- Main Table Content-->
-            <div class="x_content">
-                <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
-                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                        <li id="TB1" role="presentation" class="active"><a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital Outlay</a>
-                        </li>
-                        <li id="TB2" role="presentation" class=""><a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
-                        </li>
-                    </ul>
+                <!-- Main Table Content-->
+                <div class="x_content">
+                    <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li id="TB1" role="presentation" class="active"><a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital Outlay</a>
+                            </li>
+                            <li id="TB2" role="presentation" class=""><a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
+                            </li>
+                        </ul>
 
-                    <div id="myTabContent" class="tab-content">
-                        <!-- Capital Outaly tab-->
-                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
+                        <div id="myTabContent" class="tab-content">
+                            <!-- Capital Outaly tab-->
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
 
-                            <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                                <!-- Implement Bootsrap table-->
-                                <div class="x_panel">
-                                    <table data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem/CO" data-show-toggle="true" class="table table-no-bordered table-hover">
-                                        <thead>
-                                        <!-- Data-field for getting data  -->
-                                        <tr>
-                                            <th data-sortable="true" data-field="number">#</th>
-                                            <th data-sortable="true" data-field="item">Item Name</th>
-                                            <th data-sortable="true" data-field="description">Description</th>
-                                            <th data-sortable="true" data-field="quantity">Quantity</th>
-                                            <th data-sortable="true" data-field="unit">Unit</th>
-                                            <?php $position = $this->session->userdata['logged_in']['position'];
-                                            if ($position === 'Admin' || $position === 'Custodian'){
-                                            echo'<th data-field="action">Action</th>';
+                                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <!-- Implement Bootsrap table-->
+                                    <div class="x_panel">
+                                        <table data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem/CO" data-show-toggle="true" class="table table-no-bordered table-hover">
+                                            <thead>
+                                            <!-- Data-field for getting data  -->
+                                            <tr>
+                                                <th data-sortable="true" data-field="number">#</th>
+                                                <th data-sortable="true" data-field="item">Item Name</th>
+                                                <th data-sortable="true" data-field="description">Description</th>
+                                                <th data-sortable="true" data-field="quantity">Quantity</th>
+                                                <th data-sortable="true" data-field="unit">Unit</th>
+                                                <?php $position = $this->session->userdata['logged_in']['position'];
+                                                if ($position === 'Admin' || $position === 'Custodian'){
+                                                    echo'<th data-field="action">Action</th>';
                                                 }
                                                 ?>
-                                        </tr>
-                                        </thead>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--MOOE Tab-->
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
+                                <!-- Implement Bootsrap table-->
+                                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <div class="x_panel">
+                                        <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem/MOOE" data-show-toggle="true" class="table table-no-bordered table-hover">
+                                            <thead>
+                                            <!-- Data-field for getting data  -->
+                                            <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
+                                                <th data-sortable="true" data-field="number">#</th>
+                                                <th data-sortable="true" data-field="item">Item Name</th>
+                                                <th data-sortable="true" data-field="description">Description</th>
+                                                <th data-sortable="true" data-field="quantity">Quantity</th>
+                                                <th data-sortable="true" data-field="unit">Unit</th>
+                                                <?php $position = $this->session->userdata['logged_in']['position'];
+                                                if ($position === 'Admin' || $position === 'Custodian'){
+                                                    echo'<th data-field="action">Action</th>';
+                                                }
+                                                ?>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of Main Table Content-->
+                </div>
+
+
+                <!-- Modals -->
+                <!-- Item Detail-->
+                <div id="Item_Detail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" id="ModalIDetail">
+                        <div class="modal-content">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Item Details</h2>
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                    </button>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <h4><b>Item Name:</b></h4>
+                                    <p>Laptop</p>
+                                    <br>
+                                    <h4><b>Description:</b></h4>
+                                    <p>Dell Latitude E6420 </br> 14" </br> Core i5 2520M </br> 4 GB RAM</br> 320 GB HDD </br> English</p>
+
+                                </div>
+
+                                <div class="col-xs-10">
+                                    <table id="itemdet" class="table table-striped table-no-bordered">
                                     </table>
                                 </div>
                             </div>
                         </div>
-
-                        <!--MOOE Tab-->
-                        <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
-                            <!-- Implement Bootsrap table-->
-                            <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                                <div class="x_panel">
-                                <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem/MOOE" data-show-toggle="true" class="table table-no-bordered table-hover">
-                                    <thead>
-                                    <!-- Data-field for getting data  -->
-                                    <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
-                                        <th data-sortable="true" data-field="number">#</th>
-                                        <th data-sortable="true" data-field="item">Item Name</th>
-                                        <th data-sortable="true" data-field="description">Description</th>
-                                        <th data-sortable="true" data-field="quantity">Quantity</th>
-                                        <th data-sortable="true" data-field="unit">Unit</th>
-                                        <?php $position = $this->session->userdata['logged_in']['position'];
-                                        if ($position === 'Admin' || $position === 'Custodian'){
-                                            echo'<th data-field="action">Action</th>';
-                                        }
-                                        ?>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- end of Main Table Content-->
-        </div>
 
+                <!-- end of Item Detail -->
 
-        <!-- Modals -->
-        <!-- Item Detail-->
-        <div id="Item_Detail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" id="ModalIDetail">
-                <div class="modal-content">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Item Details</h2>
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                            </button>
-                            <div class="clearfix"></div>
+                <!-- Add Quantity -->
+                <div id="addquant" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label>Quantity</label>
+                                        <input type="number" name="quant" min=0  class="form-control col-md-7 col-xs-12" placeholder="Quantity">
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                        <label>Unit Cost</label>
+                                        <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3"  placeholder="Unit Cost">
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label>Delivery Date</label>
+                                        <input type="date" name="del"  class="form-control col-md-7 col-xs-12">
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label>Date Received</label>
+                                        <input type="date" name="rec" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12" >
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label>Expiration Date</label>
+                                        <input type="date" name="exp" data-validate-length-range="5,20"  class="optional form-control col-md-7 col-xs-12">
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <label>Supplier</label>
+                                        <select list="typelist"  name="supp" class="supplieropt form-control"  placeholder="Type">
+                                        </select>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn-modal btn btn-primary" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
+                                <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                            </div>
                         </div>
-                        <div class="col-xs-2">
-                            <h4><b>Item Name:</b></h4>
-                            <p>Laptop</p>
-                            <br>
-                            <h4><b>Description:</b></h4>
-                            <p>Dell Latitude E6420 </br> 14" </br> Core i5 2520M </br> 4 GB RAM</br> 320 GB HDD </br> English</p>
-
-                        </div>
-
-                        <div class="col-xs-10">
-                            <table id="itemdet" class="table table-striped table-no-bordered">
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- end of Item Detail -->
-
-        <!-- Add Quantity -->
-        <div id="addquant" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <label>Quantity</label>
-                                <input type="number" name="quant" min=0  class="form-control col-md-7 col-xs-12" placeholder="Quantity">
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                <label>Unit Cost</label>
-                                <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3"  placeholder="Unit Cost">
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <label>Delivery Date</label>
-                                <input type="date" name="del"  class="form-control col-md-7 col-xs-12">
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <label>Date Received</label>
-                                <input type="date" name="rec" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12" >
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <label>Expiration Date</label>
-                                <input type="date" name="exp" data-validate-length-range="5,20"  class="optional form-control col-md-7 col-xs-12">
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <label>Supplier</label>
-                                <select list="typelist"  name="supp" class="supplieropt form-control"  placeholder="Type">
-                                </select>
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn-modal btn btn-primary" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
-                        <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
-                    </div>
-                </div>
-                </form>
-            </div>
-        </div>
-        <!-- end of add quantity -->
-
-        <!-- View Serial -->
-        <div id="addquant" class="modal fade View_serial" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">View Serial</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="quant" min=0 required value="6161d6sdcd" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="quant" min=0 required value="6161d6sdcd" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="quant" min=0 value="6161d6sdcd" required class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="quant" min=0 value="6161d6sdcd" required class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="quant" min=0 value="6161d6sdcd" required class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="quant" min=0 value="6161d6sdcd" required class="form-control col-md-7 col-xs-12" >
-                                </div>
-                            </div>
-
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn-modal btn btn-primary" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
-                        <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                </div>
+                <!-- end of add quantity -->
+
+                <!-- View Serial -->
+                <div id="addquant" class="modal fade View_serial" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">View Serial</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="quant" min=0 required value="6161d6sdcd" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="quant" min=0 required value="6161d6sdcd" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="quant" min=0 value="6161d6sdcd" required class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="quant" min=0 value="6161d6sdcd" required class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="quant" min=0 value="6161d6sdcd" required class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Serial<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="quant" min=0 value="6161d6sdcd" required class="form-control col-md-7 col-xs-12" >
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn-modal btn btn-primary" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
+                                <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- end of view serial -->
+                <!-- end of view serial -->
 
 
-        <!--Distribution-->
-        <div id="myModal" class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" id="modalDist">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Distribution</h4>
-                    </div>
-                    <div class="wizard">
-                        <div class="wizard-inner">
-                            <div class="connecting-line"></div>
-                            <ul class="nav nav-tabs" role="tablist">
+                <!--Distribution-->
+                <div id="myModal" class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" id="modalDist">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Distribution</h4>
+                            </div>
+                            <div class="wizard">
+                                <div class="wizard-inner">
+                                    <div class="connecting-line"></div>
+                                    <ul class="nav nav-tabs" role="tablist">
 
-                                <li role="presentation" class="active">
-                                    <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                                        <li role="presentation" class="active">
+                                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
                             <span class="round-tab">
                                 <b>Department</b>
                             </span>
-                                    </a>
-                                </li>
+                                            </a>
+                                        </li>
 
-                                <li role="presentation" class="disabled">
-                                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                                        <li role="presentation" class="disabled">
+                                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
                             <span class="round-tab">
                                 <b>Serial</b>
                             </span>
-                                    </a>
-                                </li>
-                            </ul>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="modal-body">
+                                    <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST">
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" role="tabpanel" id="step1">
+
+                                                <div class="col-md-6 ">
+                                                    <label for="name">Distribute</label>
+                                                    <input id="dist" class="form-control" data-validate-length-range="6" data-validate-words="2" name="quant" required type="text" placeholder="Quantity">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="name">Department</label>
+                                                    <select list="typelist"   name="dept" id="deptopt" class="form-control" required placeholder="Type">
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="name">Account Code</label>
+                                                    <select list="typelist"  name="Code" id="accode" class="form-control" required placeholder="Account Code">
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6 ">
+                                                    <label for="po">PO Number</label>
+                                                    <input id="po" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="po" required type="text" placeholder="PO Number">
+                                                </div>
+
+                                                <div class="col-md-6 ">
+                                                    <label class="col-md-8">PR Number</label>
+                                                    <input id="pr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="pr" required type="text" placeholder="PR Number">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="name">OBR Number</label>
+                                                    <input id="obr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="obr" required type="text" placeholder="OBR Number">
+                                                </div>
+
+
+                                                <ul class="list-inline pull-right">
+                                                    <li><button id="next" onclick="addinputFields()" name="id" type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="tab-pane" role="tabpanel" id="step2">
+                                                <div class="item form-group">
+
+                                                    <div id="container1" class="col-md-6">
+                                                        <label for="name">Serial</label>
+                                                    </div>
+
+                                                    <div id="container2" class="col-md-6">
+                                                        <label for="name">Receiving Person</label>
+                                                    </div>
+                                                    <div id="container3" class="col-md-6">
+                                                    </div>
+                                                </div>
+
+                                                <ul class="list-inline pull-right">
+                                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                                    <li><button  id="save1" name="id" type="submit" class="btn-modal btn btn-primary">Save</button></li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" role="tabpanel" id="step1">
+                    </div>
+                </div>
+                <!-- end of distribution-->
 
-                                        <div class="col-md-6 ">
-                                            <label for="name">Distribute</label>
-                                            <input id="dist" class="form-control" data-validate-length-range="6" data-validate-words="2" name="quant" required type="text" placeholder="Quantity">
+                <!--Edit-->
+                <div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Edit</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal form-label-left" method="POST" action="inventory/edititem" novalidate>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Item Name<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="item" class="form-control col-md-7 col-xs-12" data-validate-length-range="20" data-validate-words="2" name="item" type="text" required placeholder="Item Name">
                                         </div>
-
-                                        <div class="col-md-6">
-                                            <label for="name">Department</label>
-                                            <select list="typelist"   name="dept" id="deptopt" class="form-control" required placeholder="Type">
-                                            </select>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label for="name">Account Code</label>
-                                            <select list="typelist"  name="Code" id="accode" class="form-control" required placeholder="Account Code">
-                                            </select>
-                                        </div>
-
-                                        <div class="col-md-6 ">
-                                            <label for="po">PO Number</label>
-                                            <input id="po" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="po" required type="text" placeholder="PO Number">
-                                        </div>
-
-                                        <div class="col-md-6 ">
-                                            <label class="col-md-8">PR Number</label>
-                                            <input id="pr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="pr" required type="text" placeholder="PR Number">
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label for="name">OBR Number</label>
-                                            <input id="obr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="obr" required type="text" placeholder="OBR Number">
-                                        </div>
-
-
-                                        <ul class="list-inline pull-right">
-                                            <li><button id="next" onclick="addinputFields()" name="id" type="button" class="btn btn-primary next-step">Save and continue</button></li>
-                                        </ul>
                                     </div>
-
-                                    <div class="tab-pane" role="tabpanel" id="step2">
-                                        <div class="item form-group">
-
-                                            <div id="container1" class="col-md-6">
-                                                <label for="name">Serial</label>
-                                            </div>
-
-                                            <div id="container2" class="col-md-6">
-                                                <label for="name">Receiving Person</label>
-                                            </div>
-                                            <div id="container3" class="col-md-6">
-                                            </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="description" type="text" name="description" class="form-control col-md-7 col-xs-12" required placeholder="Description">
                                         </div>
-
-                                        <ul class="list-inline pull-right">
-                                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                                            <li><button  id="save1" name="id" type="submit" class="btn-modal btn btn-primary">Save</button></li>
-                                        </ul>
                                     </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Unit<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="Unit"  type="text" name="Unit" class="form-control col-md-7 col-xs-12" required placeholder="Unit">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Type<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="Type" type="text" name="Type" class="form-control col-md-7 col-xs-12" required placeholder="Type">
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                                <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                            </div>
 
-                                </div>
-                            </form>
                         </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- end of distribution-->
+                <!--end of edit-->
 
-        <!--Edit-->
-        <div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
+                <!-- Add Quantity -->
+                <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
 
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Edit</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal form-label-left" method="POST" action="inventory/edititem" novalidate>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Item Name<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="item" class="form-control col-md-7 col-xs-12" data-validate-length-range="20" data-validate-words="2" name="item" type="text" required placeholder="Item Name">
-                                </div>
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
                             </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="description" type="text" name="description" class="form-control col-md-7 col-xs-12" required placeholder="Description">
-                                </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="number" name="quant" min=0 class="form-control col-md-7 col-xs-12" required placeholder="Quantity">
+                                        </div>
+                                    </div>
                             </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Unit<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="Unit"  type="text" name="Unit" class="form-control col-md-7 col-xs-12" required placeholder="Unit">
-                                </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn-modal btn btn-primary" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
+                                <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
                             </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Type<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="Type" type="text" name="Type" class="form-control col-md-7 col-xs-12" required placeholder="Type">
-                                </div>
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
-                        <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
-                    </div>
-
-                </div>
-                </form>
-            </div>
-        </div>
-        <!--end of edit-->
-
-        <!-- Add Quantity -->
-        <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="number" name="quant" min=0 class="form-control col-md-7 col-xs-12" required placeholder="Quantity">
-                                </div>
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn-modal btn btn-primary" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
-                        <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                        </div>
+                        </form>
                     </div>
                 </div>
-                </form>
+                <!-- end of add quantity -->
+
+                <!-- /Modal -->
             </div>
         </div>
-        <!-- end of add quantity -->
-
-        <!-- /Modal -->
+        <div class="clearfix"></div>
     </div>
-</div>
-    <div class="clearfix"></div>
-</div>
-

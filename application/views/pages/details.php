@@ -5,7 +5,10 @@
             <div class="clearfix"></div>
 
             <div class="x_title" id="DetailsHead">
-                <h3>Item Name <br><small>description......dugun dugun</small></h3>
+                <h4>Item Name: <small> <b>Raincoats</b></small> </h4>
+                <h4>Description: <small> <b>Waterproof Coats</b></small> </h4>
+                <p>Total Quantity: 200</p>
+                <p>Unit: Piece</p>
 
                 <div class="clearfix"></div>
             </div>
@@ -37,7 +40,7 @@
                     <tr>
                         <?php $position = $this->session->userdata['logged_in']['position'];
                         if ($position === 'Admin' || $position === 'Custodian'){
-                            echo'<td><button type="button" class="btn btn-default" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne">View Serial</button></td>';
+                            echo'<td><a class="btn btn-modal btn-default btn-xs" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne"><li class="	fa fa-folder-open"></li> View Serial</a></td>';
                             }else{
                             echo'<td>12345</td>';
                         }
