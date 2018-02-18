@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2018 at 11:13 AM
+-- Generation Time: Feb 18, 2018 at 11:22 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -407,7 +407,8 @@ INSERT INTO `item` (`item_id`, `quantity`, `unit`, `item_name`, `item_descriptio
 (311, 0, '', '', '', 'CO'),
 (312, 10, 'piece', 'Headgear', 'for donations', 'CO'),
 (313, 10, 'piece', 'Headgear12', 'for donations', 'CO'),
-(314, 12, 'piece', 'Laptop123', 'desc', 'CO');
+(314, 12, 'piece', 'Laptop123', 'desc', 'CO'),
+(315, 1, 'piece', 'Laptop', 'desc', 'CO');
 
 -- --------------------------------------------------------
 
@@ -641,7 +642,8 @@ INSERT INTO `itemdetail` (`item_det_id`, `date_delivered`, `date_received`, `qua
 (250, '0000-00-00', '0000-00-00', 0, 0, NULL, NULL, NULL, NULL, '0000-00-00', 311, 1),
 (251, '2018-02-17', '2018-02-17', 10, 2000000, NULL, NULL, NULL, NULL, '2018-02-17', 312, 1),
 (252, '2018-02-17', '2018-02-17', 10, 2000000, NULL, NULL, NULL, NULL, '2018-02-17', 313, 1),
-(253, '2018-02-17', '0000-00-00', 12, 1, NULL, NULL, NULL, NULL, '2018-02-17', 314, 1);
+(253, '2018-02-17', '0000-00-00', 12, 1, NULL, NULL, NULL, NULL, '2018-02-17', 314, 1),
+(254, '2018-02-18', '2018-02-18', 1, 1, NULL, NULL, NULL, NULL, '2018-02-18', 315, 1);
 
 --
 -- Triggers `itemdetail`
@@ -9349,7 +9351,8 @@ INSERT INTO `serial` (`serial`, `employee`, `item_status`, `dist_id`, `item_det_
 (NULL, NULL, 'In-stock', NULL, 253),
 (NULL, NULL, 'In-stock', NULL, 253),
 (NULL, NULL, 'In-stock', NULL, 253),
-(NULL, NULL, 'In-stock', NULL, 253);
+(NULL, NULL, 'In-stock', NULL, 253),
+(NULL, NULL, 'In-stock', NULL, 254);
 
 -- --------------------------------------------------------
 
@@ -9439,7 +9442,8 @@ ALTER TABLE `distribution`
 --
 ALTER TABLE `item`
   ADD PRIMARY KEY (`item_id`),
-  ADD UNIQUE KEY `item_id_UNIQUE` (`item_id`);
+  ADD UNIQUE KEY `item_id_UNIQUE` (`item_id`),
+  ADD UNIQUE KEY `unique_itemdescription` (`item_name`,`item_description`);
 
 --
 -- Indexes for table `itemdetail`
@@ -9497,12 +9501,12 @@ ALTER TABLE `distribution`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=315;
+  MODIFY `item_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=316;
 --
 -- AUTO_INCREMENT for table `itemdetail`
 --
 ALTER TABLE `itemdetail`
-  MODIFY `item_det_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
+  MODIFY `item_det_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
 --
 -- AUTO_INCREMENT for table `mooedistribution`
 --
