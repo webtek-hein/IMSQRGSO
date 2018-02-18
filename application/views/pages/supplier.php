@@ -26,24 +26,24 @@
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                                 <div class="x_panel">
                                                                     <div class="x_content">
-                                                                        <form method="POST" action="supplier/addSupplier" data-parsley-validate class="form-horizontal form-label-left">
+                                                                        <form method="POST" action="supplier/addSupplier" data-validate="parsley" class="form-horizontal form-label-left" data-validate="parsley">
 
                                                                             <div class="form-group">
                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Supplier Name</label>
                                                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                                    <input type="text" name="supplier" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                                                                    <input type="text" name="supplier" id="first-name" data-required="true" class="form-control col-md-7 col-xs-12" data-error-message="Please enter the Supplier Name">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Address</label>
                                                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                                    <input type="text" id="last-name" name="address" required="required" class="form-control col-md-7 col-xs-12">
+                                                                                    <input type="text" id="last-name" name="address" data-required="true" class="form-control col-md-7 col-xs-12" data-error-message="Please Enter the Address">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Contact Number</label>
                                                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="contact">
+                                                                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="contact" data-required="true" data-error-message="Please Enter Contact Number">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="ln_solid"></div>

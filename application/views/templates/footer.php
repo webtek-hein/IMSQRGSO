@@ -55,6 +55,8 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url()?>assets/build/js/custom.min.js"></script>
+    <!-- Parsley -->
+    <script  src="http://parsleyjs.org/dist/parsley.min.js"></script>
 
     <script>
         $(document).ready(function () {

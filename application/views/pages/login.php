@@ -44,8 +44,8 @@
                     echo "</div>";
                     ?>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Valid username is required: unique">
-                        <input class="input100" type="text" name="username" id="name" placeholder="username" required/>
+                    <div class="wrap-input100 validate-input"  >
+                        <input class="input100" type="text" name="username" id="name" placeholder="username" data-required="true" data-error-message="Enter your Username"/>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-user fa-fw" aria-hidden="true"></i>
@@ -53,7 +53,7 @@
                     </div>
                      
                     <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                        <input class="input100" type="password" name="password" id="password" placeholder="password" required/>
+                        <input class="input100" type="password" name="password" id="password" placeholder="password" data-required="true"/>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -89,6 +89,7 @@
     <script src="assets/vendors/select2/select2.min.js"></script>
 <!--===============================================================================================-->
     <script src="assets/vendors/tilt/tilt.jquery.min.js"></script>
+    <script type="text/javascript" src="http://parsleyjs.org/dist/parsley.min.js"></script>
  <!--===============================================================================================-->
 
     <script >

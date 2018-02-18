@@ -30,7 +30,7 @@
                                             </ul>
                                         </div>
                                         <div class="modal-body" id="ModalI">
-                                            <form id="addItemForm" role="form" action="inventory/saveAll" method="POST">
+                                            <form id="addItemForm" role="form" action="inventory/saveAll" method="POST" data-validate="parsley">
 
                                                 <div id="bulkdiv" class="tab-content">
 
@@ -38,17 +38,17 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Item Name</label>
-                                                            <input  type="text" name="item[]" class="form-control" >
+                                                            <input  type="text" name="item[]" class="form-control" data-required="true" data-error-messgae="Please enter the Item Name" >
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Quantity</label>
-                                                            <input type="number" min='0' name="quant[]" class="form-control" >
+                                                            <input type="number" min='0' name="quant[]" class="form-control"  data-required="true">
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Unit Cost</label>
-                                                            <input type="number" min='0' name="cost[]" class="form-control" >
+                                                            <input type="number" min='0' name="cost[]" class="form-control"  data-required="true" data-error-messgae="Please Enter the Unit Cost" >
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
@@ -76,28 +76,28 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Delivery Date</label>
-                                                            <input type="date" name="del[]" class="form-control" >
+                                                            <input type="date" name="del[]" class="form-control"  data-required="true" >
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Date Received</label>
-                                                            <input type="date" name="rec[]" class="form-control"  placeholder="Date Received">
+                                                            <input type="date" name="rec[]" class="form-control"  placeholder="Date Received"  data-required="true">
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Expiration Date</label>
-                                                            <input type="date" name="exp[]" class="form-control"  >
+                                                            <input type="date" name="exp[]" class="form-control"  data-required="true"  >
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Supplier</label>
-                                                            <select list="typelist"  name="supp[]" class="supplieropt form-control" >
+                                                            <select list="typelist"  name="supp[]" class="supplieropt form-control"   data-required="true">
                                                             </select>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Official Receipt</label>
-                                                            <input type="text" name="or[]" class="form-control" >
+                                                            <input type="text" name="or[]" class="form-control"  data-required="true" data-error-messgae="Please enter the Official Receipt">
                                                         </div>
 
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
@@ -380,7 +380,7 @@
                                     </ul>
                                 </div>
                                 <div class="modal-body">
-                                    <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST">
+                                    <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST" data-validate="parsley">
                                         <div class="tab-content">
                                             <div class="tab-pane active" role="tabpanel" id="step1">
 
