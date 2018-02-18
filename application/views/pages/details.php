@@ -59,46 +59,46 @@
                             <div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="panel-body">
 
-                                    <div class="col-xs-5">
-                                        <div class="col-md-6">
-                                            <label>Add Serial</label>
-                                            <input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">
+                                    <div class="col-md-offset-2">
+                                        <form>
+                                            <h4><b>Add Serial</b></h4>
+                                            <div class="col-md-5">
+                                                <label>Serial 1</label>
+                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
                                             </div>
+
+                                            <div class="col-md-5">
+                                                <label>Serial 2</label>
+                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
+                                            </div>
+
+                                            <div class="col-md-5">
+                                                <label>Serial 3</label>
+                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
+                                            </div>
+
+                                            <div class="col-md-5">
+                                                <label>Serial 4</label>
+                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
+                                            </div>
+
+                                            <div class="col-md-5">
+                                                <label>Serial 5</label>
+                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label>Serial 6</label>
+                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
+                                            </div>
+                                        </form>
+                                        <br>
+                                        <div class="col-md-offset-3">
+                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-mail-reply"></i> Privious</button>
+                                        <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-send"></i> Submit</a></button>
+                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-mail-forward"></i> Next</button>
+                                        </div>
                                     </div>
 
-                                    <div class="col-xs-6">
-                                        <h4><b>List of Serial</b></h4>
-                                        <div class="input-group col-md-6">
-                                            <input type="text" class="form-control" placeholder="serial1(youcaneditme)">
-                                            <span class="input-group-btn">
-                                              <button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button>
-                                          </span>
-                                        </div>
-                                        <div class="input-group col-md-6">
-                                            <input type="text" class="form-control" placeholder="serial1(youcaneditme)">
-                                            <span class="input-group-btn">
-                                              <button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button>
-                                          </span>
-                                        </div>
-                                        <div class="input-group col-md-6">
-                                            <input type="text" class="form-control" placeholder="serial1(youcaneditme)">
-                                            <span class="input-group-btn">
-                                              <button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button>
-                                          </span>
-                                        </div>
-                                        <div class="input-group col-md-6">
-                                            <input type="text" class="form-control" placeholder="serial1(youcaneditme)">
-                                            <span class="input-group-btn">
-                                              <button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button>
-                                          </span>
-                                        </div>
-                                        <div class="input-group col-md-6">
-                                            <input type="text" class="form-control" placeholder="serial1(youcaneditme)">
-                                            <span class="input-group-btn">
-                                              <button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button>
-                                          </span>
-                                        </div>
-                                </div>
                                 </div>
                             </div>
                         </td>
@@ -108,7 +108,7 @@
             </div>
                             <!--MOOE Tab-->
                     <!-- end of Main Table Content-->
-                </div>
+        </div>
 
 
                 <!-- Modals -->
@@ -181,6 +181,7 @@
                 <!-- end of distribution-->
 
                 <!-- /Modal -->
+    </div>
             </div>
         </div>
         <div class="clearfix"></div>
