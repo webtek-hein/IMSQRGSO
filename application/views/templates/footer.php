@@ -159,6 +159,7 @@
 
         //on submit
         function save(counter){
+
             var list = $('#list'+counter);
             var step = $('#step'+counter+'B');
             $.ajax({
@@ -166,7 +167,11 @@
                 url: 'inventory/save/' + counter,
                 data: $('#addItemForm').serializeArray(),
                 success: function (response) {
-                    if($('#bulk li').length > 1) {
+                    if(response){
+                        BootstrapDialog.show({
+                            message: 'Item has been added.'
+                        });
+                        if($('#bulk li').length > 1) {
                         if (!list.prev().length < 1) {
                             list.prev().addClass('active');
                             step.prev().addClass('active');
@@ -178,13 +183,8 @@
                         step.remove();
                     }else{
                           location.reload();
-                      }
-                      if(response){
-                        alert('tetst');
-                          BootstrapDialog.show({
-                              message: 'Item has been added'
-                          });
-                      }
+                        }
+                    }
                 },
                 fail: function (response) {
                     alert(response);
