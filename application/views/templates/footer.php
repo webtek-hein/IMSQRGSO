@@ -118,8 +118,13 @@
                     "</li>";
                 $('#bulk').append(list);
                 button.attr('id','buttonCounter'+counter);
-                div.clone().find('input,textarea').val("").toggleClass('required').end().attr('id','step'+counter+'B').appendTo('#bulkdiv').removeClass('active')
-                    .find('#buttonCounter'+counter).attr('onclick','save('+counter+')');
+                div.clone().find('input,textarea').val("")
+                    .toggleClass('required').end()
+                    .attr('id','step'+counter+'B')
+                    .appendTo('#bulkdiv')
+                    .removeClass('active')
+                    .find('#buttonCounter'+counter)
+                    .attr('onclick','save('+counter+')');
             });
 
             $('.modal').on('show.bs.modal',function (e) {
@@ -150,7 +155,6 @@
 
         //on submit
         function save(counter){
-
             var list = $('#list'+counter);
             var step = $('#step'+counter+'B');
             $.ajax({
