@@ -51,6 +51,8 @@
     <!--<script src="<?php echo base_url()?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>-->
     <!-- Bootstrap 3.3.6 -->
     <script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
+    <!--Bootstrap Dialog JS-->
+    <script src="<?php echo base_url()?>assets/js/bootstrap-dialog.min.js"></script>
     <!--<script src="<?php echo base_url()?>assets/js/bootstrap-dialog.min.js"></script>-->
 
     <!-- Custom Theme Scripts -->
@@ -163,7 +165,7 @@
                 type: 'POST',
                 url: 'inventory/save/' + counter,
                 data: $('#addItemForm').serializeArray(),
-                success: function () {
+                success: function (response) {
                     if($('#bulk li').length > 1) {
                         if (!list.prev().length < 1) {
                             list.prev().addClass('active');
@@ -177,10 +179,17 @@
                     }else{
                           location.reload();
                       }
+                      if(response){
+                        alert('tetst');
+                          BootstrapDialog.show({
+                              message: 'Item has been added'
+                          });
+                      }
                 },
-                fail: function(){
-
+                fail: function (response) {
+                    alert(response);
                 }
+
             });
         }
 

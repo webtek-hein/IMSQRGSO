@@ -43,6 +43,9 @@ if (isset($this->session->userdata['logged_in'])) {
     <link href="<?php echo base_url() ?>assets/build/css/custom.css" rel="stylesheet">
     <!-- Placeholder for Dates Style -->
     <link href="<?php echo base_url() ?>assets/css/deptnav.css" rel="stylesheet">
+    <!--Bootstrap Dialog-->
+    <link href="<?php echo base_url() ?>assets/css/bootstrap-dialog.min.css" rel="stylesheet">
+
     <!-- jQuery -->
     <script src="<?php echo base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
     <!--    <script src="<?php echo base_url()?>assets/js/parsley.min.js"></script>-->

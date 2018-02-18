@@ -9,6 +9,7 @@ class Inventory_model extends CI_Model{
 
     }
     public function add_item($counter){
+
         $item_name = $this->input->post('item')[$counter];
         $quantity = $this->input->post('quant')[$counter];
         $supplier_id = $this->input->post('supp')[$counter];
@@ -27,20 +28,30 @@ class Inventory_model extends CI_Model{
             'unit_cost'=> $this->input->post('cost')[$counter],
             'quantity' => $quantity,
             'expiration_date' => $this->input->post('exp')[$counter],
-//            'or_no' => $this->input->post('or')[$counter]
+                'or_no' => $this->input->post('or')[$counter]
         );
-        $this->db->trans_start();
-        //  1. Insert into item
-        $this->db->insert('item',$data);
-        //item insert id
-        $insert_id = array('item_id' => $this->db->insert_id());
-        // 2. Insert to item detail
-        $this->db->insert('itemdetail',$data1+$insert_id+array('supplier_id' => $supplier_id));
-        //item detail insert id
-        $insert_id = $this->db->insert_id();
-        // 3. Insert into logs
-        $this->db->insert('logs.increaselog',array('item_det_id'=>$insert_id));
-        $this->db->trans_complete();
+        try {
+            $this->db->trans_begin();
+            //  1. Insert into item
+            $this->db->insert('item', $data);
+            //item insert id
+            $insert_id = array('item_id' => $this->db->insert_id());
+            // 2. Insert to item detail
+            $this->db->insert('itemdetail', $data1 + $insert_id + array('supplier_id' => $supplier_id));
+            //item detail insert id
+            $insert_id = $this->db->insert_id();
+            // 3. Insert into logs
+            $this->db->insert('logs.increaselog', array('item_det_id' => $insert_id));
+            if ($this->db->trans_status() === FALSE) {
+                $this->db->trans_rollback();
+                throw new Exception($this->db->trans_status());
+            } else {
+                $this->db->trans_commit();
+                return $this->db->trans_status();
+            }
+        }catch (Exception $e){
+            return $e;
+        }
     }
 
     public function saveAll(){
@@ -48,10 +59,9 @@ class Inventory_model extends CI_Model{
         $item_name = $this->input->post('item');
 
         foreach ($item_name as $key => $value){
-            $quantity = $this->input->post('quant')[$key];
             $data[] = array(
                 'item_name' => $item_name[$key],
-                'quantity' => $quantity,
+                'quantity' => $this->input->post('quant')[$key],
                 'item_description' => $this->input->post('description')[$key],
                 'unit' => $this->input->post('Unit')[$key],
                 'item_type' => $this->input->post('Type')[$key],
@@ -74,11 +84,11 @@ class Inventory_model extends CI_Model{
                 'date_delivered' => $this->input->post('del')[$key],
                 'date_received' => $this->input->post('rec')[$key],
                 'unit_cost'=> $this->input->post('cost')[$key],
-                'quantity' => $quantity,
+                'quantity' => $this->input->post('quant')[$key],
                 'expiration_date' => $this->input->post('exp')[$key],
                 'item_id' => $insert_id[$key],
                 'supplier_id' => $this->input->post('supp')[$key],
-    //            'or_no' => $this->input->post('or')[$key]
+                'or_no' => $this->input->post('or')[$key]
         );
         }
         $this->db->insert_batch('itemdetail',$data1);
@@ -89,6 +99,7 @@ class Inventory_model extends CI_Model{
         foreach ($item_detail_id as $key => $value) {
             $detail[] = array('item_det_id' =>$item_detail_id[$key]);
         }
+        var_dump($data1);
 
         // 3. Insert into logs
         $this->db->insert_batch('logs.increaselog',$detail);
