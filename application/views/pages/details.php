@@ -17,17 +17,10 @@
             <div role="tabpanel" class="tab-pane fade active in" id="tab_cont." aria-labelledby="CO-tab">
                 <button type="button" class="btn btn"><a href="Inventory"><i class="fa fa-reply"></i> Back</a></button>
 
-                <table id="datatable" class="table table-striped table-bordered">
+                <table id="itemdet" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <?php $position = $this->session->userdata['logged_in']['position'];
-                        if ($position === 'Admin' || $position === 'Custodian') {
-                            echo '<th>Add Serial</th>';
 
-                        }else{
-                            echo'<th>Serial</th>';
-                        }
-                        ?>
                         <th>Date Delivered</th>
                         <th>Date Received</th>
                         <th>Expiration Date</th>
@@ -38,13 +31,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <?php $position = $this->session->userdata['logged_in']['position'];
-                        if ($position === 'Admin' || $position === 'Custodian'){
-                            echo'<td><a class="btn btn-modal btn-default btn-xs" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne"><li class="	fa fa-folder-open"></li> View Serial</a></td>';
-                            }else{
-                            echo'<td>12345</td>';
-                        }
-                        ?>
+
                         <td>2018-02-1d</td>
                         <td>2018-02-17</td>
                         <td>2018-02-17</td>
@@ -52,6 +39,13 @@
                         <td>TiongSan</td>
                         <td><a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-modal btn-default btn-xs">
                             <i class="fa fa-plus-circle"></i> Distribute</a>
+                            <?php $position = $this->session->userdata['logged_in']['position'];
+                            if ($position === 'Admin' || $position === 'Custodian'){
+                                echo'<a class="btn btn-modal btn-default btn-xs" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne"><li class="	fa fa-folder-open"></li> View Serial</a>';
+                            }else{
+                                echo'<td>12345</td>';
+                            }
+                            ?>
                         </td>
                     </tr>
                     <tr>

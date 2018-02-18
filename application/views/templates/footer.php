@@ -53,7 +53,8 @@
     <!--Bootstrap Dialog JS-->
     <script src="<?php echo base_url()?>assets/js/bootstrap-dialog.min.js"></script>
     <!--<script src="<?php echo base_url()?>assets/js/bootstrap-dialog.min.js"></script>-->
-
+    <!-- Custom Theme Scripts -->
+    <script src="<?php echo base_url()?>assets/build/js/custom.min.js"></script>
 
 
     <script>
@@ -159,9 +160,7 @@
 
         //on submit
         function save(counter){
-            $('#addItemForm').parsley().on('form:validate',function (formInstance) {
-
-            });
+            $('#addItemForm').parsley().validate();
             var list = $('#list'+counter);
             var step = $('#step'+counter+'B');
             $.ajax({
