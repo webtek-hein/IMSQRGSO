@@ -16,7 +16,7 @@
             <div role="tabpanel" class="tab-pane fade active in" id="tab_cont." aria-labelledby="CO-tab">
                 <button type="button" class="btn btn"><a href="inventory"><i class="fa fa-reply"></i> Back</a></button>
 
-                <table data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/detail/"<?=$itemdetail[0]['item_id']?> data-show-toggle="true" class="table table-no-bordered table-hover">
+                <table id="itemdet" data-pagination="true" data-search="true" data-show-toggle="true" class="table table-no-bordered table-hover">
                     <thead>
                     <!-- Data-field for getting data  -->
                     <tr>
@@ -35,7 +35,9 @@
 
                     </tr>
                     </thead>
-<!--                    <tr>-->
+                </table>
+
+                <!--                    <tr>-->
 <!--                        <td colspan="12">-->
 <!--                            <div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">-->
 <!--                                <div class="panel-body">-->
@@ -85,7 +87,6 @@
 <!--                        </td>-->
 <!--                    </tr>-->
 <!--                    </tbody>-->
-                </table>
             </div>
                             <!--MOOE Tab-->
                     <!-- end of Main Table Content-->

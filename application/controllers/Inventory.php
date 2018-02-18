@@ -30,9 +30,9 @@ class Inventory extends CI_Controller {
             $data[] = array(
                 'number'    => "<a href=\"details\" onclick=\"detail($item[item_id])\">".
                                 $counter,
-                'item'      =>  "<a href=\"inventory/detailpage/$item[item_id]\" >".
+                'item'      =>  "<a href=\"inventory/detailpage/$item[item_id]\" onclick=\"detail($item[item_id])>".
                                 $item['item_name']."</a>",
-                'description'=> "<a href=\"details\" onclick=\"detail($item[item_id])\">".
+                'description'=> "<a href=\"inventory/detailpage/$item[item_id]\">".
                                 $item['item_description']."</a>",
                 'quantity'   => "<a href=\"details\" onclick=\"detail($item[item_id])\">".
                                 $item['quantity']."</a>",
@@ -82,7 +82,7 @@ class Inventory extends CI_Controller {
         $list = $this->inv->viewdetail($id);
         $data=array();
         foreach ($list as $detail){
-            $row[] = array(
+            $data[] = array(
                 'quant'  => $detail['quantity'],
                 'del'  => $detail['date_delivered'],
                 'rec'  => $detail['date_received'],
@@ -94,7 +94,6 @@ class Inventory extends CI_Controller {
                                 data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#data1\" aria-expanded=\"true\" aria-controls=\"collapseOne\">
                                 <li class=\"fa fa-folder-open\"></li> View Serial</a>",
             );
-            $data = $row;
         }
         echo json_encode($data);
     }

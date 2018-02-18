@@ -154,15 +154,13 @@
                 $('#itemdet').bootstrapTable('destroy');
             });
 
-            $('.btn-hide').on('click',function () {
-                $('#firststep').modal('hide');
-            });
+
 
         });
 
         //on submit
         function save(counter){
-            $('#addItemForm').parsley().validate();
+            $('#addItemForm').parsley().whenValidate().done(function () {
             var list = $('#list'+counter);
             var step = $('#step'+counter+'B');
             $.ajax({
@@ -175,17 +173,17 @@
                             message: 'Item has been added.'
                         });
                         if($('#bulk li').length > 1) {
-                        if (!list.prev().length < 1) {
-                            list.prev().addClass('active');
-                            step.prev().addClass('active');
-                        } else {
-                            list.next().addClass('active');
-                            step.next().addClass('active');
-                        }
-                        list.remove();
-                        step.remove();
-                    }else{
-                          location.reload();
+                            if (!list.prev().length < 1) {
+                                list.prev().addClass('active');
+                                step.prev().addClass('active');
+                            } else {
+                                list.next().addClass('active');
+                                step.next().addClass('active');
+                            }
+                            list.remove();
+                            step.remove();
+                        }else{
+                            location.reload();
                         }
                     }
                 },
@@ -198,9 +196,38 @@
                 }
 
             });
+            });
         }
-
-
+        function detail(id) {
+                $('#itemdet').bootstrapTable({
+                            url: 'inventory/detail/'+id,
+                            columns: [{
+                                field: 'del',
+                                title: 'Delivery Date'
+                            }, {
+                                field: 'rec',
+                                title: 'Date Received'
+                            }, {
+                                field: 'exp',
+                                title: 'Expiration Date'
+                            },{
+                                field: 'cost',
+                                title: 'Cost'
+                            },{
+                                field: 'sup',
+                                title: 'Supplier'
+                            },{
+                                field: 'quant',
+                                title: 'Quantity'
+                            },{
+                                field: 'action',
+                                title: 'Action'
+                            }],
+                        });
+        $('.btn-hide').on('click',function () {
+           $('#firststep').modal('hide');
+        });
+        }
         function serial(det_id) {
             $('#serial').on('show.bs.modal',function () {
                 $.ajax({
