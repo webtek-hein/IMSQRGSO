@@ -11,7 +11,9 @@
             </div>
 
                 <!-- Main Table Content-->
-            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
+            <div role="tabpanel" class="tab-pane fade active in" id="tab_cont." aria-labelledby="CO-tab">
+                <button type="button" class="btn btn"><a href="Inventory"><i class="fa fa-reply"></i> Back</a></button>
+
                 <table id="datatable" class="table table-striped table-bordered">
                     <thead>
                     <tr>
@@ -32,10 +34,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne">
+                    <tr>
                         <?php $position = $this->session->userdata['logged_in']['position'];
                         if ($position === 'Admin' || $position === 'Custodian'){
-                            echo'<td>Add Serial</td>';
+                            echo'<td><button type="button" class="btn btn-default" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne">View Serial</button></td>';
                             }else{
                             echo'<td>12345</td>';
                         }
@@ -54,50 +56,46 @@
                             <div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="panel-body">
 
-                                    <?php $position = $this->session->userdata['logged_in']['position'];
-                                    if ($position === 'Admin' || $position === 'Custodian'){
-                                    echo '<form class="form-horizontal form-label-left" method="POST" >'.
-                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
-                                            '<label>Serial 1</label>'.
-                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
-                                        '</div>'.
-                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
-                                            '<label>Serial 2</label>'.
-                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
-                                        '</div>'.
-                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
-                                            '<label>Serial 3</label>'.
-                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
-                                        '</div>'.
-                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
-                                            '<label>Serial 4</label>'.
-                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
-                                        '</div>'.
-                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
-                                            '<label>Serial 5</label>'.
-                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
-                                        '</div>'.
-                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
-                                            '<label>Serial 6</label>'.
-                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
-                                        '</div>'.
-                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
-                                            '<label>Serial 7</label>'.
-                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
-                                        '</div>'.
-                                        '<div class="col-md-3 col-sm-3 col-xs-10">'.
-                                            '<label>Serial 8</label>'.
-                                            '<input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">'.
-                                        '</div>'.
-                                '</div>'.
-                                '<div class="modal-footer">'.
-                                    '<button type="submit" class="btn-modal btn btn-default" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>'.
-                                    '<button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>'.
-                                '</div>'.
-                            '</div>'.
-                            '</form>';
-                                      }
-                                      ?>
+                                    <div class="col-xs-5">
+                                        <div class="col-md-6">
+                                            <label>Add Serial</label>
+                                            <input type="number" name="quant" min=0  class="form-control col-md-3 col-xs-12">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-xs-6">
+                                        <h4><b>List of Serial</b></h4>
+                                        <div class="input-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="serial1(youcaneditme)">
+                                            <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button>
+                                          </span>
+                                        </div>
+                                        <div class="input-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="serial1(youcaneditme)">
+                                            <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button>
+                                          </span>
+                                        </div>
+                                        <div class="input-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="serial1(youcaneditme)">
+                                            <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button>
+                                          </span>
+                                        </div>
+                                        <div class="input-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="serial1(youcaneditme)">
+                                            <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button>
+                                          </span>
+                                        </div>
+                                        <div class="input-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="serial1(youcaneditme)">
+                                            <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button>
+                                          </span>
+                                        </div>
+                                </div>
                                 </div>
                             </div>
                         </td>
