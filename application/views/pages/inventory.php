@@ -9,7 +9,7 @@
                 <div class="panel">
                 <?php $position = $this->session->userdata['logged_in']['position'];
                 if ($position === 'Admin' || $position === 'Custodian') {
-                    echo '<a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4 class="panel-title">Add Item</h4></a>';
+                    echo '<a  class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4 class="panel-title">Add Item</h4></a>';
                 }
                     ?>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
@@ -20,7 +20,7 @@
                                         <div class="wizard-inner">
                                             <div class="connecting-line"></div>
                                             <ul id="bulk" class="nav nav-tabs" role="tablist">
-                                                <li role="presentation" id="list1" class="active">
+                                                <li role="presentation" id="list1" class="active" >
                                                     <a href="#step1B" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
                                                                 <span class="round-tab">
                                                                     <b>Item 1</b>
@@ -38,7 +38,7 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Item Name</label>
-                                                            <input  type="text" name="item[]" class="form-control">
+                                                            <input  type="text" name="item[]" class="form-control" >
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
@@ -106,13 +106,13 @@
                                                                       data-parsley-validation-threshold="10"></textarea>
                                                         </div>
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-                                                            <button id="buttonCounter1" type="button" onclick="save(1)" class="savebtn btn btn-default"><i class="fa fa-arrow-down"></i>Save</button>
-                                                            <button type="submit" id="saveALL" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save All</button>
+                                                            <button id="buttonCounter1" type="button" onclick="save(1)" class="savebtn btn btn-success"><i class="fa fa-arrow-down"></i>Save</button>
+                                                            <button type="submit" id="saveALL" class="btn btn-success"><i class="fa fa-arrow-down"></i> Save All</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="list-inline pull-right">
-                                                    <button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-plus-circle"></i> Add another item</button>
+                                                    <button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-plus-circle" ></i> Add another item</button>
                                                 </div>
                                             </form>
 

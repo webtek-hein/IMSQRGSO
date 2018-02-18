@@ -1,16 +1,16 @@
 
 html , body{
-	
+
  height:100%;
- 
+
 }
- 
+
 .full-width {
-	
+
  width:100%;
- 
+
  }
- 
+
 .full-height{
  height:100%;
  }
@@ -4240,7 +4240,7 @@ ul.notifications {
 table thead .checkbox { margin-top:-7px;margin-top:-21px; }
 table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 */
-			
+
 .daterangepicker.xdisplay { width:228px; }
 
 .dataTables_wrapper > .row{
@@ -4269,11 +4269,14 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     height:50px;
 }
 .accordion #headingTwo{
-    border-radius:5px;
-    height: 30px;
-    width: 100px;
-    background-color: #40E0D0;
-    border-color:black;
+    border-radius:10px;
+    height: 40px;
+    width: 300px;
+    background-color: #2f7ea3;
+    border-color: #f7f7f7;
+    color: #a3c7ff;
+    font-weight: bold;
+
 }
 .accordion #headingTwo h4{
     margin-top:-5px;
@@ -4286,8 +4289,13 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     font-size:10px;
 }
 #ModalI label{
-    font-size: 13px;
-    color:black;
+    font-size: 15px;
+    color: #0D3349;
+    width: 100%;
+    margin: 2px 0;
+    display: inline-block;
+
+
 }
 #ModalI form{
     margin-left: 100px;
@@ -4297,8 +4305,10 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     border-color: black;
 }
 .modal-body #addanother{
-    background-color: #90EE90;
-    border-color: black;
+    background-color: #2f7ea3;
+    border-color: whitesmoke;
+    color: aliceblue;
+    font-size: 15px;
 }
 /*--End Inventory Add Item--*/
 
