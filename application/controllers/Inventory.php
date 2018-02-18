@@ -30,7 +30,7 @@ class Inventory extends CI_Controller {
             $data[] = array(
                 'number'    => "<a href=\"details\" onclick=\"detail($item[item_id])\">".
                                 $counter,
-                'item'      =>  "<a href=\"details\" onclick=\"detail($item[item_id])\">".
+                'item'      =>  "<a href=\"inventory/detailpage/$item[item_id]\" >".
                                 $item['item_name']."</a>",
                 'description'=> "<a href=\"details\" onclick=\"detail($item[item_id])\">".
                                 $item['item_description']."</a>",
@@ -61,19 +61,40 @@ class Inventory extends CI_Controller {
         $this->inv->edititem();
         redirect('inventory');
     }
-    public function detail($id){
+    public function detailpage($id){
         $list = $this->inv->viewdetail($id);
         $data=array();
         foreach ($list as $detail){
-            $data[] = array('quant'  => $detail['quantity'],
-            'del'  => $detail['date_delivered'],
-            'rec'  => $detail['date_received'],
-            'exp' => $detail['expiration_date'],
-            'cost' => $detail['unit_cost'],
-            'sup'  => $detail['supplier_name'],
-            'action' => "<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".Distribute\" class=\"btn btn-modal btn-default btn-xs\">
-                            <i class=\"fa fa-plus-circle\"></i> Distribute</a>"
+            $row[] = array(
+                'item_id'=>$detail['item_id'],
+                'item'=>$detail['item_name'],
+                'description'=>$detail['item_description'],
+                'unit' => $detail['unit'],
+                'total'=>$detail['total']
             );
+            $data['itemdetail'] = $row;
+        }
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/details', $data);
+        $this->load->view('templates/footer');
+    }
+    function detail($id){
+        $list = $this->inv->viewdetail($id);
+        $data=array();
+        foreach ($list as $detail){
+            $row[] = array(
+                'quant'  => $detail['quantity'],
+                'del'  => $detail['date_delivered'],
+                'rec'  => $detail['date_received'],
+                'exp' => $detail['expiration_date'],
+                'cost' => $detail['unit_cost'],
+                'sup'  => $detail['supplier_name'],
+                'action' => "<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".Distribute\" class=\"btn btn-modal btn-default btn-xs\">
+                                <i class=\"fa fa-plus-circle\"></i> Distribute</a><a class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\" 
+                                data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#data1\" aria-expanded=\"true\" aria-controls=\"collapseOne\">
+                                <li class=\"fa fa-folder-open\"></li> View Serial</a>",
+            );
+            $data = $row;
         }
         echo json_encode($data);
     }

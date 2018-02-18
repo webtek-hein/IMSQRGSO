@@ -154,7 +154,9 @@
                 $('#itemdet').bootstrapTable('destroy');
             });
 
-
+            $('.btn-hide').on('click',function () {
+                $('#firststep').modal('hide');
+            });
 
         });
 
@@ -198,36 +200,7 @@
             });
         }
 
-        function detail(id) {
-                $('#itemdet').bootstrapTable({
-                            url: 'inventory/detail/'+id,
-                            columns: [{
-                                field: 'del',
-                                title: 'Delivery Date'
-                            }, {
-                                field: 'rec',
-                                title: 'Date Received'
-                            }, {
-                                field: 'exp',
-                                title: 'Expiration Date'
-                            },{
-                                field: 'cost',
-                                title: 'Cost'
-                            },{
-                                field: 'sup',
-                                title: 'Supplier'
-                            },{
-                                field: 'quant',
-                                title: 'Quantity'
-                            },{
-                                field: 'action',
-                                title: 'Action'
-                            }],
-                        });
-        $('.btn-hide').on('click',function () {
-           $('#firststep').modal('hide');
-        });
-        }
+
         function serial(det_id) {
             $('#serial').on('show.bs.modal',function () {
                 $.ajax({

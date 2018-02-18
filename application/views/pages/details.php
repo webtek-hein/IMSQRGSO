@@ -3,101 +3,88 @@
     <div class="">
         <div class="x_panel">
             <div class="clearfix"></div>
-
             <div class="x_title" id="DetailsHead">
-                <h4>Item Name: <small> <b>Raincoats</b></small> </h4>
-                <h4>Description: <small> <b>Waterproof Coats</b></small> </h4>
-                <p>Total Quantity: 200</p>
-                <p>Unit: Piece</p>
+                <h4>Item Name: <small> <b><?=$itemdetail[0]['item']?></b></small> </h4>
+                <h4>Description: <small> <b><?=$itemdetail[0]['description']?></b></small> </h4>
+                <p>Total Quantity: <?=$itemdetail[0]['total']?></p>
+                <p>Unit: <?=$itemdetail[0]['unit']?></p>
 
                 <div class="clearfix"></div>
             </div>
 
                 <!-- Main Table Content-->
             <div role="tabpanel" class="tab-pane fade active in" id="tab_cont." aria-labelledby="CO-tab">
-                <button type="button" class="btn btn"><a href="Inventory"><i class="fa fa-reply"></i> Back</a></button>
+                <button type="button" class="btn btn"><a href="inventory"><i class="fa fa-reply"></i> Back</a></button>
 
-                <table id="itemdet" class="table table-striped table-bordered">
+                <table data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/detail/"<?=$itemdetail[0]['item_id']?> data-show-toggle="true" class="table table-no-bordered table-hover">
                     <thead>
+                    <!-- Data-field for getting data  -->
                     <tr>
+                        <th data-sortable="true" data-field="del">Delivery Date</th>
+                        <th data-sortable="true" data-field="rec">Date Received</th>
+                        <th data-sortable="true" data-field="exp">Expiration Date</th>
+                        <th data-sortable="true" data-field="cost">Cost</th>
+                        <th data-sortable="true" data-field="sup">Supplier</th>
+                        <th data-sortable="true" data-field="quant">Quantity</th>
+                        <?php $position = $this->session->userdata['logged_in']['position'];
+                        if ($position === 'Admin' || $position === 'Custodian'){
+                            echo'<th data-field="action">Action</th>';
+                        }
+                        ?>
 
-                        <th>Date Delivered</th>
-                        <th>Date Received</th>
-                        <th>Expiration Date</th>
-                        <th>Cost</th>
-                        <th>Supplier</th>
-                        <th>Action</th>
+
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-
-                        <td>2018-02-1d</td>
-                        <td>2018-02-17</td>
-                        <td>2018-02-17</td>
-                        <td>61</td>
-                        <td>TiongSan</td>
-                        <td><a href="#" data-toggle="modal" data-target=".Distribute" class="btn btn-modal btn-default btn-xs">
-                            <i class="fa fa-plus-circle"></i> Distribute</a>
-                            <?php $position = $this->session->userdata['logged_in']['position'];
-                            if ($position === 'Admin' || $position === 'Custodian'){
-                                echo'<a class="btn btn-modal btn-default btn-xs" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#data1" aria-expanded="true" aria-controls="collapseOne"><li class="	fa fa-folder-open"></li> View Serial</a>';
-                            }else{
-                                echo'<td>12345</td>';
-                            }
-                            ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="12">
-                            <div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="panel-body">
-
-                                    <div class="col-md-offset-2">
-                                        <form>
-                                            <h4><b>Add Serial</b></h4>
-                                            <div class="col-md-5">
-                                                <label>Serial 1</label>
-                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
-                                            </div>
-
-                                            <div class="col-md-5">
-                                                <label>Serial 2</label>
-                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
-                                            </div>
-
-                                            <div class="col-md-5">
-                                                <label>Serial 3</label>
-                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
-                                            </div>
-
-                                            <div class="col-md-5">
-                                                <label>Serial 4</label>
-                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
-                                            </div>
-
-                                            <div class="col-md-5">
-                                                <label>Serial 5</label>
-                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
-                                            </div>
-                                            <div class="col-md-5">
-                                                <label>Serial 6</label>
-                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
-                                            </div>
-                                        </form>
-                                        <br>
-                                        <div class="col-md-offset-3">
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-mail-reply"></i> Privious</button>
-                                        <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-send"></i> Submit</a></button>
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-mail-forward"></i> Next</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
+<!--                    <tr>-->
+<!--                        <td colspan="12">-->
+<!--                            <div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">-->
+<!--                                <div class="panel-body">-->
+<!---->
+<!--                                    <div class="col-md-offset-2">-->
+<!--                                        <form>-->
+<!--                                            <h4><b>Add Serial</b></h4>-->
+<!--                                            <div class="col-md-5">-->
+<!--                                                <label>Serial 1</label>-->
+<!--                                                <input type="number" name="quant" min=0  class="form-control col-md-2">-->
+<!--                                            </div>-->
+<!---->
+<!--                                            <div class="col-md-5">-->
+<!--                                                <label>Serial 2</label>-->
+<!--                                                <input type="number" name="quant" min=0  class="form-control col-md-2">-->
+<!--                                            </div>-->
+<!---->
+<!--                                            <div class="col-md-5">-->
+<!--                                                <label>Serial 3</label>-->
+<!--                                                <input type="number" name="quant" min=0  class="form-control col-md-2">-->
+<!--                                            </div>-->
+<!---->
+<!--                                            <div class="col-md-5">-->
+<!--                                                <label>Serial 4</label>-->
+<!--                                                <input type="number" name="quant" min=0  class="form-control col-md-2">-->
+<!--                                            </div>-->
+<!---->
+<!--                                            <div class="col-md-5">-->
+<!--                                                <label>Serial 5</label>-->
+<!--                                                <input type="number" name="quant" min=0  class="form-control col-md-2">-->
+<!--                                            </div>-->
+<!--                                            <div class="col-md-5">-->
+<!--                                                <label>Serial 6</label>-->
+<!--                                                <input type="number" name="quant" min=0  class="form-control col-md-2">-->
+<!--                                            </div>-->
+<!--                                        </form>-->
+<!--                                        <br>-->
+<!--                                        <div class="col-md-offset-3">-->
+<!--                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-mail-reply"></i> Privious</button>-->
+<!--                                        <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-send"></i> Submit</a></button>-->
+<!--                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-mail-forward"></i> Next</button>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!---->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
                 </table>
             </div>
                             <!--MOOE Tab-->
