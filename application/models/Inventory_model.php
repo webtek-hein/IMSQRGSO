@@ -273,4 +273,9 @@ class Inventory_model extends CI_Model{
         $query = $this->db->get('serial');
         return $query->result_array();
     }
+    public function addSerial(){
+        $id = $this->input->post('id');
+        $serial = $this->input->post('serial');
+        $this->db->update('serial',$serial,array('item_det_id' => $id));
+    }
 }

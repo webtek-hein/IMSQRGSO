@@ -149,4 +149,8 @@ class Inventory extends CI_Controller {
         }
         echo json_encode($data);
     }
+    public function addSerial(){
+        $this->inv->addSerial();
+        redirect('details');
+    }
 }
