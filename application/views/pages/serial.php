@@ -110,7 +110,7 @@
                 <div class="accordion" id="accordion" role="tablist" aria-multiselectable="false">
                     <!--ADD ITEM-->
                     <div class="panel">
-                        <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <a class="panel-heading collapsed" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             <h4 class="panel-title">Add Serial</h4>
                         </a>
                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -206,7 +206,7 @@
                                                   </div>
                                                     <div class="form-group">
                                                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
-                                                            <button class="btn btn-primary" type="button"><i class="fa fa-close"></i> Cancel</button>
+                                                            <button class="btn btn-danger" type="button"><i class="fa fa-close"></i> Cancel</button>
                                                             <button type="submit" class="btn btn-success"><i class="fa fa-send"></i> Add Category</button>
                                                         </div>
                                                     </div>
@@ -224,9 +224,9 @@
                     <div class="x_panel">
                         <table id="datatable" data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/serial" data-show-toggle="true" class="table table-striped table-bordered">
                             <thead>
-                            <tr>
-                                <th>Serial no.</th>
-                                <th>Item name</th>
+                            <tr data-toggle="collapse" data-target="#accordion" class="clickable">
+                                <th data-sortable="true">Serial no.</th>
+                                <th data-sortable="true">Item name</th>
                             </tr>
                             </thead>
                             <tbody>

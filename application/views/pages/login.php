@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->  
-    <link rel="icon" type="image/png" href="<?php echo base_url() ?>assets/images/logo.png"/>
+    <link rel="icon" type="image/png" href="<?php echo base_url() ?>assets/images/logogso.png"/>
 <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/vendors/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -68,7 +68,7 @@
                         <span class="txt1">
                             Forgot
                         </span>
-                        <a class="txt2" href="forget">
+                        <a class="txt2" href="<?php echo base_url()?>forget">
                             Password?
                         </a>
                         <?php echo form_close(); ?>

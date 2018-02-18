@@ -7,9 +7,11 @@
             <div class="accordion" id="accordion" role="tablist" aria-multiselectable="false">
                 <!--ADD Item-->
                 <div class="panel">
-                    <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <h4 class="panel-title"><i class="fa fa-plus-circle"></i> Add Item</h4>
-                    </a>
+                <?php $position = $this->session->userdata['logged_in']['position'];
+                if ($position === 'Admin' || $position === 'Custodian') {
+                    echo '<a  class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4 class="panel-title">Add Item</h4></a>';
+                }
+                    ?>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="panel-body">
                             <div class="x_panel">
@@ -18,7 +20,7 @@
                                         <div class="wizard-inner">
                                             <div class="connecting-line"></div>
                                             <ul id="bulk" class="nav nav-tabs" role="tablist">
-                                                <li role="presentation" class="active">
+                                                <li role="presentation" id="list1" class="active" >
                                                     <a href="#step1B" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
                                                                 <span class="round-tab">
                                                                     <b>Item 1</b>
@@ -36,7 +38,7 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Item Name</label>
-                                                            <input  type="text" name="item[]" class="form-control">
+                                                            <input  type="text" name="item[]" class="form-control" >
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
@@ -104,14 +106,13 @@
                                                                       data-parsley-validation-threshold="10"></textarea>
                                                         </div>
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-                                                            <button type="button" onclick="save(1)" class="savebtn btn btn-default"><i class="fa fa-arrow-down"></i>Save</button>
-                                                            <button type="submit" id="saveALL" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save All</button>
+                                                            <button id="buttonCounter1" type="button" onclick="save(1)" class="savebtn btn btn-success"><i class="fa fa-arrow-down"></i>Save</button>
+                                                            <button type="submit" id="saveALL" class="btn btn-success"><i class="fa fa-arrow-down"></i> Save All</button>
                                                         </div>
                                                     </div>
-                                                    <div class="clearfix"></div>
                                                 </div>
                                                 <div class="list-inline pull-right">
-                                                    <button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-plus-circle"></i> Add another item</button>
+                                                    <button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-plus-circle" ></i> Add another item</button>
                                                 </div>
                                             </form>
 
@@ -145,13 +146,17 @@
                                     <table data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem/CO" data-show-toggle="true" class="table table-no-bordered table-hover">
                                         <thead>
                                         <!-- Data-field for getting data  -->
-                                        <tr >
+                                        <tr>
                                             <th data-sortable="true" data-field="number">#</th>
                                             <th data-sortable="true" data-field="item">Item Name</th>
                                             <th data-sortable="true" data-field="description">Description</th>
                                             <th data-sortable="true" data-field="quantity">Quantity</th>
                                             <th data-sortable="true" data-field="unit">Unit</th>
-                                            <th data-field="action">Action</th>
+                                            <?php $position = $this->session->userdata['logged_in']['position'];
+                                            if ($position === 'Admin' || $position === 'Custodian'){
+                                            echo'<th data-field="action">Action</th>';
+                                                }
+                                                ?>
                                         </tr>
                                         </thead>
                                     </table>
@@ -173,7 +178,11 @@
                                         <th data-sortable="true" data-field="description">Description</th>
                                         <th data-sortable="true" data-field="quantity">Quantity</th>
                                         <th data-sortable="true" data-field="unit">Unit</th>
-                                        <th data-field="action" id="ActionMain">Action</th>
+                                        <?php $position = $this->session->userdata['logged_in']['position'];
+                                        if ($position === 'Admin' || $position === 'Custodian'){
+                                            echo'<th data-field="action">Action</th>';
+                                        }
+                                        ?>
                                     </tr>
                                     </thead>
                                 </table>
@@ -187,8 +196,7 @@
 
 
         <!-- Modals -->
-
-        <!-- Item Detail -->
+        <!-- Item Detail-->
         <div id="Item_Detail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" id="ModalIDetail">
                 <div class="modal-content">
@@ -378,7 +386,7 @@
 
                                         <div class="col-md-6 ">
                                             <label for="name">Distribute</label>
-                                            <input id="dist" class="form-control" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text" placeholder="Quantity">
+                                            <input id="dist" class="form-control" data-validate-length-range="6" data-validate-words="2" name="quant" required type="text" placeholder="Quantity">
                                         </div>
 
                                         <div class="col-md-6">

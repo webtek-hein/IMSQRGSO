@@ -13,11 +13,6 @@ class Inventory_model extends CI_Model{
         $quantity = $this->input->post('quant')[$counter];
         $supplier_id = $this->input->post('supp')[$counter];
 
-        $this->db->select('supplier_name');
-        $this->db->where('supplier_id',$supplier_id);
-        $query = $this->db->get('supplier');
-        $supplier_name = $query->row_array();
-
         $data = array(
             'item_name' => $item_name,
             'quantity' => $quantity,
@@ -44,14 +39,13 @@ class Inventory_model extends CI_Model{
         //item detail insert id
         $insert_id = $this->db->insert_id();
         // 3. Insert into logs
-        $this->db->insert('logs.increaselog',$data+$data1+$supplier_name);
+        $this->db->insert('logs.increaselog',array('item_det_id'=>$insert_id));
         $this->db->trans_complete();
     }
 
     public function saveAll(){
+        $data = array();
         $item_name = $this->input->post('item');
-        $supplier_id = array();
-
 
         foreach ($item_name as $key => $value){
             $quantity = $this->input->post('quant')[$key];
@@ -62,13 +56,8 @@ class Inventory_model extends CI_Model{
                 'unit' => $this->input->post('Unit')[$key],
                 'item_type' => $this->input->post('Type')[$key],
             );
-            $supplier_id[] = $this->input->post('supp')[$key];
         }
 
-        $this->db->select('supplier_name');
-        $this->db->where_in($supplier_id);
-        $query = $this->db->get('supplier');
-        $supplier_name = $query->result_array();
         $this->db->trans_start();
             // 1. Insert into item
            $count = count($data);
@@ -78,31 +67,31 @@ class Inventory_model extends CI_Model{
            //last insert id
 
         $last_insert_id = ($count-1) + $id;
-           $insert_id =range($id,$last_insert_id);
+        $insert_id =range($id,$last_insert_id);
            // 2. Insert to item detail
         foreach ($insert_id as $key => $value){
-        $data1[] = array(
-            'date_delivered' => $this->input->post('del')[$key],
-            'date_received' => $this->input->post('rec')[$key],
-            'unit_cost'=> $this->input->post('cost')[$key],
-            'quantity' => $quantity,
-            'expiration_date' => $this->input->post('exp')[$key],
-            'item_id' => $insert_id[$key],
-            'supplier_id' => $supplier_id[$key]
-//            'or_no' => $this->input->post('or')[$key]
+            $data1[] = array(
+                'date_delivered' => $this->input->post('del')[$key],
+                'date_received' => $this->input->post('rec')[$key],
+                'unit_cost'=> $this->input->post('cost')[$key],
+                'quantity' => $quantity,
+                'expiration_date' => $this->input->post('exp')[$key],
+                'item_id' => $insert_id[$key],
+                'supplier_id' => $this->input->post('supp')[$key],
+    //            'or_no' => $this->input->post('or')[$key]
         );
         }
-
         $this->db->insert_batch('itemdetail',$data1);
+        //item detail insert id
+        $id = $this->db->insert_id();
+        $item_detail_id =range($id,$last_insert_id);
+
+        foreach ($item_detail_id as $key => $value) {
+            $detail[] = array('item_det_id' =>$item_detail_id[$key]);
+        }
 
         // 3. Insert into logs
-        foreach ($data1 as $key => $value){
-            unset($data1[$key]['supplier_id']);
-            unset($data1[$key]['item_id']);
-            $row[] = $data[$key]+$data1[$key]+$supplier_name[$key];
-            $data = $row;
-        }
-        $this->db->insert_batch('logs.increaselog',$data);
+        $this->db->insert_batch('logs.increaselog',$detail);
         $this->db->trans_complete();
 
     }

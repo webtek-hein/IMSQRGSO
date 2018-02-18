@@ -11,13 +11,11 @@ class User_db extends CI_Model {
         $query = $this->db->get();
 
         if ($query->num_rows() == 1) {
-        return true;
+            return true;
         } else {
-        return false;
+            return false;
         }
-        }
-
-
+    }
 
 // Read data from database to show data in admin page
     public function read_user_information($username) {
@@ -62,14 +60,13 @@ class User_db extends CI_Model {
     public  function edit_image($name,$user_id){
         $this->db->where('user_id', $user_id);
         $this->db->update('user',$name);
-}
-public function get_image($user_id){
-    $this->db->select('image')
-        ->where('user_id', $user_id);
-    return $this->db->get('user')->row();
-}
-    public function get_email($email)
-    {
+    }
+    public function get_image($user_id){
+        $this->db->select('image')
+            ->where('user_id', $user_id);
+        return $this->db->get('user')->row();
+    }
+    public function get_email($email){
         $this->db->select('*')
             ->where('email', $email)
             ->limit(1);

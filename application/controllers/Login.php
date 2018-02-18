@@ -11,17 +11,6 @@ class Login extends CI_Controller {
         $this->load->model('user_db');
         $this->load->library('form_validation');
     }
-
-// Show login page
-    public function index()
-    {
-        if (isset($this->session->userdata['logged_in'])) {
-            redirect(base_url().'dashboard');
-        } else {
-            $this->load->view('pages/login');
-        }
-    }
-
     // Check for user login process
 
     public function user_login_process() {
@@ -63,7 +52,13 @@ class Login extends CI_Controller {
                     $this->session->set_userdata('user_in',$user_data);
                     $this->session->set_userdata('logged_in', $session_data);
                     $this->session->set_userdata('image_in', $image_data);
-                    redirect(base_url().'dashboard');
+                    if ($result[0]->position == 'supplyofficer') {
+                        redirect(base_url() . 'supplyofficer/dashboard');
+                    }else if ($result[0]->position == 'admin') {
+                        redirect(base_url() . 'admin/dashboard');
+                    } else {
+                        redirect(base_url() . 'dashboard');
+                    }
                 }
             } else {
                 $data = array(

@@ -4254,7 +4254,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 /** /bootstrap-datetimepicker **/
 
- HEAD
+<<<<<<< HEAD
 /*--Header--*/
 .menu_section a{
     font-size:10px;
@@ -4263,20 +4263,24 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 
 /*--End Header--*/
+=======
 /*--Inventory Add Item--*/
 .nav_menu{
     height:50px;
 }
 .accordion #headingTwo{
-    border-radius:5px;
-    height: 30px;
-    width: 110px;
-    background-color:#808080;
-    border-color:black;
+    border-radius:10px;
+    height: 40px;
+    width: 300px;
+    background-color: #2f7ea3;
+    border-color: #f7f7f7;
+    color: #a3c7ff;
+    font-weight: bold;
+
 }
 .accordion #headingTwo h4{
     margin-top:-5px;
-    color:	#FFFAF0;
+    color:black;
 }
 .accordion .wizard-inner{
   margin-top: -10px;
@@ -4285,8 +4289,13 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     font-size:10px;
 }
 #ModalI label{
-    font-size: 13px;
-    color:black;
+    font-size: 15px;
+    color: #0D3349;
+    width: 100%;
+    margin: 2px 0;
+    display: inline-block;
+
+
 }
 #ModalI form{
     margin-left: 100px;
@@ -4296,23 +4305,39 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     border-color: black;
 }
 .modal-body #addanother{
-    background-color: #90EE90;
-    border-color: black;
+    background-color: #2f7ea3;
+    border-color: whitesmoke;
+    color: aliceblue;
+    font-size: 15px;
 }
 /*--End Inventory Add Item--*/
 
+/*--Add Serial--*/
+.accordion #headingOne{
+    border-radius:10px;
+    height: 40px;
+    width: 300px;
+    background-color: #2f7ea3;
+    border-color: #f7f7f7;
+    color: #a3c7ff;
+    font-weight: bold;
+
+}
+.accordion #headingOne h4{
+    margin-top:-5px;
+    color:black;
+/*--End Add Serial--*/
 /*--Inventory Main Content--*/
 .x_content a{
     font-size:12px;
     font-weight: bold;
 }
 .x_content .bar_tabs{
-
+    background-color: white;
 }
 .x_panel table th {
     height: 10px;
 }
-
 /*--End Inventory Main Content--*/
 
 /*--Modal Item Detail--*/
@@ -4325,7 +4350,4 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     margin-left: 500px;
 }
 /*--End Modal Item Detail--*/
-
-/*--Header--*/
-
-/*--End Header--*/
+>>>>>>> 083d1277bc2018e65a270af5bc1a3af9ab985a7f

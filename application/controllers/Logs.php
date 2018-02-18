@@ -12,6 +12,16 @@ class Logs extends CI_Controller {
     }
         public function increaseLog()
     {
+        //supply officer
+        $position = $this->session->userdata['logged_in']['position'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
+
+        if($position == 'Supply Officer'){
+            $increase = $this->Logs_model->increase_log();
+        } else {
+            $increase = $this->Logs_model->get_increase_log_per_department($dept_id);
+        }
+
             $inc = $this->logs->increase_log();
             $counter = 1;
             foreach ($inc as $list){
@@ -35,6 +45,15 @@ class Logs extends CI_Controller {
     }
         public function decreaseLog()
     {
+        //supply officer
+        $position = $this->session->userdata['logged_in']['position'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
+
+        if($position == 'Supply Officer'){
+            $decrease = $this->Logs_model->decrease_log();
+        } else {
+            $decrease = $this->Logs_model->get_decrease_log_per_department($dept_id);
+        }
             $dec = $this->logs->decrease_log();
             $counter = 1;
             foreach ($dec as $list){

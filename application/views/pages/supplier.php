@@ -49,7 +49,7 @@
                                                                             <div class="ln_solid"></div>
                                                                             <div class="form-group">
                                                                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
-                                                                                    <button class="btn btn-primary" type="button"><i class="fa fa-close"></i> Cancel</button>
+                                                                                    <button class="btn btn-danger" type="button"><i class="fa fa-close"></i> Cancel</button>
                                                                                     <button type="submit" class="btn btn-success"><i class="fa fa-send"></i> Submit</button>
                                                                                 </div>
                                                                             </div>

@@ -11,7 +11,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>--Department's Name--</h2>
+                        <h2 id="deptNameDistrib"></h2>
 
                         <div class="clearfix"></div>
                     </div>
@@ -26,14 +26,14 @@
                             </ul>
                             <div id="myTabContent" class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
-                                    <table id="datatable-buttons" class="table table-striped table-bordered">
+                                    <table id="datatable" data-pagination="true" data-search="true" data-toggle="table" data-url="" data-show-toggle="true" class="table table-striped table-bordered">
                                         <thead>
-                                        <tr>
-                                            <th>Item Name</th>
-                                            <th>Description</th>
-                                            <th>quantity</th>
-                                            <th>Date Received</th>
-                                            <th>Unit</th>
+                                        <tr data-toggle="collapse" data-target="#accordion" class="clickable">
+                                            <th data-sortable="true">Item Name</th>
+                                            <th data-sortable="true">Description</th>
+                                            <th data-sortable="true">quantity</th>
+                                            <th data-sortable="true">Date Received</th>
+                                            <th data-sortable="true">Unit</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -44,18 +44,17 @@
 
 
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
-                                    <table id="datatable-buttons" class="table table-striped table-bordered">
+                                    <table id="datatable" data-pagination="true" data-search="true" data-toggle="table" data-url="" data-show-toggle="true" class="table table-striped table-bordered">
                                         <thead>
-                                        <tr>
-                                            <th>Item Name</th>
-                                            <th>Description</th>
-                                            <th>quantity</th>
-                                            <th>Date Received</th>
-                                            <th>Unit</th>
+                                        <tr data-toggle="collapse" data-target="#accordion" class="clickable">
+                                            <th data-sortable="true">Item Name</th>
+                                            <th data-sortable="true">Description</th>
+                                            <th data-sortable="true">quantity</th>
+                                            <th data-sortable="true">Date Received</th>
+                                            <th data-sortable="true">Unit</th>
                                         </tr>
                                         <tbody>
                                         </tbody>
-                                        </thead>
                                     </table>
                                 </div>
                             </div>
