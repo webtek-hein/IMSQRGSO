@@ -47,22 +47,19 @@
     <!-- bootstrap-daterangepicker -->
     <script src="<?php echo base_url()?>assets/vendors/moment/min/moment.min.js"></script>
     <script src="<?php echo base_url()?>assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- data tables -->
-    <!--<script src="<?php echo base_url()?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>-->
+
     <!-- Bootstrap 3.3.6 -->
     <script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
     <!--Bootstrap Dialog JS-->
     <script src="<?php echo base_url()?>assets/js/bootstrap-dialog.min.js"></script>
     <!--<script src="<?php echo base_url()?>assets/js/bootstrap-dialog.min.js"></script>-->
 
-    <!-- Custom Theme Scripts -->
-    <script src="<?php echo base_url()?>assets/build/js/custom.min.js"></script>
-    <!-- Parsley -->
-    <script  src="http://parsleyjs.org/dist/parsley.min.js"></script>
+
 
     <script>
         $(document).ready(function () {
             //form validation
+
            // window.Parsley
            //     .addValidator();
             //end of form validation
@@ -113,22 +110,25 @@
             var button = $('.savebtn');
             var list;
             $('#addanother').on('click',function () {
-                counter++;
-                list = "<li id=\"list"+counter+"\" role=\"presentation\" class=\"listTab disabled\"><a href=\"#step"+counter+"B\" data-toggle=\"tab\" aria-controls=\"step"+counter+"\" role=\"tab\" title=\"Step"+counter+"\">" +
-                    "<span class=\"round-tab\">" +
-                    "<b>Item"+counter+"</b>" +
-                    "</span>" +
-                    "</a>" +
-                    "</li>";
-                $('#bulk').append(list);
-                button.attr('id','buttonCounter'+counter);
-                div.clone().find('input,textarea').val("")
-                    .toggleClass('required').end()
-                    .attr('id','step'+counter+'B')
-                    .appendTo('#bulkdiv')
-                    .removeClass('active')
-                    .find('#buttonCounter'+counter)
-                    .attr('onclick','save('+counter+')');
+                $('#addItemForm').parsley().whenValidate().done(function () {
+                    counter++;
+                    list = "<li id=\"list"+counter+"\" role=\"presentation\" class=\"listTab disabled\"><a href=\"#step"+counter+"B\" data-toggle=\"tab\" aria-controls=\"step"+counter+"\" role=\"tab\" title=\"Step"+counter+"\">" +
+                        "<span class=\"round-tab\">" +
+                        "<b>Item"+counter+"</b>" +
+                        "</span>" +
+                        "</a>" +
+                        "</li>";
+                    $('#bulk').append(list);
+                    button.attr('id','buttonCounter'+counter);
+                    div.clone().find('input,textarea').val("")
+                        .toggleClass('required').end()
+                        .attr('id','step'+counter+'B')
+                        .appendTo('#bulkdiv')
+                        .removeClass('active')
+                        .find('#buttonCounter'+counter)
+                        .attr('onclick','save('+counter+')');
+                });
+
             });
 
             $('.modal').on('show.bs.modal',function (e) {
@@ -159,7 +159,9 @@
 
         //on submit
         function save(counter){
+            $('#addItemForm').parsley().on('form:validate',function (formInstance) {
 
+            });
             var list = $('#list'+counter);
             var step = $('#step'+counter+'B');
             $.ajax({
@@ -302,7 +304,7 @@
                     return false;
                 }
             });
-            var div = $('.clone-tab');
+
 
             $(".next-step").click(function (e) {
                 var $active = $('.wizard .nav-tabs li.active');

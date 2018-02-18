@@ -38,6 +38,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <link href="<?php echo base_url() ?>assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url() ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url() ?>assets/build/css/custom.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/build/css/custom.css" rel="stylesheet">
@@ -48,7 +49,8 @@ if (isset($this->session->userdata['logged_in'])) {
 
     <!-- jQuery -->
     <script src="<?php echo base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
-    <!--    <script src="<?php echo base_url()?>assets/js/parsley.min.js"></script>-->
+    <!-- Parsley -->
+    <script  src="http://parsleyjs.org/dist/parsley.min.js"></script>
     <link rel="icon" href="<?php echo base_url()?>assets/images/logogso.png">
     <!--table design-->
     <link href="<?php echo base_url()?>assets/css/tabledesign.css" rel="stylesheet">
