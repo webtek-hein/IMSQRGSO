@@ -4254,7 +4254,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 /** /bootstrap-datetimepicker **/
 
-<<<<<<< HEAD
+
 /*--Header--*/
 .menu_section a{
     font-size:10px;
@@ -4263,16 +4263,16 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 
 /*--End Header--*/
-=======
+
 /*--Inventory Add Item--*/
 .nav_menu{
     height:50px;
 }
 .accordion #headingTwo{
     border-radius:10px;
-    height: 40px;
-    width: 300px;
-    background-color: #2f7ea3;
+    height: 35px;
+    width: 150px;
+    background-color:#696969;
     border-color: #f7f7f7;
     color: #a3c7ff;
     font-weight: bold;
@@ -4280,7 +4280,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 .accordion #headingTwo h4{
     margin-top:-5px;
-    color:black;
+    color:#F0FFF0;
 }
 .accordion .wizard-inner{
   margin-top: -10px;

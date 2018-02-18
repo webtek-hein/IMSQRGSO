@@ -9,7 +9,7 @@
                 <div class="panel">
                 <?php $position = $this->session->userdata['logged_in']['position'];
                 if ($position === 'Admin' || $position === 'Custodian') {
-                    echo '<a  class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4 class="panel-title">Add Item</h4></a>';
+                    echo '<a  class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4><i class="fa fa-plus-circle" ></i> Add Item</h4></a>';
                 }
                     ?>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
