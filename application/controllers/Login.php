@@ -11,17 +11,6 @@ class Login extends CI_Controller {
         $this->load->model('user_db');
         $this->load->library('form_validation');
     }
-
-// Show login page
-    public function index()
-    {
-        if (isset($this->session->userdata['logged_in'])) {
-            redirect(base_url().'dashboard');
-        } else {
-            $this->load->view('pages/login');
-        }
-    }
-
     // Check for user login process
 
     public function user_login_process() {

@@ -15,8 +15,12 @@ class Pages extends CI_Controller {
             show_404();
         }
 
+
         if($page == 'login'){
             $this->load->view('pages/login');
+            if (isset($this->session->userdata['logged_in'])) {
+                redirect('dashboard');
+            }
         }else {
             $data['title'] = ucfirst($page);
 
