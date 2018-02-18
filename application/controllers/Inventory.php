@@ -28,17 +28,17 @@ class Inventory extends CI_Controller {
         $counter = 1;
         foreach ($list as $item){
             $data[] = array(
-                'number'    => "<a href=\"details\" onclick=\"detail($item[item_id])\">".
+                'number'    => "<a href='details' onclick=\"detail($item[item_id])\">".
                                 $counter,
-                'item'      =>  "<a href=\"inventory/detailpage/$item[item_id]\" onclick=\"detail($item[item_id])>".
+                'item'      =>  "<a onclick=\"detail($item[item_id])\">".
                                 $item['item_name']."</a>",
-                'description'=> "<a href=\"inventory/detailpage/$item[item_id]\">".
+                'description'=> "<a href='' onclick=\"detail($item[item_id])\">".
                                 $item['item_description']."</a>",
-                'quantity'   => "<a href=\"details\" onclick=\"detail($item[item_id])\">".
+                'quantity'   => "<a href='' onclick=\"detail($item[item_id])\">".
                                 $item['quantity']."</a>",
-                'unit'       => "<a href=\"details\" onclick=\"detail($item[item_id])\">".
+                'unit'       => "<a href='' onclick=\"detail($item[item_id])\">".
                                 $item['unit']."</a>",
-                    'action' => "<a href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\"#addquant\" 
+                    'action' => "<a  href=\"#\" data-id=\"".$item['item_id']."\" data-toggle=\"modal\" data-target=\"#addquant\" 
                      class=\"btn btn-primary btn-xs\"><i class=\"fa fa-plus-circle\">
                      </i> Add Quantity</a>".
                      "<a href=\"#\" data-name=\"".$item['item_name']."\" data-id=\"".$item['item_id']."\" 
@@ -60,23 +60,6 @@ class Inventory extends CI_Controller {
     public function edititem(){
         $this->inv->edititem();
         redirect('inventory');
-    }
-    public function detailpage($id){
-        $list = $this->inv->viewdetail($id);
-        $data=array();
-        foreach ($list as $detail){
-            $row[] = array(
-                'item_id'=>$detail['item_id'],
-                'item'=>$detail['item_name'],
-                'description'=>$detail['item_description'],
-                'unit' => $detail['unit'],
-                'total'=>$detail['total']
-            );
-            $data['itemdetail'] = $row;
-        }
-        $this->load->view('templates/header', $data);
-        $this->load->view('pages/details', $data);
-        $this->load->view('templates/footer');
     }
     function detail($id){
         $list = $this->inv->viewdetail($id);

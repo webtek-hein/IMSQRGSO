@@ -199,7 +199,9 @@
             });
         }
         function detail(id) {
-                $('#itemdet').bootstrapTable({
+            $('.detail-tab ').toggleClass('hidden');
+            $('.inventory-tab').toggleClass('hidden');
+                $('#detail-tab-table').bootstrapTable({
                             url: 'inventory/detail/'+id,
                             columns: [{
                                 field: 'del',
