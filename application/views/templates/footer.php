@@ -165,9 +165,9 @@
                         } else {
                             list.next().addClass('active');
                             step.next().addClass('active');
-                            list.remove();
-                            step.remove();
                         }
+                        list.remove();
+                        step.remove();
                     }else{
                           location.reload();
                       }

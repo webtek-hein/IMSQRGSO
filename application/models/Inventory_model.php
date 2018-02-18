@@ -46,8 +46,6 @@ class Inventory_model extends CI_Model{
     public function saveAll(){
         $data = array();
         $item_name = $this->input->post('item');
-        $supplier_id = array();
-
 
         foreach ($item_name as $key => $value){
             $quantity = $this->input->post('quant')[$key];
@@ -59,7 +57,6 @@ class Inventory_model extends CI_Model{
                 'item_type' => $this->input->post('Type')[$key],
             );
         }
-
 
         $this->db->trans_start();
             // 1. Insert into item
