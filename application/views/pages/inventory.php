@@ -349,7 +349,7 @@
 
             <!-- Main Table Content-->
             <div role="tabpanel" class="tab-pane fade active in" id="tab_cont." aria-labelledby="CO-tab">
-                <button type="button" class="btn btn"><a href="<?php echo base_url()?>inventory"><i class="fa fa-reply"></i> Back</a></button>
+                <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
 
                 <table id="detail-tab-table" class="table table-no-bordered table-hover">
                 </table>

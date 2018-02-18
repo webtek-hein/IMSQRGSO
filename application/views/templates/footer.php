@@ -198,6 +198,10 @@
             });
             });
         }
+        function detail_back() {
+            $('.detail-tab ').toggleClass('hidden');
+            $('.inventory-tab').toggleClass('hidden');
+        }
         function detail(id) {
             $('.detail-tab ').toggleClass('hidden');
             $('.inventory-tab').toggleClass('hidden');
