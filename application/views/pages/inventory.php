@@ -20,7 +20,7 @@
                                         <div class="wizard-inner">
                                             <div class="connecting-line"></div>
                                             <ul id="bulk" class="nav nav-tabs" role="tablist">
-                                                <li role="presentation" class="active">
+                                                <li role="presentation" id="list1" class="active">
                                                     <a href="#step1B" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
                                                                 <span class="round-tab">
                                                                     <b>Item 1</b>
@@ -106,11 +106,10 @@
                                                                       data-parsley-validation-threshold="10"></textarea>
                                                         </div>
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-                                                            <button type="button" onclick="save(1)" class="savebtn btn btn-default"><i class="fa fa-arrow-down"></i>Save</button>
+                                                            <button id="buttonCounter1" type="button" onclick="save(1)" class="savebtn btn btn-default"><i class="fa fa-arrow-down"></i>Save</button>
                                                             <button type="submit" id="saveALL" class="btn btn-default"><i class="fa fa-arrow-down"></i> Save All</button>
                                                         </div>
                                                     </div>
-                                                    <div class="clearfix"></div>
                                                 </div>
                                                 <div class="list-inline pull-right">
                                                     <button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-plus-circle"></i> Add another item</button>
@@ -387,7 +386,7 @@
 
                                         <div class="col-md-6 ">
                                             <label for="name">Distribute</label>
-                                            <input id="dist" class="form-control" data-validate-length-range="6" data-validate-words="2" name="owner" required type="text" placeholder="Quantity">
+                                            <input id="dist" class="form-control" data-validate-length-range="6" data-validate-words="2" name="quant" required type="text" placeholder="Quantity">
                                         </div>
 
                                         <div class="col-md-6">

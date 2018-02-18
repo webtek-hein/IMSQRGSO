@@ -13,11 +13,6 @@ class Inventory_model extends CI_Model{
         $quantity = $this->input->post('quant')[$counter];
         $supplier_id = $this->input->post('supp')[$counter];
 
-        $this->db->select('supplier_name');
-        $this->db->where('supplier_id',$supplier_id);
-        $query = $this->db->get('supplier');
-        $supplier_name = $query->row_array();
-
         $data = array(
             'item_name' => $item_name,
             'quantity' => $quantity,
@@ -44,7 +39,7 @@ class Inventory_model extends CI_Model{
         //item detail insert id
         $insert_id = $this->db->insert_id();
         // 3. Insert into logs
-        $this->db->insert('logs.increaselog',$data+$data1+$supplier_name);
+        $this->db->insert('logs.increaselog',array('item_det_id'=>$insert_id));
         $this->db->trans_complete();
     }
 
@@ -69,6 +64,7 @@ class Inventory_model extends CI_Model{
         $this->db->where_in($supplier_id);
         $query = $this->db->get('supplier');
         $supplier_name = $query->result_array();
+        var_dump($supplier_id);
         $this->db->trans_start();
             // 1. Insert into item
            $count = count($data);

@@ -68,7 +68,7 @@
                         <span class="txt1">
                             Forgot
                         </span>
-                        <a class="txt2" href="forget">
+                        <a class="txt2" href="<?php echo base_url()?>forget">
                             Password?
                         </a>
                         <?php echo form_close(); ?>

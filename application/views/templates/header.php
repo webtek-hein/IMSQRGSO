@@ -17,7 +17,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="assets/images/logogso.png" type="image/ico" />
+    <link rel="icon" href="<?php echo base_url()?>assets/images/logogso.png" type="image/ico" />
 
     <title>GSO Baguio City Hall</title>
 
@@ -44,11 +44,11 @@ if (isset($this->session->userdata['logged_in'])) {
     <!-- Placeholder for Dates Style -->
     <link href="<?php echo base_url() ?>assets/css/deptnav.css" rel="stylesheet">
     <!-- jQuery -->
-    <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
-<!--    <script src="assets/js/parsley.min.js"></script>-->
-    <link rel="icon" href="assets/images/logogso.png">
+    <script src="<?php echo base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
+<!--    <script src="<?php echo base_url()?>assets/js/parsley.min.js"></script>-->
+    <link rel="icon" href="<?php echo base_url()?>assets/images/logogso.png">
     <!--table design-->
-    <link href="assets/css/tabledesign.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/css/tabledesign.css" rel="stylesheet">
     
 </head>
 
@@ -63,7 +63,7 @@ if (isset($this->session->userdata['logged_in'])) {
                 <!-- menu profile quick info -->
                 <div class="profile clearfix">
                     <div class="profile_pic">
-                        <img src="assets/images/img.jpg" alt="..." class="img-circle profile_img">
+                        <img src="<?php echo base_url()?>assets/images/img.jpg" alt="..." class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
@@ -77,7 +77,7 @@ if (isset($this->session->userdata['logged_in'])) {
                 <div id="sidebar-menu" class="main_menu_side  hidden-print main_menu">
                     <div class="menu_section">
                         <ul class="nav side-menu">
-                            <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+                            <li><a href="<?php echo base_url()?>dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
                             </li>
                             <li><a href="Inventory"><i class="fa fa-book"></i>Inventory</a>
                             </li>
@@ -117,7 +117,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="assets/images/img.jpg" alt=""><?= $firstname.' '.$lastname?>
+                                <img src="<?php echo base_url()?>assets/images/img.jpg" alt=""><?= $firstname.' '.$lastname?>
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -134,7 +134,7 @@ if (isset($this->session->userdata['logged_in'])) {
                             <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                                 <li>
                                     <a>
-                                        <span class="image"><img src="assets/images/img.jpg" alt="Profile Image" /></span>
+                                        <span class="image"><img src="<?php echo base_url()?>assets/images/img.jpg" alt="Profile Image" /></span>
                                         <span>John Smith</span>
                                         <span class="time">3 mins ago</span>
                                         <span class="message">
@@ -144,7 +144,7 @@ if (isset($this->session->userdata['logged_in'])) {
                                 </li>
                                 <li>
                                     <a>
-                                        <span class="image"><img src="assets/images/img.jpg" alt="Profile Image" /></span>
+                                        <span class="image"><img src="<?php echo base_url()?>assets/images/img.jpg" alt="Profile Image" /></span>
                                         <span>John Smith</span>
                                         <span class="time">3 mins ago</span>
                                         <span class="message">
@@ -154,7 +154,7 @@ if (isset($this->session->userdata['logged_in'])) {
                                 </li>
                                 <li>
                                     <a>
-                                        <span class="image"><img src="assets/images/img.jpg" alt="Profile Image" /></span>
+                                        <span class="image"><img src="<?php echo base_url()?>assets/images/img.jpg" alt="Profile Image" /></span>
                                         <span>John Smith</span>
                                         <span class="time">3 mins ago</span>
                                         <span class="message">
@@ -164,7 +164,7 @@ if (isset($this->session->userdata['logged_in'])) {
                                 </li>
                                 <li>
                                     <a>
-                                        <span class="image"><img src="assets/images/img.jpg" alt="Profile Image" /></span>
+                                        <span class="image"><img src="<?php echo base_url()?>assets/images/img.jpg" alt="Profile Image" /></span>
                                         <span>John Smith</span>
                                         <span class="time">3 mins ago</span>
                                         <span class="message">
