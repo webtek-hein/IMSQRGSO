@@ -37,11 +37,9 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        
                                         </tbody>
                                     </table>
                                 </div>
-
 
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
                                     <table id="datatable" data-pagination="true" data-search="true" data-toggle="table" data-url="" data-show-toggle="true" class="table table-striped table-bordered">

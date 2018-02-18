@@ -84,7 +84,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
                             <?php $position = $this->session->userdata['logged_in']['position'];
                             if ($position === 'Admin' || $position === 'Custodian'){
-                            echo '<li id="dept"><a ><i class="fa fa-file-text"></i>Departments</a><ul id="deptlist" class="nav child_menu" class="scrollbar"></ul></li>'.
+                            echo '<li id="dept"><a ><i class="fa fa-file-text"></i>Department</a><ul id="deptlist" class="nav child_menu" class="scrollbar"></ul></li>'.
                                 '<li><a href="Supplier"><i class="fa fa-book"></i>Supplier</a></li>'.
                                     '<li><a href="Serial"><i class="fa fa-book"></i>Serial</a></li>';
                             }
