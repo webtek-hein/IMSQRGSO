@@ -1,19 +1,19 @@
 
 html , body{
 
- height:100%;
+    height:100%;
 
 }
 
 .full-width {
 
- width:100%;
+    width:100%;
 
- }
+}
 
 .full-height{
- height:100%;
- }
+    height:100%;
+}
 
 .daterangepicker .ranges li {
     color: #73879C
@@ -767,7 +767,7 @@ a:focus {
     top: 0
 }
 .nav-md ul.nav.child_menu li:last-child::after {
-  bottom: 50%;
+    bottom: 50%;
 }
 .nav.side-menu>li>a,
 .nav.child_menu>li>a {
@@ -1673,7 +1673,7 @@ span.right {
     position: fixed;
     width: 230px;
     background: #2A3F54;
-	z-index:999;
+    z-index:999;
 }
 .sidebar-footer a {
     padding: 7px 0 3px;
@@ -4186,7 +4186,7 @@ ul.notifications {
 
 
 @media (max-width: 767px) {
-   .dataTables_length { float:none; }
+    .dataTables_length { float:none; }
 }
 
 
@@ -4244,7 +4244,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 .daterangepicker.xdisplay { width:228px; }
 
 .dataTables_wrapper > .row{
-  overflow:auto !important; /*prevent datatables overflowing its container*/
+    overflow:auto !important; /*prevent datatables overflowing its container*/
 }
 
 /** bootstrap-datetimepicker **/
@@ -4254,8 +4254,8 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 /** /bootstrap-datetimepicker **/
 
-
-/*--Header--*/
+HEAD
+    /*--Header--*/
 .menu_section a{
     font-size:10px;
 }
@@ -4263,39 +4263,30 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 
 /*--End Header--*/
-
 /*--Inventory Add Item--*/
 .nav_menu{
     height:50px;
 }
 .accordion #headingTwo{
-    border-radius:10px;
-    height: 35px;
-    width: 150px;
-    background-color:#696969;
-    border-color: #f7f7f7;
-    color: #a3c7ff;
-    font-weight: bold;
-
+    border-radius:5px;
+    height: 30px;
+    width: 125px;
+    background-color:#808080;
+    border-color:black;
 }
 .accordion #headingTwo h4{
     margin-top:-5px;
-    color:#F0FFF0;
+    color:	#FFFAF0;
 }
 .accordion .wizard-inner{
-  margin-top: -10px;
+    margin-top: -10px;
 }
 .accordion .wizard-inner a{
     font-size:10px;
 }
 #ModalI label{
-    font-size: 15px;
-    color: #0D3349;
-    width: 100%;
-    margin: 2px 0;
-    display: inline-block;
-
-
+    font-size: 13px;
+    color:black;
 }
 #ModalI form{
     margin-left: 100px;
@@ -4305,39 +4296,23 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     border-color: black;
 }
 .modal-body #addanother{
-    background-color: #2f7ea3;
-    border-color: whitesmoke;
-    color: aliceblue;
-    font-size: 15px;
+    background-color: #90EE90;
+    border-color: black;
 }
 /*--End Inventory Add Item--*/
 
-/*--Add Serial--*/
-.accordion #headingOne{
-    border-radius:10px;
-    height: 40px;
-    width: 300px;
-    background-color: #2f7ea3;
-    border-color: #f7f7f7;
-    color: #a3c7ff;
-    font-weight: bold;
-
-}
-.accordion #headingOne h4{
-    margin-top:-5px;
-    color:black;
-/*--End Add Serial--*/
 /*--Inventory Main Content--*/
 .x_content a{
     font-size:12px;
     font-weight: bold;
 }
 .x_content .bar_tabs{
-    background-color: white;
+
 }
 .x_panel table th {
     height: 10px;
 }
+
 /*--End Inventory Main Content--*/
 
 /*--Modal Item Detail--*/
@@ -4350,4 +4325,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     margin-left: 500px;
 }
 /*--End Modal Item Detail--*/
->>>>>>> 083d1277bc2018e65a270af5bc1a3af9ab985a7f
+
+/*--Header--*/
+
+/*--End Header--*/
