@@ -55,7 +55,6 @@
                                         </tr>
                                         <tbody>
                                         </tbody>
-                                        </thead>
                                     </table>
                                 </div>
                             </div>
