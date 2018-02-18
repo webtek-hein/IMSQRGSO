@@ -186,8 +186,12 @@
                         }
                     }
                 },
-                fail: function (response) {
-                    alert(response);
+                statusCode: {
+                    500: function () {
+                        BootstrapDialog.show({
+                            message: 'Item not saved.'
+                        });
+                    }
                 }
 
             });
