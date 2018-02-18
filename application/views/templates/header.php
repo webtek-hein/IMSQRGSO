@@ -46,7 +46,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <!-- jQuery -->
     <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
 <!--    <script src="assets/js/parsley.min.js"></script>-->
-    <link rel="icon" href="assets/images/logo.png">
+    <link rel="icon" href="assets/images/logogso.png">
     <!--table design-->
     <link href="assets/css/tabledesign.css" rel="stylesheet">
     
@@ -120,8 +120,8 @@ if (isset($this->session->userdata['logged_in'])) {
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="profile">Profile</a></li>
-                                <li><a href="logout"><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
+                                <li><a href="<?php echo base_url()?>profile">Profile</a></li>
+                                <li><a href="<?php echo base_url()?>logout"><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
                             </ul>
                         </li>
 
