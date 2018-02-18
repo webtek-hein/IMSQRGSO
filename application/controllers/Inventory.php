@@ -23,15 +23,6 @@ class Inventory extends CI_Controller {
         $list = $this->inv->select_item($type);
         $data = array();
 
-        //supply officer
-        $position = $this->session->userdata['logged_in']['position'];
-        $dept_id = $this->session->userdata['logged_in']['dept_id'];
-
-        if ($position === 'supplyofficer') {
-            $inventory = $this->department_model->get_distributed_per_department($dept_id);
-        } else {
-            $inventory = $this->Inventory_model->select_item();
-        }
 
         //counter initialize
         $counter = 1;
@@ -50,7 +41,6 @@ class Inventory extends CI_Controller {
                      data-description=\"".$item['item_description']."\" data-unit=\"".$item['unit']."\"
                      data-type=\"".$item['item_type']."\" data-toggle=\"modal\" data-target=\".Edit\" 
                       class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o\"></i> Edit</a></td>");
-                }
 
             $counter++;
         }
@@ -113,10 +103,10 @@ class Inventory extends CI_Controller {
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['userid'];
 
-        if($position == 'supplyofficer'){
-            $return = $this->Inventory_model->get_returned_per_user($user_id);
-        }else{
+        if($position == 'custodian' || $position == 'admin'){
             $return = $this->Inventory_model->return_item;
+        }else{
+            $return = $this->Inventory_model->get_returned_per_user($user_id);
         }
             $rec = $this->inv->return_item();
             $counter = 1;
