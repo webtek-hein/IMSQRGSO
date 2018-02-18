@@ -60,18 +60,6 @@ if (isset($this->session->userdata['logged_in'])) {
 
                 <div class="clearfix"></div>
 
-                <!-- menu profile quick info -->
-                <div class="profile clearfix">
-                    <div class="profile_pic">
-                        <img src="<?php echo base_url()?>assets/images/img.jpg" alt="..." class="img-circle profile_img">
-                    </div>
-                    <div class="profile_info">
-                        <span>Welcome,</span>
-                        <h2><?= $firstname.' '.$lastname?></h2>
-                    </div>
-                </div>
-                <!-- /menu profile quick info -->
-                <br />
 
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side  hidden-print main_menu">
@@ -85,8 +73,7 @@ if (isset($this->session->userdata['logged_in'])) {
                             <?php $position = $this->session->userdata['logged_in']['position'];
                             if ($position === 'Admin' || $position === 'Custodian'){
                                 echo '<li id="dept"><a ><i class="fa fa-file-text"></i>Department</a><ul id="deptlist" class="nav child_menu" class="scrollbar"></ul></li>'.
-                                    '<li><a href="Supplier"><i class="fa fa-book"></i>Supplier</a></li>'.
-                                    '<li><a href="Serial"><i class="fa fa-book"></i>Serial</a></li>';
+                                    '<li><a href="Supplier"><i class="fa fa-book"></i>Supplier</a></li>';
                             }
                             echo '<li><a href="Return"><i class="fa fa-undo"></i>Returns</a></li>';
                             ?>
