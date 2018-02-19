@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2018 at 01:56 AM
+-- Generation Time: Feb 19, 2018 at 02:02 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -31,7 +31,7 @@ USE `logs`;
 CREATE TABLE `decreaselog` (
   `dec_log_id` int(15) NOT NULL,
   `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `serial` int(15) DEFAULT NULL,
+  `serial_id` int(15) DEFAULT NULL,
   `mooed_id` int(15) DEFAULT NULL,
   `userid` int(15) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
