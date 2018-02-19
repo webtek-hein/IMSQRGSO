@@ -210,10 +210,10 @@
             $('.inventory-tab').toggleClass('hidden');
         }
         //view and edit serial
-
         function viewSerial(id) {
+            $('#anchor-serial').toggleClass('collapsed').attr('aria-expanded','true');
+            $('#data1').toggleClass('in');
             var div;
-
             $.ajax({
                 url: 'inventory/getSerial/'+id,
                 dataType: 'JSON',
@@ -229,6 +229,7 @@
                     $('.serial-form').html(div);
                 }
             });
+            localstorage.setItem('last_id',id);
         }
         // go to detail
 

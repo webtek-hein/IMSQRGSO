@@ -75,8 +75,8 @@ class Inventory extends CI_Controller {
                 'action' => "<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".Distribute\" 
                               class=\"btn btn-modal btn-default btn-xs\"><i class=\"fa fa-plus-circle\"></i> Distribute</a>
                              
-                              <a onclick=\"viewSerial($detail[item_det_id])\" class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\"
-                              data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#data1\" 
+                              <a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\"
+                               href=\"#data1\" 
                               aria-expanded=\"true\" aria-controls=\"collapseOne\"><li class=\"fa fa-folder-open\">
                               </li> View Serial</a>",
             );
