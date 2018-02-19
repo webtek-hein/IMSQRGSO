@@ -218,12 +218,15 @@
                 url: 'inventory/getSerial/'+id,
                 dataType: 'JSON',
                 success: function (data){
+                    var button = '';
                     var div = [];
-                    var button = "<br><div class=\"col-md-offset-3\">\n" +
-                        "<button type=\"button\" class=\"btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Privious</button>\n" +
-                        "<button type=\"submit\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Submit</a></button>\n" +
-                        "<button type=\"button\" class=\"btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>\n" +
-                        " </div>";
+                    if(data[0]['position'] === 'Custodian') {
+                         button = "<br><div class=\"col-md-offset-3\">\n" +
+                            "<button type=\"button\" class=\"btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Privious</button>\n" +
+                            "<button type=\"submit\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Submit</a></button>\n" +
+                            "<button type=\"button\" class=\"btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>\n" +
+                            " </div>";
+                    }
                     for(i=0;i<data.length;i++){
                         div +="<div class=\"col-md-5\">" +
                         "<label>Serial "+(i+1)+"</label>" +

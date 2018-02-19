@@ -23,9 +23,9 @@ class Inventory extends CI_Controller {
 
         $list = $this->inv->select_item($type);
         $data = array();
-
         //counter initialize
         $counter = 1;
+
         foreach ($list as $item){
             $data[] = array(
                 'number'    => "<a href='details' onclick=\"detail($item[item_id])\">".
@@ -64,7 +64,21 @@ class Inventory extends CI_Controller {
     function detail($id){
         $list = $this->inv->viewdetail($id);
         $data=array();
+
         foreach ($list as $detail){
+            if($this->session->userdata['logged_in']['position']==='Custodian'){
+                $action="<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".Distribute\" 
+                              class=\"btn btn-modal btn-default btn-xs\"><i class=\"fa fa-plus-circle\"></i> Distribute</a>
+                             
+                              <a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\"
+                               href=\"#data1\" 
+                              aria-expanded=\"true\" aria-controls=\"collapseOne\"><li class=\"fa fa-folder-open\">
+                              </li> View Serial</a>";
+            }else{
+                $action="<a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\"
+                               href=\"#data1\" aria-expanded=\"true\" aria-controls=\"collapseOne\"><li class=\"fa fa-folder-open\">
+                              </li> View Serial</a>";
+            }
             $data[] = array(
                 'quant'  => $detail['quantity'],
                 'del'  => $detail['date_delivered'],
@@ -72,13 +86,7 @@ class Inventory extends CI_Controller {
                 'exp' => $detail['expiration_date'],
                 'cost' => $detail['unit_cost'],
                 'sup'  => $detail['supplier_name'],
-                'action' => "<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".Distribute\" 
-                              class=\"btn btn-modal btn-default btn-xs\"><i class=\"fa fa-plus-circle\"></i> Distribute</a>
-                             
-                              <a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\"
-                               href=\"#data1\" 
-                              aria-expanded=\"true\" aria-controls=\"collapseOne\"><li class=\"fa fa-folder-open\">
-                              </li> View Serial</a>",
+                'action' => $action,
             );
         }
         echo json_encode($data);
@@ -148,6 +156,7 @@ class Inventory extends CI_Controller {
            $data[] = array(
                'serial_id'=>$serial['serial_id'],
                'serial' => $serial['serial'],
+               'position' => $position,
                );
         }
         echo json_encode($data);
