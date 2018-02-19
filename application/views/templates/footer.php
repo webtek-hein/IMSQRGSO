@@ -153,7 +153,14 @@
             $('#Item_Detail').on('hidden.bs.modal',function () {
                 $('#itemdet').bootstrapTable('destroy');
             });
-
+            // //get active tab on local storage
+            // $('body').on('beforeunload',function () {
+            //     activetab = localStorage.getItem('activeTab');
+            //     if(activetab.contains('detail-tab')){
+            //         console.log(activetab);
+            //         $('detail-tab').toggleClass('hidden');
+            //     }
+            // });
 
 
         });
@@ -204,7 +211,9 @@
         }
         // go to detail
         function detail(id) {
-            console.log(id);
+            // //set item in the local storage
+            // localStorage.setItem('activeTab', $('.detail-tab ').attr('class'));
+
             $('.detail-tab ').toggleClass('hidden');
             // $.ajax({
             //     url: 'inventory/getSerial/'+det_id,
