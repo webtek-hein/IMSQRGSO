@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2018 at 01:35 AM
+-- Generation Time: Feb 19, 2018 at 01:55 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -201,16 +201,6 @@ CREATE TABLE `item` (
   `item_type` enum('CO','MOOE') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `item`
---
-
-INSERT INTO `item` (`item_id`, `quantity`, `unit`, `item_name`, `item_description`, `item_type`) VALUES
-(1, 2, 'piece', 'Laptop', 'asus', 'CO'),
-(2, 2, 'piece', 'Mouse', 'a4tech', 'CO'),
-(3, 3, 'piece', 'Keyboard', 'logitech', 'CO'),
-(4, 1, 'piece', 'Laptop', 'acer', 'CO');
-
 -- --------------------------------------------------------
 
 --
@@ -231,17 +221,6 @@ CREATE TABLE `itemdetail` (
   `item_id` int(15) NOT NULL,
   `supplier_id` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `itemdetail`
---
-
-INSERT INTO `itemdetail` (`item_det_id`, `date_delivered`, `date_received`, `quantity`, `unit_cost`, `PO_no`, `PR_no`, `OBR_no`, `OR_no`, `expiration_date`, `item_id`, `supplier_id`) VALUES
-(1, '2018-02-19', '2018-02-19', 1, 45000, NULL, NULL, NULL, '3202021236', '2018-02-28', 1, 3),
-(2, '2018-02-19', '2018-02-19', 2, 520, NULL, NULL, NULL, '3088854532', '2018-02-28', 2, 3),
-(3, '2018-02-19', '2018-02-19', 3, 562, NULL, NULL, NULL, '1202326548', '2018-02-28', 3, 3),
-(4, '2018-02-19', '2018-02-19', 1, 50000, NULL, NULL, NULL, NULL, '2018-02-28', 1, 3),
-(5, '2018-02-19', '2018-02-19', 1, 50000, NULL, NULL, NULL, '6397845122', '2018-02-28', 4, 3);
 
 --
 -- Triggers `itemdetail`
@@ -277,26 +256,13 @@ CREATE TABLE `mooedistribution` (
 --
 
 CREATE TABLE `serial` (
+  `serial_id` int(15) NOT NULL,
   `serial` varchar(30) DEFAULT NULL,
   `employee` varchar(30) DEFAULT NULL,
   `item_status` enum('In-stock','Distributed','Returned') NOT NULL DEFAULT 'In-stock',
   `dist_id` int(15) DEFAULT NULL,
   `item_det_id` int(15) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `serial`
---
-
-INSERT INTO `serial` (`serial`, `employee`, `item_status`, `dist_id`, `item_det_id`) VALUES
-(NULL, NULL, 'In-stock', NULL, 1),
-(NULL, NULL, 'In-stock', NULL, 2),
-(NULL, NULL, 'In-stock', NULL, 2),
-(NULL, NULL, 'In-stock', NULL, 3),
-(NULL, NULL, 'In-stock', NULL, 3),
-(NULL, NULL, 'In-stock', NULL, 3),
-(NULL, NULL, 'In-stock', NULL, 4),
-(NULL, NULL, 'In-stock', NULL, 5);
 
 -- --------------------------------------------------------
 
@@ -403,6 +369,12 @@ ALTER TABLE `mooedistribution`
   ADD PRIMARY KEY (`mooed_id`);
 
 --
+-- Indexes for table `serial`
+--
+ALTER TABLE `serial`
+  ADD PRIMARY KEY (`serial_id`);
+
+--
 -- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
@@ -445,17 +417,22 @@ ALTER TABLE `distribution`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `item_id` int(15) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `itemdetail`
 --
 ALTER TABLE `itemdetail`
-  MODIFY `item_det_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `item_det_id` int(15) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mooedistribution`
 --
 ALTER TABLE `mooedistribution`
   MODIFY `mooed_id` int(15) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `serial`
+--
+ALTER TABLE `serial`
+  MODIFY `serial_id` int(15) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `supplier`
 --
