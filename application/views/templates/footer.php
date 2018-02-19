@@ -209,19 +209,36 @@
             $('.detail-tab ').toggleClass('hidden');
             $('.inventory-tab').toggleClass('hidden');
         }
+        //view and edit serial
+
+        function viewSerial(id) {
+            var div;
+
+            $.ajax({
+                url: 'inventory/getSerial/'+id,
+                dataType: 'JSON',
+                success: function (data){
+                    var div = [];
+                    for(i=0;i<data.length;i++){
+                        div +="<div class=\"col-md-5\">" +
+                        "<label>Serial "+(i+1)+"</label>" +
+                        "<input value=\""+data[i]['serial']+"\" type=\"text\" name=\"serial[]\" min=0  " +
+                            "class=\"form-control col-md-2\">" +
+                        "</div>";
+                    }
+                    $('.serial-form').html(div);
+                }
+            });
+        }
         // go to detail
+
         function detail(id) {
             // //set item in the local storage
             // localStorage.setItem('activeTab', $('.detail-tab ').attr('class'));
 
             $('.detail-tab ').toggleClass('hidden');
-            // $.ajax({
-            //     url: 'inventory/getSerial/'+det_id,
-            //     dataType: 'JSON',
-            //     success: function (data) {
-            //       alert(data);
-            //     }
-            // });
+
+
             $('.inventory-tab').toggleClass('hidden');
             $('#detail-tab-table').bootstrapTable('refresh',{url: 'inventory/detail/'+id});
                 $('#detail-tab-table').bootstrapTable({

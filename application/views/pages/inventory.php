@@ -359,36 +359,8 @@
                                                 <div class="panel-body">
 
                                                     <div class="col-md-offset-2">
-                                                        <form>
-                                                            <h4><b>Add Serial</b></h4>
-                                                            <div class="col-md-5">
-                                                                <label>Serial 1</label>
-                                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
-                                                            </div>
-
-                                                            <div class="col-md-5">
-                                                                <label>Serial 2</label>
-                                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
-                                                            </div>
-
-                                                            <div class="col-md-5">
-                                                                <label>Serial 3</label>
-                                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
-                                                            </div>
-
-                                                            <div class="col-md-5">
-                                                                <label>Serial 4</label>
-                                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
-                                                            </div>
-
-                                                            <div class="col-md-5">
-                                                                <label>Serial 5</label>
-                                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
-                                                            </div>
-                                                            <div class="col-md-5">
-                                                                <label>Serial 6</label>
-                                                                <input type="number" name="quant" min=0  class="form-control col-md-2">
-                                                            </div>
+                                                        <h4><b>List of Serial</b></h4>
+                                                        <form class="serial-form">
                                                         </form>
                                                         <br>
                                                         <div class="col-md-offset-3">
@@ -424,6 +396,7 @@
                     <div class="modal-body">
 
                         <?php $position = $this->session->userdata['logged_in']['position'];
+
                         if ($position === 'Admin' || $position === 'Custodian'){
 
                             echo '<b>Distribute Item with Serial:</b>'.

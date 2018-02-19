@@ -72,10 +72,13 @@ class Inventory extends CI_Controller {
                 'exp' => $detail['expiration_date'],
                 'cost' => $detail['unit_cost'],
                 'sup'  => $detail['supplier_name'],
-                'action' => "<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".Distribute\" class=\"btn btn-modal btn-default btn-xs\">
-                                <i class=\"fa fa-plus-circle\"></i> Distribute</a><a class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\" 
-                                data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#data1\" aria-expanded=\"true\" aria-controls=\"collapseOne\">
-                                <li class=\"fa fa-folder-open\"></li> View Serial</a>",
+                'action' => "<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".Distribute\" 
+                              class=\"btn btn-modal btn-default btn-xs\"><i class=\"fa fa-plus-circle\"></i> Distribute</a>
+                             
+                              <a onclick=\"viewSerial($detail[item_det_id])\" class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\"
+                              data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#data1\" 
+                              aria-expanded=\"true\" aria-controls=\"collapseOne\"><li class=\"fa fa-folder-open\">
+                              </li> View Serial</a>",
             );
         }
         echo json_encode($data);
@@ -138,14 +141,14 @@ class Inventory extends CI_Controller {
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['userid'];
 
-        if($position == 'Custodian'){
-            $serial = $this->Inventory_model->getSerial($user_id);
-        }
-
         $list = $this->inv->getSerial($det_id);
+
         $data = array();
         foreach ($list as $serial){
-           $data[] = array($serial['serial']);
+           $data[] = array(
+               'item_det_id'=>$serial['item_det_id'],
+               'serial' => $serial['serial'],
+               );
         }
         echo json_encode($data);
     }
