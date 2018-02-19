@@ -277,7 +277,6 @@ class Inventory_model extends CI_Model{
                 'serial' => $value,
             );
         }
-        var_dump($data);
         $this->db->update_batch('serial',$data,'serial_id');
     }
 }
