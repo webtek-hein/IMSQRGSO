@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2018 at 01:07 AM
+-- Generation Time: Feb 19, 2018 at 01:35 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -177,6 +177,7 @@ INSERT INTO `department` (`dept_id`, `res_center_code`, `department`) VALUES
 
 CREATE TABLE `distribution` (
   `dist_id` int(15) NOT NULL,
+  `date_received` date NOT NULL,
   `quantity_distributed` int(15) NOT NULL,
   `received_from` varchar(30) NOT NULL,
   `item_id` int(15) NOT NULL,
