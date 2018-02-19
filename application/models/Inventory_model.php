@@ -269,8 +269,15 @@ class Inventory_model extends CI_Model{
         return $query->result_array();
     }
     public function addSerial(){
-        $id = $this->input->post('id');
         $serial = $this->input->post('serial');
-        $this->db->update('serial',$serial,array('item_det_id' => $id));
+        $data = array();
+        foreach ($serial as $key => $value) {
+            $data[] = array(
+                'serial_id' => $key,
+                'serial' => $value,
+            );
+        }
+        var_dump($data);
+        $this->db->update_batch('serial',$data,'serial_id');
     }
 }

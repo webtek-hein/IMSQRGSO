@@ -146,7 +146,7 @@ class Inventory extends CI_Controller {
         $data = array();
         foreach ($list as $serial){
            $data[] = array(
-               'item_det_id'=>$serial['item_det_id'],
+               'serial_id'=>$serial['serial_id'],
                'serial' => $serial['serial'],
                );
         }
@@ -154,6 +154,6 @@ class Inventory extends CI_Controller {
     }
     public function addSerial(){
         $this->inv->addSerial();
-        redirect('details');
+        redirect('inventory');
     }
 }

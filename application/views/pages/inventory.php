@@ -356,22 +356,15 @@
                 <!-- Serial Accordion-->
 
                 <div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                                <div class="panel-body">
+                    <div class="panel-body">
 
-                                                    <div class="col-md-offset-2">
-                                                        <h4><b>List of Serial</b></h4>
-                                                        <form class="serial-form">
-                                                        </form>
-                                                        <br>
-                                                        <div class="col-md-offset-3">
-                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-mail-reply"></i> Privious</button>
-                                                        <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-send"></i> Submit</a></button>
-                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-mail-forward"></i> Next</button>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
+                        <div class="col-md-offset-2">
+                            <h4><b>List of Serial</b></h4>
+                            <form class="serial-form" method="POST" action="inventory/addSerial">
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <!-- /Serial Accordion-->
 
             </div>

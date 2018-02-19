@@ -219,17 +219,22 @@
                 dataType: 'JSON',
                 success: function (data){
                     var div = [];
+                    var button = "<br><div class=\"col-md-offset-3\">\n" +
+                        "<button type=\"button\" class=\"btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Privious</button>\n" +
+                        "<button type=\"submit\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Submit</a></button>\n" +
+                        "<button type=\"button\" class=\"btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>\n" +
+                        " </div>";
                     for(i=0;i<data.length;i++){
                         div +="<div class=\"col-md-5\">" +
                         "<label>Serial "+(i+1)+"</label>" +
-                        "<input value=\""+data[i]['serial']+"\" type=\"text\" name=\"serial[]\" min=0  " +
+                        "<input value=\""+data[i]['serial']+"\" type=\"text\" name=\"serial["+data[i]['serial_id']+"]\"" +
+                            "min=0  " +
                             "class=\"form-control col-md-2\">" +
                         "</div>";
                     }
-                    $('.serial-form').html(div);
+                    $('.serial-form').html(div+button);
                 }
             });
-            localstorage.setItem('last_id',id);
         }
         // go to detail
 
