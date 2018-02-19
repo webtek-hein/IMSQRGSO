@@ -1,6 +1,7 @@
-ul #dept{
-    max-height:250px;
-    overflow-y:scroll;
+ul #dept #deptlist{
+    overflow: auto;
+    width: 200px;
+    height: 500px;
 }
 
 ::-webkit-scrollbar{
