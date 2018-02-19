@@ -202,9 +202,19 @@
             $('.detail-tab ').toggleClass('hidden');
             $('.inventory-tab').toggleClass('hidden');
         }
+        // go to detail
         function detail(id) {
+            console.log(id);
             $('.detail-tab ').toggleClass('hidden');
+            // $.ajax({
+            //     url: 'inventory/getSerial/'+det_id,
+            //     dataType: 'JSON',
+            //     success: function (data) {
+            //       alert(data);
+            //     }
+            // });
             $('.inventory-tab').toggleClass('hidden');
+            $('#detail-tab-table').bootstrapTable('refresh',{url: 'inventory/detail/'+id});
                 $('#detail-tab-table').bootstrapTable({
                             url: 'inventory/detail/'+id,
                             columns: [{
@@ -230,25 +240,10 @@
                                 title: 'Action'
                             }],
                         });
+        }
         $('.btn-hide').on('click',function () {
-           $('#firststep').modal('hide');
+            $('#firststep').modal('hide');
         });
-        }
-        function serial(det_id) {
-            $('#serial').on('show.bs.modal',function () {
-                $.ajax({
-                    url: 'inventory/getSerial/'+det_id,
-                    dataType: 'JSON',
-                    success: function (data) {
-                        $('#serialinput').empty();
-                            $.each(data,function () {
-                                input = '<input type="text" name="item" class="form-control" id="inputSuccess2"><br>';
-                                $('#serialinput').append(input);
-                        });
-                    }
-                });
-            });
-        }
         $(document).ready(function () {
             $('.Distribute').on('show.bs.modal',function (e) {
                 $('#listdist').empty();

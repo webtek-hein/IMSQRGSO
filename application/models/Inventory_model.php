@@ -144,13 +144,8 @@ class Inventory_model extends CI_Model{
 
         //item detail isnert id
         $insert_id = $this->db->insert_id();
-
-        //3. Insert into serial
-        $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
-        $this->db->insert_batch('serial',$serial);
-
         //4. Insert into logs
-        $this->db->insert('logs.increaselog',$data+$data1);
+        $this->db->insert('logs.increaselog',array('item_det_id'=>$insert_id));
 
         //5. Update quantity
         $this->db->set('quantity','quantity+'.$quantity,FALSE);
