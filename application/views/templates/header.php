@@ -65,23 +65,27 @@ if (isset($this->session->userdata['logged_in'])) {
 
                 <div class="clearfix"></div
 
-                <!-- sidebar menu -->
+                        <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side  hidden-print main_menu">
                     <div class="menu_section">
                         <ul class="nav side-menu">
-                            <li><a href="<?php echo base_url()?>dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+                            <li id="li1"><a href="<?php echo base_url()?>dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
                             </li>
-                            <li><a href="Inventory"><i class="fa fa-book"></i>Inventory</a>
+                            <li id="li2"><a href="Inventory"><i class="fa fa-book"></i>Inventory</a>
                             </li>
 
                             <?php $position = $this->session->userdata['logged_in']['position'];
                             if ($position === 'Admin' || $position === 'Custodian'){
-                                echo '<li id="dept"><a ><i class="fa fa-file-text"></i>Department</a><ul id="deptlist" class="nav child_menu" class="scrollbar"></ul></li>'.
-                                    '<li><a href="Supplier"><i class="fa fa-book"></i>Supplier</a></li>';
+                                echo '<li id="dept"><a ><i class="fa fa-institution"></i>Department</a><ul id="deptlist" class="nav child_menu" class="scrollbar"></ul></li>'.
+                                    '<li id="li3"><a href="Supplier"><i class="fa fa-truck"></i>Supplier</a></li>';
                             }
-                            echo '<li><a href="Return"><i class="fa fa-undo"></i>Returns</a></li>';
+                            if ($position === 'Admin'){
+                                echo '<li id="li4"><a href="Accounts"><i class="fa fa-users"></i>Users</a></li>';
+
+                            }
+                            echo '<li id="li5"><a href="Return"><i class="fa fa-undo"></i>Returns</a></li>';
                             ?>
-                            <li><a><i class="fa fa-file-text"></i>Logs</a>
+                            <li id="li6"><a><i class="fa fa-edit"></i>Logs</a>
                                 <?php
                                 echo '<ul class="nav child_menu">';
                                 echo '<li><a href=' . base_url() . 'increased>Increased</a></li>'.
