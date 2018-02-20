@@ -11,6 +11,7 @@ class Inventory_model extends CI_Model{
     public function add_item($counter){
 
         $item_name = $this->input->post('item')[$counter];
+        $item_type = $this->input->post('Type')[$counter];
         $quantity = $this->input->post('quant')[$counter];
         $supplier_id = $this->input->post('supp')[$counter];
 
@@ -19,7 +20,7 @@ class Inventory_model extends CI_Model{
             'quantity' => $quantity,
             'item_description' => $this->input->post('description')[$counter],
             'unit' => $this->input->post('Unit')[$counter],
-            'item_type' => $this->input->post('Type')[$counter],
+            'item_type' => $item_type,
         );
 
         $data1 = array(
@@ -40,6 +41,11 @@ class Inventory_model extends CI_Model{
             $this->db->insert('itemdetail', $data1 + $insert_id + array('supplier_id' => $supplier_id));
             //item detail insert id
             $insert_id = $this->db->insert_id();
+            //create an array of serial for capital outlay item
+            if($item_type === 'CO'){
+                $serial = array_fill(1,$quantity,array('item_det_id'=>$insert_id));
+                $this->db->insert_batch('serial',$serial);
+            }
             // 3. Insert into logs
             $this->db->insert('logs.increaselog', array('item_det_id' => $insert_id));
             if ($this->db->trans_status() === FALSE) {
@@ -53,7 +59,6 @@ class Inventory_model extends CI_Model{
             return $e;
         }
     }
-
     public function saveAll(){
         $data = array();
         $item_name = $this->input->post('item');
@@ -66,6 +71,7 @@ class Inventory_model extends CI_Model{
                 'unit' => $this->input->post('Unit')[$key],
                 'item_type' => $this->input->post('Type')[$key],
             );
+
         }
 
         $this->db->trans_start();
@@ -98,15 +104,20 @@ class Inventory_model extends CI_Model{
 
         foreach ($item_detail_id as $key => $value) {
             $detail[] = array('item_det_id' =>$item_detail_id[$key]);
+            $quantity = $this->input->post('quant');
+            $item_type = $this->input->post('Type');
+            //serial
+            if($item_type[$key] === 'CO'){
+                $serial = array_fill(1,$quantity[$key],array('item_det_id'=>$item_detail_id[$key]));
+                $this->db->insert_batch('serial',$serial);
+            }
         }
-        var_dump($data1);
 
         // 3. Insert into logs
         $this->db->insert_batch('logs.increaselog',$detail);
         $this->db->trans_complete();
 
     }
-
     public function select_item($type){
         $this->db->where('item_type',$type);
         $query = $this->db->get('item');
@@ -263,7 +274,6 @@ class Inventory_model extends CI_Model{
 
         $this->db->update('itemdetail',$data1,array('item_det_id' => $id));
     }
-
     public function return_item(){
         $query = $this->db->get('return');
         return $query->result_array();
