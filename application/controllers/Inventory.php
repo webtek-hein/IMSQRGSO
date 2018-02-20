@@ -67,7 +67,7 @@ class Inventory extends CI_Controller {
 
         foreach ($list as $detail){
             if($this->session->userdata['logged_in']['position']==='Custodian'){
-                $action="<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' data-target=\".Distribute\" 
+                $action="<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' onclick =\"getserial($detail[item_det_id])\" data-target=\".Distribute\" 
                               class=\"btn btn-modal btn-default btn-xs\"><i class=\"fa fa-plus-circle\"></i> Distribute</a>
                              
                               <a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\"

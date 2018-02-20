@@ -387,18 +387,34 @@
                         <h4 class="modal-title" id="myModalLabel">Distribution</h4>
                     </div>
                     <div class="modal-body">
+                        <script>
+                            function getserial(id) {
+                                var serials = [];
+                                $.ajax({
+                                    url: 'inventory/getSerial/' + id,
+                                    dataType: 'JSON',
+                                    success: function (data) {
+                                        for (i = 0; i < data.length; i++) {
+                                            serials += "<input type=\"checkbox\"> "+ data[i].serial+"<br>";
+                                        }
+                                        $('#serial').html(serials);
+                                    }
+                                });
+                            }
 
+                        </script
+                        <div class="col-md-6">
+                            <label for="name">Serials</label>
+
+                        </div>
                         <?php $position = $this->session->userdata['logged_in']['position'];
 
                         if ($position === 'Admin' || $position === 'Custodian'){
 
                             echo '<b>Distribute Item with Serial:</b>'.
-                                '<div class="checkbox">'.
+                                '<div id="serial">'.
                                 '<label>'.
-                                '<input type="checkbox" value="">6161d6sdcd</br>'.
-                                '<input type="checkbox" value="">6161d6sdcd</br>'.
-                                '<input type="checkbox" value="">6161d6sdcd</br>'.
-                                '<input type="checkbox" value="">6161d6sdcd'.
+                                '<input type="checkbox" name="serial">'.
                                 '</label>'.
                                 '</div>'.
                                 '<b>To</b>'.
