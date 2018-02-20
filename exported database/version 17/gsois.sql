@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2018 at 01:17 PM
+-- Generation Time: Feb 20, 2018 at 01:47 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -179,7 +179,7 @@ CREATE TABLE `distribution` (
   `dist_id` int(15) NOT NULL,
   `date_received` date NOT NULL,
   `quantity_distributed` int(15) NOT NULL,
-  `received_from` varchar(30) NOT NULL,
+  `receiver` varchar(30) NOT NULL,
   `item_id` int(15) NOT NULL,
   `ac_id` int(15) NOT NULL,
   `user_id` int(15) NOT NULL,
@@ -9337,7 +9337,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `contact_no`, `username`, `password`, `position`, `dept_id`) VALUES
 (1, 'Rusell', 'Bayote', 'rusellbayote@gmail.com', '09453265727', 'tuking', 'rb14789653', 'Admin', 11),
-(2, 'Lovelace Zennia Luisa', 'Luisa', 'lovelace@gmail.com', '09784512563', 'lovelace', '123', 'Custodian', 11);
+(2, 'Lovelace Zennia Luisa', 'Oliva', 'lovelace@gmail.com', '09784512563', 'lovelace', '123', 'Custodian', 11);
 
 --
 -- Indexes for dumped tables
