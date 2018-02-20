@@ -22,7 +22,7 @@ class Logs extends CI_Controller {
             $increase = $this->Logs_model->get_increase_log_per_department($dept_id);
         }
 
-            $inc = $this->logs->increase_log();
+            $inc = $this->Logs_model->increase_log();
             $counter = 1;
             foreach ($inc as $list){
                 $row = array();
