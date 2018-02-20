@@ -23,10 +23,8 @@ class Logs extends CI_Controller {
         }
 
             $inc = $this->Logs_model->increase_log();
-            $counter = 1;
             foreach ($inc as $list){
                 $row = array();
-                $row['number']=$counter;
                 $row['timestamp']= $list['timestamp'];
                 $row['item'] = $list['item_name'];
                 $row['description'] = $list['item_description'];
@@ -37,7 +35,6 @@ class Logs extends CI_Controller {
                 $row['date_received'] = $list['date_received'];
                 $row['expiration_date'] = $list['expiration_date'];
                 $row['cost'] = $list['unit_cost'];
-
                 $data[] = $row;
                 $counter++;
             }
