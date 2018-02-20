@@ -242,15 +242,15 @@
                             divClass = "";
                             listClass = "disabled";
                         }
-                        input.push("<label>Serial " + (i + 1) + "</label>" +
+                        input.push("<label>Serial " + (i + 1) +
                             "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                             "min=0  " +
-                            "class=\"form-control col-md-2\">");
+                            "class=\"form-control col-md-2\"></label><br>");
                         if (input.length === 10) {
                             div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
                             list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
                             serialcontent.append(div);
-                            $('#tab'+serialTabCounter).html(input+button);
+                            $('#tab'+serialTabCounter).html(input.join('')+button);
                             console.log(div+input+button);
                             div = [];
                             input=[];
