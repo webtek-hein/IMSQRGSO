@@ -163,6 +163,11 @@ class Inventory_model extends CI_Model{
         $this->db->where('item_id',$id);
         $this->db->update('item');
     }
+    public function getItem($id){
+        $this->db->where('item_id',$id);
+        $query = $this->db->get('item');
+        return $query->row_array();
+    }
     public function edititem(){
         $item_id = $this->input->post('id');
         // select item

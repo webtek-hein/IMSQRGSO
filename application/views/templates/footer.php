@@ -297,13 +297,18 @@
         function detail(id) {
             // //set item in the local storage
             // localStorage.setItem('activeTab', $('.detail-tab ').attr('class'));
+            $.get('inventory/getitem/'+id,function (data) {
+                item = JSON.parse(data);
+                $('#itemname').html(item.item_name);
+                $('#itemdesc').html(item.item_description);
+                $('#total').html(item.quantity);
+                $('#unit').html(item.unit);
 
+            });
             $('.detail-tab ').toggleClass('hidden');
-
-
             $('.inventory-tab').toggleClass('hidden');
             $('#detail-tab-table').bootstrapTable('refresh',{url: 'inventory/detail/'+id});
-                $('#detail-tab-table').bootstrapTable({
+            $('#detail-tab-table').bootstrapTable({
                             url: 'inventory/detail/'+id,
                             columns: [{
                                 field: 'del',
@@ -328,6 +333,9 @@
                                 title: 'Action'
                             }],
                         });
+            $.get('',function () {
+                
+            });
         }
         $(document).ready(function () {
             $('.btn-hide').on('click',function () {

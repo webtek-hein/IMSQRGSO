@@ -338,12 +338,11 @@
 
         <!-- detail tab -->
         <div class="detail-tab x_panel hidden">
-            <div class="clearfix"></div>
-            <div class="x_title" id="DetailsHead">
-                <h4>Item Name: <small> <b></b></small> </h4>
-                <h4>Description: <small> <b></b></small> </h4>
-                <p>Total Quantity: </p>
-                <p>Unit:</p>
+            <div class="x_title" id="DetailsHead"> <a href="#" onclick=""><i class="glyphicon glyphicon-edit"></i></a>
+                <h4 >Item Name: <b id="itemname"></b></h4>
+                <p>Description: <small> <b id="itemdesc"></b></small> </p>
+                <p>Total Quantity: <b id="total"></b></p>
+                <p>Unit: <b id="unit"></b></>
 
                 <div class="clearfix"></div>
             </div>
