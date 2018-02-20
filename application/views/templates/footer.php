@@ -59,11 +59,8 @@
 
     <script>
         $(document).ready(function () {
-            //form validation
-
-           // window.Parsley
-           //     .addValidator();
-            //end of form validation
+            //navigation selected
+            $('ul .current-page').css('background-color', '#1ABB9C');
             var department = [];
             var deptlist = [];
             var supplier = [];
@@ -153,6 +150,7 @@
 
 
         });
+
     //for editting
         $(document).ready(function(){
             $('form')
