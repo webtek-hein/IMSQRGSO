@@ -241,6 +241,20 @@
             });
         }
         // go to detail
+        //get serial checkbox
+        function getserial(id) {
+            var serials = [];
+            $.ajax({
+                url: 'inventory/getSerial/' + id,
+                dataType: 'JSON',
+                success: function (data) {
+                    for (i = 0; i < data.length; i++) {
+                        serials += "<input type=\"checkbox\"> "+ data[i].serial+"<br>";
+                    }
+                    $('#serial').html(serials);
+                }
+            });
+        }
 
         function detail(id) {
             // //set item in the local storage
