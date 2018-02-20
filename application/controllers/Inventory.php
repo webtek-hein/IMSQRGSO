@@ -43,13 +43,7 @@ class Inventory extends CI_Controller
                     $item['quantity'] . "</a>",
                 'unit' => "<a href='' onclick=\"detail($item[item_id])\">" .
                     $item['unit'] . "</a>",
-                'action' => "<a  href=\"#\" data-id=\"" . $item['item_id'] . "\" data-toggle=\"modal\" data-target=\"#addquant\" 
-                     class=\"btn btn-primary btn-xs\"><i class=\"fa fa-plus-circle\">
-                     </i> Add Quantity</a>" .
-                    "<a href=\"#\" data-name=\"" . $item['item_name'] . "\" data-id=\"" . $item['item_id'] . "\" 
-                     data-description=\"" . $item['item_description'] . "\" data-unit=\"" . $item['unit'] . "\"
-                     data-type=\"" . $item['item_type'] . "\" data-toggle=\"modal\" data-target=\".Edit\" 
-                      class=\"btn btn-warning btn-xs\"><i class=\"fa fa-pencil-square-o\"></i> Edit</a></td>");
+                'action' => "<a class=\"text-primary\" href=\"#\" onclick=\"detail($item[item_id])\"> View Detail</a>");
             $counter++;
         }
         echo json_encode($data);
