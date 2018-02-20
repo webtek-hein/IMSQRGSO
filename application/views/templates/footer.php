@@ -328,6 +328,7 @@
             // localStorage.setItem('activeTab', $('.detail-tab ').attr('class'));
             $.get('inventory/getitem/'+id,function (data) {
                 item = JSON.parse(data);
+                $('#detailAddquantity').attr('data-id',id);
                 $('#changetoEdit').attr('onclick','edit('+id+')');
                 $('#itemname').html(item.item_name);
                 $('#itemdesc').html(item.item_description);

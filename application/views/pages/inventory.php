@@ -196,97 +196,13 @@
                 </div>
 
 
-                <!-- Modals -->
-                <!-- Add Quantity -->
-                <div id="addquant" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate >
-
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label>Quantity</label>
-                                        <input data-parsley-group="set2" data-parsley-trigger="blur" type="number" name="quant" min=0  class="form-control col-md-7 col-xs-12" placeholder="Quantity">
-                                    </div>
-
-                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                        <label>Unit Cost</label>
-                                        <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3"  placeholder="Unit Cost">
-                                    </div>
-
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label>Delivery Date</label>
-                                        <input type="date" name="del"  class="form-control col-md-7 col-xs-12">
-                                    </div>
-
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label>Date Received</label>
-                                        <input type="date" name="rec" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12" >
-                                    </div>
-
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label>Expiration Date</label>
-                                        <input type="date" name="exp" data-validate-length-range="5,20"  class="optional form-control col-md-7 col-xs-12">
-                                    </div>
-
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <label>Supplier</label>
-                                        <select list="typelist"  name="supp" class="supplieropt form-control"  placeholder="Type">
-                                        </select>
-                                    </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn-modal btn btn-primary" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
-                                <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- end of add quantity -->
-                <!-- Add Quantity -->
-                <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="number" name="quant" min=0 class="form-control col-md-7 col-xs-12" required placeholder="Quantity">
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn-modal btn btn-primary" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
-                                <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- end of add quantity -->
-
-                <!-- /Modal -->
             </div>
             </div>
-
         <!-- detail tab -->
         <div class="detail-tab x_panel hidden">
+            <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
             <div class="x_title" id="DetailsHead"> <a id="changetoEdit" href="#"><i class="glyphicon glyphicon-edit"></i></a>
+
                 <form action="inventory/edititem" method="POST">
                 <h4 >Item Name: <b id="itemname"></b></h4>
                 <p>Description: <b id="itemdesc"></b></p>
@@ -299,7 +215,8 @@
 
             <!-- Main Table Content-->
             <div role="tabpanel" class="tab-pane fade active in" id="tab_cont." aria-labelledby="CO-tab">
-                <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
+                <a id="detailAddquantity" href="#" data-toggle="modal" data-target="#addquant"
+                   class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> Add Quantity</a>
 
                 <table id="detail-tab-table" class="table table-no-bordered table-hover">
                 </table>
@@ -400,6 +317,60 @@
 
         <!-- /Modal -->
     </div>
+        <!-- /detail tab -->
+        <!-- Add Quantity -->
+        <div id="addquant" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate >
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label>Quantity</label>
+                                <input data-parsley-group="set2" data-parsley-trigger="blur" type="number" name="quant" min=0  class="form-control col-md-7 col-xs-12" placeholder="Quantity">
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                <label>Unit Cost</label>
+                                <input type="number" min='0' name="cost" class="form-control" id="inputSuccess3"  placeholder="Unit Cost">
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label>Delivery Date</label>
+                                <input type="date" name="del"  class="form-control col-md-7 col-xs-12">
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label>Date Received</label>
+                                <input type="date" name="rec" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12" >
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label>Expiration Date</label>
+                                <input type="date" name="exp" data-validate-length-range="5,20"  class="optional form-control col-md-7 col-xs-12">
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label>Supplier</label>
+                                <select list="typelist"  name="supp" class="supplieropt form-control"  placeholder="Type">
+                                </select>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn-modal btn btn-primary" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
+                        <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+                </form>
+            </div>
         </div>
-        <div class="clearfix"></div>
+        <!-- end of add quantity -->
     </div>
+    <div class="clearfix"></div>
+</div>
