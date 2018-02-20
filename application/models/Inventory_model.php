@@ -148,13 +148,17 @@ class Inventory_model extends CI_Model{
             'quantity' => $quantity,
             'unit_cost'=> $this->input->post('cost'),
             'expiration_date' => $this->input->post('exp'),
+            'or_no' => $this->input->post('or')
         );
 
         //2. Insert to item detail
         $this->db->insert('itemdetail',$data1+$item_id);
 
-        //item detail isnert id
+        //item detail insert id
         $insert_id = $this->db->insert_id();
+        //insert serial
+        $serial = array_fill(1,$quantity,array('item_det_id'=>$insert_id));
+        $this->db->insert_batch('serial',$serial);
         //4. Insert into logs
         $this->db->insert('logs.increaselog',array('item_det_id'=>$insert_id));
 

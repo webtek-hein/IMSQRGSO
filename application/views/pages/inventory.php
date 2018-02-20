@@ -361,6 +361,11 @@
                                 <select list="typelist"  name="supp" class="supplieropt form-control"  placeholder="Type">
                                 </select>
                             </div>
+
+                            <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+                                <label>Official Receipt</label>
+                                <input type="text" name="or" class="form-control"  data-parsley-required-message="Input Official Receipt" required>
+                            </div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn-modal btn btn-primary" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>

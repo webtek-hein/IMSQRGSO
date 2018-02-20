@@ -257,6 +257,8 @@
                     var input = [];
                     var divClass = "in active";
                     var listClass = "active";
+                    console.log(data);
+
                     if (data[0]['position'] === 'Custodian') {
                         button = "<br><div class=\"col-md-offset-3\">\n" +
                             "<button type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Privious</button>\n" +
@@ -266,24 +268,38 @@
                     }
                     //if div reaches 10
                     //create another div
-                    for (i = 0; i < data.length; i++) {
-                        if (serialTabCounter !== 1) {
-                            divClass = "";
-                            listClass = "disabled";
+                    if(data.length >= 10) {
+                        for (i = 0; i < data.length; i++) {
+                            if (serialTabCounter !== 1) {
+                                divClass = "";
+                                listClass = "disabled";
+                            }
+                            input.push("<label>Serial " + (i + 1) +
+                                "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
+                                "min=0  " +
+                                "class=\"form-control col-md-2\"></label><br>");
+                            if (input.length === 10) {
+                                div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
+                                list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
+                                serialcontent.append(div);
+                                $('#tab' + serialTabCounter).html(input.join('') + button);
+                                div = [];
+                                input = [];
+                                serialTabCounter++;
+                            }
                         }
-                        input.push("<label>Serial " + (i + 1) +
-                            "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
-                            "min=0  " +
-                            "class=\"form-control col-md-2\"></label><br>");
-                        if (input.length === 10) {
-                            div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
-                            list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
-                            serialcontent.append(div);
-                            $('#tab'+serialTabCounter).html(input.join('')+button);
-                            div = [];
-                            input=[];
-                            serialTabCounter++;
+                    }else {
+                        for (i = 0; i < data.length; i++) {
+                            input.push("<label>Serial " + (i + 1) +
+                                "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
+                                "min=0  " +
+                                "class=\"form-control col-md-2\"></label><br>");
+
                         }
+                        div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
+                        list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
+                        serialcontent.append(div);
+                        $('#tab1').html(input.join('') + button);
                     }
                     ul.html(list);
 
