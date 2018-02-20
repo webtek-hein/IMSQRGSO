@@ -282,8 +282,8 @@
                 dataType: 'JSON',
                 success: function (data) {
                     for (i = 0; i < data.length; i++) {
-                        if(data[i].serial !== 'null'){
-                            serials.push("<input type=\"checkbox\"> "+ data[i].serial+"<br>");
+                        if(data[i].serial !== 'null' || data[i].item_status === 'In-stock'){
+                            serials.push("<input name=\"serial[]\" type=\"checkbox\" value="+data[i]+"> "+ data[i].serial+"<br>");
                         }
                     }
                     if(serials.length === 0){

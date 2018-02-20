@@ -394,54 +394,64 @@
                         <h4 class="modal-title" id="myModalLabel">Distribution</h4>
                     </div>
                     <div class="modal-body">
+                        <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST" data-validate="parsley">
+                            <div class="tab-content">
 
-                        <?php $position = $this->session->userdata['logged_in']['position'];
+                                    <div id="serial">
+                                        <label>
+                                        </label>
+                                        </div>
 
-                        if ($position === 'Admin' || $position === 'Custodian'){
+                                    <div class="col-md-6">
+                                        <label for="name">Department</label>
+                                        <select list="typelist"   name="dept" id="deptopt" class="form-control" required placeholder="Type">
+                                        </select>
+                                    </div>
 
-                            echo '<b>Distribute Item with Serial:</b>'.
-                                '<div id="serial">'.
-                                '<label>'.
-                                '<input type="checkbox" name="serial">'.
-                                '</label>'.
-                                '</div>'.
-                                '<b>To</b>'.
-                                '<form role="form" class="form-horizontal form-label-left" >'.
-                                '<div class="col-md-6 col-sm-6 col-xs-12">'.
-                                '<label for="name">Department</label>'.
-                                '<input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">'.
-                                '</div>'.
-                                '<div class="col-md-6 col-sm-6 col-xs-12">'.
-                                '<label for="name">PO Number</label>'.
-                                '<input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">'.
-                                '</div>'.
-                                '<div class="col-md-6 col-sm-6 col-xs-12">'.
-                                '<label for="name">PR Number</label>'.
-                                '<input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">'.
-                                '</div>'.
-                                '<div class="col-md-6 col-sm-6 col-xs-12">'.
-                                '<label for="name">OBR Number</label>'.
-                                '<input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">'.
-                                '</div>'.
-                                '</div>'.
-                                '</form>';
+                                    <div class="col-md-6">
+                                        <label for="name">Account Code</label>
+                                        <select list="typelist"  name="Code" id="accode" class="form-control" required placeholder="Account Code">
+                                        </select>
+                                    </div>
 
-                        }else{
-                            echo '<form><div class="col-md-6 col-sm-6 col-xs-12" >'.
-                                '<label for="name">Employee Name</label>'.
-                                '<input id="website" class="form-control col-md-7 col-xs-12" required="required" type="text">'.
-                                '</div>'.
-                                '</div>'.
-                                '</form>';
-                        }
-                        ?>
+                                    <div class="col-md-6 ">
+                                        <label for="po">PO Number</label>
+                                        <input id="po" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="po" required type="text" placeholder="PO Number">
+                                    </div>
+
+                                    <div class="col-md-6 ">
+                                        <label class="col-md-8">PR Number</label>
+                                        <input id="pr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="pr" required type="text" placeholder="PR Number">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="name">OBR Number</label>
+                                        <input id="obr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="obr" required type="text" placeholder="OBR Number">
+                                    </div>
 
 
-                        <div class="modal-footer">
-                            <button type="submit" class="btn-modal btn btn-success" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
-                            <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
-                        </div>
+                                    <div class="item form-group">
+                                        <div id="container2" class="col-md-6">
+                                            <label for="name">Receiving Person</label>
+                                            <input id="owner" class="form-control col-md-7 col-xs-12" name="owner"  type="text" placeholder="Supply Officer">
+                                        </div>
+                                    </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" name="id" class="btn-modal btn btn-success" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
+                            </div>
+
+                        </form>
                     </div>
+
+
+
+
+
+
                 </div>
             </div>
         </div>

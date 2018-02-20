@@ -241,14 +241,17 @@ class Inventory_model extends CI_Model{
         return $query->result_array();
     }
     public function distrib(){
+        $user = $this->session->userdata['logged_in']['userid'];
         $id = $this->input->post('id');
-        print_r($id);
-        $quantity = $this->input->post('quant');
+        $serial_count = $this->input->post('serial');
+        $quantity = count($serial_count);
         $data = array(
             'dept_id' => $this->input->post('dept'),
             'ac_id' => $this->input->post('Code'),
-            'quantity_distributed' => $this->input->post('quant')
-
+            'quantity_distributed' => $quantity,
+            'receiver' => $this->input->post('owner'),
+            'item_id' =>$id,
+            'user_id' => $user
         );
 
         $this->db->insert('distribution',$data);
@@ -258,16 +261,12 @@ class Inventory_model extends CI_Model{
             'PR_no' => $this->input->post('pr'),
             'OBR_no' => $this->input->post('obr'),
         );
-        $ser = $this->input->post('serial');
 
-
-        for($i=0; $i < sizeof($ser); $i++){
+        for($i=0; $i < $quantity; $i++){
             $serial_data = array(
-                'end_user' => $this->input->post('owner')[$i],
-                'serial' => $this->input->post('serial')[$i],
-                'dist_id' => $insert_id
+                'dist_id' => $insert_id,
+                'item_status' => 'Distributed',
             );
-            print_r($serial_data);
             $this->db->limit($quantity);
             $this->db->update('serial',$serial_data,array('item_det_id' => $id,));
         }
