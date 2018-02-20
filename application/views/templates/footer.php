@@ -104,7 +104,6 @@
                     $('#accode').html(accountCode);
                 }
             });
-
             //add another item
             var counter =1;
             var div = $('.clone-tab');
@@ -155,6 +154,22 @@
 
         });
     //for editting
+        $(document).ready(function(){
+            $('form')
+                .each(function(){
+                    $(this).data('serialized', $(this).serialize())
+                })
+                .on('change input', function(){
+                    $(this)
+                        .find('button:submit')
+                        .attr('disabled', $(this).serialize() === $(this).data('serialized'))
+                    ;
+                })
+                .find('button:submit')
+                .attr('disabled', true)
+            ;
+
+        });
         function edit(id) {
             item_name = $('#itemname');
             itemdesc = $('#itemdesc');

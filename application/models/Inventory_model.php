@@ -198,7 +198,7 @@ class Inventory_model extends CI_Model{
             // compare data
             $result1 = array_diff($data1 , $data);
             $result2 = array_diff($data , $data1);
-            if($result1 === ''){
+
                 //convert array to string
                 $old = implode($result1);
                 $new = implode($result2);
@@ -212,7 +212,7 @@ class Inventory_model extends CI_Model{
 
                 //insert to edit log table
                 $this->db->insert('logs.editLog', $values);
-            }
+            
 
 
 
