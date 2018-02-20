@@ -250,58 +250,6 @@
                     </div>
                 </div>
                 <!-- end of add quantity -->
-                                <!--Edit-->
-                <div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">Edit</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal form-label-left" method="POST" action="inventory/edititem" novalidate>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Item Name<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="item" class="form-control col-md-7 col-xs-12" data-validate-length-range="20" data-validate-words="2" name="item" type="text" required placeholder="Item Name">
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="description" type="text" name="description" class="form-control col-md-7 col-xs-12" required placeholder="Description">
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Unit<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="Unit"  type="text" name="Unit" class="form-control col-md-7 col-xs-12" required placeholder="Unit">
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Type<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="Type" type="text" name="Type" class="form-control col-md-7 col-xs-12" required placeholder="Type">
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
-                                <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
-                            </div>
-
-                        </div>
-                        </form>
-                    </div>
-                </div>
-                <!--end of edit-->
-
                 <!-- Add Quantity -->
                 <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -338,14 +286,16 @@
 
         <!-- detail tab -->
         <div class="detail-tab x_panel hidden">
-            <div class="x_title" id="DetailsHead"> <a href="#" onclick=""><i class="glyphicon glyphicon-edit"></i></a>
+            <div class="x_title" id="DetailsHead"> <a id="changetoEdit" href="#"><i class="glyphicon glyphicon-edit"></i></a>
+                <form action="inventory/edititem" method="POST">
                 <h4 >Item Name: <b id="itemname"></b></h4>
-                <p>Description: <small> <b id="itemdesc"></b></small> </p>
+                <p>Description: <b id="itemdesc"></b></p>
                 <p>Total Quantity: <b id="total"></b></p>
-                <p>Unit: <b id="unit"></b></>
-
+                <p>Unit: <b id="unit"></b></p>
+                <p>Type: <b id="itemtype"></b></p>
+                <button type="submit" name="id" id="edtbutton" hidden>save</button>
+                </form>
                 <div class="clearfix"></div>
-            </div>
 
             <!-- Main Table Content-->
             <div role="tabpanel" class="tab-pane fade active in" id="tab_cont." aria-labelledby="CO-tab">
