@@ -39,22 +39,22 @@
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Item Name</label>
                                                             <input  type="text" name="item[]" class="form-control" data-parsley-trigger="blur"  data-parsley-group="set1"
-                                                            data-parsley-length="[1, 20]" required>
+                                                            data-parsley-length="[1, 20]"  data-parsley-required-message="Please insert the Item name" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Quantity</label>
-                                                            <input type="number" min='1' name="quant[]" class="form-control" data-parsley-group="set1" required>
+                                                            <input type="number" min='1' name="quant[]" class="form-control" data-parsley-group="set1" data-parsley-required-message="Please enter the Quantity" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Unit Cost</label>
-                                                            <input type="number" min='0' name="cost[]" data-parsley-group="set1" class="form-control"   data-error-messgae="Please Enter the Unit Cost" required>
+                                                            <input type="number" min='0' name="cost[]" data-parsley-group="set1" class="form-control"   data-parsley-required-message="Please put the Unit Cost"  required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Unit</label>
-                                                            <input  name="Unit[]" data-parsley-group="set1" class="form-control col-md-7 col-xs-12" class="unit" list="list" required>
+                                                            <input  name="Unit[]" data-parsley-group="set1" class="form-control col-md-7 col-xs-12" class="unit" list="list" data-parsley-required-message="Select the Unit" required>
                                                             <datalist id="list">
                                                                 <option value="piece">piece</option>
                                                                 <option value="box">box</option>
@@ -69,7 +69,7 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Type</label>
-                                                            <select data-parsley-group="set1" id="type" list="typelist" name="Type[]" class="form-control" required>
+                                                            <select data-parsley-group="set1" id="type" list="typelist" name="Type[]" class="form-control"   required>
                                                                 <option value="CO">Capital Outlay</option>
                                                                 <option value="MOOE">MOOE</option>
                                                             </select>
@@ -77,34 +77,34 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Delivery Date</label>
-                                                            <input data-parsley-group="set1" type="date" name="del[]" class="form-control" required>
+                                                            <input data-parsley-group="set1" type="date" name="del[]" class="form-control" data-parsley-required-message="Select the Delivery Date" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Date Received</label>
-                                                            <input data-parsley-group="set1" type="date" name="rec[]" class="form-control"  placeholder="Date Received" required>
+                                                            <input data-parsley-group="set1" type="date" name="rec[]" class="form-control"  placeholder="Date Received" data-parsley-required-message="Select Date Received" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Expiration Date</label>
-                                                            <input data-parsley-group="set1" type="date" name="exp[]" class="form-control" required>
+                                                            <input data-parsley-group="set1" type="date" name="exp[]" class="form-control" data-parsley-required-message="Select the Expiration Date" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Supplier</label>
-                                                            <select data-parsley-group="set1" list="typelist"  name="supp[]" class="supplieropt form-control" required>
+                                                            <select data-parsley-group="set1" list="typelist"  name="supp[]" class="supplieropt form-control"  required>
                                                             </select>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Official Receipt</label>
-                                                            <input data-parsley-group="set1" type="text" name="or[]" class="form-control"   data-error-messgae="Please enter the Official Receipt" required>
+                                                            <input data-parsley-group="set1" type="text" name="or[]" class="form-control"  data-parsley-required-message="Input Official Receipt" required>
                                                         </div>
 
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
                                                             <label>Description</label>
                                                             <textarea data-parsley-group="set1" name="description[]" id="message"  class="form-control" data-parsley-trigger="blur" data-parsley-minlength="1" data-parsley-maxlength="500" data-parsley-minlength-message="Description must"
-                                                                      data-parsley-validation-threshold="10" required></textarea>
+                                                                      data-parsley-validation-threshold="10"  required></textarea>
                                                         </div>
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
                                                             <button id="buttonCounter1" type="button" onclick="save(1)" class="savebtn btn btn-success"><i class="fa fa-arrow-down"></i>Save</button>
@@ -208,11 +208,11 @@
                                 <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
                             </div>
                             <div class="modal-body">
-                                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
+                                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate >
 
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label>Quantity</label>
-                                        <input type="number" name="quant" min=0  class="form-control col-md-7 col-xs-12" placeholder="Quantity">
+                                        <input data-parsley-group="set2" data-parsley-trigger="blur" type="number" name="quant" min=0  class="form-control col-md-7 col-xs-12" placeholder="Quantity">
                                     </div>
 
                                     <div class="col-md-6 col-sm-6 col-xs-12 form-group">
