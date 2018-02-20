@@ -38,22 +38,23 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Item Name</label>
-                                                            <input  type="text" name="item[]" class="form-control" data-parsley-length="[4, 20]" required>
+                                                            <input  type="text" name="item[]" class="form-control" data-parsley-trigger="blur"  data-parsley-group="set1"
+                                                            data-parsley-length="[1, 20]" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Quantity</label>
-                                                            <input type="number" min='0' name="quant[]" class="form-control" required>
+                                                            <input type="number" min='1' name="quant[]" class="form-control" data-parsley-group="set1" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Unit Cost</label>
-                                                            <input type="number" min='0' name="cost[]" class="form-control"   data-error-messgae="Please Enter the Unit Cost" required>
+                                                            <input type="number" min='0' name="cost[]" data-parsley-group="set1" class="form-control"   data-error-messgae="Please Enter the Unit Cost" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Unit</label>
-                                                            <input  name="Unit[]"  class="form-control col-md-7 col-xs-12" class="unit" list="list" required>
+                                                            <input  name="Unit[]" data-parsley-group="set1" class="form-control col-md-7 col-xs-12" class="unit" list="list" required>
                                                             <datalist id="list">
                                                                 <option value="piece">piece</option>
                                                                 <option value="box">box</option>
@@ -68,7 +69,7 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Type</label>
-                                                            <select id="type" list="typelist" name="Type[]" class="form-control" required>
+                                                            <select data-parsley-group="set1" id="type" list="typelist" name="Type[]" class="form-control" required>
                                                                 <option value="CO">Capital Outlay</option>
                                                                 <option value="MOOE">MOOE</option>
                                                             </select>
@@ -76,33 +77,33 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Delivery Date</label>
-                                                            <input type="date" name="del[]" class="form-control" required>
+                                                            <input data-parsley-group="set1" type="date" name="del[]" class="form-control" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Date Received</label>
-                                                            <input type="date" name="rec[]" class="form-control"  placeholder="Date Received" required>
+                                                            <input data-parsley-group="set1" type="date" name="rec[]" class="form-control"  placeholder="Date Received" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Expiration Date</label>
-                                                            <input type="date" name="exp[]" class="form-control" required>
+                                                            <input data-parsley-group="set1" type="date" name="exp[]" class="form-control" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Supplier</label>
-                                                            <select list="typelist"  name="supp[]" class="supplieropt form-control" required>
+                                                            <select data-parsley-group="set1" list="typelist"  name="supp[]" class="supplieropt form-control" required>
                                                             </select>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Official Receipt</label>
-                                                            <input type="text" name="or[]" class="form-control"   data-error-messgae="Please enter the Official Receipt" required>
+                                                            <input data-parsley-group="set1" type="text" name="or[]" class="form-control"   data-error-messgae="Please enter the Official Receipt" required>
                                                         </div>
 
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
                                                             <label>Description</label>
-                                                            <textarea name="description[]" id="message"  class="form-control" data-parsley-trigger="keyup" data-parsley-minlength="1" data-parsley-maxlength="500" data-parsley-minlength-message="Description must"
+                                                            <textarea data-parsley-group="set1" name="description[]" id="message"  class="form-control" data-parsley-trigger="blur" data-parsley-minlength="1" data-parsley-maxlength="500" data-parsley-minlength-message="Description must"
                                                                       data-parsley-validation-threshold="10" required></textarea>
                                                         </div>
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
@@ -171,7 +172,7 @@
                                     <div class="x_panel">
                                         <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem/MOOE" data-show-toggle="true" class="table table-no-bordered table-hover">
                                             <thead>
-                                            <!-- Data-field for getting data  -->
+                                            <!-- Data-field for getting data      -->
                                             <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
                                                 <th data-sortable="true" data-field="number">#</th>
                                                 <th data-sortable="true" data-field="item">Item Name</th>

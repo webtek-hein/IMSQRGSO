@@ -111,7 +111,7 @@
             var button = $('.savebtn');
             var list;
             $('#addanother').on('click',function () {
-                $('#addItemForm').parsley().whenValidate().done(function () {
+                $('#addItemForm').parsley().whenValidate({group: 'set'+counter}).done(function () {
                     counter++;
                     list = "<li id=\"list"+counter+"\" role=\"presentation\" class=\"listTab disabled\"><a href=\"#step"+counter+"B\" data-toggle=\"tab\" aria-controls=\"step"+counter+"\" role=\"tab\" title=\"Step"+counter+"\">" +
                         "<span class=\"round-tab\">" +
@@ -122,6 +122,7 @@
                     $('#bulk').append(list);
                     button.attr('id','buttonCounter'+counter);
                     div.clone().find('input,textarea').val("")
+                        .attr('data-parsley-group','set'+counter)
                         .toggleClass('required').end()
                         .attr('id','step'+counter+'B')
                         .appendTo('#bulkdiv')
@@ -167,7 +168,7 @@
 
         //on submit
         function save(counter){
-            $('#addItemForm').parsley().whenValidate().done(function () {
+            $('#addItemForm').parsley().whenValidate({group: 'set'+counter}).done(function () {
             var list = $('#list'+counter);
             var step = $('#step'+counter+'B');
             $.ajax({
