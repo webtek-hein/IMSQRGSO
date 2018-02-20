@@ -361,7 +361,13 @@
 
                         <div class="col-md-offset-2">
                             <h4><b>List of Serial</b></h4>
+
                             <form class="serial-form" method="POST" action="inventory/addSerial">
+                                <ul id="serial-tabs" class="nav nav-tabs">
+                                </ul>
+
+                                <div id="serial-tabcontent" class="tab-content">
+                                </div>
                             </form>
                         </div>
                     </div>

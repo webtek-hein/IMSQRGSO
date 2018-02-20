@@ -212,31 +212,65 @@
         }
         //view and edit serial
         function viewSerial(id) {
-            $('#anchor-serial').toggleClass('collapsed').attr('aria-expanded','true');
+            $('#anchor-serial').toggleClass('collapsed').attr('aria-expanded', 'true');
             $('#data1').toggleClass('in');
-            var div;
+            ul = $('#serial-tabs');
+            serialTabCounter = 1;
+            serialid = 1;
+            serialcontent = $('#serial-tabcontent');
             $.ajax({
-                url: 'inventory/getSerial/'+id,
+                url: 'inventory/getSerial/' + id,
                 dataType: 'JSON',
-                success: function (data){
+                success: function (data) {
                     var button = '';
                     var div = [];
-                    if(data[0]['position'] === 'Custodian') {
-                         button = "<br><div class=\"col-md-offset-3\">\n" +
-                            "<button type=\"button\" class=\"btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Privious</button>\n" +
+                    var list = [];
+                    var input = [];
+                    var divClass = "in active";
+                    var listClass = "active";
+                    if (data[0]['position'] === 'Custodian') {
+                        button = "<br><div class=\"col-md-offset-3\">\n" +
+                            "<button type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Privious</button>\n" +
                             "<button type=\"submit\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Submit</a></button>\n" +
-                            "<button type=\"button\" class=\"btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>\n" +
-                            " </div>";
+                            "<button type=\"button\" class=\"next-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>\n" +
+                            " </div></div>";
                     }
-                    for(i=0;i<data.length;i++){
-                        div +="<div class=\"col-md-5\">" +
-                        "<label>Serial "+(i+1)+"</label>" +
-                        "<input value=\""+data[i]['serial']+"\" type=\"text\" name=\"serial["+data[i]['serial_id']+"]\"" +
+                    //if div reaches 10
+                    //create another div
+                    for (i = 0; i < data.length; i++) {
+                        if (serialTabCounter !== 1) {
+                            divClass = "";
+                            listClass = "disabled";
+                        }
+                        input.push("<label>Serial " + (i + 1) + "</label>" +
+                            "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                             "min=0  " +
-                            "class=\"form-control col-md-2\">" +
-                        "</div>";
+                            "class=\"form-control col-md-2\">");
+                        if (input.length === 10) {
+                            div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
+                            list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
+                            serialcontent.append(div);
+                            $('#tab'+serialTabCounter).html(input+button);
+                            console.log(div+input+button);
+                            div = [];
+                            input=[];
+                            serialTabCounter++;
+                        }
                     }
-                    $('.serial-form').html(div+button);
+                    ul.html(list);
+
+                    $('.next-serialTab').on('click', function () {
+                        var $active = $('#serial-tabs .active');
+                        $active.next().removeClass('disabled');
+                        nextTab($active);
+                    });
+                    $('.prev-serialTab').on('click', function () {
+                        var $active = $('#serial-tabs .active');
+                        $active.prev().removeClass('disabled');
+                        prevTab($active);
+
+                    });
+
                 }
             });
         }
@@ -291,10 +325,10 @@
                             }],
                         });
         }
-        $('.btn-hide').on('click',function () {
-            $('#firststep').modal('hide');
-        });
         $(document).ready(function () {
+            $('.btn-hide').on('click',function () {
+                $('#firststep').modal('hide');
+            });
             $('.Distribute').on('show.bs.modal',function (e) {
                 $('#listdist').empty();
                 quantity = $('#distquant').val();
