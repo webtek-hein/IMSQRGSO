@@ -204,6 +204,12 @@ class Inventory_model extends CI_Model{
         $query = $this->db->get_where('item',array('item.item_id'=>$id));;
         return $query->result_array();
     }
+    public function departmentInventory(){
+        $this->db->select('item_name,quantity,item_description,quantity_distributed,date_received,unit');
+        $this->db->join('item','item.item_id = distribution.item_id');
+        $query = $this->db->get('distribution');
+        return $query->result_array();
+    }
     public function selectdetails(){
         $this->db->join('itemdetail','item.item_id = itemdetail.item_id','inner');
         $query = $this->db->get('item');
