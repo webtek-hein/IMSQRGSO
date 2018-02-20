@@ -251,7 +251,6 @@
                             list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
                             serialcontent.append(div);
                             $('#tab'+serialTabCounter).html(input.join('')+button);
-                            console.log(div+input+button);
                             div = [];
                             input=[];
                             serialTabCounter++;
@@ -283,7 +282,12 @@
                 dataType: 'JSON',
                 success: function (data) {
                     for (i = 0; i < data.length; i++) {
-                        serials += "<input type=\"checkbox\"> "+ data[i].serial+"<br>";
+                        if(data[i].serial !== 'null'){
+                            serials.push("<input type=\"checkbox\"> "+ data[i].serial+"<br>");
+                        }
+                    }
+                    if(serials.length === 0){
+                        serials = "Please input serial first.";
                     }
                     $('#serial').html(serials);
                 }
