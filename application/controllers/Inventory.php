@@ -35,7 +35,7 @@ class Inventory extends CI_Controller
             $data[] = array(
                 'number' => "<a href='details' onclick=\"detail($item[item_id])\">" .
                     $counter,
-                'item' => "<a onclick=\"detail($item[item_id])\">" .
+                'item' => "<a href=\"#\" onclick=\"detail($item[item_id])\">" .
                     $item['item_name'] . "</a>",
                 'description' => "<a href='' onclick=\"detail($item[item_id])\">" .
                     $item['item_description'] . "</a>",
@@ -203,4 +203,10 @@ class Inventory extends CI_Controller
         echo json_encode($data);
 
     }
+    public function getItem($id){
+        $list = array();
+        $list = $this->inv->getItem($id);
+        echo json_encode($list);
+    }
+
 }

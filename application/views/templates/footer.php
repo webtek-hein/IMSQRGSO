@@ -140,17 +140,6 @@
                 $('.btn-modal').val(item_id);
             });
 
-            $('#edit_modal').on('show.bs.modal',function (e) {
-                item_name = $(e.relatedTarget).data('name');
-                description = $(e.relatedTarget).data('description');
-                unit = $(e.relatedTarget).data('unit');
-                type = $(e.relatedTarget).data('type');
-
-                $('#item').val(item_name);
-                $('#description').val(description);
-                $('#Unit').val(unit);
-                $('#Type').val(type);
-            });
             $('#Item_Detail').on('hidden.bs.modal',function () {
                 $('#itemdet').bootstrapTable('destroy');
             });
@@ -165,7 +154,35 @@
 
 
         });
+    //for editting
+        function edit(id) {
+            item_name = $('#itemname');
+            itemdesc = $('#itemdesc');
+            total = $('#total');
+            unit = $('#unit');
+            type = $('#itemtype');
+            button = $('#edtbutton');
 
+            item_name.replaceWith('<input id="item" name="item" value='+item_name.text()+'>');
+            itemdesc.replaceWith('<input id="item" name="description" value='+itemdesc.text()+'>');
+            total.replaceWith(' <input value='+total.text()+' type="number" min="1" name="quant">');
+            unit.replaceWith('<input list="list" id="unit" name="Unit" value='+unit.text()+'><datalist id="list">' +
+                '<option value="piece">piece</option>' +
+                '<option value="box">box</option>' +
+                '<option value="set">set</option>' +
+                '<option value="ream">ream</option>' +
+                '<option value="dozen">dozen</option>' +
+                '<option value="bundle">bundle</option>' +
+                '<option value="sack">sack</option>' +
+                '<option value="others">others</option>' +
+                '</datalist>');
+            type.replaceWith('<select value='+type.text()+' id="type" list="typelist" name="Type" required>' +
+                '<option value="CO">Capital Outlay</option>\n' +
+                '<option value="MOOE">MOOE</option>\n' +
+                ' </select>');
+            button.removeAttr('hidden').val(id);
+
+        }
         //on submit
         function save(counter){
             $('#addItemForm').parsley().whenValidate({group: 'set'+counter}).done(function () {
@@ -177,9 +194,6 @@
                 data: $('#addItemForm').serializeArray(),
                 success: function (response) {
                     if(response){
-                        BootstrapDialog.show({
-                            message: 'Item has been added.'
-                        });
                         if($('#bulk li').length > 1) {
                             if (!list.prev().length < 1) {
                                 list.prev().addClass('active');
@@ -297,13 +311,20 @@
         function detail(id) {
             // //set item in the local storage
             // localStorage.setItem('activeTab', $('.detail-tab ').attr('class'));
+            $.get('inventory/getitem/'+id,function (data) {
+                item = JSON.parse(data);
+                $('#changetoEdit').attr('onclick','edit('+id+')');
+                $('#itemname').html(item.item_name);
+                $('#itemdesc').html(item.item_description);
+                $('#total').html(item.quantity);
+                $('#itemtype').html(item.item_type);
+                $('#unit').html(item.unit);
 
+            });
             $('.detail-tab ').toggleClass('hidden');
-
-
             $('.inventory-tab').toggleClass('hidden');
             $('#detail-tab-table').bootstrapTable('refresh',{url: 'inventory/detail/'+id});
-                $('#detail-tab-table').bootstrapTable({
+            $('#detail-tab-table').bootstrapTable({
                             url: 'inventory/detail/'+id,
                             columns: [{
                                 field: 'del',

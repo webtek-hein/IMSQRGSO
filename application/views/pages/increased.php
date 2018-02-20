@@ -36,7 +36,6 @@
                                     <th data-sortable="true" data-field="unit">Unit</th>
                                     <th data-sortable="true" data-field="type">Type</th>
                                     <th data-sortable="true" data-field="delivery_date">Delivery Date</th>
-                                    <th data-sortable="true" data-field="date_received">Date Received</th>
                                     <th data-sortable="true" data-field="expiration_date">Date Received</th>
                                     <th data-sortable="true" data-field="cost">Unit Cost</th>
                                     <th data-sortable="true" data-field="expiration_date">Exp Date</th>
@@ -60,7 +59,6 @@
                                     <th data-sortable="true" data-field="type">Type</th>
                                     <th data-sortable="true" data-field="delivery_date">Delivery Date</th>
                                     <th data-sortable="true" data-field="date_received">Date Received</th>
-                                    <th data-sortable="true" data-field="expiration_date">Date Received</th>
                                     <th data-sortable="true" data-field="cost">Unit Cost</th>
                                     <th data-sortable="true" data-field="expiration_date">Exp Date</th>
                                 </tr>

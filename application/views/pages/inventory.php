@@ -9,7 +9,7 @@
                 <div class="panel">
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if ($position === 'Admin' || $position === 'Custodian') {
-                        echo '<a  class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4><i class="fa fa-plus-circle" ></i> Add Item</h4></a>';
+                        echo '<a  class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4><i class="fa fa-cart-arrow-down" ></i> Add Item</h4></a>';
                     }
                     ?>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
@@ -39,22 +39,22 @@
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Item Name</label>
                                                             <input  type="text" name="item[]" class="form-control" data-parsley-trigger="blur"  data-parsley-group="set1"
-                                                            data-parsley-length="[1, 20]" required>
+                                                            data-parsley-length="[1, 20]"  data-parsley-required-message="Please insert Item name" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Quantity</label>
-                                                            <input type="number" min='1' name="quant[]" class="form-control" data-parsley-group="set1" required>
+                                                            <input type="number" min='1' name="quant[]" class="form-control" data-parsley-group="set1" data-parsley-required-message="Please enter Quantity" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Unit Cost</label>
-                                                            <input type="number" min='0' name="cost[]" data-parsley-group="set1" class="form-control"   data-error-messgae="Please Enter the Unit Cost" required>
+                                                            <input type="number" min='0' name="cost[]" data-parsley-group="set1" class="form-control"   data-parsley-required-message="Please insert Unit Cost"  required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Unit</label>
-                                                            <input  name="Unit[]" data-parsley-group="set1" class="form-control col-md-7 col-xs-12" class="unit" list="list" required>
+                                                            <input  name="Unit[]" data-parsley-group="set1" class="form-control col-md-7 col-xs-12" class="unit" list="list" data-parsley-required-message="Select the Unit" required>
                                                             <datalist id="list">
                                                                 <option value="piece">piece</option>
                                                                 <option value="box">box</option>
@@ -69,7 +69,7 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Type</label>
-                                                            <select data-parsley-group="set1" id="type" list="typelist" name="Type[]" class="form-control" required>
+                                                            <select data-parsley-group="set1" id="type" list="typelist" name="Type[]" class="form-control"   required>
                                                                 <option value="CO">Capital Outlay</option>
                                                                 <option value="MOOE">MOOE</option>
                                                             </select>
@@ -77,34 +77,34 @@
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Delivery Date</label>
-                                                            <input data-parsley-group="set1" type="date" name="del[]" class="form-control" required>
+                                                            <input data-parsley-group="set1" type="date" name="del[]" class="form-control" data-parsley-required-message="Select the Delivery Date" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Date Received</label>
-                                                            <input data-parsley-group="set1" type="date" name="rec[]" class="form-control"  placeholder="Date Received" required>
+                                                            <input data-parsley-group="set1" type="date" name="rec[]" class="form-control"  placeholder="Date Received" data-parsley-required-message="Select Date Received" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Expiration Date</label>
-                                                            <input data-parsley-group="set1" type="date" name="exp[]" class="form-control" required>
+                                                            <input data-parsley-group="set1" type="date" name="exp[]" class="form-control" data-parsley-required-message="Select the Expiration Date" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Supplier</label>
-                                                            <select data-parsley-group="set1" list="typelist"  name="supp[]" class="supplieropt form-control" required>
+                                                            <select data-parsley-group="set1" list="typelist"  name="supp[]" class="supplieropt form-control"  required>
                                                             </select>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Official Receipt</label>
-                                                            <input data-parsley-group="set1" type="text" name="or[]" class="form-control"   data-error-messgae="Please enter the Official Receipt" required>
+                                                            <input data-parsley-group="set1" type="text" name="or[]" class="form-control"  data-parsley-required-message="Input Official Receipt" required>
                                                         </div>
 
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
                                                             <label>Description</label>
                                                             <textarea data-parsley-group="set1" name="description[]" id="message"  class="form-control" data-parsley-trigger="blur" data-parsley-minlength="1" data-parsley-maxlength="500" data-parsley-minlength-message="Description must"
-                                                                      data-parsley-validation-threshold="10" required></textarea>
+                                                                      data-parsley-validation-threshold="10"   data-parsley-required-messag="Put description of the items" required></textarea>
                                                         </div>
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
                                                             <button id="buttonCounter1" type="button" onclick="save(1)" class="savebtn btn btn-success"><i class="fa fa-arrow-down"></i>Save</button>
@@ -208,11 +208,11 @@
                                 <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
                             </div>
                             <div class="modal-body">
-                                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
+                                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate >
 
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label>Quantity</label>
-                                        <input type="number" name="quant" min=0  class="form-control col-md-7 col-xs-12" placeholder="Quantity">
+                                        <input data-parsley-group="set2" data-parsley-trigger="blur" type="number" name="quant" min=0  class="form-control col-md-7 col-xs-12" placeholder="Quantity">
                                     </div>
 
                                     <div class="col-md-6 col-sm-6 col-xs-12 form-group">
@@ -250,58 +250,6 @@
                     </div>
                 </div>
                 <!-- end of add quantity -->
-                                <!--Edit-->
-                <div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">Edit</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal form-label-left" method="POST" action="inventory/edititem" novalidate>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Item Name<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="item" class="form-control col-md-7 col-xs-12" data-validate-length-range="20" data-validate-words="2" name="item" type="text" required placeholder="Item Name">
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="description" type="text" name="description" class="form-control col-md-7 col-xs-12" required placeholder="Description">
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Unit<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="Unit"  type="text" name="Unit" class="form-control col-md-7 col-xs-12" required placeholder="Unit">
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Type<span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="Type" type="text" name="Type" class="form-control col-md-7 col-xs-12" required placeholder="Type">
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
-                                <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
-                            </div>
-
-                        </div>
-                        </form>
-                    </div>
-                </div>
-                <!--end of edit-->
-
                 <!-- Add Quantity -->
                 <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -338,15 +286,16 @@
 
         <!-- detail tab -->
         <div class="detail-tab x_panel hidden">
-            <div class="clearfix"></div>
-            <div class="x_title" id="DetailsHead">
-                <h4>Item Name: <small> <b></b></small> </h4>
-                <h4>Description: <small> <b></b></small> </h4>
-                <p>Total Quantity: </p>
-                <p>Unit:</p>
-
+            <div class="x_title" id="DetailsHead"> <a id="changetoEdit" href="#"><i class="glyphicon glyphicon-edit"></i></a>
+                <form action="inventory/edititem" method="POST">
+                <h4 >Item Name: <b id="itemname"></b></h4>
+                <p>Description: <b id="itemdesc"></b></p>
+                <p>Total Quantity: <b id="total"></b></p>
+                <p>Unit: <b id="unit"></b></p>
+                <p>Type: <b id="itemtype"></b></p>
+                <button type="submit" name="id" id="edtbutton" hidden>save</button>
+                </form>
                 <div class="clearfix"></div>
-            </div>
 
             <!-- Main Table Content-->
             <div role="tabpanel" class="tab-pane fade active in" id="tab_cont." aria-labelledby="CO-tab">
