@@ -39,17 +39,17 @@
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Item Name</label>
                                                             <input  type="text" name="item[]" class="form-control" data-parsley-trigger="blur"  data-parsley-group="set1"
-                                                            data-parsley-length="[1, 20]"  data-parsley-required-message="Please insert the Item name" required>
+                                                            data-parsley-length="[1, 20]"  data-parsley-required-message="Please insert Item name" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Quantity</label>
-                                                            <input type="number" min='1' name="quant[]" class="form-control" data-parsley-group="set1" data-parsley-required-message="Please enter the Quantity" required>
+                                                            <input type="number" min='1' name="quant[]" class="form-control" data-parsley-group="set1" data-parsley-required-message="Please enter Quantity" required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
                                                             <label>Unit Cost</label>
-                                                            <input type="number" min='0' name="cost[]" data-parsley-group="set1" class="form-control"   data-parsley-required-message="Please put the Unit Cost"  required>
+                                                            <input type="number" min='0' name="cost[]" data-parsley-group="set1" class="form-control"   data-parsley-required-message="Please insert Unit Cost"  required>
                                                         </div>
 
                                                         <div class="col-md-5 col-sm-6 col-xs-12 form-group">
@@ -104,7 +104,7 @@
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
                                                             <label>Description</label>
                                                             <textarea data-parsley-group="set1" name="description[]" id="message"  class="form-control" data-parsley-trigger="blur" data-parsley-minlength="1" data-parsley-maxlength="500" data-parsley-minlength-message="Description must"
-                                                                      data-parsley-validation-threshold="10"  required></textarea>
+                                                                      data-parsley-validation-threshold="10"   data-parsley-required-messag="Put description of the items" required></textarea>
                                                         </div>
                                                         <div class="col-md-10 col-sm-12 col-xs-12 form-group">
                                                             <button id="buttonCounter1" type="button" onclick="save(1)" class="savebtn btn btn-success"><i class="fa fa-arrow-down"></i>Save</button>

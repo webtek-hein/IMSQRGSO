@@ -14,34 +14,30 @@ class Logs extends CI_Controller {
     {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
-        $dept_id = $this->session->userdata['logged_in']['dept_id'];
+        $userid = $this->session->userdata['logged_in']['userid'];
 
         if($position == 'Supply Officer'){
-            $increase = $this->Logs_model->increase_log();
+            $inc = $this->Logs_model->increase_log();
         } else {
-            $increase = $this->Logs_model->get_increase_log_per_department($dept_id);
+            $inc = $this->Logs_model->get_increase_log_per_department($dept_id);
         }
-
-            $inc = $this->logs->increase_log();
-            $counter = 1;
+        $data = array();
             foreach ($inc as $list){
                 $row = array();
-                $row['number']=$counter;
-                $row['timestamp']= $list['timestamp'];
-                $row['item'] = $list['item_name'];
-                $row['description'] = $list['item_description'];
-                $row['quantity'] = $list['quantity'];
-                $row['unit'] = $list['unit'];
-                $row['type'] = $list['item_type'];
-                $row['delivery_date'] = $list['date_delivered'];
-                $row['date_received'] = $list['date_received'];
-                $row['expiration_date'] = $list['expiration_date'];
-                $row['cost'] = $list['unit_cost'];
-
+                $row[]= $list['timestamp'];
+                $row[] = $list['item_name'];
+                $row[] = $list['item_description'];
+                $row[] = $list['quantity'];
+                $row[] = $list['unit'];
+                $row[] = $list['item_type'];
+                $row[] = $list['date_delivered'];
+                $row[] = $list['date_received'];
+                $row[] = $list['expiration_date'];
+                $row[] = $list['unit_cost'];
                 $data[] = $row;
-                $counter++;
             }
-            echo json_encode($data);
+            $list = array('data'=>$data);
+            echo json_encode($list);
     }
         public function decreaseLog()
     {
