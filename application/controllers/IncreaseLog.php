@@ -18,9 +18,7 @@ class Increaselog extends CI_Controller {
     {
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['userid'];
-
         $increase = $this->logs_model->increase_log();
-
         $data = array();
         foreach ($increase as $list) {
             $row = array();
