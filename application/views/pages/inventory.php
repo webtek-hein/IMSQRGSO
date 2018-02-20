@@ -347,8 +347,6 @@
                             <div class="tab-content">
 
                                     <div id="serial">
-                                        <label>
-                                        </label>
                                         </div>
 
                                     <div class="col-md-6">
@@ -395,12 +393,6 @@
 
                         </form>
                     </div>
-
-
-
-
-
-
                 </div>
             </div>
         </div>

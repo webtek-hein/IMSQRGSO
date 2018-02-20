@@ -253,35 +253,38 @@ class Inventory_model extends CI_Model{
     public function distrib(){
         $user = $this->session->userdata['logged_in']['userid'];
         $id = $this->input->post('id');
-        $serial_count = $this->input->post('serial');
-        $quantity = count($serial_count);
+        $serial = $this->input->post('serial');
+        $quantity = count($serial);
         $data = array(
             'dept_id' => $this->input->post('dept'),
             'ac_id' => $this->input->post('Code'),
             'quantity_distributed' => $quantity,
             'receiver' => $this->input->post('owner'),
-            'item_id' =>$id,
-            'user_id' => $user
-        );
-
-        $this->db->insert('distribution',$data);
-        $insert_id = $this->db->insert_id();
-        $data1 = array(
             'PO_no' => $this->input->post('po'),
             'PR_no' => $this->input->post('pr'),
             'OBR_no' => $this->input->post('obr'),
+            'item_id' =>$id,
+            'user_id' => $user
         );
-
+        $this->db->insert('distribution',$data);
+        $insert_id = $this->db->insert_id();
         for($i=0; $i < $quantity; $i++){
-            $serial_data = array(
+            $serial_data[] = array(
+                'serial'=> $serial[$i],
                 'dist_id' => $insert_id,
                 'item_status' => 'Distributed',
             );
-            $this->db->limit($quantity);
-            $this->db->update('serial',$serial_data,array('item_det_id' => $id,));
         }
+        $this->db->update_batch('serial',$serial_data,'serial');
 
-        $this->db->update('itemdetail',$data1,array('item_det_id' => $id));
+        $this->db->set('quantity','quantity-'.$quantity,FALSE);
+        $this->db->where('item_det_id',$id);
+        $this->db->update('itemdetail');
+
+        $item_id = $this->db->select('item_id')->where('item_det_id',$id)->get('itemdetail')->row_array();
+        $this->db->set('quantity','quantity-'.$quantity,FALSE);
+        $this->db->where($item_id);
+        $this->db->update('item');
     }
     public function return_item(){
         $query = $this->db->get('return');

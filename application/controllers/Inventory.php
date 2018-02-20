@@ -171,6 +171,7 @@ class Inventory extends CI_Controller
                 'serial_id' => $serial['serial_id'],
                 'serial' => $serial['serial'],
                 'position' => $position,
+                'item_status' => $serial['item_status']
             );
         }
         echo json_encode($data);
