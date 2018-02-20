@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2018 at 05:08 PM
+-- Generation Time: Feb 20, 2018 at 05:21 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -181,7 +181,6 @@ CREATE TABLE `distribution` (
   `PO_no` varchar(15) NOT NULL,
   `PR_no` varchar(15) NOT NULL,
   `OBR_no` varchar(15) NOT NULL,
-  `OR_no` varchar(15) NOT NULL,
   `item_id` int(15) NOT NULL,
   `ac_id` int(15) NOT NULL,
   `user_id` int(15) NOT NULL,
@@ -216,6 +215,7 @@ CREATE TABLE `itemdetail` (
   `quantity` int(15) NOT NULL,
   `unit_cost` int(15) NOT NULL,
   `expiration_date` date NOT NULL,
+  `OR_no` varchar(15) NOT NULL,
   `item_id` int(15) NOT NULL,
   `supplier_id` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -403,7 +403,7 @@ ALTER TABLE `distribution`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `itemdetail`
 --
