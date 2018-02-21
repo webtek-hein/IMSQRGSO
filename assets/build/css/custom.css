@@ -4253,10 +4253,10 @@ HEAD
 #sidebar-menu #li1{
 }
 
-    /*--End Side-Menu--*/
+/*--End Side-Menu--*/
 
 
-    /*--Inventory Add Item--*/
+/*--Inventory Add Item--*/
 .nav_menu{
     height:50px;
 }
@@ -4288,10 +4288,6 @@ HEAD
     background-color: #F08080;
     border-color: black;
 }
-.modal-body #addanother{
-    background-color: #90EE90;
-    border-color: black;
-}
 /*--End Inventory Add Item--*/
 
 /*--Inventory Main Content--*/
@@ -4308,7 +4304,7 @@ HEAD
 
 /*--End Inventory Main Content--*/
 
-/*--Modal Item Detail--*/
+/*--Inventory Modal Item Detail--*/
 #ModalIDetail{
     height: 2000px;
     width: 1300px;
@@ -4317,6 +4313,120 @@ HEAD
     font-size: 20px;
     margin-left: 500px;
 }
-/*--End Modal Item Detail--*/
+/*--Inventory End Modal Item Detail--*/
 
+/*--Inventory Add Item From--*/
+#addItemForm .left{
+    float:left;
+    border-right: 5px dotted #1ABB9C;
+    box-sizing: border-box;
+    padding: 0px 15px 0px 0px;
+}
+#addItemForm .left input {
+    width: 300px;
+}
+.form-group select{
+    width: 300px;
+}
 
+#addItemForm .right{
+    margin-right: 150px;
+    float:right;
+    box-sizing: border-box;
+    padding: 0px 0px 0px 15px;
+}
+#addItemForm .right input{
+    width: 300px;
+}
+
+#ModalI .col-md-9{
+    margin-left: 150px;
+    background-color: #3d9970;
+}
+#ModalI button{
+    border-color: black;
+    border-radius: 5px;
+    color:black;
+}
+#ModalI #buttonCounter1{
+    background-color:#6495ED;
+}
+#ModalI #saveALL{
+    background-color:#F08080;
+}
+#ModalI #addanother{
+    background-color: #90EE90;
+}
+/*--Inventory End of Add Item From--*/
+
+/*--Inventory Add Quantity From--*/
+#addquant .modal-header{
+    background-color:#98FB98;
+}
+#addquant h4{
+    color:black;
+    text-align: center;
+}
+#addquant label{
+    color:black;
+}
+#addquant .modal-footer{
+    height: 50px;
+}
+#addquant .modal-footer button{
+    margin-top: -10px;
+    border-color: black;
+    color:black;
+}
+#addquant .modal-footer #savequant{
+     background-color:#B0C4DE;
+ }
+#addquant .modal-footer #cancel1{
+    background-color:#F08080;
+}
+#addquant .col-md-4 select{
+    width: 260px;
+}
+/*--Inventory End Add Quantity From--*/
+
+/*--Inventory Edit From--*/
+#edit_modal .modal-header{
+    background-color:#FFD700;
+}
+#edit_modal .modal-header h4{
+    color:black;
+    text-align: center;
+}
+#edit_modal .modal-footer{
+    height: 50px;
+}
+#edit_modal .modal-footer button{
+    margin-top: -10px;
+    border-color: black;
+    color:black;
+}
+#edit_modal .modal-footer #save1{
+    background-color:#B0C4DE;
+}
+#edit_modal .modal-footer #cancel1{
+    background-color:#F08080;
+}
+#edit_modal .col-md-7{
+   margin-left: 100px;
+}
+/*--Inventory End Edit From--*/
+
+/*-- SUPPLIER --*/
+
+/*--Add Supplier --*/
+
+#collapseOne .col-md-7{
+    background-color: #3d9970;
+    margin-left: 300px;
+}
+#collapseOne .form-group{
+    margin-left: 100px;
+}
+/*--End of Add Supplier --*/
+
+/*-- SUPPLIER --*/

@@ -45,7 +45,7 @@
                                             <h2>Heinrich Bangui</h2>
                                             <p><strong>UserName: </strong> George</p>
                                             <ul class="list-unstyled">
-                                                <li><i class="fa fa-building"></i> Department: </li>
+                                                <li><i class="fa fa-home"></i> Department: </li>
                                                 <li><i class="fa fa-phone"></i> Contact #: </li>
                                             </ul>
                                         </div>
@@ -56,7 +56,7 @@
                                     <div class="col-xs-12 bottom text-center">
                                         <div class="pull-right">
                                             <button type="button" class="btn btn-success btn-xs"><i class="fa fa-thumbs-o-up"></i> Active</button>
-                                            <button type="button" class="btn btn-danger btn-xs"><i class="	fa fa-thumbs-down"></i> Deactivate </button>
+                                            <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-user-times"></i> Deactivate </button>
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                             <h2>Heinrich Bangui</h2>
                                             <p><strong>UserName: </strong> George</p>
                                             <ul class="list-unstyled">
-                                                <li><i class="fa fa-building"></i> Department: </li>
+                                                <li><i class="fa fa-home"></i> Department: </li>
                                                 <li><i class="fa fa-phone"></i> Contact #: </li>
                                             </ul>
                                         </div>
@@ -81,7 +81,7 @@
                                     <div class="col-xs-12 bottom text-center">
                                         <div class="pull-right">
                                             <button type="button" class="btn btn-success btn-xs"><i class="fa fa-thumbs-o-up"></i> Active</button>
-                                            <button type="button" class="btn btn-danger btn-xs"><i class="	fa fa-thumbs-down"></i> Deactivate </button>
+                                            <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-user-times"></i> Deactivate </button>
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                                             <h2>Heinrich Bangui</h2>
                                             <p><strong>UserName: </strong> George</p>
                                             <ul class="list-unstyled">
-                                                <li><i class="fa fa-building"></i> Department: </li>
+                                                <li><i class="fa fa-home"></i> Department: </li>
                                                 <li><i class="fa fa-phone"></i> Contact #: </li>
                                             </ul>
                                         </div>
@@ -106,7 +106,7 @@
                                     <div class="col-xs-12 bottom text-center">
                                         <div class="pull-right">
                                             <button type="button" class="btn btn-success btn-xs"><i class="fa fa-thumbs-o-up"></i> Active</button>
-                                            <button type="button" class="btn btn-danger btn-xs"><i class="	fa fa-thumbs-down"></i> Deactivate </button>
+                                            <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-user-times"></i> Deactivate </button>
                                         </div>
                                     </div>
                                 </div>

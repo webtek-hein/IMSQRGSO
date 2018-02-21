@@ -30,31 +30,33 @@
                                             </ul>
                                         </div>
                                         <div class="modal-body" id="ModalI">
+                                            <div class="col-md-9">
+                                            <div class="x_panel">
                                             <form id="addItemForm" role="form" action="inventory/saveAll" method="POST" data-parsley-validate="">
-
                                                 <div id="bulkdiv" class="tab-content">
 
                                                     <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
 
-                                                        <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+                                                    <div class="left">
+                                                        <div class="form-group">
                                                             <label>Item Name</label>
                                                             <input  type="text" name="item[]" class="form-control" data-parsley-trigger="blur"  data-parsley-group="set1"
                                                             data-parsley-length="[1, 20]"  data-parsley-required-message="Please insert Item name" required>
                                                         </div>
 
-                                                        <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+                                                        <div class="group">
                                                             <label>Quantity</label>
                                                             <input type="number" min='1' name="quant[]" class="form-control" data-parsley-group="set1" data-parsley-required-message="Please enter Quantity" required>
                                                         </div>
 
-                                                        <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+                                                        <div class="form-group">
                                                             <label>Unit Cost</label>
                                                             <input type="number" min='0' name="cost[]" data-parsley-group="set1" class="form-control"   data-parsley-required-message="Please insert Unit Cost"  required>
                                                         </div>
 
-                                                        <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+                                                        <div class="form-group">
                                                             <label>Unit</label>
-                                                            <input  name="Unit[]" data-parsley-group="set1" class="form-control col-md-7 col-xs-12" class="unit" list="list" data-parsley-required-message="Select the Unit" required>
+                                                            <input  name="Unit[]" data-parsley-group="set1" class="form-control" class="unit" list="list" data-parsley-required-message="Select the Unit" required>
                                                             <datalist id="list">
                                                                 <option value="piece">piece</option>
                                                                 <option value="box">box</option>
@@ -67,65 +69,73 @@
                                                             </datalist>
                                                         </div>
 
-                                                        <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+                                                        <div class="form-group">
                                                             <label>Type</label>
                                                             <select data-parsley-group="set1" id="type" list="typelist" name="Type[]" class="form-control"   required>
                                                                 <option value="CO">Capital Outlay</option>
                                                                 <option value="MOOE">MOOE</option>
                                                             </select>
                                                         </div>
+                                                    </div>
 
-                                                        <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+                                                    <div class="right">
+                                                        <div class="form-group">
                                                             <label>Delivery Date</label>
                                                             <input data-parsley-group="set1" type="date" name="del[]" class="form-control" data-parsley-required-message="Select the Delivery Date" required>
                                                         </div>
 
-                                                        <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+                                                        <div class="form-group">
                                                             <label>Date Received</label>
                                                             <input data-parsley-group="set1" type="date" name="rec[]" class="form-control"  placeholder="Date Received" data-parsley-required-message="Select Date Received" required>
                                                         </div>
 
-                                                        <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+                                                        <div class="form-group">
                                                             <label>Expiration Date</label>
                                                             <input data-parsley-group="set1" type="date" name="exp[]" class="form-control" data-parsley-required-message="Select the Expiration Date" required>
                                                         </div>
 
-                                                        <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+                                                        <div class="form-group">
                                                             <label>Supplier</label>
                                                             <select data-parsley-group="set1" list="typelist"  name="supp[]" class="supplieropt form-control"  required>
                                                             </select>
                                                         </div>
 
-                                                        <div class="col-md-5 col-sm-6 col-xs-12 form-group">
+                                                        <div class="form-group">
                                                             <label>Official Receipt</label>
                                                             <input data-parsley-group="set1" type="text" name="or[]" class="form-control"  data-parsley-required-message="Input Official Receipt" required>
                                                         </div>
+                                                    </div>
 
-                                                        <div class="col-md-10 col-sm-12 col-xs-12 form-group">
+                                                        <div class="col-md-10">
                                                             <label>Description</label>
                                                             <textarea data-parsley-group="set1" name="description[]" id="message"  class="form-control" data-parsley-trigger="blur" data-parsley-minlength="1" data-parsley-maxlength="500" data-parsley-minlength-message="Description must"
                                                                       data-parsley-validation-threshold="10"   data-parsley-required-messag="Put description of the items" required></textarea>
                                                         </div>
-                                                        <div class="col-md-10 col-sm-12 col-xs-12 form-group">
-                                                            <button id="buttonCounter1" type="button" onclick="save(1)" class="savebtn btn btn-success"><i class="fa fa-arrow-down"></i>Save</button>
-                                                            <button type="submit" id="saveALL" class="btn btn-success"><i class="fa fa-arrow-down"></i> Save All</button>
-                                                        </div>
+                                                    </div>
+
+                                            </form>
+                                            </div>
+                                                <div class="ln_solid"></div>
+                                                <div class="footer">
+                                                    <button id="buttonCounter1" type="button" onclick="save(1)" class="savebtn btn btn-default"><i class="fa fa-arrow-down"></i> Save</button>
+                                                    <button type="submit" id="saveALL" class="btn btn-default"><i class="fa fa-download"></i> Save All</button>
+
+                                                    <div class="list-inline pull-right">
+                                                        <button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa fa-cart-plus" ></i> Add another item</button>
                                                     </div>
                                                 </div>
-                                                <div class="list-inline pull-right">
-                                                    <button type="button" id="addanother" class="next-step btn btn-default"><i class="fa fa-plus-circle" ></i> Add another item</button>
-                                                </div>
-                                            </form>
+
+                                            </div>
+
 
                                         </div>
-
+                                </div>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- /ADD item-->
+                    </div>                    <!-- /ADD item-->
                 </div>
                 <!-- Main Table Content-->
                 <div class="x_content">
@@ -224,7 +234,49 @@
 
                 <div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
+                <!-- Modals -->
+                <!-- Add Quantity -->
+                <div id="addquant" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
 
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate >
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                        <label>Quantity</label>
+                                        <input data-parsley-group="set2" data-parsley-trigger="blur" type="number" name="quant" min=0  class="form-control has-feedback-left" placeholder="Quantity">
+                                        <span class="fa fa-plus-square-o form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                        <label>Unit Cost</label>
+                                        <input type="number" min='0' name="cost" class="form-control has-feedback-left" id="inputSuccess3"  placeholder="Unit Cost">
+                                        <span class="fa fa-circle-o form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                        <label>Delivery Date</label>
+                                        <input type="date" name="del" class="form-control has-feedback-left">
+                                        <span class="fa fa-calendar-plus-o form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                        <label>Date Received</label>
+                                        <input type="date" name="rec" data-validate-length-range="5,20" class="optional form-control has-feedback-left" >
+                                        <span class="fa fa-calendar-check-o form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                        <label>Expiration Date</label>
+                                        <input type="date" name="exp" data-validate-length-range="5,20"  class="optional form-control has-feedback-left">
+                                        <span class="fa fa-calendar-times-o form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
                         <div class="col-md-offset-2">
                             <h4><b>List of Serial</b></h4>
 
@@ -253,6 +305,26 @@
         <div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
+                                    <div class="col-md-4 form-group has-feedback"">
+                                        <label>Supplier</label>
+                                        <select list="typelist"  name="supp" class="supplieropt form-control has-feedback-left"  placeholder="Type">
+                                        </select>
+                                        <span class="fa fa-truck form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn-modal btn btn-default" id="savequant" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
+                                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- end of add quantity -->
+                                <!--Edit-->
+                <div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
@@ -264,6 +336,18 @@
                             <div class="tab-content">
 
                                     <div id="serial">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Edit</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal form-label-left" method="POST" action="inventory/edititem" novalidate>
+                                    <div class="item form-group">
+                                        <div class="col-md-7 col-sm-6 col-xs-12 form-group has-feedback">
+                                            <label for="name">Item Name</label>
+                                            <input id="item" class="form-control has-feedback-left" data-validate-length-range="20" data-validate-words="2" name="item" type="text" required placeholder="Item Name">
+                                            <span class="fa fa-tag form-control-feedback left" aria-hidden="true"></span>
                                         </div>
 
                                     <div class="col-md-6">
@@ -271,6 +355,12 @@
                                         <select list="typelist"   name="dept" id="deptopt" class="form-control" required placeholder="Type">
                                         </select>
                                     </div>
+                                    <div class="item form-group">
+                                        <div class="col-md-7 col-sm-6 col-xs-12 form-group has-feedback">
+                                            <label for="description">Description</label>
+                                            <input id="description" type="text" name="description" class="form-control has-feedback-left" required placeholder="Description">
+                                            <span class="fa fa-newspaper-o form-control-feedback left" aria-hidden="true"></span>
+                                        </div>
 
                                     <div class="col-md-6">
                                         <label for="name">Account Code</label>
@@ -291,10 +381,20 @@
                                     <div class="col-md-6">
                                         <label for="name">OBR Number</label>
                                         <input id="obr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="obr" required type="text" placeholder="OBR Number">
+                                    <div class="item form-group">
+                                        <div class="col-md-7 col-sm-6 col-xs-12 form-group has-feedback">
+                                            <label for="website">Unit</label>
+                                            <input id="Unit"  type="text" name="Unit" class="form-control has-feedback-left" required placeholder="Unit">
+                                            <span class="fa fa-cubes form-control-feedback left" aria-hidden="true"></span>
+                                        </div>
                                     </div>
 
 
                                     <div class="item form-group">
+                                        <div class="col-md-7 col-sm-6 col-xs-12 form-group has-feedback">
+                                            <label for="website">Type</label>
+                                            <input id="Type" type="text" name="Type" class="form-control has-feedback-left" required placeholder="Type">
+                                            <span class="fa fa-pencil form-control-feedback left" aria-hidden="true"></span>
                                         <div id="container2" class="col-md-6">
                                             <label for="name">Receiving Person</label>
                                             <input id="owner" class="form-control col-md-7 col-xs-12" name="owner"  type="text" placeholder="Supply Officer">
