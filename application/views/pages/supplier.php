@@ -71,7 +71,7 @@
                                         <!-- Data-field for getting data  -->
                                         <tr >
                                             <th data-sortable="true" data-field="supplier">Supplier</th>
-                                            <th data-sortable="true" data-field="address">Akddress</th>
+                                            <th data-sortable="true" data-field="address">Address</th>
                                             <th data-sortable="true" data-field="contact">Contact</th>
                                         </tr>
                                      </thead>
