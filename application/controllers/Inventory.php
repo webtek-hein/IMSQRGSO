@@ -43,8 +43,6 @@ class Inventory extends CI_Controller
                     $item['quantity'] . "</a>",
                 'unit' => "<a href='' onclick=\"detail($item[item_id])\">" .
                     $item['unit'] . "</a>",
-                'type' => "<a href='' onclick=\"detail($item[item_type])\">" .
-                    $item['item_type'] . "</a>",
                 'action' => "<a class=\"text-primary\" href=\"#\" onclick=\"detail($item[item_id])\"> View Detail</a>");
             $counter++;
         }
