@@ -199,13 +199,14 @@ class Inventory extends CI_Controller
                 'type' => $item['item_type'],
                 'action' => "<a class=\"text-primary\" href=\"#\" onclick=\"detail($item[item_id])\"> View Detail</a>"
             );
-            $counter ++;
+            $counter++;
         }
         echo json_encode($data);
 
     }
 
-    public function getItem($id){
+    public function getItem($id)
+    {
         $list = array();
         $list = $this->inv->getItem($id);
         echo json_encode($list);

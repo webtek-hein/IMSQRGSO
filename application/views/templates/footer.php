@@ -80,9 +80,6 @@
                         field: 'unit',
                         title: 'Unit'
                     },{
-                        field: 'type',
-                        title: 'Type'
-                    },{
                         field: 'action',
                         title: 'Action'
                     }],
@@ -116,12 +113,10 @@
                     url: 'inventory/getdept',
                     dataType: 'JSON',
                     success: function (data) {
-                        console.log(data);
                         for (i=0;i<data.length;i++){
                             department += "<option value="+data[i].dept_id+">"+data[i].department+"<br>";
                             deptlist += '<li><a onclick="loadDepartmentInventory('+ data[i].dept_id +')">' + data[i].department + '</a></li>';
                         }
-                        console.log(deptlist);
                         $('#deptopt').html(department);
                         $('#deptlist').html(deptlist);
                     }
@@ -165,16 +160,6 @@
                 $('#Item_Detail').on('hidden.bs.modal',function () {
                     $('#itemdet').bootstrapTable('destroy');
                 });
-                // //get active tab on local storage
-                // $('body').on('beforeunload',function () {
-                //     activetab = localStorage.getItem('activeTab');
-                //     if(activetab.contains('detail-tab')){
-                //         console.log(activetab);
-                //         $('detail-tab').toggleClass('hidden');
-                //     }
-                // });
-
-
             });
             //load Department
             function loadDepartmentInventory(id) {
@@ -201,9 +186,6 @@
                     },{
                         field: 'unit',
                         title: 'Unit'
-                    },{
-                        field: 'type',
-                        title: 'Type'
                     },{
                         field: 'action',
                         title: 'Action'
@@ -315,7 +297,6 @@
                         var input = [];
                         var divClass = "in active";
                         var listClass = "active";
-                        console.log(data);
 
                         if (data[0]['position'] === 'Custodian') {
                             button = "<br><div class=\"col-md-offset-3\">\n" +
@@ -384,7 +365,8 @@
                     dataType: 'JSON',
                     success: function (data) {
                         for (i = 0; i < data.length; i++) {
-                            if(data[i].serial !== 'null' && data[i].item_status === 'In-stock'){
+                            if(data[i].serial !== null && data[i].item_status === 'In-stock'){
+                                console.log(eval(data[i].serial !== null));
                                 serials.push("<input name=\"serial[]\" type=\"checkbox\" value="+data[i].serial+">"+data[i].serial+"<br>");
                             }
                         }
