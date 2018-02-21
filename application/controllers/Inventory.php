@@ -33,15 +33,15 @@ class Inventory extends CI_Controller
 
         foreach ($list as $item) {
             $data[] = array(
-                'number' => "<a href='details' onclick=\"detail($item[item_id])\">" .
+                'number' => "<a href='#' onclick=\"detail($item[item_id])\">" .
                     $counter,
                 'item' => "<a href=\"#\" onclick=\"detail($item[item_id])\">" .
                     $item['item_name'] . "</a>",
-                'description' => "<a href='' onclick=\"detail($item[item_id])\">" .
+                'description' => "<a href='#' onclick=\"detail($item[item_id])\">" .
                     $item['item_description'] . "</a>",
-                'quantity' => "<a href='' onclick=\"detail($item[item_id])\">" .
+                'quantity' => "<a href='#' onclick=\"detail($item[item_id])\">" .
                     $item['quantity'] . "</a>",
-                'unit' => "<a href='' onclick=\"detail($item[item_id])\">" .
+                'unit' => "<a href='#' onclick=\"detail($item[item_id])\">" .
                     $item['unit'] . "</a>",
                 'action' => "<a class=\"text-primary\" href=\"#\" onclick=\"detail($item[item_id])\"> View Detail</a>");
             $counter++;
@@ -204,6 +204,7 @@ class Inventory extends CI_Controller
         echo json_encode($data);
 
     }
+
     public function getItem($id){
         $list = array();
         $list = $this->inv->getItem($id);
