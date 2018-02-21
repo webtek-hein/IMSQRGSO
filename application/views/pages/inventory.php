@@ -337,8 +337,8 @@
                                         value="1" id="quantsave">
                                     <i class="fa fa-arrow-down">Save</i>
                                 </button>
-                                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal"><i
-                                            class="fa fa-close">Cancel</i>
+                                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
+                                  <i class="fa fa-close">Cancel</i>
                                 </button>
                             </div>
 

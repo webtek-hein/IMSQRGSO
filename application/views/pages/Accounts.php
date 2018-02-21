@@ -16,18 +16,7 @@
                     <div class="x_content">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                                <ul class="pagination pagination-split">
-                                    <li><a href="#">A</a></li>
-                                    <li><a href="#">B</a></li>
-                                    <li><a href="#">C</a></li>
-                                    <li><a href="#">D</a></li>
-                                    <li><a href="#">E</a></li>
-                                    <li>...</li>
-                                    <li><a href="#">W</a></li>
-                                    <li><a href="#">X</a></li>
-                                    <li><a href="#">Y</a></li>
-                                    <li><a href="#">Z</a></li>
-                                </ul>
+
 
                                 <div class="pull-right">
                                         <button class="btn btn-success" type="button" data-toggle="modal" data-target="#adduser"><li class="fa fa-user-plus"></li> Add User</button>
@@ -36,56 +25,6 @@
                             </div>
 
                             <div class="clearfix"></div>
-
-                            <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
-                                <div class="well profile_view">
-                                    <div class="col-sm-12">
-                                        <h4 class="brief"><i>Custodian</i></h4>
-                                        <div class="left col-xs-7">
-                                            <h2>Heinrich Bangui</h2>
-                                            <p><strong>UserName: </strong> George</p>
-                                            <ul class="list-unstyled">
-                                                <li><i class="fa fa-home"></i> Department: </li>
-                                                <li><i class="fa fa-phone"></i> Contact #: </li>
-                                            </ul>
-                                        </div>
-                                        <div class="right col-xs-5 text-center">
-                                            <img src="assets/images/logogso.png" alt="" class="img-circle img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 bottom text-center">
-                                        <div class="pull-right">
-                                            <button type="button" class="btn btn-success btn-xs"><i class="fa fa-thumbs-o-up"></i> Active</button>
-                                            <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-user-times"></i> Deactivate </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
-                                <div class="well profile_view">
-                                    <div class="col-sm-12">
-                                        <h4 class="brief"><i>Custodian</i></h4>
-                                        <div class="left col-xs-7">
-                                            <h2>Heinrich Bangui</h2>
-                                            <p><strong>UserName: </strong> George</p>
-                                            <ul class="list-unstyled">
-                                                <li><i class="fa fa-home"></i> Department: </li>
-                                                <li><i class="fa fa-phone"></i> Contact #: </li>
-                                            </ul>
-                                        </div>
-                                        <div class="right col-xs-5 text-center">
-                                            <img src="assets/images/logogso.png" alt="" class="img-circle img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 bottom text-center">
-                                        <div class="pull-right">
-                                            <button type="button" class="btn btn-success btn-xs"><i class="fa fa-thumbs-o-up"></i> Active</button>
-                                            <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-user-times"></i> Deactivate </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
                                 <div class="well profile_view">

@@ -20,8 +20,8 @@ class User_db extends CI_Model {
 // Read data from database to show data in admin page
     public function read_user_information($username) {
         $this->db->join('department', 'department.dept_id = user.dept_id', 'left')
-            ->where('username',$username)
-            ->limit(1);
+                 ->where('username',$username)
+                 ->limit(1);
         $query = $this->db->get('user');
 
         if ($query->num_rows() == 1) {
@@ -31,11 +31,15 @@ class User_db extends CI_Model {
         }
     }
 
+    public function get_users()
+    {
+        $query = $this->db->get('user');
+        return $query->result_array();
+    }
 
     public function deactivate_user($id)
     {
         $this->db->set('status','deactivated')
-            ->where('status','accepted')
             ->where('user_id',$id)
             ->update('user');
     }
