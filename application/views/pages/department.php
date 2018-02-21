@@ -26,7 +26,7 @@
                             </ul>
                             <div id="myTabContent" class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
-                                    <table id="datatable" data-pagination="true" data-search="true" data-toggle="table" data-url="" data-show-toggle="true" class="table table-striped table-bordered">
+                                    <table id="departmentTable" data-pagination="true" data-search="true" data-show-toggle="true" class="table table-striped table-bordered">
                                         <thead>
                                         <tr data-toggle="collapse" data-target="#accordion" class="clickable">
                                             <th data-sortable="true">Item Name</th>

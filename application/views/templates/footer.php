@@ -60,24 +60,36 @@
     <script>
         $(document).ready(function () {
             //navigation selected
-            $('ul .current-page').css('background-color', '#1ABB9C');
             var department = [];
             var deptlist = [];
             var supplier = [];
             var accountCode = [];
-
-            //Show departments list and option
-            $.ajax({
-                url: 'inventory/getdept',
-                dataType: 'JSON',
-                success: function (data) {
-                    for (i=0;i<data.length;i++){
-                        department += "<option value="+data[i].dept_id+">"+data[i].department+"<br>";
-                        deptlist += "<li><a href=Department>"+data[i].department+"</a><li>";
-                    }
-                    $('#deptopt').html(department);
-                    $('#deptlist').html(deptlist);
-                }
+            itemtable = $('#itemtable');
+            itemtable.bootstrapTable('refresh',{url: 'inventory/viewItem/CO'});
+            itemtable.bootstrapTable({
+                url: 'inventory/viewItem/CO',
+                columns: [{
+                    field: 'number',
+                    title: '#'
+                }, {
+                    field: 'item',
+                    title: 'Item Name'
+                }, {
+                    field: 'description',
+                    title: 'Description'
+                },{
+                    field: 'quantity',
+                    title: 'Quantity'
+                },{
+                    field: 'unit',
+                    title: 'Unit'
+                },{
+                    field: 'type',
+                    title: 'Type'
+                },{
+                    field: 'action',
+                    title: 'Action'
+                }],
             });
             //show supplier options
             $.ajax({
@@ -101,6 +113,24 @@
                     $('#accode').html(accountCode);
                 }
             });
+            $('ul .current-page').css('background-color', '#1ABB9C');
+
+            //Show departments list and option
+            $.ajax({
+                url: 'inventory/getdept',
+                dataType: 'JSON',
+                success: function (data) {
+                    console.log(data);
+                    for (i=0;i<data.length;i++){
+                        department += "<option value="+data[i].dept_id+">"+data[i].department+"<br>";
+                        deptlist += '<li><a onclick="loadDepartmentInventory('+ data[i].dept_id +')">' + data[i].department + '</a></li>';
+                    }
+                    console.log(deptlist);
+                    $('#deptopt').html(department);
+                    $('#deptlist').html(deptlist);
+                }
+            });
+
             //add another item
             var counter =1;
             var div = $('.clone-tab');
@@ -150,7 +180,41 @@
 
 
         });
+        //load Department
+        function loadDepartmentInventory(id) {
+            $('li.current-page').removeClass('current-page').removeAttr('style');
+            $('#dept').toggleClass('active').css('background-color', '#1ABB9C');
+            $('#deptlist').css('display','none');
+            $('a.panel-heading').replaceWith('<p>'+dept+'</p>');
+            itemtable = $('#itemtable');
+            itemtable.bootstrapTable('refresh',{url: 'inventory/viewDept/'+id});
+            itemtable.bootstrapTable({
+                url: 'inventory/viewDept/'+id,
+                columns: [{
+                    field: 'number',
+                    title: 'number'
+                }, {
+                    field: 'item',
+                    title: 'Item Name'
+                }, {
+                    field: 'description',
+                    title: 'Description'
+                },{
+                    field: 'quantity',
+                    title: 'Quantity'
+                },{
+                    field: 'unit',
+                    title: 'Unit'
+                },{
+                    field: 'type',
+                    title: 'Type'
+                },{
+                    field: 'action',
+                    title: 'Action'
+                }],
+            });
 
+        }
     //for editting
         $(document).ready(function(){
             $('form')
@@ -316,7 +380,6 @@
                 }
             });
         }
-        // go to detail
         //get serial checkbox
         function getserial(id) {
             var serials = [];
@@ -336,10 +399,11 @@
                 }
             });
         }
-
+        // go to detail
         function detail(id) {
             // //set item in the local storage
             // localStorage.setItem('activeTab', $('.detail-tab ').attr('class'));
+            var detailtable = $('#detail-tab-table');
             $.get('inventory/getitem/'+id,function (data) {
                 item = JSON.parse(data);
                 $('#detailAddquantity').attr('data-id',id);
@@ -349,36 +413,37 @@
                 $('#total').html(item.quantity);
                 $('#itemtype').html(item.item_type);
                 $('#unit').html(item.unit);
-
+            }).done(function (data) {
+                $('.detail-tab ').toggleClass('hidden');
+                $('.inventory-tab').toggleClass('hidden');
+                detailtable.bootstrapTable('refresh',{url: 'inventory/detail/'+id});
+                detailtable.bootstrapTable({
+                    url: 'inventory/detail/'+id,
+                    columns: [{
+                        field: 'del',
+                        title: 'Delivery Date'
+                    }, {
+                        field: 'rec',
+                        title: 'Date Received'
+                    }, {
+                        field: 'exp',
+                        title: 'Expiration Date'
+                    },{
+                        field: 'cost',
+                        title: 'Cost'
+                    },{
+                        field: 'sup',
+                        title: 'Supplier'
+                    },{
+                        field: 'quant',
+                        title: 'Quantity'
+                    },{
+                        field: 'action',
+                        title: 'Action'
+                    }],
+                });
             });
-            $('.detail-tab ').toggleClass('hidden');
-            $('.inventory-tab').toggleClass('hidden');
-            $('#detail-tab-table').bootstrapTable('refresh',{url: 'inventory/detail/'+id});
-            $('#detail-tab-table').bootstrapTable({
-                            url: 'inventory/detail/'+id,
-                            columns: [{
-                                field: 'del',
-                                title: 'Delivery Date'
-                            }, {
-                                field: 'rec',
-                                title: 'Date Received'
-                            }, {
-                                field: 'exp',
-                                title: 'Expiration Date'
-                            },{
-                                field: 'cost',
-                                title: 'Cost'
-                            },{
-                                field: 'sup',
-                                title: 'Supplier'
-                            },{
-                                field: 'quant',
-                                title: 'Quantity'
-                            },{
-                                field: 'action',
-                                title: 'Action'
-                            }],
-                        });
+
         }
         $(document).ready(function () {
             $('.btn-hide').on('click',function () {

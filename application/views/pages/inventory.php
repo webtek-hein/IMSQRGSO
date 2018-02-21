@@ -1,5 +1,5 @@
 <!-- page content -->
-<div class="page-content right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
+<div id="inventory-main-page" class="page-content right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
     <div class="">
         <div class="inventory-tab x_panel">
             <div class="clearfix"></div>
@@ -144,22 +144,7 @@
                                 <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                                     <!-- Implement Bootsrap table-->
                                     <div class="x_panel">
-                                        <table data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/viewitem/CO" data-show-toggle="true" class="table table-no-bordered table-hover">
-                                            <thead>
-                                            <!-- Data-field for getting data  -->
-                                            <tr>
-                                                <th data-sortable="true" data-field="number">#</th>
-                                                <th data-sortable="true" data-field="item">Item Name</th>
-                                                <th data-sortable="true" data-field="description">Description</th>
-                                                <th data-sortable="true" data-field="quantity">Quantity</th>
-                                                <th data-sortable="true" data-field="unit">Unit</th>
-                                                <?php $position = $this->session->userdata['logged_in']['position'];
-                                                if ($position === 'Admin' || $position === 'Custodian'){
-                                                    echo'<th data-field="action">Action</th>';
-                                                }
-                                                ?>
-                                            </tr>
-                                            </thead>
+                                        <table id="itemtable" data-pagination="true" data-search="true" data-show-toggle="true" class="table table-no-bordered table-hover">
                                         </table>
                                     </div>
                                 </div>

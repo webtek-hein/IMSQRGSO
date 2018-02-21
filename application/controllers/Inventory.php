@@ -43,6 +43,8 @@ class Inventory extends CI_Controller
                     $item['quantity'] . "</a>",
                 'unit' => "<a href='' onclick=\"detail($item[item_id])\">" .
                     $item['unit'] . "</a>",
+                'type' => "<a href='' onclick=\"detail($item[item_type])\">" .
+                    $item['item_type'] . "</a>",
                 'action' => "<a class=\"text-primary\" href=\"#\" onclick=\"detail($item[item_id])\"> View Detail</a>");
             $counter++;
         }
@@ -183,17 +185,23 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
-    public function viewDept()
+    public function viewDept($id)
     {
-        $list = $this->inv->departmentInventory();
+        $list = $this->inv->departmentInventory($id);
         $data = array();
+        $counter = 1;
         foreach ($list as $item) {
-            $data[] = array('item_name' => $item['item_name'],
+            $data[] = array(
+                'number' => $counter,
+                'item_name' => $item['item_name'],
                 'item_description' => $item['item_description'],
                 'quantity_distributed' => $item['quantity_distributed'],
                 'date_received' => $item['date_received'],
-                'unit' => $item['unit']
+                'unit' => $item['unit'],
+                'type' => $item['item_type'],
+                'action' => "<a class=\"text-primary\" href=\"#\" onclick=\"detail($item[item_id])\"> View Detail</a>"
             );
+            $counter ++;
         }
         echo json_encode($data);
 
