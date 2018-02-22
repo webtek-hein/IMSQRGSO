@@ -57,8 +57,7 @@
                                 <thead>
                                 <!-- Data-field for getting data  -->
                                 <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
-                                    <th data-sortable="true" data-field="firstname">First Name</th>
-                                    <th data-sortable="true" data-field="lastname">Last Name</th>
+                                    <th data-sortable="true" data-field="name">Name</th>
                                     <th data-sortable="true" data-field="email">Email</th>
                                     <th data-sortable="true" data-field="contactno">Contact No.</th>
                                     <th data-sortable="true" data-field="position">Position</th>

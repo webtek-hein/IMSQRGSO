@@ -22,8 +22,7 @@ class Users extends CI_Controller {
         $users = $this->user_db->get_users();
         foreach ($users as $list) {
             $data[] = array(
-            'firstname' => $list['first_name'],
-            'lastname' => $list['last_name'],
+            'name' => $list['CONCAT(user.first_name, '.', user.last.name) AS name'],
             'email' => $list['email'],
             'contactno' => $list['contact_no'],
             'position' => $list['position'],
