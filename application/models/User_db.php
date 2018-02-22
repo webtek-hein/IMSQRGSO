@@ -19,7 +19,6 @@ class User_db extends CI_Model {
 
 // Read data from database to show data in admin page
     public function read_user_information($username) {
-        $this->db->select('CONCAT(user.first_name, ' ', user.last_name) AS name,user.email,user.contact_no,user.username,user.position,department.department');
         $this->db->join('department', 'department.dept_id = user.dept_id', 'left')
                  ->where('username',$username)
                  ->limit(1);
@@ -34,6 +33,7 @@ class User_db extends CI_Model {
 
     public function get_users()
     {
+         $this->db->select('CONCAT(user.first_name,' ', user.last_name) AS name,user.email,user.contact_no,user.username,user.position,dept.department');
         $this->db->join('gsois.department dept','dept.dept_id = user.dept_id');
         $query = $this->db->get('user');
         return $query->result_array();
