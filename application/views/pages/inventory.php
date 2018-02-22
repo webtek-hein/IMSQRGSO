@@ -162,22 +162,24 @@
                                                         </div>
 
                                                     </form>
-                                                </div>
-                                                <div class="ln_solid"></div>
-                                                <div class="footer">
-                                                    <button id="buttonCounter1" type="button" onclick="save(1)"
-                                                            class="savebtn btn btn-default"><i
-                                                                class="fa fa-arrow-down"></i> Save
-                                                    </button>
-                                                    <button type="submit" id="saveALL" class="btn btn-default"><i
-                                                                class="fa fa-download"></i> Save All
-                                                    </button>
-                                                    <div class="list-inline pull-right">
-                                                    <button  type="button" id="addanother"
-                                                            class="next-step btn btn-default"><i
-                                                                class="fa fa fa-cart-plus"></i> Add another item
-                                                    </button>
+
+                                                    <div class="ln_solid"></div>
+                                                    <div class="footer">
+                                                        <button id="buttonCounter1" type="button" onclick="save(1)"
+                                                                class="savebtn btn btn-default"><i
+                                                                    class="fa fa-arrow-down"></i> Save
+                                                        </button>
+                                                        <button type="submit" id="saveALL" class="btn btn-default"><i
+                                                                    class="fa fa-download"></i> Save All
+                                                        </button>
+                                                        <div class="list-inline pull-right">
+                                                            <button  type="button" id="addanother"
+                                                                     class="next-step btn btn-default"><i
+                                                                        class="fa fa fa-cart-plus"></i> Add another item
+                                                            </button>
+                                                        </div>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -431,10 +433,9 @@
 
                 </div>
             </div>
-        </div>
-            <!-- end of distribution-->
-        </div>
-    </div>
+
+          <!-- end of distribution-->
+
 
 
 
