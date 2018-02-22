@@ -148,7 +148,7 @@ class Inventory_model extends CI_Model{
             'quantity' => $quantity,
             'unit_cost'=> $this->input->post('cost'),
             'expiration_date' => $this->input->post('exp'),
-            'or_no' => $this->input->post('or')
+           // 'or_no' => $this->input->post('or')
         );
 
         //2. Insert to item detail

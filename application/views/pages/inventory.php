@@ -324,19 +324,20 @@
                                         </select>
                                         <span class="fa fa-truck form-control-feedback left" aria-hidden="true"></span>
                                     </div>
-
+                            </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn-modal btn btn-default" id="savequant" name="id"
+                                                value="1" id="quantsave">
+                                            <i class="fa fa-arrow-down">Save</i>
+                                        </button>
+                                        <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
+                                            <i class="fa fa-close">Cancel</i>
+                                        </button>
+                                    </div>
                                 </form>
-                            </div>
 
-                            <div class="modal-footer">
-                                <button type="submit" class="btn-modal btn btn-default" id="savequant" name="id"
-                                        value="1" id="quantsave">
-                                    <i class="fa fa-arrow-down">Save</i>
-                                </button>
-                                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
-                                  <i class="fa fa-close">Cancel</i>
-                                </button>
-                            </div>
+
+
 
                         </div>
 
