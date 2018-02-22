@@ -172,13 +172,13 @@
                                                     <button type="submit" id="saveALL" class="btn btn-default"><i
                                                                 class="fa fa-download"></i> Save All
                                                     </button>
-                                                </div>
-                                                <div class="list-inline pull-right">
-                                                        <button type="button" id="addanother"
-                                                                class="next-step btn btn-default"><i
-                                                                    class="fa fa fa-cart-plus"></i> Add another item
-                                                        </button>
+                                                    <div class="list-inline pull-right">
+                                                    <button  type="button" id="addanother"
+                                                            class="next-step btn btn-default"><i
+                                                                class="fa fa fa-cart-plus"></i> Add another item
+                                                    </button>
                                                     </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -243,6 +243,8 @@
             <!-- end of Main Table Content-->
         </div>
         <!-- detail tab -->
+
+        <!-- Add Item-->
         <div class="detail-tab x_panel hidden">
             <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
             <div class="x_title" id="DetailsHead"><a id="changetoEdit" href="#"><i class="glyphicon glyphicon-edit"></i></a>
@@ -325,20 +327,19 @@
                                         </select>
                                         <span class="fa fa-truck form-control-feedback left" aria-hidden="true"></span>
                                     </div>
-                            </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn-modal btn btn-default" id="savequant" name="id"
-                                                value="1" id="quantsave">
-                                            <i class="fa fa-arrow-down">Save</i>
-                                        </button>
-                                        <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
-                                            <i class="fa fa-close">Cancel</i>
-                                        </button>
-                                    </div>
+
                                 </form>
+                            </div>
 
-
-
+                            <div class="modal-footer">
+                                <button type="submit" class="btn-modal btn btn-default" id="savequant" name="id"
+                                        value="1" id="quantsave">
+                                    <i class="fa fa-arrow-down">Save</i>
+                                </button>
+                                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
+                                  <i class="fa fa-close">Cancel</i>
+                                </button>
+                            </div>
 
                         </div>
 
@@ -367,6 +368,7 @@
                 <!-- /Serial Accordion-->
             </div>
             <!-- end of Main Table Content-->
+
             <!--Distribution-->
             <div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
@@ -429,8 +431,10 @@
 
                 </div>
             </div>
+        </div>
             <!-- end of distribution-->
         </div>
     </div>
-</div>
+
+
 

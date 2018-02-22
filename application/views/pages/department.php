@@ -12,6 +12,7 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2 id="deptNameDistrib"></h2>
+                        <button type="button" class="btn btn-default">Departments <i class="fa fa-chevron-down"></i></button>
 
                         <div class="clearfix"></div>
                     </div>
