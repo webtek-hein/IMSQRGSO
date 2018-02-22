@@ -20,19 +20,17 @@ class Users extends CI_Controller {
     public function display_users()
     {
         $users = $this->user_db->get_users();
-
-        $data = array();
         foreach ($users as $list) {
-            $row = array();
-            $row[] = $list['first_name'];
-            $row[] = $list['last_name'];
-            $row[] = $list['email'];
-            $row[] = $list['contact_no'];
-            $row[] = $list['position'];
-            $data[] = $row;
+            $data = array(
+            'firstname' => $list['first_name'],
+            'lastname' => $list['last_name'],
+            'email' => $list['email'],
+            'contactno' => $list['contact_no'],
+            'position' => $list['position'],
+            'departmentt' => $list['dept_id'],
+        );
         }
-        $list = array('data'=>$data);
-        echo json_encode($list);
+        echo json_encode($data);
     }
 
     public function deactivate()
