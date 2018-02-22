@@ -229,11 +229,7 @@
                                             <th data-sortable="true" data-field="description">Description</th>
                                             <th data-sortable="true" data-field="quantity">Quantity</th>
                                             <th data-sortable="true" data-field="unit">Unit</th>
-                                            <?php $position = $this->session->userdata['logged_in']['position'];
-                                            if ($position === 'Admin' || $position === 'Custodian') {
-                                                echo '<th data-field="action">Action</th>';
-                                            }
-                                            ?>
+                                            <th data-field="action">Action</th>
                                         </tr>
                                         </thead>
                                     </table>
