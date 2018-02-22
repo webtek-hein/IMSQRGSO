@@ -4416,10 +4416,6 @@ HEAD
 }
 /*--Inventory End Edit From--*/
 
-/*-- SUPPLIER --*/
-
-/*--Add Supplier --*/
-
 #collapseOne .col-md-7{
     background-color: #3d9970;
     margin-left: 300px;
@@ -4427,10 +4423,26 @@ HEAD
 #collapseOne .form-group{
     margin-left: 100px;
 }
-/*-- Body --*/
+/*-- Body --
 .nav-sm{
-    background-color:#00b3ee;
+    background-color:#5F9EA0;
+    margin-left:20px;
 }
-
-
+.left_col{
+    background-color:#5F9EA0;
+}
 /*-- End of Body --*/
+
+/*-- Sidebar Menu --
+#sidebar-menu i{
+     color:black;
+
+ }
+#sidebar-menu a{
+    color:black;
+    font-size:10px;
+}
+#sidebar-menu .main_menu_side{
+    margin-top: 50px;
+}
+/*--End of Sidebar Menu --*/
