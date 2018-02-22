@@ -10,7 +10,8 @@ class Logs extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('Logs_model','logs');
     }
-        public function increaseLog()
+
+    public function increaseLog()
     {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
@@ -35,74 +36,64 @@ class Logs extends CI_Controller {
             }
             echo json_encode($data);
     }
-        public function decreaseLog()
+
+    public function decreaseLog()
     {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
-
-        if($position == 'Supply Officer'){
-            $decrease = $this->Logs_model->decrease_log();
-        } else {
-            $decrease = $this->Logs_model->get_decrease_log_per_department($dept_id);
-        }
-            $dec = $this->logs->decrease_log();
-            $counter = 1;
+        $data = array();
+        $dec = $this->logs->decrease_log();
             foreach ($dec as $list){
-                $row = array();
-                $row['number']=$counter;
-                $row['timestamp']= $list['timestamp'];
-                $row['serial'] = $list['serial'];
-                $row['item'] = $list['item_name'];
-                $row['description'] = $list['item_description'];
-                $row['type'] = $list['item_type'];
-                $row['department'] = $list['department'];
-                $row['dateacquired'] = $list['date_acquired'];
-                $row['accountcode'] = $list['account_code'];
-                $row['unit'] = $list['unit'];
-                $row['quantity'] = $list['quantity'];
-                $row['receivedfrom'] = $list['received_from'];
-                $data[] = $row;
-                $counter++;
+                $data[] = array(
+                    'timestamp'=> $list['timestamp'],
+                    'department' => $list['department'],
+                    'serial' => $list['serial'],
+                    'item' => $list['item_name'],
+                    'description' => $list['item_description'],
+                    'quantity' => $list['quantity'],
+                    'unit' => $list['unit'],
+                    'type' => $list['item_type'],
+                    'dateacquired' => $list['date_acquired'],
+                    'accountcode' => $list['account_code'],
+                    'receivedfrom' => $list['received_from'],
+                    'cost' => $list['unit_cost'],
+                );
             }
             echo json_encode($data);
     }
 
-        public function editLog()
+    public function editLog()
     {
         $edit = $this->logs->edit_log();
-            $counter = 1;
-            foreach ($edit as $list){
-                $row = array();
-                $row['timestamp'] = $list['timestamp'];
-                $row['fieldedited'] = $list['field_edited'];
-                $row['oldvalue'] = $list['old_value'];
-                $row['newvalue'] = $list['new_value'];
-
-                $data[] = $row;
-                $counter++;
-            }
-            echo json_encode($data);
+        $data = [];
+        foreach ($edit as $list){
+            $data[] = array(
+                'timestamp' => $list['timestamp'],
+                'fieldedited' => $list['field_edited'],
+                'oldvalue' => $list['old_value'],
+                'newvalue' => $list['new_value'],
+            );
+        }
+        echo json_encode($data);
     }
 
     public function returnLog()
     {
         $ret = $this->logs->return_log();
-        $counter = 1;
+        $data = [];
         foreach ($ret as $list){
-            $row = array();
-            $row['timestamp'] = $list['timestamp'];
-            $row['serial'] = $list['serial'];
-            $row['item'] = $list['item_name'];
-            $row['description'] = $list['item_description'];
-            $row['datereturned'] = $list['date_returned'];
-            $row['reason'] = $list['reason'];
-            $row['returnedby'] = $list['returned_by'];
-            $row['receivedby'] = $list['received_by'];
-            $row['status'] = $list['returned_status'];
-
-            $data[] = $row;
-            $counter++;
+            $data[] = array(
+            'timestamp' => $list['timestamp'],
+            'serial' => $list['serial'],
+            'item' => $list['item_name'],
+            'description' => $list['item_description'],
+            'datereturned' => $list['date_returned'],
+            'reason' => $list['reason'],
+            'returnedby' => $list['returned_by'],
+            'receivedby' => $list['received_by'],
+            'status' => $list['returned_status'],
+            );
         }
         echo json_encode($data);
     }

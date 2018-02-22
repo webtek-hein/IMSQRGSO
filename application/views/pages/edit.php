@@ -29,7 +29,6 @@
                         <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table" data-url="logs/editLog" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th data-sortable="true" data-field="number">#</th>
                           <th data-sortable="true" data-field="timestamp">Timestamp</th>
                           <th data-sortable="true" data-field="fieldedited">Field Edited</th>
                           <th data-sortable="true" data-field="oldvalue">Old Value</th>

@@ -29,7 +29,6 @@
                         <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table" data-url="logs/decreaseLog" data-show-toggle="true" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th data-sortable="true" data-field="number">#</th>
                           <th data-sortable="true" data-field="timestamp">Timestamp</th>
                           <th data-sortable="true" data-field="serial">Serial no.</th>
                           <th data-sortable="true" data-field="item">Item Name</th>
