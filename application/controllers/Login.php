@@ -38,7 +38,7 @@ class Login extends CI_Controller {
                     $session_data = array(
                         'username' => $result[0]->username,
                         'position' => $result[0]->position,
-                        'userid' => $result[0]->user_id,
+                        'user_id' => $result[0]->user_id,
                         'department' => $result[0]->department,
                         'dept_id' => $result[0]->dept_id,
                         'password' => $result[0]->password,
@@ -51,7 +51,6 @@ class Login extends CI_Controller {
                         'contact_no' => $result[0]->contact_no,);
                     $this->session->set_userdata('user_in',$user_data);
                     $this->session->set_userdata('logged_in', $session_data);
-                    $this->session->set_userdata('image_in', $image_data);
                     if ($result[0]->position == 'supplyofficer') {
                         redirect(base_url() . 'supplyofficer/dashboard');
                     }else if ($result[0]->position == 'admin') {
