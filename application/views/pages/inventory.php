@@ -389,7 +389,7 @@
 
                                 <div class="col-md-6">
                                     <label for="name">Department</label>
-                                    <select list="typelist"   name="dept" id="deptopt" class="form-control" required placeholder="Type">
+                                    <select list="typelist" name="dept" class="deptopt form-control" required placeholder="Type">
                                     </select>
                                 </div>
 

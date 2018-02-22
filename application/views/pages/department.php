@@ -11,11 +11,10 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2 id="deptNameDistrib"></h2>
-                        <select type="button" class="btn btn-default">Departments <i class="fa fa-chevron-down"></i></select>
-
+                        <h2 id="deptNameDistrib">Departments</h2>
                         <div class="clearfix"></div>
                     </div>
+                    <select id="selct-dept" type="button" class="deptopt btn btn-default"><i class="fa fa-chevron-down"></select>
                     <div class="x_content">
 
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -27,7 +26,7 @@
                             </ul>
                             <div id="myTabContent" class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
-                                    <table id="departmentTable"  data-toggle="table" data-pagination="true"
+                                    <table id="departmentTable" data-url="inventory/viewDept/11"  data-toggle="table" data-pagination="true"
                                            data-search="true" data-show-toggle="true" class="table table-striped table-bordered">
                                         <thead>
                                         <tr data-toggle="collapse" data-target="#accordion" class="clickable">

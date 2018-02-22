@@ -117,13 +117,14 @@
                     success: function (data) {
                         for (i=0;i<data.length;i++){
                             department += "<option value="+data[i].dept_id+">"+data[i].department+"<br>";
-                            deptlist += '<li><a data-name='+ data[i].department +
-                                ' data-link=<?= base_url()?>'+data[i].dept_id +
-                                ' href="<?= base_url()?>Department">' + data[i].department + '</a></li>';
                         }
-                        $('#deptopt').html(department);
-                        $('#deptlist').html(deptlist);
+                        $('.deptopt').html(department);
                     }
+                });
+
+                $('#selct-dept').change(function () {
+                    id = $(this).val();
+                    $('#departmentTable').bootstrapTable('refresh',{url: 'inventory/viewdept/'+id});
                 });
 
 
