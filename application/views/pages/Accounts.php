@@ -50,6 +50,27 @@
                                     </div>
                                 </div>
                             </div>
+                <div class="togle" data-example-id="togglable-tabs">
+                      <div id="myTabContent" class="tab-content">
+                            <div class="x_panel">
+                            <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="Users/display_users" data-show-toggle="true" class="table table-hover">
+                                <thead>
+                                <!-- Data-field for getting data  -->
+                                <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
+                                    <th data-sortable="true" data-field="firstname">First Name</th>
+                                    <th data-sortable="true" data-field="lastname">Last Name</th>
+                                    <th data-sortable="true" data-field="email">Email</th>
+                                    <th data-sortable="true" data-field="contactno">Contact No.</th>
+                                    <th data-sortable="true" data-field="position">Position</th>
+                                    <th data-sortable="true" data-field="department">Department</th>
+
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        </div>
+
+                      </div>                            
 
                         </div>
                     </div>

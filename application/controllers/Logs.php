@@ -19,7 +19,6 @@ class Logs extends CI_Controller {
 
         $inc = $this->logs->increase_log();
 
-        $data = array();
             foreach ($inc as $list){
                 $data[] = array(
                 'timestamp'=> $list['timestamp'],
