@@ -16,28 +16,24 @@ class Logs extends CI_Controller {
         $position = $this->session->userdata['logged_in']['position'];
         $userid = $this->session->userdata['logged_in']['userid'];
 
-        if($position == 'Supply Officer'){
-            $inc = $this->Logs_model->increase_log();
-        } else {
-            $inc = $this->Logs_model->get_increase_log_per_department($dept_id);
-        }
+        $inc = $this->logs->increase_log();
+
         $data = array();
             foreach ($inc as $list){
-                $row = array();
-                $row[]= $list['timestamp'];
-                $row[] = $list['item_name'];
-                $row[] = $list['item_description'];
-                $row[] = $list['quantity'];
-                $row[] = $list['unit'];
-                $row[] = $list['item_type'];
-                $row[] = $list['date_delivered'];
-                $row[] = $list['date_received'];
-                $row[] = $list['expiration_date'];
-                $row[] = $list['unit_cost'];
-                $data[] = $row;
+                $data[] = array(
+                'timestamp'=> $list['timestamp'],
+                'item' => $list['item_name'],
+                'description' => $list['item_description'],
+                'quantity' => $list['quantity'],
+                'unit' => $list['unit'],
+                'type' => $list['item_type'],
+                'del' => $list['date_delivered'],
+                'rec' => $list['date_received'],
+                'exp' => $list['expiration_date'],
+                'cost' => $list['unit_cost'],
+            );
             }
-            $list = array('data'=>$data);
-            echo json_encode($list);
+            echo json_encode($data);
     }
         public function decreaseLog()
     {

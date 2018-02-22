@@ -28,17 +28,16 @@
                                 <thead>
                                 <!-- Data-field for getting data  -->
                                 <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
-                                    <th data-sortable="true" data-field="number">#</th>
                                     <th data-sortable="true" data-field="timestamp">Timestamp</th>
                                     <th data-sortable="true" data-field="item">Item Name</th>
                                     <th data-sortable="true" data-field="description">Description</th>
                                     <th data-sortable="true" data-field="quantity">Qty</th>
                                     <th data-sortable="true" data-field="unit">Unit</th>
                                     <th data-sortable="true" data-field="type">Type</th>
-                                    <th data-sortable="true" data-field="delivery_date">Delivery Date</th>
-                                    <th data-sortable="true" data-field="expiration_date">Date Received</th>
+                                    <th data-sortable="true" data-field="del">Delivery Date</th>
+                                    <th data-sortable="true" data-field="rec">Date Received</th>
                                     <th data-sortable="true" data-field="cost">Unit Cost</th>
-                                    <th data-sortable="true" data-field="expiration_date">Exp Date</th>
+                                    <th data-sortable="true" data-field="exp">Exp Date</th>
                                 </tr>
                                 </thead>
                             </table>

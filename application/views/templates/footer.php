@@ -51,6 +51,8 @@
         <!--Bootstrap Dialog JS-->
         <script src="<?php echo base_url()?>assets/js/bootstrap-dialog.min.js"></script>
         <!--<script src="<?php echo base_url()?>assets/js/bootstrap-dialog.min.js"></script>-->
+        <script src="<?php echo base_url()?>assets/build/js/custom.js"></script>
+
 
 
         <script>

@@ -380,8 +380,8 @@
                             </button>
                             <h4 class="modal-title" id="myModalLabel">Distribution</h4>
                         </div>
+                        <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST" data-validate="parsley">
                         <div class="modal-body">
-                            <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST" data-validate="parsley">
                                 <div class="tab-content">
                                     <div id="serial">
                                     </div>
@@ -420,12 +420,13 @@
                                         <input id="owner" class="form-control col-md-7 col-xs-12" name="owner"  type="text" placeholder="Supply Officer">
                                     </div>
                                 </div>
-                            </form>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" name="id" class="btn-modal btn btn-success" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
                             <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel</button>
                         </div>
+                        </form>
+
                     </div>
 
                 </div>

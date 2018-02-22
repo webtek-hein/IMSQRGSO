@@ -305,10 +305,13 @@ class Inventory_model extends CI_Model{
         $serial = $this->input->post('serial');
         $data = array();
         foreach ($serial as $key => $value) {
-            $data[] = array(
-                'serial_id' => $key,
-                'serial' => $value,
-            );
+            // if serial is not null
+            if($value !== 'null'){
+                $data[] = array(
+                    'serial_id' => $key,
+                    'serial' => $value,
+                );
+            }
         }
         $this->db->update_batch('serial',$data,'serial_id');
     }
