@@ -952,53 +952,7 @@ if (typeof NProgress != 'undefined') {
 			
 		};  
 	   
-	   /* PARSLEY */
-			
-		function init_parsley() {
-			
-			if( typeof (parsley) === 'undefined'){ return; }
-			console.log('init_parsley');
-			
-			$/*.listen*/('parsley:field:validate', function() {
-			  validateFront();
-			});
-			$('#demo-form .btn').on('click', function() {
-			  $('#demo-form').parsley().validate();
-			  validateFront();
-			});
-			var validateFront = function() {
-			  if (true === $('#demo-form').parsley().isValid()) {
-				$('.bs-callout-info').removeClass('hidden');
-				$('.bs-callout-warning').addClass('hidden');
-			  } else {
-				$('.bs-callout-info').addClass('hidden');
-				$('.bs-callout-warning').removeClass('hidden');
-			  }
-			};
-		  
-			$/*.listen*/('parsley:field:validate', function() {
-			  validateFront();
-			});
-			$('#demo-form2 .btn').on('click', function() {
-			  $('#demo-form2').parsley().validate();
-			  validateFront();
-			});
-			var validateFront = function() {
-			  if (true === $('#demo-form2').parsley().isValid()) {
-				$('.bs-callout-info').removeClass('hidden');
-				$('.bs-callout-warning').addClass('hidden');
-			  } else {
-				$('.bs-callout-info').addClass('hidden');
-				$('.bs-callout-warning').removeClass('hidden');
-			  }
-			};
-			
-			  try {
-				hljs.initHighlightingOnLoad();
-			  } catch (err) {}
-			
-		};
-	   
+
 		
 		  /* INPUTS */
 		  
@@ -5006,40 +4960,39 @@ if (typeof NProgress != 'undefined') {
 	   
 	$(document).ready(function() {
 				
-		init_sparklines();
-		init_flot_chart();
+		// init_sparklines();
+		// init_flot_chart();
 		init_sidebar();
-		init_wysiwyg();
-		init_InputMask();
-		init_JQVmap();
-		init_cropper();
-		init_knob();
-		init_IonRangeSlider();
-		init_ColorPicker();
-		init_TagsInput();
-		init_parsley();
-		init_daterangepicker();
-		init_daterangepicker_right();
-		init_daterangepicker_single_call();
-		init_daterangepicker_reservation();
-		init_SmartWizard();
-		init_EasyPieChart();
-		init_charts();
-		init_echarts();
-		init_morris_charts();
-		init_skycons();
-		init_select2();
-		init_validator();
-		init_DataTables();
-		init_chart_doughnut();
-		init_gauge();
-		init_PNotify();
-		init_starrr();
-		init_calendar();
-		init_compose();
-		init_CustomNotification();
-		init_autosize();
-		init_autocomplete();
+		// init_wysiwyg();
+		// init_InputMask();
+		// init_JQVmap();
+		// init_cropper();
+		// init_knob();
+		// init_IonRangeSlider();
+		// init_ColorPicker();
+		// init_TagsInput();
+		// init_daterangepicker();
+		// init_daterangepicker_right();
+		// init_daterangepicker_single_call();
+		// init_daterangepicker_reservation();
+		// init_SmartWizard();
+		// init_EasyPieChart();
+		// init_charts();
+		// init_echarts();
+		// init_morris_charts();
+		// init_skycons();
+		// init_select2();
+		// init_validator();
+		// init_DataTables();
+		// init_chart_doughnut();
+		// init_gauge();
+		// init_PNotify();
+		// init_starrr();
+		// init_calendar();
+		// init_compose();
+		// init_CustomNotification();
+		// init_autosize();
+		// init_autocomplete();
 				
 	});	
 	
