@@ -21,13 +21,13 @@ class Users extends CI_Controller {
     {
         $users = $this->user_db->get_users();
         foreach ($users as $list) {
-            $data = array(
+            $data[] = array(
             'firstname' => $list['first_name'],
             'lastname' => $list['last_name'],
             'email' => $list['email'],
             'contactno' => $list['contact_no'],
             'position' => $list['position'],
-            'departmentt' => $list['dept_id'],
+            'department' => $list['department']
         );
         }
         echo json_encode($data);

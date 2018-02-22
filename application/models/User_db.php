@@ -33,6 +33,7 @@ class User_db extends CI_Model {
 
     public function get_users()
     {
+        $this->db->join('gsois.department dept','dept.dept_id = user.dept_id');
         $query = $this->db->get('user');
         return $query->result_array();
     }
