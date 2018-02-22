@@ -1,5 +1,5 @@
 <!-- page content -->
-<div onload="loadItems()" id="inventory-main-page" class="page-content right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
+<div id="inventory-main-page" class="page-content right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
     <div class="">
         <div class="clearfix"></div>
         <!--inventory-->
@@ -37,8 +37,7 @@
                                                     <form id="addItemForm" role="form" action="inventory/saveAll"
                                                           method="POST" data-parsley-validate="">
                                                         <div id="bulkdiv" class="tab-content">
-                                                        </div>
-                                                        <div class="clone-tab tab-pane active" role="tabpanel"
+                                                            <div class="clone-tab tab-pane active" role="tabpanel"
                                                                  id="step1B">
 
                                                                 <div class="left">
@@ -159,6 +158,8 @@
                                                                               required></textarea>
                                                                 </div>
                                                             </div>
+
+                                                        </div>
 
                                                     </form>
                                                 </div>
