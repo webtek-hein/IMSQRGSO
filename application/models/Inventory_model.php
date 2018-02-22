@@ -8,8 +8,9 @@ class Inventory_model extends CI_Model{
         return $query->result_array();
 
     }
-    public function add_item($counter){
 
+    public function add_item($counter){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
         $item_name = $this->input->post('item')[$counter];
         $item_type = $this->input->post('Type')[$counter];
         $quantity = $this->input->post('quant')[$counter];
@@ -31,6 +32,7 @@ class Inventory_model extends CI_Model{
             'expiration_date' => $this->input->post('exp')[$counter],
                 'or_no' => $this->input->post('or')[$counter]
         );
+
         try {
             $this->db->trans_begin();
             //  1. Insert into item
@@ -47,7 +49,7 @@ class Inventory_model extends CI_Model{
                 $this->db->insert_batch('serial',$serial);
             }
             // 3. Insert into logs
-            $this->db->insert('logs.increaselog', array('item_det_id' => $insert_id));
+            $this->db->insert('logs.increaselog', array('userid'=>$user_id,'item_det_id' => $insert_id));
             if ($this->db->trans_status() === FALSE) {
                 $this->db->trans_rollback();
                 throw new Exception($this->db->trans_status());
@@ -59,7 +61,10 @@ class Inventory_model extends CI_Model{
             return $e;
         }
     }
+
     public function saveAll(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+
         $data = array();
         $item_name = $this->input->post('item');
 
@@ -103,7 +108,7 @@ class Inventory_model extends CI_Model{
         $item_detail_id =range($id,$last_insert_id);
 
         foreach ($item_detail_id as $key => $value) {
-            $detail[] = array('item_det_id' =>$item_detail_id[$key]);
+            $detail[] = array('item_det_id' =>$item_detail_id[$key],'userid'=>$user_id);
             $quantity = $this->input->post('quant');
             $item_type = $this->input->post('Type');
             //serial
@@ -118,13 +123,17 @@ class Inventory_model extends CI_Model{
         $this->db->trans_complete();
 
     }
+
     public function select_item($type){
         $this->db->where('item_type',$type);
         $query = $this->db->get('item');
         return $query->result_array();
     }
     //Add quantity to a specific item
+
     public function addquant(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+
         $id = $this->input->post('id');
         //1. Get Quantity
         $quantity = $this->input->post('quant');
@@ -160,18 +169,20 @@ class Inventory_model extends CI_Model{
         $serial = array_fill(1,$quantity,array('item_det_id'=>$insert_id));
         $this->db->insert_batch('serial',$serial);
         //4. Insert into logs
-        $this->db->insert('logs.increaselog',array('item_det_id'=>$insert_id));
+        $this->db->insert('logs.increaselog',array('userid'=>$user_id,'item_det_id'=>$insert_id));
 
         //5. Update quantity
         $this->db->set('quantity','quantity+'.$quantity,FALSE);
         $this->db->where('item_id',$id);
         $this->db->update('item');
     }
+
     public function getItem($id){
         $this->db->where('item_id',$id);
         $query = $this->db->get('item');
         return $query->row_array();
     }
+
     public function edititem(){
         $item_id = $this->input->post('id');
         // select item
@@ -221,6 +232,7 @@ class Inventory_model extends CI_Model{
 
 
     }
+
     public function viewdetail($id){
         $this->db->select('date_delivered,date_received,expiration_date,unit_cost,supplier_name,
         item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
@@ -229,6 +241,7 @@ class Inventory_model extends CI_Model{
         $query = $this->db->get_where('item',array('item.item_id'=>$id));;
         return $query->result_array();
     }
+
     public function departmentInventory($id){
         $this->db->select('item.item_id,item_name, item_description, quantity_distributed as quantity, date_received, unit');
         $this->db->join('item','item.item_id = distribution.item_id','inner');
@@ -236,25 +249,30 @@ class Inventory_model extends CI_Model{
         $query = $this->db->get('distribution');
         return $query->result_array();
     }
+
     public function selectdetails(){
         $this->db->join('itemdetail','item.item_id = itemdetail.item_id','inner');
         $query = $this->db->get('item');
         return $query->result_array();
     }
+
     public function select_departments(){
        $query = $this->db->get('department');
         return $query->result_array();
     }
+
     public function get_department_list(){
         $this->db->order_by('res_center_code');
         $query = $this->db->get('department');
         return $query->result_array();
 
     }    
+
     public function select_acc_codes(){
         $query = $this->db->get('account_code');
         return $query->result_array();
     }
+
     public function distrib(){
         $user = $this->session->userdata['logged_in']['userid'];
         $id = $this->input->post('id');
@@ -291,16 +309,19 @@ class Inventory_model extends CI_Model{
         $this->db->where($item_id);
         $this->db->update('item');
     }
+
     public function return_item(){
         $query = $this->db->get('return');
         return $query->result_array();
     }
+
     public function getSerial($det_id){
         $this->db->where('item_status !=','Distributed');
         $this->db->where('item_det_id',$det_id);
         $query = $this->db->get('serial');
         return $query->result_array();
     }
+
     public function addSerial(){
         $serial = $this->input->post('serial');
         $data = array();
