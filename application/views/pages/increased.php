@@ -14,15 +14,8 @@
                   </div>
                   <div class="x_content">
                   <div class="row">
-                <div class="togle" role="tabpanel" data-example-id="togglable-tabs">
-                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital Outlay</a>
-                        </li>
-                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
-                        </li>
-                      </ul>
+                <div class="togle" data-example-id="togglable-tabs">
                       <div id="myTabContent" class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
                             <div class="x_panel">
                             <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="logs/increaseLog" data-show-toggle="true" class="table table-hover">
                                 <thead>
@@ -43,28 +36,7 @@
                             </table>
                         </div>
                         </div>
-                          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
-                              <div class="x_panel">
-                              <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="logs/increaseLog" data-show-toggle="true" class="table table-hover">
-                                <thead>
-                                <!-- Data-field for getting data  -->
-                                <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
-                                    <th data-sortable="true" data-field="number">#</th>
-                                    <th data-sortable="true" data-field="timestamp">Timestamp</th>
-                                    <th data-sortable="true" data-field="item">Item Name</th>
-                                    <th data-sortable="true" data-field="description">Description</th>
-                                    <th data-sortable="true" data-field="quantity">Qty</th>
-                                    <th data-sortable="true" data-field="unit">Unit</th>
-                                    <th data-sortable="true" data-field="type">Type</th>
-                                    <th data-sortable="true" data-field="delivery_date">Delivery Date</th>
-                                    <th data-sortable="true" data-field="date_received">Date Received</th>
-                                    <th data-sortable="true" data-field="cost">Unit Cost</th>
-                                    <th data-sortable="true" data-field="expiration_date">Exp Date</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        </div>
+
                       </div>
                       </div>
                 </div>
