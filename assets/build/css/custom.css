@@ -4427,6 +4427,10 @@ HEAD
 #collapseOne .form-group{
     margin-left: 100px;
 }
-/*--End of Add Supplier --*/
+/*-- Body --*/
+.nav-sm{
+    background-color:#00b3ee;
+}
 
-/*-- SUPPLIER --*/
+
+/*-- End of Body --*/

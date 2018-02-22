@@ -62,6 +62,7 @@
                 var deptlist = [];
                 var supplier = [];
                 var accountCode = [];
+                var departmnt = "";
                 itemtable = $('#itemtable');
                 itemtable.bootstrapTable('refresh',{url: 'inventory/viewItem/CO'});
                 itemtable.bootstrapTable({
@@ -108,8 +109,7 @@
                         $('#accode').html(accountCode);
                     }
                 });
-                $('ul .current-page').css('background-color', '#1ABB9C');
-
+                $('ul .current-page a').css('background-color', '#1ABB9C');
                 //Show departments list and option
                 $.ajax({
                     url: 'inventory/getdept',
@@ -117,12 +117,15 @@
                     success: function (data) {
                         for (i=0;i<data.length;i++){
                             department += "<option value="+data[i].dept_id+">"+data[i].department+"<br>";
-                            deptlist += '<li><a onclick="loadDepartmentInventory('+ data[i].dept_id +')">' + data[i].department + '</a></li>';
+                            deptlist += '<li><a data-name='+ data[i].department +
+                                ' data-link=<?= base_url()?>'+data[i].dept_id +
+                                ' href="<?= base_url()?>Department">' + data[i].department + '</a></li>';
                         }
                         $('#deptopt').html(department);
                         $('#deptlist').html(deptlist);
                     }
                 });
+
 
                 //add another item
                 var counter =1;
@@ -162,39 +165,9 @@
                 $('#Item_Detail').on('hidden.bs.modal',function () {
                     $('#itemdet').bootstrapTable('destroy');
                 });
-            });
-            //load Department
-            function loadDepartmentInventory(id) {
-                $('li.current-page').removeClass('current-page').removeAttr('style');
-                $('#dept').toggleClass('active').css('background-color', '#1ABB9C');
-                $('#deptlist').css('display','none');
-                $('a.panel-heading').replaceWith('<p>'+dept+'</p>');
-                itemtable = $('#itemtable');
-                itemtable.bootstrapTable('refresh',{url: 'inventory/viewDept/'+id});
-                itemtable.bootstrapTable({
-                    url: 'inventory/viewDept/'+id,
-                    columns: [{
-                        field: 'number',
-                        title: 'number'
-                    }, {
-                        field: 'item',
-                        title: 'Item Name'
-                    }, {
-                        field: 'description',
-                        title: 'Description'
-                    },{
-                        field: 'quantity',
-                        title: 'Quantity'
-                    },{
-                        field: 'unit',
-                        title: 'Unit'
-                    },{
-                        field: 'action',
-                        title: 'Action'
-                    }],
-                });
 
-            }
+            });
+
             //for editting
             $(document).ready(function(){
                 $('form')

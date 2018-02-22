@@ -12,6 +12,7 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2 id="deptNameDistrib"></h2>
+                        <button type="button" class="btn btn-default">Departments <i class="fa fa-chevron-down"></i></button>
 
                         <div class="clearfix"></div>
                     </div>
@@ -26,18 +27,18 @@
                             </ul>
                             <div id="myTabContent" class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
-                                    <table id="departmentTable" data-pagination="true" data-search="true" data-show-toggle="true" class="table table-striped table-bordered">
+                                    <table id="departmentTable"  data-toggle="table" data-pagination="true"
+                                           data-search="true" data-show-toggle="true" class="table table-striped table-bordered">
                                         <thead>
                                         <tr data-toggle="collapse" data-target="#accordion" class="clickable">
-                                            <th data-sortable="true">Item Name</th>
-                                            <th data-sortable="true">Description</th>
-                                            <th data-sortable="true">quantity</th>
-                                            <th data-sortable="true">Date Received</th>
-                                            <th data-sortable="true">Unit</th>
+                                            <th data-sortable="true" data-field="name">Item Name</th>
+                                            <th data-sortable="true" data-field="description">Description</th>
+                                            <th data-sortable="true" data-field="quant">quantity</th>
+                                            <th data-sortable="true" data-field="rec">Date Received</th>
+                                            <th data-sortable="true" data-field="unit">Unit</th>
+                                            <th data-sortable="true" data-field="action">Action</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        </tbody>
                                     </table>
                                 </div>
 
