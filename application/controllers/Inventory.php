@@ -28,18 +28,18 @@ class Inventory extends CI_Controller
 
         $list = $this->inv->select_item($type);
         $data = array();
+        //counter initialize
+        $counter = 1;
 
         foreach ($list as $item) {
             $data[] = array(
-                'item' => "<a href=\"#\" onclick=\"detail($item[item_id])\">" .
-                    $item['item_name'] . "</a>",
-                'description' => "<a href='#' onclick=\"detail($item[item_id])\">" .
-                    $item['item_description'] . "</a>",
-                'quantity' => "<a href='#' onclick=\"detail($item[item_id])\">" .
-                    $item['quantity'] . "</a>",
-                'unit' => "<a href='#' onclick=\"detail($item[item_id])\">" .
-                    $item['unit'] . "</a>",
+                'number' => $counter,
+                'item' => $item['item_name'],
+                'description' => $item['item_description'],
+                'quantity' => $item['quantity'],
+                'unit' => $item['unit'],
                 'action' => "<a class=\"text-primary\" href=\"#\" onclick=\"detail($item[item_id])\"> View Detail</a>");
+            $counter++;
         }
         echo json_encode($data);
     }
@@ -156,7 +156,7 @@ class Inventory extends CI_Controller
     {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
-        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $user_id = $this->session->userdata['logged_in']['userid'];
 
         $list = $this->inv->getSerial($det_id);
 
