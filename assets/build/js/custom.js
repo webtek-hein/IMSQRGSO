@@ -70,7 +70,6 @@ var setContentHeight = function () {
 };
 
   $SIDEBAR_MENU.find('a').on('click', function(ev) {
-	  console.log('clicked - sidebar_menu');
         var $li = $(this).parent();
 
         if ($li.is('.active')) {
@@ -804,10 +803,10 @@ if (typeof NProgress != 'undefined') {
 		function init_sparklines() {
 			
 			if(typeof (jQuery.fn.sparkline) === 'undefined'){ return; }
-			console.log('init_sparklines'); 
-			
-			
-			$(".sparkline_one").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
+			console.log('init_sparklines');
+
+
+            $(".sparkline_one").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
 				type: 'bar',
 				height: '125',
 				barWidth: 13,
