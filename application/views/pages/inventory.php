@@ -188,7 +188,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
                 <!-- /ADD item-->
             </div>
             <!-- Main Table Content-->

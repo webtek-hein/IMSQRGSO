@@ -4456,6 +4456,11 @@ HEAD
    margin-left: -15px;
     width: 101%;
 }
+.x_content{
+    height: 500%;
+}
+
+
 #inventory-main-page{
     background-color:	#A9A9A9;
 }
