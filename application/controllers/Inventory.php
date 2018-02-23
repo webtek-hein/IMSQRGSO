@@ -33,16 +33,11 @@ class Inventory extends CI_Controller
 
         foreach ($list as $item) {
             $data[] = array(
-                'number' => "<a href='#' onclick=\"detail($item[item_id])\">" .
-                    $counter,
-                'item' => "<a href=\"#\" onclick=\"detail($item[item_id])\">" .
-                    $item['item_name'] . "</a>",
-                'description' => "<a href='#' onclick=\"detail($item[item_id])\">" .
-                    $item['item_description'] . "</a>",
-                'quantity' => "<a href='#' onclick=\"detail($item[item_id])\">" .
-                    $item['quantity'] . "</a>",
-                'unit' => "<a href='#' onclick=\"detail($item[item_id])\">" .
-                    $item['unit'] . "</a>",
+                'number' => $counter,
+                'item' => $item['item_name'],
+                'description' => $item['item_description'],
+                'quantity' => $item['quantity'],
+                'unit' => $item['unit'],
                 'action' => "<a class=\"text-primary\" href=\"#\" onclick=\"detail($item[item_id])\"> View Detail</a>");
             $counter++;
         }
