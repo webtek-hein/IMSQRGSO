@@ -4423,7 +4423,23 @@ HEAD
 #collapseOne .form-group{
     margin-left: 100px;
 }
+/*-- TOP-NAV --*/
+#topNav .nav_menu{
+    width: 1530px;
+    margin-left: -68px;
+}
+/*-- End of TOP-NAV --*/
+
+/*-- Sidebar Nav --*/
+.left_col{
+    margin-top: 50px;
+}
+/*-- End of Sidebar Nav --*/
+
+
 /*-- Body --
+
+
 .nav-sm{
     background-color:#5F9EA0;
     margin-left:20px;

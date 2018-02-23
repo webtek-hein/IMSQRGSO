@@ -105,7 +105,7 @@ if (isset($this->session->userdata['logged_in'])) {
                 </div>
 
                 <!-- top navigation -->
-                <div class="top_nav">
+                <div id="topNav" class="top_nav">
                     <div class="nav_menu">
                         <nav>
                             <ul class="nav navbar-nav navbar-right">
