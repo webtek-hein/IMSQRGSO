@@ -4425,8 +4425,22 @@ HEAD
 }
 /*-- TOP-NAV --*/
 #topNav .nav_menu{
-    width: 1530px;
-    margin-left: -68px;
+    width: 1532px;
+    margin-left: -69px;
+    height: 40px;
+}
+#topNav .nav_menu ul{
+    margin-top: -5px;
+}
+#topNav .nav_menu i{
+    font-size: 10px;
+}
+#topNav .nav_menu .info-number{
+    font-size: 10px;
+}
+#topNav .nav_menu img{
+   height: 20px;
+    margin-top: -10px;
 }
 /*-- End of TOP-NAV --*/
 
@@ -4437,15 +4451,13 @@ HEAD
 /*-- End of Sidebar Nav --*/
 
 
-/*-- Body --
-
-
-.nav-sm{
-    background-color:#5F9EA0;
-    margin-left:20px;
+/*-- Body --*/
+.x_panel{
+   margin-left: -15px;
+    width: 101%;
 }
-.left_col{
-    background-color:#5F9EA0;
+#inventory-main-page{
+    background-color:	#A9A9A9;
 }
 /*-- End of Body --*/
 
