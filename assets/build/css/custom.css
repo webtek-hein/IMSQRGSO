@@ -4459,14 +4459,14 @@ HEAD
     width: 101%;
 
 }
-#inventory-main-page{
+#inventory-main-page{ /*-- BODY DESIGN THIS ONE --*/
     background-color:#A9A9A9;
 }
-.inventory-tab .x_panel{
+.inventory-tab .x_panel {
     height: 550px;
 }
-.right_col{
-    background-color:#A9A9A9;
+.inventory-tab .col-md-12{
+    height: 550px;
 }
 
 /*-- End of Body --*/

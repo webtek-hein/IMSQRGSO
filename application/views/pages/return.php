@@ -1,6 +1,6 @@
 
 <!-- page content -->
-<div class="right_col" role="main">
+<div id="inventory-main-page" class="page-content right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
     <div class="">
         <div class="page-title">
         </div>
