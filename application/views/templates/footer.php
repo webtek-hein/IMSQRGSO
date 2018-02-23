@@ -53,24 +53,27 @@
         <!--<script src="<?php echo base_url()?>assets/js/bootstrap-dialog.min.js"></script>-->
         <script src="<?php echo base_url()?>assets/build/js/custom.js"></script>
 
-
+        <!--Parsley Js-->
+        <script src="<?php echo base_url()?>assets/js/parsley.min.js"></script>
 
         <script>
             $(document).ready(function () {
-                //navigation selected
-                var department = [];
-                var deptlist = [];
-                var supplier = [];
-                var accountCode = [];
-                var departmnt = "";
-                itemtable = $('#itemtable');
-                itemtable.bootstrapTable('refresh',{url: 'inventory/viewItem/CO'});
-                itemtable.bootstrapTable({
+                //initialize
+                init_inventory();
+                init_list();
+                serialize_forms();
+                modal();
+                init_bulkFucntion();
+            });
+
+            // initialize inventory list
+            function init_inventory() {
+
+                var $itemTable = $('#itemtable');
+                $itemTable.bootstrapTable('refresh',{url: 'inventory/viewItem/CO'})
+                    .bootstrapTable({
                     url: 'inventory/viewItem/CO',
                     columns: [{
-                        field: 'number',
-                        title: '#'
-                    }, {
                         field: 'item',
                         title: 'Item Name'
                     }, {
@@ -87,17 +90,16 @@
                         title: 'Action'
                     }],
                 });
-                //show supplier options
-                $.ajax({
-                    url: 'supplier/supplieroption',
-                    dataType: 'JSON',
-                    success: function (data) {
-                        for (i=0;i<data.length;i++){
-                            supplier += "<option value="+data[i].id+">"+data[i].supplier+"<br>";;
-                        }
-                        $('.supplieropt').html(supplier);
-                    }
-                });
+                console.log('init_inventory');
+            }
+
+            //initialize lists
+            function init_list() {
+                var department = [];
+                var accountCode = [];
+                var deptlist = [];
+                var supplier = [];
+
                 //show account code options
                 $.ajax({
                     url: 'inventory/getacccodes',
@@ -110,7 +112,7 @@
                     }
                 });
                 $('ul .current-page a').css('background-color', '#1ABB9C');
-                //Show departments list and option
+                //Show department option
                 $.ajax({
                     url: 'inventory/getdept',
                     dataType: 'JSON',
@@ -121,56 +123,28 @@
                         $('.deptopt').html(department);
                     }
                 });
-
+                // on department change
                 $('#selct-dept').change(function () {
                     id = $(this).val();
                     $('#departmentTable').bootstrapTable('refresh',{url: 'inventory/viewdept/'+id});
                 });
-
-
-                //add another item
-                var counter =1;
-                var div = $('.clone-tab');
-                var button = $('.savebtn');
-                var list;
-                $('#addanother').on('click',function () {
-                    $('#addItemForm').parsley().whenValidate({group: 'set'+counter}).done(function () {
-                        counter++;
-                        list = "<li id=\"list"+counter+"\" role=\"presentation\" class=\"listTab disabled\"><a href=\"#step"+counter+"B\" data-toggle=\"tab\" aria-controls=\"step"+counter+"\" role=\"tab\" title=\"Step"+counter+"\">" +
-                            "<span class=\"round-tab\">" +
-                            "<b>Item"+counter+"</b>" +
-                            "</span>" +
-                            "</a>" +
-                            "</li>";
-                        $('#bulk').append(list);
-                        button.attr('id','buttonCounter'+counter);
-                        div.clone().find('input,textarea').val("")
-                            .attr('data-parsley-group','set'+counter)
-                            .toggleClass('required').end()
-                            .attr('id','step'+counter+'B')
-                            .appendTo('#bulkdiv')
-                            .removeClass('active')
-                            .find('#buttonCounter'+counter)
-                            .attr('onclick','save('+counter+')');
-                    });
-
+                //show supplier options
+                $.ajax({
+                    url: 'supplier/supplieroption',
+                    dataType: 'JSON',
+                    success: function (data) {
+                        for (i=0;i<data.length;i++){
+                            supplier += "<option value="+data[i].id+">"+data[i].supplier+"<br>";;
+                        }
+                        $('.supplieropt').html(supplier);
+                    }
                 });
 
-                $('.modal').on('show.bs.modal',function (e) {
-                    //get data-id
-                    item_id = $(e.relatedTarget).data('id');
-                    //assign to a button with a class btn-modal
-                    $('.btn-modal').val(item_id);
-                });
-
-                $('#Item_Detail').on('hidden.bs.modal',function () {
-                    $('#itemdet').bootstrapTable('destroy');
-                });
-
-            });
+                console.log('init_list');
+            }
 
             //for editting
-            $(document).ready(function(){
+            function serialize_forms(){
                 $('form')
                     .each(function(){
                         $(this).data('serialized', $(this).serialize())
@@ -182,39 +156,100 @@
                         ;
                     })
                     .find('button:submit')
-                    .attr('disabled', true)
-                ;
+                    .attr('disabled', true);
+                console.log('forms serialzed');
+            }
 
-            });
-            function edit(id) {
-                item_name = $('#itemname');
-                itemdesc = $('#itemdesc');
-                total = $('#total');
-                unit = $('#unit');
-                type = $('#itemtype');
-                button = $('#edtbutton');
+            //modal events
+            function modal(){
+                //distribute modal
+                $('.Distribute').on('show.bs.modal',function (e) {
+                    $('#listdist').empty();
+                    quantity = $('#distquant').val();
 
-                item_name.replaceWith('<input id="item" name="item" value='+item_name.text()+'>');
-                itemdesc.replaceWith('<input id="item" name="description" value='+itemdesc.text()+'>');
-                total.replaceWith(' <input value='+total.text()+' type="number" min="1" name="quant">');
-                unit.replaceWith('<input list="list" id="unit" name="Unit" value='+unit.text()+'><datalist id="list">' +
-                    '<option value="piece">piece</option>' +
-                    '<option value="box">box</option>' +
-                    '<option value="set">set</option>' +
-                    '<option value="ream">ream</option>' +
-                    '<option value="dozen">dozen</option>' +
-                    '<option value="bundle">bundle</option>' +
-                    '<option value="sack">sack</option>' +
-                    '<option value="others">others</option>' +
-                    '</datalist>');
-                type.replaceWith('<select value='+type.text()+' id="type" list="typelist" name="Type" required>' +
-                    '<option value="CO">Capital Outlay</option>\n' +
-                    '<option value="MOOE">MOOE</option>\n' +
-                    ' </select>');
-                button.removeAttr('hidden').val(id);
+                    skip = 1;
+                    counter =1
+                    active='active';
+
+                    while (skip <= quantity){
+                        input = "<input class=\"form-control col-md-7 col-xs-12\" data-validate-length-range=\"6\" data-validate-words=\"2\" name=\"serial\" required type=\"text\" placeholder=\"Serial\">";
+                        list = "<li role=\"presentation\" class="+active+">" +
+                            "<a href=\"#step"+counter+"\" data-toggle=\"tab\" aria-controls=\"step"+counter+"\" role=\"tab\" title=\"Step"+counter+"\">" +
+                            "<span class=\"round-tab\">" +
+                            "<b>Tab"+counter+"</b>" +
+                            "</span>" +
+                            "</a>" +
+                            "</li>";
+                        $('#listdist').append(list);
+                        skip += 10;
+                        active = 'disabled';
+                        arrayinput = [];
+                        incount = 1;
+                        while (counter != 0){
+                            while(incount<=10){
+                                arrayinput[counter] = input;
+                                incount++;
+                            }
+                            div="<div class=\"tab-pane active\" role=\"tabpanel\" id=\"step"+counter+"\">" +
+                                "<div class=\"item form-group\">" +
+                                "<label class=\"control-label col-md-1 col-sm-1 col-xs-6\" for=\"name\">Serial<span class=\"required\">*</span>" +
+                                "</label>" +
+                                "<div id="+counter+" class=\"col-md-6 col-sm-6 col-xs-6\">" +
+                                arrayinput+
+                                "</div>" +
+                                "</div>" +
+                                "<ul class=\"list-inline pull-right\">" +
+                                "<li><button type=\"button\" class=\"btn btn-default next-step\">Save and continue</button></li>" +
+                                "</ul>" +
+                                "</div>";
+                            $('#serialtab').append(div);
+                            counter--;
+                        }
+
+                        counter++;
+                    }
+
+                });
+                $('.modal').on('show.bs.modal',function (e) {
+                    //get data-id
+                    item_id = $(e.relatedTarget).data('id');
+                    //assign to a button with a class btn-modal
+                    $('.btn-modal').val(item_id);
+                });
+                $('#Item_Detail').on('hidden.bs.modal',function () {
+                    $('#itemdet').bootstrapTable('destroy');
+                });
+                $('.btn-hide').on('click',function () {
+                    $('#firststep').modal('hide');
+                });
+                //Wizard
+                $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+                    var $target = $(e.target);
+
+                    if ($target.parent().hasClass('disabled')) {
+                        return false;
+                    }
+                });
+
+                $(".next-step").click(function (e) {
+                    var $active = $('.wizard .nav-tabs li.active');
+                    $active.next().removeClass('disabled');
+                    nextTab($active);
+
+                });
+                $(".prev-step").click(function (e) {
+
+                    var $active = $('.wizard .nav-tabs li.active');
+                    prevTab($active);
+
+                });
+
+
 
             }
-            //on submit
+
+            //add item save
             function save(counter){
                 $('#addItemForm').parsley().whenValidate({group: 'set'+counter}).done(function () {
                     var list = $('#list'+counter);
@@ -251,10 +286,44 @@
                     });
                 });
             }
+
+            //go back to inventory
             function detail_back() {
                 $('.detail-tab ').toggleClass('hidden');
                 $('.inventory-tab').toggleClass('hidden');
             }
+
+            //edit
+            function edit(id) {
+                item_name = $('#itemname');
+                itemdesc = $('#itemdesc');
+                total = $('#total');
+                unit = $('#unit');
+                type = $('#itemtype');
+                button = $('#edtbutton');
+
+                item_name.replaceWith('<input id="item" name="item" value='+item_name.text()+'>');
+                itemdesc.replaceWith('<input id="item" name="description" value='+itemdesc.text()+'>');
+                total.replaceWith(' <input value='+total.text()+' type="number" min="1" name="quant">');
+                unit.replaceWith('<input list="list" id="unit" name="Unit" value='+unit.text()+'><datalist id="list">' +
+                    '<option value="piece">piece</option>' +
+                    '<option value="box">box</option>' +
+                    '<option value="set">set</option>' +
+                    '<option value="ream">ream</option>' +
+                    '<option value="dozen">dozen</option>' +
+                    '<option value="bundle">bundle</option>' +
+                    '<option value="sack">sack</option>' +
+                    '<option value="others">others</option>' +
+                    '</datalist>');
+                type.replaceWith('<select value='+type.text()+' id="type" list="typelist" name="Type" required>' +
+                    '<option value="CO">Capital Outlay</option>\n' +
+                    '<option value="MOOE">MOOE</option>\n' +
+                    ' </select>');
+                button.removeAttr('hidden').val(id);
+
+            }
+
+
             //view and edit serial
             function viewSerial(id) {
                 $('#anchor-serial').toggleClass('collapsed').attr('aria-expanded', 'true');
@@ -333,6 +402,7 @@
                     }
                 });
             }
+
             //get serial checkbox
             function getserial(id) {
                 var serials = [];
@@ -353,6 +423,7 @@
                     }
                 });
             }
+
             // go to detail
             function detail(id) {
                 // //set item in the local storage
@@ -399,96 +470,41 @@
                 });
 
             }
-            $(document).ready(function () {
-                $('.btn-hide').on('click',function () {
-                    $('#firststep').modal('hide');
-                });
-                $('.Distribute').on('show.bs.modal',function (e) {
-                    $('#listdist').empty();
-                    quantity = $('#distquant').val();
 
-                    skip = 1;
-                    counter =1
-                    active='active';
+            // add another item function
+            function init_bulkFucntion() {
+                var $div = $('.clone-tab');
+                var $button = $('.savebtn');
+                var $ul = $('#bulk');
+                var list;
+                var counter =1;
 
-                    while (skip <= quantity){
-                        input = "<input class=\"form-control col-md-7 col-xs-12\" data-validate-length-range=\"6\" data-validate-words=\"2\" name=\"serial\" required type=\"text\" placeholder=\"Serial\">";
-                        list = "<li role=\"presentation\" class="+active+">" +
-                            "<a href=\"#step"+counter+"\" data-toggle=\"tab\" aria-controls=\"step"+counter+"\" role=\"tab\" title=\"Step"+counter+"\">" +
+                $('#addanother').on('click',function () {
+                    $('#addItemForm').parsley().whenValidate({group: 'set'+counter}).done(function () {
+                        counter++;
+                        list = "<li id=\"list"+counter+"\" role=\"presentation\" class=\"listTab disabled\"><a href=\"#step"+counter+"B\" data-toggle=\"tab\" aria-controls=\"step"+counter+"\" role=\"tab\" title=\"Step"+counter+"\">" +
                             "<span class=\"round-tab\">" +
-                            "<b>Tab"+counter+"</b>" +
+                            "<b>Item"+counter+"</b>" +
                             "</span>" +
                             "</a>" +
                             "</li>";
-                        $('#listdist').append(list);
-                        skip += 10;
-                        active = 'disabled';
-                        arrayinput = [];
-                        incount = 1;
-                        while (counter != 0){
-                            while(incount<=10){
-                                arrayinput[counter] = input;
-                                incount++;
-                            }
-                            div="<div class=\"tab-pane active\" role=\"tabpanel\" id=\"step"+counter+"\">" +
-                                "<div class=\"item form-group\">" +
-                                "<label class=\"control-label col-md-1 col-sm-1 col-xs-6\" for=\"name\">Serial<span class=\"required\">*</span>" +
-                                "</label>" +
-                                "<div id="+counter+" class=\"col-md-6 col-sm-6 col-xs-6\">" +
-                                arrayinput+
-                                "</div>" +
-                                "</div>" +
-                                "<ul class=\"list-inline pull-right\">" +
-                                "<li><button type=\"button\" class=\"btn btn-default next-step\">Save and continue</button></li>" +
-                                "</ul>" +
-                                "</div>";
-                            $('#serialtab').append(div);
-                            counter--;
-                        }
-
-                        counter++;
-                    }
+                        $ul.append(list);
+                        $button.attr('id','buttonCounter'+counter);
+                        $div.clone().find('input,textarea').val("")
+                            .attr('data-parsley-group','set'+counter)
+                            .toggleClass('required').end()
+                            .attr('id','step'+counter+'B')
+                            .appendTo('#bulkdiv')
+                            .removeClass('active')
+                            .find('#buttonCounter'+counter)
+                            .attr('onclick','save('+counter+')');
+                    });
 
                 });
-                //Initialize tooltips
-
-
-                //Wizard
-                $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-
-                    var $target = $(e.target);
-
-                    if ($target.parent().hasClass('disabled')) {
-                        return false;
-                    }
-                });
-
-
-                $(".next-step").click(function (e) {
-                    var $active = $('.wizard .nav-tabs li.active');
-                    $active.next().removeClass('disabled');
-                    nextTab($active);
-
-                });
-                $(".prev-step").click(function (e) {
-
-                    var $active = $('.wizard .nav-tabs li.active');
-                    prevTab($active);
-
-                });
-            });
-
-
-            function nextTab(elem) {
-                $(elem).next().find('a[data-toggle="tab"]').click();
+                console.log('init_bulkFunction');
             }
-            function prevTab(elem) {
-                $(elem).prev().find('a[data-toggle="tab"]').click();
-            }
-        </script>
 
-        <!--distribute-->
-        <script>
+            //add input fields
             function addinputFields(){
                 var number = document.getElementById("dist").value;
 
@@ -599,6 +615,18 @@
 
 
             }
+
+
+            //traverse to next element
+            function nextTab(elem) {
+                $(elem).next().find('a[data-toggle="tab"]').click();
+            }
+
+            //traverse to previous element
+            function prevTab(elem) {
+                $(elem).prev().find('a[data-toggle="tab"]').click();
+            }
+
         </script>
     </footer>
     </body>
