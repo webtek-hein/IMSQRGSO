@@ -442,8 +442,3 @@
             </div>
 
           <!-- end of distribution-->
-
-
-
-
-</div>

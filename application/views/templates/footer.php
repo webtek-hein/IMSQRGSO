@@ -1,10 +1,5 @@
 <!-- footer content -->
 <footer>
-    <div class="pull-right">
-
-    </div>
-    <div class="clearfix"></div>
-
     <!-- bootstrap table js -->
     <script src="<?php echo base_url() ?>assets/js/bootstrap-table.js"></script>
     <!-- localization -->

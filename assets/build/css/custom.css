@@ -4425,7 +4425,7 @@ HEAD
 }
 /*-- TOP-NAV --*/
 #topNav .nav_menu{
-    width: 1532px;
+    width: 1525px;
     margin-left: -69px;
     height: 40px;
 }
@@ -4448,22 +4448,27 @@ HEAD
 .left_col{
     margin-top: 50px;
 }
+.left_col ul{
+    margin-top: -40px;
+}
 /*-- End of Sidebar Nav --*/
-
 
 /*-- Body --*/
 .x_panel{
    margin-left: -15px;
     width: 101%;
-}
-.x_content{
-    height: 500%;
-}
 
-
+}
 #inventory-main-page{
-    background-color:	#A9A9A9;
+    background-color:#A9A9A9;
 }
+.inventory-tab .x_panel{
+    height: 550px;
+}
+.right_col{
+    background-color:#A9A9A9;
+}
+
 /*-- End of Body --*/
 
 /*-- Sidebar Menu --

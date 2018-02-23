@@ -57,7 +57,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
 </head>
 
-<body class="nav-sm fixed-top footer_fixed">
+<body class="nav-sm fixed-top">
 <div class="container body">
     <div class="main_container">
         <div class="menu_fixed col-md-3 left_col" id="HeaderNav">
