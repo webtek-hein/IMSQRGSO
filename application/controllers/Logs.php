@@ -15,7 +15,7 @@ class Logs extends CI_Controller {
     {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
-        $userid = $this->session->userdata['logged_in']['userid'];
+        $userid = $this->session->userdata['logged_in']['user_id'];
 
         $inc = $this->logs->increase_log();
 

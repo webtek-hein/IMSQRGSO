@@ -28,13 +28,9 @@ class Inventory extends CI_Controller
 
         $list = $this->inv->select_item($type);
         $data = array();
-        //counter initialize
-        $counter = 1;
 
         foreach ($list as $item) {
             $data[] = array(
-                'number' => "<a href='#' onclick=\"detail($item[item_id])\">" .
-                    $counter,
                 'item' => "<a href=\"#\" onclick=\"detail($item[item_id])\">" .
                     $item['item_name'] . "</a>",
                 'description' => "<a href='#' onclick=\"detail($item[item_id])\">" .
@@ -44,7 +40,6 @@ class Inventory extends CI_Controller
                 'unit' => "<a href='#' onclick=\"detail($item[item_id])\">" .
                     $item['unit'] . "</a>",
                 'action' => "<a class=\"text-primary\" href=\"#\" onclick=\"detail($item[item_id])\"> View Detail</a>");
-            $counter++;
         }
         echo json_encode($data);
     }
@@ -161,7 +156,7 @@ class Inventory extends CI_Controller
     {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
-        $user_id = $this->session->userdata['logged_in']['userid'];
+        $user_id = $this->session->userdata['logged_in']['user_id'];
 
         $list = $this->inv->getSerial($det_id);
 

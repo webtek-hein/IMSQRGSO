@@ -7,7 +7,7 @@
 
         <div class="clearfix"></div>
 
-        <div class="row">
+        <div class="inventory-tab row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
@@ -63,5 +63,49 @@
         </div>
     </div>
     <div class="clearfix"></div>
+    <div class="detail-tab x_panel hidden">
+        <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
+        <div class="x_title" id="DetailsHead"><a id="changetoEdit" href="#"><i class="glyphicon glyphicon-edit"></i></a>
+            <form action="inventory/edititem" method="POST">
+                <h4>Item Name: <b id="itemname"></b></h4>
+                <p>Description: <b id="itemdesc"></b></p>
+                <p>Total Quantity: <b id="total"></b></p>
+                <p>Unit: <b id="unit"></b></p>
+                <p>Type: <b id="itemtype"></b></p>
+                <button type="submit" name="id" id="edtbutton" hidden>save</button>
+            </form>
+        </div>
+        <div class="clearfix"></div>
+        <!-- Main Table Content-->
+        <div role="tabpanel" class="tab-pane fade active in" id="tab_cont." aria-labelledby="CO-tab">
+
+            <table id="detail-tab-table" class="table table-no-bordered table-hover">
+            </table>
+
+            <!-- Serial Accordion-->
+            <div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <div class="col-md-offset-2">
+                        <h4><b>List of Serial</b></h4>
+                        <form class="serial-form" method="POST" action="inventory/addSerial">
+                            <!-- Dynamic serial tabs here -->
+                            <ul id="serial-tabs" class="nav nav-tabs">
+                            </ul>
+                            <!-- end of serial tabs -->
+                            <div id="serial-tabcontent" class="tab-content">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /Serial Accordion-->
+        </div>
+        <!-- end of Main Table Content-->
+
+
+
+
+
+    </div>
 </div>
 <!-- /page content -->

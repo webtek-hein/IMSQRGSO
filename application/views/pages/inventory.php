@@ -169,15 +169,15 @@
                                                                         <button type="submit" id="saveALL" class="btn btn-default"><i
                                                                                     class="fa fa-download"></i> Save All
                                                                         </button>
-                                                                        <button  type="button" id="addanother"
-                                                                                 class="next-step btn btn-default"><i
-                                                                                    class="fa fa fa-cart-plus"></i> Add another item
-                                                                        </button>
                                                                     </div>
                                                                 </div>
 
                                                             </div>
                                                         </div>
+                                                        <button  type="button" id="addanother"
+                                                                 class="next-step btn btn-default"><i
+                                                                    class="fa fa fa-cart-plus"></i> Add another item
+                                                        </button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -226,7 +226,6 @@
                                         <thead>
                                         <!-- Data-field for getting data      -->
                                         <tr data-toggle="collapse" data-target="#accordion" class="clickable">
-                                            <th data-sortable="true" data-field="number">#</th>
                                             <th data-sortable="true" data-field="item">Item Name</th>
                                             <th data-sortable="true" data-field="description">Description</th>
                                             <th data-sortable="true" data-field="quantity">Quantity</th>
@@ -243,9 +242,10 @@
             </div>
             <!-- end of Main Table Content-->
         </div>
-        <!-- detail tab -->
 
         <!-- Add Item-->
+        <!-- detail tab -->
+
         <div class="detail-tab x_panel hidden">
             <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
             <div class="x_title" id="DetailsHead"><a id="changetoEdit" href="#"><i class="glyphicon glyphicon-edit"></i></a>
@@ -337,7 +337,6 @@
                                               aria-hidden="true"></span>
                                     </div>
 
-                                </form>
                             </div>
 
                             <div class="modal-footer">
@@ -349,6 +348,7 @@
                                   <i class="fa fa-close"> Cancel</i>
                                 </button>
                             </div>
+                            </form>
 
                         </div>
 
@@ -446,3 +446,4 @@
 
 
 
+</div>
