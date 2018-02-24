@@ -66,15 +66,24 @@
             var $itemTable = $('#itemtable');
             $itemTable.bootstrapTable('refresh', {url: 'inventory/viewItem/CO'})
                 .bootstrapTable({
+                    pageSize: 10,
                     url: 'inventory/viewItem/CO',
                     onClickRow:function(data,row){detail(data.id);},
                     columns: [{
+                        sortable: true,
                         field: 'item',
                         title: 'NAME'
                     }, {
+                        sortable: true,
                         field: 'description',
                         title: 'DESCRIPTION'
                     }, {
+                        sortable: true,
+                        cellStyle: function (data) {
+                            return {
+                                    css: {"color": "green"}
+                                };
+                        },
                         field: 'quantity',
                         title: 'QUANTITY'
                     }]
