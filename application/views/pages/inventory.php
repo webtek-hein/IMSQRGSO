@@ -165,22 +165,6 @@
                                                             <span class="fa fa-mouse-pointer form-control-feedback left" aria-hidden="true"></span>
                                                         </div>
                                                         </div>
-
-                                                        <div class="form-group">
-                                                            <label>Description</label>
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <textarea data-parsley-group="set1"
-                                                                  name="description[]" id="message"
-                                                                  class="form-control"
-                                                                  data-parsley-trigger="blur"
-                                                                  data-parsley-minlength="1"
-                                                                  data-parsley-maxlength="500"
-                                                                  data-parsley-minlength-message="Description must"
-                                                                  data-parsley-validation-threshold="10"
-                                                                  data-parsley-required-messag="Put description of the items"
-                                                                  required></textarea>
-                                                            </div>
-                                                        </div>
                                                     </div>
 
                                                     <div class="right">
@@ -231,10 +215,6 @@
                                                             </select>
                                                             <span class="fa fa-truck form-control-feedback left" aria-hidden="true">
                                                             </span>
-
-                                                            <span class="group-btn">
-                                                                    <button type="button" class="btn btn-default"><i class="fa fa-plus"></i> New</button>
-                                                            </span>
                                                         </div>
                                                         </div>
 
@@ -249,7 +229,21 @@
                                                                   aria-hidden="true"></span>
                                                         </div>
                                                         </div>
-
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Description</label>
+                                                        <div class="col-md-12">
+                                                        <textarea data-parsley-group="set1"
+                                                                  name="description[]" id="message"
+                                                                  class="form-control"
+                                                                  data-parsley-trigger="blur"
+                                                                  data-parsley-minlength="1"
+                                                                  data-parsley-maxlength="500"
+                                                                  data-parsley-minlength-message="Description must"
+                                                                  data-parsley-validation-threshold="10"
+                                                                  data-parsley-required-messag="Put description of the items"
+                                                                  required></textarea>
+                                                        </div>
                                                     </div>
 
                                                         <div class="form-group col-md-12 col-sm-12 col-xs-12">
