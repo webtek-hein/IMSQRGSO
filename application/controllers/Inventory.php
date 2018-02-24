@@ -34,8 +34,7 @@ class Inventory extends CI_Controller
                 'id' => $item['item_id'],
                 'item' => $item['item_name'],
                 'description' => $item['item_description'],
-                'quantity' => $item['quantity'],
-                'unit' => $item['unit']);
+                'quantity' => $item['quantity'].'  '.$item['unit']);
         }
         echo json_encode($data);
     }

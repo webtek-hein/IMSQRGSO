@@ -55,7 +55,7 @@
             //initialize
             init_inventory();
             init_list();
-            serialize_forms();
+            // serialize_forms();
             modal();
             init_bulkFucntion();
         });
@@ -70,16 +70,13 @@
                     onClickRow:function(data,row){detail(data.id);},
                     columns: [{
                         field: 'item',
-                        title: 'Item Name'
+                        title: 'NAME'
                     }, {
                         field: 'description',
-                        title: 'Description'
+                        title: 'DESCRIPTION'
                     }, {
                         field: 'quantity',
-                        title: 'Quantity'
-                    }, {
-                        field: 'unit',
-                        title: 'Unit'
+                        title: 'QUANTITY'
                     }]
                 });
             $('#headingTwo').on('click',function () {
@@ -140,22 +137,22 @@
         }
 
         //for editting
-        function serialize_forms() {
-            $('form')
-                .each(function () {
-                    $(this).data('serialized', $(this).serialize())
-                })
-                .on('change input', function () {
-                    $(this)
-                        .find('button:submit')
-                        .attr('disabled', $(this).serialize() === $(this).data('serialized'))
-                    ;
-                })
-                .find('button:submit')
-                .attr('disabled', true);
-
-            console.log('forms serialzed');
-        }
+        // function serialize_forms() {
+        //     $('form')
+        //         .each(function () {
+        //             $(this).data('serialized', $(this).serialize())
+        //         })
+        //         .on('change input', function () {
+        //             $(this)
+        //                 .find('button:submit')
+        //                 .attr('disabled', $(this).serialize() === $(this).data('serialized'))
+        //             ;
+        //         })
+        //         .find('button:submit')
+        //         .attr('disabled', true);
+        //
+        //     console.log('forms serialzed');
+        // }
 
         //modal events
         function modal() {
@@ -512,113 +509,113 @@
         }
 
         //add input fields
-        function addinputFields() {
-            var number = document.getElementById("dist").value;
-            var $input = document.createElement("input");
-            var $department = document.createElement("input");
-            var $code = document.createElement("input");
-            var $purchase_no = document.createElement("input");
-            var $purchase_req = document.createElement("input");
-            var $obl_r = document.createElement("input");
-            var $next = $('#next');
-
-            //quantity
-            var $quantity = document.createElement("input");
-
-            for (var i = 0; i < number; i++) {
-
-                $input.type = "text";
-                $input.setAttribute('class', 'form-control col-md-7 col-xs-12');
-                $input.setAttribute('name', 'serial' + '[' + [i] + ']');
-                container1.appendChild($input);
-
-            }
-
-            for (i = 0; i < number; i++) {
-                $input.type = "text";
-                $input.setAttribute('class', 'form-control col-md-7 col-xs-12');
-                $input.setAttribute('name', 'owner' + '[' + [i] + ']');
-                container2.appendChild($input);
-            }
-
-            $quantity.type = "text";
-            $quantity.setAttribute('name', 'quant');
-            $quantity.setAttribute('id', 'quan');
-            $quantity.setAttribute('hidden', 'true');
-
-            container3.appendChild($quantity);
-            $next.click("input", function () {
-                var dist_quantity = $('#dist').val();
-                $('#quan').val(dist_quantity);
-            });
-
-            //deptopt
-            $department.type = "text";
-            $department.setAttribute('name', 'dept');
-            $department.setAttribute('id', 'dept');
-            $department.setAttribute('disabled', 'true');
-            $department.setAttribute('hidden', 'true');
-
-            container3.appendChild($department);
-            $next.click("input", function () {
-                var department_no = $('#deptopt').val();
-                $('#dept').val(department_no);
-            });
-
-            //account code
-            $code.type = "text";
-            $code.setAttribute('name', 'Code');
-            $code.setAttribute('id', 'code');
-            $code.setAttribute('disabled', 'true');
-            $code.setAttribute('hidden', 'true');
-
-            container3.appendChild($code);
-            $next.click("input", function () {
-                var accode = $('#accode').val();
-                $('#code').val(accode);
-            });
-
-            //po
-            $purchase_no.type = "text";
-            $purchase_no.setAttribute('name', 'po');
-            $purchase_no.setAttribute('id', 'p_o');
-            $purchase_no.setAttribute('disabled', 'true');
-            $purchase_no.setAttribute('hidden', 'true');
-
-            container3.appendChild($purchase_no);
-            $next.click("input", function () {
-                var po = $('#po').val();
-                $('#p_o').val(po);
-            });
-
-            //pr
-            $purchase_req.type = "text";
-            $purchase_req.setAttribute('name', 'pr');
-            $purchase_req.setAttribute('id', 'p_r');
-            $purchase_req.setAttribute('disabled', 'true');
-            $purchase_req.setAttribute('hidden', 'true');
-
-            container3.appendChild(purchase_req);
-            $next.click("input", function () {
-                var pr = $('#pr').val();
-                $('#p_r').val(pr);
-            });
-
-            //obr
-            $obl_r.type = "text";
-            $obl_r.setAttribute('name', 'obr');
-            $obl_r.setAttribute('id', 'o_b_r');
-            $obl_r.setAttribute('disabled', 'true');
-            $obl_r.setAttribute('hidden', 'true');
-
-            container3.appendChild($obl_r);
-            $next.click("input", function () {
-                var obr = $('#obr').val();
-                $('#o_b_r').val(obr);
-            });
-
-
-        }
+        // function addinputFields() {
+        //     var number = document.getElementById("dist").value;
+        //     var $input = document.createElement("input");
+        //     var $department = document.createElement("input");
+        //     var $code = document.createElement("input");
+        //     var $purchase_no = document.createElement("input");
+        //     var $purchase_req = document.createElement("input");
+        //     var $obl_r = document.createElement("input");
+        //     var $next = $('#next');
+        //
+        //     //quantity
+        //     var $quantity = document.createElement("input");
+        //
+        //     for (var i = 0; i < number; i++) {
+        //
+        //         $input.type = "text";
+        //         $input.setAttribute('class', 'form-control col-md-7 col-xs-12');
+        //         $input.setAttribute('name', 'serial' + '[' + [i] + ']');
+        //         container1.appendChild($input);
+        //
+        //     }
+        //
+        //     for (i = 0; i < number; i++) {
+        //         $input.type = "text";
+        //         $input.setAttribute('class', 'form-control col-md-7 col-xs-12');
+        //         $input.setAttribute('name', 'owner' + '[' + [i] + ']');
+        //         container2.appendChild($input);
+        //     }
+        //
+        //     $quantity.type = "text";
+        //     $quantity.setAttribute('name', 'quant');
+        //     $quantity.setAttribute('id', 'quan');
+        //     $quantity.setAttribute('hidden', 'true');
+        //
+        //     container3.appendChild($quantity);
+        //     $next.click("input", function () {
+        //         var dist_quantity = $('#dist').val();
+        //         $('#quan').val(dist_quantity);
+        //     });
+        //
+        //     //deptopt
+        //     $department.type = "text";
+        //     $department.setAttribute('name', 'dept');
+        //     $department.setAttribute('id', 'dept');
+        //     $department.setAttribute('disabled', 'true');
+        //     $department.setAttribute('hidden', 'true');
+        //
+        //     container3.appendChild($department);
+        //     $next.click("input", function () {
+        //         var department_no = $('#deptopt').val();
+        //         $('#dept').val(department_no);
+        //     });
+        //
+        //     //account code
+        //     $code.type = "text";
+        //     $code.setAttribute('name', 'Code');
+        //     $code.setAttribute('id', 'code');
+        //     $code.setAttribute('disabled', 'true');
+        //     $code.setAttribute('hidden', 'true');
+        //
+        //     container3.appendChild($code);
+        //     $next.click("input", function () {
+        //         var accode = $('#accode').val();
+        //         $('#code').val(accode);
+        //     });
+        //
+        //     //po
+        //     $purchase_no.type = "text";
+        //     $purchase_no.setAttribute('name', 'po');
+        //     $purchase_no.setAttribute('id', 'p_o');
+        //     $purchase_no.setAttribute('disabled', 'true');
+        //     $purchase_no.setAttribute('hidden', 'true');
+        //
+        //     container3.appendChild($purchase_no);
+        //     $next.click("input", function () {
+        //         var po = $('#po').val();
+        //         $('#p_o').val(po);
+        //     });
+        //
+        //     //pr
+        //     $purchase_req.type = "text";
+        //     $purchase_req.setAttribute('name', 'pr');
+        //     $purchase_req.setAttribute('id', 'p_r');
+        //     $purchase_req.setAttribute('disabled', 'true');
+        //     $purchase_req.setAttribute('hidden', 'true');
+        //
+        //     container3.appendChild(purchase_req);
+        //     $next.click("input", function () {
+        //         var pr = $('#pr').val();
+        //         $('#p_r').val(pr);
+        //     });
+        //
+        //     //obr
+        //     $obl_r.type = "text";
+        //     $obl_r.setAttribute('name', 'obr');
+        //     $obl_r.setAttribute('id', 'o_b_r');
+        //     $obl_r.setAttribute('disabled', 'true');
+        //     $obl_r.setAttribute('hidden', 'true');
+        //
+        //     container3.appendChild($obl_r);
+        //     $next.click("input", function () {
+        //         var obr = $('#obr').val();
+        //         $('#o_b_r').val(obr);
+        //     });
+        //
+        //
+        // }
 
         //traverse to next element
         function nextTab(elem) {

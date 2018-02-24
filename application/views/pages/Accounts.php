@@ -93,42 +93,27 @@
                 <h4 class="modal-title" id="myModalLabel"><li class="fa fa-user-plus"></li> Add User</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal form-label-left input_mask">
+                <form class="form-horizontal form-label-left">
 
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                         <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">
                         <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                    </div>
 
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                         <input type="text" class="form-control" id="inputSuccess3" placeholder="Last Name">
                         <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
-                    </div>
 
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                         <input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">
                         <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
-                    </div>
 
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                         <input type="text" class="form-control" id="inputSuccess5" placeholder="Contact No.">
                         <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
-                    </div>
 
-                    <div class="form-group has-feedback">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Department</label>
-                        <div class="col-md-7 col-sm-9 col-xs-12">
                             <input type="text" class="form-control">
                             <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
-                        </div>
-                    </div>
-                    <div class="form-group has-feedback">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">User Name</label>
-                        <div class="col-md-7 col-sm-9 col-xs-12">
                             <input type="text" class="form-control">
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                        </div>
-                    </div>
+            </div>
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="pull-right">
@@ -138,7 +123,9 @@
                     </div>
 
                 </form>
-    </div>
+            </div>
+        </div>
+</div>
 </div>
 <!-- end of add user-->
 <!--End of Modals -->
