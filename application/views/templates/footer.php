@@ -292,6 +292,10 @@
             $('.detail-tab ').toggleClass('hidden');
             $('.inventory-tab').toggleClass('hidden');
         }
+        function addItemBack() {
+            $('.additemDiv').toggleClass('hidden');
+            $('.inventory-tab').toggleClass('hidden');
+        }
 
         //edit
         function edit(id) {

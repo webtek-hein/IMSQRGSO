@@ -71,7 +71,7 @@
 
         <!-- Add Item-->
         <div class="additemDiv x_panel hidden" role="tabpanel" aria-labelledby="headingTwo">
-                <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
+                <button type="button" onclick="addItemBack()" class="btn btn"></i> Back</a></button>
                     <div class="x_content">
                         <div class="wizard">
                             <div class="wizard-inner">
