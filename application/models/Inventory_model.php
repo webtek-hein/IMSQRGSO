@@ -274,7 +274,7 @@ class Inventory_model extends CI_Model{
     }
 
     public function distrib(){
-        $user = $this->session->userdata['logged_in']['userid'];
+        $user = $this->session->userdata['logged_in']['user_id'];
         $id = $this->input->post('id');
         $serial = $this->input->post('serial');
         $quantity = count($serial);
