@@ -28,18 +28,14 @@ class Inventory extends CI_Controller
 
         $list = $this->inv->select_item($type);
         $data = array();
-        //counter initialize
-        $counter = 1;
 
         foreach ($list as $item) {
             $data[] = array(
-                'number' => $counter,
+                'id' => $item['item_id'],
                 'item' => $item['item_name'],
                 'description' => $item['item_description'],
                 'quantity' => $item['quantity'],
-                'unit' => $item['unit'],
-                'action' => "<a class=\"text-primary\" href=\"#\" onclick=\"detail($item[item_id])\"> View Detail</a>");
-            $counter++;
+                'unit' => $item['unit']
         }
         echo json_encode($data);
     }
@@ -198,9 +194,15 @@ class Inventory extends CI_Controller
 
     public function getItem($id)
     {
-        $list = array();
         $list = $this->inv->getItem($id);
-        echo json_encode($list);
+        $data = array(
+                'name' => $list->item_name,
+                'description' => $list->item_description,
+                'quant' => $list->quantity,
+                'unit' => $list->unit,
+                'item_type'=> $list->item_type,
+        );
+        echo json_encode($data);
     }
 
 }

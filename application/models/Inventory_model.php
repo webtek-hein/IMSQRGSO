@@ -180,7 +180,7 @@ class Inventory_model extends CI_Model{
     public function getItem($id){
         $this->db->where('item_id',$id);
         $query = $this->db->get('item');
-        return $query->row_array();
+        return $query->row();
     }
 
     public function edititem(){

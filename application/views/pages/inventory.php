@@ -10,183 +10,9 @@
                 <div class="panel">
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if ($position === 'Admin' || $position === 'Custodian') {
-                        echo '<a  class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4><i class="fa fa-cart-arrow-down" ></i> Add Item</h4></a>';
+                        echo '<a  class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4><i class="fa fa-cart-arrow-down" ></i> Add Item</h4></a>';
                     }
                     ?>
-                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="panel-body">
-                            <div class="x_panel">
-                                <div class="x_content">
-                                    <div class="wizard">
-                                        <div class="wizard-inner">
-                                            <div class="connecting-line"></div>
-                                            <ul id="bulk" class="nav nav-tabs" role="tablist">
-                                                <li role="presentation" id="list1" class="active">
-                                                    <a href="#step1B" data-toggle="tab" aria-controls="step1" role="tab"
-                                                       title="Step 1">
-                                                                <span class="round-tab">
-                                                                    <b>Item 1</b>
-                                                                </span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="modal-body" id="ModalI">
-                                            <div class="col-md-9">
-                                                <div class="x_panel">
-                                                    <form id="addItemForm" role="form" action="inventory/saveAll"
-                                                          method="POST" data-parsley-validate="">
-                                                        <div id="bulkdiv" class="tab-content">
-                                                            <div class="clone-tab tab-pane active" role="tabpanel"
-                                                                 id="step1B">
-
-                                                                <div class="left">
-                                                                    <div class="form-group">
-                                                                        <label>Item Name</label>
-                                                                        <input type="text" name="item[]"
-                                                                               class="form-control"
-                                                                               data-parsley-trigger="blur"
-                                                                               data-parsley-group="set1"
-                                                                               data-parsley-length="[1, 20]"
-                                                                               data-parsley-required-message="Please insert Item name"
-                                                                               required>
-                                                                    </div>
-
-                                                                    <div class="group">
-                                                                        <label>Quantity</label>
-                                                                        <input type="number" min='1' name="quant[]"
-                                                                               class="form-control"
-                                                                               data-parsley-group="set1"
-                                                                               data-parsley-required-message="Please enter Quantity"
-                                                                               required>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label>Unit Cost</label>
-                                                                        <input type="number" min='0' name="cost[]"
-                                                                               data-parsley-group="set1"
-                                                                               class="form-control"
-                                                                               data-parsley-required-message="Please insert Unit Cost"
-                                                                               required>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label>Unit</label>
-                                                                        <input name="Unit[]" data-parsley-group="set1"
-                                                                               class="form-control" class="unit"
-                                                                               list="list"
-                                                                               data-parsley-required-message="Select the Unit"
-                                                                               required>
-                                                                        <datalist id="list">
-                                                                            <option value="piece">piece</option>
-                                                                            <option value="box">box</option>
-                                                                            <option value="set">set</option>
-                                                                            <option value="ream">ream</option>
-                                                                            <option value="dozen">dozen</option>
-                                                                            <option value="bundle">bundle</option>
-                                                                            <option value="sack">sack</option>
-                                                                            <option value="others">others</option>
-                                                                        </datalist>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label>Type</label>
-                                                                        <select data-parsley-group="set1" id="type"
-                                                                                list="typelist" name="Type[]"
-                                                                                class="form-control" required>
-                                                                            <option value="CO">Capital Outlay</option>
-                                                                            <option value="MOOE">MOOE</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="form-group">
-                                                                        <label>Delivery Date</label>
-                                                                        <input data-parsley-group="set1" type="date"
-                                                                               name="del[]" class="form-control"
-                                                                               data-parsley-required-message="Select the Delivery Date"
-                                                                               required>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label>Date Received</label>
-                                                                        <input data-parsley-group="set1" type="date"
-                                                                               name="rec[]" class="form-control"
-                                                                               placeholder="Date Received"
-                                                                               data-parsley-required-message="Select Date Received"
-                                                                               required>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label>Expiration Date</label>
-                                                                        <input data-parsley-group="set1" type="date"
-                                                                               name="exp[]" class="form-control"
-                                                                               data-parsley-required-message="Select the Expiration Date"
-                                                                               required>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label>Supplier</label>
-                                                                        <select data-parsley-group="set1"
-                                                                                list="typelist" name="supp[]"
-                                                                                class="supplieropt form-control"
-                                                                                required>
-                                                                        </select>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label>Official Receipt Number</label>
-                                                                        <input data-parsley-group="set1" type="text"
-                                                                               name="or[]" class="form-control"
-                                                                               data-parsley-required-message="Input Official Receipt"
-                                                                               required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-10">
-                                                                    <label>Description</label>
-                                                                    <textarea data-parsley-group="set1"
-                                                                              name="description[]" id="message"
-                                                                              class="form-control"
-                                                                              data-parsley-trigger="blur"
-                                                                              data-parsley-minlength="1"
-                                                                              data-parsley-maxlength="500"
-                                                                              data-parsley-minlength-message="Description must"
-                                                                              data-parsley-validation-threshold="10"
-                                                                              data-parsley-required-messag="Put description of the items"
-                                                                              required></textarea>
-                                                                </div>
-
-                                                                <div class="ln_solid"></div>
-
-                                                                <div class="form-group">
-                                                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                                                        <button id="buttonCounter1" type="button" onclick="save(1)"
-                                                                                class="savebtn btn btn-default"><i
-                                                                                    class="fa fa-arrow-down"></i> Save
-                                                                        </button>
-                                                                        <button type="submit" id="saveALL" class="btn btn-default"><i
-                                                                                    class="fa fa-download"></i> Save All
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                        <button  type="button" id="addanother"
-                                                                 class="next-step btn btn-default"><i
-                                                                    class="fa fa fa-cart-plus"></i> Add another item
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- /ADD item-->
             </div>
@@ -244,6 +70,181 @@
         </div>
 
         <!-- Add Item-->
+        <div id="collapseTwo" onclick="function()" class="hidden" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="wizard">
+                            <div class="wizard-inner">
+                                <div class="connecting-line"></div>
+                                <ul id="bulk" class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" id="list1" class="active">
+                                        <a href="#step1B" data-toggle="tab" aria-controls="step1" role="tab"
+                                           title="Step 1">
+                                                                <span class="round-tab">
+                                                                    <b>Item 1</b>
+                                                                </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="modal-body" id="ModalI">
+                                <div class="col-md-9">
+                                    <div class="x_panel">
+                                        <form id="addItemForm" role="form" action="inventory/saveAll"
+                                              method="POST" data-parsley-validate="">
+                                            <div id="bulkdiv" class="tab-content">
+                                                <div class="clone-tab tab-pane active" role="tabpanel"
+                                                     id="step1B">
+
+                                                    <div class="left">
+                                                        <div class="form-group">
+                                                            <label>Item Name</label>
+                                                            <input type="text" name="item[]"
+                                                                   class="form-control"
+                                                                   data-parsley-trigger="blur"
+                                                                   data-parsley-group="set1"
+                                                                   data-parsley-length="[1, 20]"
+                                                                   data-parsley-required-message="Please insert Item name"
+                                                                   required>
+                                                        </div>
+
+                                                        <div class="group">
+                                                            <label>Quantity</label>
+                                                            <input type="number" min='1' name="quant[]"
+                                                                   class="form-control"
+                                                                   data-parsley-group="set1"
+                                                                   data-parsley-required-message="Please enter Quantity"
+                                                                   required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Unit Cost</label>
+                                                            <input type="number" min='0' name="cost[]"
+                                                                   data-parsley-group="set1"
+                                                                   class="form-control"
+                                                                   data-parsley-required-message="Please insert Unit Cost"
+                                                                   required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Unit</label>
+                                                            <input name="Unit[]" data-parsley-group="set1"
+                                                                   class="form-control" class="unit"
+                                                                   list="list"
+                                                                   data-parsley-required-message="Select the Unit"
+                                                                   required>
+                                                            <datalist id="list">
+                                                                <option value="piece">piece</option>
+                                                                <option value="box">box</option>
+                                                                <option value="set">set</option>
+                                                                <option value="ream">ream</option>
+                                                                <option value="dozen">dozen</option>
+                                                                <option value="bundle">bundle</option>
+                                                                <option value="sack">sack</option>
+                                                                <option value="others">others</option>
+                                                            </datalist>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Type</label>
+                                                            <select data-parsley-group="set1" id="type"
+                                                                    list="typelist" name="Type[]"
+                                                                    class="form-control" required>
+                                                                <option value="CO">Capital Outlay</option>
+                                                                <option value="MOOE">MOOE</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="right">
+                                                        <div class="form-group">
+                                                            <label>Delivery Date</label>
+                                                            <input data-parsley-group="set1" type="date"
+                                                                   name="del[]" class="form-control"
+                                                                   data-parsley-required-message="Select the Delivery Date"
+                                                                   required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Date Received</label>
+                                                            <input data-parsley-group="set1" type="date"
+                                                                   name="rec[]" class="form-control"
+                                                                   placeholder="Date Received"
+                                                                   data-parsley-required-message="Select Date Received"
+                                                                   required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Expiration Date</label>
+                                                            <input data-parsley-group="set1" type="date"
+                                                                   name="exp[]" class="form-control"
+                                                                   data-parsley-required-message="Select the Expiration Date"
+                                                                   required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Supplier</label>
+                                                            <select data-parsley-group="set1"
+                                                                    list="typelist" name="supp[]"
+                                                                    class="supplieropt form-control"
+                                                                    required>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Official Receipt Number</label>
+                                                            <input data-parsley-group="set1" type="text"
+                                                                   name="or[]" class="form-control"
+                                                                   data-parsley-required-message="Input Official Receipt"
+                                                                   required>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-10">
+                                                        <label>Description</label>
+                                                        <textarea data-parsley-group="set1"
+                                                                  name="description[]" id="message"
+                                                                  class="form-control"
+                                                                  data-parsley-trigger="blur"
+                                                                  data-parsley-minlength="1"
+                                                                  data-parsley-maxlength="500"
+                                                                  data-parsley-minlength-message="Description must"
+                                                                  data-parsley-validation-threshold="10"
+                                                                  data-parsley-required-messag="Put description of the items"
+                                                                  required></textarea>
+                                                    </div>
+
+                                                    <div class="ln_solid"></div>
+
+                                                    <div class="form-group">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                                            <button id="buttonCounter1" type="button" onclick="save(1)"
+                                                                    class="savebtn btn btn-default"><i
+                                                                        class="fa fa-arrow-down"></i> Save
+                                                            </button>
+                                                            <button type="submit" id="saveALL" class="btn btn-default"><i
+                                                                        class="fa fa-download"></i> Save All
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <button  type="button" id="addanother"
+                                                     class="next-step btn btn-default"><i
+                                                        class="fa fa fa-cart-plus"></i> Add another item
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- detail tab -->
 
         <div class="detail-tab x_panel hidden">

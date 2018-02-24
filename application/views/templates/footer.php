@@ -67,6 +67,7 @@
             $itemTable.bootstrapTable('refresh', {url: 'inventory/viewItem/CO'})
                 .bootstrapTable({
                     url: 'inventory/viewItem/CO',
+                    onClickRow:function(data,row){detail(data.id);},
                     columns: [{
                         field: 'item',
                         title: 'Item Name'
@@ -79,9 +80,6 @@
                     }, {
                         field: 'unit',
                         title: 'Unit'
-                    }, {
-                        field: 'action',
-                        title: 'Action'
                     }]
                 });
             console.log('init_inventory');
@@ -431,14 +429,13 @@
                 item = JSON.parse(data);
                 $('#detailAddquantity').attr('data-id', id);
                 $('#changetoEdit').attr('onclick', 'edit(' + id + ')');
-                $('#itemname').html(item.item_name);
-                $('#itemdesc').html(item.item_description);
+                $('#itemname').html(item.name);
+                $('#itemdesc').html(item.description);
                 $('#total').html(item.quantity);
                 $('#itemtype').html(item.item_type);
                 $('#unit').html(item.unit);
             }).done(function () {
-                $('.detail-tab ').toggleClass('hidden');
-                $('.inventory-tab').toggleClass('hidden');
+                toggleDiv($('.detail-tab '),$('.inventory-tab'));
                 $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/' + id})
                     .bootstrapTable({
                         url: 'inventory/detail/' + id,
@@ -467,7 +464,10 @@
                     });
             });
         }
-
+    function toggleDiv(elementToShow,elementToHide){
+        elementToShow.toggleClass('hidden');
+        elementToHide.toggleClass('hidden');
+    }
         // add another item function
         function init_bulkFucntion() {
             var $div = $('.clone-tab');
