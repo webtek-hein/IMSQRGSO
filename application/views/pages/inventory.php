@@ -70,9 +70,8 @@
         </div>
 
         <!-- Add Item-->
-        <div id="collapseTwo" onclick="function()" class="hidden" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body">
-                <div class="x_panel">
+        <div class="additemDiv x_panel hidden" role="tabpanel" aria-labelledby="headingTwo">
+                <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
                     <div class="x_content">
                         <div class="wizard">
                             <div class="wizard-inner">
@@ -242,8 +241,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
         <!-- detail tab -->
 

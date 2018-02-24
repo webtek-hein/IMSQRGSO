@@ -82,6 +82,9 @@
                         title: 'Unit'
                     }]
                 });
+            $('#headingTwo').on('click',function () {
+               toggleDiv($('.additemDiv'),$('.inventory-tab'));
+            });
             console.log('init_inventory');
         }
 
@@ -464,6 +467,8 @@
                     });
             });
         }
+
+        //toggle hidden class of element
     function toggleDiv(elementToShow,elementToHide){
         elementToShow.toggleClass('hidden');
         elementToHide.toggleClass('hidden');
