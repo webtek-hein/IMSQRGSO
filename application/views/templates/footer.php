@@ -69,6 +69,7 @@
                     pageSize: 10,
                     url: 'inventory/viewItem/CO',
                     onClickRow:function(data,row){detail(data.id);},
+                    resizable: true,
                     columns: [{
                         sortable: true,
                         field: 'item',
@@ -86,6 +87,10 @@
                         },
                         field: 'quantity',
                         title: 'QUANTITY'
+                    }, {
+                        sortable: true,
+                        field: 'Price',
+                        title: 'PRICE'
                     }]
                 });
             $('#headingTwo').on('click',function () {
