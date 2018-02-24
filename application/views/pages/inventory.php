@@ -4,6 +4,11 @@
         <div class="clearfix"></div>
         <!--inventory-->
 
+        <!--ADD Item-->
+
+        <!-- /ADD item-->
+
+
         <div class="inventory-tab x_panel">
             <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
                 <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
@@ -22,6 +27,8 @@
                     ?>
                 </ul>
             </div>
+
+            <!--Accordion-->
             <!-- Main Table Content-->
             <div class="x_content">
                     <div id="myTabContent" class="tab-content">
