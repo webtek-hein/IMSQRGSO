@@ -4,30 +4,24 @@
         <div class="clearfix"></div>
         <!--inventory-->
 
-        <!--ADD Item-->
-
-        <!-- /ADD item-->
-
-        <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
-            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                <li id="TB1" role="presentation" class="active">
-                    <a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital Outlay</a>
-                </li>
-                <li id="TB2" role="presentation" class=""><a href="#tab_content2" role="tab" id="MOOE-tab"
-                                                             data-toggle="tab" aria-expanded="false">MOOE</a>
-                </li>
-
-                <?php $position = $this->session->userdata['logged_in']['position'];
-                if ($position === 'Admin' || $position === 'Custodian') {
-                    echo '<li role="presentation"  class="pull-right" id="headingTwo"><a data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <i class="fa fa-cart-arrow-down" ></i> Add Item</a></li>';
-                }
-                ?>
-            </ul>
-        </div>
-
         <div class="inventory-tab x_panel">
-            <!--Accordion-->
+            <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
+                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                    <li id="TB1" role="presentation" class="active">
+                        <a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital Outlay</a>
+                    </li>
+                    <li id="TB2" role="presentation" class=""><a href="#tab_content2" role="tab" id="MOOE-tab"
+                                                                 data-toggle="tab" aria-expanded="false">MOOE</a>
+                    </li>
+
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if ($position === 'Admin' || $position === 'Custodian') {
+                        echo '<li role="presentation"  class="pull-right" id="headingTwo"><a data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <i class="fa fa-cart-arrow-down" ></i> Add Item</a></li>';
+                    }
+                    ?>
+                </ul>
+            </div>
             <!-- Main Table Content-->
             <div class="x_content">
                     <div id="myTabContent" class="tab-content">
