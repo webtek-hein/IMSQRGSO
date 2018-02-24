@@ -123,7 +123,7 @@
                                                         <div class="col-md-4 col-sm-4 col-xs-6">
                                                             <input type="number" min='0' name="cost[]"
                                                                    data-parsley-group="set1"
-                                                                   class="form-control"
+                                                                   class="form-control has-feedback-left"
                                                                    data-parsley-required-message="Please insert Unit Cost"
                                                                    required>
                                                             <span class="fa fa-circle-o form-control-feedback left" aria-hidden="true"></span>
@@ -134,7 +134,7 @@
                                                             <label class="control-label col-md-2">Unit</label>
                                                         <div class="col-md-4 col-sm-4 col-xs-6">
                                                             <input name="Unit[]" data-parsley-group="set1"
-                                                                   class="form-control" class="unit"
+                                                                   class="form-control has-feedback-left" class="unit"
                                                                    list="list"
                                                                    data-parsley-required-message="Select the Unit"
                                                                    required>
@@ -157,7 +157,7 @@
                                                         <div class="col-md-4 col-sm-4 col-xs-6">
                                                             <select data-parsley-group="set1" id="type"
                                                                     list="typelist" name="Type[]"
-                                                                    class="form-control" required>
+                                                                    class="form-control has-feedback-left" required>
                                                                 <option value="CO">Capital Outlay</option>
                                                                 <option value="MOOE">MOOE</option>
                                                             </select>
@@ -169,7 +169,7 @@
                                                             <label class="control-label col-md-2">Delivery Date</label>
                                                         <div class="col-md-4 col-sm-4 col-xs-6">
                                                             <input data-parsley-group="set1" type="date"
-                                                                   name="del[]" class="form-control"
+                                                                   name="del[]" class="form-control has-feedback-left"
                                                                    data-parsley-required-message="Select the Delivery Date"
                                                                    required>
                                                             <span class="fa fa-calendar-plus-o form-control-feedback left"
@@ -181,7 +181,7 @@
                                                             <label class="control-label col-md-2">Date Received</label>
                                                         <div class="col-md-4 col-sm-4 col-xs-6">
                                                             <input data-parsley-group="set1" type="date"
-                                                                   name="rec[]" class="form-control"
+                                                                   name="rec[]" class="form-control has-feedback-left"
                                                                    placeholder="Date Received"
                                                                    data-parsley-required-message="Select Date Received"
                                                                    required>
@@ -194,7 +194,7 @@
                                                             <label class="control-label col-md-2">Expiration Date</label>
                                                         <div class="col-md-4 col-sm-4 col-xs-6">
                                                             <input data-parsley-group="set1" type="date"
-                                                                   name="exp[]" class="form-control"
+                                                                   name="exp[]" class="form-control has-feedback-left"
                                                                    data-parsley-required-message="Select the Expiration Date"
                                                                    required>
                                                             <span class="fa fa-calendar-times-o form-control-feedback left"
@@ -207,7 +207,7 @@
                                                         <div class="col-md-4 col-sm-4 col-xs-6">
                                                             <select data-parsley-group="set1"
                                                                     list="typelist" name="supp[]"
-                                                                    class="supplieropt form-control"
+                                                                    class="supplieropt form-control has-feedback-left"
                                                                     required>
                                                             </select>
                                                             <span class="fa fa-truck form-control-feedback left" aria-hidden="true">
@@ -222,7 +222,7 @@
                                                             <label class="control-label col-md-2">Official Receipt Number</label>
                                                         <div class="col-md-4 col-sm-4 col-xs-6">
                                                             <input data-parsley-group="set1" type="text"
-                                                                   name="or[]" class="form-control"
+                                                                   name="or[]" class="form-control has-feedback-left"
                                                                    data-parsley-required-message="Input Official Receipt"
                                                                    required>
                                                             <span class="fa fa-ticket form-control-feedback left"

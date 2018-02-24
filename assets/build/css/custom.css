@@ -4268,6 +4268,9 @@ HEAD
     float:left;
     box-sizing: border-box;
 }
+#addItemForm list{
+    margin-left: 10px;
+}
 /*--End Inventory Add Item--*/
 
 
