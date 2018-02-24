@@ -10,3 +10,6 @@ th {
 table[role=inc]{
     overflow-x: hidden;
 }
+tr {
+    cursor: pointer;
+}
