@@ -152,7 +152,7 @@ class Inventory extends CI_Controller
     {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
-        $user_id = $this->session->userdata['logged_in']['userid'];
+        $user_id = $this->session->userdata['logged_in']['user_id'];
 
         $list = $this->inv->getSerial($det_id);
 

@@ -360,6 +360,7 @@
                     //if div reaches 10
                     //create another div
                     if (data.length >= 10) {
+                        console.log(data.length);
                         for (i = 0; i < data.length; i++) {
                             if (serialTabCounter !== 1) {
                                 divClass = "";
