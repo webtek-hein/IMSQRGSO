@@ -4271,6 +4271,9 @@ HEAD
 #ModalI form{
     margin-left: 200px;
 }
+.togle a{
+    color: black;
+}
 /*--End Inventory Add Item--*/
 
 
