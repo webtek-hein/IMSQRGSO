@@ -4268,8 +4268,8 @@ HEAD
     float:left;
     box-sizing: border-box;
 }
-#addItemForm list{
-    margin-left: 10px;
+#ModalI form{
+    margin-left: 200px;
 }
 /*--End Inventory Add Item--*/
 

@@ -87,14 +87,15 @@
                                 </ul>
                             </div>
                             <div class="modal-body" id="ModalI">
-                                <div class="col-md-12">
+                                <div class="col-md-9">
                                         <form class="form-horizontal form-label-left input_mask" id="addItemForm" role="form" action="inventory/saveAll" method="POST" data-parsley-validate="">
                                             <div id="bulkdiv" class="tab-content">
                                                 <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
 
+                                                    <div class="left">
                                                         <div class="form-group has-feedback">
-                                                            <label class="control-label col-md-2 ">Item Name</label>
-                                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                                            <label>Item Name</label>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
                                                             <input type="text" name="item[]"
                                                                    class="form-control has-feedback-left"
                                                                    data-parsley-trigger="blur"
@@ -107,8 +108,8 @@
                                                         </div>
 
                                                         <div class="form-group has-feedback">
-                                                            <label class="control-label col-md-2">Quantity</label>
-                                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                                            <label>Quantity</label>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
                                                             <input type="number" min='1' name="quant[]"
                                                                    class="form-control has-feedback-left"
                                                                    data-parsley-group="set1"
@@ -119,8 +120,8 @@
                                                         </div>
 
                                                         <div class="form-group has-feedback">
-                                                            <label class="control-label col-md-2">Unit Cost</label>
-                                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                                            <label >Unit Cost</label>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
                                                             <input type="number" min='0' name="cost[]"
                                                                    data-parsley-group="set1"
                                                                    class="form-control has-feedback-left"
@@ -131,8 +132,8 @@
                                                         </div>
 
                                                         <div class="form-group has-feedback">
-                                                            <label class="control-label col-md-2">Unit</label>
-                                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                                            <label>Unit</label>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
                                                             <input name="Unit[]" data-parsley-group="set1"
                                                                    class="form-control has-feedback-left" class="unit"
                                                                    list="list"
@@ -153,8 +154,8 @@
                                                         </div>
 
                                                         <div class="form-group has-feedback">
-                                                            <label class="control-label col-md-2">Type</label>
-                                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                                            <label>Type</label>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
                                                             <select data-parsley-group="set1" id="type"
                                                                     list="typelist" name="Type[]"
                                                                     class="form-control has-feedback-left" required>
@@ -165,9 +166,27 @@
                                                         </div>
                                                         </div>
 
+                                                        <div class="form-group">
+                                                            <label>Description</label>
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <textarea data-parsley-group="set1"
+                                                                  name="description[]" id="message"
+                                                                  class="form-control"
+                                                                  data-parsley-trigger="blur"
+                                                                  data-parsley-minlength="1"
+                                                                  data-parsley-maxlength="500"
+                                                                  data-parsley-minlength-message="Description must"
+                                                                  data-parsley-validation-threshold="10"
+                                                                  data-parsley-required-messag="Put description of the items"
+                                                                  required></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="right">
                                                         <div class="form-group has-feedback">
-                                                            <label class="control-label col-md-2">Delivery Date</label>
-                                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                                            <label>Delivery Date</label>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
                                                             <input data-parsley-group="set1" type="date"
                                                                    name="del[]" class="form-control has-feedback-left"
                                                                    data-parsley-required-message="Select the Delivery Date"
@@ -178,8 +197,8 @@
                                                         </div>
 
                                                         <div class="form-group has-feedback">
-                                                            <label class="control-label col-md-2">Date Received</label>
-                                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                                            <label>Date Received</label>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
                                                             <input data-parsley-group="set1" type="date"
                                                                    name="rec[]" class="form-control has-feedback-left"
                                                                    placeholder="Date Received"
@@ -191,8 +210,8 @@
                                                         </div>
 
                                                         <div class="form-group has-feedback">
-                                                            <label class="control-label col-md-2">Expiration Date</label>
-                                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                                            <label>Expiration Date</label>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
                                                             <input data-parsley-group="set1" type="date"
                                                                    name="exp[]" class="form-control has-feedback-left"
                                                                    data-parsley-required-message="Select the Expiration Date"
@@ -203,8 +222,8 @@
                                                         </div>
 
                                                         <div class="form-group has-feedback">
-                                                            <label class="control-label col-md-2">Supplier</label>
-                                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                                            <label>Supplier</label>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
                                                             <select data-parsley-group="set1"
                                                                     list="typelist" name="supp[]"
                                                                     class="supplieropt form-control has-feedback-left"
@@ -212,15 +231,16 @@
                                                             </select>
                                                             <span class="fa fa-truck form-control-feedback left" aria-hidden="true">
                                                             </span>
-                                                        </div>
+
                                                             <span class="group-btn">
                                                                     <button type="button" class="btn btn-default"><i class="fa fa-plus"></i> New</button>
                                                             </span>
                                                         </div>
+                                                        </div>
 
                                                         <div class="form-group has-feedback">
-                                                            <label class="control-label col-md-2">Official Receipt Number</label>
-                                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                                            <label>Official Receipt Number</label>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
                                                             <input data-parsley-group="set1" type="text"
                                                                    name="or[]" class="form-control has-feedback-left"
                                                                    data-parsley-required-message="Input Official Receipt"
@@ -230,23 +250,9 @@
                                                         </div>
                                                         </div>
 
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-2">Description</label>
-                                                        <div class="col-md-4 col-sm-4 col-xs-6">
-                                                        <textarea data-parsley-group="set1"
-                                                                  name="description[]" id="message"
-                                                                  class="form-control"
-                                                                  data-parsley-trigger="blur"
-                                                                  data-parsley-minlength="1"
-                                                                  data-parsley-maxlength="500"
-                                                                  data-parsley-minlength-message="Description must"
-                                                                  data-parsley-validation-threshold="10"
-                                                                  data-parsley-required-messag="Put description of the items"
-                                                                  required></textarea>
-                                                        </div>
                                                     </div>
 
-                                                        <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                                             <div class="ln_solid"></div>
                                                             <button id="buttonCounter1" type="button" onclick="save(1)"
                                                                     class="savebtn btn btn-default"><i
