@@ -4257,38 +4257,19 @@ HEAD
 
 
 /*--Inventory Add Item--*/
-.nav_menu{
-    height:50px;
-}
-.accordion #headingTwo{
-    border-radius:5px;
+#inventory-main-page button{
     height: 30px;
-    width: 125px;
-    background-color:#808080;
-    border-color:black;
 }
-.accordion #headingTwo h4{
-    margin-top:-5px;
-    color:	#FFFAF0;
+#addItemForm .right{
+    float:right;
+    box-sizing: border-box;
 }
-.accordion .wizard-inner{
-    margin-top: -10px;
-}
-.accordion .wizard-inner a{
-    font-size:10px;
-}
-#ModalI label{
-    font-size: 13px;
-    color:black;
-}
-#ModalI form{
-    margin-left: 100px;
-}
-.modal-body #AddS{
-    background-color: #F08080;
-    border-color: black;
+#addItemForm .left{
+    float:left;
+    box-sizing: border-box;
 }
 /*--End Inventory Add Item--*/
+
 
 /*--Inventory Main Content--*/
 .x_content a{
@@ -4301,7 +4282,6 @@ HEAD
 .x_panel table th {
     height: 10px;
 }
-
 /*--End Inventory Main Content--*/
 
 /*--Inventory Modal Item Detail--*/
@@ -4314,50 +4294,6 @@ HEAD
     margin-left: 500px;
 }
 /*--Inventory End Modal Item Detail--*/
-
-/*--Inventory Add Item From--*/
-#addItemForm .left{
-    float:left;
-    border-right: 5px dotted #1ABB9C;
-    box-sizing: border-box;
-    padding: 0px 15px 0px 0px;
-}
-#addItemForm .left input {
-    width: 300px;
-}
-.form-group select{
-    width: 300px;
-}
-
-#addItemForm .right{
-    margin-right: 150px;
-    float:right;
-    box-sizing: border-box;
-    padding: 0px 0px 0px 15px;
-}
-#addItemForm .right input{
-    width: 300px;
-}
-
-#ModalI .col-md-9{
-    margin-left: 150px;
-    background-color: #3d9970;
-}
-#ModalI button{
-    border-color: black;
-    border-radius: 5px;
-    color:black;
-}
-#ModalI #buttonCounter1{
-    background-color:#6495ED;
-}
-#ModalI #saveALL{
-    background-color:#F08080;
-}
-#ModalI #addanother{
-    background-color: #90EE90;
-}
-/*--Inventory End of Add Item From--*/
 
 /*--Inventory Add Quantity From--*/
 #addquant .modal-header{
@@ -4460,7 +4396,7 @@ HEAD
 
 }
 #inventory-main-page{ /*-- BODY DESIGN THIS ONE --*/
-    background-color:#A9A9A9;
+    background-color: #F8F8FF;
 }
 .inventory-tab .x_panel {
     height: 550px;
@@ -4468,19 +4404,4 @@ HEAD
 .inventory-tab .col-md-12{
     height: 550px;
 }
-
 /*-- End of Body --*/
-
-/*-- Sidebar Menu --
-#sidebar-menu i{
-     color:black;
-
- }
-#sidebar-menu a{
-    color:black;
-    font-size:10px;
-}
-#sidebar-menu .main_menu_side{
-    margin-top: 50px;
-}
-/*--End of Sidebar Menu --*/
