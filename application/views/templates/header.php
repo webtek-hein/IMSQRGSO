@@ -58,14 +58,10 @@ if (isset($this->session->userdata['logged_in'])) {
 </head>
 
 <body class="nav-sm fixed-top">
-<div class="container body">
     <div class="main_container">
         <div class="menu_fixed col-md-3 left_col" id="HeaderNav">
             <div class="left_col scroll-view">
-
-                <div class="clearfix"></div
-
-                        <!-- sidebar menu -->
+                <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side  hidden-print main_menu">
                     <div class="menu_section">
                         <ul class="nav side-menu">
@@ -96,18 +92,17 @@ if (isset($this->session->userdata['logged_in'])) {
                                     echo '<li><a href=' . base_url() . 'edit>Edit</a></li>';
                                 }
                                 echo '<li><a href=' . base_url() . 'return_log>Return Log</a></li>';
-                                echo '</ul></li></ul></div></div>';
+                                echo '</ul></li>';
                                 ?>
-
-
-                                <!-- /sidebar menu -->
+                        </ul>
                     </div>
                 </div>
-
+                <!-- /sidebar menu -->
+            </div>
+                </div>
                 <!-- top navigation -->
                 <div id="topNav" class="top_nav">
-                    <div class="nav_menu">
-                        <nav>
+                        <nav class="nav_menu">
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="">
                                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -119,7 +114,6 @@ if (isset($this->session->userdata['logged_in'])) {
                                         <li><a href="<?php echo base_url()?>logout"><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
                                     </ul>
                                 </li>
-
                                 <li role="presentation" class="dropdown">
                                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                         <i class="fa fa-bell-o"></i>
@@ -178,6 +172,5 @@ if (isset($this->session->userdata['logged_in'])) {
                                 </li>
                             </ul>
                         </nav>
-                    </div>
                 </div>
                 <!-- /top navigation -->

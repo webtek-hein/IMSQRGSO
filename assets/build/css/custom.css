@@ -1,4 +1,7 @@
-
+html{
+    min-height:100%;/* make sure it is at least as tall as the viewport */
+    position:relative;
+}
 html , body{
 
     height:100%;
@@ -150,7 +153,6 @@ html , body{
     min-height: 100%;
     width: 70px;
     padding: 0;
-    z-index: 9999;
     position: absolute
 }
 .nav-sm .container.body .col-md-3.left_col.menu_fixed {
@@ -330,7 +332,6 @@ html , body{
     border-bottom: 1px solid #D9DEE4;
     margin-bottom: 10px;
     width: 100%;
-    position: relative
 }
 @media (min-width: 480px) {
     .nav_menu {
@@ -349,9 +350,6 @@ html , body{
 .nav-md .container.body .col-md-3.left_col.menu_fixed {
     height: 100%;
     position: fixed
-}
-body .container.body .right_col {
-    background: #F7F7F7
 }
 .nav-md .container.body .right_col {
     padding: 10px 20px 0;
@@ -505,11 +503,7 @@ body {
 .no-padding {
     padding: 0 !important
 }
-.page-title {
-    width: 100%;
-    height: 65px;
-    padding: 10px 0
-}
+
 .page-title .title_left {
     width: 45%;
     float: left;
@@ -910,30 +904,13 @@ a:focus {
     display: block;
     padding: 4px 6px
 }
-footer {
-    background: #fff;
-    padding: 15px 20px;
-    display: block
-}
-.nav-sm footer {
-    margin-left: 70px
-}
-.footer_fixed footer {
-    position: fixed;
-    left: 0px;
-    bottom: 0px;
-    width: 100%
-}
+
 @media (min-width: 768px) {
     .footer_fixed footer {
         margin-left: 0
     }
 }
-@media (min-width: 768px) {
-    .footer_fixed .nav-sm footer {
-        margin-left: 0
-    }
-}
+
 .tile-stats.sparkline {
     padding: 10px;
     text-align: center
@@ -1059,7 +1036,6 @@ h2 {
 .x_panel {
     position: relative;
     width: 100%;
-    margin-bottom: 10px;
     padding: 10px 17px;
     display: inline-block;
     background: #fff;
@@ -1665,29 +1641,11 @@ span.right {
 .tile_info a {
     text-overflow: ellipsis
 }
-.sidebar-footer {
-    bottom: 0px;
-    clear: both;
-    display: block;
-    padding: 5px 0 0 0;
-    position: fixed;
-    width: 230px;
-    background: #2A3F54;
-    z-index:999;
+footer{
+    padding: 0;
 }
-.sidebar-footer a {
-    padding: 7px 0 3px;
-    text-align: center;
-    width: 25%;
-    font-size: 17px;
-    display: block;
-    float: left;
-    background: #172D44;
-    cursor: pointer;
-}
-.sidebar-footer a:hover {
-    background: #425567
-}
+
+
 .tile_count {
     margin-bottom: 20px;
     margin-top: 20px
@@ -4268,9 +4226,6 @@ HEAD
     float:left;
     box-sizing: border-box;
 }
-#ModalI form{
-    margin-left: 200px;
-}
 .togle a{
     color: black;
 }
@@ -4367,9 +4322,11 @@ HEAD
 }
 /*-- TOP-NAV --*/
 #topNav .nav_menu{
-    width: 1525px;
+    position: fixed !important;
+    top: 0;
     margin-left: -69px;
     height: 40px;
+    overflow: hidden;
 }
 #topNav .nav_menu ul{
     margin-top: -5px;
@@ -4396,18 +4353,13 @@ HEAD
 /*-- End of Sidebar Nav --*/
 
 /*-- Body --*/
-.x_panel{
-   margin-left: -15px;
-    width: 101%;
+
+.page-content{
+    background-color: white;
+    overflow: hidden;
 
 }
-#inventory-main-page{ /*-- BODY DESIGN THIS ONE --*/
-    background-color: #F8F8FF;
-}
-.inventory-tab .x_panel {
-    height: 550px;
-}
-.inventory-tab .col-md-12{
-    height: 550px;
+#HeaderNav{
+    width: 100px;
 }
 /*-- End of Body --*/

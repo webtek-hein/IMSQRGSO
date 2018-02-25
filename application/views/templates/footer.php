@@ -1,3 +1,5 @@
+
+</body>
 <!-- footer content -->
 <footer>
     <!-- bootstrap table js -->
@@ -82,16 +84,17 @@
                         sortable: true,
                         cellStyle: function (data) {
                             return {
-                                    css: {"color": "green"}
-                                };
+                                css: {"color": "green"}
+                            };
                         },
                         field: 'quantity',
                         title: 'QUANTITY'
-                    }, {
-                        sortable: true,
-                        field: 'Price',
-                        title: 'PRICE'
                     }]
+                    // }, {
+                    //     sortable: true,
+                    //     field: 'Price',
+                    //     title: 'PRICE'
+                    // }]
                 });
             $('#headingTwo').on('click',function () {
                toggleDiv($('.additemDiv'),$('.inventory-tab'));
