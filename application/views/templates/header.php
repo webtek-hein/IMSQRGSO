@@ -49,8 +49,6 @@ if (isset($this->session->userdata['logged_in'])) {
 
     <!-- jQuery -->
     <script src="<?php echo base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Parsley -->
-    <script  src="http://parsleyjs.org/dist/parsley.min.js"></script>
     <link rel="icon" href="<?php echo base_url()?>assets/images/logogso.png">
     <!--table design-->
     <link href="<?php echo base_url()?>assets/css/tabledesign.css" rel="stylesheet">

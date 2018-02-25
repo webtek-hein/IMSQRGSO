@@ -2,8 +2,17 @@
 <div id="inventory-main-page" class="page-content right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
     <div class="page-title">
 
+
+
     </div>
     <div class="inventory-tab">
+
+        <?php $position = $this->session->userdata['logged_in']['position'];
+        if ($position === 'Admin' || $position === 'Custodian') {
+            echo '<button id="headingTwo" class="btn pull-right" data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <i class=" fa fa-cart-arrow-down" ></i><span>Add Item</span> </button>';
+        }
+        ?>
         <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                 <li id="TB1" role="presentation" class="active">
@@ -13,13 +22,6 @@
                 <li id="TB2" role="presentation" class=""><a href="#tab_content2" role="tab" id="MOOE-tab"
                                                              data-toggle="tab" aria-expanded="false">MOOE</a>
                 </li>
-
-                <?php $position = $this->session->userdata['logged_in']['position'];
-                if ($position === 'Admin' || $position === 'Custodian') {
-                    echo '<li role="presentation"  class="pull-right" id="headingTwo"><a data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <i class="fa fa-cart-arrow-down" ></i> Add Item</a></li>';
-                }
-                ?>
             </ul>
         </div>
         <!-- Main Table Content-->
@@ -28,10 +30,10 @@
                 <!-- Capital Outaly tab-->
                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
 
-                    <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="accordion" id="accordion" class="table-responsive" role="tablist" aria-multiselectable="true">
                         <!-- Implement Bootsrap table-->
                         <table id="itemtable" data-pagination="true" data-search="true"
-                               data-show-toggle="true" class="table table-no-bordered table-hover">
+                               class="table table-no-bordered table-hover">
                         </table>
                     </div>
                 </div>

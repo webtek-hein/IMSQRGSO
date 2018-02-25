@@ -146,9 +146,6 @@ html , body{
 .calendar-exibit .calendar-table {
     padding: 0 0 4px 0
 }
-.left_col {
-    background: #2A3F54
-}
 .nav-sm .container.body .col-md-3.left_col {
     min-height: 100%;
     width: 70px;
@@ -156,8 +153,9 @@ html , body{
     position: absolute
 }
 .nav-sm .container.body .col-md-3.left_col.menu_fixed {
-    position: fixed;
-    height: 100%
+    position: relative;
+    margin: 0;
+    padding: 0;
 }
 .nav-sm .container.body .col-md-3.left_col .mCSB_container,
 .nav-sm .container.body .col-md-3.left_col .mCustomScrollBox {
@@ -328,7 +326,7 @@ html , body{
 }
 .nav_menu {
     float: left;
-    background: #EDEDED;
+    background-color: ##585d64;
     border-bottom: 1px solid #D9DEE4;
     margin-bottom: 10px;
     width: 100%;
@@ -349,7 +347,7 @@ html , body{
 }
 .nav-md .container.body .col-md-3.left_col.menu_fixed {
     height: 100%;
-    position: fixed
+    position: fixed;
 }
 .nav-md .container.body .right_col {
     padding: 10px 20px 0;
@@ -489,8 +487,8 @@ html , body{
     background: #D9DEE4
 }
 body {
-    color: #73879C;
-    background: #2A3F54;
+    color: #0e0d0d;
+    background: #375E97;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -4344,6 +4342,7 @@ HEAD
 /*-- Sidebar Nav --*/
 .left_col{
     margin-top: 50px;
+    background-color: #375E97;
 }
 .left_col ul{
     margin-top: -40px;
@@ -4354,10 +4353,30 @@ HEAD
 
 .page-content{
     background-color: white;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
-
+    position: relative;
+    top: 39px;
 }
 #HeaderNav{
-    width: 100px;
+    width: 90px;
 }
 /*-- End of Body --*/
+button.pull-right{
+    position: relative;
+    bottom: 65px;
+    right: 200px;
+}
+.pull-right.search{
+    position: relative;
+    bottom: 49px;
+}
+span.pull-right.search {
+    color: white;
+}
+.bootstrap-table{
+    position: relative;
+    bottom: 73px;
+    width: 100%;
+}
