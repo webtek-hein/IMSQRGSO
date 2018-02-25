@@ -66,10 +66,42 @@
         function init_inventory() {
 
             var $itemTable = $('#itemtable');
+            var $MOOEtable = $('#MOOEtable');
+
             $itemTable.bootstrapTable('refresh', {url: 'inventory/viewItem/CO'})
                 .bootstrapTable({
                     pageSize: 10,
                     url: 'inventory/viewItem/CO',
+                    onClickRow:function(data,row){detail(data.id);},
+                    resizable: true,
+                    columns: [{
+                        sortable: true,
+                        field: 'item',
+                        title: 'NAME'
+                    }, {
+                        sortable: true,
+                        field: 'description',
+                        title: 'DESCRIPTION'
+                    }, {
+                        sortable: true,
+                        cellStyle: function (data) {
+                            return {
+                                css: {"color": "green"}
+                            };
+                        },
+                        field: 'quantity',
+                        title: 'QUANTITY'
+                    }]
+                    // }, {
+                    //     sortable: true,
+                    //     field: 'Price',
+                    //     title: 'PRICE'
+                    // }]
+                });
+            $MOOEtable.bootstrapTable('refresh', {url: 'inventory/viewItem/MOOE'})
+                .bootstrapTable({
+                    pageSize: 10,
+                    url: 'inventory/viewItem/MOOE',
                     onClickRow:function(data,row){detail(data.id);},
                     resizable: true,
                     columns: [{

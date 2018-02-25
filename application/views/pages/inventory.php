@@ -27,6 +27,7 @@
         <!-- Main Table Content-->
         <div class="x_content">
             <div id="myTabContent" class="tab-content">
+
                 <!-- Capital Outaly tab-->
                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
 
@@ -37,26 +38,14 @@
                         </table>
                     </div>
                 </div>
+
                 <!--MOOE Tab-->
                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
                     <!-- Implement Bootsrap table-->
-                    <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                        <div class="x_panel">
-                            <table id="datatable" data-pagination="true" data-search="true" data-toggle="table"
-                                   data-url="inventory/viewitem/MOOE" data-show-toggle="true"
-                                   class="table table-no-bordered table-hover">
-                                <thead>
-                                <!-- Data-field for getting data      -->
-                                <tr data-toggle="collapse" data-target="#accordion" class="clickable">
-                                    <th data-sortable="true" data-field="item">Item Name</th>
-                                    <th data-sortable="true" data-field="description">Description</th>
-                                    <th data-sortable="true" data-field="quantity">Quantity</th>
-                                    <th data-sortable="true" data-field="unit">Unit</th>
-                                    <th data-field="action">Action</th>
-                                </tr>
-                                </thead>
+                    <div class="accordion" id="accordion" class="table-responsive" role="tablist" aria-multiselectable="true">
+                            <table  id="MOOEtable" data-pagination="true" data-search="true"
+                                    class="table table-no-bordered table-hover">
                             </table>
-                        </div>
                     </div>
                 </div>
             </div>
