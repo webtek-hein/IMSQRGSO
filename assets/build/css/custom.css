@@ -4222,6 +4222,24 @@ HEAD
 .togle a{
     color: black;
 }
+#ModalI .col-md-7{
+    margin-left: 250px;
+    border: 5px solid #8FBC8F;
+    background-color: white;
+}
+/*--Buttons--*/
+#ModalI #buttonCounter1{
+    color:black;
+    border-color: black;
+}
+#ModalI #saveALL{
+    color:black;
+    border-color: black;
+}
+#ModalI #addanother{
+    color:black;
+    border-color: black;
+}
 /*--End Inventory Add Item--*/
 
 
@@ -4235,6 +4253,9 @@ HEAD
 }
 .x_panel table th {
     height: 10px;
+}
+#inventory-main-page{
+    background-color:#F5F5F5;
 }
 /*--End Inventory Main Content--*/
 
@@ -4306,6 +4327,19 @@ HEAD
 }
 /*--Inventory End Edit From--*/
 
+/*--DISTRIBUTION--*/
+.Distribute .modal-header{
+background-color: #009900;
+}
+.Distribute .modal-header h4{
+   text-align:center;
+}
+.Distribute .modal-footer button{
+    color:black;
+}
+/*--End DISTRIBUTION--*/
+
+
 #collapseOne .col-md-7{
     background-color: #3d9970;
     margin-left: 300px;
@@ -4323,9 +4357,11 @@ HEAD
 }
 #topNav .nav_menu ul{
     margin-top: -5px;
+    margin-right: 20px;
 }
 #topNav .nav_menu i{
-    font-size: 10px;
+    font-size: 15px;
+    color:black;
 }
 #topNav .nav_menu .info-number{
     font-size: 10px;
