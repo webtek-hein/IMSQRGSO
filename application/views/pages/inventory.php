@@ -1,12 +1,12 @@
 <!-- page content -->
 <div id="inventory-main-page" class="page-content right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
-    <div class="page-title">
 
-
-
-    </div>
     <div class="inventory-tab">
+        <div class="page-title">
 
+
+
+        </div>
         <?php $position = $this->session->userdata['logged_in']['position'];
         if ($position === 'Admin' || $position === 'Custodian') {
             echo '<button id="headingTwo" class="btn pull-right" data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">

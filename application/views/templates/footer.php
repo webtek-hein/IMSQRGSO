@@ -121,7 +121,7 @@
                     $('#accode').html(accountCode);
                 }
             });
-            $('ul .current-page a').css('background-color', '#1ABB9C');
+            $('ul .current-page a').css('background-color', '#808080a6');
             //Show department option
             $.ajax({
                 url: 'inventory/getdept',
