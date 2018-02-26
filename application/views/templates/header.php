@@ -55,41 +55,40 @@ if (isset($this->session->userdata['logged_in'])) {
 
 </head>
 
-<body class="nav-sm fixed-top">
-    <div class="main_container">
-        <div class="menu_fixed col-md-3 left_col" id="HeaderNav">
+<body>
+        <div class="menu_fixed col-md-2 left_col" id="HeaderNav">
             <div class="left_col scroll-view">
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side  hidden-print main_menu">
                     <div class="menu_section">
                         <ul class="nav side-menu">
-                            <li id="li1"><a href="<?php echo base_url()?>dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+                            <li id="li1"><a href="<?php echo base_url()?>dashboard"><i class="fa fa-dashboard"></i> DASHBOARD </a>
                             </li>
-                            <li id="li2"><a href="Inventory"><i class="fa fa-book"></i>Inventory</a>
+                            <li id="li2"><a href="Inventory"><i class="fa fa-book"></i>INVENTORY</a>
                             </li>
 
                             <?php $position = $this->session->userdata['logged_in']['position'];
                             if ($position === 'Admin' || $position === 'Custodian'){
-                                echo '<li id="dept"><a href="department"><i class="fa fa-institution"></i>Department</a>
+                                echo '<li id="dept"><a href="department"><i class="fa fa-institution"></i>DEPARTMENT</a>
                                       </li>'.
-                                    '<li id="li3"><a href="Supplier"><i class="fa fa-truck"></i>Supplier</a>
+                                    '<li id="li3"><a href="Supplier"><i class="fa fa-truck"></i>SUPPLIER</a>
                                      </li>';
                             }
                             if ($position === 'Admin'){
-                                echo '<li id="li4"><a href="Accounts"><i class="fa fa-users"></i>Users</a></li>';
+                                echo '<li id="li4"><a href="Accounts"><i class="fa fa-users"></i>USERS</a></li>';
 
                             }
-                            echo '<li id="li5"><a href="Return"><i class="fa fa-undo"></i>Returns</a></li>';
+                            echo '<li id="li5"><a href="Return"><i class="fa fa-undo"></i>RETURNS</a></li>';
                             ?>
-                            <li id="li6"><a><i class="fa fa-edit"></i>Logs</a>
+                            <li id="li6"><a><i class="fa fa-edit"></i>LOGS</a>
                                 <?php
                                 echo '<ul class="nav child_menu">';
-                                echo '<li><a href=' . base_url() . 'increased>Increased</a></li>'.
-                                    '<li><a href=' . base_url() . 'decreased>Decreased</a></li>';
+                                echo '<li><a href=' . base_url() . 'increased>INCREASED</a></li>'.
+                                    '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>';
                                 if ($position === 'Admin' || $position === 'Custodian') {
-                                    echo '<li><a href=' . base_url() . 'edit>Edit</a></li>';
+                                    echo '<li><a href=' . base_url() . 'edit>EDIT</a></li>';
                                 }
-                                echo '<li><a href=' . base_url() . 'return_log>Return Log</a></li>';
+                                echo '<li><a href=' . base_url() . 'return_log>RETURN LOG</a></li>';
                                 echo '</ul></li>';
                                 ?>
                         </ul>
@@ -102,72 +101,7 @@ if (isset($this->session->userdata['logged_in'])) {
                 <div id="topNav" class="top_nav">
                         <nav class="nav_menu">
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="">
-                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="<?php echo base_url()?>assets/images/img.jpg" alt=""><?= $firstname.' '.$lastname?>
-                                        <span class=" fa fa-angle-down"></span>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                        <li><a href="<?php echo base_url()?>profile">Profile</a></li>
-                                        <li><a href="<?php echo base_url()?>logout"><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
-                                    </ul>
-                                </li>
-                                <li role="presentation" class="dropdown">
-                                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa fa-bell-o"></i>
-                                        <span class="badge bg-green">6</span>
-                                    </a>
-                                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                        <li>
-                                            <a>
-                                                <span class="image"><img src="<?php echo base_url()?>assets/images/img.jpg" alt="Profile Image" /></span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                                <span class="message">
-                                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                                         </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>
-                                                <span class="image"><img src="<?php echo base_url()?>assets/images/img.jpg" alt="Profile Image" /></span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                                <span class="message">
-                                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                                        </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>
-                                                <span class="image"><img src="<?php echo base_url()?>assets/images/img.jpg" alt="Profile Image" /></span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                                <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                                        </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>
-                                                <span class="image"><img src="<?php echo base_url()?>assets/images/img.jpg" alt="Profile Image" /></span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                                <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                                        </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="text-center">
-                                                <a>
-                                                    <strong>See All Alerts</strong>
-                                                    <i class="fa fa-angle-right"></i>
-                                                </a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
+                               <a class="pull-right" href="logout">LOGOUT</a>
                             </ul>
                         </nav>
                 </div>

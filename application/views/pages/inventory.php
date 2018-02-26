@@ -42,7 +42,7 @@
                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
                     <!-- Implement Bootsrap table-->
                     <div class="accordion" id="accordion" class="table-responsive" role="tablist" aria-multiselectable="true">
-                            <table  id="MOOEtable" class="main" data-pagination="true" data-search="true"
+                            <table  id="MOOEtable" class="table-no-bordered" data-pagination="true" data-search="true"
                                     class="table table-no-bordered table-hover">
                             </table>
                     </div>
