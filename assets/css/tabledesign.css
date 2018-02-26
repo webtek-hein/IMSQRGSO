@@ -4,11 +4,13 @@ td,th{
     white-space: nowrap;
     overflow: hidden;
     white-space: nowrap;
+    color: #5b5b5b;
 }
 th {
-    color: #999999;
+    color: #b5b5b5;
     text-align: left;
     font-family: 'Roboto', sans-serif;
+    font-weight: 250;
 }
 
 table{
