@@ -90,7 +90,11 @@
                             };
                         },
                         field: 'quantity',
-                        title: 'QUANTITY'
+                        title: 'AVAILABLE'
+                    }, {
+                        sortable: true,
+                        field: 'unit',
+                        title: 'UNIT'
                     }]
                     // }, {
                     //     sortable: true,
@@ -120,7 +124,11 @@
                             };
                         },
                         field: 'quantity',
-                        title: 'QUANTITY'
+                        title: 'AVAILABLE'
+                    }, {
+                        sortable: true,
+                        field: 'unit',
+                        title: 'UNIT'
                     }]
                     // }, {
                     //     sortable: true,

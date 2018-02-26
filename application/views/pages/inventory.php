@@ -3,10 +3,9 @@
 
     <div class="inventory-tab">
         <div class="page-title">
-
-
-
+            <h1>Inventory</h1>
         </div>
+
         <?php $position = $this->session->userdata['logged_in']['position'];
         if ($position === 'Admin' || $position === 'Custodian') {
             echo '<button id="headingTwo" class="btn pull-right" data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -33,7 +32,7 @@
 
                     <div class="accordion" id="accordion" class="table-main table-responsive" role="tablist" aria-multiselectable="true">
                         <!-- Implement Bootsrap table-->
-                        <table id="itemtable" class="main" data-pagination="true" data-search="true"
+                        <table id="itemtable" class="main table-no-bordered" data-pagination="true" data-search="true"
                                class="table table-no-bordered table-hover">
                         </table>
                     </div>
