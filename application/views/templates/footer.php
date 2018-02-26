@@ -168,7 +168,13 @@
             // on department change
             $('#selct-dept').change(function () {
                 var id = $(this).val();
-                $deptTable.bootstrapTable('refresh', {url: 'inventory/viewdept/' + id});
+                var type = $('#myTab').find('li.active').val();
+                if(type === 0){
+                    $deptTable.bootstrapTable('refresh', {url: 'inventory/viewdept/CO/' + id});
+                }else{
+                    $deptTable.bootstrapTable('refresh', {url: 'inventory/viewdept/MOOE/' + id});
+
+                }
             });
             //show supplier options
             $.ajax({
@@ -281,7 +287,6 @@
 
             $(".next-step").click(function () {
                 var $active = $('.wizard .nav-tabs li.active');
-                $active.next().removeClass('disabled');
                 nextTab($active);
 
             });
@@ -535,13 +540,6 @@
             $('#addanother').on('click', function () {
                 $('#addItemForm').parsley().whenValidate({group: 'set' + counter}).done(function () {
                     counter++;
-                    list = "<li id=\"list" + counter + "\" role=\"presentation\" class=\"listTab disabled\"><a href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
-                        "<span class=\"round-tab\">" +
-                        "<b>Item" + counter + "</b>" +
-                        "</span>" +
-                        "</a>" +
-                        "</li>";
-                    $ul.append(list);
                     $button.attr('id', 'buttonCounter' + counter);
                     $div.clone().find('input,textarea').val("")
                         .attr('data-parsley-group', 'set' + counter)
@@ -551,6 +549,13 @@
                         .removeClass('active')
                         .find('#buttonCounter' + counter)
                         .attr('onclick', 'save(' + counter + ')');
+                    list = "<li id=\"list" + counter + "\" role=\"presentation\" class=\"listTab\"><a href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
+                        "<span class=\"round-tab\">" +
+                        "<b>Item" + counter + "</b>" +
+                        "</span>" +
+                        "</a>" +
+                        "</li>";
+                    console.log($ul.append(list).find('li.active').next().find('a[data-toggle=tab]').click());
                 });
 
             });
@@ -668,12 +673,12 @@
 
         //traverse to next element
         function nextTab(elem) {
-            $(elem).next().find('a[data-toggle="tab"]').click();
+            elem.next().find('a[data-toggle="tab"]').click();
         }
 
         //traverse to previous element
         function prevTab(elem) {
-            $(elem).prev().find('a[data-toggle="tab"]').click();
+            elem.prev().find('a[data-toggle="tab"]').click();
         }
 
     </script>

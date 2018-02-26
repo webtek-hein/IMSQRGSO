@@ -31,9 +31,9 @@
                 <!-- Capital Outaly tab-->
                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
 
-                    <div class="accordion" id="accordion" class="table-responsive" role="tablist" aria-multiselectable="true">
+                    <div class="accordion" id="accordion" class="table-main table-responsive" role="tablist" aria-multiselectable="true">
                         <!-- Implement Bootsrap table-->
-                        <table id="itemtable" data-pagination="true" data-search="true"
+                        <table id="itemtable" class="main" data-pagination="true" data-search="true"
                                class="table table-no-bordered table-hover">
                         </table>
                     </div>
@@ -43,7 +43,7 @@
                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
                     <!-- Implement Bootsrap table-->
                     <div class="accordion" id="accordion" class="table-responsive" role="tablist" aria-multiselectable="true">
-                            <table  id="MOOEtable" data-pagination="true" data-search="true"
+                            <table  id="MOOEtable" class="main" data-pagination="true" data-search="true"
                                     class="table table-no-bordered table-hover">
                             </table>
                     </div>
@@ -79,7 +79,7 @@
                             <div id="bulkdiv" class="tab-content">
                                 <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
 
-                                    <div class="left">
+                                    <div class="left col-md-6">
                                         <div class="form-group has-feedback">
                                             <label>Item Name</label>
                                             <div class="col-md-12">
@@ -159,7 +159,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="right">
+                                    <div class="right col-md-6">
                                         <div class="form-group has-feedback">
                                             <label>Delivery Date</label>
                                             <div class="col-md-12">
@@ -246,13 +246,13 @@
                                         <button type="submit" id="saveALL" class="btn btn-default"><i
                                                     class="fa fa-download"></i> Save All
                                         </button>
-                                    <div class="pull-right">
-                                        <button type="button" id="addanother"
-                                                class="next-step btn btn-default"><i
-                                                    class="fa fa fa-cart-plus"></i> Add another item
-                                        </button>
-                                    </div>
-                                    </div>
+                                </div>
+                            </div>
+                            <div class="pull-right">
+                                <button type="button" id="addanother"
+                                        class="next-step btn btn-default"><i
+                                            class="fa fa fa-cart-plus"></i> Add another item
+                                </button>
                             </div>
                         </form>
                     </div>

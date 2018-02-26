@@ -173,9 +173,9 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
-    public function viewDept($id)
+    public function viewDept($type,$id)
     {
-        $list = $this->inv->departmentInventory($id);
+        $list = $this->inv->departmentInventory($type,$id);
         $data = array();
         foreach ($list as $item) {
             $data[] = array(
@@ -183,8 +183,7 @@ class Inventory extends CI_Controller
                 'description' => $item['item_description'],
                 'quant' => $item['quantity'],
                 'rec' => $item['date_received'],
-                'unit' => $item['unit'],
-                'action' => "<a class=\"text-primary\" href=\"#\" onclick=\"detail($item[item_id])\"> View Detail</a>"
+                'unit' => $item['unit']
             );
         }
         echo json_encode($data);

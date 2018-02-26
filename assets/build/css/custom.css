@@ -4211,6 +4211,10 @@ HEAD
 #inventory-main-page button{
     height: 30px;
 }
+#inventory-main-page #addanother{
+    position: relative;
+    bottom: 35px;
+}
 #addItemForm .right{
     float:right;
     box-sizing: border-box;
