@@ -1,5 +1,5 @@
 <!-- page content -->
-<div id="inventory-main-page" class="page-content right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
+<div id="inventory-main-page" class="main page-content" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
 
     <div class="inventory-tab">
         <div class="page-title">

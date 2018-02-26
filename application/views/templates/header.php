@@ -62,6 +62,7 @@ if (isset($this->session->userdata['logged_in'])) {
                 <div id="sidebar-menu" class="main_menu_side  hidden-print main_menu">
                     <div class="menu_section">
                         <ul class="nav side-menu">
+                            <li id="li0"><img class="left" src="<?php echo base_url();?>assets/images/logoimsgso.png" width="50px" height="50px"><a>GSOIMS</a></li>
                             <li id="li1"><a href="<?php echo base_url()?>dashboard"><i class="fa fa-dashboard"></i> DASHBOARD </a>
                             </li>
                             <li id="li2"><a href="Inventory"><i class="fa fa-book"></i>INVENTORY</a>

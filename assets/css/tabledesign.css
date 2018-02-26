@@ -1,15 +1,25 @@
 div[role=tabpanel].togle{
 }
-
+td,th{
+    white-space: nowrap;
+    overflow: hidden;
+    white-space: nowrap;
+}
 th {
     color: #999999;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
 }
 
-table[role=inc]{
-    overflow-x: hidden;
+table{
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
 }
 tr {
     cursor: pointer;
+    height: 45px;
+    padding: .35em;
 }
 .fixed-table-container{
     border: 0;

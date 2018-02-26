@@ -181,6 +181,7 @@ class Inventory extends CI_Controller
         $data = array();
         foreach ($list as $item) {
             $data[] = array(
+                'id' => $item['item_id'],
                 'name' => $item['item_name'],
                 'description' => $item['item_description'],
                 'quant' => $item['quantity'],

@@ -229,9 +229,7 @@ html , body{
 .nav-sm .profile {
     display: none
 }
-.menu_section {
-    margin-bottom: 35px
-}
+
 .menu_section h3 {
     padding-left: 15px;
     color: #fff;
@@ -242,9 +240,6 @@ html , body{
     margin-bottom: 0;
     margin-top: 0;
     text-shadow: 1px 1px #000
-}
-.menu_section>ul {
-    margin-top: 10px
 }
 .profile_pic {
     width: 35%;
@@ -4367,12 +4362,12 @@ background-color: #009900;
 
 .left_col{
     overflow: hidden;
-    height: 100%;
+    min-height: 100%;
     margin: 0;
-    background-color: #1f1f25;
+    background-color: #16161b;
 }
 .left_col ul{
-    margin-top: 100px;
+    margin-top: 50px;
 }
 /*-- End of Sidebar Nav --*/
 
@@ -4386,8 +4381,14 @@ background-color: #009900;
     position: fixed;
     top: 30px;
     left: 200px;
+    min-height: 100%;
     width: 100%;
     right: 0;
+}
+.deptopt{
+    position: relative;
+    left: 10px;
+    bottom: 5px;
 }
 /*-- End of Body --*/
 button.pull-right{
@@ -4410,14 +4411,22 @@ span.pull-right.search {
 }
 .inventory-tab{
     background-color: #F5F5F5;
-
 }
 #HeaderNav{
     width: 200px;
-    background-color: #1f1f25;
-    border: 2px solid #141414;
+    background-color: #16161b;
+    border: 2px solid #060606;
 }
 a.pull-right{
     margin-top: 10px !important;
     color: white;
+}
+#supplier .bootstrap-table{
+    margin-top: 20px;
+    position: relative;
+    width: 90%;
+}
+#li0 a{
+    text-align: center;
+    font-size: 22px;
 }

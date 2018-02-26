@@ -90,7 +90,7 @@
                             };
                         },
                         field: 'quantity',
-                        title: 'AVAILABLE'
+                        title: 'IN-STOCK'
                     }, {
                         sortable: true,
                         field: 'unit',
@@ -124,7 +124,7 @@
                             };
                         },
                         field: 'quantity',
-                        title: 'AVAILABLE'
+                        title: 'IN-STOCK'
                     }, {
                         sortable: true,
                         field: 'unit',
@@ -149,6 +149,7 @@
             var supplier = [];
             var $deptOpt = $('.deptopt');
             var $deptTable = $('#departmentTable');
+            var $deptMOOEtable = $('#deptMOOEtable');
 
             //show account code options
             $.ajax({
@@ -161,7 +162,7 @@
                     $('#accode').html(accountCode);
                 }
             });
-            $('ul .current-page a').css('background-color', '#808080a6');
+            $('ul .current-page a').css('background-color', 'rgba(25, 158, 7, 0.65)');
             //Show department option
             $.ajax({
                 url: 'inventory/getdept',
@@ -174,14 +175,83 @@
                 }
             });
             // on department change
+            $deptTable.bootstrapTable({
+                    pageSize: 10,
+                    url: 'inventory/viewdept/CO/11',
+                    onClickRow:function(data,row){detail(data.id);},
+                    resizable: true,
+                    columns: [{             sortable: true,
+                        field: 'name',
+                        title: 'NAME'
+                    }, {
+                        sortable: true,
+                        field: 'description',
+                        title: 'DESCRIPTION'
+                    }, {
+                        sortable: true,
+                        cellStyle: function (data) {
+                            return {
+                                css: {"color": "green"}
+                            };
+                        },
+                        field: 'quant',
+                        title: 'QUANTITY DISTRIBUTED'
+                    },{
+                        sortable: true,
+                        field: 'rec',
+                        title: 'DATE RECEIVED'
+                    }, {
+                        sortable: true,
+                        field: 'unit',
+                        title: 'UNIT'
+                    }]
+                });
+            $deptMOOEtable.bootstrapTable({
+                    pageSize: 10,
+                    url: 'inventory/viewdept/MOOE/11',
+                    onClickRow:function(data,row){detail(data.id);},
+                    resizable: true,
+                    columns: [{
+                        sortable: true,
+                        field: 'name',
+                        title: 'NAME'
+                    }, {
+                        sortable: true,
+                        field: 'description',
+                        title: 'DESCRIPTION'
+                    }, {
+                        sortable: true,
+                        cellStyle: function (data) {
+                            return {
+                                css: {"color": "green"}
+                            };
+                        },
+                        field: 'quant',
+                        title: 'QUANTITY DISTRIBUTED'
+                    },{
+                        sortable: true,
+                        field: 'rec',
+                        title: 'DATE RECEIVED'
+                    }, {
+                        sortable: true,
+                        field: 'unit',
+                        title: 'UNIT'
+                    }]
+                    // }, {
+                    //     sortable: true,
+                    //     field: 'Price',
+                    //     title: 'PRICE'
+                    // }]
+                });
+
             $('#selct-dept').change(function () {
                 var id = $(this).val();
-                var type = $('#myTab').find('li.active').val();
-                if(type === 0){
+                var type = $('#myTab').find('li.active')[0].id;
+
+                if(type === 'CO'){
                     $deptTable.bootstrapTable('refresh', {url: 'inventory/viewdept/CO/' + id});
                 }else{
-                    $deptTable.bootstrapTable('refresh', {url: 'inventory/viewdept/MOOE/' + id});
-
+                    $deptMOOEtable.bootstrapTable('refresh', {url: 'inventory/viewdept/MOOE/' + id});
                 }
             });
             //show supplier options
