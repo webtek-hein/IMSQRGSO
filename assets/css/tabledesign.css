@@ -18,10 +18,10 @@ tr {
     background-color: #73879c;
     position: fixed;
     bottom: 0;
-    left: 10%;
-    right: 10%;
-    width: 80%;
+    left: 400px;
+    right: 200px;
     color: white;
+    width: 60%;
 }
 .pagination-info{
     margin-left: 50px;
