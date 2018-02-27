@@ -4427,9 +4427,17 @@ a.pull-right{
 #supplier .bootstrap-table{
     margin-top: 20px;
     position: relative;
-    width: 90%;
+    width: 100%;
 }
 #li0 a{
     text-align: center;
     font-size: 22px;
+}
+#accounts .users-table{
+    width: 86%;
+}
+#accounts button.pull-right{
+    background-color: blue;
+}
+#accounts .pull-right.search{
 }

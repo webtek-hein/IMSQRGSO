@@ -1,131 +1,89 @@
+<div id="accounts" class="page-content" role="main">
+    <div class="page-title">
+        <h1>Users</h1>
+    </div>
+    <button class="pull-right btn btn-success" type="button" data-toggle="modal"
+            data-target="#adduser">
+        <li class="fa fa-user-plus"></li>
+        Add User
+    </button>
+    <div class="x_content">
+        <div id="myTabContent" class="tab-content">
+            <div class="users-table table-responsive" role="tablist"
+                 aria-multiselectable="true">
 
-<div class="right_col" role="main">
-    <div class="">
-        <div class="page-title">
-            <div class="title_left">
-                <h3></h3>
-            </div>
-
-        </div>
-
-        <div class="clearfix"></div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="x_panel">
-                    <div class="x_content">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-
-
-                                <div class="pull-right">
-                                        <button class="btn btn-success" type="button" data-toggle="modal" data-target="#adduser"><li class="fa fa-user-plus"></li> Add User</button>
-                                </div>
-
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
-                                <div class="well profile_view">
-                                    <div class="col-sm-12">
-                                        <h4 class="brief"><i>Custodian</i></h4>
-                                        <div class="left col-xs-7">
-                                            <h2>Heinrich Bangui</h2>
-                                            <p><strong>UserName: </strong> George</p>
-                                            <ul class="list-unstyled">
-                                                <li><i class="fa fa-home"></i> Department: </li>
-                                                <li><i class="fa fa-phone"></i> Contact #: </li>
-                                            </ul>
-                                        </div>
-                                        <div class="right col-xs-5 text-center">
-                                            <img src="assets/images/logogso.png" alt="" class="img-circle img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 bottom text-center">
-                                        <div class="pull-right">
-                                            <button type="button" class="btn btn-success btn-xs"><i class="fa fa-thumbs-o-up"></i> Active</button>
-                                            <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-user-times"></i> Deactivate </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                <div class="togle" data-example-id="togglable-tabs">
-                      <div id="myTabContent" class="tab-content">
-                            <div class="x_panel">
-                            <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="Users/display_users" data-show-toggle="true" class="table table-hover">
-                                <thead>
-                                <!-- Data-field for getting data  -->
-                                <tr  data-toggle="collapse" data-target="#accordion" class="clickable">
-                                    <th data-sortable="true" data-field="name">Name</th>
-
-                                    <th data-sortable="true" data-field="email">Email</th>
-                                    <th data-sortable="true" data-field="contactno">Contact No.</th>
-                                   <th data-sortable="true" data-field="username">Username</th>                                    
-                                    <th data-sortable="true" data-field="position">Position</th>
-                                    <th data-sortable="true" data-field="department">Department</th>
-
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        </div>
-
-                      </div>                            
-
-                        </div>
-                    </div>
-                </div>
+                <table id="datatable" data-pagination="true" data-search="true"
+                       data-toggle="table" data-url="Users/display_users"
+                       class="table table-no-bordered">
+                    <thead>
+                    <!-- Data-field for getting data  -->
+                    <tr>
+                        <th data-sortable="true" data-field="name">Name</th>
+                        <th data-sortable="true" data-field="email">Email</th>
+                        <th data-sortable="true" data-field="contactno">Contact No.</th>
+                        <th data-sortable="true" data-field="username">Username</th>
+                        <th data-sortable="true" data-field="position">Position</th>
+                        <th data-sortable="true" data-field="department">Department</th>
+                    </tr>
+                    </thead>
+                </table>
             </div>
         </div>
     </div>
-</div>
+    <!-- Modals -->
+    <!-- Add User -->
+    <div id="adduser" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
 
-<!-- Modals -->
-<!-- Add User -->
-<div id="adduser" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <li class="fa fa-user-plus"></li>
+                        Add User
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal form-label-left">
 
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel"><li class="fa fa-user-plus"></li> Add User</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal form-label-left">
-
-                        <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">
+                        <input type="text" class="form-control has-feedback-left" id="inputSuccess2"
+                               placeholder="First Name">
                         <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 
                         <input type="text" class="form-control" id="inputSuccess3" placeholder="Last Name">
                         <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 
-                        <input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">
+                        <input type="text" class="form-control has-feedback-left" id="inputSuccess4"
+                               placeholder="Email">
                         <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
 
                         <input type="text" class="form-control" id="inputSuccess5" placeholder="Contact No.">
                         <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
 
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Department</label>
-                            <input type="text" class="form-control">
-                            <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
+                        <input type="text" class="form-control">
+                        <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">User Name</label>
-                            <input type="text" class="form-control">
-                            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-            </div>
-                    <div class="ln_solid"></div>
-                    <div class="form-group">
-                        <div class="pull-right">
-                            <button type="button" class="btn btn-danger"><li class="fa fa-times-circle-o" style="font-size:15px"></li> Cancel</button>
-                            <button type="submit" class="btn btn-success"><li class="fa fa-check-square-o"></li> Add User</button>
+                        <input type="text" class="form-control">
+                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                        <div class="form-group">
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-danger">
+                                    <li class="fa fa-times-circle-o" style="font-size:15px"></li>
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-success">
+                                    <li class="fa fa-check-square-o"></li>
+                                    Add User
+                                </button>
+                            </div>
                         </div>
-                    </div>
-
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-</div>
+    </div>
 </div>
 <!-- end of add user-->
 <!--End of Modals -->

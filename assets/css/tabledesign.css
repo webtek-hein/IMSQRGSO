@@ -3,7 +3,6 @@ div[role=tabpanel].togle{
 td,th{
     white-space: nowrap;
     overflow: hidden;
-    white-space: nowrap;
     color: #5b5b5b;
 }
 th {
@@ -37,4 +36,9 @@ tr {
 }
 .pagination-info{
     margin-left: 50px;
+}
+#accounts .bootstrap-table td,th{
+    white-space: nowrap;
+    color: #5b5b5b;
+    width: 90%;
 }
