@@ -6,14 +6,14 @@
             <h1>Supplier</h1>
         </div>
 
-<button class="pull-right" role="tab" id="headingOne" data-toggle="tab"
+        <button class="pull-right" role="tab" id="headingOne" data-toggle="tab"
                 href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             <i class="fa fa-plus" ></i><span> Add Supplier</span>
         </button>
 
 
-        <div class="x_content table-responsive">
-            <table data-pagination="true" data-search="true" data-toggle="table"
+        <div class="x_content">
+            <table data-search="true" data-pagination="true" data-toggle="table"
                    data-url="supplier/viewSuppliers" class="table table-no-bordered">
                 <thead>
                 <tr>

@@ -1,17 +1,14 @@
 <!-- page content -->
 <div id="returns" class="page-content" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
+    <div class="inventory-tab">
     <div class="page-title">
         <h1>Returns</h1>
     </div>
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
 
             <div class="x_content">
-                <table id="datatable" data-pagination="true" data-search="true" data-toggle="table"
-                       data-url="invetory/returnitem" class="table table-striped table-bordered">
+                <table id="datatable" data-toggle="table" data-url="invetory/returnitem" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th data-sortable="true" data-field="number">#</th>
                         <th data-sortable="true" data-field="timestamp">Timestamp</th>
                         <th data-sortable="true" data-field="serial">Serial no.</th>
                         <th data-sortable="true" data-field="item">Item Name</th>
@@ -26,7 +23,6 @@
                     </thead>
                 </table>
             </div>
-        </div>
     </div>
     <!-- /page content -->
 

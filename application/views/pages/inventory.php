@@ -15,11 +15,10 @@
         <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                 <li id="TB1" role="presentation" class="active">
-                    <a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital
-                        Outlay</a>
+                    <a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital Outlay</a>
                 </li>
-                <li id="TB2" role="presentation" class=""><a href="#tab_content2" role="tab" id="MOOE-tab"
-                                                             data-toggle="tab" aria-expanded="false">MOOE</a>
+                <li id="TB2" role="presentation" class="">
+                    <a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
                 </li>
             </ul>
         </div>
@@ -32,8 +31,7 @@
 
                     <div class="accordion" id="accordion" class="table-main table-responsive" role="tablist" aria-multiselectable="true">
                         <!-- Implement Bootsrap table-->
-                        <table id="itemtable" class="main table-no-bordered" data-pagination="true" data-search="true"
-                               class="table table-no-bordered table-hover">
+                        <table data-pagination="true" data-search="true" id="itemtable" class="main table-no-bordered" class="table table-no-bordered table-hover">
                         </table>
                     </div>
                 </div>
@@ -42,8 +40,7 @@
                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
                     <!-- Implement Bootsrap table-->
                     <div class="accordion" id="accordion" class="table-responsive" role="tablist" aria-multiselectable="true">
-                            <table  id="MOOEtable" class="table-no-bordered" data-pagination="true" data-search="true"
-                                    class="table table-no-bordered table-hover">
+                            <table data-pagination="true" data-search="true" id="MOOEtable" class="main table-no-bordered" data-pagination="true" class="table table-no-bordered table-hover">
                             </table>
                     </div>
                 </div>
@@ -266,7 +263,6 @@
 
         <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
 
-
             <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
                 <ul id="DetailTab" class="nav nav-tabs bar_tabs" role="tablist">
                     <li id="DetInfo" role="presentation" class="active">
@@ -302,7 +298,7 @@
                 <div role="tabpanel" class="tab-pane fade" id="Detail_Det" aria-labelledby="Detail-tab">
                     <!-- Implement Bootsrap table-->
                     <div class="accordion" id="accordion" class="table-responsive" role="tablist" aria-multiselectable="true">
-                        <table id="detail-tab-table" class="table table-no-bordered table-hover" data-pagination="true" data-search="true">
+                        <table id="detail-tab-table" class="table table-no-bordered table-hover">
                         </table>
                     </div>
                 </div>

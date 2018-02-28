@@ -8,11 +8,11 @@
 
         <div class="" role="tabpanel" data-example-id="togglable-tabs">
             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                <li role="presentation" id="CO" class="active"><a href="#tab_content1" id="CO-tab" data-toggle="tab"
-                                                                  role="tab" aria-expanded="true">Capital Outlay</a>
+                <li role="presentation" id="CO" class="active">
+                    <a href="#tab_content1" id="CO-tab" data-toggle="tab" role="tab" aria-expanded="true">Capital Outlay</a>
                 </li>
-                <li role="presentation" id="MOOE" class=""><a href="#tab_content2" role="tab" id="MOOE-tab"
-                                                              data-toggle="tab" aria-expanded="true">MOOE</a>
+                <li role="presentation" id="MOOE" class="">
+                    <a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="true">MOOE</a>
                 </li>
             </ul>
         </div>
@@ -22,7 +22,6 @@
                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
                     <div class="accordion" id="accordion" class="table-main table-responsive" role="tablist"
                          aria-multiselectable="true">
-
                         <table id="departmentTable" data-url="inventory/viewDept/CO/11" class="table table-no-bordered"
                                data-pagination="true" data-search="true">
                         </table>

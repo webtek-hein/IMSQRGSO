@@ -1006,7 +1006,6 @@ h2 {
 }
 .accordion .panel-heading {
     background: #F2F5F7;
-    padding: 13px;
     width: 100%;
     display: block
 }
@@ -4244,9 +4243,13 @@ HEAD
 }
 /*--End Inventory Main Content--*/
 
-/*--Inventory Modal Item Detail--*/
 
-/*--Inventory End Modal Item Detail--*/
+/*--Returns Main Content--*/
+
+
+
+/*--End of Returns Main Content--*/
+
 
 /*--Inventory Add Quantity From--*/
 #addquant .modal-header{

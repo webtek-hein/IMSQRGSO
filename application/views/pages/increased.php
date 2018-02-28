@@ -1,22 +1,12 @@
  <!-- page content -->
 <div id="inventory-main-page" class="page-content right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
-          <div class="">
+          <div class="inventory-tab">
             <div class="page-title">
+                <h1>Increase Log</h1>
             </div>
+          </div>
 
-            <div class="clearfix"></div>
-
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Increase Logs</h2>
-
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                  <div class="row">
-                <div class="togle" data-example-id="togglable-tabs">
-                      <div id="myTabContent" class="tab-content">
-                            <div class="x_panel">
+                <div class="x_content">
                             <table id="datatable"  data-pagination="true" data-search="true" data-toggle="table" data-url="logs/increaseLog" data-show-toggle="true" class="table table-hover">
                                 <thead>
                                 <!-- Data-field for getting data  -->
@@ -34,17 +24,7 @@
                                 </tr>
                                 </thead>
                             </table>
-                        </div>
-                        </div>
-
-                      </div>
-                      </div>
                 </div>
-              </div>
-            </div>
-
-          <div class="clearfix"></div>
-          </div>
 </div>
 
  <!-- /page content -->
