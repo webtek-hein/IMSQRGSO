@@ -1,14 +1,35 @@
 <!-- page content -->
 <div id="supplier" class="page-content main" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
+
     <div class="inventory-tab">
         <div class="page-title">
             <h1>Supplier</h1>
         </div>
-        <button class="pull-right" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion"
-                href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Add Supplier
+
+<button class="pull-right" role="tab" id="headingOne" data-toggle="tab"
+                href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="fa fa-plus" ></i><span> Add Supplier</span>
         </button>
 
-        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+        <div class="x_content table-responsive">
+            <table data-pagination="true" data-search="true" data-toggle="table"
+                   data-url="supplier/viewSuppliers" class="table table-no-bordered">
+                <thead>
+                <tr>
+                    <th data-sortable="true" data-field="supplier">Supplier</th>
+                    <th data-sortable="true" data-field="address">Address</th>
+                    <th data-sortable="true" data-field="contact">Contact</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+
+        <div class="AddSup hidden" role="tabpanel" aria-labelledby="headingOne">
+            <button type="button" onclick="addSupplierBack()" class="btn btn"></i> Back</a></button>
+            <div class="x_content">
             <div class="panel-body">
                 <div class="col-md-7 col-sm-12 col-xs-12">
                     <div class="x_panel">
@@ -61,21 +82,8 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
-
-        <div class="x_content table-responsive">
-                <table data-pagination="true" data-search="true" data-toggle="table"
-                       data-url="supplier/viewSuppliers" class="table table-no-bordered">
-                    <thead>
-                    <tr>
-                        <th data-sortable="true" data-field="supplier">Supplier</th>
-                        <th data-sortable="true" data-field="address">Address</th>
-                        <th data-sortable="true" data-field="contact">Contact</th>
-                    </tr>
-                    </thead>
-                </table>
-        </div>
-    </div>
 </div>
 
 <!-- /page content -->

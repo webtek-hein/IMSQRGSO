@@ -8,8 +8,8 @@
 
         <?php $position = $this->session->userdata['logged_in']['position'];
         if ($position === 'Admin' || $position === 'Custodian') {
-            echo '<button id="headingTwo" class="btn pull-right" data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <i class=" fa fa-cart-arrow-down" ></i><span>Add Item</span> </button>';
+            echo '<button id="headingTwo" class="btn pull-right" data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-controls="collapseTwo">
+                                <i class=" fa fa-cart-arrow-down" ></i><span> Add Item</span></button>';
         }
         ?>
         <div role="tabpanel" data-example-id="togglable-tabs" class="togle">

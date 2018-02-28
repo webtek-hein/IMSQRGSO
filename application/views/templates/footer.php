@@ -139,6 +139,10 @@
             $('#headingTwo').on('click',function () {
                toggleDiv($('.additemDiv'),$('.inventory-tab'));
             });
+            $('#headingOne').on('click',function (){
+                toggleDiv($('.AddSup'),$('.inventory-tab'));
+            });
+
             console.log('init_inventory');
         }
 
@@ -423,6 +427,10 @@
         }
         function addItemBack() {
             $('.additemDiv').toggleClass('hidden');
+            $('.inventory-tab').toggleClass('hidden');
+        }
+        function addSupplierBack(){
+            $('.AddSup').toggleClass('hidden');
             $('.inventory-tab').toggleClass('hidden');
         }
 
