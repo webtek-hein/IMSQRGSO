@@ -4406,11 +4406,6 @@ a.pull-right{
     margin-top: 10px !important;
     color: #ffff;
 }
-#supplier .bootstrap-table{
-    margin-top: 20px;
-    position: relative;
-    width: 100%;
-}
 #li0 a{
     text-align: center;
     font-size: 22px;
@@ -4421,5 +4416,7 @@ a.pull-right{
 #accounts button.pull-right{
     background-color: blue;
 }
-#accounts .pull-right.search{
+#supplier .pull-right.search{
+    position: relative;
+    bottom: 20%;
 }
