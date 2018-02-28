@@ -42,3 +42,14 @@ tr {
     color: #5b5b5b;
     width: 90%;
 }
+.bootstrap-table{
+    position: fixed;
+    bottom: 59%;
+    right: 0;
+    left: 200px;
+}
+.pull-right.search{
+    position: relative;
+    bottom: 49px;
+    right: 30px;
+}

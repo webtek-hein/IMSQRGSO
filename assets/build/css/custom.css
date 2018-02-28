@@ -4391,19 +4391,8 @@ button.pull-right{
     background-color: #F5F5F5;
     border: 1.4px solid #2196f3;
 }
-
-.pull-right.search{
-    position: relative;
-    bottom: 49px;
-    right: 210px;
-}
 span.pull-right.search {
     color: white;
-}
-.bootstrap-table{
-    position: relative;
-    bottom: 73px;
-    width: 100%;
 }
 .inventory-tab{
     background-color: #F5F5F5;
