@@ -55,33 +55,48 @@ if (isset($this->session->userdata['logged_in'])) {
 
 </head>
 
-<body>
-        <div class="menu_fixed col-md-2 left_col" id="HeaderNav">
-            <div class="left_col scroll-view">
-                <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main_menu_side  hidden-print main_menu">
-                    <div class="menu_section">
-                        <ul class="nav side-menu">
-                            <li id="li0"><img class="left" src="<?php echo base_url();?>assets/images/logoimsgso.png" width="50px" height="50px"><a>GSOIMS</a></li>
-                            <li id="li1"><a href="<?php echo base_url()?>dashboard"><i class="fa fa-dashboard"></i> DASHBOARD </a>
-                            </li>
-                            <li id="li2"><a href="Inventory"><i class="fa fa-book"></i>INVENTORY</a>
-                            </li>
+<body class="nav-md">
+<div class="menu_fixed col-md-2 left_col" id="HeaderNav">
+    <div class="left_col scroll-view">
+        <div class="profile clearfix">
+            <div class="profile_pic">
+                <img class="left" src="<?php echo base_url();?>assets/images/logoimsgso.png" width="50px" height="50px">
+            </div>
+            <div class="profile_info">
+                <span><p>GSOIMS</p></span>
+            </div>
+        </div>
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side  hidden-print main_menu">
+            <div class="menu_section">
+                <ul class="nav side-menu">
+                    <li id="li1">
+                        <a href="<?php echo base_url()?>dashboard"><i class="fa fa-dashboard"></i> DASHBOARD </a>
+                    </li>
+                    <li id="li2">
+                        <a href="Inventory"><i class="fa fa-book"></i>INVENTORY</a>
+                    </li>
 
-                            <?php $position = $this->session->userdata['logged_in']['position'];
-                            if ($position === 'Admin' || $position === 'Custodian'){
-                                echo '<li id="dept"><a href="department"><i class="fa fa-institution"></i>DEPARTMENT</a>
-                                      </li>'.
-                                    '<li id="li3"><a href="Supplier"><i class="fa fa-truck"></i>SUPPLIER</a>
-                                     </li>';
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                        if ($position === 'Admin' || $position === 'Custodian'){
+                            echo '<li id="dept">
+                                     <a href="department"><i class="fa fa-institution"></i>DEPARTMENT</a>
+                                  </li>'.
+                                 '<li id="li3">
+                                    <a href="Supplier"><i class="fa fa-truck"></i>SUPPLIER</a>
+                                 </li>';
                             }
                             if ($position === 'Admin'){
-                                echo '<li id="li4"><a href="Accounts"><i class="fa fa-users"></i>USERS</a></li>';
-
+                            echo '<li id="li4">
+                                    <a href="Accounts"><i class="fa fa-users"></i>USERS</a>
+                                  </li>';
                             }
-                            echo '<li id="li5"><a href="Return"><i class="fa fa-undo"></i>RETURNS</a></li>';
+                            echo '<li id="li5">
+                                    <a href="Return"><i class="fa fa-undo"></i>RETURNS</a>
+                                  </li>';
                             ?>
-                            <li id="li6"><a><i class="fa fa-edit"></i>LOGS</a>
+                                  <li id="li6">
+                                      <a><i class="fa fa-edit"></i>LOGS <span class="fa fa-chevron-down"></span></a>
                                 <?php
                                 echo '<ul class="nav child_menu">';
                                 echo '<li><a href=' . base_url() . 'increased>INCREASED</a></li>'.
@@ -92,12 +107,12 @@ if (isset($this->session->userdata['logged_in'])) {
                                 echo '<li><a href=' . base_url() . 'return_log>RETURN LOG</a></li>';
                                 echo '</ul></li>';
                                 ?>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /sidebar menu -->
+                </ul>
             </div>
-                </div>
+        </div>
+                <!-- /sidebar menu -->
+    </div>
+</div>
                 <!-- top navigation -->
                 <div id="topNav" class="top_nav">
                         <nav class="nav_menu">

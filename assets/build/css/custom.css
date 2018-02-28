@@ -4178,15 +4178,21 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 /** /bootstrap-datetimepicker **/
 
-HEAD
-
-    /*--Side-Menu--*/
-
-.menu_section i{
-    color: black;
+/*--Header Side Nav--*/
+/*Sidebar Title*/
+.menu_fixed .profile{
+    margin-top: 50px;
 }
+.menu_fixed .profile_info p{
+    font-weight: bolder;
+    font-size: 20px;
+    color:white;
+}
+.menu_fixed #sidebar-menu{
+    margin-top: -20px;
+}
+/*--End Header Side Nav--*/
 
-/*--End Side-Menu--*/
 
 
 /*--Inventory Add Item--*/
@@ -4210,7 +4216,6 @@ HEAD
 }
 #ModalI .col-md-7{
     margin-left: 250px;
-    border: 5px solid #8FBC8F;
     background-color: white;
 }
 /*--Buttons--*/
@@ -4243,12 +4248,6 @@ HEAD
 }
 /*--End Inventory Main Content--*/
 
-
-/*--Returns Main Content--*/
-
-
-
-/*--End of Returns Main Content--*/
 
 
 /*--Inventory Add Quantity From--*/
@@ -4322,7 +4321,6 @@ background-color: #009900;
 
 
 #collapseOne .col-md-7{
-    background-color: #3d9970;
     margin-left: 300px;
 }
 #collapseOne .form-group{

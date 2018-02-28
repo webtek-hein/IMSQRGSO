@@ -11,10 +11,8 @@
             <i class="fa fa-plus" ></i><span> Add Supplier</span>
         </button>
 
-
         <div class="x_content">
-            <table data-search="true" data-pagination="true" data-toggle="table"
-                   data-url="supplier/viewSuppliers" class="table table-no-bordered">
+            <table data-search="true" data-pagination="true" data-toggle="table" data-url="supplier/viewSuppliers" class="table table-no-bordered">
                 <thead>
                 <tr>
                     <th data-sortable="true" data-field="supplier">Supplier</th>
@@ -25,7 +23,6 @@
             </table>
         </div>
     </div>
-
 
         <div class="AddSup hidden" role="tabpanel" aria-labelledby="headingOne">
             <button type="button" onclick="addSupplierBack()" class="btn btn"></i> Back</a></button>
