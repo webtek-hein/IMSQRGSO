@@ -4194,6 +4194,20 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 /*--End Header Side Nav--*/
 
 
+/*--Inventory Main Content--*/
+.x_content a{
+    font-size:12px;
+    font-weight: bold;
+}
+
+.x_panel table th {
+    height: 10px;
+}
+#inventory-main-page{
+    background-color:#ffffff;
+}
+/*--End Inventory Main Content--*/
+
 
 /*--Inventory Add Item--*/
 #inventory-main-page button{
@@ -4214,8 +4228,8 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 .togle a{
     color: black;
 }
-#ModalI .col-md-7{
-    margin-left: 250px;
+#ModalI .col-md-6{
+    margin-left: 100px;
     background-color: white;
 }
 /*--Buttons--*/
@@ -4232,22 +4246,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     border-color: black;
 }
 /*--End Inventory Add Item--*/
-
-
-/*--Inventory Main Content--*/
-.x_content a{
-    font-size:12px;
-    font-weight: bold;
-}
-
-.x_panel table th {
-    height: 10px;
-}
-#inventory-main-page{
-    background-color:#ffffff;
-}
-/*--End Inventory Main Content--*/
-
 
 
 /*--Inventory Add Quantity From--*/
@@ -4306,6 +4304,17 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
    margin-left: 100px;
 }
 /*--Inventory End Edit From--*/
+
+/*--ITEM DETAIL--*/
+#detail-tab-table #DetailDropDn{
+    position: static;
+    left:1000px;
+
+}
+#detail-tab-table #DetailDropDn a{
+    color:black;
+}
+/*--End of ITEM DETAIL--*/
 
 /*--DISTRIBUTION--*/
 .Distribute .modal-header{

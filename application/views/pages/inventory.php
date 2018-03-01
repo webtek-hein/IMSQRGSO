@@ -64,7 +64,7 @@
                     </ul>
                 </div>
                 <div class="modal-body" id="ModalI">
-                    <div class="col-md-7 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
                         <form class="form-horizontal form-label-left input_mask" id="addItemForm" role="form"
                               action="inventory/saveAll" method="POST" data-parsley-validate="">
                             <div id="bulkdiv" class="tab-content">
@@ -459,7 +459,24 @@
 
             </div>
         </div>
-
         <!-- end of distribution-->
+
+<!-- View Serial-->
+    <div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+            <div class="col-md-offset-2">
+                <h4><b>List of Serial</b></h4>
+                <form class="serial-form" method="POST" action="inventory/addSerial">
+                    <!-- Dynamic serial tabs here -->
+                    <ul id="serial-tabs" class="nav nav-tabs">
+                    </ul>
+                    <!-- end of serial tabs -->
+                    <div id="serial-tabcontent" class="tab-content">
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
+<!--End of View Serial-->
+    </div>
+

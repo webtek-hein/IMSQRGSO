@@ -66,13 +66,16 @@ class Inventory extends CI_Controller
 
         foreach ($list as $detail) {
             if ($this->session->userdata['logged_in']['position'] === 'Custodian') {
-                $action = "<a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' onclick =\"getserial($detail[item_det_id])\" data-target=\".Distribute\" 
-                              class=\"btn btn-modal btn-default btn-xs\"><i class=\"fa fa-plus-circle\"></i> Distribute</a>
-                             
-                              <a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\"
-                               href=\"#data1\" 
-                              aria-expanded=\"true\" aria-controls=\"collapseOne\"><li class=\"fa fa-folder-open\">
-                              </li> View Serial</a>";
+                $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
+                    <ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
+                            <li><a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' onclick =\"getserial($detail[item_det_id])\" data-target=\" .Distribute\">
+                            <i class=\"	fa fa-share-square-o\" ></i > Distribute</a ></li >
+                            <li><a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' onclick =\"getserial($detail[item_det_id])\" data-target=\" .Add_Item\" >
+                            <i class=\"fa fa-plus-circle\"></i> Add Quantity</a></li>
+                            <li><a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" role=\"tab\" id=\"headingOne\"
+                               href=\"#data1\"aria-expanded = \"true\" aria-controls = \"collapseOne\" ><i class=\"fa fa-folder-open\">
+                              </i > View Serial</a></li>
+                    </ul>";
             } else {
                 $action = "<a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\"
                                href=\"#data1\" aria-expanded=\"true\" aria-controls=\"collapseOne\"><li class=\"fa fa-folder-open\">
