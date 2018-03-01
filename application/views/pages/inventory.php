@@ -288,7 +288,7 @@
                 <!--Detail-->
                 <div role="tabpanel" class="tab-pane fade" id="Detail_Det" aria-labelledby="Detail-tab">
                     <!-- Implement Bootsrap table-->
-                    <div class="accordion" id="accordion" class="table-responsive" role="tablist" aria-multiselectable="true">
+                    <div class="accordion table-responsive" id="accordion" role="tablist" aria-multiselectable="true">
                         <table id="detail-tab-table" class="table table-no-bordered table-hover">
                         </table>
                     </div>
