@@ -4251,35 +4251,47 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 /*--End Inventory Add Item--*/
 
 
-/*--Inventory Add Quantity From--*/
-#addquant .modal-header{
-    background-color:#98FB98;
-}
-#addquant h4{
+/*--Inventory DISTRIBUTION FORM--*/
+#DitributeItem h4{
     color:black;
     text-align: center;
 }
-#addquant label{
+#DitributeItem label{
     color:black;
 }
-#addquant .modal-footer{
-    height: 50px;
+#DitributeItem .modal-dialog {
+    position:fixed;
+    margin-top:40px;
+    height:90%;
+    width:500px;
+    -webkit-transform: translate3d(0%, 0, 0);
+    -ms-transform: translate3d(0%, 0, 0);
+    -o-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
 }
-#addquant .modal-footer button{
-    margin-top: -10px;
-    border-color: black;
-    color:black;
+#DitributeItem .modal-content {
+    height: 100%;
 }
-#addquant .modal-footer #savequant{
-     background-color:#B0C4DE;
- }
-#addquant .modal-footer #cancel1{
-    background-color:#F08080;
+#DitributeItem .modal-body{
+    padding: 15px 15px 80px;
 }
-#addquant .col-md-4 select{
-    width: 260px;
+#DitributeItem .modal-dialog{
+    left: -320px;
+    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+    transition: opacity 0.3s linear, left 0.3s ease-out;
 }
-/*--Inventory End Add Quantity From--*/
+#DitributeItem .modal-dialog{
+    left: 0;
+}
+#DitributeItem form{
+    margin-left: 70px;
+}
+#DitributeItem button{
+    margin-top: -100px;
+}
+/*--Inventory End DISTRIBUTION MODAL--*/
 
 /*--Inventory Edit From--*/
 #edit_modal .modal-header{
@@ -4319,39 +4331,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     color:black;
 }
 /*--End of ITEM DETAIL--*/
-
-/*--DISTRIBUTION--*/
-.Distribute .modal-header{
-background-color: #009900;
-}
-.Distribute .modal-header h4{
-   text-align:center;
-}
-.Distribute .modal-footer button{
-    color:black;
-}
-#DistributeItem .modal.left .modal-dialog {
-    position: fixed;
-    margin: auto;
-    width: 320px;
-    height: 100%;
-    -webkit-transform: translate3d(0%, 0, 0);
-    -ms-transform: translate3d(0%, 0, 0);
-    -o-transform: translate3d(0%, 0, 0);
-    transform: translate3d(0%, 0, 0);
-}
-/*Left*/
-#DistributeItem .modal.left.fade .modal-dialog{
-    left: -320px;
-    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
-    -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
-    -o-transition: opacity 0.3s linear, left 0.3s ease-out;
-    transition: opacity 0.3s linear, left 0.3s ease-out;
-}
-#DistributeItem .modal.left.fade.in .modal-dialog{
-    left: 0;
-}
-/*--End DISTRIBUTION--*/
 
 
 #collapseOne .col-md-7{
