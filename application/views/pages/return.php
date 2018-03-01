@@ -1,28 +1,30 @@
 <!-- page content -->
 <div id="returns" class="page-content" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
-    <div class="inventory-tab">
-    <div class="page-title">
-        <h1>Returns</h1>
-    </div>
 
-            <div class="x_content">
-                <table id="datatable" data-toggle="table" data-url="invetory/returnitem" class="table table-striped table-bordered">
-                    <thead>
-                    <tr>
-                        <th data-sortable="true" data-field="timestamp">Timestamp</th>
-                        <th data-sortable="true" data-field="serial">Serial no.</th>
-                        <th data-sortable="true" data-field="item">Item Name</th>
-                        <th data-sortable="true" data-field="description">Item Description</th>
-                        <th data-sortable="true" data-field="datereturned">Date Returned</th>
-                        <th data-sortable="true" data-field="reason">Reason</th>
-                        <th data-sortable="true" data-field="returnedby">Returned By</th>
-                        <th data-sortable="true" data-field="receivedby">Received By</th>
-                        <th data-sortable="true" data-field="status">Returned Status</th>
-                        <th data-sortable="true" data-field="action">Action</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
+    <div class="inventory-tab">
+        <div class="page-title">
+            <h1>Returns</h1>
+        </div>
+
+        <div class="x_content">
+            <table id="datatable" data-toggle="table" data-url="invetory/returnitem"
+                   class="table table-no-bordered">
+                <thead>
+                <tr>
+                    <th data-sortable="true" data-field="timestamp">Timestamp</th>
+                    <th data-sortable="true" data-field="serial">Serial no.</th>
+                    <th data-sortable="true" data-field="item">Item Name</th>
+                    <th data-sortable="true" data-field="description">Item Description</th>
+                    <th data-sortable="true" data-field="datereturned">Date Returned</th>
+                    <th data-sortable="true" data-field="reason">Reason</th>
+                    <th data-sortable="true" data-field="returnedby">Returned By</th>
+                    <th data-sortable="true" data-field="receivedby">Received By</th>
+                    <th data-sortable="true" data-field="status">Returned Status</th>
+                    <th data-sortable="true" data-field="action">Action</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
     </div>
     <!-- /page content -->
 

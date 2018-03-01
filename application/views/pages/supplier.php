@@ -8,11 +8,14 @@
 
         <button class="pull-right" role="tab" id="headingOne" data-toggle="tab"
                 href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <i class="fa fa-plus" ></i><span> Add Supplier</span>
+            <i class="fa fa-plus"></i><span> Add Supplier</span>
         </button>
 
-        <div class="x_content">
-            <table data-search="true" data-pagination="true" data-toggle="table" data-url="supplier/viewSuppliers" class="table table-no-bordered">
+        <div class="accordion table-responsive" id="accordion" role="tablist" aria-multiselectable="true">
+
+            <table id="supplier-table" data-search="true" data-pagination="true" data-toggle="table"
+                   data-url="supplier/viewSuppliers"
+                   class="table table-no-bordered">
                 <thead>
                 <tr>
                     <th data-sortable="true" data-field="supplier">Supplier</th>
@@ -24,9 +27,9 @@
         </div>
     </div>
 
-        <div class="AddSup hidden" role="tabpanel" aria-labelledby="headingOne">
-            <button type="button" onclick="addSupplierBack()" class="btn btn"></i> Back</a></button>
-            <div class="x_content">
+    <div class="AddSup hidden" role="tabpanel" aria-labelledby="headingOne">
+        <button type="button" onclick="addSupplierBack()" class="btn btn"></i> Back</a></button>
+        <div class="x_content">
             <div class="panel-body">
                 <div class="col-md-7 col-sm-12 col-xs-12">
                     <div class="x_panel">
@@ -79,8 +82,8 @@
                     </div>
                 </div>
             </div>
-            </div>
         </div>
+    </div>
 </div>
 
 <!-- /page content -->
