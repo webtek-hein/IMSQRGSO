@@ -15,6 +15,8 @@
                     <a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
                 </li>
             </ul>
+        </div>
+    </div>
 
             <div class="x_content">
                 <div id="myTabContent" class="tab-content">
@@ -39,6 +41,4 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 </div>

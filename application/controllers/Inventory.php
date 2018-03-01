@@ -68,9 +68,9 @@ class Inventory extends CI_Controller
             if ($this->session->userdata['logged_in']['position'] === 'Custodian') {
                 $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                     <ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
-                            <li><a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' onclick =\"getserial($detail[item_det_id])\" data-target=\" .Distribute\">
+                            <li><a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\"	fa fa-share-square-o\" ></i > Distribute</a ></li >
-                            <li><a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]' onclick =\"getserial($detail[item_det_id])\" data-target=\" .Add_Item\" >
+                            <li><a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_id]' data-target=\" #addquant\" >
                             <i class=\"fa fa-plus-circle\"></i> Add Quantity</a></li>
                             <li><a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" role=\"tab\" id=\"headingOne\"
                                href=\"#data1\"aria-expanded = \"true\" aria-controls = \"collapseOne\" ><i class=\"fa fa-folder-open\">

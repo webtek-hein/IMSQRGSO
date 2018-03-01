@@ -278,17 +278,87 @@
                 <div role="tabpanel" class="tab-pane fade active in" id="Detail_Info" aria-labelledby="Information-tab">
                     <div class="accordion" id="accordion" class="table-main table-responsive" role="tablist"
                          aria-multiselectable="true">
+                        <div class="col-md-5 col-sm-12 col-xs-12">
                         <div id="DetailsHead"><a id="changetoEdit" href="#"><i class="glyphicon glyphicon-edit"></i></a>
-                            <form action="inventory/edititem" method="POST">
-                                <h4>Item Name: <b id="itemname"></b></h4>
-                                <p>Description: <b id="itemdesc"></b></p>
-                                <p>Total Quantity: <b id="total"></b></p>
-                                <p>Unit: <b id="unit"></b></p>
-                                <p>Type: <b id="itemtype"></b></p>
+                            <form class="form-horizontal form-label-left" action="inventory/edititem" method="POST">
+
+                                <div class="form-group">
+                                    <label class="col-md-2">Item Name</label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="item[]"
+                                               class="form-control"
+                                               data-parsley-trigger="blur"
+                                               data-parsley-group="set1"
+                                               data-parsley-length="[1, 20]"
+                                               data-parsley-required-message="Please insert Item name"
+                                               required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2">Description</label>
+                                    <div class="col-md-5">
+                                                        <textarea data-parsley-group="set1"
+                                                                  name="description[]" id="message"
+                                                                  class="form-control"
+                                                                  data-parsley-trigger="blur"
+                                                                  data-parsley-minlength="1"
+                                                                  data-parsley-maxlength="500"
+                                                                  data-parsley-minlength-message="Description must"
+                                                                  data-parsley-validation-threshold="10"
+                                                                  data-parsley-required-messag="Put description of the items"
+                                                                  required></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2">Total Quantity</label>
+                                    <div class="col-md-5">
+                                        <input type="number" min='1' name="quant[]"
+                                               class="form-control"
+                                               data-parsley-group="set1"
+                                               data-parsley-required-message="Please enter Quantity"
+                                               required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2">Unit</label>
+                                    <div class="col-md-5">
+                                        <input name="Unit[]" data-parsley-group="set1"
+                                               class="form-control" class="unit"
+                                               list="list"
+                                               data-parsley-required-message="Select the Unit"
+                                               required>
+                                        <datalist id="list">
+                                            <option value="piece">piece</option>
+                                            <option value="box">box</option>
+                                            <option value="set">set</option>
+                                            <option value="ream">ream</option>
+                                            <option value="dozen">dozen</option>
+                                            <option value="bundle">bundle</option>
+                                            <option value="sack">sack</option>
+                                            <option value="others">others</option>
+                                        </datalist>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2">Type</label>
+                                    <div class="col-md-5">
+                                        <select data-parsley-group="set1" id="type"
+                                                list="typelist" name="Type[]"
+                                                class="form-contro" required>
+                                            <option value="CO">Capital Outlay</option>
+                                            <option value="MOOE">MOOE</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <button type="submit" name="id" id="edtbutton" hidden>save</button>
                             </form>
                         </div>
-
+                        </div>
                     </div>
                 </div>
 

@@ -4206,6 +4206,9 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 #inventory-main-page{
     background-color:#ffffff;
 }
+.inventory-tab #headingTwo{
+    margin-right:30px;
+}
 /*--End Inventory Main Content--*/
 
 
@@ -4309,6 +4312,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 #detail-tab-table #DetailDropDn{
     position: static;
     left:1000px;
+    border-radius:10px;
 
 }
 #detail-tab-table #DetailDropDn a{
@@ -4325,6 +4329,27 @@ background-color: #009900;
 }
 .Distribute .modal-footer button{
     color:black;
+}
+#DistributeItem .modal.left .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 320px;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+    -ms-transform: translate3d(0%, 0, 0);
+    -o-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+}
+/*Left*/
+#DistributeItem .modal.left.fade .modal-dialog{
+    left: -320px;
+    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+    transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+#DistributeItem .modal.left.fade.in .modal-dialog{
+    left: 0;
 }
 /*--End DISTRIBUTION--*/
 
@@ -4375,7 +4400,6 @@ background-color: #009900;
 /*-- End of Sidebar Nav --*/
 
 /*-- Body --*/
-
 .page-content{
     background-color: white;
     margin: 0;
@@ -4394,6 +4418,22 @@ background-color: #009900;
     bottom: 5px;
 }
 /*-- End of Body --*/
+
+
+/*--SUPPLIER --*/
+#supplier .pull-right.search{
+    position: relative;
+    bottom: 20%;
+}
+#supplier .bootstrap-table{
+    top: 30px;
+}
+#supplier #headingOne{
+    margin-right:30px;
+    margin-top: -5px;
+}
+/*--End of SUPPLIER --*/
+
 button.pull-right{
     position: relative;
     bottom: 45px;
@@ -4425,11 +4465,4 @@ a.pull-right{
 }
 #accounts button.pull-right{
     background-color: blue;
-}
-#supplier .pull-right.search{
-    position: relative;
-    bottom: 20%;
-}
-#supplier .bootstrap-table{
-    top: 30px;
 }
