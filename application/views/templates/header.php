@@ -17,7 +17,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="<?php echo base_url()?>assets/images/logogso.png" type="image/ico" />
+    <link rel="icon" href="<?php echo base_url() ?>assets/images/logogso.png" type="image/ico"/>
 
     <title>GSO Baguio City Hall</title>
 
@@ -33,7 +33,8 @@ if (isset($this->session->userdata['logged_in'])) {
     <link href="<?php echo base_url() ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
     <!-- bootstrap-progressbar -->
-    <link href="<?php echo base_url() ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css"
+          rel="stylesheet">
     <!-- JQVMap -->
     <link href="<?php echo base_url() ?>assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
@@ -48,10 +49,10 @@ if (isset($this->session->userdata['logged_in'])) {
     <link href="<?php echo base_url() ?>assets/css/bootstrap-dialog.min.css" rel="stylesheet">
 
     <!-- jQuery -->
-    <script src="<?php echo base_url()?>assets/vendors/jquery/dist/jquery.min.js"></script>
-    <link rel="icon" href="<?php echo base_url()?>assets/images/logogso.png">
+    <script src="<?php echo base_url() ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+    <link rel="icon" href="<?php echo base_url() ?>assets/images/logogso.png">
     <!--table design-->
-    <link href="<?php echo base_url()?>assets/css/tabledesign.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/tabledesign.css" rel="stylesheet">
 
 </head>
 
@@ -60,7 +61,8 @@ if (isset($this->session->userdata['logged_in'])) {
     <div class="left_col scroll-view">
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img class="left" src="<?php echo base_url();?>assets/images/logoimsgso.png" width="50px" height="50px">
+                <img class="left" src="<?php echo base_url(); ?>assets/images/logoimsgso.png" width="50px"
+                     height="50px">
             </div>
             <div class="profile_info">
                 <span><p>GSOIMS</p></span>
@@ -71,54 +73,55 @@ if (isset($this->session->userdata['logged_in'])) {
             <div class="menu_section">
                 <ul class="nav side-menu">
                     <li id="li1">
-                        <a href="<?php echo base_url()?>dashboard"><i class="fa fa-dashboard"></i> DASHBOARD </a>
+                        <a href="<?php echo base_url() ?>dashboard"><i class="fa fa-dashboard"></i> DASHBOARD </a>
                     </li>
                     <li id="li2">
                         <a href="Inventory"><i class="fa fa-book"></i>INVENTORY</a>
                     </li>
 
                     <?php $position = $this->session->userdata['logged_in']['position'];
-                        if ($position === 'Admin' || $position === 'Custodian'){
-                            echo '<li id="dept">
+                    if ($position === 'Admin' || $position === 'Custodian') {
+                        echo '<li id="dept">
                                      <a href="department"><i class="fa fa-institution"></i>DEPARTMENT</a>
-                                  </li>'.
-                                 '<li id="li3">
+                                  </li>' .
+                            '<li id="li3">
                                     <a href="Supplier"><i class="fa fa-truck"></i>SUPPLIER</a>
                                  </li>';
-                            }
-                            if ($position === 'Admin'){
-                            echo '<li id="li4">
+                    }
+                    if ($position === 'Admin') {
+                        echo '<li id="li4">
                                     <a href="Accounts"><i class="fa fa-users"></i>USERS</a>
                                   </li>';
-                            }
-                            echo '<li id="li5">
+                    }
+                    echo '<li id="li5">
                                     <a href="Return"><i class="fa fa-undo"></i>RETURNS</a>
                                   </li>';
-                            ?>
-                                  <li id="li6">
-                                      <a><i class="fa fa-edit"></i>LOGS <span class="fa fa-chevron-down"></span></a>
-                                <?php
-                                echo '<ul class="nav child_menu">';
-                                echo '<li><a href=' . base_url() . 'increased>INCREASED</a></li>'.
-                                    '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>';
-                                if ($position === 'Admin' || $position === 'Custodian') {
-                                    echo '<li><a href=' . base_url() . 'edit>EDIT</a></li>';
-                                }
-                                echo '<li><a href=' . base_url() . 'return_log>RETURN LOG</a></li>';
-                                echo '</ul></li>';
-                                ?>
+                    ?>
+                    <li id="li6">
+                        <a><i class="fa fa-edit"></i>LOGS <span class="fa fa-chevron-down"></span></a>
+                        <?php
+                        echo '<ul class="nav child_menu">';
+                        echo '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
+                            '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>';
+                        if ($position === 'Admin' || $position === 'Custodian') {
+                            echo '<li><a href=' . base_url() . 'edit>EDIT</a></li>';
+                        }
+                        echo '<li><a href=' . base_url() . 'return_log>RETURN LOG</a></li>';
+                        echo '</ul></li>';
+                        ?>
                 </ul>
             </div>
         </div>
-                <!-- /sidebar menu -->
+        <!-- /sidebar menu -->
     </div>
 </div>
-                <!-- top navigation -->
-                <div id="topNav" class="top_nav">
-                        <nav class="nav_menu">
-                            <ul class="nav navbar-nav navbar-right">
-                               <a class="pull-right" href="logout">LOGOUT</a>
-                            </ul>
-                        </nav>
-                </div>
-                <!-- /top navigation -->
+<!-- top navigation -->
+<div id="topNav" class="top_nav">
+    <nav class="nav_menu">
+        <ul class="nav navbar-nav navbar-right">
+            <a class="pull-right" href="logout">LOGOUT</a>
+        </ul>
+    </nav>
+</div>
+<!-- /top navigation -->
+

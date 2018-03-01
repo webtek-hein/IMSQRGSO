@@ -51,6 +51,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <!-- end of Main Table Content-->
 
@@ -304,168 +305,7 @@
     </div>
     <!--End of Item Detail -->
 
-    <!-- Add Quantity -->
-    <div id="addquant" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
-                </div>
 
-                <div class="modal-body">
-                    <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
-                          novalidate>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <label>Quantity</label>
-                            <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
-                                   name="quant" min=0
-                                   class="form-control has-feedback-left">
-                            <span class="fa fa-plus-square-o form-control-feedback left"
-                                  aria-hidden="true"></span>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <label>Unit Cost</label>
-                            <input type="number" min='0' name="cost" class="form-control has-feedback-left"
-                                   id="inputSuccess3">
-                            <span class="fa fa-circle-o form-control-feedback left"
-                                  aria-hidden="true"></span>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <label>Delivery Date</label>
-                            <input type="date" name="del" class="form-control has-feedback-left">
-                            <span class="fa fa-calendar-plus-o form-control-feedback left"
-                                  aria-hidden="true"></span>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <label>Date Received</label>
-                            <input type="date" name="rec" data-validate-length-range="5,20"
-                                   class="optional form-control has-feedback-left">
-                            <span class="fa fa-calendar-check-o form-control-feedback left"
-                                  aria-hidden="true"></span>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <label>Expiration Date</label>
-                            <input type="date" name="exp" data-validate-length-range="5,20"
-                                   class="optional form-control has-feedback-left">
-                            <span class="fa fa-calendar-times-o form-control-feedback left"
-                                  aria-hidden="true"></span>
-                        </div>
-
-                        <div class="col-md-4 form-group has-feedback">
-                            <label>Supplier</label>
-                            <select list="typelist" name="supp"
-                                    class="supplieropt form-control has-feedback-left"
-                                    placeholder="Type">
-                            </select>
-                            <span class="fa fa-truck form-control-feedback left" aria-hidden="true"></span>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <label>Official Receipt Number</label>
-                            <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
-                                   name="quant" min=0 class="form-control has-feedback-left">
-                            <span class="fa fa-ticket form-control-feedback left"
-                                  aria-hidden="true"></span>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="submit" class="btn-modal btn btn-default" id="savequant" name="id"
-                                    value="1" id="quantsave">
-                                <i class="fa fa-arrow-down"> Save</i>
-                            </button>
-                            <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
-                                <i class="fa fa-close"> Cancel</i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--End of Add Quantity -->
-
-    <!--Distribution-->
-    <div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">Distribution</h4>
-                </div>
-                <form role="form" class="form-horizontal form-label-left" action="inventory/distribute"
-                      method="POST" data-validate="parsley">
-                    <div class="modal-body">
-                        <div class="tab-content">
-                            <div id="serial">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="name">Department</label>
-                            <select list="typelist" name="dept" class="deptopt form-control" required
-                                    placeholder="Type">
-                            </select>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="name">Account Code</label>
-                            <select list="typelist" name="Code" id="accode" class="form-control" required
-                                    placeholder="Account Code">
-                            </select>
-                        </div>
-
-                        <div class="col-md-6 ">
-                            <label for="po">PO Number</label>
-                            <input id="po" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
-                                   data-validate-words="2" name="po" required type="text" placeholder="PO Number">
-                        </div>
-
-                        <div class="col-md-6 ">
-                            <label class="col-md-8">PR Number</label>
-                            <input id="pr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
-                                   data-validate-words="2" name="pr" required type="text" placeholder="PR Number">
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="name">OBR Number</label>
-                            <input id="obr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
-                                   data-validate-words="2" name="obr" required type="text" placeholder="OBR Number">
-                        </div>
-
-                        <div class="item form-group">
-                            <div id="container2" class="col-md-6">
-                                <label for="name">Receiving Person</label>
-                                <input id="owner" class="form-control col-md-7 col-xs-12" name="owner" type="text"
-                                       placeholder="Supply Officer">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footerk">
-                        <button type="submit" name="id" class="btn-modal btn btn-success" id="save1"><i
-                                    class="fa fa-arrow-down"></i> Save
-                        </button>
-                        <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel
-                        </button>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
-    </div>
-    <!-- end of distribution-->
 
     <!-- View Serial-->
     <div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -485,4 +325,168 @@
     </div>
     <!--End of View Serial-->
 </div>
+
+<!-- Add Quantity -->
+<div id="addquant" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
+                      novalidate>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>Quantity</label>
+                        <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
+                               name="quant" min=0
+                               class="form-control has-feedback-left">
+                        <span class="fa fa-plus-square-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>Unit Cost</label>
+                        <input type="number" min='0' name="cost" class="form-control has-feedback-left"
+                               id="inputSuccess3">
+                        <span class="fa fa-circle-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>Delivery Date</label>
+                        <input type="date" name="del" class="form-control has-feedback-left">
+                        <span class="fa fa-calendar-plus-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>Date Received</label>
+                        <input type="date" name="rec" data-validate-length-range="5,20"
+                               class="optional form-control has-feedback-left">
+                        <span class="fa fa-calendar-check-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>Expiration Date</label>
+                        <input type="date" name="exp" data-validate-length-range="5,20"
+                               class="optional form-control has-feedback-left">
+                        <span class="fa fa-calendar-times-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-4 form-group has-feedback">
+                        <label>Supplier</label>
+                        <select list="typelist" name="supp"
+                                class="supplieropt form-control has-feedback-left"
+                                placeholder="Type">
+                        </select>
+                        <span class="fa fa-truck form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>Official Receipt Number</label>
+                        <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
+                               name="quant" min=0 class="form-control has-feedback-left">
+                        <span class="fa fa-ticket form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn-modal btn btn-default" id="savequant" name="id"
+                                value="1" id="quantsave">
+                            <i class="fa fa-arrow-down"> Save</i>
+                        </button>
+                        <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
+                            <i class="fa fa-close"> Cancel</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Add Quantity -->
+<!--Distribution-->
+<div class="modal fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Distribution</h4>
+            </div>
+            <form role="form" class="form-horizontal form-label-left" action="inventory/distribute"
+                  method="POST" data-validate="parsley">
+                <div class="modal-body">
+                    <div class="tab-content">
+                        <div id="serial">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="name">Department</label>
+                        <select list="typelist" name="dept" class="deptopt form-control" required
+                                placeholder="Type">
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="name">Account Code</label>
+                        <select list="typelist" name="Code" id="accode" class="form-control" required
+                                placeholder="Account Code">
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 ">
+                        <label for="po">PO Number</label>
+                        <input id="po" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                               data-validate-words="2" name="po" required type="text" placeholder="PO Number">
+                    </div>
+
+                    <div class="col-md-6 ">
+                        <label class="col-md-8">PR Number</label>
+                        <input id="pr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                               data-validate-words="2" name="pr" required type="text" placeholder="PR Number">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="name">OBR Number</label>
+                        <input id="obr" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                               data-validate-words="2" name="obr" required type="text" placeholder="OBR Number">
+                    </div>
+
+                    <div class="item form-group">
+                        <div id="container2" class="col-md-6">
+                            <label for="name">Receiving Person</label>
+                            <input id="owner" class="form-control col-md-7 col-xs-12" name="owner" type="text"
+                                   placeholder="Supply Officer">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footerk">
+                    <button type="submit" name="id" class="btn-modal btn btn-success" id="save1"><i
+                                class="fa fa-arrow-down"></i> Save
+                    </button>
+                    <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">Cancel
+                    </button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+<!-- end of distribution-->
+</body>
+
 
