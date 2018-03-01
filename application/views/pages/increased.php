@@ -6,10 +6,19 @@
         </div>
     </div>
 
-    <div class="x_content">
+    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital Outlay</a>
+            </li>
+            <li role="presentation" class="">
+                <a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
+            </li>
+        </ul>
 
-        <div class="accordion" id="accordion" class="table-main table-responsive" role="tablist"
-             aria-multiselectable="true">
+        <div class="x_content">
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
             <!-- Implement Bootsrap table-->
             <table data-pagination="true" data-search="true" id="itemtable" class="main table-no-bordered"
                    class="table table-no-bordered table-hover">

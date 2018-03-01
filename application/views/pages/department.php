@@ -4,12 +4,14 @@
         <div class="page-title">
             <h1>Departments</h1>
         </div>
+
         <select id="selct-dept" type="button" class="deptopt btn btn-default"><i class="fa fa-chevron-down"></select>
 
-        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+        <div class="tabpanel" role="tabpanel" data-example-id="togglable-tabs">
             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                 <li role="presentation" id="CO" class="active">
-                    <a href="#tab_content1" id="CO-tab" data-toggle="tab" role="tab" aria-expanded="true">Capital Outlay</a>
+                    <a href="#tab_content1" id="CO-tab" data-toggle="tab" role="tab" aria-expanded="true">Capital
+                        Outlay</a>
                 </li>
                 <li role="presentation" id="MOOE" class="">
                     <a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="true">MOOE</a>
@@ -156,12 +158,12 @@
                 <div class="panel-body">
                     <div class="col-md-offset-2">
                         <h4><b>List of Serial</b></h4>
-                            <!-- Dynamic serial tabs here -->
-                            <ul id="serial-tabs" class="nav nav-tabs">
-                            </ul>
-                            <!-- end of serial tabs -->
-                            <div id="serial-tabcontent" class="tab-content">
-                            </div>
+                        <!-- Dynamic serial tabs here -->
+                        <ul id="serial-tabs" class="nav nav-tabs">
+                        </ul>
+                        <!-- end of serial tabs -->
+                        <div id="serial-tabcontent" class="tab-content">
+                        </div>
                     </div>
                 </div>
             </div>

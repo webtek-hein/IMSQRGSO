@@ -18,7 +18,8 @@
             <div class="x_content">
                 <div id="myTabContent" class="tab-content">
                     <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
-                        <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table" data-url="logs/editLog" class="table table-striped table-bordered">
+                        <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
+                               data-url="logs/editLog" class="table table-no-bordered">
                             <thead>
                                 <tr>
                                     <th data-sortable="true" data-field="timestamp">Timestamp</th>
