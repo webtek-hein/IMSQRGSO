@@ -42,9 +42,10 @@ tr {
 }
 .bootstrap-table{
     position: fixed;
-    bottom: 59%;
+    top: 90px;
     right: 0;
     left: 200px;
+    min-height: 100%
 }
 .pull-right.search{
     position: relative;
