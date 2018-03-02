@@ -58,7 +58,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
 <body class="nav-md">
 <div class="menu_fixed col-md-2 left_col" id="HeaderNav">
-    <div class="left_col scroll-view">
+    <div class="scroll-view">
         <div class="profile clearfix">
             <div class="profile_pic">
                 <img class="left" src="<?php echo base_url(); ?>assets/images/logoimsgso.png" width="50px"

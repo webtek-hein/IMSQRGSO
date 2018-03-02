@@ -729,7 +729,7 @@ a:focus {
 }
 .nav-md ul.nav.child_menu li:after {
     border-left: 1px solid #425668;
-    bottom: 0;
+    bottom: 20px;
     content: "";
     left: 27px;
     position: absolute;
@@ -850,7 +850,6 @@ a:focus {
 .nav.child_menu>li>a {
     color: rgba(255, 255, 255, 0.75);
     font-size: 12px;
-    padding: 9px
 }
 .panel_toolbox {
     float: right;
@@ -4190,9 +4189,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     font-size: 20px;
     color:white;
 }
-.menu_fixed #sidebar-menu{
-    margin-top: -20px;
-}
 /*--End Header Side Nav--*/
 
 
@@ -4370,9 +4366,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     min-height: 100%;
     margin: 0;
     background-color: #16161b;
-}
-.left_col ul{
-    margin-top: 50px;
 }
 /*-- End of Sidebar Nav --*/
 
