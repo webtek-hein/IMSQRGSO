@@ -4214,10 +4214,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 #inventory-main-page button{
     height: 30px;
 }
-#inventory-main-page #addanother{
-    position: relative;
-    bottom: 35px;
-}
 #addItemForm .right{
     float:right;
     box-sizing: border-box;
@@ -4269,6 +4265,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 #DitributeItem .modal-body{
     padding: 15px 15px 80px;
+    position: static;
 }
 #DitributeItem .modal-dialog{
     left: -320px;
@@ -4322,8 +4319,14 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     border-radius:10px;
 
 }
+#detail-tab-table #DetailDropDn li{
+    position: relative;
+    width: 100%;
+
+}
 #detail-tab-table #DetailDropDn a{
     color:black;
+    z-index: 999;
 }
 /*--End of ITEM DETAIL--*/
 
@@ -4380,8 +4383,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     width: 100%;
     right: 0;
     bottom: 0;
-    overflow-x: hidden;
-    overflow-y: scroll;
 }
 .deptopt{
     position: relative;
@@ -4444,4 +4445,16 @@ a.pull-right{
 #supplier .bootstrap-table{
     top: 30px;
 }
+.additemDiv.page-content{
+    top: 60px;
+    width: 85%;
+    height: 600px;
+    overflow-y: scroll;
+}
+.additemDiv.page-content .clone-tab{
 
+}
+#addanother.pull-right{
+    bottom: 90px;
+    right: 20px;
+}

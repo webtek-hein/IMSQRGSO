@@ -197,7 +197,7 @@
 
 </div>
 <!-- Add Item-->
-<div id="additemCont" class="additemDiv hidden page-content " role="tabpanel" aria-labelledby="headingTwo">
+<div class="additemDiv hidden page-content">
     <button type="button" onclick="addItemBack()" class="btn btn"></i> Back</a></button>
     <div class="x_content">
         <ul id="bulk" class="nav nav-tabs" role="tablist">
@@ -211,6 +211,7 @@
             <form class="form-horizontal form-label-left input_mask" id="addItemForm" role="form"
                   action="inventory/saveAll" method="POST" data-parsley-validate="">
                 <div id="bulkdiv" class="tab-content">
+                    <div class="ln_solid"></div>
                     <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
                         <div class="form-group has-feedback">
                             <label class="col-md-12 col-sm-12 col-xs-12">Item Name</label>
@@ -228,7 +229,8 @@
                         </div>
 
                         <div class="form-group has-feedback">
-                            <label class="col-md-12 col-sm-12 col-xs-12">Quantity</label>
+                            <label class="col-md-5 col-sm-12 col-xs-12">Quantity</label>
+                            <label class="col-md-5 col-sm-12 col-xs-12">Unit</label>
                             <div class="col-md-5">
                                 <input type="number" min='1' name="quant[]"
                                        class="form-control has-feedback-left"
@@ -238,23 +240,6 @@
                                 <span class="fa fa-plus-square-o form-control-feedback left"
                                       aria-hidden="true"></span>
                             </div>
-                        </div>
-
-                        <div class="form-group has-feedback">
-                            <label class="col-md-12 col-sm-12 col-xs-12">Unit Cost</label>
-                            <div class="col-md-5">
-                                <input type="number" min='0' name="cost[]"
-                                       data-parsley-group="set1"
-                                       class="form-control has-feedback-left"
-                                       data-parsley-required-message="Please insert Unit Cost"
-                                       required>
-                                <span class="fa fa-circle-o form-control-feedback left"
-                                      aria-hidden="true"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group has-feedback">
-                            <label class="col-md-12 col-sm-12 col-xs-12">Unit</label>
                             <div class="col-md-5">
                                 <input name="Unit[]" data-parsley-group="set1"
                                        class="form-control has-feedback-left" class="unit"
@@ -277,6 +262,23 @@
                         </div>
 
                         <div class="form-group has-feedback">
+                            <label class="col-md-12 col-sm-12 col-xs-12">Unit Cost</label>
+                            <div class="col-md-5">
+                                <input type="number" min='0' name="cost[]"
+                                       data-parsley-group="set1"
+                                       class="form-control has-feedback-left"
+                                       data-parsley-required-message="Please insert Unit Cost"
+                                       required>
+                                <span class="fa fa-circle-o form-control-feedback left"
+                                      aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group has-feedback">
+
+                        </div>
+
+                        <div class="form-group has-feedback">
                             <label class="col-md-12 col-sm-12 col-xs-12">Type</label>
                             <div class="col-md-5">
                                 <select data-parsley-group="set1" id="type"
@@ -289,7 +291,7 @@
                                       aria-hidden="true"></span>
                             </div>
                         </div>
-
+                        <div class="ln_solid"></div>
                         <div class="form-group has-feedback">
                             <label class="col-md-4 col-sm-12 col-xs-12">Delivery Date</label>
                             <label class="col-md-4 col-sm-12 col-xs-12">Date Received</label>
@@ -375,7 +377,7 @@
                 </div>
                 <div class="pull-right">
                     <button type="button" id="addanother"
-                            class="next-step btn btn-default"><i
+                            class="pull-right next-step btn btn-default"><i
                                 class="fa fa fa-cart-plus"></i> Add another item
                     </button>
                 </div>
