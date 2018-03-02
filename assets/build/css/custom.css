@@ -309,12 +309,7 @@ html , body{
 .nav-sm li li span.fa {
     display: inline-block
 }
-.nav_menu {
-    float: left;
-    border-bottom: 1px solid #D9DEE4;
-    margin-bottom: 0px;
-    width: 100%;
-}
+
 @media (min-width: 480px) {
     .nav_menu {
         position: static
@@ -467,7 +462,6 @@ html , body{
     background: #D9DEE4
 }
 body {
-    color: #0e0d0d;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-weight: 400;
     line-height: 1.471;
@@ -1054,7 +1048,15 @@ h2 {
     width: 100%;
     float: left;
     clear: both;
-    margin-top: 5px
+    margin-top: 5px;
+}
+#bulkdiv{
+    position: relative;
+}
+#step1B.clone-tab{
+    position: absolute;
+    left: 0;
+
 }
 .x_content h4 {
     font-size: 16px;
@@ -4231,10 +4233,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 .togle a{
     color: black;
 }
-#ModalI .col-md-6{
-    margin-left: 100px;
-    background-color: white;
-}
+
 /*--Buttons--*/
 #ModalI #buttonCounter1{
     color:black;
@@ -4341,10 +4340,9 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 /*-- TOP-NAV --*/
 #topNav .nav_menu{
-    position: fixed !important;
+    position: sticky !important;
     top: 0;
     height: 30px;
-    overflow: hidden;
     background-color: #193f59;
     border: 1px solid #193f59;
 }
@@ -4368,7 +4366,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 /*-- Sidebar Nav --*/
 
 .left_col{
-    overflow: hidden;
+    position: fixed;
     min-height: 100%;
     margin: 0;
     background-color: #16161b;
@@ -4383,13 +4381,14 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     background-color: white;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     position: fixed;
     top: 30px;
     left: 200px;
-    min-height: 100%;
     width: 100%;
     right: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 .deptopt{
     position: relative;
@@ -4445,3 +4444,11 @@ a.pull-right{
 #accounts button.pull-right{
     background-color: blue;
 }
+#supplier .pull-right.search{
+    position: relative;
+    bottom: 20%;
+}
+#supplier .bootstrap-table{
+    top: 30px;
+}
+
