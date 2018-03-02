@@ -3,9 +3,9 @@
     <div class="inventory-tab">
         <div class="page-title">
             <h1>Departments</h1>
+            <select id="selct-dept" type="button" class="deptopt btn btn-default"><i class="fa fa-chevron-down"></select>
         </div>
 
-        <select id="selct-dept" type="button" class="deptopt btn btn-default"><i class="fa fa-chevron-down"></select>
 
         <div class="tabpanel" role="tabpanel" data-example-id="togglable-tabs">
             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">

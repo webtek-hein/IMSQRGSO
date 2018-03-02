@@ -472,6 +472,8 @@ body {
 }
 
 .page-title{
+    position: absolute;
+    top: 0;
     margin-left: 30px;
     color: #2d3033a1;
 }
@@ -2475,14 +2477,12 @@ span.tag a {
     background: #FBD8DB !important;
     color: #90111A !important
 }
-ul.bar_tabs {
-    overflow: visible;
-    margin: 21px 0 15px;
-    padding-left: 14px;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    color:#999999;
+#department ul.bar_tabs {
+}
+ul.bar_tabs{
+    position: absolute;
+    top: 60px;
+
 }
 ul.bar_tabs>li {
     border: 1px solid #E6E9ED;
@@ -4342,8 +4342,8 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     position: sticky !important;
     top: 0;
     height: 30px;
-    background-color: #193f59;
-    border: 1px solid #193f59;
+    background-color: #f7f7f7;
+    border: 1px solid #EEE;
 }
 #topNav .nav_menu ul{
     margin-top: -5px;

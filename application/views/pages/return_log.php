@@ -22,7 +22,7 @@
                 <div id="myTabContent" class="tab-content">
                     <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
                         <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
-                               data-url="logs/returnLog" data-show-toggle="true" class="table table-no-bordered">
+                               data-url="logs/returnLog" class="table table-no-bordered">
                             <thead>
                                 <tr>
                                     <th data-sortable="true" data-field="number">#</th>

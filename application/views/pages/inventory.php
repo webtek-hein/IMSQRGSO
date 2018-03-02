@@ -4,25 +4,28 @@
     <div class="inventory-tab">
         <div class="page-title">
             <h1>Inventory</h1>
+            <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
+                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                    <li id="TB1" role="presentation" class="active">
+                        <a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital
+                            Outlay</a>
+                    </li>
+                    <li id="TB2" role="presentation" class="">
+                        <a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
+                    </li>
+                </ul>
+            </div>
+            <?php $position = $this->session->userdata['logged_in']['position'];
+            if ($position === 'Admin' || $position === 'Custodian') {
+                echo '<button id="headingTwo" class="btn pull-right" data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-controls="collapseTwo">
+                                <i class=" fa fa-cart-arrow-down" ></i><span> Add Item</span></button>';
+            }
+            ?>
+
         </div>
 
-        <?php $position = $this->session->userdata['logged_in']['position'];
-        if ($position === 'Admin' || $position === 'Custodian') {
-            echo '<button id="headingTwo" class="btn pull-right" data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-controls="collapseTwo">
-                                <i class=" fa fa-cart-arrow-down" ></i><span> Add Item</span></button>';
-        }
-        ?>
-        <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
-            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                <li id="TB1" role="presentation" class="active">
-                    <a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital
-                        Outlay</a>
-                </li>
-                <li id="TB2" role="presentation" class="">
-                    <a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
-                </li>
-            </ul>
-        </div>
+
+
         <!-- Main Table Content-->
         <div class="x_content">
             <div id="myTabContent" class="tab-content">
@@ -198,7 +201,11 @@
 </div>
 <!-- Add Item-->
 <div class="additemDiv hidden page-content">
-    <button type="button" onclick="addItemBack()" class="btn btn"></i> Back</a></button>
+    <div class="page-title">
+        <h1>New Item</h1>
+        <button onclick="addItemBack()">&times;</button>
+    </div>
+
     <div class="x_content">
         <ul id="bulk" class="nav nav-tabs" role="tablist">
             <li role="presentation" id="list1" class="active">
