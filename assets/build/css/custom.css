@@ -470,18 +470,13 @@ body {
 .no-padding {
     padding: 0 !important
 }
+
 .page-title{
-    min-width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
     margin-left: 30px;
-    background-color: #ffff;
+    color: #2d3033a1;
 }
 .page-title h1{
-    color: #222;
     font-size: 20px;
-    width: 100px;
 }
 .page-title .title_left {
     width: 45%;
@@ -1049,9 +1044,8 @@ h2 {
 .x_content {
     padding: 0 5px 6px;
     position: relative;
-    min-width: 100%;
+    width: 100%;
     float: left;
-    min-height: 100%;
     clear: both;
     margin-top: 5px;
 }
@@ -2117,9 +2111,6 @@ span.section {
     border-radius: 0;
     width: 100%
 }
-.has-feedback .form-control{
-    padding-right: 3px;
-}
 .form-horizontal .control-label {
     padding-top: 8px
 }
@@ -2484,39 +2475,37 @@ span.tag a {
     background: #FBD8DB !important;
     color: #90111A !important
 }
-#department ul.bar_tabs {
-    top: 70px;
+ul.bar_tabs {
+    overflow: visible;
+    margin: 21px 0 15px;
+    padding-left: 14px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    color:#999999;
 }
-#myTab.bar_tabs{
-    position: absolute;
-    top: 40px;
-    border-top: 1px solid #EDEDED;
-    background-color: #fafafa;
-    border-bottom: 1px solid #EDEDED;
-    padding: 30px 30px;
-
-}
-#myTab.bar_tabs>li {
-    border: 0;
-    color: #333;
+ul.bar_tabs>li {
+    border: 1px solid #E6E9ED;
+    color: #333 !important;
     margin-top: -17px;
-    margin-left: -8px;
+    margin-left: 8px;
     background: #fff;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0
 }
-#myTab.bar_tabs>li a {
-    width: 120px;
+ul.bar_tabs>li.active {
+    border-right: 6px solid #D3D6DA;
+    border-top: 0;
+    margin-top: -15px
 }
-
-#myTab.bar_tabs>li.active {
-    margin-right: 5px;
-    margin-left: 0;
-}
-#myTab.bar_tabs>li.active a {
-    border: 0;
+ul.bar_tabs>li a {
+    padding: 10px 17px;
+    background: #F5F7FA;
     margin: 0;
+    border-top-right-radius: 0
 }
-#myTab.bar_tabs>li a:hover {
-    background-color: #d6d8da;
+ul.bar_tabs>li a:hover {
+    border: 1px solid transparent
 }
 ul.bar_tabs>li.active a {
     border-bottom: none
@@ -4198,7 +4187,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 .menu_fixed .profile_info p{
     font-weight: bolder;
     font-size: 20px;
-    color:white;
+    color: #2f2f2f;
 }
 /*--End Header Side Nav--*/
 
@@ -4233,7 +4222,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     float:left;
     box-sizing: border-box;
 }
-
 .togle a{
     color: black;
 }
@@ -4267,10 +4255,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     margin-top:40px;
     height:90%;
     width:500px;
-    -webkit-transform: translate3d(0%, 0, 0);
-    -ms-transform: translate3d(0%, 0, 0);
-    -o-transform: translate3d(0%, 0, 0);
-    transform: translate3d(0%, 0, 0);
 }
 #DitributeItem .modal-content {
     height: 100%;
@@ -4281,10 +4265,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 #DitributeItem .modal-dialog{
     left: -320px;
-    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
-    -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
-    -o-transition: opacity 0.3s linear, left 0.3s ease-out;
-    transition: opacity 0.3s linear, left 0.3s ease-out;
 }
 #DitributeItem .modal-dialog{
     left: 0;
@@ -4354,8 +4334,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     position: sticky !important;
     top: 0;
     height: 30px;
-    background-color: #f7f7f7;
-    border: 1px solid #EEE;
+    background-color:#ffffff;
 }
 #topNav .nav_menu ul{
     margin-top: -5px;
@@ -4380,7 +4359,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     position: fixed;
     min-height: 100%;
     margin: 0;
-    background-color: #16161b;
+    background-color:white;
 }
 /*-- End of Sidebar Nav --*/
 
@@ -4410,7 +4389,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     bottom: 20%;
 }
 #supplier .bootstrap-table{
-    margin-top: 10px;
+    top: 30px;
 }
 #supplier #headingOne{
     margin-right:30px;
@@ -4419,12 +4398,11 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 /*--End of SUPPLIER --*/
 
 button.pull-right{
-    color: #ffffff;
-    position: absolute;
-    top: 15px;
+    position: relative;
+    bottom: 45px;
     right: 420px;
-    background-color: #30A8EE;
-    border: 1.4px solid #1E95DA;
+    background-color: #F5F5F5;
+    border: 1.4px solid #2196f3;
 }
 span.pull-right.search {
     color: white;
@@ -4434,11 +4412,12 @@ span.pull-right.search {
 }
 #HeaderNav{
     width: 200px;
-    background-color: #252b2d;
-    border-right: 1px solid #e2e2e2;
+    background-color:#333333;
+
 }
 a.pull-right{
     margin-top: 10px !important;
+    color: #ffff;
 }
 #li0 a{
     text-align: center;
@@ -4457,41 +4436,16 @@ a.pull-right{
 #supplier .bootstrap-table{
     top: 30px;
 }
-.additemDiv{
-    top: 80px;
+.additemDiv.page-content{
+    top: 60px;
     width: 85%;
     height: 600px;
     overflow-y: scroll;
-    overflow-x: hidden;
 }
-.additemDiv .page-title{
-    position: relative;
-    left: 0;
-    top: 0;
-    right: 0;
-}
-.additemDiv .x_content{
-    background: white;
-}
-#bulk.nav-tabs{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top: 1px solid #EDEDED;
-    background-color: #fafafa;
-    border-bottom: 1px solid #EDEDED;
-}
-.additemDiv #exit{
-    position: absolute;
-    top: 5px;
-    right: 80px;
-    background: none;
-    border: 0;
-    font-weight: normal;
-    font-size: 35px;
-    color: #000;
+.additemDiv.page-content .clone-tab{
+
 }
 #addanother.pull-right{
-    position: absolute;
-    right: 110px;
-    margin-right: 20px;
+    bottom: 90px;
+    right: 20px;
 }

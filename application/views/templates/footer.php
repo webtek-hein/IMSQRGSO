@@ -142,7 +142,6 @@
             $('#headingOne').on('click',function (){
                 toggleDiv($('.AddSup'),$('.inventory-tab'));
             });
-
             console.log('init_inventory');
         }
 
@@ -469,7 +468,8 @@
             var $ul = $('#serial-tabs');
             var serialTabCounter = 1;
             var $serialContent = $('#serial-tabcontent');
-
+            var $serial = $('.Serial');
+            var $inventory = $('.inventory-tab');
 
             $('#anchor-serial').toggleClass('collapsed').attr('aria-expanded', 'true');
             $('#data1').toggleClass('in');
@@ -544,6 +544,8 @@
 
                 }
             });
+            toggleDiv($serial,$inventory);
+
         }
 
         //get serial checkbox
