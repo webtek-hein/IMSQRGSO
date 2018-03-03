@@ -40,12 +40,12 @@ tr {
 
 .pull-right.search{
     position: relative;
-    bottom: 49px;
-    right: 30px;
+    bottom: 62px;
+    right: 50px;
 }
 .bootstrap-table{
     position: fixed;
-    top: 90px;
+    top: 95px;
     right: 0;
     left: 200px;
 }
@@ -57,4 +57,8 @@ tr {
 }
 #deptMOOEtable{
     margin-top: 30px;
+}
+#supplier-table thead{
+    border-top: 1px solid #EDEDED;
+    background-color: #fafafa;
 }
