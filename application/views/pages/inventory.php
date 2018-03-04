@@ -519,6 +519,12 @@
                 <div class="modal-body">
 
                     <div class="form-group">
+                        <div id='serial' class="col-md-10">
+                            <label for="name">Serial/s</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="col-md-10">
                             <label for="name">Department</label>
                             <select list="typelist" name="dept" class="deptopt form-control" required>
