@@ -12,18 +12,15 @@ if (isset($this->session->userdata['logged_in'])) {
 }
 ?>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--import logo-->
     <link rel="icon" href="<?php echo base_url() ?>assets/images/logogso.png" type="image/ico"/>
-
-    <title>GSO Baguio City Hall</title>
-
     <!-- Normalize -->
     <link href="<?php echo base_url() ?>assets/css/normalize.css" rel="stylesheet">
-
     <!-- Bootstrap -->
     <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Tables-->
@@ -34,7 +31,6 @@ if (isset($this->session->userdata['logged_in'])) {
     <link href="<?php echo base_url() ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url() ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url() ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css"
           rel="stylesheet">
@@ -56,6 +52,9 @@ if (isset($this->session->userdata['logged_in'])) {
     <link rel="icon" href="<?php echo base_url() ?>assets/images/logogso.png">
     <!--table design-->
     <link href="<?php echo base_url() ?>assets/css/tabledesign.css" rel="stylesheet">
+
+    <title>GSO Baguio City Hall</title>
+
 
 </head>
 
