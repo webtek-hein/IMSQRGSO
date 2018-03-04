@@ -197,10 +197,12 @@ class Inventory extends CI_Controller
     public function getItem($id)
     {
         $list = $this->inv->getItem($id);
+        $minimum = $this->inv->countItem($id);
         $data = array(
                 'name' => $list->item_name,
                 'description' => $list->item_description,
                 'quant' => $list->quantity,
+                'min' => $minimum->min,
                 'unit' => $list->unit,
                 'item_type'=> $list->item_type,
         );

@@ -117,11 +117,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Total Quantity</label>
                                         <div class="col-md-12">
-                                            <input id="total"  type="number" min='1' name="quant"
-                                                   class="form-control"
-                                                   data-parsley-group="set1"
-                                                   data-parsley-required-message="Please enter Quantity"
-                                                   required>
+                                            <p id="total"></p>
                                         </div>
                                     </div>
 
@@ -369,9 +365,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="pull-right">
 
-                    </div>
                 </form>
             </div>
         </div>
