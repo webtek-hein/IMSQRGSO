@@ -115,6 +115,7 @@
                         sortable: true,
                         field: 'description',
                         title: 'DESCRIPTION'
+
                     }, {
                         sortable: true,
                         cellStyle: function (data) {
