@@ -549,7 +549,7 @@
                     $('#edtbutton').val(id);
                     $('#itemname').val(data.name);
                     $('#itemdesc').val(data.description);
-                    $('#total').val(data.quant);
+                    $('#total').text(data.quant);
                     $('#itemtype').val(data.item_type);
                     $('#unit').val(data.unit);
                     toggleDiv($('.detail-tab '),$('.inventory-tab'));

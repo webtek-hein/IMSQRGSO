@@ -197,18 +197,15 @@ class Inventory_model extends CI_Model
         $values = [];
         $item_id = $this->input->post('id');
         // select item
-        $item = $this->db->get_where('item', array('item_id' => $item_id));
+        $item = $this->db->get_where('item', array('item_id' => $item_id))->row();
 
         // convert to array
-        $data1 = array();
-        foreach ($item->result() as $row) {
-            $data1 = array(
-                'item_name' => $row->item_name,
-                'item_description' => $row->item_description,
-                'unit' => $row->unit,
-                'item_type' => $row->item_type
-            );
-        }
+        $data1 = array(
+            'item_name' => $item->item_name,
+            'item_description' => $item->item_description,
+            'unit' => $item->unit,
+            'item_type' => $item->item_type
+        );
         // update item
         $data = array(
             'item_name' => $this->input->post('item'),
@@ -219,6 +216,7 @@ class Inventory_model extends CI_Model
         $this->db->set($data);
         $this->db->where('item_id', $item_id);
         $this->db->update('item');
+
         // compare data
         $result1 = array_diff($data1, $data);
         $result2 = array_diff($data, $data1);
@@ -230,13 +228,6 @@ class Inventory_model extends CI_Model
                 'userid' => $user_id
             );
         }
-        //convert array to string
-        $old = implode($result1);
-        $new = implode($result2);
-
-        // place values to an array
-
-
 
         //insert to edit log table
         $this->db->insert_batch('logs.editLog', $values);
@@ -357,5 +348,16 @@ class Inventory_model extends CI_Model
             }
         }
         $this->db->update_batch('serial', $data, 'serial_id');
+    }
+
+    public function countItem($id){
+        $minimum = $this->db->select('count(*) as min')
+            ->join('itemdetail','item.item_id = itemdetail.item_id ','inner')
+            ->join('serial','serial.item_det_id = itemdetail.item_det_id','inner')
+            ->where('item.item_id',$id)
+            ->where('serial !=',null,False)
+            ->get('item')
+            ->row();
+        return $minimum;
     }
 }
