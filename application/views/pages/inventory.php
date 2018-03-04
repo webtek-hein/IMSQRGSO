@@ -559,10 +559,48 @@
                     </button>
                 </div>
             </form>
-
         </div>
     </div>
 </div>
+
+        <!--Edit Quantity-->
+        <div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal form-label-left" method="POST" action="inventory/editquantity" novalidate>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Quantity<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" id="quantity" class="form-control col-md-7 col-xs-12" data-validate-length-range="20" data-validate-words="2" name="quantity"  required placeholder="Qauntity">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Remarks / Reason<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea name="remarks" id="remarks"></textarea>
+                                </div>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
+                        <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+                    </div>
+
+                </div>
+                </form>
+            </div>
+        </div>
+        <!--end of edit-->
 
 <!-- Add Quantity -->
 <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
