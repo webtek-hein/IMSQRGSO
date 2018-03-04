@@ -79,14 +79,16 @@
                 <div role="tabpanel" class="tab-pane fade active in" id="Detail_Info" aria-labelledby="Information-tab">
                     <div class="accordion" id="accordion" class="table-main table-responsive" role="tablist"
                          aria-multiselectable="true">
-                        <div class="col-md-5 col-sm-12 col-xs-12">
-                            <div id="DetailsHead"><a id="changetoEdit" href="#"><i class="glyphicon glyphicon-edit"></i></a>
-                                <form class="form-horizontal form-label-left" action="inventory/edititem" method="POST">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <div id="DetailsHead">
+                                <form id="editInformation" class="serialForm form-horizontal form-label-left"
+                                      action="inventory/edititem" method="POST">
 
                                     <div class="form-group">
-                                        <label class="col-md-2">Item Name</label>
+                                        <label class="col-md-12">Item Name</label>
                                         <div class="col-md-12">
-                                            <input type="text" name="item[]"
+                                            <input id="itemname"
+                                                   type="text" name="item"
                                                    class="form-control"
                                                    data-parsley-trigger="blur"
                                                    data-parsley-group="set1"
@@ -97,10 +99,10 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-2">Description</label>
-                                        <div class="col-md-5">
-                                                        <textarea data-parsley-group="set1"
-                                                                  name="description[]" id="message"
+                                        <label class="col-md-12">Description</label>
+                                        <div class="col-md-12">
+                                            <textarea id="itemdesc" data-parsley-group="set1"
+                                                                  name="description" id="message"
                                                                   class="form-control"
                                                                   data-parsley-trigger="blur"
                                                                   data-parsley-minlength="1"
@@ -113,9 +115,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-2">Total Quantity</label>
-                                        <div class="col-md-5">
-                                            <input type="number" min='1' name="quant[]"
+                                        <label class="col-md-12">Total Quantity</label>
+                                        <div class="col-md-12">
+                                            <input id="total"  type="number" min='1' name="quant"
                                                    class="form-control"
                                                    data-parsley-group="set1"
                                                    data-parsley-required-message="Please enter Quantity"
@@ -124,9 +126,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-2">Unit</label>
-                                        <div class="col-md-5">
-                                            <input name="Unit[]" data-parsley-group="set1"
+                                        <label class="col-md-12">Unit</label>
+                                        <div class="col-md-12">
+                                            <input id="unit"  name="Unit" data-parsley-group="set1"
                                                    class="form-control" class="unit"
                                                    list="list"
                                                    data-parsley-required-message="Select the Unit"
@@ -145,18 +147,18 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-2">Type</label>
-                                        <div class="col-md-5">
-                                            <select data-parsley-group="set1" id="type"
-                                                    list="typelist" name="Type[]"
-                                                    class="form-contro" required>
+                                        <label class="col-md-12">Type</label>
+                                        <div class="col-md-12">
+                                            <select id="itemtype" data-parsley-group="set1" id="type"
+                                                    list="typelist" name="Type"
+                                                    class="form-control" required>
                                                 <option value="CO">Capital Outlay</option>
                                                 <option value="MOOE">MOOE</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <button type="submit" name="id" id="edtbutton" hidden>save</button>
+                                    <button type="submit" name="id" id="edtbutton">save</button>
                                 </form>
                             </div>
                         </div>
@@ -393,6 +395,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <!--End of Add Item-->

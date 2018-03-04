@@ -56,7 +56,6 @@ class Inventory extends CI_Controller
     public function edititem()
     {
         $this->inv->edititem();
-        redirect('inventory');
     }
 
     public function detail($id)
