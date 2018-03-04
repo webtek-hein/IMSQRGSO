@@ -200,7 +200,7 @@
         <div class="page-title">
             <h1>New Item</h1>
             <button id="exit" onclick="addItemBack()">&times;</button>
-            <button type="button" id="addanother"
+            <button type="button" id="ahhddanother"
                     class="pull-right next-step btn btn-default"><i
                         class="fa fa fa-cart-plus"></i> Add another item
             </button>
@@ -209,9 +209,10 @@
         <div class="x_content">
             <ul id="bulk" class="nav nav-tabs" role="tablist">
                 <li role="presentation" id="list1" class="active">
-                    <a href="#step1B" data-toggle="tab" aria-controls="step1" role="tab"
-                       title="Step 1"><span class="round-tab"><b>Item 1</b></span>
-                    </a>
+                    <a href="#step1B" data-toggle="tab" aria-controls="step1" role="tab">Item 1</a><span> x</span>
+                </li>
+                <li id="another">
+                    <a href="#"  role="tab" id="addanother">Add Another Item</a>
                 </li>
             </ul>
             <div class="formdiv col-md-12 col-sm-12 col-xs-12">
@@ -224,7 +225,8 @@
                         <div class="form-group has-feedback">
                             <label class="col-md-2 col-sm-2 col-xs-2">Type</label>
                             <div class="col-md-2 ">
-                                <input data-parsley-group="set1"
+                                <input data-parsley-group="set1" data-parsley-required-message="Please choose item type"
+                                       required
                                        name="Type[]" id="type" type="radio" value="CO" required> Capital Outlay<br>
                             </div>
                             <div class="col-md-2 ">

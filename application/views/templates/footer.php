@@ -623,28 +623,35 @@
             var list;
             var counter = 1;
 
-            $('#addanother').on('click', function () {
+            $(document).on('click','#addanother', function (e) {
                 $('#addItemForm').parsley().whenValidate({group: 'set' + counter}).done(function () {
+                    var pul = document.getElementById('bulk');
+                    var li = document.getElementById('another');
+                   pul.removeChild(li);
                     counter++;
                     $button.attr('id', 'buttonCounter' + counter);
-                    $div.clone().find('input,textarea').val("")
+                        ($div.clone().find('input,textarea').val("")
                         .attr('data-parsley-group', 'set' + counter)
                         .toggleClass('required').end()
                         .attr('id', 'step' + counter + 'B')
                         .appendTo('#bulkdiv')
                         .removeClass('active')
                         .find('#buttonCounter' + counter)
-                        .attr('onclick', 'save(' + counter + ')');
+                        .attr('onclick', 'save(' + counter + ')'));
                     list = "<li id=\"list" + counter + "\" role=\"presentation\" class=\"listTab\"><a href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
                         "<span class=\"round-tab\">" +
                         "<b>Item" + counter + "</b>" +
                         "</span>" +
                         "</a>" +
                         "</li>";
-                    console.log($ul.append(list).find('li.active').next().find('a[data-toggle=tab]').click());
+                    ($ul.append(list).find('li.active').next().find('a[data-toggle=tab]').click());
+                    $ul.append('<li id="another"> <a href="#" role="tab" id="addanother">Add Another Item</a></li>');
                 });
 
+
             });
+
+
             console.log('init_bulkFunction');
         }
 
