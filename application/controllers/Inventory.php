@@ -70,8 +70,8 @@ class Inventory extends CI_Controller
                     <ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <li><a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\"	fa fa-share-square-o\" ></i > Distribute</a ></li >
-                            <li><a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" role=\"tab\" id=\"headingOne\"
-                               href=\"#data1\"aria-expanded = \"true\" aria-controls = \"collapseOne\" ><i class=\"fa fa-folder-open\">
+                            <li><a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" data-toggle=\"tab\" 
+                                aria-expanded = \"true\" aria-controls = \"collapseOne\" ><i class=\"fa fa-folder-open\">
                               </i > View Serial</a></li>
                     </ul>";
             } else {
@@ -197,10 +197,12 @@ class Inventory extends CI_Controller
     public function getItem($id)
     {
         $list = $this->inv->getItem($id);
+        $minimum = $this->inv->countItem($id);
         $data = array(
                 'name' => $list->item_name,
                 'description' => $list->item_description,
                 'quant' => $list->quantity,
+                'min' => $minimum->min,
                 'unit' => $list->unit,
                 'item_type'=> $list->item_type,
         );
