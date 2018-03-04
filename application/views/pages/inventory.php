@@ -483,24 +483,6 @@
 </div>
 <!--End of Add Quantity -->
 
-<!-- View Serial-->
-<div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-    <div class="panel-body">
-        <div class="col-md-offset-2">
-            <h4><b>List of Serial</b></h4>
-            <form class="serial-form" method="POST" action="inventory/addSerial">
-                <!-- Dynamic serial tabs here -->
-                <ul id="serial-tabs" class="nav nav-tabs">
-                </ul>
-                <!-- end of serial tabs -->
-                <div id="serial-tabcontent" class="tab-content">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!--End of View Serial-->
-
 <!--Distribution-->
 <div id="DitributeItem" class="modal left fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -577,6 +559,37 @@
         </div>
     </div>
 </div>
+
+<!-- Add Quantity -->
+<div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Edit Quantity</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" name="quant" min=0 class="form-control col-md-7 col-xs-12" required placeholder="Quantity">
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn-modal btn btn-default" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
+                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<!-- end of add quantity -->
+
 <!-- end of distribution-->
 </body>
 

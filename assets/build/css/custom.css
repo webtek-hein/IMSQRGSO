@@ -4388,11 +4388,16 @@ button.pull-right{
     margin-left: -300px;
 }
 .Serial #data1 #serialS {
-    background-color:	#52c814;
+    background-color:#52c814;
     color:black;
 }
-
 /*--End of View Serial--*/
+
+/*--Edit Quantity--*/
+#quantsave{
+    background-color:#52c814;
+}
+/*--End of Edit Quantity--*/
 
 #collapseOne .col-md-7{
     margin-left: 300px;
