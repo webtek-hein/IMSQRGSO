@@ -2,10 +2,11 @@ html{
     min-height:100%;/* make sure it is at least as tall as the viewport */
     position:relative;
 }
-html , body{
-
-    height:100%;
-
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 .full-width {
@@ -4220,14 +4221,10 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 
 /*-- Sidebar Nav --*/
-
-.left_col{
+#HeaderNav{
     position: fixed;
     min-height: 100%;
     margin: 0;
-}
-
-#HeaderNav{
     width: 200px;
     background-color:#000000;
 }
@@ -4280,11 +4277,29 @@ button.pull-right{
     float:left;
     box-sizing: border-box;
 }
+.additemDiv h1{
+    color:black;
+    font-size:25px;
+}
+.additemDiv #addanother{
+    color:black;
+    text-decoration: underline;
+}
+.additemDiv h3, label, .col-md-2 {
+    color:black;
+}
 .togle a{
     color: black;
 }
-
 /*--Buttons--*/
+.additemDiv #exit{
+    border-color: black;
+    font-size: 15px;
+    background-color:#ec6767;
+}
+.additemDiv .x_content{
+    margin-top: 30px;
+}
 #ModalI #buttonCounter1{
     color:black;
     border-color: black;
