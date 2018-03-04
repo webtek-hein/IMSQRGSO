@@ -57,7 +57,6 @@
             //initialize
             init_inventory();
             init_list();
-            // serialize_forms();
             modal();
             init_bulkFucntion();
         });
@@ -273,22 +272,23 @@
         }
 
         //for editting
-        // function serialize_forms() {
-        //     $('form')
-        //         .each(function () {
-        //             $(this).data('serialized', $(this).serialize())
-        //         })
-        //         .on('change input', function () {
-        //             $(this)
-        //                 .find('button:submit')
-        //                 .attr('disabled', $(this).serialize() === $(this).data('serialized'))
-        //             ;
-        //         })
-        //         .find('button:submit')
-        //         .attr('disabled', true);
-        //
-        //     console.log('forms serialzed');
-        // }
+        function serialize_forms() {
+            $('.serialForm')
+                .each(function () {
+                    $(this).data('serialized', $(this).serialize());
+                    console.log($(this).data());
+                })
+                .on('change input', function () {
+                    console.log($(this).serialize());
+                    $(this)
+                        .find('button:submit')
+                        .attr('disabled', $(this).serialize() === $(this).data('serialized'));
+                })
+                .find('button:submit')
+                .attr('disabled', true);
+
+            console.log('forms serialzed');
+        }
 
         //modal events
         function modal() {
@@ -432,37 +432,6 @@
             $('.AddSup').toggleClass('hidden');
             $('.inventory-tab').toggleClass('hidden');
         }
-
-        //edit
-        function edit(id) {
-            var $item_name = $('#itemname');
-            var $itemdesc = $('#itemdesc');
-            var $total = $('#total');
-            var $unit = $('#unit');
-            var $type = $('#itemtype');
-            var $button = $('#edtbutton');
-
-            $item_name.replaceWith('<input id="item" name="item" value=' + $item_name.text() + '>');
-            $itemdesc.replaceWith('<input id="item" name="description" value=' + $itemdesc.text() + '>');
-            $total.replaceWith(' <input value=' + $total.text() + ' type="number" min="1" name="quant">');
-            $unit.replaceWith('<input list="list" id="unit" name="Unit" value=' + $unit.text() + '><datalist id="list">' +
-                '<option value="piece">piece</option>' +
-                '<option value="box">box</option>' +
-                '<option value="set">set</option>' +
-                '<option value="ream">ream</option>' +
-                '<option value="dozen">dozen</option>' +
-                '<option value="bundle">bundle</option>' +
-                '<option value="sack">sack</option>' +
-                '<option value="others">others</option>' +
-                '</datalist>');
-            $type.replaceWith('<select value=' + $type.text() + ' id="type" list="typelist" name="Type" required>' +
-                '<option value="CO">Capital Outlay</option>\n' +
-                '<option value="MOOE">MOOE</option>\n' +
-                ' </select>');
-            $button.removeAttr('hidden').val(id);
-
-        }
-
         //view and edit serial
         function viewSerial(id) {
             var $ul = $('#serial-tabs');
@@ -572,43 +541,45 @@
         function detail(id) {
             var $detailtable = $('#detail-tab-table');
             var item;
-            $.get('inventory/getitem/' + id, function (data) {
-                item = JSON.parse(data);
-                $('#detailAddquantity').attr('data-id', id);
-                $('#changetoEdit').attr('onclick', 'edit(' + id + ')');
-                $('#itemname').html(item.name);
-                $('#itemdesc').html(item.description);
-                $('#total').html(item.quantity);
-                $('#itemtype').html(item.item_type);
-                $('#unit').html(item.unit);
-            }).done(function () {
-                toggleDiv($('.detail-tab '),$('.inventory-tab'));
-                $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/' + id})
-                    .bootstrapTable({
-                        url: 'inventory/detail/' + id,
-                        columns: [{
-                            field: 'del',
-                            title: 'Delivery Date'
-                        }, {
-                            field: 'rec',
-                            title: 'Date Received'
-                        }, {
-                            field: 'exp',
-                            title: 'Expiration Date'
-                        }, {
-                            field: 'cost',
-                            title: 'Cost'
-                        }, {
-                            field: 'sup',
-                            title: 'Supplier'
-                        }, {
-                            field: 'quant',
-                            title: 'Quantity'
-                        }, {
-                            field: 'action',
-                            title: 'Action'
-                        }]
-                    });
+            $.ajax({
+                url: 'inventory/getitem/' + id,
+                dataType: 'JSON',
+                success: function (data) {
+                    $('#edtbutton').val(id);
+                    $('#itemname').val(data.name);
+                    $('#itemdesc').val(data.description);
+                    $('#total').val(data.quant);
+                    $('#itemtype').val(data.item_type);
+                    $('#unit').val(data.unit);
+                    toggleDiv($('.detail-tab '),$('.inventory-tab'));
+                    $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/' + id})
+                        .bootstrapTable({
+                            url: 'inventory/detail/' + id,
+                            columns: [{
+                                field: 'del',
+                                title: 'Delivery Date'
+                            }, {
+                                field: 'rec',
+                                title: 'Date Received'
+                            }, {
+                                field: 'exp',
+                                title: 'Expiration Date'
+                            }, {
+                                field: 'cost',
+                                title: 'Cost'
+                            }, {
+                                field: 'sup',
+                                title: 'Supplier'
+                            }, {
+                                field: 'quant',
+                                title: 'Quantity'
+                            }, {
+                                field: 'action',
+                                title: 'Action'
+                            }]
+                        });
+                    serialize_forms();
+                }
             });
         }
 
