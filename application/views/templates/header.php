@@ -21,6 +21,9 @@ if (isset($this->session->userdata['logged_in'])) {
 
     <title>GSO Baguio City Hall</title>
 
+    <!-- Normalize -->
+    <link href="<?php echo base_url() ?>assets/css/normalize.css" rel="stylesheet">
+
     <!-- Bootstrap -->
     <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Tables-->

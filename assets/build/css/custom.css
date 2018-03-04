@@ -2,10 +2,11 @@ html{
     min-height:100%;/* make sure it is at least as tall as the viewport */
     position:relative;
 }
-html , body{
-
-    height:100%;
-
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 .full-width {
@@ -4220,14 +4221,10 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 
 /*-- Sidebar Nav --*/
-
-.left_col{
+#HeaderNav{
     position: fixed;
     min-height: 100%;
     margin: 0;
-}
-
-#HeaderNav{
     width: 200px;
     background-color:#000000;
 }
