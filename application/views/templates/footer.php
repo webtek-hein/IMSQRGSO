@@ -351,7 +351,13 @@
                 //assign to a button with a class btn-modal
                 $('.btn-modal').val(item_id);
             });
-            $('#Item_Detail').on('hidden.bs.modal', function () {
+            $('#edit_modal').on('show.bs.modal',function (e) {
+                quantity = $(e.relatedTarget).data('quantity');
+
+                $('#quantity').val(quantity);
+
+            });
+            $('#Item_Detail').on('hidden.bs.modal',function () {
                 $('#itemdet').bootstrapTable('destroy');
             });
             $('.btn-hide').on('click', function () {

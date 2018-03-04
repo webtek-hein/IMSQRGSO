@@ -360,4 +360,25 @@ class Inventory_model extends CI_Model
             ->row();
         return $minimum;
     }
+
+    public function editquant(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $values = [];
+        $item_id = $this->input->post('id');
+        // select item
+        $item = $this->db->get_where('item', array('item_id' => $item_id))->row();
+
+        // convert to array
+        $data1 = array(
+            'qauntity' => $item->quantity,
+
+        );
+        // update item
+        $data = array(
+            'quantity' => $this->input->post('quantity'),
+        );
+        
+
+
+    }
 }

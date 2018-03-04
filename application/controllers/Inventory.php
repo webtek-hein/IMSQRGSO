@@ -70,7 +70,7 @@ class Inventory extends CI_Controller
                     <ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <li><a href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\"	fa fa-share-square-o\" ></i > Distribute</a ></li >
-                            <li><a href=\"#\" data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Add_Quantity\">
+                            <li><a href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
                             <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ></li >
                             <li><a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" data-toggle=\"tab\" 
                                 aria-expanded = \"true\" aria-controls = \"collapseOne\" ><i class=\"fa fa-folder-open\">
@@ -209,6 +209,11 @@ class Inventory extends CI_Controller
                 'item_type'=> $list->item_type,
         );
         echo json_encode($data);
+    }
+
+    public function editquantity(){
+        $this->inv->editquant();
+        redirect('inventory');
     }
 
 }
