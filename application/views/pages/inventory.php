@@ -384,9 +384,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="pull-right">
 
-                    </div>
                 </form>
             </div>
         </div>

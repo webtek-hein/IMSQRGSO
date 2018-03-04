@@ -1048,6 +1048,7 @@ h2 {
     float: left;
     clear: both;
     margin-top: 5px;
+    height: 600px;
 }
 #bulkdiv{
     position: relative;
@@ -4397,6 +4398,7 @@ button.pull-right{
     width: 100%;
     right: 0;
     bottom: 0;
+
 }
 .deptopt{
     position: relative;
@@ -4447,11 +4449,12 @@ a.pull-right{
 #supplier .bootstrap-table{
     top: 30px;
 }
-.additemDiv.page-content{
+.additemDiv{
     top: 60px;
     width: 85%;
     height: 600px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .additemDiv.page-content .clone-tab{
 
