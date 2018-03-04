@@ -178,25 +178,6 @@
     </div>
     <!--End of Item Detail -->
 
-
-    <!-- View Serial-->
-    <div id="data1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-        <div class="panel-body">
-            <div class="col-md-offset-2">
-                <h4><b>List of Serial</b></h4>
-                <form class="serial-form" method="POST" action="inventory/addSerial">
-                    <!-- Dynamic serial tabs here -->
-                    <ul id="serial-tabs" class="nav nav-tabs">
-                    </ul>
-                    <!-- end of serial tabs -->
-                    <div id="serial-tabcontent" class="tab-content">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!--End of View Serial-->
-
     <!-- Add Item-->
     <div class="additemDiv hidden">
         <div class="page-title">
@@ -397,8 +378,27 @@
     </div>
 
 </div>
-
 <!--End of Add Item-->
+
+<!-- View Serial-->
+<div class="Serial hidden page-content">
+    <div id="data1" class="panel-collapse collapse" role="tabpanel">
+        <div class="panel-body">
+            <div class="col-md-offset-2">
+                <h4><b>List of Serial</b></h4>
+                <form class="serial-form" method="POST" action="inventory/addSerial">
+                    <!-- Dynamic serial tabs here -->
+                    <ul id="serial-tabs" class="nav nav-tabs">
+                    </ul>
+                    <!-- end of serial tabs -->
+                    <div id="serial-tabcontent" class="tab-content">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of View Serial-->
 
 <!-- Add Quantity -->
 <div id="addquant" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">

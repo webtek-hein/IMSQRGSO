@@ -6,10 +6,10 @@ td,th{
     color: #5b5b5b;
 }
 th {
-    color: #b5b5b5;
+    color:#000000;
     text-align: left;
     font-family: 'Roboto', sans-serif;
-    font-weight: 250;
+    font-weight: 50px;
 }
 
 table{

@@ -459,9 +459,9 @@
 
                     if (data[0]['position'] === 'Custodian') {
                         button = "<br><div class=\"col-md-offset-3\">\n" +
-                            "<button type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Privious</button>\n" +
-                            "<button type=\"submit\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Submit</a></button>\n" +
-                            "<button type=\"button\" class=\"next-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>\n" +
+                            "<button id=\"serialP\" type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Privious</button>\n" +
+                            "<button id=\"serialS\" type=\"submit\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Submit</a></button>\n" +
+                            "<button id=\"serialN\" type=\"button\" class=\"next-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>\n" +
                             " </div></div>";
                     }
                     //if div reaches 10

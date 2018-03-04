@@ -4191,20 +4191,68 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 /*--End Header Side Nav--*/
 
+/*-- TOP-NAV --*/
+#topNav .nav_menu{
+    position: sticky !important;
+    top: 0;
+    height: 30px;
+    background-color:#359600;
+    border: 0px;
+
+}
+#topNav .nav_menu ul{
+    margin-top: -5px;
+    margin-right: 20px;
+}
+#topNav .nav_menu i{
+    font-size: 15px;
+    color:black;
+}
+#topNav .nav_menu .info-number{
+    font-size: 10px;
+}
+#topNav .nav_menu img{
+    height: 20px;
+    margin-top: -10px;
+}
+/*-- End of TOP-NAV --*/
+
+
+/*-- Sidebar Nav --*/
+
+.left_col{
+    position: fixed;
+    min-height: 100%;
+    margin: 0;
+}
+
+#HeaderNav{
+    width: 200px;
+    background-color:#000000;
+}
+#HeaderNav .menu_section a{
+    font-size: 15px;
+    color:#eeeeee;
+}
+
+#HeaderNav .menu_section a:hover{
+    background-color:#359600;
+
+}
+/*-- End of Sidebar Nav --*/
+
 
 /*--Inventory Main Content--*/
 .x_content a{
     font-size:12px;
     font-weight: bold;
 }
-
 .x_panel table th {
     height: 10px;
 }
 #inventory-main-page{
     background-color:#ffffff;
 }
-
 button.pull-right{
     position: relative;
     bottom: 45px;
@@ -4215,6 +4263,7 @@ button.pull-right{
     background-color: #F5F5F5;
     border: 1.4px solid #359600;
 }
+
 /*--End Inventory Main Content--*/
 
 
@@ -4330,6 +4379,19 @@ button.pull-right{
 }
 /*--End of ITEM DETAIL--*/
 
+/*--View Serial--*/
+.Serial #data1 h4{
+    color:black;
+}
+.Serial #data1{
+    margin-left: -300px;
+}
+.Serial #data1 #serialS {
+    background-color:	#52c814;
+    color:black;
+}
+
+/*--End of View Serial--*/
 
 #collapseOne .col-md-7{
     margin-left: 300px;
@@ -4337,54 +4399,7 @@ button.pull-right{
 #collapseOne .form-group{
     margin-left: 100px;
 }
-/*-- TOP-NAV --*/
-#topNav .nav_menu{
-    position: sticky !important;
-    top: 0;
-    height: 30px;
-    background-color:#359600;
-    border: 0px;
 
-}
-#topNav .nav_menu ul{
-    margin-top: -5px;
-    margin-right: 20px;
-}
-#topNav .nav_menu i{
-    font-size: 15px;
-    color:black;
-}
-#topNav .nav_menu .info-number{
-    font-size: 10px;
-}
-#topNav .nav_menu img{
-   height: 20px;
-    margin-top: -10px;
-}
-/*-- End of TOP-NAV --*/
-
-/*-- Sidebar Nav --*/
-
-.left_col{
-    position: fixed;
-    min-height: 100%;
-    margin: 0;
-}
-
-#HeaderNav{
-    width: 200px;
-    background-color:#000000;
-}
-#HeaderNav .menu_section a{
-    font-size: 15px;
-    color:#eeeeee;
-}
-
-#HeaderNav .menu_section a:hover{
-    background-color:#359600;
-
-}
-/*-- End of Sidebar Nav --*/
 
 /*-- Body --*/
 .page-content{
