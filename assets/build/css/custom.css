@@ -112,6 +112,17 @@ ul.bar_tabs.right {
 ul.bar_tabs.right li {
     float: right
 }
+
+#supplier .pull-right.search{
+    position: absolute;
+    top: -30px;
+}
+#supplier .bootstrap-table{
+    top: 80px;
+}
+#supplier .page-title{
+    height: 100px;
+}
 .full-width {
 
     width:100%;
@@ -4449,7 +4460,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     bottom: 20%;
 }
 #supplier .bootstrap-table{
-    top: 30px;
+    top: 81px
 }
 #supplier #headingOne{
     margin-right:30px;
@@ -4476,13 +4487,6 @@ a.pull-right{
 }
 #accounts button.pull-right{
     background-color: blue;
-}
-#supplier .pull-right.search{
-    position: relative;
-    bottom: 20%;
-}
-#supplier .bootstrap-table{
-    top: 30px;
 }
 .additemDiv{
     top: 60px;
