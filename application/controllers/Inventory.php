@@ -81,7 +81,7 @@ class Inventory extends CI_Controller
                             <li><a href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\"	fa fa-share-square-o\" ></i > Distribute</a ></li >
                             <li><a href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
-                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ></li >.$viewser.
+                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ></li >$viewser
                     </ul>";
 
 
