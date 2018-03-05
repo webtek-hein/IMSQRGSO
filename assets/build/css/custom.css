@@ -58,13 +58,100 @@ body {
 }
 /*-- End of Sidebar Nav --*/
 
+.page-content{
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 30px;
+    left: 200px;
+    width: 100%;
+    right: 0;
+    bottom: 0;
 
+}
+
+ul.bar_tabs {
+    overflow: visible;
+    margin: 21px 0 15px;
+    padding-left: 14px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    color:#999999;
+}
+ul.bar_tabs>li {
+    border: 1px solid #E6E9ED;
+    color: #333 !important;
+    margin-top: -17px;
+    margin-left: 8px;
+    background: #fff;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0
+}
+ul.bar_tabs>li.active {
+    border-right: 6px solid #D3D6DA;
+    border-top: 0;
+    margin-top: -15px
+}
+ul.bar_tabs>li a {
+    padding: 10px 17px;
+    background: #F5F7FA;
+    margin: 0;
+    border-top-right-radius: 0
+}
+ul.bar_tabs>li a:hover {
+    border: 1px solid transparent
+}
+ul.bar_tabs>li.active a {
+    border-bottom: none
+}
+ul.bar_tabs.right {
+    padding-right: 14px
+}
+ul.bar_tabs.right li {
+    float: right
+}
 .full-width {
 
     width:100%;
 
 }
 
+.page-title{
+    height: 80px;
+    margin-left: 30px;
+    color: #2d3033a1;
+}
+.page-title h1{
+    font-size: 20px;
+}
+.page-title .title_left {
+    width: 45%;
+    float: left;
+    display: block
+}
+.page-title .title_left h3 {
+    margin: 9px 0
+}
+.page-title .title_right {
+    width: 55%;
+    float: left;
+    display: block
+}
+.page-title .title_right .pull-right {
+    margin: 10px 0
+}
+button.pull-right{
+    position: relative;
+    bottom: 45px;
+    right: 420px;
+    margin-top:-80px;
+    color:black;
+    margin-right:50px;
+    background-color: #F5F5F5;
+    border: 1.4px solid #359600;
+}
 .full-height{
     height:100%;
 }
@@ -517,29 +604,6 @@ body {
     padding: 0 !important
 }
 
-.page-title{
-    margin-left: 30px;
-    color: #2d3033a1;
-}
-.page-title h1{
-    font-size: 20px;
-}
-.page-title .title_left {
-    width: 45%;
-    float: left;
-    display: block
-}
-.page-title .title_left h3 {
-    margin: 9px 0
-}
-.page-title .title_right {
-    width: 55%;
-    float: left;
-    display: block
-}
-.page-title .title_right .pull-right {
-    margin: 10px 0
-}
 .fixed_height_320 {
     height: 320px
 }
@@ -2220,7 +2284,8 @@ p.parsley-error {
 ul.parsley-errors-list {
     list-style: none;
     color: #E74C3C;
-    padding-left: 0
+    padding-left: 0;
+    display: block;
 }
 input.parsley-error,
 textarea.parsley-error,
@@ -2521,47 +2586,6 @@ span.tag a {
 .not_valid {
     background: #FBD8DB !important;
     color: #90111A !important
-}
-ul.bar_tabs {
-    overflow: visible;
-    margin: 21px 0 15px;
-    padding-left: 14px;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    color:#999999;
-}
-ul.bar_tabs>li {
-    border: 1px solid #E6E9ED;
-    color: #333 !important;
-    margin-top: -17px;
-    margin-left: 8px;
-    background: #fff;
-    border-bottom: none;
-    border-radius: 4px 4px 0 0
-}
-ul.bar_tabs>li.active {
-    border-right: 6px solid #D3D6DA;
-    border-top: 0;
-    margin-top: -15px
-}
-ul.bar_tabs>li a {
-    padding: 10px 17px;
-    background: #F5F7FA;
-    margin: 0;
-    border-top-right-radius: 0
-}
-ul.bar_tabs>li a:hover {
-    border: 1px solid transparent
-}
-ul.bar_tabs>li.active a {
-    border-bottom: none
-}
-ul.bar_tabs.right {
-    padding-right: 14px
-}
-ul.bar_tabs.right li {
-    float: right
 }
 a:focus {
     outline: none
@@ -4249,16 +4273,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 #inventory-main-page{
     background-color:#ffffff;
 }
-button.pull-right{
-    position: relative;
-    bottom: 45px;
-    right: 420px;
-    margin-top:-65px;
-    color:black;
-    margin-right:50px;
-    background-color: #F5F5F5;
-    border: 1.4px solid #359600;
-}
 
 /*--End Inventory Main Content--*/
 
@@ -4421,18 +4435,6 @@ button.pull-right{
 
 
 /*-- Body --*/
-.page-content{
-    background-color: white;
-    margin: 0;
-    padding: 0;
-    position: fixed;
-    top: 30px;
-    left: 200px;
-    width: 100%;
-    right: 0;
-    bottom: 0;
-
-}
 .deptopt{
     position: relative;
     left: 10px;
@@ -4451,7 +4453,7 @@ button.pull-right{
 }
 #supplier #headingOne{
     margin-right:30px;
-    margin-top: -5px;
+    margin-top: -20px;
 }
 /*--End of SUPPLIER --*/
 span.pull-right.search {
