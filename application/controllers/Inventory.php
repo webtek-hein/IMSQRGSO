@@ -213,7 +213,7 @@ class Inventory extends CI_Controller
 
     public function editquantity(){
         $this->inv->editquant();
-        redirect('inventory');
+       // redirect('inventory');
     }
 
 }

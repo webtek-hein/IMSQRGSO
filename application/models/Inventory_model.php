@@ -366,19 +366,40 @@ class Inventory_model extends CI_Model
         $values = [];
         $item_id = $this->input->post('id');
         // select item
-        $item = $this->db->get_where('item', array('item_id' => $item_id))->row();
-
+        $item = $this->db->get_where('itemdetail', array('item_id' => $item_id))->row();
         // convert to array
         $data1 = array(
-            'qauntity' => $item->quantity,
+            'quantity' => $item->quantity,
 
         );
         // update item
         $data = array(
             'quantity' => $this->input->post('quantity'),
         );
-        
 
+        $this->db->set($data);
+        $this->db->where('item_det_id', $item_id);
+        $this->db->update('itemdetail');
+
+        $this->db->set($data);
+        $this->db->where('item_id', $item_id);
+        $this->db->update('item');
+
+        // compare data
+        $result1 = array_diff($data1, $data);
+        $result2 = array_diff($data, $data1);
+        
+        foreach ($result1 as $key => $value) {
+            $values[] = array(
+                'field_edited' => $key,
+                'old_value' => $value,
+                'new_value' => $result2[$key],
+                'userid' => $user_id
+            );
+        }
+
+        //insert to edit log table
+        $this->db->insert_batch('logs.editLog', $values);
 
     }
 }
