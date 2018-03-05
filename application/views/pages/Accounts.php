@@ -31,42 +31,68 @@
         </div>
     </div>
     <!-- Modals -->
-    <!-- Add User -->
-    <div id="adduser" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
 
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        <li class="fa fa-user-plus"></li>
-                        Add User
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal form-label-left">
+</div>
+<!-- Add User -->
+<div id="adduser" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
 
-                        <input type="text" class="form-control has-feedback-left" id="inputSuccess2"
-                               placeholder="First Name">
-                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    <li class="fa fa-user-plus"></li>
+                    Add User
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <div class="col-md-5 ">
+                            <input type="text" class="form-control has-feedback-left" id="inputSuccess2"
+                                   placeholder="First Name">
+                            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                        </div>
 
-                        <input type="text" class="form-control" id="inputSuccess3" placeholder="Last Name">
-                        <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                        <div class="col-md-6 ">
+                            <input type="text" class="form-control has-feedback-left" id="inputSuccess3"
+                                   placeholder="Last Name">
+                            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
 
-                        <input type="text" class="form-control has-feedback-left" id="inputSuccess4"
-                               placeholder="Email">
-                        <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                        <div class="col-md-11 ">
+                            <input type="text" class="form-control has-feedback-left" id="inputSuccess4"
+                                   placeholder="Email">
+                            <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
 
-                        <input type="text" class="form-control" id="inputSuccess5" placeholder="Contact No.">
-                        <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+                        <div class="col-md-11 ">
 
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Department</label>
-                        <input type="text" class="form-control">
-                        <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">User Name</label>
-                        <input type="text" class="form-control">
-                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            <input type="text" class="form-control" id="inputSuccess5" placeholder="Contact No.">
+                            <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+                            <div class="form-group">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-11 ">
+                            <select class="form-control">
+                                <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12 ">
+
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">User Name</label>
+                            <input type="text" class="form-control">
+                            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                        </div>
                         <div class="form-group">
                             <div class="pull-right">
                                 <button type="button" class="btn btn-danger">
@@ -79,8 +105,9 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>

@@ -17,7 +17,7 @@
             </ul>
         </div>
         <?php $position = $this->session->userdata['logged_in']['position'];
-        if ($position === 'Admin' || $position === 'Custodian') {
+        if ($position === 'Custodian') {
             echo '<button id="headingTwo" class="btn pull-right" data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-controls="collapseTwo">
                                 <i class=" fa fa-plus" ></i><span> New</span></button>';
         }
