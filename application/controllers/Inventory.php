@@ -27,9 +27,9 @@ class Inventory extends CI_Controller
     {
         $position = $this->session->userdata['logged_in']['position'];
         $department = $this->session->userdata['logged_in']['dept_id'];
-        if ($position === 'Supply Officer'){
-            $list = $this->inv->departmentInventory($type,$department);
-        }else{
+        if ($position === 'Supply Officer') {
+            $list = $this->inv->departmentInventory($type, $department);
+        } else {
             $list = $this->inv->select_item($type);
         }
         $data = array();
@@ -68,21 +68,25 @@ class Inventory extends CI_Controller
     {
         $list = $this->inv->viewdetail($id);
         $data = array();
-
+        $viewser = "";
         foreach ($list as $detail) {
+            if ($detail['item_type'] === 'CO') {
+                $viewser = "<li ><a id = \"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" data-toggle=\"tab\" 
+                                aria-expanded = \"true\" aria-controls = \"collapseOne\" ><i class=\"fa fa-folder-open\">
+                              </i > View Serial</a></li>";
+            }
             if ($this->session->userdata['logged_in']['position'] === 'Custodian') {
                 $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                     <ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <li><a href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\"	fa fa-share-square-o\" ></i > Distribute</a ></li >
                             <li><a href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
-                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ></li >
-                            <li><a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" data-toggle=\"tab\" 
-                                aria-expanded = \"true\" aria-controls = \"collapseOne\" ><i class=\"fa fa-folder-open\">
-                              </i > View Serial</a></li>
+                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ></li >.$viewser.
                     </ul>";
+
+
             } else {
-                $action = "<a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\"
+                    $action = "<a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\"
                                href=\"#data1\" aria-expanded=\"true\" aria-controls=\"collapseOne\"><li class=\"fa fa-folder-open\">
                               </li> View Serial</a>";
             }
@@ -183,9 +187,9 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
-    public function viewDept($type,$id)
+    public function viewDept($type, $id)
     {
-        $list = $this->inv->departmentInventory($type,$id);
+        $list = $this->inv->departmentInventory($type, $id);
         $data = array();
         foreach ($list as $item) {
             $data[] = array(
@@ -206,17 +210,18 @@ class Inventory extends CI_Controller
         $list = $this->inv->getItem($id);
         $minimum = $this->inv->countItem($id);
         $data = array(
-                'name' => $list->item_name,
-                'description' => $list->item_description,
-                'quant' => $list->quantity,
-                'min' => $minimum->min,
-                'unit' => $list->unit,
-                'item_type'=> $list->item_type,
+            'name' => $list->item_name,
+            'description' => $list->item_description,
+            'quant' => $list->quantity,
+            'min' => $minimum->min,
+            'unit' => $list->unit,
+            'item_type' => $list->item_type,
         );
         echo json_encode($data);
     }
 
-    public function editquantity(){
+    public function editquantity()
+    {
         $this->inv->editquant();
         redirect('inventory');
     }

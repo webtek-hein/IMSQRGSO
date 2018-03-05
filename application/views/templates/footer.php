@@ -417,7 +417,7 @@
                     statusCode: {
                         500: function () {
                             BootstrapDialog.show({
-                                message: 'Item not saved.'
+                                message: 'Duplicate item name and description.'
                             });
                         }
                     }

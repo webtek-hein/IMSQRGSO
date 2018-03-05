@@ -237,7 +237,7 @@ class Inventory_model extends CI_Model
 
     public function viewdetail($id)
     {
-        $this->db->select('date_delivered,date_received,expiration_date,unit_cost,supplier_name,
+        $this->db->select('item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
         item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
         $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'inner');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
