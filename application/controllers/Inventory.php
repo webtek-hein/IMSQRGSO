@@ -25,8 +25,13 @@ class Inventory extends CI_Controller
 
     public function viewItem($type)
     {
-
-        $list = $this->inv->select_item($type);
+        $position = $this->session->userdata['logged_in']['position'];
+        $department = $this->session->userdata['logged_in']['dept_id'];
+        if ($position === 'Supply Officer'){
+            $list = $this->inv->departmentInventory($type,$department);
+        }else{
+            $list = $this->inv->select_item($type);
+        }
         $data = array();
 
         foreach ($list as $item) {

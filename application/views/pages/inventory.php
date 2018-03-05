@@ -200,13 +200,12 @@
                         <div class="form-group has-feedback">
                             <label class="col-md-2 col-sm-2 col-xs-2">Type</label>
                             <div class="col-md-2 ">
-                                <input data-parsley-group="set1" data-parsley-required-message="Please choose item type"
-                                       required
-                                       name="Type[]" id="type" type="radio" value="CO" required> Capital Outlay<br>
+                                <input data-parsley-group="set1"
+                                       name="Type[]" id="type" type="radio" value="CO"> Capital Outlay<br>
                             </div>
                             <div class="col-md-2 ">
-                                <input data-parsley-group="set1"
-                                       name="Type[]" id="type" type="radio" value="MOOE" required> MOOE<br>
+                                <input data-parsley-group="set1" data-required="true"
+                                       name="Type[]" id="type" type="radio" value="MOOE" > MOOE<br>
                             </div>
                         </div>
 
