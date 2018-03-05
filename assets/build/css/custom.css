@@ -163,6 +163,46 @@ button.pull-right{
     background-color: #F5F5F5;
     border: 1.4px solid #359600;
 }
+/*--ITEM DETAIL--*/
+#detail-tab-table #DetailDropDn{
+    position: static;
+    left:1000px;
+    border-radius:10px;
+
+}
+#detail-tab-table #DetailDropDn li{
+    position: relative;
+    width: 100%;
+
+}
+#detail-tab-table #DetailDropDn a{
+    color:black;
+    z-index: 999;
+}
+/*--End of ITEM DETAIL--*/
+
+/*--View Serial--*/
+.Serial #data1 h4{
+    color:black;
+}
+.Serial #data1{
+    position: absolute;
+    left: 10px;
+    overflow: auto;
+    height: 600px;
+    width: 95%;
+}
+.Serial #data1 #serialS {
+    background-color:#52c814;
+    color:black;
+}
+/*--End of View Serial--*/
+
+/*--Edit Quantity--*/
+#quantsave{
+    background-color:#52c814;
+}
+/*--End of Edit Quantity--*/
 .full-height{
     height:100%;
 }
@@ -4401,42 +4441,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 /*--Inventory End Edit From--*/
 
-/*--ITEM DETAIL--*/
-#detail-tab-table #DetailDropDn{
-    position: static;
-    left:1000px;
-    border-radius:10px;
 
-}
-#detail-tab-table #DetailDropDn li{
-    position: relative;
-    width: 100%;
-
-}
-#detail-tab-table #DetailDropDn a{
-    color:black;
-    z-index: 999;
-}
-/*--End of ITEM DETAIL--*/
-
-/*--View Serial--*/
-.Serial #data1 h4{
-    color:black;
-}
-.Serial #data1{
-    margin-left: -300px;
-}
-.Serial #data1 #serialS {
-    background-color:#52c814;
-    color:black;
-}
-/*--End of View Serial--*/
-
-/*--Edit Quantity--*/
-#quantsave{
-    background-color:#52c814;
-}
-/*--End of Edit Quantity--*/
 
 #collapseOne .col-md-7{
     margin-left: 300px;

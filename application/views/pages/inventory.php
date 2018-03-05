@@ -102,15 +102,15 @@
                                         <label class="col-md-12">Description</label>
                                         <div class="col-md-12">
                                             <textarea id="itemdesc" data-parsley-group="set1"
-                                                                  name="description" id="message"
-                                                                  class="form-control"
-                                                                  data-parsley-trigger="blur"
-                                                                  data-parsley-minlength="1"
-                                                                  data-parsley-maxlength="500"
-                                                                  data-parsley-minlength-message="Description must"
-                                                                  data-parsley-validation-threshold="10"
-                                                                  data-parsley-required-messag="Put description of the items"
-                                                                  required></textarea>
+                                                      name="description" id="message"
+                                                      class="form-control"
+                                                      data-parsley-trigger="blur"
+                                                      data-parsley-minlength="1"
+                                                      data-parsley-maxlength="500"
+                                                      data-parsley-minlength-message="Description must"
+                                                      data-parsley-validation-threshold="10"
+                                                      data-parsley-required-messag="Put description of the items"
+                                                      required></textarea>
                                         </div>
                                     </div>
 
@@ -124,7 +124,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Unit</label>
                                         <div class="col-md-12">
-                                            <input id="unit"  name="Unit" data-parsley-group="set1"
+                                            <input id="unit" name="Unit" data-parsley-group="set1"
                                                    class="form-control" class="unit"
                                                    list="list"
                                                    data-parsley-required-message="Select the Unit"
@@ -187,7 +187,7 @@
                     <a id="1st" href="#step1B" data-toggle="tab" aria-controls="step1" role="tab">Item 1</a>
                 </li>
                 <li id="another">
-                    <a href="#"  role="tab" id="addanother">Add Another Item</a>
+                    <a href="#" role="tab" id="addanother">Add Another Item</a>
                 </li>
             </ul>
             <div class="formdiv col-md-12 col-sm-12 col-xs-12">
@@ -205,7 +205,7 @@
                             </div>
                             <div class="col-md-2 ">
                                 <input data-parsley-group="set1" data-required="true"
-                                       name="Type[]" id="type" type="radio" value="MOOE" > MOOE<br>
+                                       name="Type[]" id="type" type="radio" value="MOOE"> MOOE<br>
                             </div>
                         </div>
 
@@ -374,19 +374,15 @@
 <!-- View Serial-->
 <div class="Serial hidden page-content">
     <div id="data1" class="panel-collapse collapse" role="tabpanel">
-        <div class="panel-body">
-            <div class="col-md-offset-2">
-                <h4><b>List of Serial</b></h4>
-                <form class="serial-form" method="POST" action="inventory/addSerial">
-                    <!-- Dynamic serial tabs here -->
-                    <ul id="serial-tabs" class="nav nav-tabs">
-                    </ul>
-                    <!-- end of serial tabs -->
-                    <div id="serial-tabcontent" class="tab-content">
-                    </div>
-                </form>
+        <h4><b>List of Serial</b></h4>
+        <form class="serial-form" method="POST" action="inventory/addSerial">
+            <!-- Dynamic serial tabs here -->
+            <ul id="serial-tabs" class="nav nav-tabs">
+            </ul>
+            <!-- end of serial tabs -->
+            <div id="serial-tabcontent" class="tab-content">
             </div>
-        </div>
+        </form>
     </div>
 </div>
 <!--End of View Serial-->
@@ -562,44 +558,50 @@
     </div>
 </div>
 
-        <!--Edit Quantity-->
-        <div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
+<!--Edit Quantity-->
+<div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Edit</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal form-label-left" method="POST" action="inventory/editquantity" novalidate>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Quantity<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="number" id="quantity" class="form-control col-md-7 col-xs-12" data-validate-length-range="20" data-validate-words="2" name="quantity"  required placeholder="Qauntity">
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Remarks / Reason<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea name="remarks" id="remarks"></textarea>
-                                </div>
-                            </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save</button>
-                        <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
-                    </div>
-
-                </div>
-                </form>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Edit</h4>
             </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-label-left" method="POST" action="inventory/editquantity" novalidate>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Quantity<span
+                                    class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" id="quantity" class="form-control col-md-7 col-xs-12"
+                                   data-validate-length-range="20" data-validate-words="2" name="quantity" required
+                                   placeholder="Qauntity">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Remarks / Reason<span
+                                    class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <textarea name="remarks" id="remarks"></textarea>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i
+                            class="fa fa-arrow-down"></i> Save
+                </button>
+                <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
+            </div>
+
         </div>
-        <!--end of edit-->
+        </form>
+    </div>
+</div>
+<!--end of edit-->
 
 <!-- Add Quantity -->
 <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
@@ -614,16 +616,22 @@
             <div class="modal-body">
                 <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST" novalidate>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span
+                                    class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="number" name="quant" min=0 class="form-control col-md-7 col-xs-12" required placeholder="Quantity">
+                            <input type="number" name="quant" min=0 class="form-control col-md-7 col-xs-12" required
+                                   placeholder="Quantity">
                         </div>
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn-modal btn btn-default" name="id" value="1" id="quantsave"><i class="fa fa-arrow-down"></i> Save</button>
-                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
+                <button type="submit" class="btn-modal btn btn-default" name="id" value="1" id="quantsave"><i
+                            class="fa fa-arrow-down"></i> Save
+                </button>
+                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal"><i
+                            class="fa fa-close"></i> Cancel
+                </button>
             </div>
         </div>
         </form>
