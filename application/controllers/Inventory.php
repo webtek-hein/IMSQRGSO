@@ -70,7 +70,7 @@ class Inventory extends CI_Controller
         $data = array();
         $viewser = "";
         foreach ($list as $detail) {
-            if ($detail['item_type'] === 'CO') {
+            if ($detail['item_type'] === 'CO' && $detail['serial'] === '1') {
                 $viewser = "<li ><a id = \"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" data-toggle=\"tab\" 
                                 aria-expanded = \"true\" aria-controls = \"collapseOne\" ><i class=\"fa fa-folder-open\">
                               </i > View Serial</a></li>";
@@ -91,6 +91,7 @@ class Inventory extends CI_Controller
                               </li> View Serial</a>";
             }
             $data[] = array(
+                'PO' => $detail['PO_number'],
                 'quant' => $detail['quantity'],
                 'del' => $detail['date_delivered'],
                 'rec' => $detail['date_received'],

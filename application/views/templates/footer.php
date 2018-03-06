@@ -573,6 +573,9 @@
                         .bootstrapTable({
                             url: 'inventory/detail/' + id,
                             columns: [{
+                                field: 'PO',
+                                title: 'PO #'
+                            },{
                                 field: 'del',
                                 title: 'Delivery Date'
                             }, {

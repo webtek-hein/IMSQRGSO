@@ -357,6 +357,15 @@
                                     <span class="fa fa-ticket form-control-feedback left"
                                           aria-hidden="true"></span>
                                 </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-12 col-sm-12 col-xs-12">Purchse Order (PO) number</label>
+                                    <input data-parsley-group="set1" type="text"
+                                           name="PO[]" class="form-control has-feedback-left"
+                                           data-parsley-required-message="Input Purchase Order Number"
+                                           required>
+                                    <span class="fa fa-ticket form-control-feedback left"
+                                          aria-hidden="true"></span>
+                                </div>
                             </div>
                             <div class="form-group has-feedback">
 

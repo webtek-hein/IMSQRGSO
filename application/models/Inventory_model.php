@@ -18,6 +18,8 @@ class Inventory_model extends CI_Model
         $item_type = $this->input->post('Type')[$counter];
         $quantity = $this->input->post('quant')[$counter];
         $supplier_id = $this->input->post('supp')[$counter];
+        $serialStatus = $this->input->post('serialStatus')[$counter];
+
 
         $data = array(
             'item_name' => $item_name,
@@ -25,8 +27,10 @@ class Inventory_model extends CI_Model
             'item_description' => $this->input->post('description')[$counter],
             'unit' => $this->input->post('Unit')[$counter],
             'item_type' => $item_type,
+            'serial' => $serialStatus
         );
         $data1 = array(
+            'PO_number' => $this->input->post('PO')[$counter],
             'date_delivered' => $this->input->post('del')[$counter],
             'date_received' => $this->input->post('rec')[$counter],
             'unit_cost' => $this->input->post('cost')[$counter],
@@ -48,8 +52,6 @@ class Inventory_model extends CI_Model
             //create an array of serial for capital outlay item
 
             if ($item_type === 'CO') {
-                $serialStatus = $this->input->post('serialStatus')[$counter];
-                var_dump($serialStatus);
                 if($serialStatus === '1'){
                     $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
                     $this->db->insert_batch('serial', $serial);
@@ -83,7 +85,8 @@ class Inventory_model extends CI_Model
                 'item_description' => $this->input->post('description')[$key],
                 'unit' => $this->input->post('Unit')[$key],
                 'item_type' => $this->input->post('Type')[$key],
-            );
+                'serial' => $this->input->post('serialStatus')[$key]
+        );
 
         }
 
@@ -100,6 +103,7 @@ class Inventory_model extends CI_Model
         // 2. Insert to item detail
         foreach ($insert_id as $key => $value) {
             $data1[] = array(
+                'PO_number' => $this->input->post('PO')[$key],
                 'date_delivered' => $this->input->post('del')[$key],
                 'date_received' => $this->input->post('rec')[$key],
                 'unit_cost' => $this->input->post('cost')[$key],
@@ -119,8 +123,9 @@ class Inventory_model extends CI_Model
             $detail[] = array('item_det_id' => $item_detail_id[$key], 'userid' => $user_id);
             $quantity = $this->input->post('quant');
             $item_type = $this->input->post('Type');
+            $serialStatus = $this->input->post('serialStatus');
             //serial
-            if ($item_type[$key] === 'CO') {
+            if ($item_type[$key] === 'CO' && $serialStatus[$key] === '1') {
                 $serial = array_fill(1, $quantity[$key], array('item_det_id' => $item_detail_id[$key]));
                 $this->db->insert_batch('serial', $serial);
             }
@@ -241,7 +246,7 @@ class Inventory_model extends CI_Model
 
     public function viewdetail($id)
     {
-        $this->db->select('item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
+        $this->db->select('PO_number,item.serial,item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
         item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
         $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'inner');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
@@ -369,7 +374,7 @@ class Inventory_model extends CI_Model
             ->join('itemdetail','item.item_id = itemdetail.item_id ','inner')
             ->join('serial','serial.item_det_id = itemdetail.item_det_id','inner')
             ->where('item.item_id',$id)
-            ->where('serial !=',null,False)
+            ->where('serial.serial !=',null,False)
             ->get('item')
             ->row();
         return $minimum;
