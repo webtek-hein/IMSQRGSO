@@ -19,7 +19,6 @@ class Inventory_model extends CI_Model
         $quantity = $this->input->post('quant')[$counter];
         $supplier_id = $this->input->post('supp')[$counter];
 
-
         $data = array(
             'item_name' => $item_name,
             'quantity' => $quantity,
@@ -47,9 +46,14 @@ class Inventory_model extends CI_Model
             //item detail insert id
             $insert_id = $this->db->insert_id();
             //create an array of serial for capital outlay item
+
             if ($item_type === 'CO') {
-                $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
-                $this->db->insert_batch('serial', $serial);
+                $serialStatus = $this->input->post('serialStatus')[$counter];
+                var_dump($serialStatus);
+                if($serialStatus === '1'){
+                    $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
+                    $this->db->insert_batch('serial', $serial);
+                }
             }
             // 3. Insert into logs
             $this->db->insert('logs.increaselog', array('userid' => $user_id, 'item_det_id' => $insert_id));
@@ -398,7 +402,7 @@ class Inventory_model extends CI_Model
         // compare data
         $result1 = array_diff($data1, $data);
         $result2 = array_diff($data, $data1);
-        
+
         foreach ($result1 as $key => $value) {
             $values[] = array(
                 'field_edited' => $key,

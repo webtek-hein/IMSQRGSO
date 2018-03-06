@@ -191,7 +191,7 @@
                     <a href="#" role="tab" id="addanother"><p>Add Another Item</p></a>
                 </li>
             </ul>
-        </div>    
+        </div>
             <div class="x_content">
             <div class="formdiv col-md-12 col-sm-12 col-xs-12">
                 <form class="form-horizontal form-label-left input_mask" id="addItemForm" role="form"
@@ -201,14 +201,22 @@
                         <div class="ln_solid"></div>
 
                         <div class="form-group has-feedback">
-                            <label class="col-md-2 col-sm-2 col-xs-2">Type</label>
-                            <div class="col-md-2 ">
-                                <input data-parsley-group="set1"
-                                       name="Type[]" id="type" type="radio" value="CO"> Capital Outlay<br>
+                            <label class="col-md-12 col-sm-2 col-xs-2">Type</label>
+                            <div class="col-md-5">
+                                <select id="itemtype" data-parsley-group="set1" id="type"
+                                        list="typelist" name="Type[]"
+                                        class="form-control" required>
+                                    <option value="CO">Capital Outlay</option>
+                                    <option value="MOOE">MOOE</option>
+                                </select>
                             </div>
-                            <div class="col-md-2 ">
+                            <div class="col-md-2 hideInput">
+                                <input data-parsley-group="set1"
+                                       name="serialStatus[]" id="serialStatus" type="radio" value="1">with Serial<br>
+                            </div>
+                            <div class="col-md-2 hideInput">
                                 <input data-parsley-group="set1" data-required="true"
-                                       name="Type[]" id="type" type="radio" value="MOOE"> MOOE<br>
+                                       name="serialStatus[]" id="serialStatus" type="radio" value="0">without Serial<br>
                             </div>
                         </div>
 
@@ -390,8 +398,8 @@
 </div>
 <!--End of View Serial-->
 
-<!-- Add Quantity -->
-<div id="addquant" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- Add Item -->
+<div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -477,7 +485,7 @@
         </div>
     </div>
 </div>
-<!--End of Add Quantity -->
+<!--End of Add Item -->
 
 <!--Distribution-->
 <div id="DitributeItem" class="modal left fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
@@ -645,6 +653,7 @@
     </div>
 </div>
 <!-- end of add quantity -->
+
 
 <!-- end of distribution-->
 </body>

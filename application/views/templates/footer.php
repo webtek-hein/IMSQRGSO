@@ -142,6 +142,9 @@
             $('#headingOne').on('click',function (){
                 toggleDiv($('.AddSup'),$('.inventory-tab'));
             });
+            $('select#itemtype').change(function () {
+                $('.hideInput').toggleClass('hidden');
+            });
             console.log('init_inventory');
         }
 
