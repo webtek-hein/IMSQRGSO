@@ -527,18 +527,25 @@
         //get serial checkbox
         function getserial(id) {
             var serials = [];
+            var mooe = [];
             $.ajax({
                 url: 'inventory/getSerial/' + id,
                 dataType: 'JSON',
                 success: function (data) {
                     for (var i = 0; i < data.length; i++) {
+                        mooe =  data[i].serial;
                         if (data[i].serial !== null && data[i].item_status === 'In-stock') {
                             serials.push("<input name=\"serial[]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                         }
                     }
-                    if (serials.length === 0) {
-                        serials = "Please input serial first.";
+                    if (serials.length === 0 && (mooe !== null && mooe !== 'Distributed')) {
+                        var qua = ("<input type=\'text\' name=\'quantity\' placeholder='quantity\' class=\'form-control col-md-7 col-xs-12\' required>");
+                        document.getElementById('quant').innerHTML += qua;
+                        //$('#quant').html(qua);
                     }
+                            var input ="Please input serial first.";
+
+
                     $('#serial').html(serials);
                 }
             });

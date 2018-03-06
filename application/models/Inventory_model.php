@@ -288,12 +288,18 @@ class Inventory_model extends CI_Model
         $id = $this->input->post('id');
         $serial = $this->input->post('serial');
         $quantity = count($serial);
+        if($quantity == 0){
+            $quantity = $this->input->post('quantity');
+            echo $quantity;
+        }else {
+            $quantity = count($serial);
+        }
         $data = array(
             'dept_id' => $this->input->post('dept'),
             'ac_id' => $this->input->post('Code'),
             'quantity_distributed' => $quantity,
             'receiver' => $this->input->post('owner'),
-            'PO_no' => $this->input->post('po'),
+            'date_received' => $this->input->post('date'),
             'PR_no' => $this->input->post('pr'),
             'OBR_no' => $this->input->post('obr'),
             'item_id' => $id,
@@ -308,7 +314,11 @@ class Inventory_model extends CI_Model
                 'item_status' => 'Distributed',
             );
         }
-        $this->db->update_batch('serial', $serial_data, 'serial');
+        if(count($serial) == 0) {
+
+        }else{
+            $this->db->update_batch('serial', $serial_data, 'serial');
+        }
 
         $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
         $this->db->where('item_det_id', $id);

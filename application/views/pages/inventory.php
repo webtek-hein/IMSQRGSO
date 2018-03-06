@@ -496,6 +496,10 @@
                             <label for="name">Serial/s</label>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div id='quant' class="col-md-10">
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="col-md-10">
@@ -516,9 +520,9 @@
 
                     <div class="form-group">
                         <div class="col-md-10">
-                            <label for="po">PO Number</label>
-                            <input id="po" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
-                                   data-validate-words="2" name="po" required type="text">
+                            <label for="date">Date of Distribution</label>
+                            <input id="date" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                                   data-validate-words="2" name="date" required type="date">
                         </div>
                     </div>
 
