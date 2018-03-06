@@ -179,6 +179,10 @@ button.pull-right{
     color:black;
     z-index: 999;
 }
+.detail-tab #edtbutton{
+    color:black;
+    border-color: black;
+}
 /*--End of ITEM DETAIL--*/
 
 /*--View Serial--*/
@@ -4325,13 +4329,18 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 #inventory-main-page{
     background-color:#ffffff;
 }
-
+.inventory-tab{
+    background-color: #F5F5F5;
+}
+#inventory-main-page button{
+    height: 30px;
+}
 /*--End Inventory Main Content--*/
 
 
 /*--Inventory Add Item--*/
-#inventory-main-page button{
-    height: 30px;
+.addItem-tab{
+    background-color: #F5F5F5;
 }
 #addItemForm .right{
     float:right;
@@ -4340,10 +4349,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 #addItemForm .left{
     float:left;
     box-sizing: border-box;
-}
-.additemDiv h1{
-    color:black;
-    font-size:25px;
 }
 .additemDiv #addanother{
     color:black;
@@ -4357,9 +4362,11 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 /*--Buttons--*/
 .additemDiv #exit{
+    color:black;
     border-color: black;
     font-size: 15px;
-    background-color:#ec6767;
+    height: 30px;
+    margin-left: -20px;
 }
 .additemDiv .x_content{
     margin-top: 30px;
@@ -4375,6 +4382,28 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 #ModalI #addanother{
     color:black;
     border-color: black;
+}
+.additemDiv{
+    top: 60px;
+    width: 85%;
+    height: 80%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#bulkdiv h3{
+    font-size: 20px;
+}
+#bulkdiv #addItemh3{
+
+}
+.additemDiv .togle a{
+    height: 30px
+}
+.additemDiv .togle p{
+    margin-top:-5px;
+}
+.additemDiv .togle ul{
+    margin-top: 20px;
 }
 /*--End Inventory Add Item--*/
 
@@ -4469,15 +4498,29 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     top: 81px
 }
 #supplier #headingOne{
-    margin-right:30px;
-    margin-top: -20px;
+    margin-right:50px;
+    margin-top: -23px;
+    height: 30px;
 }
 /*--End of SUPPLIER --*/
+
+/*--Department Page--*/
+#department #selct-dept{
+    margin-left: -17px;
+    margin-top: 10px;
+    border-color: black;
+}
+#department h1{
+    margin-left: -8px;
+}
+#department .tabpanel ul{
+    margin-top: 40px;
+}
+
+/*--End of Department Page--*/
+
 span.pull-right.search {
     color: white;
-}
-.inventory-tab{
-    background-color: #F5F5F5;
 }
 
 a.pull-right{
@@ -4493,13 +4536,6 @@ a.pull-right{
 }
 #accounts button.pull-right{
     background-color: blue;
-}
-.additemDiv{
-    top: 60px;
-    width: 85%;
-    height: 600px;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 .additemDiv.page-content .clone-tab{
 

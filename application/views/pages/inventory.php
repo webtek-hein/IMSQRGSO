@@ -154,7 +154,7 @@
                                         </div>
                                     </div>
 
-                                    <button type="submit" name="id" id="edtbutton">save</button>
+                                    <button class="btn btn-default" type="submit" name="id" id="edtbutton"><i class="fa fa-check"></i> save</button>
                                 </form>
                             </div>
                         </div>
@@ -176,25 +176,28 @@
 
     <!-- Add Item-->
     <div class="additemDiv hidden">
+    <div class="addItem-tab">
         <div class="page-title">
+            <button class="btn btn-danger" id="exit" onclick="addItemBack()">&times; Cancel</button>
             <h1>New Item</h1>
-            <button class="btn btn-default" id="exit" onclick="addItemBack()">&times; Cancel</button>
         </div>
 
-        <div class="x_content">
+        <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
             <ul id="bulk" class="nav nav-tabs" role="tablist">
                 <li role="presentation" id="list1" class="active">
-                    <a id="1st" href="#step1B" data-toggle="tab" aria-controls="step1" role="tab">Item 1</a>
+                    <a id="1st" href="#step1B" data-toggle="tab" aria-controls="step1" role="tab"><p>Item 1</p></a>
                 </li>
                 <li id="another">
-                    <a href="#" role="tab" id="addanother">Add Another Item</a>
+                    <a href="#" role="tab" id="addanother"><p>Add Another Item</p></a>
                 </li>
             </ul>
+        </div>    
+            <div class="x_content">
             <div class="formdiv col-md-12 col-sm-12 col-xs-12">
                 <form class="form-horizontal form-label-left input_mask" id="addItemForm" role="form"
                       action="inventory/saveAll" method="POST" data-parsley-validate="">
                     <div id="bulkdiv" class="tab-content">
-                        <h3>Item Information</h3>
+                        <h3 id="addItemh3">Item Information</h3>
                         <div class="ln_solid"></div>
 
                         <div class="form-group has-feedback">
@@ -290,9 +293,9 @@
                                                                   required></textarea>
                                 </div>
                             </div>
-                            <div class="ln_solid"></div>
+                            <div class="ln_solid col-md-12"></div>
                             <h3>Additional Details</h3>
-                            <div class="ln_solid"></div>
+                            <div class="ln_solid col-md-12"></div>
                             <div class="form-group has-feedback">
                                 <label class="col-md-4 col-sm-12 col-xs-12">Delivery Date</label>
                                 <label class="col-md-4 col-sm-12 col-xs-12">Date Received</label>
@@ -354,8 +357,7 @@
 
                             <div class="ln_solid"></div>
                             <button id="buttonCounter1" type="button" onclick="save(1)"
-                                    class="savebtn btn btn-default"><i
-                                        class="fa fa-arrow-down"></i> Save
+                                    class="savebtn btn btn-default"><i class="fa fa-arrow-down"></i> Save
                             </button>
                             <button type="submit" id="saveALL" class="btn btn-default"><i
                                         class="fa fa-download"></i> Save All
@@ -368,6 +370,7 @@
         </div>
     </div>
 
+</div>
 </div>
 <!--End of Add Item-->
 

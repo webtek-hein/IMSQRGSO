@@ -3,8 +3,7 @@
     <div class="inventory-tab">
         <div class="page-title">
             <h1>Departments</h1>
-            <select id="selct-dept" type="button" class="deptopt btn btn-default"><i
-                        class="fa fa-chevron-down"></select>
+            <select id="selct-dept" type="button" class="deptopt btn btn-default"> <i class="fa fa-chevron-down"></i></select>
         </div>
 
 
