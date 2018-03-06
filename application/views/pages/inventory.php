@@ -504,7 +504,7 @@
 
                     <div class="form-group">
                         <div id='serial' class="col-md-10">
-                            <label for="name">Serial/s</label>
+                            <label for="name"></label>
                         </div>
                     </div>
                     <div class="form-group">
