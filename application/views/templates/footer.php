@@ -545,11 +545,11 @@
                         var qua = ("<input type=\'text\' name=\'quantity\' placeholder='quantity\' class=\'form-control col-md-7 col-xs-12\' required>");
                         document.getElementById('quant').innerHTML += qua;
                         //$('#quant').html(qua);
+                    }else {
+                        serials = "Please input serial first.";
+
+                        $('#serial').html(serials);
                     }
-                            var input ="Please input serial first.";
-
-
-                    $('#serial').html(serials);
                 }
             });
         }
