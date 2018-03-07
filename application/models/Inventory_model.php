@@ -347,8 +347,11 @@ class Inventory_model extends CI_Model
 
     public function getSerial($det_id)
     {
+        $this->db->select('item.serial as serialStatus,serial_id,serial.serial,item_status');
+        $this->db->join('itemdetail','itemdetail.item_det_id = serial.item_det_id','inner');
+        $this->db->join('item','item.item_id = itemdetail.item_id','inner');
         $this->db->where('item_status !=', 'Distributed');
-        $this->db->where('item_det_id', $det_id);
+        $this->db->where('serial.item_det_id', $det_id);
         $query = $this->db->get('serial');
         return $query->result_array();
     }

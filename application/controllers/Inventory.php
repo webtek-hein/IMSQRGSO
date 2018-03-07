@@ -173,6 +173,7 @@ class Inventory extends CI_Controller
         $data = array();
         foreach ($list as $serial) {
             $data[] = array(
+                'serialStatus' => $serial['serialStatus'],
                 'serial_id' => $serial['serial_id'],
                 'serial' => $serial['serial'],
                 'position' => $position,
