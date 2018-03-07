@@ -84,12 +84,13 @@ class Inventory extends CI_Controller
                             <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ></li >$viewser
                     </ul>";
 
-
             } else {
-                    $action = "<a id=\"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" class=\"btn btn-modal btn-default btn-xs\" role=\"tab\" id=\"headingOne\"
-                               href=\"#data1\" aria-expanded=\"true\" aria-controls=\"collapseOne\"><li class=\"fa fa-folder-open\">
-                              </li> View Serial</a>";
+                    $action = "<ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown - menu\">
+                                   <li><a href=\"#\" class=\" btn btn-modal btn-default btn-xs\" onclick=\"getserial($detail[item_det_id])\" data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .DistributeSP\">
+                                    <i class=\" fa fa-share-square-o\" ></i > Distribute</a ></li >
+                                </ul >";
             }
+
             $data[] = array(
                 'PO' => $detail['PO_number'],
                 'quant' => $detail['quantity'],
