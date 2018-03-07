@@ -27,15 +27,14 @@
         </div>
     </div>
 
-    <div class="AddSup hidden" role="tabpanel" aria-labelledby="headingOne">
-        <button type="button" onclick="addSupplierBack()" class="btn btn"></i> Back</a></button>
-        <div class="x_content">
-            <div class="panel-body">
-                <div class="col-md-7 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_content">
-                            <form method="POST" action="supplier/addSupplier" data-validate="parsley"
-
+<div class="AddSup hidden" role="tabpanel" aria-labelledby="headingOne">
+    <button type="button" onclick="addSupplierBack()" class="btn btn"></i> Back</a></button>
+    <div class="x_content">
+        <div class="panel-body">
+            <div class="col-md-7 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <form method="POST" action="supplier/addSupplier" data-validate="parsley">
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                     <label for="first-name">Supplier Name</label>
@@ -77,8 +76,7 @@
                                     </button>
                                 </div>
                             </div>
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
