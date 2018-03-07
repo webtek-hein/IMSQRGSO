@@ -20,16 +20,20 @@ body {
     border: 0;
     width: 100%;
     height: 30px;
-    background-color:#359600;
+    background-color:#9c9a9a;
+}
+#topNav a{
+    color:black;
+    font-weight: bolder;
 }
 #topNav .nav_menu ul{
     margin-top: -5px;
     margin-right: 20px;
 }
 #topNav .nav_menu i{
-    font-size: 15px;
-    color:black;
-}
+     font-size: 15px;
+     color:black;
+ }
 #topNav .nav_menu .info-number{
     font-size: 10px;
 }
@@ -40,24 +44,35 @@ body {
 /*-- End of TOP-NAV --*/
 
 /*-- Sidebar Nav --*/
+/*Sidebar Title*/
+.menu_fixed .profile{
+    margin-top: 50px;
+}
+.menu_fixed .profile_info p{
+    font-weight: bolder;
+    font-size: 20px;
+    color:white;
+}
+/*End*/
 #HeaderNav{
     position: fixed;
     min-height: 100%;
     margin: 0;
     width: 200px;
-    background-color:#000000;
+    background-color:#333333;
 }
 #HeaderNav .menu_section a{
-    font-size: 15px;
-    color:#eeeeee;
+    font-size: 17px;
+    color:white;
+    font-family: 'Microsoft Sans Serif', Tahoma, Arial, Verdana, Sans-Serif;
 }
 
 #HeaderNav .menu_section a:hover{
-    background-color:#359600;
-
+    background-color:#494848;
 }
 /*-- End of Sidebar Nav --*/
 
+/*--Main Content--*/
 .page-content{
     background-color: white;
     margin: 0;
@@ -70,7 +85,7 @@ body {
     bottom: 0;
 
 }
-
+/*Main Two Tabs*/
 ul.bar_tabs {
     overflow: visible;
     margin: 21px 0 15px;
@@ -90,18 +105,22 @@ ul.bar_tabs>li {
     border-radius: 4px 4px 0 0
 }
 ul.bar_tabs>li.active {
-    border-right: 6px solid #D3D6DA;
+    border-right: 6px solid #4c4c4c;
     border-top: 0;
     margin-top: -15px
 }
 ul.bar_tabs>li a {
     padding: 10px 17px;
-    background: #F5F7FA;
     margin: 0;
+    border-top: 1px solid #4c4c4c;
+    border-right: 1px solid #4c4c4c;
+    border-left: 1px solid #4c4c4c;
+    background:#F5F5F5;
     border-top-right-radius: 0
 }
 ul.bar_tabs>li a:hover {
-    border: 1px solid transparent
+    border: 1px solid transparent;
+    background-color:#9c9a9a;
 }
 ul.bar_tabs>li.active a {
     border-bottom: none
@@ -112,7 +131,8 @@ ul.bar_tabs.right {
 ul.bar_tabs.right li {
     float: right
 }
-
+/*End Main Two Tabs*/
+/*--End of Main Content--*/
 #supplier .pull-right.search{
     position: absolute;
     top: -30px;
@@ -153,6 +173,7 @@ ul.bar_tabs.right li {
 .page-title .title_right .pull-right {
     margin: 10px 0
 }
+/*Add New*/
 button.pull-right{
     position: relative;
     bottom: 45px;
@@ -160,10 +181,11 @@ button.pull-right{
     margin-top:-80px;
     color:black;
     margin-right:50px;
-    background-color: #F5F5F5;
-    border: 1.4px solid #359600;
+    background-color:#6dcc41;
+    border: 1px solid black;
 }
 /*--ITEM DETAIL--*/
+
 #detail-tab-table #DetailDropDn{
     position: static;
     left:1000px;
@@ -920,9 +942,10 @@ a:focus {
     display: block;
     padding: 13px 15px 12px
 }
+/*-- Sidebar Nav --*/
 .nav.side-menu>li.current-page,
 .nav.side-menu>li.active {
-    border-right: 5px solid #1ABB9C
+    border-right: 5px solid #9c9a9a;
 }
 .nav li.current-page {
     background: rgba(255, 255, 255, 0.05)
@@ -945,6 +968,7 @@ a:focus {
     margin-left: 0 !important;
     line-height: 32px
 }
+/*--End of Sidebar Nav --*/
 .site_title {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -970,7 +994,7 @@ a:focus {
     position: relative;
     display: block;
     padding: 10px 15px;
-    color: #34495E !important
+    color: black;
 }
 .nav>li>a:hover,
 .nav>li>a:focus {
@@ -4306,17 +4330,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 /** /bootstrap-datetimepicker **/
 
-/*--Header Side Nav--*/
-/*Sidebar Title*/
-.menu_fixed .profile{
-    margin-top: 50px;
-}
-.menu_fixed .profile_info p{
-    font-weight: bolder;
-    font-size: 20px;
-    color: 	#eeeeee;
-}
-/*--End Header Side Nav--*/
 
 /*--Inventory Main Content--*/
 .x_content a{
@@ -4330,10 +4343,14 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     background-color:#ffffff;
 }
 .inventory-tab{
-    background-color: #F5F5F5;
+    background-color:#F5F5F5;
 }
 #inventory-main-page button{
     height: 30px;
+}
+.page-title h1{
+    font-family: Arial;
+    font-size: 25px;
 }
 /*--End Inventory Main Content--*/
 
@@ -4367,6 +4384,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     font-size: 15px;
     height: 30px;
     margin-left: -20px;
+    background:#e50914;
 }
 .additemDiv .x_content{
     margin-top: 30px;

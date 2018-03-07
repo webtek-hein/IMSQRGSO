@@ -168,7 +168,7 @@
                     $('#accode').html(accountCode);
                 }
             });
-            $('ul .current-page a').css('background-color', 'rgba(25, 158, 7, 0.65)');
+            $('ul .current-page a').css('background-color', 'rgba(192,192,192,0.3)');
             //Show department option
             $.ajax({
                 url: 'inventory/getdept',

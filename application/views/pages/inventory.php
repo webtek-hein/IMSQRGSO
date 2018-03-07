@@ -178,7 +178,7 @@
     <div class="additemDiv hidden">
     <div class="addItem-tab">
         <div class="page-title">
-            <button class="btn btn-danger" id="exit" onclick="addItemBack()">&times; Cancel</button>
+            <button class="btn btn-default" id="exit" onclick="addItemBack()">&times; Cancel</button>
             <h1>New Item</h1>
         </div>
 
