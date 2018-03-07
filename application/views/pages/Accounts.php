@@ -105,7 +105,7 @@
                              <div class="form-group">
                                 <script>
                                     function select_dept() {
-                                        if (document.getElementById('position').value === 'supply officer' || document.getElementById('position').value === 'receiver') {
+                                        if (document.getElementById('position').value === 'supply officer' || document.getElementById('position').value === 'custodian') {
                                             document.getElementById('dment').style.display  = 'block';
                                         } else {
                                             document.getElementById('dment').style.display = 'none';
@@ -118,7 +118,6 @@
                                         <option selected="true" disabled>--Choose Position--</option>
                                         <option value="admin">Admin</option>
                                         <option value="custodian">Custodian</option>
-                                        <option value="receiver">Receiver</option>
                                         <option value="supply officer">Supply Officer</option>
                                     </select>
                                 </div>
