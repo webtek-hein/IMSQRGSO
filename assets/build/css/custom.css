@@ -4519,6 +4519,15 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 /*--End of Department Page--*/
 
+/*--Supply Officer --*/
+
+.tab-pane #DetailDropDn{
+    list-style-type: none;
+    margin-left: -40px;
+}
+
+/*--End of Supply Officer --*/
+
 span.pull-right.search {
     color: white;
 }

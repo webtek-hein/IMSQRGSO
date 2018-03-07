@@ -301,9 +301,12 @@
                                                                   required></textarea>
                                 </div>
                             </div>
-                            <div class="ln_solid col-md-12"></div>
+
+                            <div class="col-md-12">
+                            <div class="ln_solid"></div>
                             <h3>Additional Details</h3>
-                            <div class="ln_solid col-md-12"></div>
+                            <div class="ln_solid"></div>
+                            </div>
                             <div class="form-group has-feedback">
                                 <label class="col-md-4 col-sm-12 col-xs-12">Delivery Date</label>
                                 <label class="col-md-4 col-sm-12 col-xs-12">Date Received</label>
@@ -581,6 +584,53 @@
         </div>
     </div>
 </div>
+<!--End of Distribution-->
+
+<!--Distribution for Supply Officer-->
+<div id="DitributeItemSP" class="modal left fade DistributeSP" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Distribution</h4>
+            </div>
+            <form role="form" class="form-horizontal form-label-left" action="inventory/distribute"
+                  method="POST" data-validate="parsley">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="date">Date of Distribution</label>
+                            <input id="date" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                                   data-validate-words="2" name="date" required type="date">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <div id="container2" class="col-md-10">
+                            <label for="name">End User</label>
+                            <input id="owner" class="form-control col-md-7 col-xs-12" name="owner" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-offset-3">
+                    <button type="submit" name="id" class="btn-modal btn btn-default" id="save1">
+                        <i class="fa fa-arrow-down"></i> Save
+                    </button>
+                    <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End of Distribution for Supply Officer-->
+
+
 
 <!--Edit Quantity-->
 <div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
