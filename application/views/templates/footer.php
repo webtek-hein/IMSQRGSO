@@ -446,7 +446,7 @@
             $('.inventory-tab').toggleClass('hidden');
         }
         function addUserBack(){
-            $('.AddUsr').toggleClass('hidden');
+            $('.AddUser').toggleClass('hidden');
             $('.inventory-tab').toggleClass('hidden');
         }        
         //view and edit serial
