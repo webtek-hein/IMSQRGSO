@@ -10,13 +10,6 @@ class Users extends CI_Controller {
         $this->load->model('user_db');
     }
 
-    public function index()
-    {
-        $this->load->view('templates/header');
-        $this->load->view('pages/Accounts');
-        $this->load->view('templates/footer');
-    }
-
     public function display_users()
     {
         $users = $this->user_db->get_users();
@@ -27,12 +20,15 @@ class Users extends CI_Controller {
             'contactno' => $list['contact_no'],
             'username' => $list['username'],
             'position' => $list['position'],
-            'department' => $list['res_center_code']
+            'department' => $list['department']
         );
         }
         echo json_encode($data);
     }
-
+    public function addUser(){
+        $this->user_db->insertUser();
+        redirect('accounts');
+    }
     public function deactivate()
     {
         $id = $this->input->post('user_id');

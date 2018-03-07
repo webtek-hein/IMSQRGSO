@@ -26,7 +26,6 @@
             </table>
         </div>
     </div>
-
 <div class="AddSup hidden" role="tabpanel" aria-labelledby="headingOne">
     <button type="button" onclick="addSupplierBack()" class="btn btn"></i> Back</a></button>
     <div class="x_content">
@@ -37,8 +36,8 @@
                         <form method="POST" action="supplier/addSupplier" data-validate="parsley">
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="first-name">Supplier Name</label>
-                                    <input type="text" name="supplier" id="first-name"
+                                    <label for="Supplier Name">Supplier Name</label>
+                                    <input type="text" name="supplier" id="supplier-name"
                                            data-required="true" class="form-control has-feedback-left"
                                            data-error-message="Please enter the Supplier Name">
                                     <span class="fa fa-truck form-control-feedback left"
@@ -47,8 +46,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="last-name">Address</label>
-                                    <input type="text" id="last-name" name="address"
+                                    <label for="address">Address</label>
+                                    <input type="text" id="address" name="address"
                                            data-required="true" class="form-control has-feedback-left"
                                            data-error-message="Please Enter the Address">
                                     <span class="fa fa-location-arrow form-control-feedback left"
@@ -57,8 +56,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="middle-name">Contact Number</label>
-                                    <input id="middle-name" class="form-control has-feedback-left"
+                                    <label for="contactno">Contact Number</label>
+                                    <input id="contactno" class="form-control has-feedback-left"
                                            type="text" name="contact" data-required="true"
                                            data-error-message="Please Enter Contact Number">
                                     <span class="fa fa-phone form-control-feedback left"
@@ -68,9 +67,6 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-8">
-                                    <button class="btn btn-danger" type="button"><i
-                                                class="fa fa-close"></i> Cancel
-                                    </button>
                                     <button type="submit" class="btn btn-success"><i
                                                 class="fa fa-send"></i> Submit
                                     </button>
