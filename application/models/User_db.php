@@ -50,7 +50,7 @@ class User_db extends CI_Model {
             'username'=>$this->input->post('username'),
             'password'=>$this->input->post('password'),
             'position'=>$this->input->post('position'),
-            'dep_id'=>$this->input->post('dment'),
+            'dept_id'=>$this->input->post('dment'),
         );
         $this->db->insert('user',$data);
     }
