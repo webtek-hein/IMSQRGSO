@@ -142,6 +142,9 @@
             $('#headingOne').on('click',function (){
                 toggleDiv($('.AddSup'),$('.inventory-tab'));
             });
+            $('#headingZero').on('click',function (){
+                toggleDiv($('.AddUser'),$('.inventory-tab'));
+            });
             $('select#itemtype').change(function () {
                 $('.hideInput').toggleClass('hidden');
             });
@@ -442,6 +445,10 @@
             $('.AddSup').toggleClass('hidden');
             $('.inventory-tab').toggleClass('hidden');
         }
+        function addUserBack(){
+            $('.AddUsr').toggleClass('hidden');
+            $('.inventory-tab').toggleClass('hidden');
+        }        
         //view and edit serial
         function viewSerial(id) {
             var $ul = $('#serial-tabs');

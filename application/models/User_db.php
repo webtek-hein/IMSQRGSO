@@ -41,7 +41,19 @@ class User_db extends CI_Model {
         $query = $this->db->get('user');
         return $query->result_array();
     }
-
+    public function insertUser(){
+        $data = array(
+            'first_name'=> $this->input->post('firstname'),
+            'last_name' => $this->input->post('lastname'),
+            'email'=>$this->input->post('email'),
+            'contact_no'=>$this->input->post('contactno'),
+            'username'=>$this->input->post('username'),
+            'password'=>$this->input->post('password'),
+            'position'=>$this->input->post('position'),
+            'dep_id'=>$this->input->post('dment'),
+        );
+        $this->db->insert('user',$data);
+    }
     public function deactivate_user($id)
     {
         $this->db->set('status','deactivated')
