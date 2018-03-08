@@ -20,7 +20,8 @@ class Users extends CI_Controller {
             'contactno' => $list['contact_no'],
             'username' => $list['username'],
             'position' => $list['position'],
-            'department' => $list['department']
+            'department' => $list['department'],
+            'status' => $list['status']
         );
         }
         echo json_encode($data);
