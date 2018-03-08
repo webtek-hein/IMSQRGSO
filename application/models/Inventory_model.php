@@ -59,7 +59,7 @@ class Inventory_model extends CI_Model
                 }
             }
             // 3. Insert into logs
-            $this->db->insert('logs.increaselog', array('userid' => $user_id, 'item_det_id' => $insert_id));
+            $this->db->insert('logs.increaselog', array('userid' => $user_id, 'item_det_id' => $insert_id, 'quantity' => $quantity));
             if ($this->db->trans_status() === FALSE) {
                 $this->db->trans_rollback();
                 throw new Exception($this->db->trans_status());
@@ -334,16 +334,42 @@ class Inventory_model extends CI_Model
             $serial_data[] = array(
                 'serial' => $serial[$i],
                 'dist_id' => $insert_id,
-                'item_status' => 'Distributed',
+                'employee' => $user,
+                'item_status' => 'Distributed'
             );
         }
-        if (count($serial) == 0) {
+        //for mooe
+        $item = $this->db->get_where('item', array('item_id' => $id))->row();
+        $type = array('item_type' => $item->item_type);
+        $item_type = implode($type);
 
-        } else {
+        // if item type is CO but with serial
+        //no yet done and has bugs
+        if (count($serial) != 0 && $item_type == 'CO') {
+            //for capital outlay with serial
+
+            for ($i = 0; $i < $quantity; $i++) {
+                $get_serial = array(
+                    'serial' => $serial[$i],
+                );
+            }
+            $get_serial = implode($serial);
+            $get_serial_id = $this->db->get_where('serial', array('serial' => $get_serial))->row();
+            $serial_id = array('serial_id' => $get_serial_id->serial_id);
+            $ser_id = implode($serial_id);
             $this->db->update_batch('serial', $serial_data, 'serial');
+            $this->db->insert('logs.decreaselog', array('userid' => $user, 'serial_id' => $ser_id));
         }
-
+        // if item type is capital outlay but without serial
+       elseif (count($serial) == 0 && $item_type == 'CO') {
+            $this->db->insert('logs.decreaselog', array('userid' => $user));
+        }
+        // if item type is MOOE
+        else {
+            $this->db->insert('mooedistribution', array('quantity_distributed' => $quantity,'dist_id' => $insert_id, 'employee' => $user));
+        }
     }
+
 
     public function return_item()
     {
