@@ -203,7 +203,7 @@
                         <div class="form-group has-feedback">
                             <label class="col-md-12 col-sm-2 col-xs-2">Type</label>
                             <div class="col-md-5">
-                                <select id="itemtype" data-parsley-group="set1" id="type"
+                                <select name="Type[]" id="itemtype" data-parsley-group="set1" id="type"
                                         list="typelist" name="Type[]"
                                         class="form-control" required>
                                     <option value="CO">Capital Outlay</option>

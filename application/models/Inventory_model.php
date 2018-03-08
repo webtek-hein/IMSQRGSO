@@ -19,6 +19,9 @@ class Inventory_model extends CI_Model
         $quantity = $this->input->post('quant')[$counter];
         $supplier_id = $this->input->post('supp')[$counter];
         $serialStatus = $this->input->post('serialStatus')[$counter];
+        if($serialStatus === null){
+            $serialStatus = 0;
+        }
 
 
         $data = array(
@@ -77,6 +80,7 @@ class Inventory_model extends CI_Model
 
         $data = array();
         $item_name = $this->input->post('item');
+        console.log($this->input->post('Type'));
 
         foreach ($item_name as $key => $value) {
             $data[] = array(
@@ -299,10 +303,17 @@ class Inventory_model extends CI_Model
         $quantity = count($serial);
         if($quantity == 0){
             $quantity = $this->input->post('quantity');
-            echo $quantity;
         }else {
             $quantity = count($serial);
         }
+        $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
+        $this->db->where('item_det_id', $id);
+        $this->db->update('itemdetail');
+
+        $item_id = $this->db->select('item_id')->where('item_det_id', $id)->get('itemdetail')->row_array();
+        $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
+        $this->db->where($item_id);
+        $this->db->update('item');
         $data = array(
             'dept_id' => $this->input->post('dept'),
             'ac_id' => $this->input->post('Code'),
@@ -311,7 +322,7 @@ class Inventory_model extends CI_Model
             'date_received' => $this->input->post('date'),
             'PR_no' => $this->input->post('pr'),
             'OBR_no' => $this->input->post('obr'),
-            'item_id' => $id,
+            'item_id'=> $item_id['item_id'],
             'user_id' => $user
         );
         $this->db->insert('distribution', $data);
@@ -329,14 +340,6 @@ class Inventory_model extends CI_Model
             $this->db->update_batch('serial', $serial_data, 'serial');
         }
 
-        $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
-        $this->db->where('item_det_id', $id);
-        $this->db->update('itemdetail');
-
-        $item_id = $this->db->select('item_id')->where('item_det_id', $id)->get('itemdetail')->row_array();
-        $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
-        $this->db->where($item_id);
-        $this->db->update('item');
     }
 
     public function return_item()
