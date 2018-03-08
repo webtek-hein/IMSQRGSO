@@ -20,7 +20,7 @@ class Inventory extends CI_Controller
     public function saveAll()
     {
         $this->inv->saveAll();
-        redirect('inventory');
+//        redirect('inventory');
     }
 
     public function viewItem($type)

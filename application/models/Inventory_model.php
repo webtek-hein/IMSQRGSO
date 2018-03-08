@@ -80,7 +80,6 @@ class Inventory_model extends CI_Model
 
         $data = array();
         $item_name = $this->input->post('item');
-        console.log($this->input->post('Type'));
 
         foreach ($item_name as $key => $value) {
             $data[] = array(
