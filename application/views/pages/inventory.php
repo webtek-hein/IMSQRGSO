@@ -146,7 +146,7 @@
                                         <label class="col-md-12">Type</label>
                                         <div class="col-md-12">
                                             <select id="itemtype" data-parsley-group="set1" id="type"
-                                                    list="typelist" name="Type"
+                                                    list="typelist" name="Type[]"
                                                     class="form-control" required>
                                                 <option value="CO">Capital Outlay</option>
                                                 <option value="MOOE">MOOE</option>
