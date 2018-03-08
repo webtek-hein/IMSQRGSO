@@ -13,7 +13,7 @@
 
         <div class="accordion table-responsive" id="accordion" role="tablist" aria-multiselectable="true">
 
-                <table id="datatable" data-pagination="true" data-search="true"
+                <table id="user-table" data-pagination="true" data-search="true"
                        data-toggle="table" data-url="Users/display_users"
                        class="table table-no-bordered">
                     <thead>
@@ -34,7 +34,7 @@
 </div>
 
 <div class="AddUser hidden" role="tabpanel" aria-labelledby="headingZero">
-    <button type="button" onclick="addUserBack()" class="btn btn"></i> Back</a></button>
+    <button type="button" onclick="addUserBack()" class="btn btn"> Back</a></button>
     <div class="x_content">
         <div class="panel-body">
             <div class="col-md-7 col-sm-12 col-xs-12">

@@ -133,9 +133,19 @@ ul.bar_tabs.right li {
 }
 /*End Main Two Tabs*/
 /*--End of Main Content--*/
+
+/*--SUPPLIER & ACCOUNTS--*/
+
+#supplier #headingOne{
+    margin-right:50px;
+    margin-top: -23px;
+    height: 30px;
+}
 #supplier .pull-right.search{
     position: absolute;
     top: -30px;
+    position: relative;
+    bottom: 20%;
 }
 #supplier .bootstrap-table{
     top: 80px;
@@ -143,12 +153,40 @@ ul.bar_tabs.right li {
 #supplier .page-title{
     height: 100px;
 }
-.full-width {
-
-    width:100%;
-
+#accounts #headingZero{
+    margin-right:50px;
+    margin-top: -23px;
+    height: 30px;
 }
+#accounts button.pull-right.search{
+    position: absolute;
+    top: -30px;
+    position: relative;
+    bottom: 20%;
+}
+#accounts .bootstrap-table{
+    top: 80px;
+}
+#accounts .page-title{
+    height: 100px;
+}
+#collapseOne .col-md-7{
+    margin-left: 300px;
+}
+#collapseOne .form-group{
+    margin-left: 100px;
+}
+#collapseZero .col-md-7{
+    margin-left: 300px;
+}
+#collapseZero .form-group{
+    margin-left: 100px;
+}
+/*--End of SUPPLIER & ACCOUNTS--*/
 
+.full-width {
+    width:100%;
+}
 .page-title{
     height: 80px;
     margin-left: 30px;
@@ -4490,12 +4528,8 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 
 
-#collapseOne .col-md-7{
-    margin-left: 300px;
-}
-#collapseOne .form-group{
-    margin-left: 100px;
-}
+
+
 
 
 /*-- Body --*/
@@ -4507,20 +4541,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 /*-- End of Body --*/
 
 
-/*--SUPPLIER --*/
-#supplier .pull-right.search{
-    position: relative;
-    bottom: 20%;
-}
-#supplier .bootstrap-table{
-    top: 81px
-}
-#supplier #headingOne{
-    margin-right:50px;
-    margin-top: -23px;
-    height: 30px;
-}
-/*--End of SUPPLIER --*/
+
 
 /*--Department Page--*/
 #department #selct-dept{
@@ -4558,12 +4579,7 @@ a.pull-right{
     text-align: center;
     font-size: 22px;
 }
-#accounts .users-table{
-    width: 86%;
-}
-#accounts button.pull-right{
-    background-color: blue;
-}
+
 .additemDiv.page-content .clone-tab{
 
 }
