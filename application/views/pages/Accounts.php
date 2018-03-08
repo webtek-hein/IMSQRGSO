@@ -25,6 +25,7 @@
                         <th data-sortable="true" data-field="username">Username</th>
                         <th data-sortable="true" data-field="position">Position</th>
                         <th data-sortable="true" data-field="department">Department</th>
+                        <th data-sortable="true" data-field="department">Status</th>
                     </tr>
                     </thead>
                 </table>

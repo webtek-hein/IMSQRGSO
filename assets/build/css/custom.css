@@ -158,7 +158,7 @@ ul.bar_tabs.right li {
     margin-top: -23px;
     height: 30px;
 }
-#accounts button.pull-right.search{
+#accounts .pull-right.search{
     position: absolute;
     top: -30px;
     position: relative;
