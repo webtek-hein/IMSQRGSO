@@ -304,13 +304,11 @@ class Inventory_model extends CI_Model
         $id = $this->input->post('id');
         $serial = $this->input->post('serial');
         $quantity = count($serial);
-
         if ($quantity == 0) {
             $quantity = $this->input->post('quantity');
         } else {
             $quantity = count($serial);
         }
-
         $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
         $this->db->where('item_det_id', $id);
         $this->db->update('itemdetail');
@@ -330,24 +328,23 @@ class Inventory_model extends CI_Model
             'item_id' => $item_id['item_id'],
             'user_id' => $user
         );
-
         $this->db->insert('distribution', $data);
         $insert_id = $this->db->insert_id();
-
-        $serial_data = [];
         for ($i = 0; $i < $quantity; $i++) {
             $serial_data[] = array(
                 'serial' => $serial[$i],
                 'dist_id' => $insert_id,
+                'employee' => $user,
                 'item_status' => 'Distributed'
             );
         }
-
-        // if item type is CO but with serial
+        //for mooe
         $item = $this->db->get_where('item', array('item_id' => $id))->row();
         $type = array('item_type' => $item->item_type);
         $item_type = implode($type);
 
+        // if item type is CO but with serial
+        //no yet done and has bugs
         if (count($serial) != 0 && $item_type == 'CO') {
             //for capital outlay with serial
 
@@ -361,14 +358,8 @@ class Inventory_model extends CI_Model
             $serial_id = array('serial_id' => $get_serial_id->serial_id);
             $ser_id = implode($serial_id);
             $this->db->update_batch('serial', $serial_data, 'serial');
+            $this->db->insert('logs.decreaselog', array('userid' => $user, 'serial_id' => $ser_id));
         }
-        //use dist_id instead
-        $this->db->insert('logs.decreaselog', array('userid' => $user, 'dist_id' => $insert_id));
-        /*
-        //for mooe
-
-
-
         // if item type is capital outlay but without serial
        elseif (count($serial) == 0 && $item_type == 'CO') {
             $this->db->insert('logs.decreaselog', array('userid' => $user));
@@ -376,7 +367,7 @@ class Inventory_model extends CI_Model
         // if item type is MOOE
         else {
             $this->db->insert('mooedistribution', array('quantity_distributed' => $quantity,'dist_id' => $insert_id, 'employee' => $user));
-        }*/
+        }
     }
 
 
