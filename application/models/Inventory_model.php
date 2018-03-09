@@ -300,6 +300,7 @@ class Inventory_model extends CI_Model
 
     public function distrib()
     {
+        $serial_data = [];
         $user = $this->session->userdata['logged_in']['user_id'];
         $id = $this->input->post('id');
         $serial = $this->input->post('serial');
@@ -330,46 +331,47 @@ class Inventory_model extends CI_Model
         );
         $this->db->insert('distribution', $data);
         $insert_id = $this->db->insert_id();
-        for ($i = 0; $i < $quantity; $i++) {
-            $serial_data[] = array(
-                'serial' => $serial[$i],
-                'dist_id' => $insert_id,
-                'employee' => $user,
-                'item_status' => 'Distributed'
-            );
-        }
-        //for mooe
-        $item = $this->db->get_where('item', array('item_id' => $id))->row();
-        $type = array('item_type' => $item->item_type);
-        $item_type = implode($type);
-
+        //use dist id instead
         // if item type is CO but with serial
-        //no yet done and has bugs
-        if (count($serial) != 0 && $item_type == 'CO') {
+        if (count($serial) != 0) {
             //for capital outlay with serial
-
             for ($i = 0; $i < $quantity; $i++) {
-                $get_serial = array(
+                $serial_data[] = array(
                     'serial' => $serial[$i],
+                    'dist_id' => $insert_id,
+                    'item_det_id' => $id,
+                    'item_status' => 'Distributed'
                 );
             }
-            $get_serial = implode($serial);
-            $get_serial_id = $this->db->get_where('serial', array('serial' => $get_serial))->row();
-            $serial_id = array('serial_id' => $get_serial_id->serial_id);
-            $ser_id = implode($serial_id);
             $this->db->update_batch('serial', $serial_data, 'serial');
-            $this->db->insert('logs.decreaselog', array('userid' => $user, 'serial_id' => $ser_id));
         }
-        // if item type is capital outlay but without serial
-       elseif (count($serial) == 0 && $item_type == 'CO') {
-            $this->db->insert('logs.decreaselog', array('userid' => $user));
-        }
-        // if item type is MOOE
-        else {
-            $this->db->insert('mooedistribution', array('quantity_distributed' => $quantity,'dist_id' => $insert_id, 'employee' => $user));
-        }
-    }
+        $this->db->insert('logs.decreaselog', array('userid' => $user, 'dist_id' => $insert_id));
 
+
+//        for ($i = 0; $i < $quantity; $i++) {
+//            $serial_data[] = array(
+//                'serial' => $serial[$i],
+//
+//            );
+//        }
+//        //for mooe
+//        $item = $this->db->get_where('item', array('item_id' => $id))->row();
+//        $type = array('item_type' => $item->item_type);
+//        $item_type = implode($type);
+//
+
+//            $get_serial = implode($serial);
+//            $get_serial_id = $this->db->get_where('serial', array('serial' => $get_serial))->row();
+//            $serial_id = array('serial_id' => $get_serial_id->serial_id);
+//            $ser_id = implode($serial_id);
+//            $this->db->update_batch('serial', $serial_data, 'serial');
+//            $this->db->insert('logs.decreaselog', array('userid' => $user, 'serial_id' => $ser_id));
+//        }
+//        // if item type is capital outlay but without serial
+//       elseif (count($serial) == 0 && $item_type == 'CO') {
+//           $this->db->insert('mooedistribution', array('quantity_distributed' => $quantity,'dist_id' => $insert_id, 'employee' => $user));
+//       }
+    }
 
     public function return_item()
     {
