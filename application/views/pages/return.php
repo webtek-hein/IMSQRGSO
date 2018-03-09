@@ -7,6 +7,7 @@
         </div>
 
         <div class="x_content">
+            <div id="myTabContent" class="tab-content">
             <table id="datatable" data-toggle="table" data-url="invetory/returnitem"
                    class="table table-no-bordered">
                 <thead>
@@ -24,6 +25,8 @@
                 </tr>
                 </thead>
             </table>
+            </div>
+            </div>
         </div>
     </div>
     <!-- /page content -->

@@ -1,6 +1,6 @@
 
         <!-- page content -->
-<div id="inventory-main-page" class="page-content right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
+<div id="return_logPage" class="page-content right_col" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
     <div class="inventory-tab">
         <div class="page-title">
             <h1>Return Log</h1>
@@ -25,7 +25,6 @@
                                data-url="logs/returnLog" class="table table-no-bordered">
                             <thead>
                                 <tr>
-                                    <th data-sortable="true" data-field="number">#</th>
                                     <th data-sortable="true" data-field="timestamp">Timestamp</th>
                                     <th data-sortable="true" data-field="serial">Serial no.</th>
                                     <th data-sortable="true" data-field="item">Item Name</th>
