@@ -336,16 +336,17 @@ class Inventory_model extends CI_Model
         if (count($serial) != 0) {
             //for capital outlay with serial
             for ($i = 0; $i < $quantity; $i++) {
+                var_dump($id);
                 $serial_data[] = array(
                     'serial' => $serial[$i],
                     'dist_id' => $insert_id,
-                    'item_det_id' => $id,
                     'item_status' => 'Distributed'
                 );
             }
             $this->db->update_batch('serial', $serial_data, 'serial');
         }
-        $this->db->insert('logs.decreaselog', array('userid' => $user, 'dist_id' => $insert_id));
+        $this->db->insert('logs.decreaselog', array('userid' => $user, 'dist_id' => $insert_id,'item_det_id' => $id,
+        ));
 
 
 //        for ($i = 0; $i < $quantity; $i++) {
