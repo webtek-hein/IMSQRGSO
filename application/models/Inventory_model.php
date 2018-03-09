@@ -125,7 +125,7 @@ class Inventory_model extends CI_Model
         $item_detail_id = range($id, $last_insert_id);
 
         foreach ($item_detail_id as $key => $value) {
-            $detail[] = array('item_det_id' => $item_detail_id[$key], 'userid' => $user_id);
+            $detail[] = array('item_det_id' => $item_detail_id[$key], 'userid' => $user_id,'quantity' => $this->input->post('quant')[$key]);
             $quantity = $this->input->post('quant');
             $item_type = $this->input->post('Type');
             $serialStatus = $this->input->post('serialStatus');
