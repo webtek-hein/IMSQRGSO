@@ -25,11 +25,24 @@
 <?php endif; ?>
     <div class="limiter">
         <div class="container-login100">
-            <div class="wrap-login100">
+            <div class="wrap-login100" style="height: 560px;">
+                <img src="<?php echo base_url() ?>assets/images/lettering.png" style="margin-top:-170px; margin-left:20px; height:180px; width:820px;">
                 <div class="login100-pic js-tilt" data-tilt>
-                    <img src="<?php echo base_url() ?>assets/images/logo.png" alt="IMG" height="280" width="300">
+                    <img src="<?php echo base_url() ?>assets/images/logoimsgso.png" alt="IMG" height="280" width="300" style="margin-left:40px;">
                 </div>
 
+                <div style="color: grey;
+    -webkit-box-shadow: 10px 10px 5px 0 rgba(10,0,0,0.75);
+    -moz-box-shadow: 15px 15px 10px 10px rgba(0,0,0,0.75);
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    margin: -150px 0 0 -150px;
+    width:320px;
+    height:340px;
+    border-radius: 25px;
+     border: 2px solid #a1a1a1;
+    padding: 10px 40px;">
                 <method="POST" action="login/user_login_process">
                     <span class="login100-form-title">
                         Member Login
@@ -43,8 +56,7 @@
                     echo validation_errors();
                     echo "</div>";
                     ?>
-
-                    <div class="wrap-input100 validate-input"  >
+                    <div class="wrap-input100 validate-input"  style="margin-top: -20px" >
                         <input class="input100" type="text" name="username" id="name" placeholder="username" data-required="true" data-error-message="Enter your Username"/>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
@@ -73,9 +85,11 @@
                         </a>
                         <?php echo form_close(); ?>
                     </div>
+                </div>
             </div>
         </div>
     </div>
+
     
     
 
