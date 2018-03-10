@@ -19,7 +19,7 @@
                 <div id="myTabContent" class="tab-content">
                     <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
                         <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
-                               data-url="logs/editLog" class="table table-no-bordered">
+                               data-url="logs/editLog/CO" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th data-sortable="true" data-field="timestamp">Timestamp</th>
@@ -31,7 +31,8 @@
                     </div>
 
                     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
-                        <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table" data-url="logs/editLog" class="table table-striped table-bordered">
+                        <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
+                               data-url="logs/editLog/MOOE" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th data-sortable="true" data-field="timestamp">Timestamp</th>

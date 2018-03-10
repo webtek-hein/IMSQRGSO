@@ -241,7 +241,8 @@ class Inventory_model extends CI_Model
                 'field_edited' => $key,
                 'old_value' => $value,
                 'new_value' => $result2[$key],
-                'userid' => $user_id
+                'userid' => $user_id,
+                'item_id' => $item_id
             );
         }
 
