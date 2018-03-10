@@ -148,6 +148,9 @@
             $('select#itemtype').change(function () {
                $('.hideInput').toggleClass('hidden');
             });
+            $('#genReport_Buttons').on('click',function (){
+                toggleDiv($('.generateReport'), $('.inventory-tab'));
+            });
             console.log('init_inventory');
         }
 
@@ -448,7 +451,7 @@
         function addUserBack(){
             $('.AddUser').toggleClass('hidden');
             $('.inventory-tab').toggleClass('hidden');
-        }        
+        }
         //view and edit serial
         function viewSerial(id) {
             var $ul = $('#serial-tabs');

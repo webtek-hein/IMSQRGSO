@@ -16,6 +16,10 @@
                 </li>
             </ul>
         </div>
+
+        <button id="genReport_Buttons" class="btn btn-default pull-right" data-toggle="tab" aria-expanded="true"  href="#" data-target=".generateReport">
+            <i class="fa fa-file-archive-o" ></i><span> Reports</span></button>'
+
         <?php $position = $this->session->userdata['logged_in']['position'];
         if ($position === 'Custodian') {
             echo '<button id="headingTwo" class="btn pull-right" data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-controls="collapseTwo">
@@ -708,8 +712,57 @@
 </div>
 <!-- end of add quantity -->
 
+<div id="inventory_report" class="generateReport hidden">
+    <div class="page-content">
+        <div class="head">
+    <div class="page-title">
+        <h1>Reports</h1>
+    </div>
 
-<!-- end of distribution-->
-</body>
+        <div class="options">
+            <div class="checkbox opt1">
+                <label>OPTION: </label>
+                    <label><input type="checkbox" value=""> CO</label>
+
+                    <label><input type="checkbox" value=""> MOOE</label>
+
+                    <label><input type="checkbox" value=""> ALL</label>
+            </div>
+
+            <ul class="list-inline opt2">
+                <li><p>Date of Delivery:
+                        <select id="deliveryDate" type="button" class="btn btn-default"></select>
+                    </p>
+                </li>
+                <li><p>Purchase Order:
+                        <select id="PO" type="button" class="btn btn-default"></select>
+                    </p>
+                </li>
+                <li><p>Item Name:
+                        <select id="Item Name" type="button" class="btn btn-default"></select>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        </div>
+    <div class="x_content">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+        <table data-search="true" data-pagination="true" data-toggle="table" class="table table-bordered">
+            <thead>
+            <tr>
+                <th data-sortable="true" data-field="supplier">Item Name</th>
+                <th data-sortable="true" data-field="address">Description</th>
+                <th data-sortable="true" data-field="contact">Quantity</th>
+                <th data-sortable="true" data-field="contact">Unit</th>
+                <th data-sortable="true" data-field="contact">Cost</th>
+                <th data-sortable="true" data-field="contact">Supplier</th>
+            </tr>
+            </thead>
+        </table>
+        </div>
+    </div>
+    </div>
+</div>
+
 
 

@@ -4522,11 +4522,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 /*--Inventory End Edit From--*/
 
 
-
-
-
-
-
 /*-- Body --*/
 .deptopt{
     position: relative;
@@ -4534,9 +4529,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     bottom: 5px;
 }
 /*-- End of Body --*/
-
-
-
 
 /*--Department Page--*/
 #department #selct-dept{
@@ -4553,6 +4545,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 /*--End of Department Page--*/
 
+
 /*--Supply Officer --*/
 
 .tab-pane #DetailDropDn{
@@ -4561,6 +4554,43 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 
 /*--End of Supply Officer --*/
+
+
+/*--Generate Report--*/
+/*Button*/
+.inventory-tab #genReport_Buttons{
+    margin-right: 125px;
+    background:#e67f0d;
+    color:black;
+}
+#inventory_report .options{
+    margin-top: -50px;
+    margin-left: 30px;
+}
+#inventory_report .options .checkbox{
+    margin-left: -20px;
+    margin-top: 30px;
+}
+
+#inventory_report .options select{
+    height: 25px;
+
+}
+#inventory_report .x_content table{
+    margin-top: 10px;
+}
+
+#inventory_report .options p{
+    color:black;
+    font-size: 15px;
+}
+#inventory_report .options li{
+    list-style-type:none;
+}
+#inventory_report .head{
+    background: #F5F5F5;
+}
+/*--End of Generate Report--*/
 
 span.pull-right.search {
     color: white;
