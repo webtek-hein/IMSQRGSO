@@ -27,7 +27,7 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt>
-                    <img src="<?php echo base_url() ?>assets/images/logo.png" alt="IMG" height="280" width="300">
+                    <img src="<?php echo base_url() ?>assets/images/log0.jpg" alt="IMG" height="280" width="300">
                 </div>
 
                 <method="POST" action="login/user_login_process">
