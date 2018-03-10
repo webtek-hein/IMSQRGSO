@@ -36,27 +36,25 @@ class Logs extends CI_Controller
         echo json_encode($data);
     }
 
-    public function decreaseLog()
+    public function decreaseLog($type)
     {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
-        $dept_id = $this->session->userdata['logged_in']['dept_id'];
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+
         $data = array();
-        $dec = $this->logs->decrease_log();
+        $dec = $this->logs->decrease_log($type,$position,$user_id);
         foreach ($dec as $list) {
             $data[] = array(
                 'timestamp' => $list['timestamp'],
                 'department' => $list['department'],
-                'serial' => $list['serial'],
                 'item' => $list['item_name'],
                 'description' => $list['item_description'],
-                'quantity' => $list['quantity'],
+                'quantity' => $list['quantity_distributed'],
                 'unit' => $list['unit'],
-                'type' => $list['item_type'],
-                'dateacquired' => $list['date_acquired'],
+                'date' => $list['date_received'],
                 'accountcode' => $list['account_code'],
-                'receivedfrom' => $list['received_from'],
-                'cost' => $list['unit_cost'],
+                'receivedfrom' => $list['receiver'],
             );
         }
         echo json_encode($data);
