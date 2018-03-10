@@ -56,15 +56,15 @@ class User_db extends CI_Model {
     }
     public function deactivate_user($id)
     {
-        $this->db->set('status','deactivated')
+        $this->db->set('status','Inactive')
             ->where('user_id',$id)
             ->update('user');
     }
 
     public function activate_user($id)
     {
-        $this->db->set('status','accepted')
-            ->where("status = 'declined' || status = 'deactivated'")
+        $this->db->set('status','Active')
+            ->where("status = 'Inactive'")
             ->where('user_id',$id)
             ->update('user');
     }    

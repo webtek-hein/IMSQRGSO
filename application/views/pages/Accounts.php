@@ -46,7 +46,7 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                     <label for="First Name">First Name</label>
                                     <input type="text" name="firstname" id="firstname"
-                                           data-required="true" class="form-control has-feedback-left"
+                                           placeholder= "First Name" class="form-control has-feedback-left"
                                            data-error-message="Please enter the first name.">
                                     <span class="fa fa-user form-control-feedback left"
                                           aria-hidden="true"></span>
@@ -75,9 +75,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                     <label for="Contact Number">Contact No.</label>
-                                    <input type="text" name="contactno" id="contactno"
-                                           data-required="true" class="form-control has-feedback-left"
-                                           data-error-message="Please enter the contact number.">
+                                    <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" name="contactno" placeholder= "Contact No.">
                                     <span class="fa fa-phone form-control-feedback left"
                                           aria-hidden="true"></span>
                                 </div>
@@ -95,7 +93,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                     <label for="Password">Password</label>
-                                    <input type="text" name="password" id="password"
+                                    <input type="password" name="password" id="password"
                                            data-required="true" class="form-control has-feedback-left"
                                            data-error-message="Please enter the password.">
                                     <span class="fa fa-key form-control-feedback left"
