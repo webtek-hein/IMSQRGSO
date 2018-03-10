@@ -238,15 +238,20 @@ button.pull-right{
 /*--End of ITEM DETAIL--*/
 
 /*--View Serial--*/
+.Serial{
+
+}
 .Serial #data1 h4{
     color:black;
+    width: 100%;
 }
 .Serial #data1{
     position: absolute;
     left: 10px;
     overflow: auto;
     height: 600px;
-    width: 90%;
+    width: 84%;
+
 }
 .Serial #data1 #serialS {
     background-color:#52c814;
