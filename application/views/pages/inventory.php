@@ -1,11 +1,12 @@
 <!-- page content -->
 <div id="inventory-main-page" class="main page-content" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
-
+    <div class="x_panel">
     <div class="inventory-tab">
         <div class="page-title">
             <h1>Inventory</h1>
         </div>
         <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
+
             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                 <li id="TB1" role="presentation" class="active">
                     <a href="#tab_content1" id="CO-tab" role="tab" data-toggle="tab" aria-expanded="true">Capital
@@ -15,6 +16,7 @@
                     <a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="false">MOOE</a>
                 </li>
             </ul>
+
         </div>
 
         <button id="genReport_Buttons" class="btn btn-default pull-right" data-toggle="tab" aria-expanded="true"  href="#" data-target=".generateReport">
@@ -27,35 +29,43 @@
         }
         ?>
         <!-- Main Table Content-->
+        <div class="panel-body">
+            <div class="x_panel">
         <div class="x_content">
-
             <div id="myTabContent" class="tab-content">
 
                 <!-- Capital Outaly tab-->
                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
-
+                    <div class="x_panel">
                     <div class="accordion" id="accordion" class="table-main table-responsive" role="tablist"
                          aria-multiselectable="true">
                         <!-- Implement Bootsrap table-->
+
                         <table data-pagination="true" data-search="true" id="itemtable" class="main table-no-bordered"
                                class="table table-no-bordered table-hover">
                         </table>
+                        </div>
                     </div>
                 </div>
 
                 <!--MOOE Tab-->
                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
                     <!-- Implement Bootsrap table-->
+                    <div class="panel">
                     <div class="accordion" id="accordion" class="table-responsive" role="tablist"
                          aria-multiselectable="true">
+                        <div class="x_panel">
                         <table data-pagination="true" data-search="true" id="MOOEtable" class="main table-no-bordered"
                                data-pagination="true" class="table table-no-bordered table-hover">
                         </table>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
-
+            </div>
+        </div>
     </div>
     <!-- end of Main Table Content-->
 
@@ -712,9 +722,10 @@
 </div>
 <!-- end of add quantity -->
 
+<!--Genearate Report-->
 <div id="inventory_report" class="generateReport hidden">
+    <div class="x_panel">
     <div class="page-content">
-        <div class="head">
     <div class="page-title">
         <h1>Reports</h1>
     </div>
@@ -763,6 +774,8 @@
     </div>
     </div>
 </div>
+</div>
 
+<!--End of Genearate Report-->
 
 
