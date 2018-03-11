@@ -145,7 +145,7 @@
             $('#headingZero').on('click',function (){
                 toggleDiv($('.AddUser'),$('.inventory-tab'));
             });
-            $('select#itemtype').change(function () {
+            $('select.itemtype').change(function () {
                $('.hideInput').toggleClass('hidden');
             });
             $('#genReport_Buttons').on('click',function (){

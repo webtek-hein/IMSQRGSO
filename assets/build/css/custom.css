@@ -4418,13 +4418,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     color:black;
     border-color: black;
 }
-.additemDiv{
-    top: 60px;
-    width: 85%;
-    height: 80%;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
+
 #bulkdiv h3{
     font-size: 20px;
 }
