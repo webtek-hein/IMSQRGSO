@@ -72,10 +72,11 @@ body {
     position: fixed;
     top: 30px;
     left: 200px;
-    width: 100%;
+    width: auto;
+    height:auto;
     right: 0;
     bottom: 0;
-
+    overflow-x: hidden;
 }
 /*Main Two Tabs*/
 ul.bar_tabs {
@@ -1915,6 +1916,17 @@ footer{
 .tile_count .tile_stats_count .count_bottom i {
     width: 12px
 }
+
+.tile_count .col-md-3{
+     width: 20%;
+     color: black;
+ }
+
+.tile_count .col-md-4{
+    width: 25%;
+    color: black;
+}
+
 .dashboard_graph {
     background: #fff;
     padding: 7px 10px
@@ -2808,35 +2820,7 @@ ul.social li {
     height: 50px;
     border-radius: 50%
 }
-.chat .thumb img {
-    width: 27px;
-    height: 27px;
-    border-radius: 50%
-}
-.chat .status {
-    float: left;
-    margin: 16px 0 0 -16px;
-    font-size: 14px;
-    font-weight: bold;
-    width: 12px;
-    height: 12px;
-    display: block;
-    border: 2px solid #FFF;
-    z-index: 12312;
-    border-radius: 50%
-}
-.chat .status.online {
-    background: #1ABB9C
-}
-.chat .status.away {
-    background: #F39C12
-}
-.chat .status.offline {
-    background: #ccc
-}
-.chat .media-body {
-    padding-top: 5px
-}
+
 .dashboard_graph .x_title {
     padding: 5px 5px 7px
 }
