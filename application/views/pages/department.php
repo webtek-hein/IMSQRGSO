@@ -6,7 +6,6 @@
             <select id="selct-dept" type="button" class="deptopt btn btn-default"> <i class="fa fa-chevron-down"></i></select>
         </div>
 
-
         <div class="tabpanel" role="tabpanel" data-example-id="togglable-tabs">
             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                 <li role="presentation" id="CO" class="active">

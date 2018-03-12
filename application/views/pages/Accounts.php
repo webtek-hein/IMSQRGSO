@@ -47,26 +47,20 @@
                                     <label for="First Name">First Name</label>
                                     <input type="text" name="firstname" id="firstname"
                                            placeholder= "First Name" class="form-control has-feedback-left" required>
-                                    <span class="fa fa-user form-control-feedback left"
-                                          aria-hidden="true"></span>
+                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                     <label for="Last Name">Last Name</label>
-                                    <input type="text" id="lastname" name="lastname"
-                                           data-required="true" class="form-control has-feedback-left"
-                                           data-error-message="Please enter the last name." required>
-                                    <span class="fa fa-user form-control-feedback left"
-                                          aria-hidden="true"></span>
+                                    <input type="text" id="lastname" name="lastname" class="form-control has-feedback-left" placeholder="Last Name" required>
+                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="Email">Email</label>
-                                    <input id="email" class="form-control has-feedback-left"
-                                           type="email" name="email" data-required="true"
-                                           data-error-message="Please Enter the email." required>
+                                    <label for="Email">E-mail</label>
+                                    <input id="email" class="form-control has-feedback-left" type="email" name="email" placeholder="E-mail" required>
                                     <span class="fa fa-envelope form-control-feedback left"
                                           aria-hidden="true"></span>
                                 </div>
@@ -75,35 +69,39 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                     <label for="Contact Number">Contact No.</label>
                                     <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" name="contactno" placeholder= "Contact No." required>
-                                    <span class="fa fa-phone form-control-feedback left"
-                                          aria-hidden="true"></span>
+                                    <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                     <label for="Username">Username</label>
-                                    <input type="text" name="username" id="username"
-                                           data-required="true" class="form-control has-feedback-left"
-                                           data-error-message="Please enter the username." required>
-                                    <span class="fa fa-user form-control-feedback left"
-                                          aria-hidden="true"></span>
+                                    <input type="text" name="username" id="username" class="form-control has-feedback-left" placeholder="Username" required>
+                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                     <label for="Password">Password</label>
-                                    <input type="password" name="password" id="password"
-                                           data-required="true" class="form-control has-feedback-left"
-                                           data-error-message="Please enter the password." required>
-                                    <span class="fa fa-key form-control-feedback left"
-                                          aria-hidden="true"></span>
+                                    <input type="password" name="password" id="password" class="form-control has-feedback-left" placeholder="Password" required>
+                                    <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
-                     
+                            <script>
+                                function select_dept() {
+                                    if (document.getElementById('position').value === 'supply officer') {
+                                        document.getElementById('dment').style.display  = 'block';
+                                        document.getElementById('posi').style.display  = '';
+                                    } else {
+                                        document.getElementById('dment').style.display = 'none';
+                                        document.getElementById('posi').style.display  = 'none';
+
+                                    }
+                                }
+                            </script>                     
                              <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                     <label for="Department">Position</label>
-                                    <select class="fa fa-chevron-down align="center" id="position" name="position" required>
+                                    <select class="fa fa-chevron-down align="center" id="position" name="position" onclick='select_dept()' required>
                                         <option selected="true" disabled>--Choose Position--</option>
                                         <option value="admin">Admin</option>
                                         <option value="custodian">Custodian</option>
@@ -112,6 +110,7 @@
                                 </div>
                             </div>
                              <div class="form-group">
+                                <label for="Position" id=posi style="display:none;">Position</label>
                                 <select id="dment" name="dment" style="display:none;" type="button" class="deptopt btn btn-default"> <i class="fa fa-chevron-down"></i></select>
                             </div>                                                                        
                             <div class="ln_solid"></div>
