@@ -1,64 +1,38 @@
-
-</body>
-<!-- footer content -->
-<footer>
-    <!-- bootstrap table js -->
-    <script src="<?php echo base_url() ?>assets/js/bootstrap-table.js"></script>
-    <!-- localization -->
-    <script src="<?php echo base_url() ?>assets/js/bootstrap-table-en-US.js"></script>
-    <!-- FastClick -->
-    <script src="<?php echo base_url() ?>assets/vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="<?php echo base_url() ?>assets/vendors/nprogress/nprogress.js"></script>
-    <!-- jQuery Smart Wizard -->
-    <script src="<?php echo base_url() ?>assets/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-    <!-- Chart.js -->
-    <script src="<?php echo base_url() ?>assets/vendors/Chart.js/dist/Chart.min.js"></script>
-    <!-- gauge.js -->
-    <script src="<?php echo base_url() ?>assets/vendors/gauge.js/dist/gauge.min.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="<?php echo base_url() ?>assets/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="<?php echo base_url() ?>assets/vendors/iCheck/icheck.min.js"></script>
-    <!-- Skycons -->
-    <script src="<?php echo base_url() ?>assets/vendors/skycons/skycons.js"></script>
-    <!-- Flot -->
-    <script src="<?php echo base_url() ?>assets/vendors/Flot/jquery.flot.js"></script>
-    <script src="<?php echo base_url() ?>assets/vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="<?php echo base_url() ?>assets/vendors/Flot/jquery.flot.time.js"></script>
-    <script src="<?php echo base_url() ?>assets/vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="<?php echo base_url() ?>assets/vendors/Flot/jquery.flot.resize.js"></script>
-    <!-- Flot plugins -->
-    <script src="<?php echo base_url() ?>assets/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="<?php echo base_url() ?>assets/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/vendors/flot.curvedlines/curvedLines.js"></script>
-    <!-- DateJS -->
-    <script src="<?php echo base_url() ?>assets/vendors/DateJS/build/date.js"></script>
-    <!-- JQVMap -->
-    <script src="<?php echo base_url() ?>assets/vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="<?php echo base_url() ?>assets/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="<?php echo base_url() ?>assets/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="<?php echo base_url() ?>assets/vendors/moment/min/moment.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-    <!-- Bootstrap 3.3.6 -->
-    <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
-    <!--Bootstrap Dialog JS-->
-    <script src="<?php echo base_url() ?>assets/js/bootstrap-dialog.min.js"></script>
-    <!--<script src="<?php echo base_url() ?>assets/js/bootstrap-dialog.min.js"></script>-->
-    <script src="<?php echo base_url() ?>assets/build/js/custom.js"></script>
-
-    <!--Parsley Js-->
-    <script src="<?php echo base_url() ?>assets/js/parsley.min.js"></script>
+   
+   <footer class="main-footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Your company &copy; 2017-2019</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+              <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions and it helps me to run Bootstrapious. Thank you for understanding :)-->
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+       <!-- JavaScript files-->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
+    <script src="assets/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/js/charts-home.js"></script>
+    <!-- Main File-->
+    <script src="assets/js/front.js"></script>
 
     <script>
         $(document).ready(function () {
             //initialize
-            init_inventory();
-            init_list();
-            modal();
-            init_bulkFucntion();
+            // init_inventory();
+            // init_list();
+            // modal();
+            // init_bulkFucntion();
         });
 
         // initialize inventory list
@@ -780,6 +754,5 @@
         }
 
     </script>
-</footer>
-</body>
+  </body>
 </html>
