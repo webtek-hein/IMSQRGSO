@@ -26,13 +26,10 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-
                         <button id="genReport_Buttons" class="btn btn-outline-primary" data-toggle="tab"
                                 aria-expanded="true"
                                 href="#" data-target=".generateReport">
                             <i class="fa fa-file-archive-o"></i><span> Reports</span></button>
-                        '
-
                         <?php $position = $this->session->userdata['logged_in']['position'];
                         if ($position === 'Custodian') {
                             echo '<button id="headingTwo" class="btn btn-outline-success" data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-controls="collapseTwo">

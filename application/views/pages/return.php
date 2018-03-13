@@ -1,34 +1,51 @@
-<!-- page content -->
-<div id="returns" class="page-content" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
-
-    <div class="inventory-tab">
-        <div class="page-title">
-            <h1>Returns</h1>
-        </div>
-
-        <div class="x_content">
-            <div id="myTabContent" class="tab-content">
-            <table id="datatable" data-toggle="table" data-url="invetory/returnitem"
-                   class="table table-no-bordered">
-                <thead>
-                <tr>
-                    <th data-sortable="true" data-field="timestamp">Timestamp</th>
-                    <th data-sortable="true" data-field="serial">Serial no.</th>
-                    <th data-sortable="true" data-field="item">Item Name</th>
-                    <th data-sortable="true" data-field="description">Item Description</th>
-                    <th data-sortable="true" data-field="datereturned">Date Returned</th>
-                    <th data-sortable="true" data-field="reason">Reason</th>
-                    <th data-sortable="true" data-field="returnedby">Returned By</th>
-                    <th data-sortable="true" data-field="receivedby">Received By</th>
-                    <th data-sortable="true" data-field="status">Returned Status</th>
-                    <th data-sortable="true" data-field="action">Action</th>
-                </tr>
-                </thead>
-            </table>
-            </div>
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Returns</h1>
             </div>
         </div>
     </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li class="active">Dashboard</li>
+                    <li class="active">Returns</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <!-- Returns-->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table id="datatable" data-toggle="table" data-url="invetory/returnitem"
+                               class="table table-no-bordered">
+                            <thead>
+                            <tr>
+                                <th data-sortable="true" data-field="item">Item Name</th>
+                                <th data-sortable="true" data-field="description">Item Description</th>
+                                <th data-sortable="true" data-field="datereturned">Date Returned</th>
+                                <th data-sortable="true" data-field="reason">Reason</th>
+                                <th data-sortable="true" data-field="returnedby">Returned By</th>
+                                <th data-sortable="true" data-field="receivedby">Receiver</th>
+                                <th data-sortable="true" data-field="status">Status</th>
+                                <th data-sortable="true" data-field="action">Action</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- /page content -->
 
     <!-- MODAL -->
