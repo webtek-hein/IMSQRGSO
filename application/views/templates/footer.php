@@ -1,6 +1,7 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/bootstrap-table.js"></script>
     <script src="assets/js/main.js"></script>
 
 
@@ -14,35 +15,79 @@
     <script>
         ( function ( $ ) {
             "use strict";
+            $( document ).ready(function() {
+                $( '#vmap' ).vectorMap( {
+                    map: 'world_en',
+                    backgroundColor: null,
+                    color: '#ffffff',
+                    hoverOpacity: 0.7,
+                    selectedColor: '#1de9b6',
+                    enableZoom: true,
+                    showTooltip: true,
+                    values: sample_data,
+                    scaleColors: [ '#1de9b6', '#03a9f5' ],
+                    normalizeFunction: 'polynomial'
+                } );
+                //initialize
+                init_inventory($);
+                init_list();
+                modal();
+                init_bulkFucntion();
+            });
 
-            jQuery( '#vmap' ).vectorMap( {
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: [ '#1de9b6', '#03a9f5' ],
-                normalizeFunction: 'polynomial'
-            } );
+
         } )( jQuery );
-    </script>
-
-
-    <script>
-        $(document).ready(function () {
-            //initialize
-            // init_inventory();
-            // init_list();
-            // modal();
-            // init_bulkFucntion();
-        });
+        // go to detail
+        function detail(id) {
+            var $detailtable = $('#detail-tab-table');
+            var item;
+            $.ajax({
+                url: 'inventory/getitem/' + id,
+                dataType: 'JSON',
+                success: function (data) {
+                    $('#edtbutton').val(id);
+                    $('#itemname').val(data.name);
+                    $('#itemdesc').val(data.description);
+                    $('#total').text(data.quant);
+                    $('#itemtype').val(data.item_type);
+                    $('#unit').val(data.unit);
+                    toggleDiv($('.detail-tab '),$('.inventory-tab'));
+                    $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/' + id})
+                        .bootstrapTable({
+                            url: 'inventory/detail/' + id,
+                            columns: [{
+                                field: 'PO',
+                                title: 'PO #'
+                            },{
+                                field: 'del',
+                                title: 'Delivery Date'
+                            }, {
+                                field: 'rec',
+                                title: 'Date Received'
+                            }, {
+                                field: 'exp',
+                                title: 'Estimated Useful Life'
+                            }, {
+                                field: 'cost',
+                                title: 'Cost'
+                            }, {
+                                field: 'sup',
+                                title: 'Supplier'
+                            }, {
+                                field: 'quant',
+                                title: 'Quantity'
+                            }, {
+                                field: 'action',
+                                title: 'Action'
+                            }]
+                        });
+                    serialize_forms();
+                }
+            });
+        }
 
         // initialize inventory list
-        function init_inventory() {
-
+        function init_inventory($) {
             var $itemTable = $('#itemtable');
             var $MOOEtable = $('#MOOEtable');
 
@@ -541,55 +586,6 @@
                             //$('#quant').html(qua);
 
                         }
-                }
-            });
-        }
-
-        // go to detail
-        function detail(id) {
-            var $detailtable = $('#detail-tab-table');
-            var item;
-            $.ajax({
-                url: 'inventory/getitem/' + id,
-                dataType: 'JSON',
-                success: function (data) {
-                    $('#edtbutton').val(id);
-                    $('#itemname').val(data.name);
-                    $('#itemdesc').val(data.description);
-                    $('#total').text(data.quant);
-                    $('#itemtype').val(data.item_type);
-                    $('#unit').val(data.unit);
-                    toggleDiv($('.detail-tab '),$('.inventory-tab'));
-                    $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/' + id})
-                        .bootstrapTable({
-                            url: 'inventory/detail/' + id,
-                            columns: [{
-                                field: 'PO',
-                                title: 'PO #'
-                            },{
-                                field: 'del',
-                                title: 'Delivery Date'
-                            }, {
-                                field: 'rec',
-                                title: 'Date Received'
-                            }, {
-                                field: 'exp',
-                                title: 'Estimated Useful Life'
-                            }, {
-                                field: 'cost',
-                                title: 'Cost'
-                            }, {
-                                field: 'sup',
-                                title: 'Supplier'
-                            }, {
-                                field: 'quant',
-                                title: 'Quantity'
-                            }, {
-                                field: 'action',
-                                title: 'Action'
-                            }]
-                        });
-                    serialize_forms();
                 }
             });
         }
