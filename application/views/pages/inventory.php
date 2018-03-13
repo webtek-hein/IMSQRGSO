@@ -1,3 +1,23 @@
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Inventory</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li class="active">Dashboard</li>
+                    <li class="active">Inventory</li>
+
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- page content -->
 <div id="inventory-main-page" class="main page-content" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
     <div class="x_panel">
@@ -797,7 +817,6 @@
         </div>
     </div>
 </div>
-
-<!--End of Genearate Report-->
-
+<!-- .content -->
+</div><!-- /#right-panel -->
 

@@ -1,57 +1,38 @@
+$.noConflict();
 
-(function ($) {
-    "use strict";
+jQuery(document).ready(function($) {
 
-    
-    /*==================================================================
-    [ Validate ]*/
-    var input = $('.validate-input .input100');
+	"use strict";
 
-    $('.validate-form').on('submit',function(){
-        var check = true;
+	[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+		new SelectFx(el);
+	} );
 
-        for(var i=0; i<input.length; i++) {
-            if(validate(input[i]) == false){
-                showValidate(input[i]);
-                check=false;
-            }
-        }
-
-        return check;
-    });
+	jQuery('.selectpicker').selectpicker;
 
 
-    $('.validate-form .input100').each(function(){
-        $(this).focus(function(){
-           hideValidate(this);
-        });
-    });
+	$('#menuToggle').on('click', function(event) {
+		$('body').toggleClass('open');
+	});
 
-    function validate (input) {
-        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                return false;
-            }
-        }
-        else {
-            if($(input).val().trim() == ''){
-                return false;
-            }
-        }
-    }
+	$('.search-trigger').on('click', function(event) {
+		event.preventDefault();
+		event.stopPropagation();
+		$('.search-trigger').parent('.header-left').addClass('open');
+	});
 
-    function showValidate(input) {
-        var thisAlert = $(input).parent();
+	$('.search-close').on('click', function(event) {
+		event.preventDefault();
+		event.stopPropagation();
+		$('.search-trigger').parent('.header-left').removeClass('open');
+	});
 
-        $(thisAlert).addClass('alert-validate');
-    }
+	// $('.user-area> a').on('click', function(event) {
+	// 	event.preventDefault();
+	// 	event.stopPropagation();
+	// 	$('.user-menu').parent().removeClass('open');
+	// 	$('.user-menu').parent().toggleClass('open');
+	// });
 
-    function hideValidate(input) {
-        var thisAlert = $(input).parent();
 
-        $(thisAlert).removeClass('alert-validate');
-    }
-    
-    
-
-})(jQuery);
+});
