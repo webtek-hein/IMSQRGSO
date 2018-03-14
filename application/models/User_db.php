@@ -35,18 +35,12 @@ class User_db extends CI_Model {
 
     public function get_users()
     {
-<<<<<<< HEAD
-        $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
-         user.username,user.position,dept.department,dept.res_center_code');
-=======
          $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
          user.username,user.position,dept.department,user.status');
->>>>>>> 6fb0245e9afebc4870dfa46510a4668e6440a970
         $this->db->join('gsois.department dept','dept.dept_id = user.dept_id');
         $query = $this->db->get('user');
         return $query->result_array();
     }
-<<<<<<< HEAD
 
     public function getmobileuser($username)
     {
@@ -62,7 +56,8 @@ class User_db extends CI_Model {
         $this->db->set('status','deactivated')
             ->where('user_id',$id)
             ->update('user');
-=======
+        }
+        
     public function insertUser(){
         $data = array(
             'first_name'=> $this->input->post('firstname'),
@@ -75,7 +70,6 @@ class User_db extends CI_Model {
             'dept_id'=>$this->input->post('dment'),
         );
         $this->db->insert('user',$data);
->>>>>>> 6fb0245e9afebc4870dfa46510a4668e6440a970
     }
     public function edituser()
     {

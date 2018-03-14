@@ -26,7 +26,7 @@ class Users extends CI_Controller {
         }
         echo json_encode($data);
     }
-<<<<<<< HEAD
+
     public function getmobileuser($username)
     {
         $users = $this->user_db->getmobileuser($username);
@@ -47,11 +47,11 @@ class Users extends CI_Controller {
         $id = $this->input->post('user_id');
         $this->user_db->deactivate_user($id);
         header('Location: '. base_url() . 'users');
-=======
+
     public function addUser(){
         $this->user_db->insertUser();
         redirect('accounts');
->>>>>>> 6fb0245e9afebc4870dfa46510a4668e6440a970
+
     }
         public function editUser()
     {
