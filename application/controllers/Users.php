@@ -30,17 +30,10 @@ class Users extends CI_Controller {
         $this->user_db->insertUser();
         redirect('accounts');
     }
-    public function deactivate()
+        public function editUser()
     {
-        $id = $this->input->post('user_id');
-        $this->user_db->deactivate_user($id);
-        header('Location: '. base_url() . 'users');
-    }
-    public function activate()
-    {
-        $id = $this->input->post('user_id');
-        $this->user_db->activate_user($id);
-        header('Location: '. base_url() . 'users');
+        $this->user_db->edituser();
+        redirect('accounts');
     }
 
 }

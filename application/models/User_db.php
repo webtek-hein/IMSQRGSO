@@ -54,54 +54,46 @@ class User_db extends CI_Model {
         );
         $this->db->insert('user',$data);
     }
-    public function deactivate_user($id)
+    public function edituser()
     {
-        $this->db->set('status','Inactive')
-            ->where('user_id',$id)
-            ->update('user');
-    }
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $values = [];
+        $user_id = $this->input->post('id');
+        // select user
+        $user = $this->db->get_where('user', array('user_id' => $user_id))->row();
 
-    public function activate_user($id)
-    {
-        $this->db->set('status','Active')
-            ->where("status = 'Inactive'")
-            ->where('user_id',$id)
-            ->update('user');
-    }    
-    public function edit_profile($data, $userid)
-    {
-        $this->db->where('user_id', $userid);
-        $this->db->update('user',$data);
-    }
-    public function get_user($user_id){
-        $this->db->select('*')
-            ->where('user_id', $user_id);
-        return $this->db->get('user')->row();
-    }
-    public  function edit_image($name,$user_id){
+        // convert to array
+        $data1 = array(
+            'email' => $user->email,
+            'contact_no' => $user->contact_no,
+            'password' => $user->password,
+            'status' => $status
+        );
+        // update user
+        $data = array(
+            'email' => $this->input->post('email'),
+            'contact_no' => $this->input->post('contact_no'),
+            'password' => $this->input->post('password'),
+            'status' => $this->input->post('status')
+        );
+        $this->db->set($data);
         $this->db->where('user_id', $user_id);
-        $this->db->update('user',$name);
-    }
-    public function get_image($user_id){
-        $this->db->select('image')
-            ->where('user_id', $user_id);
-        return $this->db->get('user')->row();
-    }
-    public function get_email($email){
-        $this->db->select('*')
-            ->where('email', $email)
-            ->limit(1);
-        return $this->db->get('user')->row();
+        $this->db->update('user');
 
+        // compare data
+        $result1 = array_diff($data1, $data);
+        $result2 = array_diff($data, $data1);
+        foreach ($result1 as $key => $value) {
+            $values[] = array(
+                'field_edited' => $key,
+                'old_value' => $value,
+                'new_value' => $result2[$key],
+                'userid' => $user_id,
+                'user_id' => $user_id
+            );
+        }
+
+        //insert to edit log table
+        $this->db->insert_batch('logs.editLog', $values);
     }
-    function insert_data($name, $path_name){
-    $data = array(
-                  'name'    => $name,
-                  'path'    => $path_name
-                 );
-
-    $this->db->insert('table', $data);
-
-    return $this->db->insert_id();
-}
 }

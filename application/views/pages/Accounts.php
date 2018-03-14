@@ -167,76 +167,56 @@
                         <button type="button" onclick="userDetailBack()" class="btn btn"></i> Back</a></button>
                     </div>
                     <div class="card-body">
-                    <form id="editInformation" class="serialForm form-horizontal form-label-left" action="inventory/edititem" method="POST">
+                    <form id="editInformation" class="serialForm form-horizontal form-label-left" action="inventory/edituser" method="POST">
                                     <div class="form-group">
-                                        <label class="col-md-12">Item Name</label>
+                                        <label class="col-md-12">Email</label>
                                         <div class="col-md-12">
-                                            <input id="itemname"
-                                                   type="text" name="item"
+                                            <input id="email"
+                                                   type="email" name="email"
                                                    class="form-control"
                                                    data-parsley-trigger="blur"
                                                    data-parsley-group="set1"
                                                    data-parsley-length="[1, 20]"
-                                                   data-parsley-required-message="Please insert Item name"
+                                                   data-parsley-required-message="Please insert Email"
                                                    required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-12">Description</label>
-                                        <div class="col-md-12">
-                                            <textarea id="itemdesc" data-parsley-group="set1"
-                                                      name="description" id="message"
-                                                      class="form-control"
-                                                      data-parsley-trigger="blur"
-                                                      data-parsley-minlength="1"
-                                                      data-parsley-maxlength="500"
-                                                      data-parsley-minlength-message="Description must"
-                                                      data-parsley-validation-threshold="10"
-                                                      data-parsley-required-messag="Put description of the items"
-                                                      required></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-12">Total Quantity</label>
-                                        <div class="col-md-12">
-                                            <p id="total"></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-12">Unit</label>
-                                        <div class="col-md-12">
-                                            <input id="unit" name="Unit" data-parsley-group="set1"
-                                                   class="form-control" class="unit"
-                                                   list="list"
-                                                   data-parsley-required-message="Select the Unit"
+                                        <label class="col-md-12">Contact Numer</label>
+                                            <input id="contact_no"
+                                                   type="text" name="contact_no"
+                                                   class="form-control"
+                                                   data-parsley-trigger="blur"
+                                                   data-parsley-group="set1"
+                                                   data-parsley-length="[1, 20]"
+                                                   data-parsley-required-message="Please insert Contact Number"
                                                    required>
-                                            <datalist id="list">
-                                                <option value="piece">piece</option>
-                                                <option value="box">box</option>
-                                                <option value="set">set</option>
-                                                <option value="ream">ream</option>
-                                                <option value="dozen">dozen</option>
-                                                <option value="bundle">bundle</option>
-                                                <option value="sack">sack</option>
-                                                <option value="others">others</option>
-                                            </datalist>
-                                        </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="col-md-12">Type</label>
+                                        <label class="col-md-12">Password</label>
+                                            <input id="password"
+                                                   type="password" name="password"
+                                                   class="form-control"
+                                                   data-parsley-trigger="blur"
+                                                   data-parsley-group="set1"
+                                                   data-parsley-length="[1, 20]"
+                                                   data-parsley-required-message="Please insert Password"
+                                                   required>
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Status</label>
                                         <div class="col-md-12">
-                                            <select id="itemtype" data-parsley-group="set1" id="type"
-                                                    list="typelist" name="Type"
+                                            <select id="status" data-parsley-group="set1" id="status"
+                                                    list="typelist" name="status"
                                                     class="form-control" required>
-                                                <option value="CO">Capital Outlay</option>
-                                                <option value="MOOE">MOOE</option>
+                                                <option value="Inactive">Deactive</option>
+                                                <option value="Active">Activate</option>
                                             </select>
                                         </div>
                                     </div>
+
                                     <button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
                                         <i class="fa fa-check"></i> save
                                     </button>

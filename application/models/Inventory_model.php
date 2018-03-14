@@ -245,11 +245,8 @@ class Inventory_model extends CI_Model
                 'item_id' => $item_id
             );
         }
-
         //insert to edit log table
         $this->db->insert_batch('logs.editLog', $values);
-
-
     }
 
     public function viewdetail($id)

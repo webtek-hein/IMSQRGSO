@@ -183,7 +183,7 @@ function init_inventory() {
         toggleDiv($('.AddSup'), $('.inventory-tab'));
     });
     $('#headingZero').on('click', function () {
-        toggleDiv($('.AddUser'), $('.accounts-tab'));
+        toggleDiv($('.addUser'), $('.accounts-tab'));
     });
     $('select.itemtype').change(function () {
         $('.hideInput').toggleClass('hidden');
