@@ -95,7 +95,9 @@ function detail(id) {
         }
     });
 }
-
+function addSupplier() {
+    toggleDiv($('.addSupplier'),$('.supplier-tab'));
+}
 // initialize inventory list
 function init_inventory() {
     var $itemTable = $('#itemtable');
@@ -181,7 +183,7 @@ function init_inventory() {
         toggleDiv($('.AddSup'), $('.inventory-tab'));
     });
     $('#headingZero').on('click', function () {
-        toggleDiv($('.AddUser'), $('.inventory-tab'));
+        toggleDiv($('.AddUser'), $('.accounts-tab'));
     });
     $('select.itemtype').change(function () {
         $('.hideInput').toggleClass('hidden');
@@ -480,24 +482,21 @@ function save(counter) {
 
 //go back to inventory
 function detail_back() {
-    toggleDiv($('.detail-tab '),$('.inventory-tab'));
+    toggleDiv($('.inventory-tab'),$('.detail-tab '));
 }
 
 function addItemBack() {
-    console.log($(this));
-    $('.additemDiv').removeAttr('hidden');
-    $('.inventory-tab').attr('hidden');
-
+    toggleDiv($('.inventory-tab'), $('.additemDiv'));
 }
-
+function report_back() {
+    toggleDiv($('.inventory-tab'),$('.generateReport'));
+}
 function addSupplierBack() {
-    $('.AddSup').toggleClass('hidden');
-    $('.inventory-tab').toggleClass('hidden');
+    toggleDiv($('.supplier-tab'),$('.addSupplier'));
 }
 
 function addUserBack() {
-    $('.AddUser').toggleClass('hidden');
-    $('.inventory-tab').toggleClass('hidden');
+    toggleDiv($('.accounts-tab'),$('.AddUser'));
 }
 
 //view and edit serial
@@ -627,7 +626,6 @@ function init_bulkFucntion() {
     var $ul = $('#bulk');
     var list;
     var counter = 1;
-
     $(document).on('click', '#addanother', function (e) {
         $('#addItemForm').parsley().whenValidate({group: 'set' + counter}).done(function () {
             var pul = document.getElementById('bulk');

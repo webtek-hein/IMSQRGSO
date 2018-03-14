@@ -22,11 +22,10 @@
     <div class="animated fadeIn">
         <div class="row">
             <!-- Supplier-->
-            <div class="col-lg-12">
+            <div class="col-lg-12 supplier-tab">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-primary" role="tab" id="headingOne" data-toggle="tab"
-                                href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button onclick="addSupplier()" class="btn btn-primary">
                             <i class="fa fa-plus"></i><span> Add Supplier</span>
                         </button>
                     </div>
@@ -47,10 +46,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12">
+            <div hidden class="col-lg-12 addSupplier">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="addSupplierBack()" class="btn btn"></i> Back</a></button>
+                        <button type="button" onclick="addSupplierBack()" class="btn btn-primary"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <div class="tab-content pl-3 p-1 AddSup hidden" id="myTabContent">
@@ -84,3 +83,9 @@
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
