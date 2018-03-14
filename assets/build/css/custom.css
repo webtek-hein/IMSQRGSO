@@ -15,62 +15,70 @@ body {
 
 /*-- TOP-NAV --*/
 #topNav .nav_menu{
-    position: absolute;
-    top: 0;
-    border: 0;
-    width: 100%;
-    height: 30px;
-    background-color:#359600;
+    background-color:#83868e;
+}
+#topNav a {
+    color: black;
+    font-weight: bolder;
+    border: none;
+    margin-top: -20px;
 }
 #topNav .nav_menu ul{
-    margin-top: -5px;
-    margin-right: 20px;
+    margin-right:60px;
+    height:50px;
 }
-#topNav .nav_menu i{
-    font-size: 15px;
-    color:black;
-}
-#topNav .nav_menu .info-number{
-    font-size: 10px;
-}
-#topNav .nav_menu img{
-    height: 20px;
-    margin-top: -10px;
-}
+
 /*-- End of TOP-NAV --*/
 
 /*-- Sidebar Nav --*/
+/*Sidebar Title*/
+.menu_fixed .profile{
+    margin-top: 25px;
+}
+.menu_fixed .profile_info p{
+    font-weight: bolder;
+    font-size: 20px;
+    color:white;
+}
+/*End*/
 #HeaderNav{
     position: fixed;
     min-height: 100%;
     margin: 0;
     width: 200px;
-    background-color:#000000;
+    background-color:#202634;
+}
+#sidebar-menu .menu_section{
+    margin-top: 40px;
 }
 #HeaderNav .menu_section a{
-    font-size: 15px;
-    color:#eeeeee;
+    font-size: 16px;
+    font-weight: bold;
+    color:whitesmoke;
+    font-family: 'Microsoft Sans Serif', Tahoma, Arial, Verdana, Sans-Serif;
 }
 
 #HeaderNav .menu_section a:hover{
-    background-color:#359600;
-
+    background-color:#090e17;
 }
 /*-- End of Sidebar Nav --*/
 
+/*--Main Content--*/
+
 .page-content{
-    background-color: white;
+    background-color:white;
     margin: 0;
     padding: 0;
     position: fixed;
     top: 30px;
     left: 200px;
-    width: 100%;
+    width: auto;
+    height:auto;
     right: 0;
     bottom: 0;
-
+    overflow-x: hidden;
 }
-
+/*Main Two Tabs*/
 ul.bar_tabs {
     overflow: visible;
     margin: 21px 0 15px;
@@ -90,18 +98,22 @@ ul.bar_tabs>li {
     border-radius: 4px 4px 0 0
 }
 ul.bar_tabs>li.active {
-    border-right: 6px solid #D3D6DA;
+    border-right: 6px solid #4c4c4c;
     border-top: 0;
     margin-top: -15px
 }
 ul.bar_tabs>li a {
     padding: 10px 17px;
-    background: #F5F7FA;
     margin: 0;
+    border-top: 1px solid #4c4c4c;
+    border-right: 1px solid #4c4c4c;
+    border-left: 1px solid #4c4c4c;
+    background:#F5F5F5;
     border-top-right-radius: 0
 }
 ul.bar_tabs>li a:hover {
-    border: 1px solid transparent
+    border: 1px solid transparent;
+    background-color:#9c9a9a;
 }
 ul.bar_tabs>li.active a {
     border-bottom: none
@@ -112,10 +124,21 @@ ul.bar_tabs.right {
 ul.bar_tabs.right li {
     float: right
 }
+/*End Main Two Tabs*/
+/*--End of Main Content--*/
 
+/*--SUPPLIER & ACCOUNTS--*/
+
+#supplier #headingOne{
+    margin-right:50px;
+    margin-top: -23px;
+    height: 30px;
+}
 #supplier .pull-right.search{
     position: absolute;
     top: -30px;
+    position: relative;
+    bottom: 20%;
 }
 #supplier .bootstrap-table{
     top: 80px;
@@ -123,12 +146,40 @@ ul.bar_tabs.right li {
 #supplier .page-title{
     height: 100px;
 }
-.full-width {
-
-    width:100%;
-
+#accounts #headingZero{
+    margin-right:50px;
+    margin-top: -23px;
+    height: 30px;
 }
+#accounts .pull-right.search{
+    position: absolute;
+    top: -30px;
+    position: relative;
+    bottom: 20%;
+}
+#accounts .bootstrap-table{
+    top: 80px;
+}
+#accounts .page-title{
+    height: 100px;
+}
+#collapseOne .col-md-7{
+    margin-left: 300px;
+}
+#collapseOne .form-group{
+    margin-left: 100px;
+}
+#collapseZero .col-md-7{
+    margin-left: 300px;
+}
+#collapseZero .form-group{
+    margin-left: 100px;
+}
+/*--End of SUPPLIER & ACCOUNTS--*/
 
+.full-width {
+    width:100%;
+}
 .page-title{
     height: 80px;
     margin-left: 30px;
@@ -153,6 +204,7 @@ ul.bar_tabs.right li {
 .page-title .title_right .pull-right {
     margin: 10px 0
 }
+/*Add New*/
 button.pull-right{
     position: relative;
     bottom: 45px;
@@ -160,10 +212,11 @@ button.pull-right{
     margin-top:-80px;
     color:black;
     margin-right:50px;
-    background-color: #F5F5F5;
-    border: 1.4px solid #359600;
+    background-color:#6dcc41;
+
 }
 /*--ITEM DETAIL--*/
+
 #detail-tab-table #DetailDropDn{
     position: static;
     left:1000px;
@@ -186,15 +239,20 @@ button.pull-right{
 /*--End of ITEM DETAIL--*/
 
 /*--View Serial--*/
+.Serial{
+
+}
 .Serial #data1 h4{
     color:black;
+    width: 100%;
 }
 .Serial #data1{
     position: absolute;
     left: 10px;
     overflow: auto;
     height: 600px;
-    width: 95%;
+    width: 84%;
+
 }
 .Serial #data1 #serialS {
     background-color:#52c814;
@@ -920,9 +978,10 @@ a:focus {
     display: block;
     padding: 13px 15px 12px
 }
+/*-- Sidebar Nav --*/
 .nav.side-menu>li.current-page,
 .nav.side-menu>li.active {
-    border-right: 5px solid #1ABB9C
+    border-right: 5px solid #6c8c90;
 }
 .nav li.current-page {
     background: rgba(255, 255, 255, 0.05)
@@ -935,7 +994,7 @@ a:focus {
 }
 .nav.side-menu>li.active>a {
     text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
-    background: linear-gradient(#334556, #2C4257), #2A3F54;
+    background: linear-gradient(#090e17, #090e17), #090e17; /*dropdowm nav*/
     box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0
 }
 .navbar-brand,
@@ -945,6 +1004,7 @@ a:focus {
     margin-left: 0 !important;
     line-height: 32px
 }
+/*--End of Sidebar Nav --*/
 .site_title {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -970,7 +1030,7 @@ a:focus {
     position: relative;
     display: block;
     padding: 10px 15px;
-    color: #34495E !important
+    color: black;
 }
 .nav>li>a:hover,
 .nav>li>a:focus {
@@ -1856,6 +1916,17 @@ footer{
 .tile_count .tile_stats_count .count_bottom i {
     width: 12px
 }
+
+.tile_count .col-md-3{
+     width: 20%;
+     color: black;
+ }
+
+.tile_count .col-md-4{
+    width: 25%;
+    color: black;
+}
+
 .dashboard_graph {
     background: #fff;
     padding: 7px 10px
@@ -2749,35 +2820,7 @@ ul.social li {
     height: 50px;
     border-radius: 50%
 }
-.chat .thumb img {
-    width: 27px;
-    height: 27px;
-    border-radius: 50%
-}
-.chat .status {
-    float: left;
-    margin: 16px 0 0 -16px;
-    font-size: 14px;
-    font-weight: bold;
-    width: 12px;
-    height: 12px;
-    display: block;
-    border: 2px solid #FFF;
-    z-index: 12312;
-    border-radius: 50%
-}
-.chat .status.online {
-    background: #1ABB9C
-}
-.chat .status.away {
-    background: #F39C12
-}
-.chat .status.offline {
-    background: #ccc
-}
-.chat .media-body {
-    padding-top: 5px
-}
+
 .dashboard_graph .x_title {
     padding: 5px 5px 7px
 }
@@ -4306,17 +4349,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 /** /bootstrap-datetimepicker **/
 
-/*--Header Side Nav--*/
-/*Sidebar Title*/
-.menu_fixed .profile{
-    margin-top: 50px;
-}
-.menu_fixed .profile_info p{
-    font-weight: bolder;
-    font-size: 20px;
-    color: 	#eeeeee;
-}
-/*--End Header Side Nav--*/
 
 /*--Inventory Main Content--*/
 .x_content a{
@@ -4330,10 +4362,14 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     background-color:#ffffff;
 }
 .inventory-tab{
-    background-color: #F5F5F5;
+    background-color:#F5F5F5;
 }
 #inventory-main-page button{
     height: 30px;
+}
+.page-title h1{
+    font-family: Arial;
+    font-size: 25px;
 }
 /*--End Inventory Main Content--*/
 
@@ -4363,10 +4399,9 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 /*--Buttons--*/
 .additemDiv #exit{
     color:black;
-    border-color: black;
     font-size: 15px;
     height: 30px;
-    margin-left: -20px;
+    background:#e23232;
 }
 .additemDiv .x_content{
     margin-top: 30px;
@@ -4383,13 +4418,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     color:black;
     border-color: black;
 }
-.additemDiv{
-    top: 60px;
-    width: 85%;
-    height: 80%;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
+
 #bulkdiv h3{
     font-size: 20px;
 }
@@ -4471,15 +4500,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 /*--Inventory End Edit From--*/
 
 
-
-#collapseOne .col-md-7{
-    margin-left: 300px;
-}
-#collapseOne .form-group{
-    margin-left: 100px;
-}
-
-
 /*-- Body --*/
 .deptopt{
     position: relative;
@@ -4487,22 +4507,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     bottom: 5px;
 }
 /*-- End of Body --*/
-
-
-/*--SUPPLIER --*/
-#supplier .pull-right.search{
-    position: relative;
-    bottom: 20%;
-}
-#supplier .bootstrap-table{
-    top: 81px
-}
-#supplier #headingOne{
-    margin-right:50px;
-    margin-top: -23px;
-    height: 30px;
-}
-/*--End of SUPPLIER --*/
 
 /*--Department Page--*/
 #department #selct-dept{
@@ -4519,6 +4523,53 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 /*--End of Department Page--*/
 
+
+/*--Supply Officer --*/
+
+.tab-pane #DetailDropDn{
+    list-style-type: none;
+    margin-left: -40px;
+}
+
+/*--End of Supply Officer --*/
+
+
+/*--Generate Report--*/
+/*Button*/
+.inventory-tab #genReport_Buttons{
+    margin-right: 125px;
+    background:#e67f0d;
+    color:black;
+}
+#inventory_report .options{
+    margin-top: -50px;
+    margin-left: 30px;
+}
+#inventory_report .options .checkbox{
+    margin-left: -20px;
+    margin-top: 30px;
+}
+
+#inventory_report .options select{
+    height: 25px;
+
+}
+#inventory_report .x_content table{
+    margin-top: 10px;
+}
+
+#inventory_report .options p{
+    color:black;
+    font-size: 15px;
+}
+#inventory_report .options li{
+    list-style-type:none;
+}
+#inventory_report .head{
+    background: #F5F5F5;
+}
+/*--End of Generate Report--*/
+
 span.pull-right.search {
     color: white;
 }
@@ -4531,12 +4582,7 @@ a.pull-right{
     text-align: center;
     font-size: 22px;
 }
-#accounts .users-table{
-    width: 86%;
-}
-#accounts button.pull-right{
-    background-color: blue;
-}
+
 .additemDiv.page-content .clone-tab{
 
 }

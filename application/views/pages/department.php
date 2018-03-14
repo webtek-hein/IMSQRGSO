@@ -1,72 +1,91 @@
-<!-- page content -->
-<div id="department" class="page-content" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
-    <div class="inventory-tab">
-        <div class="page-title">
-            <h1>Departments</h1>
-            <select id="selct-dept" type="button" class="deptopt btn btn-default"> <i class="fa fa-chevron-down"></i></select>
-        </div>
-
-
-        <div class="tabpanel" role="tabpanel" data-example-id="togglable-tabs">
-            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                <li role="presentation" id="CO" class="active">
-                    <a href="#tab_content1" id="CO-tab" data-toggle="tab" role="tab" aria-expanded="true">Capital
-                        Outlay</a>
-                </li>
-                <li role="presentation" id="MOOE" class="">
-                    <a href="#tab_content2" role="tab" id="MOOE-tab" data-toggle="tab" aria-expanded="true">MOOE</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="x_content">
-            <div id="myTabContent" class="tab-content">
-                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="CO-tab">
-                    <div class="accordion" id="accordion" class="table-main table-responsive" role="tablist"
-                         aria-multiselectable="true">
-                        <table id="departmentTable" data-url="inventory/viewDept/CO/11" class="table table-no-bordered"
-                               data-pagination="true" data-search="true">
-                        </table>
-                    </div>
-                </div>
-
-                <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="MOOE-tab">
-                    <div class="accordion" id="accordion" class="table-responsive" role="tablist"
-                         aria-multiselectable="true">
-                        <table id="deptMOOEtable" data-pagination="true" data-search="true"
-                               data-url="inventory/viewDept/MOOE/11" class="table table-no-bordered">
-                        </table>
-                    </div>
-                </div>
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Departments</h1>
             </div>
         </div>
     </div>
-    <!-- Item Detail -->
-    <div class="detail-tab hidden">
-
-        <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
-
-        <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
-            <ul id="DetailTab" class="nav nav-tabs bar_tabs" role="tablist">
-                <li id="DetInfo" role="presentation" class="active">
-                    <a href="#Detail_Info" id="DetInformation" role="tab" data-toggle="tab" aria-expanded="true">Information</a>
-                </li>
-                <li id="DetDetail" role="presentation" class="">
-                    <a href="#Detail_Det" role="tab" id="DetDetail" data-toggle="tab" aria-expanded="false">Detail</a>
-                </li>
-            </ul>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li class="active">Dashboard</li>
+                    <li class="active">Departments</li>
+                </ol>
+            </div>
         </div>
+    </div>
+</div>
 
-        <div class="x_content">
-            <div id="DetailTabContent" class="tab-content">
-
-                <!-- Information -->
-                <div role="tabpanel" class="tab-pane fade active in" id="Detail_Info" aria-labelledby="Information-tab">
-                    <div class="accordion" id="accordion" class="table-main table-responsive" role="tablist"
-                         aria-multiselectable="true">
-                        <div class="col-md-4 col-sm-4 col-xs-4">
-                            <div id="DetailsHead">
-                                <form id="editInformation" class="serialForm form-horizontal form-label-left"
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <!-- Inventory-->
+            <div class="col-lg-12 inventory-tab ">
+                <div class="card">
+                    <div class="card-header">
+                        <select id="select-dept" type="button" class="deptopt form-control"><span class="fa fa-chevron-down"></span></select>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item active">
+                                <a class="nav-link active" id="CO-tab" data-toggle="tab" href="#tab_content1"
+                                   role="tab"
+                                   aria-controls="co" aria-selected="true">Capital
+                                    Outlay</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="MOOE-tab" data-toggle="tab" href="#tab_content2"
+                                   role="tab"
+                                   aria-controls="mooe" aria-selected="false">MOOE</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content pl-3 p-1" id="myTabContent">
+                            <!-- Capital Outaly tab-->
+                            <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
+                                 aria-labelledby="CO-tab">
+                                <table id="departmentTable" data-url="inventory/viewDept/CO/11"
+                                       class="table table-no-bordered"
+                                       data-pagination="true" data-search="true">
+                                </table>
+                            </div>
+                            <!--MOOE Tab-->
+                            <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
+                                <!-- Implement Bootsrap table-->
+                                <table id="deptMOOEtable" data-pagination="true" data-search="true"
+                                       data-url="inventory/viewDept/MOOE/11" class="table table-no-bordered">
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Detail-->
+            <div hidden class="col-lg-12 detail-tab ">
+                <div class="card">
+                    <div class="card-header">
+                        <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" id="DetailTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="DetInfo" data-toggle="tab" href="#Detail_Info"
+                                   role="tab"
+                                   aria-controls="info" aria-selected="true">Information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="DetDetail" data-toggle="tab" href="#Detail_Det"
+                                   role="tab"
+                                   aria-controls="detail" aria-selected="false">Details</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content pl-3 p-1" id="myTabContent">
+                            <!-- Information-->
+                            <div class="tab-pane fade show active" id="Detail_Info" role="tabpanel"
+                                 aria-labelledby="Information-ta">
+                                <form id="editInformation"
+                                      class="serialForm form-horizontal form-label-left"
                                       action="inventory/edititem" method="POST">
 
                                     <div class="form-group">
@@ -138,41 +157,55 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                    <button type="submit" name="id" id="edtbutton">save</button>
+                                    <button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
+                                        <i class="fa fa-check"></i> save
+                                    </button>
                                 </form>
+
+                            </div>
+                            <!--Detail-->
+                            <div class="tab-pane fade" id="Detail_Det" role="tabpanel" aria-labelledby="Detail-tab">
+                                <!-- Implement Bootsrap table-->
+                                <table id="detail-tab-table" class="table table-no-bordered table-hover">
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!--Detail-->
-                <div role="tabpanel" class="tab-pane fade" id="Detail_Det" aria-labelledby="Detail-tab">
-                    <!-- Implement Bootsrap table-->
-                    <div class="accordion table-responsive" id="accordion" role="tablist" aria-multiselectable="true">
-                        <table id="detail-tab-table" class="table table-no-bordered table-hover">
-                        </table>
+            </div>
+            <!-- View Serial-->
+            <div hidden class="Serial col-lg-12 ">
+                <div class="card">
+                    <div class="card-header">
+                        <h4><b>List of Serial</b></h4>
+                    </div>
+                    <div class="card-body card-block">
+                        <form class="serial-form" method="POST" action="inventory/addSerial">
+                            <!-- Dynamic serial tabs here -->
+                            <ul id="serial-tabs" class="nav nav-tabs">
+                            </ul>
+                            <!-- end of serial tabs -->
+                            <div id="serial-tabcontent" class="tab-content">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--End of Item Detail -->
-</div>
-<!-- View Serial-->
-<div class="Serial hidden page-content">
-    <div id="data1" class="panel-collapse collapse" role="tabpanel">
-        <h4><b>List of Serial</b></h4>
-        <form class="serial-form" method="POST" action="inventory/addSerial">
-            <!-- Dynamic serial tabs here -->
-            <ul id="serial-tabs" class="nav nav-tabs">
-            </ul>
-            <!-- end of serial tabs -->
-            <div id="serial-tabcontent" class="tab-content">
+        <!-- View Serial-->
+        <div hidden class="Serial  page-content">
+            <div id="data1" class="panel-collapse collapse" role="tabpanel">
+                <h4><b>List of Serial</b></h4>
+                <form class="serial-form" method="POST" action="inventory/addSerial">
+                    <!-- Dynamic serial tabs here -->
+                    <ul id="serial-tabs" class="nav nav-tabs">
+                    </ul>
+                    <!-- end of serial tabs -->
+                    <div id="serial-tabcontent" class="tab-content">
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
-<!--End of View Serial-->
+        </div>
+        <!--End of View Serial-->
 
-<!-- /page content -->
+        <!-- /page content -->

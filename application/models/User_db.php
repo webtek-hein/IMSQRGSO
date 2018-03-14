@@ -35,12 +35,18 @@ class User_db extends CI_Model {
 
     public function get_users()
     {
+<<<<<<< HEAD
         $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
          user.username,user.position,dept.department,dept.res_center_code');
+=======
+         $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
+         user.username,user.position,dept.department,user.status');
+>>>>>>> 6fb0245e9afebc4870dfa46510a4668e6440a970
         $this->db->join('gsois.department dept','dept.dept_id = user.dept_id');
         $query = $this->db->get('user');
         return $query->result_array();
     }
+<<<<<<< HEAD
 
     public function getmobileuser($username)
     {
@@ -56,49 +62,61 @@ class User_db extends CI_Model {
         $this->db->set('status','deactivated')
             ->where('user_id',$id)
             ->update('user');
+=======
+    public function insertUser(){
+        $data = array(
+            'first_name'=> $this->input->post('firstname'),
+            'last_name' => $this->input->post('lastname'),
+            'email'=>$this->input->post('email'),
+            'contact_no'=>$this->input->post('contactno'),
+            'username'=>$this->input->post('username'),
+            'password'=>$this->input->post('password'),
+            'position'=>$this->input->post('position'),
+            'dept_id'=>$this->input->post('dment'),
+        );
+        $this->db->insert('user',$data);
+>>>>>>> 6fb0245e9afebc4870dfa46510a4668e6440a970
     }
+    public function edituser()
+    {
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $values = [];
+        $user_id = $this->input->post('id');
+        // select user
+        $user = $this->db->get_where('user', array('user_id' => $user_id))->row();
 
-    public function activate_user($id)
-    {
-        $this->db->set('status','accepted')
-            ->where("status = 'declined' || status = 'deactivated'")
-            ->where('user_id',$id)
-            ->update('user');
-    }    
-    public function edit_profile($data, $userid)
-    {
-        $this->db->where('user_id', $userid);
-        $this->db->update('user',$data);
-    }
-    public function get_user($user_id){
-        $this->db->select('*')
-            ->where('user_id', $user_id);
-        return $this->db->get('user')->row();
-    }
-    public  function edit_image($name,$user_id){
+        // convert to array
+        $data1 = array(
+            'email' => $user->email,
+            'contact_no' => $user->contact_no,
+            'password' => $user->password,
+            'status' => $status
+        );
+        // update user
+        $data = array(
+            'email' => $this->input->post('email'),
+            'contact_no' => $this->input->post('contact_no'),
+            'password' => $this->input->post('password'),
+            'status' => $this->input->post('status')
+        );
+        $this->db->set($data);
         $this->db->where('user_id', $user_id);
-        $this->db->update('user',$name);
-    }
-    public function get_image($user_id){
-        $this->db->select('image')
-            ->where('user_id', $user_id);
-        return $this->db->get('user')->row();
-    }
-    public function get_email($email){
-        $this->db->select('*')
-            ->where('email', $email)
-            ->limit(1);
-        return $this->db->get('user')->row();
+        $this->db->update('user');
 
+        // compare data
+        $result1 = array_diff($data1, $data);
+        $result2 = array_diff($data, $data1);
+        foreach ($result1 as $key => $value) {
+            $values[] = array(
+                'field_edited' => $key,
+                'old_value' => $value,
+                'new_value' => $result2[$key],
+                'userid' => $user_id,
+                'user_id' => $user_id
+            );
+        }
+
+        //insert to edit log table
+        $this->db->insert_batch('logs.editLog', $values);
     }
-    function insert_data($name, $path_name){
-    $data = array(
-                  'name'    => $name,
-                  'path'    => $path_name
-                 );
-
-    $this->db->insert('table', $data);
-
-    return $this->db->insert_id();
-}
 }

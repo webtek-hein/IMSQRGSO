@@ -19,8 +19,9 @@ class Inventory_model extends CI_Model
         $quantity = $this->input->post('quant')[$counter];
         $supplier_id = $this->input->post('supp')[$counter];
         $serialStatus = $this->input->post('serialStatus')[$counter];
-
-
+        if ($serialStatus === null) {
+            $serialStatus = 0;
+        }
         $data = array(
             'item_name' => $item_name,
             'quantity' => $quantity,
@@ -52,13 +53,13 @@ class Inventory_model extends CI_Model
             //create an array of serial for capital outlay item
 
             if ($item_type === 'CO') {
-                if($serialStatus === '1'){
+                if ($serialStatus === '1') {
                     $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
                     $this->db->insert_batch('serial', $serial);
                 }
             }
             // 3. Insert into logs
-            $this->db->insert('logs.increaselog', array('userid' => $user_id, 'item_det_id' => $insert_id));
+            $this->db->insert('logs.increaselog', array('userid' => $user_id, 'item_det_id' => $insert_id, 'quantity' => $quantity));
             if ($this->db->trans_status() === FALSE) {
                 $this->db->trans_rollback();
                 throw new Exception($this->db->trans_status());
@@ -79,17 +80,21 @@ class Inventory_model extends CI_Model
         $item_name = $this->input->post('item');
 
         foreach ($item_name as $key => $value) {
+            if (isset($this->input->post('serialStatus')[$key])) {
+                $serialStatus = $this->input->post('serialStatus')[$key];
+            }else{
+                $serialStatus ='0';
+            }
+
             $data[] = array(
                 'item_name' => $item_name[$key],
                 'quantity' => $this->input->post('quant')[$key],
                 'item_description' => $this->input->post('description')[$key],
                 'unit' => $this->input->post('Unit')[$key],
                 'item_type' => $this->input->post('Type')[$key],
-                'serial' => $this->input->post('serialStatus')[$key]
-        );
-
+                'serial' => $serialStatus
+            );
         }
-
         $this->db->trans_start();
         // 1. Insert into item
         $count = count($data);
@@ -120,14 +125,16 @@ class Inventory_model extends CI_Model
         $item_detail_id = range($id, $last_insert_id);
 
         foreach ($item_detail_id as $key => $value) {
-            $detail[] = array('item_det_id' => $item_detail_id[$key], 'userid' => $user_id);
+            $detail[] = array('item_det_id' => $item_detail_id[$key], 'userid' => $user_id,'quantity' => $this->input->post('quant')[$key]);
             $quantity = $this->input->post('quant');
             $item_type = $this->input->post('Type');
             $serialStatus = $this->input->post('serialStatus');
             //serial
             if ($item_type[$key] === 'CO' && $serialStatus[$key] === '1') {
                 $serial = array_fill(1, $quantity[$key], array('item_det_id' => $item_detail_id[$key]));
-                $this->db->insert_batch('serial', $serial);
+                if(isset($serial)){
+                    $this->db->insert_batch('serial', $serial);
+                }
             }
         }
 
@@ -234,14 +241,12 @@ class Inventory_model extends CI_Model
                 'field_edited' => $key,
                 'old_value' => $value,
                 'new_value' => $result2[$key],
-                'userid' => $user_id
+                'userid' => $user_id,
+                'item_id' => $item_id
             );
         }
-
         //insert to edit log table
         $this->db->insert_batch('logs.editLog', $values);
-
-
     }
 
     public function viewdetail($id)
@@ -293,42 +298,16 @@ class Inventory_model extends CI_Model
 
     public function distrib()
     {
+        $serial_data = [];
         $user = $this->session->userdata['logged_in']['user_id'];
         $id = $this->input->post('id');
         $serial = $this->input->post('serial');
         $quantity = count($serial);
-        if($quantity == 0){
+        if ($quantity == 0) {
             $quantity = $this->input->post('quantity');
-            echo $quantity;
-        }else {
+        } else {
             $quantity = count($serial);
         }
-        $data = array(
-            'dept_id' => $this->input->post('dept'),
-            'ac_id' => $this->input->post('Code'),
-            'quantity_distributed' => $quantity,
-            'receiver' => $this->input->post('owner'),
-            'date_received' => $this->input->post('date'),
-            'PR_no' => $this->input->post('pr'),
-            'OBR_no' => $this->input->post('obr'),
-            'item_id' => $id,
-            'user_id' => $user
-        );
-        $this->db->insert('distribution', $data);
-        $insert_id = $this->db->insert_id();
-        for ($i = 0; $i < $quantity; $i++) {
-            $serial_data[] = array(
-                'serial' => $serial[$i],
-                'dist_id' => $insert_id,
-                'item_status' => 'Distributed',
-            );
-        }
-        if(count($serial) == 0) {
-
-        }else{
-            $this->db->update_batch('serial', $serial_data, 'serial');
-        }
-
         $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
         $this->db->where('item_det_id', $id);
         $this->db->update('itemdetail');
@@ -337,6 +316,60 @@ class Inventory_model extends CI_Model
         $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
         $this->db->where($item_id);
         $this->db->update('item');
+        $data = array(
+            'dept_id' => $this->input->post('dept'),
+            'ac_id' => $this->input->post('Code'),
+            'quantity_distributed' => $quantity,
+            'receiver' => $this->input->post('owner'),
+            'date_received' => $this->input->post('date'),
+            'PR_no' => $this->input->post('pr'),
+            'OBR_no' => $this->input->post('obr'),
+            'item_id' => $item_id['item_id'],
+            'user_id' => $user
+        );
+        $this->db->insert('distribution', $data);
+        $insert_id = $this->db->insert_id();
+        //use dist id instead
+        // if item type is CO but with serial
+        if (count($serial) != 0) {
+            //for capital outlay with serial
+            for ($i = 0; $i < $quantity; $i++) {
+                var_dump($id);
+                $serial_data[] = array(
+                    'serial' => $serial[$i],
+                    'dist_id' => $insert_id,
+                    'item_status' => 'Distributed'
+                );
+            }
+            $this->db->update_batch('serial', $serial_data, 'serial');
+        }
+        $this->db->insert('logs.decreaselog', array('userid' => $user, 'dist_id' => $insert_id,'item_det_id' => $id,
+        ));
+
+
+//        for ($i = 0; $i < $quantity; $i++) {
+//            $serial_data[] = array(
+//                'serial' => $serial[$i],
+//
+//            );
+//        }
+//        //for mooe
+//        $item = $this->db->get_where('item', array('item_id' => $id))->row();
+//        $type = array('item_type' => $item->item_type);
+//        $item_type = implode($type);
+//
+
+//            $get_serial = implode($serial);
+//            $get_serial_id = $this->db->get_where('serial', array('serial' => $get_serial))->row();
+//            $serial_id = array('serial_id' => $get_serial_id->serial_id);
+//            $ser_id = implode($serial_id);
+//            $this->db->update_batch('serial', $serial_data, 'serial');
+//            $this->db->insert('logs.decreaselog', array('userid' => $user, 'serial_id' => $ser_id));
+//        }
+//        // if item type is capital outlay but without serial
+//       elseif (count($serial) == 0 && $item_type == 'CO') {
+//           $this->db->insert('mooedistribution', array('quantity_distributed' => $quantity,'dist_id' => $insert_id, 'employee' => $user));
+//       }
     }
 
     public function return_item()
@@ -347,8 +380,11 @@ class Inventory_model extends CI_Model
 
     public function getSerial($det_id)
     {
+        $this->db->select('item.serial as serialStatus,serial_id,serial.serial,item_status');
+        $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
+        $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
         $this->db->where('item_status !=', 'Distributed');
-        $this->db->where('item_det_id', $det_id);
+        $this->db->where('serial.item_det_id', $det_id);
         $query = $this->db->get('serial');
         return $query->result_array();
     }
@@ -369,18 +405,20 @@ class Inventory_model extends CI_Model
         $this->db->update_batch('serial', $data, 'serial_id');
     }
 
-    public function countItem($id){
+    public function countItem($id)
+    {
         $minimum = $this->db->select('count(*) as min')
-            ->join('itemdetail','item.item_id = itemdetail.item_id ','inner')
-            ->join('serial','serial.item_det_id = itemdetail.item_det_id','inner')
-            ->where('item.item_id',$id)
-            ->where('serial.serial !=',null,False)
+            ->join('itemdetail', 'item.item_id = itemdetail.item_id ', 'inner')
+            ->join('serial', 'serial.item_det_id = itemdetail.item_det_id', 'inner')
+            ->where('item.item_id', $id)
+            ->where('serial.serial !=', null, False)
             ->get('item')
             ->row();
         return $minimum;
     }
 
-    public function editquant(){
+    public function editquant()
+    {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $values = [];
         $item_id = $this->input->post('id');

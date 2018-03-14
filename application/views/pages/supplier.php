@@ -1,82 +1,85 @@
-<!-- page content -->
-<div id="supplier" class="page-content main" role="main" xmlns:height="http://www.w3.org/1999/xhtml">
-
-    <div class="inventory-tab">
-        <div class="page-title">
-            <h1>Supplier</h1>
-        </div>
-
-        <button class="pull-right" role="tab" id="headingOne" data-toggle="tab"
-                href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <i class="fa fa-plus"></i><span> Add Supplier</span>
-        </button>
-
-        <div class="accordion table-responsive" id="accordion" role="tablist" aria-multiselectable="true">
-
-            <table id="supplier-table" data-search="true" data-pagination="true" data-toggle="table"
-                   data-url="supplier/viewSuppliers"
-                   class="table table-no-bordered">
-                <thead>
-                <tr>
-                    <th data-sortable="true" data-field="supplier">Supplier</th>
-                    <th data-sortable="true" data-field="address">Address</th>
-                    <th data-sortable="true" data-field="contact">Contact</th>
-                </tr>
-                </thead>
-            </table>
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Supplier</h1>
+            </div>
         </div>
     </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li class="active">Dashboard</li>
+                    <li class="active">Supplier</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <div class="AddSup hidden" role="tabpanel" aria-labelledby="headingOne">
-        <button type="button" onclick="addSupplierBack()" class="btn btn"></i> Back</a></button>
-        <div class="x_content">
-            <div class="panel-body">
-                <div class="col-md-7 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_content">
-                            <form method="POST" action="supplier/addSupplier" data-validate="parsley"
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="first-name">Supplier Name</label>
-                                    <input type="text" name="supplier" id="first-name"
-                                           data-required="true" class="form-control has-feedback-left"
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <!-- Supplier-->
+            <div class="col-lg-12 supplier-tab">
+                <div class="card">
+                    <div class="card-header">
+                        <button onclick="addSupplier()" class="btn btn-primary">
+                            <i class="fa fa-plus"></i><span> Add Supplier</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content pl-3 p-1" id="myTabContent">
+                            <table id="supplier-table" data-search="true" data-pagination="true" data-toggle="table"
+                                   data-url="supplier/viewSuppliers"
+                                   class="table table-no-bordered">
+                                <thead>
+                                <tr>
+                                    <th data-sortable="true" data-field="supplier">Supplier</th>
+                                    <th data-sortable="true" data-field="address">Address</th>
+                                    <th data-sortable="true" data-field="contact">Contact</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div hidden class="col-lg-12 addSupplier">
+                <div class="card">
+                    <div class="card-header">
+                        <button type="button" onclick="addSupplierBack()" class="btn btn-primary"></i> Back</a></button>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content pl-3 p-1 AddSup hidden" id="myTabContent">
+                            <form method="POST" action="supplier/addSupplier" data-validate="parsley">
+                                <div class="form-group">
+                                    <label for="Supplier Name" class=" form-control-label">Supplier Name</label>
+                                    <input type="text" name="supplier" id="supplier-name"
+                                           data-required="true"
+                                           class="form-control has-feedback-left"
                                            data-error-message="Please enter the Supplier Name">
-                                    <span class="fa fa-truck form-control-feedback left"
-                                          aria-hidden="true"></span>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="last-name">Address</label>
-                                    <input type="text" id="last-name" name="address"
-                                           data-required="true" class="form-control has-feedback-left"
+                                <div class="form-group">
+                                    <label for="Address" class=" form-control-label">Address</label>
+                                    <input type="text" id="address" name="address"
+                                           data-required="true"
+                                           class="form-control has-feedback-left"
                                            data-error-message="Please Enter the Address">
-                                    <span class="fa fa-location-arrow form-control-feedback left"
-                                          aria-hidden="true"></span>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="middle-name">Contact Number</label>
-                                    <input id="middle-name" class="form-control has-feedback-left"
+                                <div class="form-group">
+                                    <label for="Address" class=" form-control-label">Contact Number</label>
+                                    <input id="contactno" class="form-control has-feedback-left"
                                            type="text" name="contact" data-required="true"
                                            data-error-message="Please Enter Contact Number">
-                                    <span class="fa fa-phone form-control-feedback left"
-                                          aria-hidden="true"></span>
                                 </div>
-                            </div>
-                            <div class="ln_solid"></div>
-                            <div class="form-group">
-                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-8">
-                                    <button class="btn btn-danger" type="button"><i
-                                                class="fa fa-close"></i> Cancel
-                                    </button>
+                                <hr>
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-success"><i
                                                 class="fa fa-send"></i> Submit
                                     </button>
                                 </div>
-                            </div>
                             </form>
                         </div>
                     </div>
@@ -85,5 +88,4 @@
         </div>
     </div>
 </div>
-
-<!-- /page content -->
+</div>

@@ -10,13 +10,6 @@ class Users extends CI_Controller {
         $this->load->model('user_db');
     }
 
-    public function index()
-    {
-        $this->load->view('templates/header');
-        $this->load->view('pages/Accounts');
-        $this->load->view('templates/footer');
-    }
-
     public function display_users()
     {
         $users = $this->user_db->get_users();
@@ -27,11 +20,13 @@ class Users extends CI_Controller {
             'contactno' => $list['contact_no'],
             'username' => $list['username'],
             'position' => $list['position'],
-            'department' => $list['res_center_code']
+            'department' => $list['department'],
+            'status' => $list['status']
         );
         }
         echo json_encode($data);
     }
+<<<<<<< HEAD
     public function getmobileuser($username)
     {
         $users = $this->user_db->getmobileuser($username);
@@ -52,12 +47,16 @@ class Users extends CI_Controller {
         $id = $this->input->post('user_id');
         $this->user_db->deactivate_user($id);
         header('Location: '. base_url() . 'users');
+=======
+    public function addUser(){
+        $this->user_db->insertUser();
+        redirect('accounts');
+>>>>>>> 6fb0245e9afebc4870dfa46510a4668e6440a970
     }
-    public function activate()
+        public function editUser()
     {
-        $id = $this->input->post('user_id');
-        $this->user_db->activate_user($id);
-        header('Location: '. base_url() . 'users');
+        $this->user_db->edituser();
+        redirect('accounts');
     }
 
 }
