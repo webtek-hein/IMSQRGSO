@@ -494,9 +494,11 @@ function report_back() {
 function addSupplierBack() {
     toggleDiv($('.supplier-tab'),$('.addSupplier'));
 }
-
 function addUserBack() {
-    toggleDiv($('.accounts-tab'),$('.AddUser'));
+    toggleDiv($('.accounts-tab'),$('.addUser'));
+}
+function userdetailBack() {
+    toggleDiv($('.accounts-tab'),$('.userDetail'));
 }
 
 //view and edit serial
