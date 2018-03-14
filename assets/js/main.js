@@ -95,9 +95,11 @@ function detail(id) {
         }
     });
 }
+
 function addSupplier() {
-    toggleDiv($('.addSupplier'),$('.supplier-tab'));
+    toggleDiv($('.addSupplier'), $('.supplier-tab'));
 }
+
 // initialize inventory list
 function init_inventory() {
     var $itemTable = $('#itemtable');
@@ -361,9 +363,11 @@ function modal() {
         var incount = 1;
 
         while (skip <= $quantity) {
-            input = "<input class=\"form-control col-md-7 col-xs-12\" data-validate-length-range=\"6\" data-validate-words=\"2\" name=\"serial\" required type=\"text\" placeholder=\"Serial\">";
+            input = "<input class=\"form-control col-md-7 col-xs-12\" data-validate-length-range=\"6\" " +
+                "data-validate-words=\"2\" name=\"serial\" required type=\"text\" placeholder=\"Serial\">";
             list = "<li role=\"presentation\" class=" + active + ">" +
-                "<a href=\"#step" + counter + "\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
+                "<a href=\"#step" + counter + "\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" " +
+                "role=\"tab\" title=\"Step" + counter + "\">" +
                 "<span class=\"round-tab\">" +
                 "<b>Tab" + counter + "</b>" +
                 "</span>" +
@@ -482,23 +486,27 @@ function save(counter) {
 
 //go back to inventory
 function detail_back() {
-    toggleDiv($('.inventory-tab'),$('.detail-tab '));
+    toggleDiv($('.inventory-tab'), $('.detail-tab '));
 }
 
 function addItemBack() {
     toggleDiv($('.inventory-tab'), $('.additemDiv'));
 }
+
 function report_back() {
-    toggleDiv($('.inventory-tab'),$('.generateReport'));
+    toggleDiv($('.inventory-tab'), $('.generateReport'));
 }
+
 function addSupplierBack() {
-    toggleDiv($('.supplier-tab'),$('.addSupplier'));
+    toggleDiv($('.supplier-tab'), $('.addSupplier'));
 }
+
 function addUserBack() {
-    toggleDiv($('.accounts-tab'),$('.addUser'));
+    toggleDiv($('.accounts-tab'), $('.addUser'));
 }
+
 function userdetailBack() {
-    toggleDiv($('.accounts-tab'),$('.userDetail'));
+    toggleDiv($('.accounts-tab'), $('.userDetail'));
 }
 
 //view and edit serial
@@ -607,8 +615,8 @@ function getserial(id) {
             }
             if (serials.length === 0 && (mooe !== null && mooe !== 'Distributed')) {
                 var qua = ("<input type=\'text\' name=\'quantity\' placeholder='quantity\' class=\'form-control col-md-7 col-xs-12\' required>");
-                document.getElementById('quant').innerHTML += qua;
-                //$('#quant').html(qua);
+                document.getElementById('quant').innerHTML = qua;
+                $('#quant').html(qua);
 
             }
         }
@@ -618,7 +626,7 @@ function getserial(id) {
 //toggle hidden class of element
 function toggleDiv(elementToShow, elementToHide) {
     elementToShow.removeAttr('hidden');
-    elementToHide.attr('hidden','hidden');
+    elementToHide.attr('hidden', 'hidden');
 }
 
 // add another item function
@@ -778,6 +786,7 @@ function nextTab(elem) {
 function prevTab(elem) {
     elem.prev().find('a[data-toggle="tab"]').click();
 }
+
 function select_dept() {
     if (document.getElementById('position').value === 'supply officer') {
         document.getElementById('dment').style.display = 'block';

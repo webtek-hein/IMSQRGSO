@@ -15,7 +15,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Inventory Management System</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="description" content="Inventory Management System - GSO">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">
@@ -46,7 +46,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="./"><img src="assets/images/logo.png" alt="Logo"></a>
+            <a class="navbar-brand" href="./"><img src="assets/images/logoo2.png" alt="Logo" height="80" width="450"></a>
             <a class="navbar-brand hidden" href="./"><img src="assets/images/logo2.png" alt="Logo"></a>
         </div>
 
