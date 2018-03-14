@@ -22,7 +22,7 @@
     <div class="animated fadeIn">
         <div class="row">
             <!-- Inventory-->
-            <div class="col-lg-12">
+            <div class="col-lg-12 inventory-tab ">
                 <div class="card">
                     <div class="card-header">
                         <select id="select-dept" type="button" class="deptopt form-control"></select>
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <!-- Detail-->
-            <div class="col-lg-12 detail-tab hidden">
+            <div hidden class="col-lg-12 detail-tab ">
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
@@ -174,7 +174,7 @@
                 </div>
             </div>
             <!-- View Serial-->
-            <div class="Serial col-lg-12 hidden">
+            <div hidden class="Serial col-lg-12 ">
                 <div class="card">
                     <div class="card-header">
                         <h4><b>List of Serial</b></h4>
@@ -193,7 +193,7 @@
             </div>
         </div>
         <!-- View Serial-->
-        <div class="Serial hidden page-content">
+        <div hidden class="Serial  page-content">
             <div id="data1" class="panel-collapse collapse" role="tabpanel">
                 <h4><b>List of Serial</b></h4>
                 <form class="serial-form" method="POST" action="inventory/addSerial">
