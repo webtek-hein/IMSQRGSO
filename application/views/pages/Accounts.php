@@ -125,8 +125,7 @@
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
                         <select class="fa fa-chevron-down align=" center" id="position" name="position"
-                        onclick='select_dept()'
-                        required>
+                        onclick='select_dept()' required>
                         <option selected="true" disabled>--Choose Position--</option>
                         <option value="admin">Admin</option>
                         <option value="custodian">Custodian</option>
@@ -134,6 +133,23 @@
                         </select>
                     </div>
                 </div>
+                 <script>
+                    function select_dept() {
+                        if (document.getElementById('position').value === 'supply officer') {
+                            document.getElementById('dment').style.display  = 'block';
+                        } else {
+                            document.getElementById('posi').style.display = 'none';
+                        }
+                    }
+                </script>   
+                <div class="form-group">
+                    <label class="form-control-label">Department</label>
+                    <div class="input-group" >
+                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                        <select id="dment" name="dment" type="button" class="deptopt form-control"></select>
+                    </div>
+                </div>
+
                 <hr>
                 <div class="form-group">
 
