@@ -26,16 +26,17 @@
             <div class="col-lg-12 inventory-tab">
                 <div class="card">
                     <div class="card-header">
-                        <button id="genReport_Buttons" class="btn btn-outline-primary" data-toggle="tab"
-                                aria-expanded="true"
-                                href="#" data-target=".generateReport">
-                            <i class="fa fa-file-archive-o"></i><span> Reports</span></button>
                         <?php $position = $this->session->userdata['logged_in']['position'];
                         if ($position === 'Custodian') {
                             echo '<button id="headingTwo" class="btn btn-outline-success">
-                                <i class=" fa fa-plus" ></i><span> New</span></button>';
+                                <i class=" fa fa-plus" ></i><span> New</span></button>'.
+                            ' <button id="genReport_Buttons" class="btn btn-outline-primary" data-toggle="tab"
+                                aria-expanded="true"
+                                href="#" data-target=".generateReport">
+                            <i class="fa fa-file-archive-o"></i><span> Reports</span></button>';
                         }
                         ?>
+
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -77,7 +78,7 @@
             <div hidden class="col-lg-12 detail-tab">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
+                        <button type="button" onclick="detail_back()" class="btn btn-primary"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -246,7 +247,7 @@
                                     </div>
                                     <div class="form-group has-feedback">
                                         <label for="item" class=" form-control-label">Quantity</label>
-                                        <input type="number" name="item[]"
+                                        <input type="number" name="quant[]"
                                                class="form-control has-feedback-left"
                                                data-parsley-trigger="blur"
                                                data-parsley-group="set1"
@@ -378,7 +379,7 @@
             <div hidden class="generateReport  col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h1>Reports</h1>
+                        <button onclick="report_back()" class="btn btn-primary">Back</button>
                     </div>
                     <div class="card-body">
                         <div class="options">
@@ -679,7 +680,7 @@
                                 <input type="number" id="quantity" class="form-control col-md-7 col-xs-12"
                                        data-validate-length-range="20" data-validate-words="2" name="quantity"
                                        required
-                                       placeholder="Qauntity">
+                                       placeholder="Quantity">
                             </div>
                         </div>
                         <div class="item form-group">
