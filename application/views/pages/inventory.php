@@ -23,7 +23,7 @@
     <div class="animated fadeIn">
         <div class="row">
             <!-- Inventory-->
-            <div class="col-lg-12">
+            <div class="col-lg-12 inventory-tab">
                 <div class="card">
                     <div class="card-header">
                         <button id="genReport_Buttons" class="btn btn-outline-primary" data-toggle="tab"
@@ -32,7 +32,7 @@
                             <i class="fa fa-file-archive-o"></i><span> Reports</span></button>
                         <?php $position = $this->session->userdata['logged_in']['position'];
                         if ($position === 'Custodian') {
-                            echo '<button id="headingTwo" class="btn btn-outline-success" data-toggle="tab" aria-expanded="true"  href="#collapseTwo" aria-controls="collapseTwo">
+                            echo '<button id="headingTwo" class="btn btn-outline-success">
                                 <i class=" fa fa-plus" ></i><span> New</span></button>';
                         }
                         ?>
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <!-- Detail-->
-            <div class="col-lg-12 detail-tab hidden">
+            <div hidden class="col-lg-12 detail-tab">
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
@@ -186,7 +186,7 @@
                 </div>
             </div>
             <!-- Add Item-->
-            <div class="col-lg-12">
+            <div hidden class="additemDiv col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <button class="btn btn-outline-primary" id="exit" onclick="addItemBack()">&times;</button>
@@ -357,7 +357,7 @@
                 </div>
             </div>
             <!-- View Serial-->
-            <div class="Serial col-lg-12 hidden">
+            <div hidden class="Serial col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <h4><b>List of Serial</b></h4>
@@ -375,7 +375,7 @@
                 </div>
             </div>
             <!--Genearate Report-->
-            <div class="generateReport hidden col-lg-12">
+            <div hidden class="generateReport  col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <h1>Reports</h1>
