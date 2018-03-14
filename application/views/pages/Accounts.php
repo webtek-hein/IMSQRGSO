@@ -57,58 +57,7 @@
                 <div class="card-header">
                     <button type="button" onclick="addUserBack()" class="btn btn-primary"> Back</a></button>
                 </div>
-<<<<<<< HEAD
                 <div class="form-group">
-                    <label class=" form-control-label">Username</label>
-                    <div class="input-group">
-                        <div class="input-group-addon"><i class="fa fa-usd"></i></div>
-                        <input type="text" name="username" id="username" class="form-control has-feedback-left"
-                               placeholder="Username" required>
-                    </div>
-                    <small class="form-text text-muted">ex. george12g2</small>
-                </div>
-                <div class="form-group">
-                    <label class=" form-control-label">Password</label>
-                    <div class="input-group">
-                        <div class="input-group-addon"><i class="fa fa-male"></i></div>
-                        <input type="password" name="password" id="password" class="form-control has-feedback-left"
-                               placeholder="Password" required>
-                    </div>
-                    <small class="form-text text-muted">ex. ********</small>
-                </div>
-                <div class="form-group">
-                    <label class=" form-control-label">Position</label>
-                    <div class="input-group">
-                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
-                        <select class="fa fa-chevron-down align=" center" id="position" name="position"
-                        onclick='select_dept()' required>
-                        <option selected="true" disabled>--Choose Position--</option>
-                        <option value="admin">Admin</option>
-                        <option value="custodian">Custodian</option>
-                        <option value="supply officer">Supply Officer</option>
-                        </select>
-                    </div>
-                </div>
-                 <script>
-                    function select_dept() {
-                        if (document.getElementById('position').value === 'supply officer') {
-                            document.getElementById('dment').style.display  = 'block';
-                        } else {
-                            document.getElementById('posi').style.display = 'none';
-                        }
-                    }
-                </script>   
-                <div class="form-group">
-                    <label class="form-control-label">Department</label>
-                    <div class="input-group" >
-                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
-                        <select id="dment" name="dment" type="button" class="deptopt form-control"></select>
-                    </div>
-                </div>
-
-                <hr>
-                <div class="form-group">
-=======
                 <div class="card">
                     <div class="card-body card-block">
                         <form method="POST" action="Users/addUser" data-validate="parsley">
@@ -172,8 +121,7 @@
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
                                     <select class="fa fa-chevron-down align=" center" id="position" name="position"
-                                    onclick='select_dept()'
-                                    required>
+                                    onclick='select_dept()' required>
                                     <option selected="true" disabled>--Choose Position--</option>
                                     <option value="admin">Admin</option>
                                     <option value="custodian">Custodian</option>
@@ -181,10 +129,24 @@
                                     </select>
                                 </div>
                             </div>
-                            <hr>
+                             <script>
+                                function select_dept() {
+                                    if (document.getElementById('position').value === 'supply officer') {
+                                        document.getElementById('dment').style.display  = 'block';
+                                    } else {
+                                        document.getElementById('posi').style.display = 'none';
+                                    }
+                                }
+                            </script>   
                             <div class="form-group">
->>>>>>> 8aff59000a090fc31ec7bcf436a459c6539691b5
+                                <label class="form-control-label">Department</label>
+                                <div class="input-group" >
+                                    <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                                    <select id="dment" name="dment" type="button" class="deptopt form-control"></select>
+                                </div>
+                            </div>
 
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-success"><i
                                             class="fa fa-send"></i> Submit
                                 </button>
