@@ -25,19 +25,20 @@
             <!-- Inventory-->
             <div class="col-lg-12 inventory-tab">
                 <div class="card">
-                    <div class="card-header">
-                        <?php $position = $this->session->userdata['logged_in']['position'];
-                        if ($position === 'Custodian') {
-                            echo '<button id="headingTwo" class="btn btn-outline-success">
-                                <i class=" fa fa-plus" ></i><span> New</span></button>'.
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if ($position === 'Custodian') {
+
+
+                        echo '<div class="card-header">' .
+                            '<button id="headingTwo" class="btn btn-outline-success">
+                                <i class=" fa fa-plus" ></i><span> New</span></button>' .
                             ' <button id="genReport_Buttons" class="btn btn-outline-primary" data-toggle="tab"
                                 aria-expanded="true"
                                 href="#" data-target=".generateReport">
-                            <i class="fa fa-file-archive-o"></i><span> Reports</span></button>';
-                        }
-                        ?>
+                            <i class="fa fa-file-archive-o"></i><span> Reports</span></button> </div>';
 
-                    </div>
+                    }
+                    ?>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
@@ -96,7 +97,7 @@
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <!-- Information-->
                             <div class="tab-pane fade show active" id="Detail_Info" role="tabpanel"
-                                 aria-labelledby="Information-ta">
+                                 aria-labelledby="Information-tab">
                                 <form id="editInformation"
                                       class="serialForm form-horizontal form-label-left"
                                       action="inventory/edititem" method="POST">
@@ -174,12 +175,12 @@
                                         <i class="fa fa-check"></i> save
                                     </button>
                                 </form>
-
                             </div>
                             <!--Detail-->
                             <div class="tab-pane fade" id="Detail_Det" role="tabpanel" aria-labelledby="Detail-tab">
                                 <!-- Implement Bootsrap table-->
-                                <table id="detail-tab-table" class="table table-no-bordered table-hover">
+                                <table id="detail-tab-table" data-search="true"
+                                       class="table table-no-bordered table-hover">
                                 </table>
                             </div>
                         </div>
@@ -427,206 +428,148 @@
             </div>
         </div>
     </div>
+    <!-- Distribution Modal -->
+    <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST"
+          data-validate="parsley">
+        <div class="Distribute modal fade" id="DitributeItem" tabindex="-1" role="dialog"
+             aria-labelledby="distrib-modal"
+             aria-hidden="true">
+            <div class="modal-dialog">
 
-    <!-- end of Main Table Content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="largeModalLabel">Distribution</h5>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <div id='serial' class="col-md-10">
+                                    <label for="name"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id='quant' class="col-md-10">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label for="name">Department</label>
+                                    <select list="typelist" name="dept" class="deptopt form-control" required>
+                                    </select>
+                                </div>
+                            </div>
 
 
-    <!-- Add Item -->
-    <div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
-                </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label for="name">Account Code</label>
+                                    <select list="typelist" name="Code" id="accode" class="form-control" required>
+                                    </select>
+                                </div>
+                            </div>
 
-                <div class="modal-body">
-                    <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
-                          novalidate>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label for="date">Date of Distribution</label>
+                                    <input id="date" class="form-control col-md-7 col-xs-12"
+                                           data-validate-length-range="6"
+                                           data-validate-words="2" name="date" required type="date">
+                                </div>
+                            </div>
 
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <label>Quantity</label>
-                            <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
-                                   name="quant" min=0
-                                   class="form-control has-feedback-left">
-                            <span class="fa fa-plus-square-o form-control-feedback left"
-                                  aria-hidden="true"></span>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label>PR Number</label>
+                                    <input id="pr" class="form-control col-md-7 col-xs-12"
+                                           data-validate-length-range="6"
+                                           data-validate-words="2" name="pr" required type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label for="name">OBR Number</label>
+                                    <input id="obr" class="form-control col-md-7 col-xs-12"
+                                           data-validate-length-range="6"
+                                           data-validate-words="2" name="obr" required type="text">
+                                </div>
+                            </div>
+
+                            <div class="item form-group">
+                                <div id="container2" class="col-md-10">
+                                    <label for="name">Receiving Person</label>
+                                    <input id="owner" class="form-control col-md-7 col-xs-12" name="owner"
+                                           type="text">
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <label>Unit Cost</label>
-                            <input type="number" min='0' name="cost" class="form-control has-feedback-left"
-                                   id="inputSuccess3">
-                            <span class="fa fa-circle-o form-control-feedback left"
-                                  aria-hidden="true"></span>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <label>Delivery Date</label>
-                            <input type="date" name="del" class="form-control has-feedback-left">
-                            <span class="fa fa-calendar-plus-o form-control-feedback left"
-                                  aria-hidden="true"></span>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <label>Date Received</label>
-                            <input type="date" name="rec" data-validate-length-range="5,20"
-                                   class="optional form-control has-feedback-left">
-                            <span class="fa fa-calendar-check-o form-control-feedback left"
-                                  aria-hidden="true"></span>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <label>Expiration Date</label>
-                            <input type="date" name="exp" data-validate-length-range="5,20"
-                                   class="optional form-control has-feedback-left">
-                            <span class="fa fa-calendar-times-o form-control-feedback left"
-                                  aria-hidden="true"></span>
-                        </div>
-
-                        <div class="col-md-4 form-group has-feedback">
-                            <label>Supplier</label>
-                            <select list="typelist" name="supp"
-                                    class="supplieropt form-control has-feedback-left"
-                                    placeholder="Type">
-                            </select>
-                            <span class="fa fa-truck form-control-feedback left" aria-hidden="true"></span>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <label>Official Receipt Number</label>
-                            <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
-                                   name="quant" min=0 class="form-control has-feedback-left">
-                            <span class="fa fa-ticket form-control-feedback left"
-                                  aria-hidden="true"></span>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="submit" class="btn-modal btn btn-default" id="savequant" name="id"
-                                    value="1" id="quantsave">
-                                <i class="fa fa-arrow-down"> Save</i>
-                            </button>
-                            <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
-                                <i class="fa fa-close"> Cancel</i>
-                            </button>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" name="id" id="save1" class="btn btn-primary">Save</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--End of Add Item -->
+    </form>
+    <!--Edit Quantity-->
+    <form class="form-horizontal form-label-left" method="POST" action="inventory/editquantity">
+        <div class="Edit modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="distrib-modal"
+             aria-hidden="true">
+            <div class="modal-dialog">
 
-    <!--Distribution-->
-    <div id="DitributeItem" class="modal left fade Distribute" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="largeModalLabel">Adjustment</h5>
+                    </div>
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">Distribution</h4>
-                </div>
-                <form role="form" class="form-horizontal form-label-left" action="inventory/distribute"
-                      method="POST" data-validate="parsley">
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <div id='serial' class="col-md-10">
-                                <label for="name"></label>
-                            </div>
+                            <label for="quantity">Quantity<span
+                                        class="required">*</span>
+                            </label>
+                            <input type="number" id="quantity" class="form-control"
+                                   data-validate-length-range="20" data-validate-words="2" name="quantity"
+                                   required
+                                   placeholder="Quantity">
                         </div>
                         <div class="form-group">
-                            <div id='quant' class="col-md-10">
-                            </div>
+                            <label for="name">Remarks / Reason<span
+                                        class="required">*</span>
+                            </label>
+                            <textarea class="form-control" name="remarks" id="remarks"></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <label for="name">Department</label>
-                                <select list="typelist" name="dept" class="deptopt form-control" required>
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <label for="name">Account Code</label>
-                                <select list="typelist" name="Code" id="accode" class="form-control" required>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <label for="date">Date of Distribution</label>
-                                <input id="date" class="form-control col-md-7 col-xs-12"
-                                       data-validate-length-range="6"
-                                       data-validate-words="2" name="date" required type="date">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <label>PR Number</label>
-                                <input id="pr" class="form-control col-md-7 col-xs-12"
-                                       data-validate-length-range="6"
-                                       data-validate-words="2" name="pr" required type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <label for="name">OBR Number</label>
-                                <input id="obr" class="form-control col-md-7 col-xs-12"
-                                       data-validate-length-range="6"
-                                       data-validate-words="2" name="obr" required type="text">
-                            </div>
-                        </div>
-
-                        <div class="item form-group">
-                            <div id="container2" class="col-md-10">
-                                <label for="name">Receiving Person</label>
-                                <input id="owner" class="form-control col-md-7 col-xs-12" name="owner"
-                                       type="text">
-                            </div>
-                        </div>
                     </div>
-                    <div class="col-md-offset-3">
-                        <button type="submit" name="id" class="btn-modal btn btn-default" id="save1">
-                            <i class="fa fa-arrow-down"></i> Save
-                        </button>
-                        <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
-                            <i class="fa fa-close"></i> Cancel
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i
+                                    class="fa fa-arrow-down"></i> Save
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-    <!--End of Distribution-->
-
+    </form>
     <!--Distribution for Supply Officer-->
-    <div id="DitributeItemSP" class="modal left fade DistributeSP" tabindex="-1" role="dialog"
-         aria-hidden="true">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">Distribution</h4>
-                </div>
-                <form role="form" class="form-horizontal form-label-left" action="inventory/distribute"
-                      method="POST" data-validate="parsley">
+    <form role="form" class="form-horizontal form-label-left" action="inventory/distribute"
+          method="POST" data-validate="parsley">
+        <div class="DistributeSP modal fade" id="DitributeItemSP" tabindex="-1" role="dialog"
+             aria-labelledby="largeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="largeModalLabel">Distribution</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="modal-body">
-
                         <div class="form-group">
                             <div class="col-md-10">
                                 <label for="date">Date of Distribution</label>
@@ -636,7 +579,7 @@
                             </div>
                         </div>
 
-                        <div class="item form-group">
+                        <div class="form-group">
                             <div id="container2" class="col-md-10">
                                 <label for="name">End User</label>
                                 <input id="owner" class="form-control col-md-7 col-xs-12" name="owner"
@@ -644,110 +587,146 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-offset-3">
-                        <button type="submit" name="id" class="btn-modal btn btn-default" id="save1">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" name="id" class="btn btn-primary" id="save1">
                             <i class="fa fa-arrow-down"></i> Save
                         </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!-- Add Item -->
+<div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
+                      novalidate>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>Quantity</label>
+                        <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
+                               name="quant" min=0
+                               class="form-control has-feedback-left">
+                        <span class="fa fa-plus-square-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>Unit Cost</label>
+                        <input type="number" min='0' name="cost" class="form-control has-feedback-left"
+                               id="inputSuccess3">
+                        <span class="fa fa-circle-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>Delivery Date</label>
+                        <input type="date" name="del" class="form-control has-feedback-left">
+                        <span class="fa fa-calendar-plus-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>Date Received</label>
+                        <input type="date" name="rec" data-validate-length-range="5,20"
+                               class="optional form-control has-feedback-left">
+                        <span class="fa fa-calendar-check-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>Expiration Date</label>
+                        <input type="date" name="exp" data-validate-length-range="5,20"
+                               class="optional form-control has-feedback-left">
+                        <span class="fa fa-calendar-times-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-4 form-group has-feedback">
+                        <label>Supplier</label>
+                        <select list="typelist" name="supp"
+                                class="supplieropt form-control has-feedback-left"
+                                placeholder="Type">
+                        </select>
+                        <span class="fa fa-truck form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>Official Receipt Number</label>
+                        <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
+                               name="quant" min=0 class="form-control has-feedback-left">
+                        <span class="fa fa-ticket form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn-modal btn btn-default" id="savequant" name="id"
+                                value="1" id="quantsave">
+                            <i class="fa fa-arrow-down"> Save</i>
+                        </button>
                         <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
-                            <i class="fa fa-close"></i> Cancel
+                            <i class="fa fa-close"> Cancel</i>
                         </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <!--End of Distribution for Supply Officer-->
-
-
-    <!--Edit Quantity-->
-    <div id="edit_modal" class="modal fade Edit" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">Edit</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal form-label-left" method="POST" action="inventory/editquantity"
-                          novalidate>
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Quantity<span
-                                        class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" id="quantity" class="form-control col-md-7 col-xs-12"
-                                       data-validate-length-range="20" data-validate-words="2" name="quantity"
-                                       required
-                                       placeholder="Quantity">
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Remarks / Reason<span
-                                        class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <textarea name="remarks" id="remarks"></textarea>
-                            </div>
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i
-                                class="fa fa-arrow-down"></i> Save
-                    </button>
-                    <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel
-                    </button>
-                </div>
-
-            </div>
-            </form>
-        </div>
-    </div>
-    <!--end of edit-->
-
-    <!-- Add Quantity -->
-    <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">Edit Quantity</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
-                          novalidate>
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span
-                                        class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" name="quant" min=0 class="form-control col-md-7 col-xs-12"
-                                       required
-                                       placeholder="Quantity">
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn-modal btn btn-default" name="id" value="1" id="quantsave">
-                        <i
-                                class="fa fa-arrow-down"></i> Save
-                    </button>
-                    <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal"><i
-                                class="fa fa-close"></i> Cancel
-                    </button>
-                </div>
-            </div>
-            </form>
-        </div>
-    </div>
-    <!-- end of add quantity -->
-
-
 </div>
+<!--End of Add Item -->
+
+<!-- Add Quantity -->
+<div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Edit Quantity</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
+                      novalidate>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span
+                                    class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" name="quant" min=0 class="form-control col-md-7 col-xs-12"
+                                   required
+                                   placeholder="Quantity">
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn-modal btn btn-default" name="id" value="1" id="quantsave">
+                    <i
+                            class="fa fa-arrow-down"></i> Save
+                </button>
+                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal"><i
+                            class="fa fa-close"></i> Cancel
+                </button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<!-- end of add quantity -->
 
 <!-- .content -->
 </div><!-- /#right-panel -->
