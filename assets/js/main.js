@@ -480,13 +480,14 @@ function save(counter) {
 
 //go back to inventory
 function detail_back() {
-    $('.detail-tab ').toggleClass('hidden');
-    $('.inventory-tab').toggleClass('hidden');
+    toggleDiv($('.detail-tab '),$('.inventory-tab'));
 }
 
 function addItemBack() {
-    $('.additemDiv').toggleClass('hidden');
-    $('.inventory-tab').toggleClass('hidden');
+    console.log($(this));
+    $('.additemDiv').removeAttr('hidden');
+    $('.inventory-tab').attr('hidden');
+
 }
 
 function addSupplierBack() {
@@ -615,8 +616,8 @@ function getserial(id) {
 
 //toggle hidden class of element
 function toggleDiv(elementToShow, elementToHide) {
-    elementToShow.toggleClass('hidden');
-    elementToHide.toggleClass('hidden');
+    elementToShow.removeAttr('hidden');
+    elementToHide.attr('hidden','hidden');
 }
 
 // add another item function
