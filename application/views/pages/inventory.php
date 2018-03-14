@@ -191,9 +191,7 @@
             <div hidden class="additemDiv col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-outline-primary" id="exit" onclick="addItemBack()">&times;</button>
-                        <strong>Add</strong>
-                        <small> Item</small>
+                        <button class="btn btn-outline-primary" id="exit" onclick="addItemBack()">&times; Cancel</button>
                     </div>
                     <div class="card-body card-block">
                         <div role="tabpanel" data-example-id="togglable-tabs" class="togle">

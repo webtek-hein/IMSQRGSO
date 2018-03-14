@@ -57,25 +57,25 @@ if (isset($this->session->userdata['logged_in'])) {
                     <a href="<?php echo base_url() ?>dashboard"><i class="menu-icon fa fa-dashboard"></i> DASHBOARD </a>
                 </li>
                 <li>
-                    <a href="Inventory"><i class="menu-icon fa fa-dashboard"></i>INVENTORY</a>
+                    <a href="Inventory"><i class="menu-icon fa fa-book"></i> INVENTORY</a>
                 </li>
 
                 <?php $position = $this->session->userdata['logged_in']['position'];
                 if ($position === 'Admin' || $position === 'Custodian') {
                     echo '<li id="dept">
-                                     <a href="department"><i class="menu-icon fa fa-dashboard"></i>DEPARTMENT</a>
+                                     <a href="department"><i class="menu-icon fa fa-institution"></i>DEPARTMENT</a>
                                   </li>' .
                         '<li id="li3">
-                                    <a href="Supplier"><i class="menu-icon fa fa-dashboard"></i>SUPPLIER</a>
+                                    <a href="Supplier"><i class="menu-icon fa fa-truck"></i>SUPPLIER</a>
                                  </li>';
                 }
                 if ($position === 'Admin') {
                     echo '<li id="li4">
-                                    <a href="Accounts"><i class="menu-icon fa fa-dashboard"></i>USERS</a>
+                                    <a href="Accounts"><i class="menu-icon fa fa-users"></i>USERS</a>
                                   </li>';
                 }
                 echo '<li id="li5">
-                                    <a href="Return"><i class="menu-icon fa fa-dashboard"></i>RETURNS</a>
+                                    <a href="Return"><i class="menu-icon fa fa-undo"></i>RETURNS</a>
                                   </li>';
                 ?>
                 <li class="menu-item-has-children dropdown">
