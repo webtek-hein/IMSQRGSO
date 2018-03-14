@@ -11,203 +11,217 @@ if (isset($this->session->userdata['logged_in'])) {
     redirect("logout");
 }
 ?>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bootstrap Dashboard by Bootstrapious.com</title>
-    <meta name="description" content="">
+    <title>Inventory Management System</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
-    <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="assets/css/fontastic.css">
-    <!-- Google fonts - Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <!-- jQuery Circle-->
-    <link rel="stylesheet" href="assets/css/grasp_mobile_progress_circle-1.0.0.min.css">
-    <!-- Custom Scrollbar-->
-    <link rel="stylesheet" href="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="assets/css/style.default.css" id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="assets/css/custom.css">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-  </head>
-  <body>
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="assets/scss/style.css">
+    <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+
+</head>
 
 <body>
-     <!-- Side Navbar -->
-    <nav class="side-navbar">
-      <div class="side-navbar-wrapper">
-        <!-- Sidebar Header    -->
-        <div class="sidenav-header d-flex align-items-center justify-content-center">
-          <!-- User Info-->
-          <div class="sidenav-header-inner text-center"><img src="assets/img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
-            <h2 class="h5">Anderson Hardy</h2><span>Web Developer</span>
-          </div>
-          <!-- Small Brand information, appears on minimized sidebar-->
-          <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
+                    aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="./"><img src="assets/images/logo.png" alt="Logo"></a>
+            <a class="navbar-brand hidden" href="./"><img src="assets/images/logo2.png" alt="Logo"></a>
         </div>
-        <!-- Sidebar Navigation Menus-->
-          <div class="main-menu">
-          <h5 class="sidenav-heading">Main</h5>
-          <ul id="side-main-menu" class="side-menu list-unstyled">
-          <li><a href="<?php echo base_url() ?>dashboard"><i class="icon-home"></i>DASHBOARD</a></li>
-          <li><a href="Inventory"><i class="icon-home"></i>INVENTORY</a></li> 
-          <?php $position = $this->session->userdata['logged_in']['position'];
-                if ($position === 'Admin' || $position === 'Custodian') {
-                    echo '<li><a href="department"><i class="icon-home"></i>DEPARTMENT</a></li>'.
-                        '<li><a href="Supplier"><i class="icon-home"></i>SUPPLIER</a></li>';
-                    }
-                    if ($position === 'Admin') {
-                        echo '<li><a href="Accounts"><i class="icon-home"></i>USERS</a></li>
-                        <li id="li4">';
-                    }
-                    echo '<li> <a href="Return"><i class="icon-home"></i>RETURNS</a></li>';
-                    ?>
-                    <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>LOGS </a>         
-                        <?php
-                        echo '<ul id="exampledropdownDropdown" class="collapse list-unstyled ">';
-                        echo '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
-                            '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>';
-                        if ($position === 'Admin' || $position === 'Custodian') {
-                            echo '<li><a href=' . base_url() . 'edit>EDIT</a></li>';
-                        }
-                        echo '<li><a href=' . base_url() . 'return_log>RETURN LOG</a></li>';
-                        echo '</ul></li>';
-                        ?>                 
-            <li><a href="index.html"> <i class="icon-home"></i>Home                             </a></li>
-            <li><a href="forms.html"> <i class="icon-form"></i>Forms                             </a></li>
-            <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts                             </a></li>
-            <li><a href="tables.html"> <i class="icon-grid"></i>Tables                             </a></li>
-            <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
-              <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                <li><a href="#">Page</a></li>
-                <li><a href="#">Page</a></li>
-                <li><a href="#">Page</a></li>
-              </ul>
-            </li>
-            <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page                             </a></li>
-            <li> <a href="#"> <i class="icon-mail"></i>Demo
-                <div class="badge badge-warning">6 New</div></a></li>
-          </ul>
-        </div>
-        <div class="admin-menu">
-          <h5 class="sidenav-heading">Second menu</h5>
-          <ul id="side-admin-menu" class="side-menu list-unstyled"> 
-            <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
-            <li> <a href="#"> <i class="icon-flask"> </i>Demo
-                <div class="badge badge-info">Special</div></a></li>
-            <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
-            <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="page">
-   <!-- navbar-->
-      <header class="header">
-        <nav class="navbar">
-          <div class="container-fluid">
-            <div class="navbar-holder d-flex align-items-center justify-content-between">
-              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.html" class="navbar-brand">
-                  <div class="brand-text d-none d-md-inline-block"><span>Bootstrap </span><strong class="text-primary">Dashboard</strong></div></a></div>
-              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                <!-- Notifications dropdown-->
-                <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
-                  <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                        <div class="notification d-flex justify-content-between">
-                          <div class="notification-content"><i class="fa fa-envelope"></i>You have 6 new messages </div>
-                          <div class="notification-time"><small>4 minutes ago</small></div>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                        <div class="notification d-flex justify-content-between">
-                          <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
-                          <div class="notification-time"><small>4 minutes ago</small></div>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                        <div class="notification d-flex justify-content-between">
-                          <div class="notification-content"><i class="fa fa-upload"></i>Server Rebooted</div>
-                          <div class="notification-time"><small>4 minutes ago</small></div>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                        <div class="notification d-flex justify-content-between">
-                          <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
-                          <div class="notification-time"><small>10 minutes ago</small></div>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-bell"></i>view all notifications                                            </strong></a></li>
-                  </ul>
-                </li>
-                <!-- Messages dropdown-->
-                <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
-                  <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                        <div class="msg-profile"> <img src="assets/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="msg-body">
-                          <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                        <div class="msg-profile"> <img src="assets/img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="msg-body">
-                          <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                        <div class="msg-profile"> <img src="assets/img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="msg-body">
-                          <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages    </strong></a></li>
-                  </ul>
-                </li>
-                <!-- Languages dropdown    -->
-                <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="assets/img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
-                  <ul aria-labelledby="languages" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="assets/img/flags/16/DE.png" alt="English" class="mr-2"><span>German</span></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="assets/img/flags/16/FR.png" alt="English" class="mr-2"><span>French                                                         </span></a></li>
-                  </ul>
-                </li>
-                <!-- Log out-->
-                <li class="nav-item"><a href="login/logout" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
-<!-- 
-                <img class="left" src="<?php echo base_url(); ?>assets/images/logoimsgso.png" width="50px"
-                     height="50px">
-            </div>
-            <div class="profile_info">
-                <span><p>GSOIMS</p></span>
-            </div>
- 
-        <!-- sidebar menu -->
-  <!--       <div id="sidebar-menu" class="main_menu_side  hidden-print main_menu">
-            <div class="menu_section">
-                <ul class="nav side-menu">
-                   
-                </ul>
-            </div>
-        </div>
-        <!-- /sidebar menu -->
-    </div>
-</div> -->
-<!-- top navigation -->
-<!-- <div id="topNav" class="top_nav">
-    <nav class="nav_menu">
-        <ul class="nav navbar-nav navbar-right">
-            <a class="pull-right" href="logout"><i class="fa fa-user"></i> LOGOUT</a>
-        </ul>
-    </nav>
-</div> -->
-<!-- /top navigation -->
 
- -->
+        <!-- sidebar menu -->
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="<?php echo base_url() ?>dashboard"><i class="menu-icon fa fa-dashboard"></i> DASHBOARD </a>
+                </li>
+                <li>
+                    <a href="Inventory"><i class="menu-icon fa fa-dashboard"></i>INVENTORY</a>
+                </li>
+
+                <?php $position = $this->session->userdata['logged_in']['position'];
+                if ($position === 'Admin' || $position === 'Custodian') {
+                    echo '<li id="dept">
+                                     <a href="department"><i class="menu-icon fa fa-dashboard"></i>DEPARTMENT</a>
+                                  </li>' .
+                        '<li id="li3">
+                                    <a href="Supplier"><i class="menu-icon fa fa-dashboard"></i>SUPPLIER</a>
+                                 </li>';
+                }
+                if ($position === 'Admin') {
+                    echo '<li id="li4">
+                                    <a href="Accounts"><i class="menu-icon fa fa-dashboard"></i>USERS</a>
+                                  </li>';
+                }
+                echo '<li id="li5">
+                                    <a href="Return"><i class="menu-icon fa fa-dashboard"></i>RETURNS</a>
+                                  </li>';
+                ?>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Logs</a>
+
+                    <?php
+                    echo '<ul class="sub-menu children dropdown-menu">';
+                    echo '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
+                        '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>';
+                    if ($position === 'Admin' || $position === 'Custodian') {
+                        echo '<li><a href=' . base_url() . 'edit>EDIT</a></li>';
+                    }
+                    echo '<li><a href=' . base_url() . 'return_log>RETURN LOG</a></li>';
+                    echo '</ul></li>';
+                    ?>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside><!-- /#left-panel -->
+<!-- Right Panel -->
+
+<div id="right-panel" class="right-panel">
+
+    <!-- Header-->
+    <header id="header" class="header">
+
+        <div class="header-menu">
+
+            <div class="col-sm-7">
+                <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                <div class="header-left">
+                    <button class="search-trigger"><i class="fa fa-search"></i></button>
+                    <div class="form-inline">
+                        <form class="search-form">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                            <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                        </form>
+                    </div>
+
+                    <div class="dropdown for-notification">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell"></i>
+                            <span class="count bg-danger">5</span>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="notification">
+                            <p class="red">You have 3 Notification</p>
+                            <a class="dropdown-item media bg-flat-color-1" href="#">
+                                <i class="fa fa-check"></i>
+                                <p>Server #1 overloaded.</p>
+                            </a>
+                            <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <i class="fa fa-info"></i>
+                                <p>Server #2 overloaded.</p>
+                            </a>
+                            <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <i class="fa fa-warning"></i>
+                                <p>Server #3 overloaded.</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown for-message">
+                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="message"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="ti-email"></i>
+                            <span class="count bg-primary">9</span>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="message">
+                            <p class="red">You have 4 Mails</p>
+                            <a class="dropdown-item media bg-flat-color-1" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="assets/images/avatar/1.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Jonathan Smith</span>
+                                    <span class="time float-right">Just now</span>
+                                        <p>Hello, this is an example msg</p>
+                                </span>
+                            </a>
+                            <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="assets/images/avatar/2.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Jack Sanders</span>
+                                    <span class="time float-right">5 minutes ago</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                </span>
+                            </a>
+                            <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="assets/images/avatar/3.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Cheryl Wheeler</span>
+                                    <span class="time float-right">10 minutes ago</span>
+                                        <p>Hello, this is an example msg</p>
+                                </span>
+                            </a>
+                            <a class="dropdown-item media bg-flat-color-3" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="assets/images/avatar/4.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Rachel Santos</span>
+                                    <span class="time float-right">15 minutes ago</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-5">
+                <div class="user-area dropdown float-right">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="user-avatar rounded-circle" src="assets/images/admin.jpg" alt="User Avatar">
+                    </a>
+
+                    <div class="user-menu dropdown-menu">
+                        <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+
+                        <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+
+                        <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+
+                        <a class="nav-link" href="login/logout"><i class="fa fa-power -off"></i>Logout</a>
+                    </div>
+                </div>
+
+                <div class="language-select dropdown" id="language-select">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
+                        <i class="flag-icon flag-icon-us"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="language" >
+                        <div class="dropdown-item">
+                            <span class="flag-icon flag-icon-fr"></span>
+                        </div>
+                        <div class="dropdown-item">
+                            <i class="flag-icon flag-icon-es"></i>
+                        </div>
+                        <div class="dropdown-item">
+                            <i class="flag-icon flag-icon-us"></i>
+                        </div>
+                        <div class="dropdown-item">
+                            <i class="flag-icon flag-icon-it"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </header><!-- /header -->
+    <!-- Header-->
