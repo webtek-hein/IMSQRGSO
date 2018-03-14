@@ -104,6 +104,22 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    public function mobiledetail($id)
+    {
+        $list = $this->inv->select_item($id);
+        $data = array();
+        foreach ($list as $item) {
+            $data[] = array(
+                'id' => $item['item_id'],
+                'item' => $item['item_name'],
+                'description' => $item['item_description'],
+                'quantity' => $item['quantity'],
+                'unit' => $item['unit']
+            );
+        }
+        echo json_encode($data);
+    }
+
     public function getdept()
     {
         $departments = $this->inv->select_departments();

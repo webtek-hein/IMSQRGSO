@@ -35,8 +35,17 @@ class User_db extends CI_Model {
 
     public function get_users()
     {
-         $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
+        $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
          user.username,user.position,dept.department,dept.res_center_code');
+        $this->db->join('gsois.department dept','dept.dept_id = user.dept_id');
+        $query = $this->db->get('user');
+        return $query->result_array();
+    }
+
+    public function getmobileuser($username)
+    {
+        $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,user.position,dept.department');
+        $this->db->where('username',$username);
         $this->db->join('gsois.department dept','dept.dept_id = user.dept_id');
         $query = $this->db->get('user');
         return $query->result_array();

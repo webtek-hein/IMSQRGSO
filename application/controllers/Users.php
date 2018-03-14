@@ -32,6 +32,20 @@ class Users extends CI_Controller {
         }
         echo json_encode($data);
     }
+    public function getmobileuser($username)
+    {
+        $users = $this->user_db->getmobileuser($username);
+        foreach ($users as $list) {
+            $data[] = array(
+            'name' => $list['name'],
+            'email' => $list['email'],
+            'contactno' => $list['contact_no'],
+            'position' => $list['position'],
+            'department' => $list['department']
+        );
+        }
+        echo json_encode($data);
+    }
 
     public function deactivate()
     {
