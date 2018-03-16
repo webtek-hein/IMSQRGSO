@@ -132,20 +132,11 @@
                                     </select>
                                 </div>
                             </div>
-                             <script>
-                                function select_dept() {
-                                    if (document.getElementById('position').value === 'supply officer') {
-                                        document.getElementById('dment').style.display  = 'block';
-                                    } else {
-                                        document.getElementById('dment').style.display = 'none';
-                                    }
-                                }
-                            </script>   
-                            <div class="form-group">
+                            <div id="dmentselect" style="display:none;" class="form-group">
                                 <label class="form-control-label" >Department</label>
                                 <div class="input-group" >
                                     <div class="input-group-addon"><i class="fa fa-building"></i></div>
-                                    <select id="dment" name="dment" type="button" style="display:none;" class="deptopt form-control"></select>
+                                    <select id="dment" name="dment" type="button" class="deptopt form-control"></select>
                                 </div>
                             </div>
 

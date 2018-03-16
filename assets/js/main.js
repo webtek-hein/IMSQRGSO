@@ -50,6 +50,7 @@ $(document).ready(function () {
 // go to detail
 function detail(id) {
     var $detailtable = $('#detail-tab-table');
+    var item;
     $.ajax({
         url: 'inventory/getitem/' + id,
         dataType: 'JSON',
@@ -332,6 +333,7 @@ function serialize_forms() {
     $('.serialForm')
         .each(function () {
             $(this).data('serialized', $(this).serialize());
+            console.log($(this).data());
         })
         .on('change input', function () {
             console.log($(this).serialize());
@@ -404,6 +406,7 @@ function modal() {
     $('.modal').on('show.bs.modal', function (e) {
         //get data-id
         item_id = $(e.relatedTarget).data('id');
+
         //assign to a button with a class btn-modal
         $('.btn-modal').val(item_id);
     });
@@ -648,20 +651,17 @@ function init_bulkFucntion() {
                 .removeClass('active')
                 .find('#buttonCounter' + counter)
                 .attr('onclick', 'save(' + counter + ')'));
-            list = "<li id=\"list" + counter + "\" class=\"nav-item listTab\">" +
-                "<a class=\"nav-link\" href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
+            list = "<li id=\"list" + counter + "\" role=\"presentation\" class=\"listTab\"><a href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
                 "<span class=\"round-tab\">" +
                 "<b>Item" + counter + "</b>" +
                 "</span>" +
                 "</a>" +
                 "</li>";
-            ($ul.append(list).find('#list'+counter+' a').click());
-            $ul.append('   <li id="another">' +
-                '<button id="addanother" class="btn btn-primary"' +
-                'role="tab"><i class="ti-plus"></i>' +
-                '</button>' +
-                ' </li>');
+            ($ul.append(list).find('li.active').next().find('a[data-toggle=tab]').click());
+            $ul.append('<li id="another"> <a href="#" role="tab" id="addanother">Add Another Item</a></li>');
         });
+
+
     });
 
 
@@ -789,11 +789,9 @@ function prevTab(elem) {
 
 function select_dept() {
     if (document.getElementById('position').value === 'supply officer') {
-        document.getElementById('dment').style.display = 'block';
-        document.getElementById('posi').style.display = '';
+        document.getElementById('dmentselect').style.display = 'block';
     } else {
-        document.getElementById('dment').style.display = 'none';
-        document.getElementById('posi').style.display = 'none';
+        document.getElementById('dmentselect').style.display = 'none';
 
     }
 }
