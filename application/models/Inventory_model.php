@@ -4,6 +4,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Inventory_model extends CI_Model
 {
     //Adding of Item to the inventory
+
+    public function insert()
+    {
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $filename = ($_FILES["csv_file"]["tmp_name"])or die("can't open file");
+        $file = (fopen($filename,"r"));
+        var_dump($file);
+        while(($row = fgetcsv($file, 10000, ",")) !== FALSE)
+        {
+            $data = array(
+                'quantity' => $row[0],
+                'unit'  => $row[1],
+                'item_name'   => $row[2],
+                'item_description'   => $row[3],
+                'item_type' => $row[4],
+                'serial' => $row[5]
+            );
+            $this->db->insert('item', $data);
+            $insert_id = array('item_id' => $this->db->insert_id());
+
+
+            $data1 = array(
+                'date_delivered' => $row[5],
+                'date_received'  => $row[6],
+                'quantity'   => $row[0],
+                'unit_cost'   => $row[8],
+                'expiration_date' => $row[9],
+                'OR_no' => $row[10],
+                'PO_number' => $row[11],
+                'supplier_id' => $row[12]
+            );
+
+            $this->db->insert('itemdetail', $data1 + $insert_id );
+            //item detail insert id
+            $insert_id = $this->db->insert_id();
+            $ser = array('item_type' => $row[4]);
+            $quant = array('quantity' => $row[0]);
+            $serial = array('serial' => $row[5]);
+            print_r($serial);
+            if ( $ser['item_type'] === 'CO') {
+                echo 'asdf';
+                if ($serial['serial'] === '1') {
+                    $serial = array_fill(1, $quant['quantity'], array('item_det_id' => $insert_id));
+                    $this->db->insert_batch('serial', $serial);
+
+                }
+            }
+            }
+
+    }
     public function viewincrease()
     {
         $query = $this->db->get('item');

@@ -10,6 +10,11 @@ class Inventory extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->model('Inventory_model', 'inv');
+        //$this->load->library('csvimport');
+    }
+    function import()
+    {
+        $this->inv->insert();
     }
 
     public function save($counter)

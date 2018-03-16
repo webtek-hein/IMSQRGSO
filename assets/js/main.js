@@ -666,7 +666,33 @@ function init_bulkFucntion() {
 
 
     console.log('init_bulkFunction');
+
+// import csv data
+
+        $('#import_csv').on('submit', function(event){
+            event.preventDefault();
+            $.ajax({
+                url:"inventory/import",
+                method:"POST",
+                data:new FormData(this),
+                contentType:false,
+                cache:false,
+                processData:false,
+                beforeSend:function(){
+                    $('#import_csv_btn').html('Importing...');
+                },
+                success:function(data)
+                {
+                    $('#import_csv')[0].reset();
+                    $('#import_csv_btn').attr('disabled', false);
+                    $('#import_csv_btn').html('Import Done');
+                    load_data();
+                }
+            })
+        });
+
 }
+
 
 //add input fields
 // function addinputFields() {
