@@ -32,8 +32,8 @@ if (isset($this->session->userdata['logged_in'])) {
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            src="assets/js/jquery-3.3.1.min.js"
+            integrity=""
             crossorigin="anonymous"></script>
 
 </head>
@@ -94,7 +94,8 @@ if (isset($this->session->userdata['logged_in'])) {
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
-</aside><!-- /#left-panel -->
+</aside>
+<!-- /#left-panel -->
 <!-- Right Panel -->
 
 <div id="right-panel" class="right-panel">
@@ -223,5 +224,5 @@ if (isset($this->session->userdata['logged_in'])) {
             </div>
         </div>
 
-    </header><!-- /header -->
+    </header>
     <!-- Header-->

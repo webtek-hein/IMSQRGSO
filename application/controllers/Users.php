@@ -47,6 +47,7 @@ class Users extends CI_Controller {
         $id = $this->input->post('user_id');
         $this->user_db->deactivate_user($id);
         header('Location: '. base_url() . 'users');
+    }
 
     public function addUser(){
         $this->user_db->insertUser();

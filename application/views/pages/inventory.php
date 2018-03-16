@@ -38,10 +38,10 @@
                     if ($position === 'Custodian') {
 
 
-                        echo '<div class="card-header">' .
-                            '<button id="headingTwo" class="btn btn-outline-success">
-                                <i class=" fa fa-plus" ></i><span> New</span></button>' .
-                            ' <button id="genReport_Buttons" class="btn btn-outline-primary" data-toggle="tab"
+                        echo '<div class="card-header">
+                            <button id="headingTwo" class="btn btn-outline-success">
+                                <i class=" fa fa-plus" ></i><span> New</span></button>
+                             <button id="genReport_Buttons" class="btn btn-outline-primary" data-toggle="tab"
                                 aria-expanded="true"
                                 href="#" data-target=".generateReport">
                             <i class="fa fa-file-archive-o"></i><span> Reports</span></button> </div>';
@@ -85,7 +85,8 @@
                 </div>
             </div>
             <!-- Detail-->
-            <div hidden class="col-lg-12 detail-tab">
+            <?php if ($position !== 'Admin') {
+            echo '<div hidden class="col-lg-12 detail-tab">
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="detail_back()" class="btn btn-primary"></i> Back</a></button>
@@ -196,6 +197,9 @@
                     </div>
                 </div>
             </div>
+            ';
+                                                }
+                    ?>
             <!-- Add Item-->
             <div hidden class="additemDiv col-lg-12">
                 <div class="card">

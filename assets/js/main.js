@@ -815,11 +815,9 @@ function prevTab(elem) {
 
 function select_dept() {
     if (document.getElementById('position').value === 'supply officer') {
-        document.getElementById('dment').style.display = 'block';
-        document.getElementById('posi').style.display = '';
+        document.getElementById('dmentselect').style.display = 'block';
     } else {
-        document.getElementById('dment').style.display = 'none';
-        document.getElementById('posi').style.display = 'none';
+        document.getElementById('dmentselect').style.display = 'none';
 
     }
 }
