@@ -187,6 +187,9 @@ function init_inventory() {
     $('#headingZero').on('click', function () {
         toggleDiv($('.addUser'), $('.accounts-tab'));
     });
+    $('#user-table').on('click', function () {
+        toggleDiv($('.userDetail'), $('.accounts-tab'));
+    });
     $('select.itemtype').change(function () {
         $('.hideInput').toggleClass('hidden');
     });
@@ -505,6 +508,10 @@ function addSupplierBack() {
 
 function addUserBack() {
     toggleDiv($('.accounts-tab'), $('.addUser'));
+}
+
+function EditUserBack() {
+    toggleDiv($('.accounts-tab'), $('.userDetail'));
 }
 
 function userdetailBack() {
