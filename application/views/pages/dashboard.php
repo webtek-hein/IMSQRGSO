@@ -49,7 +49,7 @@
                 </h4>
                 <p class="text-light">Members online</p>
 
-                <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                <div class="chart-wrapper px-0" style="height:70px;" >
                     <canvas id="widgetChart1"></canvas>
                 </div>
 
@@ -79,7 +79,7 @@
                 </h4>
                 <p class="text-light">Members online</p>
 
-                <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                <div class="chart-wrapper px-0" style="height:70px;" >
                     <canvas id="widgetChart2"></canvas>
                 </div>
 
@@ -110,7 +110,7 @@
 
             </div>
 
-            <div class="chart-wrapper px-0" style="height:70px;" height="70">
+            <div class="chart-wrapper px-0" style="height:70px;" >
                 <canvas id="widgetChart3"></canvas>
             </div>
         </div>
@@ -137,7 +137,7 @@
                 </h4>
                 <p class="text-light">Members online</p>
 
-                <div class="chart-wrapper px-3" style="height:70px;" height="70">
+                <div class="chart-wrapper px-3" style="height:70px;" >
                     <canvas id="widgetChart4"></canvas>
                 </div>
 
@@ -155,7 +155,7 @@
                         <span>friends</span>
                 </li>
                 <li>
-                    <sctrong><span class="count">450</span></strong>
+                    <strong><span class="count">450</span></strong>
                         <span>feeds</span>
                 </li>
             </ul>
@@ -169,11 +169,11 @@
             <i class="fa fa-twitter"></i>
             <ul>
                 <li>
-                    <sctrong><span class="count">30</span> k</strong>
+                    <strong><span class="count">30</span> k</strong>
                         <span>friends</span>
                 </li>
                 <li>
-                    <sctrong><span class="count">450</span></strong>
+                    <strong><span class="count">450</span></strong>
                         <span>tweets</span>
                 </li>
             </ul>
@@ -187,11 +187,11 @@
             <i class="fa fa-linkedin"></i>
             <ul>
                 <li>
-                    <sctrong><span class="count">40</span> +</strong>
+                    <strong><span class="count">40</span> +</strong>
                         <span>contacts</span>
                 </li>
                 <li>
-                    <sctrong><span class="count">250</span></strong>
+                    <strong><span class="count">250</span></strong>
                         <span>feeds</span>
                 </li>
             </ul>
@@ -205,11 +205,11 @@
             <i class="fa fa-google-plus"></i>
             <ul>
                 <li>
-                    <sctrong><span class="count">94</span> k</strong>
+                    <strong><span class="count">94</span> k</strong>
                         <span>followers</span>
                 </li>
                 <li>
-                    <sctrong><span class="count">92</span></strong>
+                    <strong><span class="count">92</span></strong>
                         <span>circles</span>
                 </li>
             </ul>
