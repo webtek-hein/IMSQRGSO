@@ -406,6 +406,7 @@ function modal() {
     $('.modal').on('show.bs.modal', function (e) {
         //get data-id
         item_id = $(e.relatedTarget).data('id');
+        alert(item_id);
 
         //assign to a button with a class btn-modal
         $('.btn-modal').val(item_id);
@@ -651,17 +652,20 @@ function init_bulkFucntion() {
                 .removeClass('active')
                 .find('#buttonCounter' + counter)
                 .attr('onclick', 'save(' + counter + ')'));
-            list = "<li id=\"list" + counter + "\" role=\"presentation\" class=\"listTab\"><a href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
+            list = "<li id=\"list" + counter + "\" class=\"nav-item listTab\">" +
+                "<a class=\"nav-link\" href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
                 "<span class=\"round-tab\">" +
                 "<b>Item" + counter + "</b>" +
                 "</span>" +
                 "</a>" +
                 "</li>";
-            ($ul.append(list).find('li.active').next().find('a[data-toggle=tab]').click());
-            $ul.append('<li id="another"> <a href="#" role="tab" id="addanother">Add Another Item</a></li>');
+            ($ul.append(list).find('#list'+counter+' a').click());
+            $ul.append('   <li id="another">' +
+                '<button id="addanother" class="btn btn-primary"' +
+                'role="tab"><i class="ti-plus"></i>' +
+                '</button>' +
+                ' </li>');
         });
-
-
     });
 
 

@@ -191,19 +191,20 @@
             <div hidden class="additemDiv col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-outline-primary" id="exit" onclick="addItemBack()">&times; Cancel</button>
+                        <button class="btn btn-outline-primary" id="exit" onclick="addItemBack()">&times; Cancel
+                        </button>
                     </div>
                     <div class="card-body card-block">
                         <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
                             <ul id="bulk" class="nav nav-tabs" id="DetailTab" role="tablist">
-                                <li class="nav-item">
+                                <li id="list1" class="nav-item">
                                     <a class="nav-link active" id="DetInfo" data-toggle="tab" href="#step1B"
                                        role="tab"
                                        aria-controls="step1" aria-selected="true">Item 1</a>
                                 </li>
                                 <li id="another">
-                                    <button id="addanother" class="btn btn-outline-primary"
-                                            role="tab">Add Another Item
+                                    <button id="addanother" class="btn btn-primary"
+                                            role="tab"><i class="ti-plus"></i>
                                     </button>
                                 </li>
                             </ul>
@@ -214,6 +215,17 @@
                                 <h3 id="addItemh3">Item Information</h3>
                                 <hr/>
                                 <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
+                                    <div class="form-group">
+                                        <label for="item" class=" form-control-label">Item Name</label>
+                                        <input type="text" name="item[]"
+                                               class="form-control has-feedback-left"
+                                               data-parsley-trigger="blur"
+                                               data-parsley-group="set1"
+                                               data-parsley-length="[1, 20]"
+                                               data-parsley-required-message="Please insert Item name"
+                                               placeholder="Enter the name of the item"
+                                               required>
+                                    </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-12">
@@ -232,17 +244,6 @@
                                                 <input type="checkbox" name="serialStatus[]" value="1">with serial
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="item" class=" form-control-label">Item Name</label>
-                                        <input type="text" name="item[]"
-                                               class="form-control has-feedback-left"
-                                               data-parsley-trigger="blur"
-                                               data-parsley-group="set1"
-                                               data-parsley-length="[1, 20]"
-                                               data-parsley-required-message="Please insert Item name"
-                                               placeholder="Enter the name of the item"
-                                               required>
                                     </div>
                                     <div class="form-group has-feedback">
                                         <label for="item" class=" form-control-label">Quantity</label>
@@ -273,85 +274,84 @@
                                             <option value="others">others</option>
                                         </datalist>
                                     </div>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <label for="unit" class=" form-control-label">Unit Cost</label>
-                                    <input type="number" min='0' name="cost[]"
-                                           data-parsley-group="set1"
-                                           class="form-control has-feedback-left"
-                                           data-parsley-required-message="Please insert Unit Cost"
-                                           required>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <label for="unit" class=" form-control-label">Description</label>
-                                    <textarea data-parsley-group="set1"
-                                              name="description[]" id="message"
-                                              class="form-control"
-                                              data-parsley-trigger="blur"
-                                              data-parsley-minlength="1"
-                                              data-parsley-maxlength="500"
-                                              data-parsley-minlength-message="Description must"
-                                              data-parsley-validation-threshold="10"
-                                              data-parsley-required-messag="Put description of the items"
-                                              required></textarea>
-                                </div>
-                                <hr>
-                                <h3>Additional Details</h3>
-                                <hr>
-                                <div class="form-group has-feedback">
-                                    <label for="unit" class=" form-control-label">Delivery Date</label>
-                                    <input data-parsley-group="set1" type="date"
-                                           name="del[]" class="form-control has-feedback-left"
-                                           data-parsley-required-message="Enter the Delivery Date"
-                                           required>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <label for="unit" class=" form-control-label">Date Received</label>
-                                    <input data-parsley-group="set1" type="date"
-                                           name="rec[]" class="form-control has-feedback-left"
-                                           data-parsley-required-message="Enter the Date received"
-                                           required>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <label for="unit" class=" form-control-label">Expiration Date</label>
-                                    <input data-parsley-group="set1" type="date"
-                                           name="exp[]" class="form-control has-feedback-left"
-                                           data-parsley-required-message="Enter the Expiration Date"
-                                           required>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <label for="unit" class=" form-control-label">Supplier</label>
-                                    <select data-parsley-group="set1"
-                                            list="typelist" name="supp[]"
-                                            class="supplieropt form-control has-feedback-left"
-                                            required>
-                                    </select>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <label for="unit" class=" form-control-label">Official Receipt Number</label>
-                                    <input data-parsley-group="set1" type="text"
-                                           name="or[]" class="form-control has-feedback-left"
-                                           data-parsley-required-message="Input Official Receipt"
-                                           required>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <label for="unit" class=" form-control-label">Purchse Order (PO)
-                                        number</label>
-                                    <input data-parsley-group="set1" type="text"
-                                           name="PO[]" class="form-control has-feedback-left"
-                                           data-parsley-required-message="Input Purchase Order Number"
-                                           required>
-                                </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="unit" class=" form-control-label">Unit Cost</label>
+                                        <input type="number" min='0' name="cost[]"
+                                               data-parsley-group="set1"
+                                               class="form-control has-feedback-left"
+                                               data-parsley-required-message="Please insert Unit Cost"
+                                               required>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="unit" class=" form-control-label">Description</label>
+                                        <textarea data-parsley-group="set1"
+                                                  name="description[]" id="message"
+                                                  class="form-control"
+                                                  data-parsley-trigger="blur"
+                                                  data-parsley-minlength="1"
+                                                  data-parsley-maxlength="500"
+                                                  data-parsley-minlength-message="Description must"
+                                                  data-parsley-validation-threshold="10"
+                                                  data-parsley-required-messag="Put description of the items"
+                                                  required></textarea>
+                                    </div>
+                                    <hr>
+                                    <h3>Additional Details</h3>
+                                    <hr>
+                                    <div class="form-group has-feedback">
+                                        <label for="unit" class=" form-control-label">Delivery Date</label>
+                                        <input data-parsley-group="set1" type="date"
+                                               name="del[]" class="form-control has-feedback-left"
+                                               data-parsley-required-message="Enter the Delivery Date"
+                                               required>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="unit" class=" form-control-label">Date Received</label>
+                                        <input data-parsley-group="set1" type="date"
+                                               name="rec[]" class="form-control has-feedback-left"
+                                               data-parsley-required-message="Enter the Date received"
+                                               required>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="unit" class=" form-control-label">Expiration Date</label>
+                                        <input data-parsley-group="set1" type="date"
+                                               name="exp[]" class="form-control has-feedback-left"
+                                               data-parsley-required-message="Enter the Expiration Date"
+                                               required>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="unit" class=" form-control-label">Supplier</label>
+                                        <select data-parsley-group="set1"
+                                                list="typelist" name="supp[]"
+                                                class="supplieropt form-control has-feedback-left"
+                                                required>
+                                        </select>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="unit" class=" form-control-label">Official Receipt Number</label>
+                                        <input data-parsley-group="set1" type="text"
+                                               name="or[]" class="form-control has-feedback-left"
+                                               data-parsley-required-message="Input Official Receipt"
+                                               required>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="unit" class=" form-control-label">Purchse Order (PO)
+                                            number</label>
+                                        <input data-parsley-group="set1" type="text"
+                                               name="PO[]" class="form-control has-feedback-left"
+                                               data-parsley-required-message="Input Purchase Order Number"
+                                               required>
+                                    </div>
 
-                                <hr>
-                                <button id="buttonCounter1" type="button" onclick="save(1)"
-                                        class="savebtn btn btn-primary"><i class="fa fa-arrow-down"></i>
-                                    Save
-                                </button>
-                                <button type="submit" id="saveALL" class="btn btn-success"><i
-                                            class="fa fa-download"></i> Save All
-                                </button>
-                            </div>
+                                    <hr>
+                                    <button id="buttonCounter1" type="button" onclick="save(1)"
+                                            class="savebtn btn btn-primary"><i class="fa fa-arrow-down"></i>
+                                        Save
+                                    </button>
+                                    <button type="submit" id="saveALL" class="btn btn-success"><i
+                                                class="fa fa-download"></i> Save All
+                                    </button>
+                                </div>
                         </form>
                     </div>
                 </div>
@@ -507,7 +507,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" name="id" id="save1" class="btn btn-primary btn-modal">Save</button>
+                        <button type="submit" name="id" id="save1" class="btn btn-primarybtn-modal">Save</button>
                     </div>
                 </div>
             </div>
