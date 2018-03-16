@@ -84,19 +84,19 @@
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="DetInfo" data-toggle="tab" href="#Detail_Info"
+                                <a class="nav-link" id="DetInfo" data-toggle="tab" href="#Detail_Info"
                                    role="tab"
                                    aria-controls="info" aria-selected="true">Information</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="DetDetail" data-toggle="tab" href="#Detail_Det"
+                                <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det"
                                    role="tab"
                                    aria-controls="detail" aria-selected="false">Details</a>
                             </li>
                         </ul>
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <!-- Information-->
-                            <div class="tab-pane fade show active" id="Detail_Info" role="tabpanel"
+                            <div class="tab-pane fade" id="Detail_Info" role="tabpanel"
                                  aria-labelledby="Information-tab">
                                 <form id="editInformation"
                                       class="serialForm form-horizontal form-label-left"
@@ -177,7 +177,7 @@
                                 </form>
                             </div>
                             <!--Detail-->
-                            <div class="tab-pane fade" id="Detail_Det" role="tabpanel" aria-labelledby="Detail-tab">
+                            <div class="tab-pane fade show active" id="Detail_Det" role="tabpanel" aria-labelledby="Detail-tab">
                                 <!-- Implement Bootsrap table-->
                                 <table id="detail-tab-table" data-search="true"
                                        class="table table-no-bordered table-hover">
