@@ -23,7 +23,7 @@
     <div class="animated fadeIn">
         <div class="row">
             <!-- Inventory-->
-            <div class="col-lg-12 inventory-tab">
+            <div class="inventory-tab col-lg-12">
                 <div class="card">
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if ($position === 'Custodian') {
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <!-- Detail-->
-            <div hidden class="col-lg-12 detail-tab">
+            <div hidden class="detail-tab col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="detail_back()" class="btn btn-primary"></i> Back</a></button>
@@ -375,7 +375,7 @@
                 </div>
             </div>
             <!--Genearate Report-->
-            <div hidden class="generateReport  col-lg-12">
+            <div hidden class="generateReport col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <button onclick="report_back()" class="btn btn-primary">Back</button>
@@ -426,6 +426,7 @@
             </div>
         </div>
     </div>
+</div>
     <!-- Distribution Modal -->
     <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST"
           data-validate="parsley">
@@ -433,7 +434,6 @@
              aria-labelledby="distrib-modal"
              aria-hidden="true">
             <div class="modal-dialog">
-
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="largeModalLabel">Distribution</h5>
@@ -507,7 +507,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" name="id" id="save1" class="btn btn-primarybtn-modal">Save</button>
+                        <button type="submit" name="id" id="save1" class="btn btn-primary btn-modal">Save</button>
                     </div>
                 </div>
             </div>
@@ -595,137 +595,130 @@
             </div>
         </div>
     </form>
-</div>
+    <!-- Add Item -->
+    <div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
+                </div>
 
+                <div class="modal-body">
+                    <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
+                          novalidate>
 
-<!-- Add Item -->
-<div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Add Quantity</h4>
-            </div>
-
-            <div class="modal-body">
-                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
-                      novalidate>
-
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <label>Quantity</label>
-                        <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
-                               name="quant" min=0
-                               class="form-control has-feedback-left">
-                        <span class="fa fa-plus-square-o form-control-feedback left"
-                              aria-hidden="true"></span>
-                    </div>
-
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <label>Unit Cost</label>
-                        <input type="number" min='0' name="cost" class="form-control has-feedback-left"
-                               id="inputSuccess3">
-                        <span class="fa fa-circle-o form-control-feedback left"
-                              aria-hidden="true"></span>
-                    </div>
-
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <label>Delivery Date</label>
-                        <input type="date" name="del" class="form-control has-feedback-left">
-                        <span class="fa fa-calendar-plus-o form-control-feedback left"
-                              aria-hidden="true"></span>
-                    </div>
-
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <label>Date Received</label>
-                        <input type="date" name="rec" data-validate-length-range="5,20"
-                               class="optional form-control has-feedback-left">
-                        <span class="fa fa-calendar-check-o form-control-feedback left"
-                              aria-hidden="true"></span>
-                    </div>
-
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <label>Expiration Date</label>
-                        <input type="date" name="exp" data-validate-length-range="5,20"
-                               class="optional form-control has-feedback-left">
-                        <span class="fa fa-calendar-times-o form-control-feedback left"
-                              aria-hidden="true"></span>
-                    </div>
-
-                    <div class="col-md-4 form-group has-feedback">
-                        <label>Supplier</label>
-                        <select list="typelist" name="supp"
-                                class="supplieropt form-control has-feedback-left"
-                                placeholder="Type">
-                        </select>
-                        <span class="fa fa-truck form-control-feedback left" aria-hidden="true"></span>
-                    </div>
-
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <label>Official Receipt Number</label>
-                        <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
-                               name="quant" min=0 class="form-control has-feedback-left">
-                        <span class="fa fa-ticket form-control-feedback left"
-                              aria-hidden="true"></span>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="submit" class="btn-modal btn btn-default" id="savequant" name="id"
-                                value="1" id="quantsave">
-                            <i class="fa fa-arrow-down"> Save</i>
-                        </button>
-                        <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
-                            <i class="fa fa-close"> Cancel</i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!--End of Add Item -->
-
-<!-- Add Quantity -->
-<div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Edit Quantity</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
-                      novalidate>
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span
-                                    class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="number" name="quant" min=0 class="form-control col-md-7 col-xs-12"
-                                   required
-                                   placeholder="Quantity">
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <label>Quantity</label>
+                            <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
+                                   name="quant" min=0
+                                   class="form-control has-feedback-left">
+                            <span class="fa fa-plus-square-o form-control-feedback left"
+                                  aria-hidden="true"></span>
                         </div>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn-modal btn btn-default" name="id" value="1" id="quantsave">
-                    <i
-                            class="fa fa-arrow-down"></i> Save
-                </button>
-                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal"><i
-                            class="fa fa-close"></i> Cancel
-                </button>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <label>Unit Cost</label>
+                            <input type="number" min='0' name="cost" class="form-control has-feedback-left"
+                                   id="inputSuccess3">
+                            <span class="fa fa-circle-o form-control-feedback left"
+                                  aria-hidden="true"></span>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <label>Delivery Date</label>
+                            <input type="date" name="del" class="form-control has-feedback-left">
+                            <span class="fa fa-calendar-plus-o form-control-feedback left"
+                                  aria-hidden="true"></span>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <label>Date Received</label>
+                            <input type="date" name="rec" data-validate-length-range="5,20"
+                                   class="optional form-control has-feedback-left">
+                            <span class="fa fa-calendar-check-o form-control-feedback left"
+                                  aria-hidden="true"></span>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <label>Expiration Date</label>
+                            <input type="date" name="exp" data-validate-length-range="5,20"
+                                   class="optional form-control has-feedback-left">
+                            <span class="fa fa-calendar-times-o form-control-feedback left"
+                                  aria-hidden="true"></span>
+                        </div>
+
+                        <div class="col-md-4 form-group has-feedback">
+                            <label>Supplier</label>
+                            <select list="typelist" name="supp"
+                                    class="supplieropt form-control has-feedback-left"
+                                    placeholder="Type">
+                            </select>
+                            <span class="fa fa-truck form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <label>Official Receipt Number</label>
+                            <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
+                                   name="quant" min=0 class="form-control has-feedback-left">
+                            <span class="fa fa-ticket form-control-feedback left"
+                                  aria-hidden="true"></span>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn-modal btn btn-default" id="savequant" name="id"
+                                    value="1" id="quantsave">
+                                <i class="fa fa-arrow-down"> Save</i>
+                            </button>
+                            <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal">
+                                <i class="fa fa-close"> Cancel</i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        </form>
     </div>
-</div>
-<!-- end of add quantity -->
+    <!--End of Add Item -->
+    <!-- Add Quantity -->
+    <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-<!-- .content -->
-</div><!-- /#right-panel -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Edit Quantity</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
+                          novalidate>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span
+                                        class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="number" name="quant" min=0 class="form-control col-md-7 col-xs-12"
+                                       required
+                                       placeholder="Quantity">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn-modal btn btn-default" name="id" value="1" id="quantsave">
+                        <i
+                                class="fa fa-arrow-down"></i> Save
+                    </button>
+                    <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal"><i
+                                class="fa fa-close"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of add quantity -->
+</div>
 

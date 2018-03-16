@@ -50,7 +50,6 @@ $(document).ready(function () {
 // go to detail
 function detail(id) {
     var $detailtable = $('#detail-tab-table');
-    var item;
     $.ajax({
         url: 'inventory/getitem/' + id,
         dataType: 'JSON',
@@ -333,7 +332,6 @@ function serialize_forms() {
     $('.serialForm')
         .each(function () {
             $(this).data('serialized', $(this).serialize());
-            console.log($(this).data());
         })
         .on('change input', function () {
             console.log($(this).serialize());
@@ -406,8 +404,6 @@ function modal() {
     $('.modal').on('show.bs.modal', function (e) {
         //get data-id
         item_id = $(e.relatedTarget).data('id');
-        alert(item_id);
-
         //assign to a button with a class btn-modal
         $('.btn-modal').val(item_id);
     });
