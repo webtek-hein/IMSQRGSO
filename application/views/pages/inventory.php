@@ -507,7 +507,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" name="id" id="save1" class="btn btn-primary">Save</button>
+                        <button type="submit" name="id" id="save1" class="btn btn-primary btn-modal">Save</button>
                     </div>
                 </div>
             </div>

@@ -151,7 +151,7 @@
             <i class="fa fa-facebook"></i>
             <ul>
                 <li>
-                    <sctrong><span class="count">40</span> k</strong>
+                    <strong><span class="count">40</span> k</strong>
                         <span>friends</span>
                 </li>
                 <li>

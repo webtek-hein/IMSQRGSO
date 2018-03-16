@@ -406,6 +406,7 @@ function modal() {
     $('.modal').on('show.bs.modal', function (e) {
         //get data-id
         item_id = $(e.relatedTarget).data('id');
+
         //assign to a button with a class btn-modal
         $('.btn-modal').val(item_id);
     });
@@ -457,8 +458,9 @@ function save(counter) {
             data: $('#addItemForm').serializeArray(),
             success: function (response) {
                 if (response) {
-                    if ($('#bulk').find('li').length > 1) {
-                        if (!list.prev().length < 1) {
+                    console.log($('#bulk').find('li').length);
+                    if ($('#bulk').find('li').length > 2) {
+                        if (!list.prev().length < 2) {
                             list.prev().addClass('active');
                             step.prev().addClass('active');
                         } else {
@@ -532,7 +534,6 @@ function viewSerial(id) {
             var i = 0;
             var $active = $('#serial-tabs').find('.active');
 
-
             if (data[0]['position'] === 'Custodian') {
                 button = "<br><div class=\"col-md-offset-3\">\n" +
                     "<button id=\"serialP\" type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Previous</button>\n" +
@@ -543,7 +544,6 @@ function viewSerial(id) {
             //if div reaches 10
             //create another div
             if (data.length >= 10) {
-                console.log(data.length);
                 for (i = 0; i < data.length; i++) {
                     if (serialTabCounter !== 1) {
                         divClass = "";
@@ -552,7 +552,7 @@ function viewSerial(id) {
                     input.push("<label>Serial " + (i + 1) +
                         "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                         "min=0  " +
-                        "class=\"form-control col-md-2\"></label><br>");
+                        "class=\"form-control\"></label><br>");
                     if (input.length === 10) {
                         div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
                         list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
@@ -568,13 +568,13 @@ function viewSerial(id) {
                     input.push("<label>Serial " + (i + 1) +
                         "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                         "min=0  " +
-                        "class=\"form-control col-md-2\"></label><br>");
+                        "class=\"form-control\"></label><br>");
 
                 }
                 div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
                 list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
                 $serialContent.append(div);
-                $('#tab1').html(input.join('') + button);
+                $('#tab1').toggleClass('show').html(input.join('') + button);
             }
             $ul.html(list);
 
