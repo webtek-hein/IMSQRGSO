@@ -93,11 +93,14 @@
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
-                            <li class="nav-item">
+                            <?php if ($position !== 'Admin') {
+                            echo '<li class="nav-item">
                                 <a class="nav-link" id="DetInfo" data-toggle="tab" href="#Detail_Info"
                                    role="tab"
                                    aria-controls="info" aria-selected="true">Information</a>
-                            </li>
+                            </li>';
+                            }
+                    ?>
                             <li class="nav-item">
                                 <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det"
                                    role="tab"

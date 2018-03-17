@@ -194,8 +194,7 @@
                             <label class=" form-control-label">Username</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" name="username" id="username" class="form-control has-feedback-left"
-                                       placeholder="tuking">
+                                <input type="text" name="username" id="username" class="form-control has-feedback-left">
                             </div>
                         </div>
                         <div class="form-group">
