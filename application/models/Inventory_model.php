@@ -563,7 +563,7 @@ class Inventory_model extends CI_Model
         $this->db->select('serial.serial_id, item.item_name, serial.serial, account_code.description, item.item_description, item_detail.unit_cost, item.item_type, item_detail.expiration_date');
         $this->db->join('itemdetail','itemdetail.item_id = item.item_id','left');
         $this->db->join('serial','serial.item_det_id = itemdetail.item_det_id','left');
-        $query = $this->db->get('user');
+        $query = $this->db->get('item');
         return $query->result();
     }
 
