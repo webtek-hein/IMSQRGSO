@@ -35,7 +35,7 @@
                 </div>
             </div><!--col-sm-6-->
 
-            <div class="col-md-6 right-side">
+            <div class="col-md-6 right-side" >
                 <h3>Login</h3>
 
                 <!--Form with header-->
