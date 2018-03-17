@@ -60,8 +60,9 @@ class Inventory extends CI_Controller
     public function distribute()
     {
         $position = $this->session->userdata['logged_in']['position'];
-        $this->inv->distrib($position);
-//        redirect('inventory');
+        $dept = $this->session->userdata['logged_in']['dept_id'];
+        $this->inv->distrib($position,$dept);
+       redirect('inventory');
     }
 
     public function edititem()

@@ -357,8 +357,14 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public function distrib($position)
+    public function distrib($position,$dept)
     {
+
+        $this->db->select('count(PR_no) as PR_no');
+        $this->db->where('dept_id',$dept);
+        $query = $this->db->get('distribution')->row();
+        $PR_no =intval($query->PR_no)+1;
+
         $serial_data = [];
         $id = $this->input->post('id');
         $serial = $this->input->post('serial');
@@ -386,7 +392,7 @@ class Inventory_model extends CI_Model
                 'quantity_distributed' => $quantity,
                 'receiver' => $this->input->post('owner'),
                 'date_received' => $this->input->post('date'),
-                'PR_no' => $this->input->post('pr'),
+                'PR_no' => $PR_no,
                 'OBR_no' => $this->input->post('obr'),
                 'item_id' => $item_id['item_id'],
                 'user_id' => $user
@@ -398,7 +404,6 @@ class Inventory_model extends CI_Model
             if (count($serial) != 0) {
                 //for capital outlay with serial
                 for ($i = 0; $i < $quantity; $i++) {
-                    var_dump($id);
                     $serial_data[] = array(
                         'serial' => $serial[$i],
                         'dist_id' => $insert_id,
@@ -439,6 +444,7 @@ class Inventory_model extends CI_Model
                 $this->db->where_in('serial', $serial);
                 $this->db->update('serial');
             }else{
+                var_dump($id);
                 $quantity = $this->input->post('quantity');
                 $mooedata = array('dist_id'=>$id,'employee'=>$employee,'quantity'=>$quantity);
                 $this->db->insert('mooedistribution',$mooedata);

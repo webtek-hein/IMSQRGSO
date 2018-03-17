@@ -493,15 +493,6 @@
 
                         <div class="form-group">
                             <div class="col-md-10">
-                                <label>PR Number</label>
-                                <input id="pr" class="form-control col-md-7 col-xs-12"
-                                       data-validate-length-range="6"
-                                       data-validate-words="2" name="pr" required type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10">
                                 <label for="name">OBR Number</label>
                                 <input id="obr" class="form-control col-md-7 col-xs-12"
                                        data-validate-length-range="6"
@@ -610,7 +601,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" name="id" class="btn btn-primary" id="save1">
+                    <button type="submit" name="id" class="btn btn-primary btn-modal" id="save1">
                         <i class="fa fa-arrow-down"></i> Save
                     </button>
                 </div>

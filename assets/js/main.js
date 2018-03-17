@@ -405,7 +405,6 @@ function modal() {
     $('.modal').on('show.bs.modal', function (e) {
         //get data-id
         item_id = $(e.relatedTarget).data('id');
-
         //assign to a button with a class btn-modal
         $('.btn-modal').val(item_id);
     });
