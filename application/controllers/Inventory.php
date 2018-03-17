@@ -120,7 +120,21 @@ class Inventory extends CI_Controller
 
     public function mobiledetail()
     {
-        $this->inv->mobiledetail();
+        $details = $this->inv->mobiledetail();
+        $data = array();
+        foreach ($details as $list) {
+            $data[] = array(
+                'id' => $list['serial.serial_id'],
+                'item_name' => $list['item.item_name'],
+                'serial' => $list['serial.serial'],
+                'account_code' => $list['account_code.description'],
+                'description' => $list['item.item_description'],
+                'unit_cost' => $list['itemdetail.unit_cost'],
+                'item_type' => $list['item.item_type'],
+                'expiration' => $list['itemdetail.expiration_date']
+            );
+        }
+        echo json_encode($data);
     }
 
     public function getdept()

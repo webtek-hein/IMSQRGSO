@@ -566,7 +566,7 @@ class Inventory_model extends CI_Model
         $this->db->join('distribution','distribution.item_id = item.item_id','left');
         $this->db->join('account_code','account_code.ac_id = distribution.ac_id','left');
         $query = $this->db->get('item');
-        return $query->result();
+        return $query->result_array();
     }
 
 
