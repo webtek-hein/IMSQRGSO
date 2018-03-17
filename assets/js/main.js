@@ -95,9 +95,11 @@ function detail(id) {
         }
     });
 }
+
 function addSupplier() {
-    toggleDiv($('.addSupplier'),$('.supplier-tab'));
+    toggleDiv($('.addSupplier'), $('.supplier-tab'));
 }
+
 // initialize inventory list
 function init_inventory() {
     var $itemTable = $('#itemtable');
@@ -183,7 +185,10 @@ function init_inventory() {
         toggleDiv($('.AddSup'), $('.inventory-tab'));
     });
     $('#headingZero').on('click', function () {
-        toggleDiv($('.AddUser'), $('.accounts-tab'));
+        toggleDiv($('.addUser'), $('.accounts-tab'));
+    });
+    $('#user-table').on('click', function () {
+        toggleDiv($('.userDetail'), $('.accounts-tab'));
     });
     $('select.itemtype').change(function () {
         $('.hideInput').toggleClass('hidden');
@@ -251,11 +256,7 @@ function init_list() {
             },
             field: 'quant',
             title: 'QUANTITY DISTRIBUTED'
-        }, {
-            sortable: true,
-            field: 'rec',
-            title: 'DATE RECEIVED'
-        }, {
+        },{
             sortable: true,
             field: 'unit',
             title: 'UNIT'
@@ -334,7 +335,7 @@ function serialize_forms() {
             console.log($(this).data());
         })
         .on('change input', function () {
-            console.log($(this).serialize());
+            $(this).serialize();
             $(this)
                 .find('button:submit')
                 .attr('disabled', $(this).serialize() === $(this).data('serialized'));
@@ -361,9 +362,11 @@ function modal() {
         var incount = 1;
 
         while (skip <= $quantity) {
-            input = "<input class=\"form-control col-md-7 col-xs-12\" data-validate-length-range=\"6\" data-validate-words=\"2\" name=\"serial\" required type=\"text\" placeholder=\"Serial\">";
+            input = "<input class=\"form-control col-md-7 col-xs-12\" data-validate-length-range=\"6\" " +
+                "data-validate-words=\"2\" name=\"serial\" required type=\"text\" placeholder=\"Serial\">";
             list = "<li role=\"presentation\" class=" + active + ">" +
-                "<a href=\"#step" + counter + "\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
+                "<a href=\"#step" + counter + "\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" " +
+                "role=\"tab\" title=\"Step" + counter + "\">" +
                 "<span class=\"round-tab\">" +
                 "<b>Tab" + counter + "</b>" +
                 "</span>" +
@@ -453,8 +456,9 @@ function save(counter) {
             data: $('#addItemForm').serializeArray(),
             success: function (response) {
                 if (response) {
-                    if ($('#bulk').find('li').length > 1) {
-                        if (!list.prev().length < 1) {
+                    console.log($('#bulk').find('li').length);
+                    if ($('#bulk').find('li').length > 2) {
+                        if (!list.prev().length < 2) {
                             list.prev().addClass('active');
                             step.prev().addClass('active');
                         } else {
@@ -482,21 +486,31 @@ function save(counter) {
 
 //go back to inventory
 function detail_back() {
-    toggleDiv($('.inventory-tab'),$('.detail-tab '));
+    toggleDiv($('.inventory-tab'), $('.detail-tab '));
 }
 
 function addItemBack() {
     toggleDiv($('.inventory-tab'), $('.additemDiv'));
 }
+
 function report_back() {
-    toggleDiv($('.inventory-tab'),$('.generateReport'));
+    toggleDiv($('.inventory-tab'), $('.generateReport'));
 }
+
 function addSupplierBack() {
-    toggleDiv($('.supplier-tab'),$('.addSupplier'));
+    toggleDiv($('.supplier-tab'), $('.addSupplier'));
 }
 
 function addUserBack() {
-    toggleDiv($('.accounts-tab'),$('.AddUser'));
+    toggleDiv($('.accounts-tab'), $('.addUser'));
+}
+
+function EditUserBack() {
+    toggleDiv($('.accounts-tab'), $('.userDetail'));
+}
+
+function userdetailBack() {
+    toggleDiv($('.accounts-tab'), $('.userDetail'));
 }
 
 //view and edit serial
@@ -506,9 +520,6 @@ function viewSerial(id) {
     var $serialContent = $('#serial-tabcontent');
     var $serial = $('.Serial');
     var $inventory = $('.inventory-tab');
-
-    $('#anchor-serial').toggleClass('collapsed').attr('aria-expanded', 'true');
-    $('#data1').toggleClass('in');
     $.ajax({
         url: 'inventory/getSerial/' + id,
         dataType: 'JSON',
@@ -522,7 +533,6 @@ function viewSerial(id) {
             var i = 0;
             var $active = $('#serial-tabs').find('.active');
 
-
             if (data[0]['position'] === 'Custodian') {
                 button = "<br><div class=\"col-md-offset-3\">\n" +
                     "<button id=\"serialP\" type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Previous</button>\n" +
@@ -533,7 +543,6 @@ function viewSerial(id) {
             //if div reaches 10
             //create another div
             if (data.length >= 10) {
-                console.log(data.length);
                 for (i = 0; i < data.length; i++) {
                     if (serialTabCounter !== 1) {
                         divClass = "";
@@ -542,7 +551,7 @@ function viewSerial(id) {
                     input.push("<label>Serial " + (i + 1) +
                         "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                         "min=0  " +
-                        "class=\"form-control col-md-2\"></label><br>");
+                        "class=\"form-control\"></label><br>");
                     if (input.length === 10) {
                         div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
                         list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
@@ -558,13 +567,13 @@ function viewSerial(id) {
                     input.push("<label>Serial " + (i + 1) +
                         "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                         "min=0  " +
-                        "class=\"form-control col-md-2\"></label><br>");
+                        "class=\"form-control\"></label><br>");
 
                 }
                 div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
                 list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
                 $serialContent.append(div);
-                $('#tab1').html(input.join('') + button);
+                $('#tab1').toggleClass('show').html(input.join('') + button);
             }
             $ul.html(list);
 
@@ -580,7 +589,6 @@ function viewSerial(id) {
 
         }
     });
-    toggleDiv($serial, $inventory);
 
 }
 
@@ -594,19 +602,18 @@ function getserial(id) {
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
                 mooe = data[i].serial;
-                if (data[i].serial !== null && data[i].item_status === 'In-stock') {
+                if (data[i].serial !== null) {
                     serials.push("<input name=\"serial[]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
                 }
-                $('#serial').html(serials);
+                $('.serial').html(serials);
 
             }
             if (serials.length === 0 && (mooe !== null && mooe !== 'Distributed')) {
                 var qua = ("<input type=\'text\' name=\'quantity\' placeholder='quantity\' class=\'form-control col-md-7 col-xs-12\' required>");
-                document.getElementById('quant').innerHTML += qua;
-                //$('#quant').html(qua);
+                $('.quant').html(qua);
 
             }
         }
@@ -616,7 +623,7 @@ function getserial(id) {
 //toggle hidden class of element
 function toggleDiv(elementToShow, elementToHide) {
     elementToShow.removeAttr('hidden');
-    elementToHide.attr('hidden','hidden');
+    elementToHide.attr('hidden', 'hidden');
 }
 
 // add another item function
@@ -641,14 +648,15 @@ function init_bulkFucntion() {
                 .removeClass('active')
                 .find('#buttonCounter' + counter)
                 .attr('onclick', 'save(' + counter + ')'));
-            list = "<li id=\"list" + counter + "\" role=\"presentation\" class=\"listTab\"><a href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
-                "<span class=\"round-tab\">" +
-                "<b>Item" + counter + "</b>" +
-                "</span>" +
+            list = "<li id=\"list" + counter + "\" role=\"presentation\" class=\"nav-item\">" +
+                "<a class=\"nav-link \" href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
+                "Item" + counter +
                 "</a>" +
                 "</li>";
-            ($ul.append(list).find('li.active').next().find('a[data-toggle=tab]').click());
-            $ul.append('<li id="another"> <a href="#" role="tab" id="addanother">Add Another Item</a></li>');
+            ($ul.append(list).find('#list'+counter+' a').click());
+            $ul.append('<li id="another"><button id="addanother" class="btn btn-primary"\n' +
+                '                                            role="tab"><i class="ti-plus"></i>\n' +
+                '                                    </button></li>');
         });
 
 
@@ -656,7 +664,33 @@ function init_bulkFucntion() {
 
 
     console.log('init_bulkFunction');
+
+// import csv data
+
+        $('#import_csv').on('submit', function(event){
+            event.preventDefault();
+            $.ajax({
+                url:"inventory/import",
+                method:"POST",
+                data:new FormData(this),
+                contentType:false,
+                cache:false,
+                processData:false,
+                beforeSend:function(){
+                    $('#import_csv_btn').html('Importing...');
+                },
+                success:function(data)
+                {
+                    $('#import_csv')[0].reset();
+                    $('#import_csv_btn').attr('disabled', false);
+                    $('#import_csv_btn').html('Import Done');
+                    load_data();
+                }
+            })
+        });
+
 }
+
 
 //add input fields
 // function addinputFields() {
@@ -776,13 +810,12 @@ function nextTab(elem) {
 function prevTab(elem) {
     elem.prev().find('a[data-toggle="tab"]').click();
 }
+
 function select_dept() {
     if (document.getElementById('position').value === 'supply officer') {
-        document.getElementById('dment').style.display = 'block';
-        document.getElementById('posi').style.display = '';
+        document.getElementById('dmentselect').style.display = 'block';
     } else {
-        document.getElementById('dment').style.display = 'none';
-        document.getElementById('posi').style.display = 'none';
+        document.getElementById('dmentselect').style.display = 'none';
 
     }
 }

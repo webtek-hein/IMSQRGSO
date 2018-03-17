@@ -10,6 +10,11 @@ class Inventory extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->model('Inventory_model', 'inv');
+        //$this->load->library('csvimport');
+    }
+    function import()
+    {
+        $this->inv->insert();
     }
 
     public function save($counter)
@@ -40,7 +45,8 @@ class Inventory extends CI_Controller
                 'item' => $item['item_name'],
                 'description' => $item['item_description'],
                 'quantity' => $item['quantity'],
-                'unit' => $item['unit']
+                'unit' => $item['unit'],
+                'button' =>  'Accept'
             );
         }
         echo json_encode($data);
@@ -54,8 +60,10 @@ class Inventory extends CI_Controller
 
     public function distribute()
     {
-        $this->inv->distrib();
-        redirect('inventory');
+        $position = $this->session->userdata['logged_in']['position'];
+        $dept = $this->session->userdata['logged_in']['dept_id'];
+        $this->inv->distrib($position,$dept);
+       redirect('inventory');
     }
 
     public function edititem()
@@ -66,13 +74,18 @@ class Inventory extends CI_Controller
 
     public function detail($id)
     {
-        $list = $this->inv->viewdetail($id);
+        $position = $this->session->userdata['logged_in']['position'];
+        if($position === 'Supply Officer'){
+            $list = $this->inv->viewDetailperDept($id);
+        }else{
+            $list = $this->inv->viewdetail($id);
+        }
         $data = array();
         $viewser = "";
         foreach ($list as $detail) {
             if ($detail['item_type'] === 'CO' && $detail['serial'] === '1') {
-                $viewser = "<li ><a id = \"anchor-serial\" onclick=\"viewSerial($detail[item_det_id])\" data-toggle=\"tab\" 
-                                aria-expanded = \"true\" aria-controls = \"collapseOne\" ><i class=\"fa fa-folder-open\">
+                $viewser = "<li ><a onclick='viewSerial($detail[item_det_id])' data-toggle=\"collapse\" 
+                    href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\">
                               </i > View Serial</a></li>";
             }
             if ($this->session->userdata['logged_in']['position'] === 'Custodian') {
@@ -86,7 +99,7 @@ class Inventory extends CI_Controller
 
             } else {
                     $action = "<ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown - menu\">
-                                   <li><a href=\"#\" class=\" btn btn-modal btn-default btn-xs\" onclick=\"getserial($detail[item_det_id])\" data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .DistributeSP\">
+                                   <li><a href=\"#\" class=\" btn btn-modal btn-default btn-xs\" onclick=\"getserial($detail[item_det_id])\" data-toggle=\"modal\" data-id='$detail[dist_id]'data-target=\" .DistributeSP\">
                                     <i class=\" fa fa-share-square-o\" ></i > Distribute</a ></li >
                                 </ul >";
             }
@@ -100,6 +113,22 @@ class Inventory extends CI_Controller
                 'cost' => $detail['unit_cost'],
                 'sup' => $detail['supplier_name'],
                 'action' => $action,
+            );
+        }
+        echo json_encode($data);
+    }
+
+    public function mobiledetail($id)
+    {
+        $list = $this->inv->select_item($id);
+        $data = array();
+        foreach ($list as $item) {
+            $data[] = array(
+                'id' => $item['item_id'],
+                'item' => $item['item_name'],
+                'description' => $item['item_description'],
+                'quantity' => $item['quantity'],
+                'unit' => $item['unit']
             );
         }
         echo json_encode($data);
@@ -169,7 +198,7 @@ class Inventory extends CI_Controller
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
 
-        $list = $this->inv->getSerial($det_id);
+        $list = $this->inv->getSerial($det_id,$position);
 
         $data = array();
         foreach ($list as $serial) {
@@ -200,7 +229,6 @@ class Inventory extends CI_Controller
                 'name' => $item['item_name'],
                 'description' => $item['item_description'],
                 'quant' => $item['quantity'],
-                'rec' => $item['date_received'],
                 'unit' => $item['unit']
             );
         }
@@ -228,5 +256,11 @@ class Inventory extends CI_Controller
         $this->inv->editquant();
         redirect('inventory');
     }
+
+    public function acceptitem(){
+        $this->inv->accept();
+        redirect('inventory');
+    }
+
 
 }

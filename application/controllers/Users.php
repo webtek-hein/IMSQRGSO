@@ -26,21 +26,38 @@ class Users extends CI_Controller {
         }
         echo json_encode($data);
     }
-    public function addUser(){
-        $this->user_db->insertUser();
-        redirect('accounts');
+
+    public function getmobileuser($username)
+    {
+        $users = $this->user_db->getmobileuser($username);
+        foreach ($users as $list) {
+            $data[] = array(
+            'name' => $list['name'],
+            'email' => $list['email'],
+            'contactno' => $list['contact_no'],
+            'position' => $list['position'],
+            'department' => $list['department']
+        );
+        }
+        echo json_encode($data);
     }
+
     public function deactivate()
     {
         $id = $this->input->post('user_id');
         $this->user_db->deactivate_user($id);
         header('Location: '. base_url() . 'users');
     }
-    public function activate()
+
+    public function addUser(){
+        $this->user_db->insertUser();
+        redirect('accounts');
+
+    }
+        public function editUser()
     {
-        $id = $this->input->post('user_id');
-        $this->user_db->activate_user($id);
-        header('Location: '. base_url() . 'users');
+        $this->user_db->edituser();
+        redirect('accounts');
     }
 
 }

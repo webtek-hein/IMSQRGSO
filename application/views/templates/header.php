@@ -15,7 +15,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Inventory Management System</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="description" content="Inventory Management System - GSO">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">
@@ -32,8 +32,8 @@ if (isset($this->session->userdata['logged_in'])) {
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            src="assets/js/jquery-3.3.1.min.js"
+            integrity=""
             crossorigin="anonymous"></script>
 
 </head>
@@ -46,7 +46,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="./"><img src="assets/images/logo.png" alt="Logo"></a>
+            <a class="navbar-brand" href="./"><img src="assets/images/logo3.png" alt="Logo" hight="700" width="500"></a>
             <a class="navbar-brand hidden" href="./"><img src="assets/images/logo2.png" alt="Logo"></a>
         </div>
 
@@ -57,25 +57,25 @@ if (isset($this->session->userdata['logged_in'])) {
                     <a href="<?php echo base_url() ?>dashboard"><i class="menu-icon fa fa-dashboard"></i> DASHBOARD </a>
                 </li>
                 <li>
-                    <a href="Inventory"><i class="menu-icon fa fa-dashboard"></i>INVENTORY</a>
+                    <a href="Inventory"><i class="menu-icon fa fa-book"></i> INVENTORY</a>
                 </li>
 
                 <?php $position = $this->session->userdata['logged_in']['position'];
                 if ($position === 'Admin' || $position === 'Custodian') {
                     echo '<li id="dept">
-                                     <a href="department"><i class="menu-icon fa fa-dashboard"></i>DEPARTMENT</a>
+                                     <a href="department"><i class="menu-icon fa fa-institution"></i>DEPARTMENT</a>
                                   </li>' .
                         '<li id="li3">
-                                    <a href="Supplier"><i class="menu-icon fa fa-dashboard"></i>SUPPLIER</a>
+                                    <a href="Supplier"><i class="menu-icon fa fa-truck"></i>SUPPLIER</a>
                                  </li>';
                 }
                 if ($position === 'Admin') {
                     echo '<li id="li4">
-                                    <a href="Accounts"><i class="menu-icon fa fa-dashboard"></i>USERS</a>
+                                    <a href="Accounts"><i class="menu-icon fa fa-users"></i>USERS</a>
                                   </li>';
                 }
                 echo '<li id="li5">
-                                    <a href="Return"><i class="menu-icon fa fa-dashboard"></i>RETURNS</a>
+                                    <a href="Return"><i class="menu-icon fa fa-undo"></i>RETURNS</a>
                                   </li>';
                 ?>
                 <li class="menu-item-has-children dropdown">
@@ -94,7 +94,8 @@ if (isset($this->session->userdata['logged_in'])) {
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
-</aside><!-- /#left-panel -->
+</aside>
+<!-- /#left-panel -->
 <!-- Right Panel -->
 
 <div id="right-panel" class="right-panel">
@@ -223,5 +224,5 @@ if (isset($this->session->userdata['logged_in'])) {
             </div>
         </div>
 
-    </header><!-- /header -->
+    </header>
     <!-- Header-->

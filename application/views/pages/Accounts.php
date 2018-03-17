@@ -53,18 +53,21 @@
                     </div>
                 </div>
             </div>
-            <div hidden class="col-lg-12 AddUser ">
-                <div class="card-header">
-                    <button type="button" onclick="addUserBack()" class="btn btn-primary"> Back</a></button>
-                </div>
-                <div class="form-group">
-                <div class="card">
-                    <div class="card-body card-block">
+        </div>
+    </div>
+</div>
+<div hidden class="col-lg-12 addUser ">
+    <div class="card-header">
+        <button type="button" onclick="addUserBack()" class="btn btn-primary"> Back</a></button>
+    </div>
+    <div class="form-group">
+        <div class="card">
+            <div class="card-body card-block">
                         <form method="POST" action="Users/addUser" data-validate="parsley">
                             <div class="form-group">
-                                <label class=" form-control-label">First Name</label>
+                                <label class=" form-control-user">First Name</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                     <input type="text" name="firstname" id="firstname"
                                            placeholder="First Name" class="form-control has-feedback-left" required>
                                 </div>
@@ -73,7 +76,7 @@
                             <div class="form-group">
                                 <label class=" form-control-label">Last Name</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                     <input type="text" id="lastname" name="lastname" class="form-control has-feedback-left"
                                            placeholder="Last Name" required>
                                 </div>
@@ -82,7 +85,7 @@
                             <div class="form-group">
                                 <label class=" form-control-label">E-mail</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                                    <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                     <input id="email" class="form-control has-feedback-left" type="email" name="email"
                                            placeholder="E-mail"
                                            required>
@@ -101,7 +104,7 @@
                             <div class="form-group">
                                 <label class=" form-control-label">Username</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-usd"></i></div>
+                                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                     <input type="text" name="username" id="username" class="form-control has-feedback-left"
                                            placeholder="Username" required>
                                 </div>
@@ -110,16 +113,16 @@
                             <div class="form-group">
                                 <label class=" form-control-label">Password</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-male"></i></div>
+                                    <div class="input-group-addon"><i class="fa fa-key"></i></div>
                                     <input type="password" name="password" id="password" class="form-control has-feedback-left"
                                            placeholder="Password" required>
                                 </div>
-                                <small class="form-text text-muted">ex. ********</small>
+                                <small class="form-text text-muted">ex. Password_123</small>
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Position</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                                    <div class="input-group-addon"><i class="fa fa-briefcase"></i></div>
                                     <select class="fa fa-chevron-down align=" center" id="position" name="position"
                                     onclick='select_dept()' required>
                                     <option selected="true" disabled>--Choose Position--</option>
@@ -129,19 +132,10 @@
                                     </select>
                                 </div>
                             </div>
-                             <script>
-                                function select_dept() {
-                                    if (document.getElementById('position').value === 'supply officer') {
-                                        document.getElementById('dment').style.display  = 'block';
-                                    } else {
-                                        document.getElementById('posi').style.display = 'none';
-                                    }
-                                }
-                            </script>   
-                            <div class="form-group">
-                                <label class="form-control-label">Department</label>
+                            <div id="dmentselect" style="display:none;" class="form-group">
+                                <label class="form-control-label" >Department</label>
                                 <div class="input-group" >
-                                    <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                                    <div class="input-group-addon"><i class="fa fa-building"></i></div>
                                     <select id="dment" name="dment" type="button" class="deptopt form-control"></select>
                                 </div>
                             </div>
@@ -152,10 +146,99 @@
                                 </button>
                             </div>
                         </form>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
+<!-- end of add user -->
 
+<!--Edit Accounts-->
+            <div hidden class="col-lg-12 userDetail">
+                <div class="card">
+                    <div class="card-header">
+                        <button type="button" onclick="EditUserBack()" class="btn btn-primary"></i> Back</a></button>
+                    </div>
+                    <div class="card-body">
+                    <form id="editAccounts" class="form-horizontal form-label-left" action="inventory/edituser" method="POST">
+                        <div class="form-group">
+                            <label class=" form-control-user">First Name</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                <input type="text" name="firstname" id="firstname" placeholder="Rusell"
+                                       class="form-control has-feedback-left" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class=" form-control-label">Last Name</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                <input type="text" id="lastname" name="lastname" class="form-control has-feedback-left"
+                                       placeholder="Bayote" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class=" form-control-label">E-mail</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                <input id="email" class="form-control has-feedback-left" type="email" name="email"
+                                       placeholder="rusellbayote@gmail.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class=" form-control-label">Contact No.</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                                <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$"
+                                       title="ex. 0987654321" name="contactno" placeholder="09453265727" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class=" form-control-label">Username</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                <input type="text" name="username" id="username" class="form-control has-feedback-left"
+                                       placeholder="tuking" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class=" form-control-label">Position</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-briefcase"></i></div>
+                                <input type="password" name="password" id="password" class="form-control has-feedback-left"
+                                       placeholder="Custodian" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class=" form-control-label">Password</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                                <input type="password" name="password" id="password" class="form-control has-feedback-left"
+                                       placeholder="********" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class=" form-control-label">Department</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-building"></i></div>
+                                <input type="password" name="password" id="password" class="form-control has-feedback-left"
+                                       placeholder="CITY ENVIRONMENT & PARKS MANAGEMENT OFFICE" required>
+                            </div>
+                        </div>
+
+                            <button id="genReport_Buttons" class="btn btn-danger" data-toggle="tab"
+                                    aria-expanded="true" href="#">
+                                <i class="fa fa-close"></i><span> Deactivate Account</span></button> </div>
+
+
+                                    <button class="btn btn-info" type="submit" name="id" id="edtbutton">
+                                        <i class="fa fa-check"></i> save changes
+                                    </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!--End of Edit Accounts-->
