@@ -335,7 +335,7 @@ function serialize_forms() {
             console.log($(this).data());
         })
         .on('change input', function () {
-            console.log($(this).serialize());
+            $(this).serialize();
             $(this)
                 .find('button:submit')
                 .attr('disabled', $(this).serialize() === $(this).data('serialized'));

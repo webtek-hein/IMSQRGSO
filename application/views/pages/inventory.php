@@ -238,7 +238,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <form class="form-horizontal form-label-left input_mask" id="addItemForm" role="form"
+                        <form class="col-lg-6 form-horizontal form-label-left input_mask" id="addItemForm" role="form"
                               action="inventory/saveAll" method="POST" data-parsley-validate="">
                             <div id="bulkdiv" class="tab-content">
                                 <h3 id="addItemh3">Item Information</h3>
