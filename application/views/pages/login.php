@@ -54,15 +54,16 @@
 
                     <div class="form-group">
                         <label for="form2"> Username</label>
-                        <input type="text" id="form2" class="form-control input-lg">
+                        <input type="text" id="username" name="username" class="form-control input-lg" >
                     </div>
 
                     <div class="form-group">
                         <label for="form4">Password</label>
-                        <input type="password" id="form4" class="form-control input-lg">
+                        <input type="password" id="password" name="password" class="form-control input-lg">
 
                     </div>
-
+                             <div class="container-login100-form-btn">
+                            <input type="submit" class="login100-form-btn" value=" Login " name="submit"/>
                     <div class="text-center p-t-12">
                     <span class="txt1">
                             Forgot
