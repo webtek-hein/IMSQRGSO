@@ -26,7 +26,11 @@ class Users extends CI_Controller {
         }
         echo json_encode($data);
     }
-
+    public function edituser()
+    {
+        $this->user_db->edituser();
+        redirect('accounts');
+    }
     public function getmobileuser($username)
     {
         $users = $this->user_db->getmobileuser($username);
@@ -54,10 +58,6 @@ class Users extends CI_Controller {
         redirect('accounts');
 
     }
-        public function editUser()
-    {
-        $this->user_db->edituser();
-        redirect('accounts');
-    }
+ 
 
 }

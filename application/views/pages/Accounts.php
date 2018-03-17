@@ -159,29 +159,27 @@
                         <button type="button" onclick="EditUserBack()" class="btn btn-primary"></i> Back</a></button>
                     </div>
                     <div class="card-body">
-                    <form id="editAccounts" class="form-horizontal form-label-left" action="inventory/edituser" method="POST">
+                    <form id="editAccounts" class="form-horizontal form-label-left" action="users/edituser" method="POST">
                         <div class="form-group">
                             <label class=" form-control-user">First Name</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" name="firstname" id="firstname" placeholder="Rusell"
-                                       class="form-control has-feedback-left" required>
+                                <input type="text" name="firstname" id="firstname" 
+                                       class="form-control has-feedback-left" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Last Name</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" id="lastname" name="lastname" class="form-control has-feedback-left"
-                                       placeholder="Bayote" required>
+                                <input type="text" id="lastname" name="lastname" class="form-control has-feedback-left">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">E-mail</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                <input id="email" class="form-control has-feedback-left" type="email" name="email"
-                                       placeholder="rusellbayote@gmail.com" required>
+                                <input id="email" class="form-control has-feedback-left" type="email" name="email">
                             </div>
                         </div>
                         <div class="form-group">
@@ -189,7 +187,7 @@
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-phone"></i></div>
                                 <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$"
-                                       title="ex. 0987654321" name="contactno" placeholder="09453265727" required>
+                                       title="ex. 0987654321" id="contactno" name="contactno">
                             </div>
                         </div>
                         <div class="form-group">
@@ -197,39 +195,28 @@
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                 <input type="text" name="username" id="username" class="form-control has-feedback-left"
-                                       placeholder="tuking" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class=" form-control-label">Position</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-briefcase"></i></div>
-                                <input type="password" name="password" id="password" class="form-control has-feedback-left"
-                                       placeholder="Custodian" required>
+                                       placeholder="tuking">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Password</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-key"></i></div>
-                                <input type="password" name="password" id="password" class="form-control has-feedback-left"
-                                       placeholder="********" required>
+                                <input type="password" name="password" id="password" class="form-control has-feedback-left">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class=" form-control-label">Department</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-building"></i></div>
-                                <input type="password" name="password" id="password" class="form-control has-feedback-left"
-                                       placeholder="CITY ENVIRONMENT & PARKS MANAGEMENT OFFICE" required>
-                            </div>
-                        </div>
-
-                            <button id="genReport_Buttons" class="btn btn-danger" data-toggle="tab"
-                                    aria-expanded="true" href="#">
-                                <i class="fa fa-close"></i><span> Deactivate Account</span></button> </div>
-
-
+                                    <div class="form-group">
+                                        <label class="col-md-12">Status</label>
+                                        <div class="col-md-12">
+                                            <select id="status" data-parsley-group="set1"
+                                                    list="statuslist" name="Status"
+                                                    class="form-control" >
+                                                <option selected="true" disabled>--Activate or Deactivate--</option>
+                                                <option value="Inactive">Deactivate</option>
+                                                <option value="Active">Activate</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <button class="btn btn-info" type="submit" name="id" id="edtbutton">
                                         <i class="fa fa-check"></i> save changes
                                     </button>

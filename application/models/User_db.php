@@ -81,6 +81,8 @@ class User_db extends CI_Model {
 
         // convert to array
         $data1 = array(
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
             'email' => $user->email,
             'contact_no' => $user->contact_no,
             'password' => $user->password,
@@ -88,8 +90,10 @@ class User_db extends CI_Model {
         );
         // update user
         $data = array(
+            'first_name' => $this->input->post('firstname'),
+            'last_name' => $this->input->post('lastname'),
             'email' => $this->input->post('email'),
-            'contact_no' => $this->input->post('contact_no'),
+            'contact_no' => $this->input->post('contactno'),
             'password' => $this->input->post('password'),
             'status' => $this->input->post('status')
         );
