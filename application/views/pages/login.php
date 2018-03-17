@@ -16,24 +16,32 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/vendors/select2/select2.min.css">
 <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/util.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/main.css">
+    <link rel="stylesheet" type="text/css" id="bootstrap-css" href="<?php echo base_url() ?>assets/css/login.css">
 <!--===============================================================================================-->
+
+
 </head>
+
 <body>
     <?php if($this->session->flashdata('msg')): ?>
     <p><?php echo $this->session->flashdata('msg'); ?></p>
 <?php endif; ?>
-    <div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100">
-                <div class="login100-pic js-tilt" data-tilt>
-                    <img src="<?php echo base_url() ?>assets/images/log0.jpg" alt="IMG" height="280" width="300">
+    <div class="container-login100" >
+    <div class="container" style="background-color: grey; width:800px; height: 600px;">
+        <div class="col-md-10 col-md-offset-1 main" >
+            <div class="col-md-6 left-side" style="background-image: url('assets/images/bg3.jpg');">
+                <div class="login00-pic js-tilt" data-tilt>
+                    <img data-tilt src="<?php echo base_url() ?>assets/images/butterfly.png" alt="IMG" height="220" width="220" style=" margin-left:65px; margin-top: 115px;">
                 </div>
+            </div><!--col-sm-6-->
 
-                <method="POST" action="login/user_login_process">
-                    <span class="login100-form-title">
-                        Member Login
-                    </span>
+            <div class="col-md-6 right-side">
+                <h3>Login</h3>
+
+                <!--Form with header-->
+                <div class="form">
+
+                    <method="POST" action="login/user_login_process">
                     <?php echo form_open('Login/user_login_process'); ?>
                     <?php
                     echo "<div class='error_msg'>";
@@ -44,28 +52,19 @@
                     echo "</div>";
                     ?>
 
-                    <div class="wrap-input100 validate-input"  >
-                        <input class="input100" type="text" name="username" id="name" placeholder="username" data-required="true" data-error-message="Enter your Username"/>
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>
-                        </span>
+                    <div class="form-group">
+                        <label for="form2"> Username</label>
+                        <input type="text" id="form2" class="form-control input-lg">
                     </div>
-                     
-                    <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                        <input class="input100" type="password" name="password" id="password" placeholder="password" data-required="true"/>
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-lock" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    
-                    <div class="container-login100-form-btn">
-                            <input type="submit" class="login100-form-btn" value=" Login " name="submit"/>
+
+                    <div class="form-group">
+                        <label for="form4">Password</label>
+                        <input type="password" id="form4" class="form-control input-lg">
+
                     </div>
 
                     <div class="text-center p-t-12">
-                        <span class="txt1">
+                    <span class="txt1">
                             Forgot
                         </span>
                         <a class="txt2" href="<?php echo base_url()?>forget">
@@ -73,14 +72,17 @@
                         </a>
                         <?php echo form_close(); ?>
                     </div>
-            </div>
-        </div>
-    </div>
-    
-    
 
-    
-<!--===============================================================================================-->  
+                </div>
+                <!--/Form with header-->
+
+                </div><!--col-sm-6-->
+        </div>
+
+    </div><!--container-->
+    </div>
+
+<!--===============================================================================================-->
     <script src="assets/vendors/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
     <script src="assets/vendors/bootstrap/js/popper.js"></script>
@@ -98,7 +100,7 @@
         })
     </script>
 <!--===============================================================================================-->
-    <script src="js/main.js"></script>
+
 
 </body>
 </html>
