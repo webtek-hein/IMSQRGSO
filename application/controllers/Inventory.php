@@ -45,7 +45,8 @@ class Inventory extends CI_Controller
                 'item' => $item['item_name'],
                 'description' => $item['item_description'],
                 'quantity' => $item['quantity'],
-                'unit' => $item['unit']
+                'unit' => $item['unit'],
+                'button' =>  'Accept'
             );
         }
         echo json_encode($data);
@@ -255,5 +256,11 @@ class Inventory extends CI_Controller
         $this->inv->editquant();
         redirect('inventory');
     }
+
+    public function acceptitem(){
+        $this->inv->accept();
+        redirect('inventory');
+    }
+
 
 }

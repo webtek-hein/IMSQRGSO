@@ -545,4 +545,19 @@ class Inventory_model extends CI_Model
         $this->db->insert_batch('logs.editLog', $values);
 
     }
+
+    public function accept(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $id = $this->input->post('id');
+        $remarks = $this->input->post('remarks');
+        $accept = 'Accepted';
+
+
+        $this->db->set('accept',$accept);
+        $this->db->set('remarks',$remarks);
+        $this->db->where('item_id', $id);
+        $this->db->update('item');
+
+    }
+
 }
