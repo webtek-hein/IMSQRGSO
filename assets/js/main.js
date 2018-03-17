@@ -187,6 +187,9 @@ function init_inventory() {
     $('#headingZero').on('click', function () {
         toggleDiv($('.addUser'), $('.accounts-tab'));
     });
+    $('#user-table').on('click', function () {
+        toggleDiv($('.userDetail'), $('.accounts-tab'));
+    });
     $('select.itemtype').change(function () {
         $('.hideInput').toggleClass('hidden');
     });
@@ -253,11 +256,7 @@ function init_list() {
             },
             field: 'quant',
             title: 'QUANTITY DISTRIBUTED'
-        }, {
-            sortable: true,
-            field: 'rec',
-            title: 'DATE RECEIVED'
-        }, {
+        },{
             sortable: true,
             field: 'unit',
             title: 'UNIT'
@@ -336,7 +335,7 @@ function serialize_forms() {
             console.log($(this).data());
         })
         .on('change input', function () {
-            console.log($(this).serialize());
+            $(this).serialize();
             $(this)
                 .find('button:submit')
                 .attr('disabled', $(this).serialize() === $(this).data('serialized'));
@@ -406,7 +405,6 @@ function modal() {
     $('.modal').on('show.bs.modal', function (e) {
         //get data-id
         item_id = $(e.relatedTarget).data('id');
-
         //assign to a button with a class btn-modal
         $('.btn-modal').val(item_id);
     });
@@ -507,6 +505,10 @@ function addUserBack() {
     toggleDiv($('.accounts-tab'), $('.addUser'));
 }
 
+function EditUserBack() {
+    toggleDiv($('.accounts-tab'), $('.userDetail'));
+}
+
 function userdetailBack() {
     toggleDiv($('.accounts-tab'), $('.userDetail'));
 }
@@ -518,9 +520,6 @@ function viewSerial(id) {
     var $serialContent = $('#serial-tabcontent');
     var $serial = $('.Serial');
     var $inventory = $('.inventory-tab');
-
-    $('#anchor-serial').toggleClass('collapsed').attr('aria-expanded', 'true');
-    $('#data1').toggleClass('in');
     $.ajax({
         url: 'inventory/getSerial/' + id,
         dataType: 'JSON',
@@ -590,7 +589,6 @@ function viewSerial(id) {
 
         }
     });
-    toggleDiv($serial, $inventory);
 
 }
 
@@ -604,19 +602,18 @@ function getserial(id) {
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
                 mooe = data[i].serial;
-                if (data[i].serial !== null && data[i].item_status === 'In-stock') {
+                if (data[i].serial !== null) {
                     serials.push("<input name=\"serial[]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
                 }
-                $('#serial').html(serials);
+                $('.serial').html(serials);
 
             }
             if (serials.length === 0 && (mooe !== null && mooe !== 'Distributed')) {
                 var qua = ("<input type=\'text\' name=\'quantity\' placeholder='quantity\' class=\'form-control col-md-7 col-xs-12\' required>");
-                document.getElementById('quant').innerHTML = qua;
-                $('#quant').html(qua);
+                $('.quant').html(qua);
 
             }
         }
@@ -651,14 +648,15 @@ function init_bulkFucntion() {
                 .removeClass('active')
                 .find('#buttonCounter' + counter)
                 .attr('onclick', 'save(' + counter + ')'));
-            list = "<li id=\"list" + counter + "\" role=\"presentation\" class=\"listTab\"><a href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
-                "<span class=\"round-tab\">" +
-                "<b>Item" + counter + "</b>" +
-                "</span>" +
+            list = "<li id=\"list" + counter + "\" role=\"presentation\" class=\"nav-item\">" +
+                "<a class=\"nav-link \" href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
+                "Item" + counter +
                 "</a>" +
                 "</li>";
-            ($ul.append(list).find('li.active').next().find('a[data-toggle=tab]').click());
-            $ul.append('<li id="another"> <a href="#" role="tab" id="addanother">Add Another Item</a></li>');
+            ($ul.append(list).find('#list'+counter+' a').click());
+            $ul.append('<li id="another"><button id="addanother" class="btn btn-primary"\n' +
+                '                                            role="tab"><i class="ti-plus"></i>\n' +
+                '                                    </button></li>');
         });
 
 
@@ -666,7 +664,33 @@ function init_bulkFucntion() {
 
 
     console.log('init_bulkFunction');
+
+// import csv data
+
+        $('#import_csv').on('submit', function(event){
+            event.preventDefault();
+            $.ajax({
+                url:"inventory/import",
+                method:"POST",
+                data:new FormData(this),
+                contentType:false,
+                cache:false,
+                processData:false,
+                beforeSend:function(){
+                    $('#import_csv_btn').html('Importing...');
+                },
+                success:function(data)
+                {
+                    $('#import_csv')[0].reset();
+                    $('#import_csv_btn').attr('disabled', false);
+                    $('#import_csv_btn').html('Import Done');
+                    load_data();
+                }
+            })
+        });
+
 }
+
 
 //add input fields
 // function addinputFields() {
