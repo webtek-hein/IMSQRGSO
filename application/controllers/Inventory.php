@@ -89,7 +89,7 @@ class Inventory extends CI_Controller
                               </i > View Serial</a></li>";
             }
             if ($this->session->userdata['logged_in']['position'] !== 'none' ) {
-                if ($this->session->userdata['logged_in']['position'] === 'Custodian' ) {
+                if ($this->session->userdata['logged_in']['position'] !== 'Custodian' ) {
                  $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>";
                 }else{
                     $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
