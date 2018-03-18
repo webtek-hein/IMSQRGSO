@@ -105,7 +105,7 @@
                                 <label class=" form-control-label">Username</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                    <input type="text" name="username" id="username" class="form-control has-feedback-left"
+                                    <input type="text" pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." name="username" id="username" class="form-control has-feedback-left"
                                            placeholder="Username" required>
                                 </div>
                                 <small class="form-text text-muted">ex. george12g2</small>
@@ -114,7 +114,7 @@
                                 <label class=" form-control-label">Password</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-key"></i></div>
-                                    <input type="password" name="password" id="password" class="form-control has-feedback-left"
+                                    <input type="password" name="password" id="password" class="form-control has-feedback-left" pattern=".{4,}$"
                                            placeholder="Password" required>
                                 </div>
                                 <small class="form-text text-muted">ex. Password_123</small>
@@ -123,7 +123,7 @@
                                 <label class=" form-control-label">Position</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-briefcase"></i></div>
-                                    <select class="fa fa-chevron-down align=" center" id="position" name="position"
+                                    <select class="fa fa-chevron-down align" center" id="position" name="position"
                                     onclick='select_dept()' required>
                                     <option selected="true" disabled>--Choose Position--</option>
                                     <option value="admin">Admin</option>
@@ -133,7 +133,7 @@
                                 </div>
                             </div>
                             <div id="dmentselect" style="display:none;" class="form-group">
-                                <label class="form-control-label" >Department</label>
+                                <label class="form-control-label">Department</label>
                                 <div class="input-group" >
                                     <div class="input-group-addon"><i class="fa fa-building"></i></div>
                                     <select id="dment" name="dment" type="button" class="deptopt form-control"></select>
