@@ -186,6 +186,8 @@
                                             <i class="fa fa-check"></i> save
                                         </button>
                                     </form>
+<!--                                    Here @glo-->
+
                                 </div>
                                 <!--Detail-->
                                 <div class="tab-pane fade show active" id="Detail_Det" role="tabpanel"

@@ -98,9 +98,9 @@ function detail(id) {
         }
     });
 }
-
+var counter = 1;
 function insertRow() {
-    $('#detail-tab-table').find('tr:last').after('<tr data-index="0"> ' +
+    $('#detail-tab-table').find('tr:last').after('<tr id=detTab'+counter+'> ' +
         '<td style=""><input name="PO" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
         '<td style=""><input name="del" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="rec" class="form-control form-control-sm" type="date"></td> ' +
@@ -109,17 +109,21 @@ function insertRow() {
         '<td style=""><input name="supp" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><input name="quant" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><input name="or" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><button type="button" onclick="addquant()" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
+        '<td style=""><button type="button" onclick="addquant(counter-1)" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
         '</tr>');
+    counter++;
 }
 
-function addquant() {
+function addquant(counter) {
     var $item_det_id = $('#DetailDropDn').find('a').data('id');
     $.ajax({
         url: 'inventory/addquant/' + $item_det_id,
         type: 'POST',
         data: $('#addQuant').serialize(),
         success: function (result) {
+            console.log( $('#detTab'+counter).find('input').replaceWith(function () {
+                return $('<p/>', {html: this.innerHTML});
+            }));
         }
     });
 }
