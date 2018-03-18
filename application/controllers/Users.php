@@ -40,7 +40,7 @@ class Users extends CI_Controller {
             'email' => $list['email'],
             'contactno' => $list['contact_no'],
             'position' => $list['position'],
-            'department' => $list['department']
+            'department' => ucwords(strtolower($list['department']))
         );
         }
         echo json_encode($data);

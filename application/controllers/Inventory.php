@@ -129,7 +129,8 @@ class Inventory extends CI_Controller
                 'description' => $list['item_description'],
                 'unit_cost' => $list['unit_cost'],
                 'item_type' => $list['item_type'],
-                'expiration' => $list['expiration_date']
+                'expiration' => $list['expiration_date'],
+                'employee' => $list['employee']
             );
         }
         echo json_encode($data);
