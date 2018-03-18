@@ -52,10 +52,9 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    public function addquant()
+    public function addquant($item_det_id)
     {
-        $this->inv->addquant();
-        redirect('inventory');
+        $this->inv->addquant($item_det_id);
     }
 
     public function distribute()
@@ -110,6 +109,7 @@ class Inventory extends CI_Controller
                 'exp' => $detail['expiration_date'],
                 'cost' => $detail['unit_cost'],
                 'sup' => $detail['supplier_name'],
+                'or' => $detail['OR_no'],
                 'action' => $action,
             );
         }
