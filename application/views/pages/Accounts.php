@@ -136,7 +136,40 @@
                                 <label class="form-control-label">Department</label>
                                 <div class="input-group" >
                                     <div class="input-group-addon"><i class="fa fa-building"></i></div>
-                                    <select id="dment" name="dment" type="button" class="deptopt form-control"></select>
+                                    <select class="fa fa-chevron-down align" center" id="dment" name="dment" type="button" >
+                                        <option selected="true" disabled>--Choose Department--</option>
+                                        <option value="11">CITY ENVIRONMENT & PARKS MANAGEMENT OFFICE</option>
+                                        <option value="12">BUREAU OF FIRE PREVENTION AND SAFETY</option>
+                                        <option value="13">GENERAL SERVICES OFFICE</option>
+                                        <option value="14">HEALTH SERVICES OFFICE</option>
+                                        <option value="15">OFFICE OF THE CITY HUMAN RESOURCE CENTER</option>
+                                        <option value="16">CITY LEGAL OFFICE</option>
+                                        <option value="17">CITY LIBRARY</option>
+                                        <option value="18">CITY MAYOR'S OFFICE</option>
+                                        <option value="19"> 
+MUNICIPAL TRIAL COURT IN CITIES</option>
+                                        <option value="20">OFFICE OF THE CITY PLANNING AND DEVELOPMENT</option>
+                                        <option value="21">CITY POLICE OFFICE</option>
+                                        <option value="22">PAROLE AND PROBATION OFFICE</option>
+                                        <option value="23">CITY PROSECUTOR'S OFFICE</option>
+                                        <option value="24">PUBLIC ATTORNEY'S OFFICE</option>
+                                        <option value="25">REGIONAL TRIAL COURT</option>
+                                        <option value="26">REGISTRY OF DEEDS</option>
+                                        <option value="27">SANGGUNIANG PANGLUNGSOD</option>
+                                        <option value="28">OFFICE OF THE CITY SOCIAL WELFARE DEVELOPMENT</option>
+                                        <option value="29">CITY TREASURER'S OFFICE</option>
+                                        <option value="110">CITY ENGINEER'S OFFICE</option>
+                                        <option value="111">CITY ACCOUNTANT'S OFFICE</option>
+                                        <option value="112">CITY ADMINISTRATOR'S OFFICE</option>
+                                        <option value="113">CITY ASSESSOR'S OFFICE</option>
+                                        <option value="114">OFFICE OF THE CITY AUDITOR</option>
+                                        <option value="115">    
+CITY BUDGET OFFICE</option>
+                                        <option value="116">CITY BUILDING AND ARCHITECTURE OFFICE</option>
+                                        <option value="117">CITY JAIL MANAGEMENT & PENOLOGY</option>
+                                        <option value="118">OFFICE OF THE LOCAL CIVIL REGISTRAR</option>
+                                        <option value="119">DEPARTMENT OF EDUCATION</option>
+                                    </select>
                                 </div>
                             </div>
 
