@@ -666,7 +666,12 @@ function getserial(id) {
 
             }
             if (serials.length === 0 && (mooe !== null && mooe !== 'Distributed')) {
-                var qua = ("<input type=\'text\' name=\'quantity\' placeholder='quantity\' class=\'form-control col-md-7 col-xs-12\' required>");
+                var qua = ("<div class=\"quant form-group\">" +
+                    "<label>Quantity<span class=\"required\">*</span>" +
+                    "<input type=\'number\' name=\'quantity\' placeholder='quantity\' " +
+                    "class=\'form-control col-md-7 col-xs-12\' required>" +
+                    "</label>" +
+                    "</div>");
                 $('.quant').html(qua);
 
             }

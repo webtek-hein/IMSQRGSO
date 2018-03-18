@@ -790,7 +790,7 @@
 <!-- end of accept -->
 
 <!--Return-->
-<form role="form" class="form-horizontal form-label-left" action="inventory/return"
+<form role="form" class="form-horizontal form-label-left" action="inventory/deptreturn"
       method="POST" data-validate="parsley">
     <div class="Return modal fade" id="return" tabindex="-1" role="dialog"
          aria-labelledby="largeModalLabel"
@@ -805,6 +805,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <div class="serial col-md-10">
+                            <label for="name"></label>
+                        </div>
+                    </div>
+                    <div class=" quant form-group">
                         <label>Quantity<span
                                     class="required">*</span>
                             <input type="number" name="quantity" min=0 class="form-control col-md-7 col-xs-12"

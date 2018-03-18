@@ -453,8 +453,15 @@ class Inventory_model extends CI_Model
             }else{
                 var_dump($id);
                 $quantity = $this->input->post('quantity');
-                $mooedata = array('dist_id'=>$id,'employee'=>$employee,'quantity'=>$quantity);
+                $item_id = $this->db->select('item_id')->where('item_id', $id)->get('distribution');
+
+                $mooedata = array('dist_id'=>$id,'employee'=>$employee,'quantity_distributed'=>$quantity);
+
                 $this->db->insert('mooedistribution',$mooedata);
+
+                $this->db->set('quantity_distributed','quantity_distributed-' . $quantity, FALSE);
+                $this->db->where($item_id);
+                $this->db->update('distribution');
             }
         }
 
@@ -581,16 +588,23 @@ class Inventory_model extends CI_Model
 
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $id = $this->input->post('id');
-
-
+        $insert_id = $this->db->insert_id();
+        $quantity_returned = $this->input->post('quantity');
         $data = array(
-            'quantity' => $this->input->post('quantity'),
-            'date returned' => $this->input->post('returndate'),
+            'return_quantity' =>  $quantity_returned,
+            'date_returned' => $this->input->post('returndate'),
             'receiver' => $this->input->post('receiver'),
             'remarks' => $this->input->post('remarks'),
+            'item_det_id' => $id
 
         );
-        $this->db->insert('returns', $data);
+        $this->db->insert('returnitem', $data);
+
+        $item_id = $this->db->select('item_id')->where('item_id', $id)->get('distribution');
+        //$quantity = $this->db->select('quantity_distributed')->where('item_id', $id)->get('distribution');
+        $this->db->set('quantity_distributed','quantity_distributed-' . $quantity_returned, FALSE);
+        $this->db->where($item_id);
+        $this->db->update('distribution');
     }
 
 }
