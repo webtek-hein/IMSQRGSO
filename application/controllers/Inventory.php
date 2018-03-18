@@ -265,5 +265,13 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
+    public function deptreturn(){
+        $this->inv->returnitem();
+        redirect('inventory');
+    }
+
+
+
+
 
 }

@@ -577,6 +577,20 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('item');
         return $query->result_array();
     }
+    public function returnitem(){
 
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $id = $this->input->post('id');
+
+
+        $data = array(
+            'quantity' => $this->input->post('quantity'),
+            'date returned' => $this->input->post('returndate'),
+            'receiver' => $this->input->post('receiver'),
+            'remarks' => $this->input->post('remarks'),
+
+        );
+        $this->db->insert('returns', $data);
+    }
 
 }
