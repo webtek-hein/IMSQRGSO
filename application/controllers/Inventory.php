@@ -124,17 +124,18 @@ class Inventory extends CI_Controller
         $data = array();
         foreach ($details as $list) {
             $data[] = array(
-                'id' => $list['serial.serial_id'],
-                'item_name' => $list['item.item_name'],
-                'serial' => $list['serial.serial'],
-                'account_code' => $list['account_code.description'],
-                'description' => $list['item.item_description'],
-                'unit_cost' => $list['itemdetail.unit_cost'],
-                'item_type' => $list['item.item_type'],
-                'expiration' => $list['itemdetail.expiration_date']
+                'id' => $list['serial_id'],
+                'item_name' => $list['item_name'],
+                'serial' => $list['serial'],
+                'account_code' => $list['description'],
+                'description' => $list['item_description'],
+                'unit_cost' => $list['unit_cost'],
+                'item_type' => $list['item_type'],
+                'expiration' => $list['expiration_date']
             );
         }
         echo json_encode($data);
+            
     }
 
     public function getdept()
