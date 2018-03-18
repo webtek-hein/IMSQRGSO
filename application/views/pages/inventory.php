@@ -93,18 +93,12 @@
                         </div>
                         <div class="card-body">
                             <ul class="nav nav-tabs" id="DetailTab" role="tablist">
-                                <?php if ($position !== 'Admin') {
-                                    echo '<li class="nav-item">
-                                <a class="nav-link" id="DetInfo" data-toggle="tab" href="#Detail_Info"
-                                   role="tab"
-                                   aria-controls="info" aria-selected="true">Information</a>
-                            </li>';
-                                }
-                                ?>
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det"
-                                       role="tab"
-                                       aria-controls="detail" aria-selected="false">Details</a>
+                                    <a class="nav-link" id="DetInfo" data-toggle="tab" href="#Detail_Info"
+                                   role="tab" aria-controls="info" aria-selected="true">Information</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det" role="tab" aria-controls="detail" aria-selected="false">Details</a>
                                 </li>
                             </ul>
                             <div class="tab-content pl-3 p-1" id="myTabContent">
@@ -183,9 +177,12 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
-                                                <i class="fa fa-check"></i> save
-                                            </button>
+                                            <?php if ($position === 'Custodian') {
+                                                echo '<button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
+                                                    <i class="fa fa-check"></i> save
+                                                </button>';
+                                            }
+                                            ?>
                                         </form>
 
                                     </div>
@@ -218,7 +215,10 @@
                                     <table id="detail-tab-table" data-search="true"
                                            class="table table-no-bordered table-hover">
                                     </table>
-                                    <a href="#" onclick="insertRow()">Add new detail</a>
+                                    <?php if ($position === 'Custodian'){
+                                    echo '<a href="#" onclick="insertRow()">Add new detail</a>';
+                                    }
+                                    ?>
                                     <!-- View Serial-->
                                     <div id="serialpage" class="Serial collapse col-lg-12">
                                         <div class="card">

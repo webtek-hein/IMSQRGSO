@@ -158,9 +158,13 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
-                                        <i class="fa fa-check"></i> save
-                                    </button>
+                                    <?php $position = $this->session->userdata['logged_in']['position'];
+                                    if ($position === 'Custodian') {
+                                        echo '<button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
+                                            <i class="fa fa-check"></i> save
+                                        </button>';
+                                    }
+                                    ?>
                                 </form>
 
                             </div>
