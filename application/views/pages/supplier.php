@@ -89,3 +89,70 @@
     </div>
 </div>
 </div>
+
+<!-- lagay ko dito pm-->
+
+                <div class="card">
+                    <div class="card-header">
+                        <button type="button" onclick="addSupplierBack()" class="btn btn-primary"></i> Back</a></button>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" id="DetailTab" role="tablist">
+                                <?php if ($position !== 'Admin') {
+                                    echo '<li class="nav-item">
+                                <a class="nav-link" id="DetInfo" data-toggle="tab" href="#Detail_Info"
+                                   role="tab"
+                                   aria-controls="info" aria-selected="true">Information</a>
+                            </li>';
+                                }
+                                ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det"
+                                       role="tab"
+                                       aria-controls="detail" aria-selected="false">Details</a>
+                                </li>
+                            </ul>
+                        <div class="tab-content pl-3 p-1 AddSup hidden" id="myTabContent">
+                             <div class="tab-pane fade" id="Detail_Info" role="tabpanel"
+                                     aria-labelledby="Information-tab">
+                                    <form id="editInformation"
+                                          class="serialForm form-horizontal form-label-left"
+                                          action="supplier/addSupplier" method="POST" data-validate="parsley">
+
+                                
+
+                                <div class="form-group">
+                                    <label for="Supplier Name" class="col-md-12">Supplier Name</label>
+                                    <div class="col-md-12">
+                                    <input type="text" name="supplier" id="supplier-name"
+                                           data-required="true"
+                                           class="form-control"
+                                           data-error-message="Please enter the Supplier Name" required>
+                                </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Address" class="col-md-12">Address</label>
+                                    <div class="col-md-12">
+                                    <input type="text" id="address" name="address"
+                                           data-required="true"
+                                           data-parsley-minlength="1"
+                                            data-parsley-maxlength="200"
+                                           class="form-control has-feedback-left"
+                                           data-error-message="Please Enter the Address" required>
+                                </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Address" class=" form-control-label">Contact Number</label>
+                                    <div class="col-md-12">
+                                    <input id="contactno" class="form-control has-feedback-left"
+                                           type="text" name="contact" data-required="true"
+                                           data-parsley-minlength="1"
+                                           data-parsley-maxlength="11"
+                                           data-error-message="Please Enter Contact Number" required>
+                                </div>
+                                </div>
+                                <button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
+                                            <i class="fa fa-check"></i> save
+                                        </button>
+                                    </form>
+                                </div>
