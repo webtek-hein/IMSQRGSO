@@ -724,6 +724,8 @@
 </div>
 <!--End of Add Item -->
 <!-- Add Quantity -->
+<form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
+      novalidate>
 <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -734,8 +736,6 @@
                 <h4 class="modal-title" id="myModalLabel">Edit Quantity</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
-                      novalidate>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span
                                     class="required">*</span>
@@ -759,21 +759,20 @@
         </div>
     </div>
 </div>
+</form>
 <!-- end of add quantity -->
 
 <!-- accept -->
-<form class="form-horizontal form-label-left" method="POST" action="inventory/accept">
-    <div class="Accept modal fade" id="accept_modal" tabindex="-1" role="dialog" aria-labelledby="distrib-modal"
+<form class="form-horizontal form-label-left" method="POST" action="inventory/acceptitem">
+    <div class="Accept modal fade" id="accept_modal" tabindex="-1" role="dialog"
          aria-hidden="true">
         <div class="modal-dialog">
 
             <div class="modal-content">
-                <h4 class="modal-title" id="myModalLabel">Are you sure you want to Accept?</h4>
+                <h5 class="modal-title" id="myModalLabel">Are you sure you want to Accept?</h5>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="name">Remarks<span
-                                    class="required">*</span>
-                        </label>
+                        <label for="name">Remarks</label>
                         <textarea class="form-control" name="remarks" id="remarks"></textarea>
                     </div>
                 </div>
