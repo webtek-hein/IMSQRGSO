@@ -89,21 +89,23 @@ class Inventory extends CI_Controller
                               </i > View Serial</a></li>";
             }
             if ($this->session->userdata['logged_in']['position'] !== 'none' ) {
-                if ($this->session->userdata['logged_in']['position'] !== 'Custodian' ) {
-                 $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>";
-                }else{
-                    $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
+                if ($this->session->userdata['logged_in']['position'] !== 'Custodian') {
+                    $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>";
+                    if ($this->session->userdata['logged_in']['position'] === 'Supply Officer') {
+                        $action = "<a href=\'#\' type=\'button\' class=\" btn btn-modal btn-outline-success\" onclick=\"getserial($detail[item_det_id])\" data-toggle=\"modal\" data-id='$detail[dist_id]'data-target=\" .DistributeSP\">Distribute</a >
+                               <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]' class=\"btn btn-success\">Accept</a>
+                               <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]'  class=\"btn btn-danger\">Return</a>";
+                    }
+                }else {
+                        $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <li><a href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a ></li >
                             <li><a href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
                             <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ></li >$viewser
                     </ul>";
-                }
-            } else {
-                    $action = "<a href=\'#\' type=\'button\' class=\" btn btn-modal btn-outline-success\" onclick=\"getserial($detail[item_det_id])\" data-toggle=\"modal\" data-id='$detail[dist_id]'data-target=\" .DistributeSP\">Distribute</a >
-                               <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]' class=\"btn btn-success\">Accept</a>
-                               <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]'  class=\"btn btn-danger\">Return</a>";
+                    }
+
             }
 
             $data[] = array(
