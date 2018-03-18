@@ -98,6 +98,23 @@ function detail(id) {
         }
     });
 }
+function userDetail(id) {
+    var item;
+    $.ajax({
+       url: 'uses/getuser/' + id,
+        dataType: 'JSON',
+        success: function (data) {
+            $('#edtsave').val(id);
+            $('#first').val(data.firstname);
+            $('#last').val(data.lastname);
+            $('#em').val(data.email);
+            $('#cno').val(data.contactno);
+            $('#uname').val(data.useraname);
+            $('#pword').text(data.password);
+            $('#stat').val(data.status);
+        }
+    });
+}
 var counter = 1;
 function insertRow() {
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab'+counter+'> ' +

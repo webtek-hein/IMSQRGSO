@@ -26,6 +26,21 @@ class Users extends CI_Controller {
         }
         echo json_encode($data);
     }
+    public function getUser($id)
+    {
+        $list = $this->inv->getUser($id);
+        $data = array(
+            'firstname' => $list->first_name,
+            'lastname' => $list->last_name,
+            'email' => $list->email,
+            'contactno' => $list->contact_no,
+            'username' => $list->username,
+            'password' => $list->password,
+            'status' => $list->status,
+
+        );
+        echo json_encode($data);
+    }
     public function edituser()
     {
         $this->user_db->edituser();

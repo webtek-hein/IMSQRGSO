@@ -51,13 +51,6 @@ class User_db extends CI_Model {
         return $query->result_array();
     }
 
-    public function deactivate_user($id)
-    {
-        $this->db->set('status','deactivated')
-            ->where('user_id',$id)
-            ->update('user');
-        }
-        
     public function insertUser(){
         $data = array(
             'first_name'=> $this->input->post('firstname'),
@@ -116,5 +109,12 @@ class User_db extends CI_Model {
 
         //insert to edit log table
         $this->db->insert_batch('logs.editLog', $values);
+    }
+
+    public function getUser($id)
+    {
+        $this->db->where('user_id', $id);
+        $query = $this->db->get('user');
+        return $query->row();
     }
 }
