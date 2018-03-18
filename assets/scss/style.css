@@ -12,6 +12,7 @@
 --------------------------------------------------------- */
 /* Bootstrap */
 @import url(../css/animate.css);
+
 tr{
   cursor: pointer;
 }

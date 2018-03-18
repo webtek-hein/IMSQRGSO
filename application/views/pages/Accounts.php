@@ -141,7 +141,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success"><i
+                                <button type="submit" name="id" id="edtsave" class="btn btn-success"><i
                                             class="fa fa-send"></i> Submit
                                 </button>
                             </div>
@@ -164,7 +164,7 @@
                             <label class=" form-control-user">First Name</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" name="firstname" id="firstname" 
+                                <input type="text" name="first" id="first" 
                                        class="form-control has-feedback-left" >
                             </div>
                         </div>
@@ -172,14 +172,14 @@
                             <label class=" form-control-label">Last Name</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" id="lastname" name="lastname" class="form-control has-feedback-left">
+                                <input type="text" id="last" name="last" class="form-control has-feedback-left">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">E-mail</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                <input id="email" class="form-control has-feedback-left" type="email" name="email">
+                                <input id="em" class="form-control has-feedback-left" type="email" name="em">
                             </div>
                         </div>
                         <div class="form-group">
@@ -187,28 +187,28 @@
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-phone"></i></div>
                                 <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$"
-                                       title="ex. 0987654321" id="contactno" name="contactno">
+                                       title="ex. 0987654321" id="cno" name="cno">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Username</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" name="username" id="username" class="form-control has-feedback-left">
+                                <input type="text" name="uname" id="uname" class="form-control has-feedback-left">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Password</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-key"></i></div>
-                                <input type="password" name="password" id="password" class="form-control has-feedback-left">
+                                <input type="password" name="pword" id="pword" class="form-control has-feedback-left">
                             </div>
                         </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Status</label>
                                         <div class="col-md-12">
-                                            <select id="status" data-parsley-group="set1"
-                                                    list="statuslist" name="Status"
+                                            <select id="stat" data-parsley-group="set1"
+                                                    list="statuslist" name="Stat"
                                                     class="form-control" >
                                                 <option selected="true" disabled>--Activate or Deactivate--</option>
                                                 <option value="Inactive">Deactivate</option>
