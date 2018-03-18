@@ -47,8 +47,34 @@ $(document).ready(function () {
 // 	$('.user-menu').parent().toggleClass('open');
 // });
 
-function editSupplier(){
-    alert('test');
+function editSupplier(id){
+    var $detailtable = $('#editSupplier-tab-table');
+    var supplier;
+        $.ajax({
+        url: 'supplier/getsupplier/' + id,
+        dataType: 'JSON',
+        success:function(data){
+            $('#edtbuttonsupplier').val(id);
+            $('#supplier-name').val(data.name);
+            $('#address').val(data.location);
+            $('#contactno').val(data.contact);
+            toggleDiv($('.detail-tab '), $('.supplier-tab'));
+            $detailtable.bootstrapTable('refresh', {url: 'supplier/detail/' + id})
+                .bootstrapTable({
+                    url: 'supplier/detail/' + id,
+                    columns: [{
+                        field: 'supplier_name',
+                        title: 'Supplier name'
+                    }, {
+                        field: 'location',
+                        title: 'Address'
+                    }, {
+                        field: 'contact',
+                        title: 'Contact no'
+                    }]
+                });
+        }
+    });
 }
 // go to detail
 function detail(id) {
