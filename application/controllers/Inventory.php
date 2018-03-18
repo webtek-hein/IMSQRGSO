@@ -97,10 +97,9 @@ class Inventory extends CI_Controller
                     </ul>";
 
             } else {
-                    $action = "<button class=\" btn btn-modal btn-outline-success\" onclick=\"getserial($detail[item_det_id])\" data-toggle=\"modal\" data-id='$detail[dist_id]'data-target=\" .DistributeSP\">
-                                    <i class=\" fa fa-share-square-o\" ></i > Distribute</button >
-                                    <button data-toggle=\"modal\" data-target=\" . Accept\" type=\"submit\" class=\"btn btn - success\">Accept</button>
-                                 <button data-toggle=\"modal\" data-target=\" .Return\" type=\"submit\" class=\"btn btn - danger\">Return</button>";
+                    $action = "<button class=\" btn btn-modal btn-outline-success\" onclick=\"getserial($detail[item_det_id])\" data-toggle=\"modal\" data-id='$detail[dist_id]'data-target=\" .DistributeSP\">Distribute</button >
+                               <button data-toggle=\"modal\" data-target=\".Accept\" type=\"submit\" class=\"btn btn-success\">Accept</button>
+                               <button data-toggle=\"modal\" data-target=\".Return\" type=\"submit\" class=\"btn btn-danger\">Return</button>";
             }
 
             $data[] = array(
