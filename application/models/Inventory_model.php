@@ -567,10 +567,10 @@ class Inventory_model extends CI_Model
         $accept = 'Accepted';
 
 
-        $this->db->set('accept',$accept);
+        $this->db->set('status',$accept);
         $this->db->set('remarks',$remarks);
         $this->db->where('item_id', $id);
-        $this->db->update('item');
+        $this->db->update('distribution');
 
     }
     public function mobiledetail(){
