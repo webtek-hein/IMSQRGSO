@@ -136,7 +136,7 @@ function userDetail(id) {
         dataType: 'JSON',
         success: function (data) {
             toggleDiv($('.userDetail'), $('.accounts-tab'));
-            $('#edtsave').val(id);
+            $('#edtbutton').val(id);
             $('#first').val(data.firstname);
             $('#last').val(data.lastname);
             $('#em').val(data.email);
