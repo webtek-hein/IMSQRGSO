@@ -25,9 +25,13 @@
             <div class="col-lg-12 supplier-tab">
                 <div class="card">
                     <div class="card-header">
-                        <button onclick="addSupplier()" class="btn btn-primary">
-                            <i class="fa fa-plus"></i><span> Add Supplier</span>
-                        </button>
+                        <?php $position = $this->session->userdata['logged_in']['position'];
+                        if ($position === 'Custodian') {
+                            echo '<button onclick="addSupplier()" class="btn btn-primary">
+                                <i class="fa fa-plus"></i><span> Add Supplier</span>
+                            </button>';
+                        }
+                        ?>
                     </div>
                     <div class="card-body">
                         <div class="tab-content pl-3 p-1" id="myTabContent">
