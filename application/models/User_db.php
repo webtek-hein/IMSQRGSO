@@ -35,7 +35,7 @@ class User_db extends CI_Model {
 
     public function get_users()
     {
-         $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
+         $this->db->select('user_id,CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
          user.username,user.position,dept.department,user.status');
         $this->db->join('gsois.department dept','dept.dept_id = user.dept_id','left');
         $query = $this->db->get('user');

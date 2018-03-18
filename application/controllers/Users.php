@@ -15,6 +15,7 @@ class Users extends CI_Controller {
         $users = $this->user_db->get_users();
         foreach ($users as $list) {
             $data[] = array(
+            'id' => $list['user_id'],
             'name' => $list['name'],
             'email' => $list['email'],
             'contactno' => $list['contact_no'],
@@ -28,7 +29,7 @@ class Users extends CI_Controller {
     }
     public function getUser($id)
     {
-        $list = $this->inv->getUser($id);
+        $list = $this->user_db->getUser($id);
         $data = array(
             'firstname' => $list->first_name,
             'lastname' => $list->last_name,
