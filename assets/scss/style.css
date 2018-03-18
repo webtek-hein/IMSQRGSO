@@ -12,6 +12,9 @@
 --------------------------------------------------------- */
 /* Bootstrap */
 @import url(../css/animate.css);
+tr{
+  cursor: pointer;
+}
 .gaugejs-wrap {
   position: relative;
   margin: 0 auto; }

@@ -2,26 +2,30 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Login extends CI_Controller {
+class Login extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
-        $this->load->helper(array('form','url'));
+        $this->load->helper(array('form', 'url'));
         // Load database
         $this->load->model('user_db');
         $this->load->library('form_validation');
     }
+
     // Check for user login process
 
-    public function user_login_process() {
+    public function user_login_process()
+    {
 
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
-            if(isset($this->session->userdata['logged_in'])){
+            if (isset($this->session->userdata['logged_in'])) {
                 $this->load->view('templates/header');
-            }else{
+            } else {
                 $this->load->view('pages/login');
             }
         } else {
@@ -49,11 +53,11 @@ class Login extends CI_Controller {
                         'lastname' => $result[0]->last_name,
                         'email' => $result[0]->email,
                         'contact_no' => $result[0]->contact_no,);
-                    $this->session->set_userdata('user_in',$user_data);
+                    $this->session->set_userdata('user_in', $user_data);
                     $this->session->set_userdata('logged_in', $session_data);
                     if ($result[0]->position == 'supplyofficer') {
                         redirect(base_url() . 'supplyofficer/dashboard');
-                    }else if ($result[0]->position == 'admin') {
+                    } else if ($result[0]->position == 'admin') {
                         redirect(base_url() . 'admin/dashboard');
                     } else {
                         redirect(base_url() . 'dashboard');
@@ -67,8 +71,10 @@ class Login extends CI_Controller {
             }
         }
     }
+
 // Logout from admin page
-    public function logout() {
+    public function logout()
+    {
 // Removing session data
         $sess_array = array(
             'username' => ''
