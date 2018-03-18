@@ -332,7 +332,6 @@ function serialize_forms() {
     $('.serialForm')
         .each(function () {
             $(this).data('serialized', $(this).serialize());
-            console.log($(this).data());
         })
         .on('change input', function () {
             $(this).serialize();
@@ -571,7 +570,8 @@ function viewSerial(id) {
 
                 }
                 div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
-                list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
+                list.push("<li class=\"" + listClass + "\"><a class=\"nav-link\" data-toggle=\"tab\" href=\"#tab" +
+                    serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
                 $serialContent.append(div);
                 $('#tab1').toggleClass('show').html(input.join('') + button);
             }

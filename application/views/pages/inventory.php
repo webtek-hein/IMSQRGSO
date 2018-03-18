@@ -197,7 +197,7 @@
                                        class="table table-no-bordered table-hover">
                                 </table>
                                 <!-- View Serial-->
-                                <div  id="serialpage" class="Serial collapse col-lg-12">
+                                <div id="serialpage" class="Serial collapse col-lg-12">
                                     <div class="card">
                                         <div class="card-header">
                                             <h4><b>List of Serial</b></h4>
@@ -226,7 +226,7 @@
                         <button class="btn btn-outline-primary" id="exit" onclick="addItemBack()">&times; Cancel
                         </button>
                     </div>
-                    <div class="card-body card-block">
+                    <div class="card-body card-block col-lg-10 align-self-center">
                         <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
                             <ul id="bulk" class="nav nav-tabs" id="DetailTab" role="tablist">
                                 <li class="nav-item">
@@ -241,9 +241,10 @@
                                 </li>
                             </ul>
                         </div>
-                        <form class="col-lg-6 form-horizontal form-label-left input_mask" id="addItemForm" role="form"
+                        <form class="form-horizontal form-label-left input_mask" id="addItemForm" role="form"
                               action="inventory/saveAll" method="POST" data-parsley-validate="">
                             <div id="bulkdiv" class="tab-content">
+                                <hr/>
                                 <h3 id="addItemh3">Item Information</h3>
                                 <hr/>
                                 <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
@@ -273,7 +274,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2 has-feedback">
-                                                <input type="checkbox" name="serialStatus[]" value="1">with serial
+                                                <input type="checkbox" name="serialStatus[]" value="1"> With serial
                                             </div>
                                         </div>
                                     </div>
