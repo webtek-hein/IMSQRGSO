@@ -47,6 +47,9 @@ $(document).ready(function () {
 // 	$('.user-menu').parent().toggleClass('open');
 // });
 
+function editSupplier(){
+    alert('test');
+}
 // go to detail
 function detail(id) {
     var $detailtable = $('#detail-tab-table');
@@ -136,6 +139,7 @@ function addSupplier() {
 function init_inventory() {
     var $itemTable = $('#itemtable');
     var $MOOEtable = $('#MOOEtable');
+    var $supplier = $('#supplier-table');
 
     $itemTable.bootstrapTable('refresh', {url: 'inventory/viewItem/CO'})
         .bootstrapTable({
@@ -210,6 +214,7 @@ function init_inventory() {
             //     title: 'PRICE'
             // }]
         });
+
     $('#headingTwo').on('click', function () {
         toggleDiv($('.additemDiv'), $('.inventory-tab'));
     });
