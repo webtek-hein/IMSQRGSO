@@ -606,5 +606,16 @@ class Inventory_model extends CI_Model
         $this->db->where($item_id);
         $this->db->update('distribution');
     }
+    public function ledger($id){
+        $this->db->select('distribution.date_received,itemdetail.date_delivered,itemdetail.quantity, distribution.quantity_distributed,itemdetail.unit_cost');
+        $this->db->join('distribution','distribution.item_id = itemdetail.item_id','inner');
+        $this->db->where('itemdetail.item_id',$id);
+        $query = $this->db->get('itemdetail');
+
+        return $query->result_array();
+
+
+
+    }
 
 }
