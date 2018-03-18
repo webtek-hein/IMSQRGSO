@@ -203,51 +203,57 @@ class Inventory_model extends CI_Model
 
     //Add quantity to a specific item
 
-    public function addquant()
+    public function addquant($item_det_id)
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
 
-        $id = $this->input->post('id');
         //1. Get Quantity
         $quantity = $this->input->post('quant');
 
-        $query = $this->db->get_where('item', array('item_id' => $id));
-        $item = $query->row();
-
-        $data = array(
-            'item_name' => $item->item_name,
-            'item_description' => $item->item_description,
-            'quantity' => $quantity,
-            'item_type' => $item->item_type,
-            'unit' => $item->unit,
-        );
-        $item_id = array('item_id' => $id,
-            'supplier_id' => $this->input->post('supp'),
-        );
         $data1 = array(
+            'PO_number' => $this->input->post('PO'),
             'date_delivered' => $this->input->post('del'),
             'date_received' => $this->input->post('rec'),
-            'quantity' => $quantity,
             'unit_cost' => $this->input->post('cost'),
+            'quantity' => $quantity,
             'expiration_date' => $this->input->post('exp'),
-            // 'or_no' => $this->input->post('or')
+            'supplier_id' => $this->input->post('supp'),
+            'or_no' => $this->input->post('or')
         );
+        $this->db->where('item_det_id',$item_det_id);
+        $this->db->join('item','itemdetail.item_id = item.item_id');
+        $this->db->select('itemdetail.item_id,item.item_type,item.serial');
+        $query = $this->db->get('itemdetail')->row();
+        $item_id = array('item_id' =>$query->item_id);
+        $item_type = $query->item_type;
+        $serialStatus = $query->serial;
 
-        //2. Insert to item detail
-        $this->db->insert('itemdetail', $data1 + $item_id);
+        try {
+            $this->db->trans_begin();
+            // 2. Insert to item detail
+            $this->db->insert('itemdetail', $data1 + $item_id);
+            //item detail insert id
+            $insert_id = $this->db->insert_id();
+            //create an array of serial for capital outlay item
 
-        //item detail insert id
-        $insert_id = $this->db->insert_id();
-        //insert serial
-        $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
-        $this->db->insert_batch('serial', $serial);
-        //4. Insert into logs
-        $this->db->insert('logs.increaselog', array('userid' => $user_id, 'item_det_id' => $insert_id));
-
-        //5. Update quantity
-        $this->db->set('quantity', 'quantity+' . $quantity, FALSE);
-        $this->db->where('item_id', $id);
-        $this->db->update('item');
+            if ($item_type === 'CO') {
+                if ($serialStatus === '1') {
+                    $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
+                    $this->db->insert_batch('serial', $serial);
+                }
+            }
+            // 3. Insert into logs
+            $this->db->insert('logs.increaselog', array('userid' => $user_id, 'item_det_id' => $insert_id, 'quantity' => $quantity));
+            if ($this->db->trans_status() === FALSE) {
+                $this->db->trans_rollback();
+                throw new Exception($this->db->trans_status());
+            } else {
+                $this->db->trans_commit();
+                return $this->db->trans_status();
+            }
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
     public function getItem($id)
@@ -286,6 +292,7 @@ class Inventory_model extends CI_Model
         // compare data
         $result1 = array_diff($data1, $data);
         $result2 = array_diff($data, $data1);
+
         foreach ($result1 as $key => $value) {
             $values[] = array(
                 'field_edited' => $key,
@@ -301,7 +308,7 @@ class Inventory_model extends CI_Model
 
     public function viewdetail($id)
     {
-        $this->db->select('PO_number,item.serial,item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
+        $this->db->select('OR_no,PO_number,item.serial,item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
         item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
         $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'inner');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');

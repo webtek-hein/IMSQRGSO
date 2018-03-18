@@ -10,9 +10,8 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li class="active">Dashboard</li>
+                    <li><a href="dashboard">Dashboard</a></li>
                     <li class="active">Inventory</li>
-
                 </ol>
             </div>
         </div>
@@ -85,53 +84,52 @@
                     </div>
                 </div>
             </div>
-            <!-- Detail-->
-            <div hidden class="detail-tab col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <button type="button" onclick="detail_back()" class="btn btn-primary"></i> Back</a></button>
-                    </div>
-                    <div class="card-body">
-                        <ul class="nav nav-tabs" id="DetailTab" role="tablist">
-                            <?php if ($position !== 'Admin') {
-                            echo '<li class="nav-item">
+            <form id="addQuant">
+                <!-- Detail-->
+                <div hidden class="detail-tab col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <button type="button" onclick="detail_back()" class="btn btn-primary"></i> Back</a></button>
+                        </div>
+                        <div class="card-body">
+                            <ul class="nav nav-tabs" id="DetailTab" role="tablist">
+                                <?php if ($position !== 'Admin') {
+                                    echo '<li class="nav-item">
                                 <a class="nav-link" id="DetInfo" data-toggle="tab" href="#Detail_Info"
                                    role="tab"
                                    aria-controls="info" aria-selected="true">Information</a>
                             </li>';
-                            }
-                    ?>
-                            <li class="nav-item">
-                                <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det"
-                                   role="tab"
-                                   aria-controls="detail" aria-selected="false">Details</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content pl-3 p-1" id="myTabContent">
-                            <!-- Information-->
-                            <div class="tab-pane fade" id="Detail_Info" role="tabpanel"
-                                 aria-labelledby="Information-tab">
-                                <form id="editInformation"
-                                      class="serialForm form-horizontal form-label-left"
-                                      action="inventory/edititem" method="POST">
+                                }
+                                ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det"
+                                       role="tab"
+                                       aria-controls="detail" aria-selected="false">Details</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content pl-3 p-1" id="myTabContent">
+                                <!-- Information-->
+                                <div class="tab-pane fade" id="Detail_Info" role="tabpanel"
+                                     aria-labelledby="Information-tab">
+                                    <form id="editInformation"
+                                          class="serialForm form-horizontal form-label-left"
+                                          action="inventory/edititem" method="POST">
 
-                                    <div class="form-group">
-                                        <label class="col-md-12">Item Name</label>
-                                        <div class="col-md-12">
-                                            <input id="itemname"
-                                                   type="text" name="item"
-                                                   class="form-control"
-                                                   data-parsley-trigger="blur"
-                                                   data-parsley-group="set1"
-                                                   data-parsley-length="[1, 20]"
-                                                   data-parsley-required-message="Please insert Item name"
-                                                   required>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Item Name</label>
+                                            <div class="col-md-12">
+                                                <input id="itemname"
+                                                       type="text" name="item"
+                                                       class="form-control"
+                                                       data-parsley-group="set1"
+                                                       data-parsley-required-message="Please insert Item name"
+                                                       required>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="col-md-12">Description</label>
-                                        <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="col-md-12">Description</label>
+                                            <div class="col-md-12">
                                             <textarea id="itemdesc" data-parsley-group="set1"
                                                       name="description" id="message"
                                                       class="form-control"
@@ -142,75 +140,77 @@
                                                       data-parsley-validation-threshold="10"
                                                       data-parsley-required-messag="Put description of the items"
                                                       required></textarea>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="col-md-12">Total Quantity</label>
-                                        <div class="col-md-12">
-                                            <p id="total"></p>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Total Quantity</label>
+                                            <div class="col-md-12">
+                                                <p id="total"></p>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="col-md-12">Unit</label>
-                                        <div class="col-md-12">
-                                            <input id="unit" name="Unit" data-parsley-group="set1"
-                                                   class="form-control" class="unit"
-                                                   list="list"
-                                                   data-parsley-required-message="Select the Unit"
-                                                   required>
-                                            <datalist id="list">
-                                                <option value="piece">piece</option>
-                                                <option value="box">box</option>
-                                                <option value="set">set</option>
-                                                <option value="ream">ream</option>
-                                                <option value="dozen">dozen</option>
-                                                <option value="bundle">bundle</option>
-                                                <option value="sack">sack</option>
-                                                <option value="others">others</option>
-                                            </datalist>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Unit</label>
+                                            <div class="col-md-12">
+                                                <input id="unit" name="Unit" data-parsley-group="set1"
+                                                       class="form-control" class="unit"
+                                                       list="list"
+                                                       data-parsley-required-message="Select the Unit"
+                                                       required>
+                                                <datalist id="list">
+                                                    <option value="piece">piece</option>
+                                                    <option value="box">box</option>
+                                                    <option value="set">set</option>
+                                                    <option value="ream">ream</option>
+                                                    <option value="dozen">dozen</option>
+                                                    <option value="bundle">bundle</option>
+                                                    <option value="sack">sack</option>
+                                                    <option value="others">others</option>
+                                                </datalist>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="col-md-12">Type</label>
-                                        <div class="col-md-12">
-                                            <select id="itemtype" data-parsley-group="set1" id="type"
-                                                    list="typelist" name="Type"
-                                                    class="form-control" required>
-                                                <option value="CO">Capital Outlay</option>
-                                                <option value="MOOE">MOOE</option>
-                                            </select>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Type</label>
+                                            <div class="col-md-12">
+                                                <select id="itemtype" data-parsley-group="set1" id="type"
+                                                        list="typelist" name="Type"
+                                                        class="form-control" required>
+                                                    <option value="CO">Capital Outlay</option>
+                                                    <option value="MOOE">MOOE</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
-                                        <i class="fa fa-check"></i> save
-                                    </button>
-                                </form>
-                            </div>
-                            <!--Detail-->
-                            <div class="tab-pane fade show active" id="Detail_Det" role="tabpanel"
-                                 aria-labelledby="Detail-tab">
-                                <!-- Implement Bootsrap table-->
-                                <table id="detail-tab-table" data-search="true"
-                                       class="table table-no-bordered table-hover">
-                                </table>
-                                <!-- View Serial-->
-                                <div id="serialpage" class="Serial collapse col-lg-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h4><b>List of Serial</b></h4>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form class="serial-form" method="POST" action="inventory/addSerial">
-                                                <!-- Dynamic serial tabs here -->
-                                                <ul id="serial-tabs" class="nav nav-tabs">
-                                                </ul>
-                                                <!-- end of serial tabs -->
-                                                <div id="serial-tabcontent" class="tab-content">
-                                                </div>
-                                            </form>
+                                        <button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
+                                            <i class="fa fa-check"></i> save
+                                        </button>
+                                    </form>
+                                </div>
+                                <!--Detail-->
+                                <div class="tab-pane fade show active" id="Detail_Det" role="tabpanel"
+                                     aria-labelledby="Detail-tab">
+                                    <!-- Implement Bootsrap table-->
+                                    <table id="detail-tab-table" data-search="true"
+                                           class="table table-no-bordered table-hover">
+                                    </table>
+                                    <a href="#" onclick="insertRow()">Add new detail</a>
+                                    <!-- View Serial-->
+                                    <div id="serialpage" class="Serial collapse col-lg-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4><b>List of Serial</b></h4>
+                                            </div>
+                                            <div class="card-body card-block">
+                                                <form class="serial-form" method="POST" action="inventory/addSerial">
+                                                    <!-- Dynamic serial tabs here -->
+                                                    <ul id="serial-tabs" class="nav nav-tabs">
+                                                    </ul>
+                                                    <!-- end of serial tabs -->
+                                                    <div id="serial-tabcontent" class="tab-content">
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -218,7 +218,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
             <!-- Add Item-->
             <div hidden class="additemDiv col-lg-12">
                 <div class="card">
@@ -252,7 +252,6 @@
                                         <label for="item" class=" form-control-label">Item Name</label>
                                         <input type="text" name="item[]"
                                                class="form-control has-feedback-left"
-                                               data-parsley-trigger="blur"
                                                data-parsley-group="set1"
                                                data-parsley-length="[1, 20]"
                                                data-parsley-required-message="Please insert Item name"
@@ -389,7 +388,6 @@
                     </div>
                 </div>
             </div>
-
             <!--Genearate Report-->
             <div hidden class="generateReport col-lg-12">
                 <div class="card">

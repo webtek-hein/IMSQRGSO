@@ -67,7 +67,7 @@ function detail(id) {
                     url: 'inventory/detail/' + id,
                     columns: [{
                         field: 'PO',
-                        title: 'PO #'
+                        title: 'PO number'
                     }, {
                         field: 'del',
                         title: 'Delivery Date'
@@ -79,7 +79,7 @@ function detail(id) {
                         title: 'Estimated Useful Life'
                     }, {
                         field: 'cost',
-                        title: 'Cost'
+                        title: 'Unit Cost'
                     }, {
                         field: 'sup',
                         title: 'Supplier'
@@ -87,11 +87,39 @@ function detail(id) {
                         field: 'quant',
                         title: 'Quantity'
                     }, {
+                        field: 'or',
+                        title: 'OR number'
+                    }, {
                         field: 'action',
                         title: 'Action'
                     }]
                 });
             serialize_forms();
+        }
+    });
+}
+
+function insertRow() {
+    $('#detail-tab-table').find('tr:last').after('<tr data-index="0"> ' +
+        '<td style=""><input name="PO" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
+        '<td style=""><input name="del" class="form-control form-control-sm" type="date"></td> ' +
+        '<td style=""><input name="rec" class="form-control form-control-sm" type="date"></td> ' +
+        '<td style=""><input name="exp" class="form-control form-control-sm" type="date"></td> ' +
+        '<td style=""><input name="cost" class="form-control form-control-sm" type="number"></td> ' +
+        '<td style=""><input name="supp" class="form-control form-control-sm" type="text"></td> ' +
+        '<td style=""><input name="quant" class="form-control form-control-sm" type="text"></td> ' +
+        '<td style=""><input name="or" class="form-control form-control-sm" type="text"></td> ' +
+        '<td style=""><button type="button" onclick="addquant()" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
+        '</tr>');
+}
+
+function addquant() {
+    var $item_det_id = $('#DetailDropDn').find('a').data('id');
+    $.ajax({
+        url: 'inventory/addquant/' + $item_det_id,
+        type: 'POST',
+        data: $('#addQuant').serialize(),
+        success: function (result) {
         }
     });
 }
@@ -256,7 +284,7 @@ function init_list() {
             },
             field: 'quant',
             title: 'QUANTITY DISTRIBUTED'
-        },{
+        }, {
             sortable: true,
             field: 'unit',
             title: 'UNIT'
@@ -653,7 +681,7 @@ function init_bulkFucntion() {
                 "Item" + counter +
                 "</a>" +
                 "</li>";
-            ($ul.append(list).find('#list'+counter+' a').click());
+            ($ul.append(list).find('#list' + counter + ' a').click());
             $ul.append('<li id="another"><button id="addanother" class="btn btn-primary"\n' +
                 '                                            role="tab"><i class="ti-plus"></i>\n' +
                 '                                    </button></li>');
@@ -667,27 +695,26 @@ function init_bulkFucntion() {
 
 // import csv data
 
-        $('#import_csv').on('submit', function(event){
-            event.preventDefault();
-            $.ajax({
-                url:"inventory/import",
-                method:"POST",
-                data:new FormData(this),
-                contentType:false,
-                cache:false,
-                processData:false,
-                beforeSend:function(){
-                    $('#import_csv_btn').html('Importing...');
-                },
-                success:function(data)
-                {
-                    $('#import_csv')[0].reset();
-                    $('#import_csv_btn').attr('disabled', false);
-                    $('#import_csv_btn').html('Import Done');
-                    load_data();
-                }
-            })
-        });
+    $('#import_csv').on('submit', function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: "inventory/import",
+            method: "POST",
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function () {
+                $('#import_csv_btn').html('Importing...');
+            },
+            success: function (data) {
+                $('#import_csv')[0].reset();
+                $('#import_csv_btn').attr('disabled', false);
+                $('#import_csv_btn').html('Import Done');
+                load_data();
+            }
+        })
+    });
 
 }
 
