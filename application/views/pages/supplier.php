@@ -31,8 +31,7 @@
                     </div>
                     <div class="card-body">
                         <div class="tab-content pl-3 p-1" id="myTabContent">
-                            <table id="supplier-table" data-search="true" data-pagination="true" data-toggle="table"
-                                   data-url="supplier/viewSuppliers"
+                            <table id="supplier-table" data-search="true" data-pagination="true"
                                    class="table table-no-bordered">
                                 <thead>
                                 <tr>
@@ -112,7 +111,6 @@
                                 <form id="editInformation"
                                       class="serialForm form-horizontal form-label-left"
                                       action="supplier/addSupplier" method="POST" data-validate="parsley">
-
 
 
                                     <div class="form-group">
