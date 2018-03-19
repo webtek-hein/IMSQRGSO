@@ -41,15 +41,20 @@ class Inventory_model extends CI_Model
             $ser = array('item_type' => $row[4]);
             $quant = array('quantity' => $row[0]);
             $serial = array('serial' => $row[5]);
-            print_r($serial);
             if ($ser['item_type'] === 'CO') {
-                echo 'asdf';
                 if ($serial['serial'] === '1') {
                     $serial = array_fill(1, $quant['quantity'], array('item_det_id' => $insert_id));
                     $this->db->insert_batch('serial', $serial);
 
                 }
             }
+            $datalogs = array(
+                'userid' => $user_id,
+                'item_det_id' => $insert_id,
+                'quantity' => $row[0],
+            );
+            
+            $this->db->insert('logs.increaselog',$datalogs);
         }
 
     }
