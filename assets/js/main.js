@@ -548,6 +548,10 @@ function modal() {
     $('.btn-hide').on('click', function () {
         $('#firststep').modal('hide');
     });
+    $(".dist").on("hidden.bs.modal", function() {
+        $(".serial").html("");
+        $(".quant").html("");
+    });
     //Wizard
     $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
 

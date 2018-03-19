@@ -470,7 +470,7 @@
 <!-- Distribution Modal -->
 <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST"
       data-validate="parsley">
-    <div class="Distribute modal fade" id="DitributeItem" tabindex="-1" role="dialog"
+    <div class="Distribute dist modal fade" id="DitributeItem" tabindex="-1" role="dialog"
          aria-labelledby="distrib-modal"
          aria-hidden="true">
         <div class="modal-dialog">
