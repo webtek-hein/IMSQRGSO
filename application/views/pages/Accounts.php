@@ -34,20 +34,7 @@
                     <div class="card-body">
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <table id="user-table" data-pagination="true" data-search="true"
-                                   data-toggle="table" data-url="Users/display_users"
                                    class="table table-no-bordered">
-                                <thead>
-                                <!-- Data-field for getting data  -->
-                                <tr>
-                                    <th data-sortable="true" data-field="name">Name</th>
-                                    <th data-sortable="true" data-field="email">Email</th>
-                                    <th data-sortable="true" data-field="contactno">Contact No.</th>
-                                    <th data-sortable="true" data-field="username">Username</th>
-                                    <th data-sortable="true" data-field="position">Position</th>
-                                    <th data-sortable="true" data-field="department">Department</th>
-                                    <th data-sortable="true" data-field="status">Status</th>
-                                </tr>
-                                </thead>
                             </table>
                         </div>
                     </div>

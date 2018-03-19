@@ -186,26 +186,27 @@
                                         </form>
 
                                     </div>
+                                    <!--General Ledger-->
                                     <div class="col-lg-8">
                                             <h5>General Ledger</h5>
                                             <table id="ledger" data-pagination="true" data-search="true"
-                                                   data-toggle="table" data-url="Users/display_users"
+                                                   data-toggle="table" data-url="Inventory/getLedger/1"
                                                    class="table table-no-bordered">
                                                 <thead>
                                                 <!-- Data-field for getting data  -->
                                                 <tr>
-                                                    <th>Date</th>
-                                                    <th>Increased</th>
-                                                    <th>Decreased</th>
-                                                    <th>Price</th>
-                                                    <th>Quantity</th>
-                                                    <th>Balance</th>
+                                                    <th data-field="date">Date</th>
+                                                    <th data-field="increased">Increased</th>
+                                                    <th data-field="decreased">Decreased</th>
+                                                    <th data-field="price">Price</th>
+                                                    <th data-field="quantity">Quantity</th>
+                                                    <th data-field="balance">Balance</th>
                                                 </tr>
                                                 </thead>
                                             </table>
                                     </div>
 
-                                    <!--Here @glo-->
+                                    <!--End of General Ledger-->
 
                                 </div>
                                 <!--Detail-->

@@ -50,6 +50,7 @@ class Logs_model extends CI_Model{
 
     }
     public function return_log(){
+        $this->db->select('timestamp, item_name, item_description, date_returned, reason, returned_by, received_by, returned_status');
         $query = $this->db->get('logs.returnlog');
         return $query->result_array();
     }

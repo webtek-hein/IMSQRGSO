@@ -35,9 +35,9 @@ class User_db extends CI_Model {
 
     public function get_users()
     {
-         $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
+         $this->db->select('user_id,CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
          user.username,user.position,dept.department,user.status');
-        $this->db->join('gsois.department dept','dept.dept_id = user.dept_id');
+        $this->db->join('gsois.department dept','dept.dept_id = user.dept_id','left');
         $query = $this->db->get('user');
         return $query->result_array();
     }
@@ -68,7 +68,7 @@ class User_db extends CI_Model {
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $values = [];
-        $user_id = $this->input->post('id');
+        $id = $this->input->post('id');
         // select user
         $user = $this->db->get_where('user', array('user_id' => $user_id))->row();
 
@@ -79,19 +79,20 @@ class User_db extends CI_Model {
             'email' => $user->email,
             'contact_no' => $user->contact_no,
             'password' => $user->password,
-            'status' => $status
+            'status' => $user->status
         );
         // update user
         $data = array(
-            'first_name' => $this->input->post('firstname'),
-            'last_name' => $this->input->post('lastname'),
-            'email' => $this->input->post('email'),
-            'contact_no' => $this->input->post('contactno'),
-            'password' => $this->input->post('password'),
-            'status' => $this->input->post('status')
+            'first_name' => $this->input->post('first'),
+            'last_name' => $this->input->post('last'),
+            'email' => $this->input->post('em'),
+            'contact_no' => $this->input->post('cno'),
+            'password' => $this->input->post('pword'),
+            'username' => $this->input->post('uname'),
+            'status' => $this->input->post('Stat')
         );
         $this->db->set($data);
-        $this->db->where('user_id', $user_id);
+        $this->db->where('user_id', $id);
         $this->db->update('user');
 
         // compare data
@@ -103,7 +104,6 @@ class User_db extends CI_Model {
                 'old_value' => $value,
                 'new_value' => $result2[$key],
                 'userid' => $user_id,
-                'user_id' => $user_id
             );
         }
 
