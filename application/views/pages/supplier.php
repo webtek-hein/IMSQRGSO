@@ -95,7 +95,7 @@
                         <button type="button" onclick="addSupplierBack()" class="btn btn-primary"></i> Back</a></button>
                     </div>
                     <div class="card-body">
-                        <ul class="nav nav-tabs" id="editSupplierTab" role="tablist">
+                        <ul class="nav nav-tabs" id="editSupplier" role="tablist">
                             <?php if ($position !== 'Admin') {
                                 echo '<li class="nav-item">
                                 <a class="nav-link" id="SupInfo" data-toggle="tab" href="#Supplier_Info"
@@ -104,7 +104,7 @@
                             </li>';
                             }
                             ?>
-                            <li class="nav-item">
+                            <li class="nav-supplier">
                                 <a class="nav-link active" id="Suppdetail" data-toggle="tab" href="#Supplier_Det"
                                    role="tab"
                                    aria-controls="editSupplier" aria-selected="false">Details</a>

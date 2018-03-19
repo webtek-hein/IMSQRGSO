@@ -51,7 +51,7 @@ function editSupplier(id) {
     var $detailtable = $('#editSupplier-tab-table');
     var supplier;
     $.ajax({
-        url: 'supplier/getsupplier/' + id,
+        url: 'supplier/getSupplier/' + id,
         dataType: 'JSON',
         success: function (data) {
             $('#edtbuttonsupplier').val(id);
