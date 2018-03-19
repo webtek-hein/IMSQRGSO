@@ -64,67 +64,67 @@
                         </ul>
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <!-- Capital Outaly tab-->
-                            <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
+                            <div class="table-responsive-sm  tab-pane fade show active" id="tab_content1"
+                                 role="tabpanel"
                                  aria-labelledby="CO-tab">
                                 <table data-pagination="true" data-search="true" id="itemtable"
-                                       class="main table-no-bordered"
                                        class="table table-no-bordered table-hover">
                                 </table>
                             </div>
                             <!--MOOE Tab-->
-                            <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
+                            <div class="table-responsive-sm-sm tab-pane fade" id="tab_content2" role="tabpanel"
+                                 aria-labelledby="MOOE-tab">
                                 <!-- Implement Bootsrap table-->
                                 <table data-pagination="true" data-search="true" id="MOOEtable"
-                                       class="main table-no-bordered"
-                                       data-pagination="true"
-                                       class="table table-no-bordered table-hover">
+                                       class="table table-no-bordered table-hover"
+                                       data-pagination="true">
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <form id="addQuant">
-                <!-- Detail-->
-                <div hidden class="detail-tab col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <button type="button" onclick="detail_back()" class="btn btn-primary"></i> Back</a></button>
-                        </div>
-                        <div class="card-body">
-                            <ul class="nav nav-tabs" id="DetailTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link" id="DetInfo" data-toggle="tab" href="#Detail_Info"
+            <!-- Detail-->
+            <div hidden class="detail-tab col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <button type="button" onclick="detail_back()" class="btn btn-primary"></i> Back</a></button>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" id="DetailTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link" id="DetInfo" data-toggle="tab" href="#Detail_Info"
                                    role="tab" aria-controls="info" aria-selected="true">Information</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det" role="tab" aria-controls="detail" aria-selected="false">Details</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content pl-3 p-1" id="myTabContent">
-                                <!-- Information-->
-                                <div class="tab-pane fade" id="Detail_Info" role="tabpanel"
-                                     aria-labelledby="Information-tab">
-                                    <div class="col-lg-4">
-                                        <form id="editInformation"
-                                              class="serialForm form-horizontal form-label-left"
-                                              action="inventory/edititem" method="POST">
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det"
+                                   role="tab" aria-controls="detail" aria-selected="false">Details</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content pl-3 p-1" id="myTabContent">
+                            <!-- Information-->
+                            <div class="tab-pane fade" id="Detail_Info" role="tabpanel"
+                                 aria-labelledby="Information-tab">
+                                <div class="col-lg-4">
+                                    <form id="editInformation"
+                                          class="serialForm form-horizontal form-label-left"
+                                          action="inventory/edititem" method="POST">
 
-                                            <div class="form-group">
-                                                <label class="col-md-12">Item Name</label>
-                                                <div class="col-md-12">
-                                                    <input id="itemname"
-                                                           type="text" name="item"
-                                                           class="form-control"
-                                                           data-parsley-group="set1"
-                                                           data-parsley-required-message="Please insert Item name"
-                                                           required>
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Item Name</label>
+                                            <div class="col-md-12">
+                                                <input id="itemname"
+                                                       type="text" name="item"
+                                                       class="form-control"
+                                                       data-parsley-group="set1"
+                                                       data-parsley-required-message="Please insert Item name"
+                                                       required>
                                             </div>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label class="col-md-12">Description</label>
-                                                <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="col-md-12">Description</label>
+                                            <div class="col-md-12">
                                             <textarea id="itemdesc" data-parsley-group="set1"
                                                       name="description" id="message"
                                                       class="form-control"
@@ -135,107 +135,107 @@
                                                       data-parsley-validation-threshold="10"
                                                       data-parsley-required-messag="Put description of the items"
                                                       required></textarea>
-                                                </div>
                                             </div>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label class="col-md-12">Total Quantity</label>
-                                                <div class="col-md-12">
-                                                    <p id="total"></p>
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Total Quantity</label>
+                                            <div class="col-md-12">
+                                                <p id="total"></p>
                                             </div>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label class="col-md-12">Unit</label>
-                                                <div class="col-md-12">
-                                                    <input id="unit" name="Unit" data-parsley-group="set1"
-                                                           class="form-control" class="unit"
-                                                           list="list"
-                                                           data-parsley-required-message="Select the Unit"
-                                                           required>
-                                                    <datalist id="list">
-                                                        <option value="piece">piece</option>
-                                                        <option value="box">box</option>
-                                                        <option value="set">set</option>
-                                                        <option value="ream">ream</option>
-                                                        <option value="dozen">dozen</option>
-                                                        <option value="bundle">bundle</option>
-                                                        <option value="sack">sack</option>
-                                                        <option value="others">others</option>
-                                                    </datalist>
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Unit</label>
+                                            <div class="col-md-12">
+                                                <input id="unit" name="Unit" data-parsley-group="set1"
+                                                       class="form-control" class="unit"
+                                                       list="list"
+                                                       data-parsley-required-message="Select the Unit"
+                                                       required>
+                                                <datalist id="list">
+                                                    <option value="piece">piece</option>
+                                                    <option value="box">box</option>
+                                                    <option value="set">set</option>
+                                                    <option value="ream">ream</option>
+                                                    <option value="dozen">dozen</option>
+                                                    <option value="bundle">bundle</option>
+                                                    <option value="sack">sack</option>
+                                                    <option value="others">others</option>
+                                                </datalist>
                                             </div>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label class="col-md-12">Type</label>
-                                                <div class="col-md-12">
-                                                    <select id="itemtype" data-parsley-group="set1" id="type"
-                                                            list="typelist" name="Type"
-                                                            class="form-control" required>
-                                                        <option value="CO">Capital Outlay</option>
-                                                        <option value="MOOE">MOOE</option>
-                                                    </select>
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Type</label>
+                                            <div class="col-md-12">
+                                                <select id="itemtype" data-parsley-group="set1" id="type"
+                                                        list="typelist" name="Type"
+                                                        class="form-control" required>
+                                                    <option value="CO">Capital Outlay</option>
+                                                    <option value="MOOE">MOOE</option>
+                                                </select>
                                             </div>
-                                            <?php if ($position === 'Custodian') {
-                                                echo '<button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
+                                        </div>
+                                        <?php if ($position === 'Custodian') {
+                                            echo '<button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
                                                     <i class="fa fa-check"></i> save
                                                 </button>';
-                                            }
-                                            ?>
-                                        </form>
-
-                                    </div>
-                                    <!--General Ledger-->
-                                    <div class="col-lg-8">
-                                            <h5>General Ledger</h5>
-                                            <table id="ledger" data-pagination="true" data-search="true"
-                                                   data-toggle="table" data-url="Inventory/getLedger/1"
-                                                   class="table table-no-bordered">
-                                                <thead>
-                                                <!-- Data-field for getting data  -->
-                                                <tr>
-                                                    <th data-field="date">Date</th>
-                                                    <th data-field="increased">Increased</th>
-                                                    <th data-field="decreased">Decreased</th>
-                                                    <th data-field="price">Price</th>
-                                                    <th data-field="quantity">Quantity</th>
-                                                    <th data-field="balance">Balance</th>
-                                                </tr>
-                                                </thead>
-                                            </table>
-                                    </div>
-
-                                    <!--End of General Ledger-->
+                                        }
+                                        ?>
+                                    </form>
 
                                 </div>
-                                <!--Detail-->
-                                <div class="tab-pane fade show active" id="Detail_Det" role="tabpanel"
-                                     aria-labelledby="Detail-tab">
+                                <!--General Ledger-->
+                                <div class="table-responsive-sm col-lg-8">
+                                    <h5>General Ledger</h5>
+                                    <table id="ledger" data-pagination="true" data-search="true"
+                                           data-toggle="table" data-url="Inventory/getLedger/1"
+                                           class="table-sm table table-no-bordered table-hover">
+                                        <thead>
+                                        <!-- Data-field for getting data  -->
+                                        <tr>
+                                            <th data-field="date">Date</th>
+                                            <th data-field="increased">Increased</th>
+                                            <th data-field="decreased">Decreased</th>
+                                            <th data-field="price">Price</th>
+                                            <th data-field="quantity">Quantity</th>
+                                            <th data-field="balance">Balance</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <!--End of General Ledger-->
+
+                            </div>
+                            <!--Detail-->
+                            <div class="table-responsive-sm tab-pane fade show active" id="Detail_Det" role="tabpanel"
+                                 aria-labelledby="Detail-tab">
+                                <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
                                     <table id="detail-tab-table" data-search="true"
-                                           class="table table-no-bordered table-hover">
+                                           class="table-sm table table-no-bordered table-hover">
                                     </table>
-                                    <?php if ($position === 'Custodian'){
+                                </form>
+                                <?php if ($position === 'Custodian') {
                                     echo '<a href="#" onclick="insertRow()">Add new detail</a>';
-                                    }
-                                    ?>
-                                    <!-- View Serial-->
-                                    <div id="serialpage" class="Serial collapse col-lg-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h4><b>List of Serial</b></h4>
-                                            </div>
-                                            <div class="card-body card-block">
-                                                <form class="serial-form" method="POST" action="inventory/addSerial">
-                                                    <!-- Dynamic serial tabs here -->
-                                                    <ul id="serial-tabs" class="nav nav-tabs">
-                                                    </ul>
-                                                    <!-- end of serial tabs -->
-                                                    <div id="serial-tabcontent" class="tab-content">
-                                                    </div>
-                                                </form>
-                                            </div>
+                                }
+                                ?>
+                                <!-- View Serial-->
+                                <div id="serialpage" class="Serial collapse col-lg-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4><b>List of Serial</b></h4>
+                                        </div>
+                                        <div class="card-body card-block">
+                                            <form class="serial-form" method="POST" action="inventory/addSerial">
+                                                <!-- Dynamic serial tabs here -->
+                                                <ul id="serial-tabs" class="nav nav-tabs">
+                                                </ul>
+                                                <!-- end of serial tabs -->
+                                                <div id="serial-tabcontent" class="tab-content">
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -243,7 +243,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
             <!-- Add Item-->
             <div hidden class="additemDiv col-lg-12">
                 <div class="card">
@@ -445,9 +445,9 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="tab-content pl-3 p-1" id="myTabContent">
+                        <div class="table-responsive-sm-sm tab-content pl-3 p-1" id="myTabContent">
                             <table data-search="true" data-pagination="true" data-toggle="table"
-                                   class="table table-bordered">
+                                   class="table-sm table table-no-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th data-sortable="true" data-field="supplier">Item Name</th>
@@ -727,16 +727,16 @@
 <!-- Add Quantity -->
 <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
       novalidate>
-<div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Edit Quantity</h4>
-            </div>
-            <div class="modal-body">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Edit Quantity</h4>
+                </div>
+                <div class="modal-body">
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span
                                     class="required">*</span>
@@ -747,19 +747,19 @@
                                    placeholder="Quantity">
                         </div>
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn-modal btn btn-default" name="id" value="1" id="quantsave">
-                    <i
-                            class="fa fa-arrow-down"></i> Save
-                </button>
-                <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal"><i
-                            class="fa fa-close"></i> Cancel
-                </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn-modal btn btn-default" name="id" value="1" id="quantsave">
+                        <i
+                                class="fa fa-arrow-down"></i> Save
+                    </button>
+                    <button type="button" class="btn btn-default" id="cancel1" data-dismiss="modal"><i
+                                class="fa fa-close"></i> Cancel
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </form>
 <!-- end of add quantity -->
 

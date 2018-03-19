@@ -139,7 +139,7 @@ var counter = 1;
 
 function insertRow() {
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
-        '<td style=""><input name="PO" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
+        '<td contenteditable style=""><input name="PO" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
         '<td style=""><input name="del" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="rec" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="exp" class="form-control form-control-sm" type="date"></td> ' +
@@ -159,9 +159,7 @@ function addquant(counter) {
         type: 'POST',
         data: $('#addQuant').serialize(),
         success: function (result) {
-            console.log($('#detTab' + counter).find('input').replaceWith(function () {
-                return $('<p/>', {html: this.innerHTML});
-            }));
+            $('#itemtable').bootstrapTable('refresh', {url: 'inventory/viewItem/CO'});
         }
     });
 }
