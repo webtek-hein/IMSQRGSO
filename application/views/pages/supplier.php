@@ -129,9 +129,11 @@
                                            data-error-message="Please Enter Contact Number" required>
                                 </div>
                             </div>
-                            <button class="btn btn-outline-info" type="submit" name="id" id="edtbuttonsupplier">
-                                <i class="fa fa-check"></i> Save
-                            </button>
+                           
+                           <?php if ($position === 'Custodian') {
+                            echo '<button class="btn btn-outline-info" type="submit" name="id" id="edtbuttonsupplier"><i class="fa fa-check"></i> Save</button>';
+                           }
+                           ?>
                         </form>
                     </div>
                 </div>
