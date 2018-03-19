@@ -25,8 +25,8 @@ class Inventory_model extends CI_Model
 
 
             $data1 = array(
-                'date_delivered' => $row[5],
-                'date_received' => $row[6],
+                'date_delivered' => $row[6],
+                'date_received' => $row[7],
                 'quantity' => $row[0],
                 'unit_cost' => $row[8],
                 'expiration_date' => $row[9],
