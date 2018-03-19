@@ -584,14 +584,23 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('item');
         return $query->result_array();
     }
-    public function returnitem(){
+    public function returnitem()
+    {
 
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $id = $this->input->post('id');
         $insert_id = $this->db->insert_id();
-        $quantity_returned = $this->input->post('quantity');
+        $serial = $this->input->post('serial');
+        $quantity_returned = count($serial);
+
+        if ($quantity_returned == 0) {
+            $quantity_returned = $this->input->post('quantity');
+        } else {
+            $quantity_returned = count($serial);
+        }
+
         $data = array(
-            'return_quantity' =>  $quantity_returned,
+            'return_quantity' => $quantity_returned,
             'date_returned' => $this->input->post('returndate'),
             'receiver' => $this->input->post('receiver'),
             'remarks' => $this->input->post('remarks'),
@@ -602,9 +611,23 @@ class Inventory_model extends CI_Model
 
         $item_id = $this->db->select('item_id')->where('item_id', $id)->get('distribution');
         //$quantity = $this->db->select('quantity_distributed')->where('item_id', $id)->get('distribution');
-        $this->db->set('quantity_distributed','quantity_distributed-' . $quantity_returned, FALSE);
+        $this->db->set('quantity_distributed', 'quantity_distributed-' . $quantity_returned, FALSE);
         $this->db->where($item_id);
         $this->db->update('distribution');
-    }
+        $item_Returned = 'Returned';
+
+        for ($i = 0; $i < $quantity_returned; $i++) {
+            $serial_data[] = array(
+                'item_status' => $item_Returned,
+                'serial' => $serial[$i]
+            );
+        }
+        $this->db->set('item_status', 'Returned');
+        $this->db->where($item_id);
+        $this->db->where_in('serial',$serial);
+        $this->db->update('serial');
+
+
+        }
 
 }

@@ -805,16 +805,9 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="serial col-md-10">
-                            <label for="name"></label>
                         </div>
                     </div>
                     <div class=" quant form-group">
-                        <label>Quantity<span
-                                    class="required">*</span>
-                            <input type="number" name="quantity" min=0 class="form-control col-md-7 col-xs-12"
-                                   required
-                                   placeholder="Quantity">
-                        </label>
                     </div>
 
                     <div class="form-group ">
