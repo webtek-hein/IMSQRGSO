@@ -93,18 +93,12 @@
                         </div>
                         <div class="card-body">
                             <ul class="nav nav-tabs" id="DetailTab" role="tablist">
-                                <?php if ($position !== 'Admin') {
-                                    echo '<li class="nav-item">
-                                <a class="nav-link" id="DetInfo" data-toggle="tab" href="#Detail_Info"
-                                   role="tab"
-                                   aria-controls="info" aria-selected="true">Information</a>
-                            </li>';
-                                }
-                                ?>
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det"
-                                       role="tab"
-                                       aria-controls="detail" aria-selected="false">Details</a>
+                                    <a class="nav-link" id="DetInfo" data-toggle="tab" href="#Detail_Info"
+                                   role="tab" aria-controls="info" aria-selected="true">Information</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det" role="tab" aria-controls="detail" aria-selected="false">Details</a>
                                 </li>
                             </ul>
                             <div class="tab-content pl-3 p-1" id="myTabContent">
@@ -183,32 +177,36 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
-                                                <i class="fa fa-check"></i> save
-                                            </button>
+                                            <?php if ($position === 'Custodian') {
+                                                echo '<button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
+                                                    <i class="fa fa-check"></i> save
+                                                </button>';
+                                            }
+                                            ?>
                                         </form>
 
                                     </div>
+                                    <!--General Ledger-->
                                     <div class="col-lg-8">
                                             <h5>General Ledger</h5>
                                             <table id="ledger" data-pagination="true" data-search="true"
-                                                   data-toggle="table" data-url="Users/display_users"
+                                                   data-toggle="table" data-url="Inventory/getLedger/1"
                                                    class="table table-no-bordered">
                                                 <thead>
                                                 <!-- Data-field for getting data  -->
                                                 <tr>
-                                                    <th>Date</th>
-                                                    <th>Increased</th>
-                                                    <th>Decreased</th>
-                                                    <th>Price</th>
-                                                    <th>Quantity</th>
-                                                    <th>Balance</th>
+                                                    <th data-field="date">Date</th>
+                                                    <th data-field="increased">Increased</th>
+                                                    <th data-field="decreased">Decreased</th>
+                                                    <th data-field="price">Price</th>
+                                                    <th data-field="quantity">Quantity</th>
+                                                    <th data-field="balance">Balance</th>
                                                 </tr>
                                                 </thead>
                                             </table>
                                     </div>
 
-                                    <!--Here @glo-->
+                                    <!--End of General Ledger-->
 
                                 </div>
                                 <!--Detail-->
@@ -218,7 +216,10 @@
                                     <table id="detail-tab-table" data-search="true"
                                            class="table table-no-bordered table-hover">
                                     </table>
-                                    <a href="#" onclick="insertRow()">Add new detail</a>
+                                    <?php if ($position === 'Custodian'){
+                                    echo '<a href="#" onclick="insertRow()">Add new detail</a>';
+                                    }
+                                    ?>
                                     <!-- View Serial-->
                                     <div id="serialpage" class="Serial collapse col-lg-12">
                                         <div class="card">
@@ -724,6 +725,8 @@
 </div>
 <!--End of Add Item -->
 <!-- Add Quantity -->
+<form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
+      novalidate>
 <div id="addquant" class="modal fade Add_Quantity" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -734,8 +737,6 @@
                 <h4 class="modal-title" id="myModalLabel">Edit Quantity</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
-                      novalidate>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Quantity<span
                                     class="required">*</span>
@@ -759,21 +760,20 @@
         </div>
     </div>
 </div>
+</form>
 <!-- end of add quantity -->
 
 <!-- accept -->
-<form class="form-horizontal form-label-left" method="POST" action="inventory/accept">
-    <div class="Accept modal fade" id="accept_modal" tabindex="-1" role="dialog" aria-labelledby="distrib-modal"
+<form class="form-horizontal form-label-left" method="POST" action="inventory/acceptitem">
+    <div class="Accept modal fade" id="accept_modal" tabindex="-1" role="dialog"
          aria-hidden="true">
         <div class="modal-dialog">
 
             <div class="modal-content">
-                <h4 class="modal-title" id="myModalLabel">Are you sure you want to Accept?</h4>
+                <h5 class="modal-title" id="myModalLabel">Are you sure you want to Accept?</h5>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="name">Remarks<span
-                                    class="required">*</span>
-                        </label>
+                        <label for="name">Remarks</label>
                         <textarea class="form-control" name="remarks" id="remarks"></textarea>
                     </div>
                 </div>
@@ -790,7 +790,7 @@
 <!-- end of accept -->
 
 <!--Return-->
-<form role="form" class="form-horizontal form-label-left" action="inventory/return"
+<form role="form" class="form-horizontal form-label-left" action="inventory/deptreturn"
       method="POST" data-validate="parsley">
     <div class="Return modal fade" id="return" tabindex="-1" role="dialog"
          aria-labelledby="largeModalLabel"
@@ -805,6 +805,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <div class="serial col-md-10">
+                            <label for="name"></label>
+                        </div>
+                    </div>
+                    <div class=" quant form-group">
                         <label>Quantity<span
                                     class="required">*</span>
                             <input type="number" name="quantity" min=0 class="form-control col-md-7 col-xs-12"

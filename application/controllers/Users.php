@@ -15,6 +15,7 @@ class Users extends CI_Controller {
         $users = $this->user_db->get_users();
         foreach ($users as $list) {
             $data[] = array(
+            'id' => $list['user_id'],
             'name' => $list['name'],
             'email' => $list['email'],
             'contactno' => $list['contact_no'],
@@ -24,6 +25,21 @@ class Users extends CI_Controller {
             'status' => $list['status']
         );
         }
+        echo json_encode($data);
+    }
+    public function getUser($id)
+    {
+        $list = $this->user_db->getUser($id);
+        $data = array(
+            'firstname' => $list->first_name,
+            'lastname' => $list->last_name,
+            'email' => $list->email,
+            'contactno' => $list->contact_no,
+            'username' => $list->username,
+            'password' => $list->password,
+            'status' => $list->status,
+
+        );
         echo json_encode($data);
     }
     public function edituser()
@@ -44,13 +60,6 @@ class Users extends CI_Controller {
         );
         }
         echo json_encode($data);
-    }
-
-    public function deactivate()
-    {
-        $id = $this->input->post('user_id');
-        $this->user_db->deactivate_user($id);
-        header('Location: '. base_url() . 'users');
     }
 
     public function addUser(){

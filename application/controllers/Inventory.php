@@ -81,25 +81,31 @@ class Inventory extends CI_Controller
         }
         $data = array();
         $viewser = "";
+        $editquants = "";
         foreach ($list as $detail) {
             if ($detail['item_type'] === 'CO' && $detail['serial'] === '1') {
                 $viewser = "<li ><a onclick='viewSerial($detail[item_det_id])' data-toggle=\"collapse\" 
                     href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\">
                               </i > View Serial</a></li>";
             }
-            if ($this->session->userdata['logged_in']['position'] === 'Custodian') {
-                $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
-                    <ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
+            if ($this->session->userdata['logged_in']['position'] !== 'none' ) {
+                if ($this->session->userdata['logged_in']['position'] !== 'Custodian') {
+                    $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>";
+                    if ($this->session->userdata['logged_in']['position'] === 'Supply Officer') {
+                        $action = "<a href=\'#\' type=\'button\' class=\" btn btn-modal btn-outline-success\" onclick=\"getserial($detail[item_det_id])\" data-toggle=\"modal\" data-id='$detail[dist_id]'data-target=\" .DistributeSP\">Distribute</a >
+                               <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]' class=\"btn btn-success\">Accept</a>
+                               <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]'  class=\"btn btn-danger\">Return</a>";
+                    }
+                }else {
+                        $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
+                            <ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <li><a href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
-                            <i class=\"	fa fa-share-square-o\" ></i > Distribute</a ></li >
+                            <i class=\" fa fa-share-square-o\" ></i > Distribute</a ></li >
                             <li><a href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
                             <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ></li >$viewser
                     </ul>";
+                    }
 
-            } else {
-                    $action = "<button class=\" btn btn-modal btn-outline-success\" onclick=\"getserial($detail[item_det_id])\" data-toggle=\"modal\" data-id='$detail[dist_id]'data-target=\" .DistributeSP\">Distribute</button >
-                               <button data-toggle=\"modal\" data-target=\".Accept\" type=\"submit\" class=\"btn btn-success\">Accept</button>
-                               <button data-toggle=\"modal\" data-target=\".Return\" type=\"submit\" class=\"btn btn-danger\">Return</button>";
             }
 
             $data[] = array(
@@ -271,6 +277,22 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
+    public function getLedger($id){
+        $list = $this->inv->ledger($id);
+        $data = [];
+        var_dump($list);
+        foreach ($list as $item) {
+            $data[] = array(
+                'date' => $item['date_received'],
+                'increased' => $item['date_delivered'],
+                'decreased' => $item['quantity_distributed'],
+                'price' => $item['unit_cost'],
+                'quantity' => $item['quantity'],
+                'balance' => $item['quantity']
+            );
+        }
+        echo json_encode($data);
+    }
 
 
 

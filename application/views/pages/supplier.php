@@ -25,9 +25,13 @@
             <div class="col-lg-12 supplier-tab">
                 <div class="card">
                     <div class="card-header">
-                        <button onclick="addSupplier()" class="btn btn-primary">
-                            <i class="fa fa-plus"></i><span> Add Supplier</span>
-                        </button>
+                        <?php $position = $this->session->userdata['logged_in']['position'];
+                        if ($position === 'Custodian') {
+                            echo '<button onclick="addSupplier()" class="btn btn-primary">
+                                <i class="fa fa-plus"></i><span> Add Supplier</span>
+                            </button>';
+                        }
+                        ?>
                     </div>
                     <div class="card-body">
                         <div class="tab-content pl-3 p-1" id="myTabContent">
@@ -84,25 +88,25 @@
                     </div>
                 </div>
             </div>
-            <div hidden class="col-lg-12 editSupplier">
+            <div hidden class="col-lg-12 editSupplier-tab">
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="addSupplierBack()" class="btn btn-primary"></i> Back</a></button>
                     </div>
                     <div class="card-body">
-                        <ul class="nav nav-tabs" id="DetailTab" role="tablist">
+                        <ul class="nav nav-tabs" id="editSupplier" role="tablist">
                             <?php if ($position !== 'Admin') {
                                 echo '<li class="nav-item">
-                                <a class="nav-link" id="DetInfo" data-toggle="tab" href="#Detail_Info"
+                                <a class="nav-link" id="SupInfo" data-toggle="tab" href="#Supplier_Info"
                                    role="tab"
                                    aria-controls="info" aria-selected="true">Information</a>
                             </li>';
                             }
                             ?>
-                            <li class="nav-item">
-                                <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det"
+                            <li class="nav-supplier">
+                                <a class="nav-link active" id="Suppdetail" data-toggle="tab" href="#Supplier_Det"
                                    role="tab"
-                                   aria-controls="detail" aria-selected="false">Details</a>
+                                   aria-controls="editSupplier" aria-selected="false">Details</a>
                             </li>
                         </ul>
                         <div class="tab-content pl-3 p-1 AddSup hidden" id="myTabContent">
@@ -116,7 +120,8 @@
                                     <div class="form-group">
                                         <label for="Supplier Name" class="col-md-12">Supplier Name</label>
                                         <div class="col-md-12">
-                                            <input type="text" name="supplier" id="supplier-name"
+                                            <input type="text" name="supplier"
+                                                   id="supplier-name"
                                                    data-required="true"
                                                    class="form-control"
                                                    data-error-message="Please enter the Supplier Name" required>
@@ -136,15 +141,15 @@
                                     <div class="form-group">
                                         <label for="Address" class=" form-control-label">Contact Number</label>
                                         <div class="col-md-12">
-                                            <input id="contactno" class="form-control has-feedback-left"
+                                            <input id="contactno" class="form-control"
                                                    type="text" name="contact" data-required="true"
                                                    data-parsley-minlength="1"
                                                    data-parsley-maxlength="11"
                                                    data-error-message="Please Enter Contact Number" required>
                                         </div>
                                     </div>
-                                    <button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
-                                        <i class="fa fa-check"></i> save
+                                    <button class="btn btn-outline-info" type="submit" name="id" id="edtbuttonsupplier">
+                                        <i class="fa fa-check"></i> Save
                                     </button>
                                 </form>
                             </div>

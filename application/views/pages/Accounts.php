@@ -34,20 +34,7 @@
                     <div class="card-body">
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <table id="user-table" data-pagination="true" data-search="true"
-                                   data-toggle="table" data-url="Users/display_users"
                                    class="table table-no-bordered">
-                                <thead>
-                                <!-- Data-field for getting data  -->
-                                <tr>
-                                    <th data-sortable="true" data-field="name">Name</th>
-                                    <th data-sortable="true" data-field="email">Email</th>
-                                    <th data-sortable="true" data-field="contactno">Contact No.</th>
-                                    <th data-sortable="true" data-field="username">Username</th>
-                                    <th data-sortable="true" data-field="position">Position</th>
-                                    <th data-sortable="true" data-field="department">Department</th>
-                                    <th data-sortable="true" data-field="status">Status</th>
-                                </tr>
-                                </thead>
                             </table>
                         </div>
                     </div>
@@ -105,7 +92,7 @@
                                 <label class=" form-control-label">Username</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                    <input type="text" name="username" id="username" class="form-control has-feedback-left"
+                                    <input type="text" pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." name="username" id="username" class="form-control has-feedback-left"
                                            placeholder="Username" required>
                                 </div>
                                 <small class="form-text text-muted">ex. george12g2</small>
@@ -114,7 +101,7 @@
                                 <label class=" form-control-label">Password</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-key"></i></div>
-                                    <input type="password" name="password" id="password" class="form-control has-feedback-left"
+                                    <input type="password" name="password" id="password" class="form-control has-feedback-left" pattern=".{4,}$"
                                            placeholder="Password" required>
                                 </div>
                                 <small class="form-text text-muted">ex. Password_123</small>
@@ -123,7 +110,7 @@
                                 <label class=" form-control-label">Position</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-briefcase"></i></div>
-                                    <select class="fa fa-chevron-down align=" center" id="position" name="position"
+                                    <select class="fa fa-chevron-down align" center" id="position" name="position"
                                     onclick='select_dept()' required>
                                     <option selected="true" disabled>--Choose Position--</option>
                                     <option value="admin">Admin</option>
@@ -133,15 +120,48 @@
                                 </div>
                             </div>
                             <div id="dmentselect" style="display:none;" class="form-group">
-                                <label class="form-control-label" >Department</label>
+                                <label class="form-control-label">Department</label>
                                 <div class="input-group" >
                                     <div class="input-group-addon"><i class="fa fa-building"></i></div>
-                                    <select id="dment" name="dment" type="button" class="deptopt form-control"></select>
+                                    <select class="fa fa-chevron-down align" center" id="dment" name="dment" type="button" >
+                                        <option selected="true" disabled>--Choose Department--</option>
+                                        <option value="11">CITY ENVIRONMENT & PARKS MANAGEMENT OFFICE</option>
+                                        <option value="12">BUREAU OF FIRE PREVENTION AND SAFETY</option>
+                                        <option value="13">GENERAL SERVICES OFFICE</option>
+                                        <option value="14">HEALTH SERVICES OFFICE</option>
+                                        <option value="15">OFFICE OF THE CITY HUMAN RESOURCE CENTER</option>
+                                        <option value="16">CITY LEGAL OFFICE</option>
+                                        <option value="17">CITY LIBRARY</option>
+                                        <option value="18">CITY MAYOR'S OFFICE</option>
+                                        <option value="19"> 
+MUNICIPAL TRIAL COURT IN CITIES</option>
+                                        <option value="20">OFFICE OF THE CITY PLANNING AND DEVELOPMENT</option>
+                                        <option value="21">CITY POLICE OFFICE</option>
+                                        <option value="22">PAROLE AND PROBATION OFFICE</option>
+                                        <option value="23">CITY PROSECUTOR'S OFFICE</option>
+                                        <option value="24">PUBLIC ATTORNEY'S OFFICE</option>
+                                        <option value="25">REGIONAL TRIAL COURT</option>
+                                        <option value="26">REGISTRY OF DEEDS</option>
+                                        <option value="27">SANGGUNIANG PANGLUNGSOD</option>
+                                        <option value="28">OFFICE OF THE CITY SOCIAL WELFARE DEVELOPMENT</option>
+                                        <option value="29">CITY TREASURER'S OFFICE</option>
+                                        <option value="110">CITY ENGINEER'S OFFICE</option>
+                                        <option value="111">CITY ACCOUNTANT'S OFFICE</option>
+                                        <option value="112">CITY ADMINISTRATOR'S OFFICE</option>
+                                        <option value="113">CITY ASSESSOR'S OFFICE</option>
+                                        <option value="114">OFFICE OF THE CITY AUDITOR</option>
+                                        <option value="115">    
+CITY BUDGET OFFICE</option>
+                                        <option value="116">CITY BUILDING AND ARCHITECTURE OFFICE</option>
+                                        <option value="117">CITY JAIL MANAGEMENT & PENOLOGY</option>
+                                        <option value="118">OFFICE OF THE LOCAL CIVIL REGISTRAR</option>
+                                        <option value="119">DEPARTMENT OF EDUCATION</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success"><i
+                                <button type="submit" name="id" id="edtsave" class="btn btn-success"><i
                                             class="fa fa-send"></i> Submit
                                 </button>
                             </div>
@@ -164,7 +184,7 @@
                             <label class=" form-control-user">First Name</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" name="firstname" id="firstname" 
+                                <input type="text" name="first" id="first" 
                                        class="form-control has-feedback-left" >
                             </div>
                         </div>
@@ -172,14 +192,14 @@
                             <label class=" form-control-label">Last Name</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" id="lastname" name="lastname" class="form-control has-feedback-left">
+                                <input type="text" id="last" name="last" class="form-control has-feedback-left">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">E-mail</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                <input id="email" class="form-control has-feedback-left" type="email" name="email">
+                                <input id="em" class="form-control has-feedback-left" type="email" name="em">
                             </div>
                         </div>
                         <div class="form-group">
@@ -187,28 +207,28 @@
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-phone"></i></div>
                                 <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$"
-                                       title="ex. 0987654321" id="contactno" name="contactno">
+                                       title="ex. 0987654321" id="cno" name="cno">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Username</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" name="username" id="username" class="form-control has-feedback-left">
+                                <input type="text" name="uname" id="uname" class="form-control has-feedback-left">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Password</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-key"></i></div>
-                                <input type="password" name="password" id="password" class="form-control has-feedback-left">
+                                <input type="password" name="pword" id="pword" class="form-control has-feedback-left">
                             </div>
                         </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Status</label>
                                         <div class="col-md-12">
-                                            <select id="status" data-parsley-group="set1"
-                                                    list="statuslist" name="Status"
+                                            <select id="stat" data-parsley-group="set1"
+                                                    list="statuslist" name="Stat"
                                                     class="form-control" >
                                                 <option selected="true" disabled>--Activate or Deactivate--</option>
                                                 <option value="Inactive">Deactivate</option>

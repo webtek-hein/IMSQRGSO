@@ -47,9 +47,36 @@ $(document).ready(function () {
 // 	$('.user-menu').parent().toggleClass('open');
 // });
 
-function editSupplier(){
-    alert('test');
+function editSupplier(id) {
+    var $detailtable = $('#editSupplier-tab-table');
+    var supplier;
+    $.ajax({
+        url: 'supplier/getSupplier/' + id,
+        dataType: 'JSON',
+        success: function (data) {
+            $('#edtbuttonsupplier').val(id);
+            $('#supplier-name').val(data.name);
+            $('#address').val(data.location);
+            $('#contactno').val(data.contact);
+            toggleDiv($('.editSupplier-tab '), $('.supplier-tab'));
+            $detailtable.bootstrapTable('refresh', {url: 'supplier/detail/' + id})
+                .bootstrapTable({
+                    url: 'supplier/detail/' + id,
+                    columns: [{
+                        field: 'supplier_name',
+                        title: 'Supplier name'
+                    }, {
+                        field: 'location',
+                        title: 'Address'
+                    }, {
+                        field: 'contact',
+                        title: 'Contact no'
+                    }]
+                });
+        }
+    });
 }
+
 // go to detail
 function detail(id) {
     var $detailtable = $('#detail-tab-table');
@@ -101,9 +128,30 @@ function detail(id) {
         }
     });
 }
+
+function userDetail(id) {
+    var item;
+    $.ajax({
+        url: 'users/getuser/' + id,
+        dataType: 'JSON',
+        success: function (data) {
+            toggleDiv($('.userDetail'), $('.accounts-tab'));
+            $('#edtbutton').val(id);
+            $('#first').val(data.firstname);
+            $('#last').val(data.lastname);
+            $('#em').val(data.email);
+            $('#cno').val(data.contactno);
+            $('#uname').val(data.username);
+            $('#pword').val(data.password);
+            $('#stat').val(data.status);
+        }
+    });
+}
+
 var counter = 1;
+
 function insertRow() {
-    $('#detail-tab-table').find('tr:last').after('<tr id=detTab'+counter+'> ' +
+    $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
         '<td style=""><input name="PO" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
         '<td style=""><input name="del" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="rec" class="form-control form-control-sm" type="date"></td> ' +
@@ -124,7 +172,7 @@ function addquant(counter) {
         type: 'POST',
         data: $('#addQuant').serialize(),
         success: function (result) {
-            console.log( $('#detTab'+counter).find('input').replaceWith(function () {
+            console.log($('#detTab' + counter).find('input').replaceWith(function () {
                 return $('<p/>', {html: this.innerHTML});
             }));
         }
@@ -140,7 +188,67 @@ function init_inventory() {
     var $itemTable = $('#itemtable');
     var $MOOEtable = $('#MOOEtable');
     var $supplier = $('#supplier-table');
-
+    var $userTable = $('#user-table');
+    $supplier.bootstrapTable('refresh', {url: 'supplier/viewsuppliers'})
+        .bootstrapTable({
+            pageSize: 10,
+            url: 'supplier/viewsuppliers',
+            onClickRow: function (data, row) {
+                editSupplier(data.id);
+            },
+            resizable: true,
+            columns: [{
+                sortable: true,
+                field: 'supplier',
+                title: 'Supplier Name'
+            }, {
+                sortable: true,
+                field: 'contact',
+                title: 'Contact number'
+            }, {
+                sortable: true,
+                field: 'address',
+                title: 'Address'
+            }]
+        });
+    $userTable.bootstrapTable('refresh', {url: 'Users/display_users'})
+        .bootstrapTable({
+            pageSize: 10,
+            url: 'Users/display_users',
+            onClickRow: function (data, row) {
+                userDetail(data.id);
+            },
+            resizable: true,
+            columns: [{
+                sortable: true,
+                field: 'name',
+                title: 'NAME'
+            }, {
+                sortable: true,
+                field: 'email',
+                title: 'Email'
+            }, {
+                sortable: true,
+                field: 'contactno',
+                title: 'Contact'
+            }, {
+                sortable: true,
+                field: 'username',
+                title: 'Username'
+            }, {
+                sortable: true,
+                field: 'position',
+                title: 'Position'
+            }, {
+                sortable: true,
+                field: 'department',
+                title: 'Department'
+            }, {
+                sortable: true,
+                field: 'status',
+                title: 'Status'
+            }]
+        });
     $itemTable.bootstrapTable('refresh', {url: 'inventory/viewItem/CO'})
         .bootstrapTable({
             pageSize: 10,
@@ -223,9 +331,6 @@ function init_inventory() {
     });
     $('#headingZero').on('click', function () {
         toggleDiv($('.addUser'), $('.accounts-tab'));
-    });
-    $('#user-table').on('click', function () {
-        toggleDiv($('.userDetail'), $('.accounts-tab'));
     });
     $('select.itemtype').change(function () {
         $('.hideInput').toggleClass('hidden');
@@ -649,7 +754,12 @@ function getserial(id) {
 
             }
             if (serials.length === 0 && (mooe !== null && mooe !== 'Distributed')) {
-                var qua = ("<input type=\'text\' name=\'quantity\' placeholder='quantity\' class=\'form-control col-md-7 col-xs-12\' required>");
+                var qua = ("<div class=\"quant form-group\">" +
+                    "<label>Quantity<span class=\"required\">*</span>" +
+                    "<input type=\'number\' name=\'quantity\' placeholder='quantity\' " +
+                    "class=\'form-control col-md-7 col-xs-12\' required>" +
+                    "</label>" +
+                    "</div>");
                 $('.quant').html(qua);
 
             }
