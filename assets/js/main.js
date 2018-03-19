@@ -58,7 +58,7 @@ function editSupplier(id) {
             $('#supplier-name').val(data.name);
             $('#address').val(data.location);
             $('#contactno').val(data.contact);
-            toggleDiv($('.detail-tab '), $('.supplier-tab'));
+            toggleDiv($('.editSupplier-tab '), $('.supplier-tab'));
             $detailtable.bootstrapTable('refresh', {url: 'supplier/detail/' + id})
                 .bootstrapTable({
                     url: 'supplier/detail/' + id,
@@ -189,7 +189,28 @@ function init_inventory() {
     var $MOOEtable = $('#MOOEtable');
     var $supplier = $('#supplier-table');
     var $userTable = $('#user-table');
-
+    $supplier.bootstrapTable('refresh', {url: 'supplier/viewsuppliers'})
+        .bootstrapTable({
+            pageSize: 10,
+            url: 'supplier/viewsuppliers',
+            onClickRow: function (data, row) {
+                editSupplier(data.id);
+            },
+            resizable: true,
+            columns: [{
+                sortable: true,
+                field: 'supplier',
+                title: 'Supplier Name'
+            }, {
+                sortable: true,
+                field: 'contact',
+                title: 'Contact number'
+            }, {
+                sortable: true,
+                field: 'address',
+                title: 'Address'
+            }]
+        });
     $userTable.bootstrapTable('refresh', {url: 'Users/display_users'})
         .bootstrapTable({
             pageSize: 10,

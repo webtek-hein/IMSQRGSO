@@ -19,6 +19,7 @@ class Supplier extends CI_Controller {
 
         foreach ($list as $suppliers){
             $row = array();
+            $row['id'] = $suppliers['supplier_id'];
             $row['supplier'] = $suppliers['supplier_name'];
             $row['contact'] = $suppliers['contact'];
             $row['address'] = $suppliers['location'];
@@ -50,5 +51,18 @@ class Supplier extends CI_Controller {
         }
         echo json_encode($data);
 
+    }
+    public function getSupplier($id){
+        $list = $this->supp->retrieveSupplier($id);
+        $data = array();
+
+        foreach ($list as $suppliers){
+            $row = array();
+            $row['supplier'] = $suppliers['supplier_name'];
+            $row['contact'] = $suppliers['contact'];
+            $row['address'] = $suppliers['location'];
+            $data[] = $row;
+        }
+        echo json_encode($data);
     }
 }

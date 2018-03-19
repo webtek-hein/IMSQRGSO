@@ -88,7 +88,6 @@
                     </div>
                 </div>
             </div>
-
             <div hidden class="col-lg-12 editSupplier-tab">
                 <div class="card">
                     <div class="card-header">
@@ -121,7 +120,7 @@
                                     <div class="form-group">
                                         <label for="Supplier Name" class="col-md-12">Supplier Name</label>
                                         <div class="col-md-12">
-                                            <input type="text" name="supplier" 
+                                            <input type="text" name="supplier"
                                                    id="supplier-name"
                                                    data-required="true"
                                                    class="form-control"

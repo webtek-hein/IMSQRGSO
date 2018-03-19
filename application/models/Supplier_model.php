@@ -15,4 +15,9 @@ class Supplier_model extends CI_Model{
         $query = $this->db->get('supplier');
         return $query->row();
     }
+    public function retrieveSupplier($id){
+        $this->db->where('supplier_id',$id);
+        $query = $this->db->get('supplier');
+        return $query->result_array();
+    }
 }
