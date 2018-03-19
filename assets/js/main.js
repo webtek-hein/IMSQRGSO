@@ -54,25 +54,12 @@ function editSupplier(id) {
         url: 'supplier/getSupplier/' + id,
         dataType: 'JSON',
         success: function (data) {
-            $('#edtbuttonsupplier').val(id);
-            $('#supplier-name').val(data.name);
-            $('#address').val(data.location);
-            $('#contactno').val(data.contact);
+            console.log(data);
             toggleDiv($('.editSupplier-tab '), $('.supplier-tab'));
-            $detailtable.bootstrapTable('refresh', {url: 'supplier/detail/' + id})
-                .bootstrapTable({
-                    url: 'supplier/detail/' + id,
-                    columns: [{
-                        field: 'supplier_name',
-                        title: 'Supplier name'
-                    }, {
-                        field: 'location',
-                        title: 'Address'
-                    }, {
-                        field: 'contact',
-                        title: 'Contact no'
-                    }]
-                });
+            $('#edtbuttonsupplier').val(id);
+            $('#supplier').val(data.name);
+            $('#location').val(data.location);
+            $('#cno').val(data.contact);
         }
     });
 }
