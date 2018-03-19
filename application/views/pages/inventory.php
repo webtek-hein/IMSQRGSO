@@ -209,7 +209,7 @@
 
                             </div>
                             <!--Detail-->
-                            <div class="table-responsive-sm tab-pane fade show active" id="Detail_Det" role="tabpanel"
+                            <div class="table-responsive tab-pane fade show active" id="Detail_Det" role="tabpanel"
                                  aria-labelledby="Detail-tab">
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->

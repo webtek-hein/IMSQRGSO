@@ -12,6 +12,7 @@ class Inventory extends CI_Controller
         $this->load->model('Inventory_model', 'inv');
         //$this->load->library('csvimport');
     }
+
     function import()
     {
         $this->inv->insert();
@@ -46,7 +47,7 @@ class Inventory extends CI_Controller
                 'description' => $item['item_description'],
                 'quantity' => $item['quantity'],
                 'unit' => $item['unit'],
-                'button' =>  'Accept'
+                'button' => 'Accept'
             );
         }
         echo json_encode($data);
@@ -54,15 +55,20 @@ class Inventory extends CI_Controller
 
     public function addquant($item_det_id)
     {
-        $this->inv->addquant($item_det_id);
+        $list = $this->inv->addquant($item_det_id);
+        $data = [];
+        foreach ($list as $val) {
+            $data[] = '<td>'.$val.'</td>';
+        }
+        echo json_encode($data);
     }
 
     public function distribute()
     {
         $position = $this->session->userdata['logged_in']['position'];
         $dept = $this->session->userdata['logged_in']['dept_id'];
-        $this->inv->distrib($position,$dept);
-       redirect('inventory');
+        $this->inv->distrib($position, $dept);
+        redirect('inventory');
     }
 
     public function edititem()
@@ -74,9 +80,9 @@ class Inventory extends CI_Controller
     public function detail($id)
     {
         $position = $this->session->userdata['logged_in']['position'];
-        if($position === 'Supply Officer'){
+        if ($position === 'Supply Officer') {
             $list = $this->inv->viewDetailperDept($id);
-        }else{
+        } else {
             $list = $this->inv->viewdetail($id);
         }
         $data = array();
@@ -88,7 +94,7 @@ class Inventory extends CI_Controller
                     href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\">
                               </i > View Serial</a></li>";
             }
-            if ($this->session->userdata['logged_in']['position'] !== 'none' ) {
+            if ($this->session->userdata['logged_in']['position'] !== 'none') {
                 if ($this->session->userdata['logged_in']['position'] !== 'Custodian') {
                     $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>";
                     if ($this->session->userdata['logged_in']['position'] === 'Supply Officer') {
@@ -96,15 +102,15 @@ class Inventory extends CI_Controller
                                <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]' class=\"btn btn-success\">Accept</a>
                                <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]'  class=\"btn btn-danger\">Return</a>";
                     }
-                }else {
-                        $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
+                } else {
+                    $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <li><a href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a ></li >
                             <li><a href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
                             <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ></li >$viewser
                     </ul>";
-                    }
+                }
 
             }
 
@@ -141,7 +147,7 @@ class Inventory extends CI_Controller
             );
         }
         echo json_encode($data);
-            
+
     }
 
     public function getdept()
@@ -208,7 +214,7 @@ class Inventory extends CI_Controller
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
 
-        $list = $this->inv->getSerial($det_id,$position);
+        $list = $this->inv->getSerial($det_id, $position);
 
         $data = array();
         foreach ($list as $serial) {
@@ -267,17 +273,20 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
-    public function acceptitem(){
+    public function acceptitem()
+    {
         $this->inv->accept();
         redirect('inventory');
     }
 
-    public function deptreturn(){
+    public function deptreturn()
+    {
         $this->inv->returnitem();
         redirect('inventory');
     }
 
-    public function getLedger($id){
+    public function getLedger($id)
+    {
         $list = $this->inv->ledger($id);
         $data = [];
         var_dump($list);
@@ -293,8 +302,6 @@ class Inventory extends CI_Controller
         }
         echo json_encode($data);
     }
-
-
 
 
 }

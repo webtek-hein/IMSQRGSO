@@ -138,28 +138,44 @@ function userDetail(id) {
 var counter = 1;
 
 function insertRow() {
+    var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
         '<td contenteditable style=""><input name="PO" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
         '<td style=""><input name="del" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="rec" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="exp" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="cost" class="form-control form-control-sm" type="number"></td> ' +
-        '<td style=""><input name="supp" class="form-control form-control-sm" type="text"></td> ' +
+        '<td style=""><select name="supp" class="supplieropt form-control form-control-sm"></select></td> ' +
         '<td style=""><input name="quant" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><input name="or" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><button type="button" onclick="addquant(counter-1)" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
         '</tr>');
+    $.ajax({
+        url: 'supplier/supplieroption',
+        dataType: 'JSON',
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                supplier += "<option value=" + data[i].id + ">" + data[i].supplier + "<br>";
+            }
+            $('.supplieropt').html(supplier);
+        }
+    });
     counter++;
 }
 
 function addquant(counter) {
     var $item_det_id = $('#DetailDropDn').find('a').data('id');
+    var data = $('#addQuant').serializeArray();
+    var $det = $('#detTab'+counter);
+    console.log($det);
+    var temp = [];
     $.ajax({
         url: 'inventory/addquant/' + $item_det_id,
         type: 'POST',
-        data: $('#addQuant').serialize(),
+        data: data,
         success: function (result) {
-            $('#itemtable').bootstrapTable('refresh', {url: 'inventory/viewItem/CO'});
+            res = JSON.parse(result);
+            $det.html(res);
         }
     });
 }
