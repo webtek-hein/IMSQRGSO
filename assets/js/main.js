@@ -810,6 +810,7 @@ function getserial(id) {
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
                 mooe = data[i].serial;
+                var status = data[i].item_status;
                 if (data[i].serial !== null) {
                     serials.push("<input name=\"serial[]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
@@ -819,7 +820,7 @@ function getserial(id) {
                 $('.serial').html(serials);
 
             }
-            if (serials.length === 0 && (mooe !== null && mooe !== 'Distributed')) {
+            if (serials.length === 0 && (mooe !== null && status !== 'Distributed')) {
                 var qua = ("<div class=\"quant form-group\">" +
                     "<label>Quantity<span class=\"required\">*</span>" +
                     "<input type=\'number\' name=\'quantity\' placeholder='quantity\' " +
