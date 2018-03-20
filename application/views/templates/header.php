@@ -47,7 +47,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="./"><img src="assets/images/logo3.png" alt="Logo" hight="700" width="500"></a>
+            <a class="navbar-brand" href="./"><img src="assets/images/logo8.png" alt="Logo" height="90"></a>
             <a class="navbar-brand hidden" href="./"><img src="assets/images/logo2.png" alt="Logo"></a>
         </div>
 
