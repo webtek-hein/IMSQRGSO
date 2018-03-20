@@ -22,7 +22,7 @@
     <div class="animated fadeIn">
         <div class="row">
             <!-- Inventory-->
-            <div class="col-lg-12 inventory-tab">
+            <div class="inventory-tab col-lg-12">
                 <div class="card">
 
                     <?php $position = $this->session->userdata['logged_in']['position'];

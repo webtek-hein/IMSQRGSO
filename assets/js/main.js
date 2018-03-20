@@ -38,7 +38,17 @@ $(document).ready(function () {
         event.stopPropagation();
         $('.search-trigger').parent('.header-left').removeClass('open');
     });
-});
+    var active = localStorage.getItem('active');
+    var hidden = localStorage.getItem('hidden');
+    var detFunc = localStorage.getItem('detail');
+
+
+    if(active.split(' ')[0] === 'detail-tab'){
+        $('td').attr('onclick',detFunc).click();
+    }
+    toggleDiv($('.'+active.split(' ')[0]),$('.'+hidden.split(' ')[0]));
+
+ });
 
 // $('.user-area> a').on('click', function(event) {
 // 	event.preventDefault();
@@ -66,6 +76,7 @@ function editSupplier(id) {
 
 // go to detail
 function detail(id) {
+    localStorage.setItem('detail','detail('+id+')');
     var $detailtable = $('#detail-tab-table');
     var item;
     $.ajax({
@@ -828,13 +839,11 @@ function toggleDiv(elementToShow, elementToHide) {
     elementToShow.removeAttr('hidden');
     elementToHide.attr('hidden', 'hidden');
 
-    localStorage.setItem('active',elementToShow.toString());
-    localStorage.setItem('hidden',JSON.stringify(elementToHide));
-    var hidden = localStorage.getItem('hidden');
-
-    console.log(hidden);
+    localStorage.setItem('active',elementToShow[0].className);
+    localStorage.setItem('hidden',elementToHide[0].className);
 
 }
+
 
 // add another item function
 function init_bulkFucntion() {
