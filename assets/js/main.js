@@ -42,14 +42,18 @@ $(document).ready(function () {
     var hidden = localStorage.getItem('hidden');
     var detFunc = localStorage.getItem('detail');
 
+    $('#main-menu').find('li a').click(function () {
+        localStorage.clear();
+    });
 
-    if(active.split(' ')[0] === 'detail-tab' && active !== null){
-        $('td').attr('onclick',detFunc).click();
+
+    if (active.split(' ')[0] === 'detail-tab' && active !== null) {
+        $('td').attr('onclick', detFunc).click();
     }
 
     //get URL of the document
-    var $url = window.location.href.substr(window.location.href.lastIndexOf('/')+1);
- });
+    var $url = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+});
 
 // $('.user-area> a').on('click', function(event) {
 // 	event.preventDefault();
@@ -77,7 +81,7 @@ function editSupplier(id) {
 
 // go to detail
 function detail(id) {
-    localStorage.setItem('detail','detail('+id+')');
+    localStorage.setItem('detail', 'detail(' + id + ')');
     var $detailtable = $('#detail-tab-table');
     var item;
     $.ajax({
@@ -127,6 +131,7 @@ function detail(id) {
         }
     });
 }
+
 function deptDet(id) {
     var $detailtable = $('#detail-tab-table');
     var item;
@@ -228,7 +233,7 @@ function insertRow() {
 function addquant(counter) {
     var $item_det_id = $('#DetailDropDn').find('a').data('id');
     var data = $('#addQuant').serializeArray();
-    var $det = $('#detTab'+counter);
+    var $det = $('#detTab' + counter);
     console.log($det);
     var temp = [];
     $.ajax({
@@ -624,7 +629,7 @@ function modal() {
     $('.btn-hide').on('click', function () {
         $('#firststep').modal('hide');
     });
-    $(".dist").on("hidden.bs.modal", function() {
+    $(".dist").on("hidden.bs.modal", function () {
         $(".serial").html("");
         $(".quant").html("");
     });
@@ -841,8 +846,8 @@ function toggleDiv(elementToShow, elementToHide) {
     elementToShow.removeAttr('hidden');
     elementToHide.attr('hidden', 'hidden');
 
-    localStorage.setItem('active',elementToShow[0].className);
-    localStorage.setItem('hidden',elementToHide[0].className);
+    localStorage.setItem('active', elementToShow[0].className);
+    localStorage.setItem('hidden', elementToHide[0].className);
 
 }
 

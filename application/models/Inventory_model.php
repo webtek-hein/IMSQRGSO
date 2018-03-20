@@ -357,8 +357,10 @@ class Inventory_model extends CI_Model
 
     public function viewDetailperDept($id)
     {
-        $this->db->select('distribution.status,distribution.dist_id,OR_no,PO_number,item.serial,item_type,date_delivered,distribution.date_received,expiration_date,unit_cost,supplier_name,
-        item_name,item_description,item.quantity as total,unit,SUM(distribution.quantity_distributed) as quantity,itemdetail.item_det_id,item.item_id');
+        $this->db->select('distribution.status,distribution.dist_id,OR_no,PO_number,
+        item.serial,item_type,date_delivered,distribution.date_received,expiration_date,unit_cost,supplier_name,
+        item_name,item_description,item.quantity as total,unit,SUM(distribution.quantity_distributed) as quantity,
+        itemdetail.item_det_id,item.item_id');
         $this->db->join('item', 'item.item_id = itemdetail.item_id');
         $this->db->join('distribution', 'distribution.item_id = item.item_id');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
