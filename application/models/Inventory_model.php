@@ -246,21 +246,23 @@ class Inventory_model extends CI_Model
             $this->db->select('supplier_name');
             $this->db->where('supplier_id', $supplier);
             $supp = $this->db->get('supplier')->row()->supplier_name;
-
+            $viewSer= "";
             if ($item_type === 'CO') {
                 if ($serialStatus === '1') {
                     $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
                     $this->db->insert_batch('serial', $serial);
+                    $viewSer = "<li><a onclick='viewSerial($insert_id)' data-toggle=\"collapse\" 
+                            href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\">
+                            </i > View Serial </a ></li >";
                 }
             }
-            $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
+
+                $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <li><a href=\"#\" onclick=\"getserial($insert_id)\"data-toggle=\"modal\" data-id='+$insert_id+'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a ></li >
                             <li><a href=\"#\" data-toggle=\"modal\" data-quantity='$quantity' data-id='$insert_id'data-target=\" .Edit\">
-                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ></li ><li ><a onclick='viewSerial($insert_id)' data-toggle=\"collapse\" 
-                            href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\">
-                            </i > View Serial </a ></li ></ul>";
+                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ></li >$viewSer</ul>";
             $data1 = array(
                 $this->input->post('PO'),
                 $this->input->post('del'),

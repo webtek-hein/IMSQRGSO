@@ -115,6 +115,56 @@ function detail(id) {
         }
     });
 }
+function deptDet(id) {
+    var $detailtable = $('#detail-tab-table');
+    var item;
+    $.ajax({
+        url: 'inventory/getitem/' + id,
+        dataType: 'JSON',
+        success: function (data) {
+            $('#itemname').html(data.name);
+            $('#itemdesc').html(data.description);
+            $('#total').html(data.quant);
+            $('#itemtype').html(data.item_type);
+            $('#unit').html(data.unit);
+            toggleDiv($('.detail-tab '), $('.inventory-tab'));
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/' + id})
+                .bootstrapTable({
+                    url: 'inventory/detail/' + id,
+                    columns: [{
+                        field: 'PO',
+                        title: 'PO number'
+                    }, {
+                        field: 'del',
+                        title: 'Delivery Date'
+                    }, {
+                        field: 'rec',
+                        title: 'Date Received'
+                    }, {
+                        field: 'exp',
+                        title: 'Estimated Useful Life'
+                    }, {
+                        field: 'cost',
+                        title: 'Unit Cost'
+                    }, {
+                        field: 'sup',
+                        title: 'Supplier'
+                    }, {
+                        field: 'quant',
+                        title: 'Quantity'
+                    }, {
+                        field: 'or',
+                        title: 'OR number'
+                    }, {
+                        field: 'action',
+                        title: 'Action'
+                    }]
+                });
+            serialize_forms();
+        }
+    });
+}
+
 
 function userDetail(id) {
     var item;
@@ -379,7 +429,7 @@ function init_list() {
         pageSize: 10,
         url: 'inventory/viewdept/CO/11',
         onClickRow: function (data, row) {
-            detail(data.id);
+            deptDet(data.id);
         },
         resizable: true,
         columns: [{
@@ -409,7 +459,7 @@ function init_list() {
         pageSize: 10,
         url: 'inventory/viewdept/MOOE/11',
         onClickRow: function (data, row) {
-            detail(data.id);
+            deptDet(data.id);
         },
         resizable: true,
         columns: [{
@@ -774,8 +824,16 @@ function getserial(id) {
 
 //toggle hidden class of element
 function toggleDiv(elementToShow, elementToHide) {
+
     elementToShow.removeAttr('hidden');
     elementToHide.attr('hidden', 'hidden');
+
+    localStorage.setItem('active',elementToShow.toString());
+    localStorage.setItem('hidden',JSON.stringify(elementToHide));
+    var hidden = localStorage.getItem('hidden');
+
+    console.log(hidden);
+
 }
 
 // add another item function
