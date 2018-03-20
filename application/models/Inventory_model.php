@@ -246,7 +246,7 @@ class Inventory_model extends CI_Model
             $this->db->select('supplier_name');
             $this->db->where('supplier_id', $supplier);
             $supp = $this->db->get('supplier')->row()->supplier_name;
-            $viewSer= "";
+            $viewSer = "";
             if ($item_type === 'CO') {
                 if ($serialStatus === '1') {
                     $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
@@ -257,7 +257,7 @@ class Inventory_model extends CI_Model
                 }
             }
 
-                $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
+            $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <li><a href=\"#\" onclick=\"getserial($insert_id)\"data-toggle=\"modal\" data-id='+$insert_id+'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a ></li >
@@ -291,9 +291,13 @@ class Inventory_model extends CI_Model
         }
     }
 
-    public function getItem($id)
+    public function getItem($dept, $id)
     {
-        $this->db->where('item_id', $id);
+        if ($dept === 'dept') {
+            $this->db->select('item.item_type,item.item_name,item.item_description,sum(distribution.quantity_distributed)as quantity,item.unit');
+            $this->db->join('distribution', 'item.item_id = distribution.item_id');
+        }
+        $this->db->where('item.item_id', $id);
         $query = $this->db->get('item');
         return $query->row();
     }
@@ -564,7 +568,6 @@ class Inventory_model extends CI_Model
         // convert to array
         $data1 = array(
             'quantity' => $item->quantity,
-
         );
         // update item
         $data = array(

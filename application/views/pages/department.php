@@ -25,7 +25,7 @@
             <div class="col-lg-12 inventory-tab ">
                 <div class="card">
                     <div class="card-header">
-                        <select id="select-dept" type="button" class="deptopt form-control"><span
+                        <select id="select-dept" type="button" class="col-lg-5 deptopt form-control"><span
                                     class="fa fa-chevron-down"></span></select>
                     </div>
                     <div class="card-body">

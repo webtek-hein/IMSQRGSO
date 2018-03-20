@@ -80,14 +80,15 @@ if (isset($this->session->userdata['logged_in'])) {
                                   </li>';
                 ?>
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Logs</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Logs</a>
 
                     <?php
                     echo '<ul class="sub-menu children dropdown-menu">';
-                    echo '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
-                        '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>';
-                    if ($position === 'Admin' || $position === 'Custodian') {
-                        echo '<li><a href=' . base_url() . 'edit>EDIT</a></li>';
+                    if ($position !== 'Supply Officer') {
+                        echo '<li><a href=' . base_url() . 'edit>EDIT</a></li>' .
+                            '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
+                            '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>';;
                     }
                     echo '<li><a href=' . base_url() . 'return_log>RETURN LOG</a></li>';
                     echo '</ul></li>';
@@ -112,13 +113,15 @@ if (isset($this->session->userdata['logged_in'])) {
                     <button class="search-trigger"><i class="fa fa-search"></i></button>
                     <div class="form-inline">
                         <form class="search-form">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search ..."
+                                   aria-label="Search">
                             <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                         </form>
                     </div>
 
                     <div class="dropdown for-notification">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell"></i>
                             <span class="count bg-danger">5</span>
                         </button>
@@ -149,7 +152,8 @@ if (isset($this->session->userdata['logged_in'])) {
                         <div class="dropdown-menu" aria-labelledby="message">
                             <p class="red">You have 4 Mails</p>
                             <a class="dropdown-item media bg-flat-color-1" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="assets/images/avatar/1.jpg"></span>
+                                <span class="photo media-left"><img alt="avatar"
+                                                                    src="assets/images/avatar/1.jpg"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Jonathan Smith</span>
                                     <span class="time float-right">Just now</span>
@@ -157,7 +161,8 @@ if (isset($this->session->userdata['logged_in'])) {
                                 </span>
                             </a>
                             <a class="dropdown-item media bg-flat-color-4" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="assets/images/avatar/2.jpg"></span>
+                                <span class="photo media-left"><img alt="avatar"
+                                                                    src="assets/images/avatar/2.jpg"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Jack Sanders</span>
                                     <span class="time float-right">5 minutes ago</span>
@@ -165,7 +170,8 @@ if (isset($this->session->userdata['logged_in'])) {
                                 </span>
                             </a>
                             <a class="dropdown-item media bg-flat-color-5" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="assets/images/avatar/3.jpg"></span>
+                                <span class="photo media-left"><img alt="avatar"
+                                                                    src="assets/images/avatar/3.jpg"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Cheryl Wheeler</span>
                                     <span class="time float-right">10 minutes ago</span>
@@ -173,7 +179,8 @@ if (isset($this->session->userdata['logged_in'])) {
                                 </span>
                             </a>
                             <a class="dropdown-item media bg-flat-color-3" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="assets/images/avatar/4.jpg"></span>
+                                <span class="photo media-left"><img alt="avatar"
+                                                                    src="assets/images/avatar/4.jpg"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Rachel Santos</span>
                                     <span class="time float-right">15 minutes ago</span>
@@ -187,14 +194,16 @@ if (isset($this->session->userdata['logged_in'])) {
 
             <div class="col-sm-5">
                 <div class="user-area dropdown float-right">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
                         <img class="user-avatar rounded-circle" src="assets/images/admin.jpg" alt="User Avatar">
                     </a>
 
                     <div class="user-menu dropdown-menu">
                         <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
 
-                        <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+                        <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span
+                                    class="count">13</span></a>
 
                         <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
 
@@ -203,10 +212,11 @@ if (isset($this->session->userdata['logged_in'])) {
                 </div>
 
                 <div class="language-select dropdown" id="language-select">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="language" aria-haspopup="true"
+                       aria-expanded="true">
                         <i class="flag-icon flag-icon-us"></i>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="language" >
+                    <div class="dropdown-menu" aria-labelledby="language">
                         <div class="dropdown-item">
                             <span class="flag-icon flag-icon-fr"></span>
                         </div>

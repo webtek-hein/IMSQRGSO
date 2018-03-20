@@ -43,11 +43,12 @@ $(document).ready(function () {
     var detFunc = localStorage.getItem('detail');
 
 
-    if(active.split(' ')[0] === 'detail-tab'){
+    if(active.split(' ')[0] === 'detail-tab' && active !== null){
         $('td').attr('onclick',detFunc).click();
     }
-    toggleDiv($('.'+active.split(' ')[0]),$('.'+hidden.split(' ')[0]));
 
+    //get URL of the document
+    var $url = window.location.href.substr(window.location.href.lastIndexOf('/')+1);
  });
 
 // $('.user-area> a').on('click', function(event) {
@@ -80,7 +81,7 @@ function detail(id) {
     var $detailtable = $('#detail-tab-table');
     var item;
     $.ajax({
-        url: 'inventory/getitem/' + id,
+        url: 'inventory/getitem/inv/' + id,
         dataType: 'JSON',
         success: function (data) {
             $('#edtbutton').val(id);
@@ -90,9 +91,9 @@ function detail(id) {
             $('#itemtype').val(data.item_type);
             $('#unit').val(data.unit);
             toggleDiv($('.detail-tab '), $('.inventory-tab'));
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/' + id})
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + id})
                 .bootstrapTable({
-                    url: 'inventory/detail/' + id,
+                    url: 'inventory/detail/inv/' + id,
                     columns: [{
                         field: 'PO',
                         title: 'PO number'
@@ -130,7 +131,7 @@ function deptDet(id) {
     var $detailtable = $('#detail-tab-table');
     var item;
     $.ajax({
-        url: 'inventory/getitem/' + id,
+        url: 'inventory/getitem/dept/' + id,
         dataType: 'JSON',
         success: function (data) {
             $('#itemname').html(data.name);
@@ -139,9 +140,9 @@ function deptDet(id) {
             $('#itemtype').html(data.item_type);
             $('#unit').html(data.unit);
             toggleDiv($('.detail-tab '), $('.inventory-tab'));
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/' + id})
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/dept/' + id})
                 .bootstrapTable({
-                    url: 'inventory/detail/' + id,
+                    url: 'inventory/detail/dept/' + id,
                     columns: [{
                         field: 'PO',
                         title: 'PO number'
@@ -828,10 +829,10 @@ function getserial(id) {
                     "</label>" +
                     "</div>");
                 $('.quant').html(qua);
-
             }
         }
     });
+
 }
 
 //toggle hidden class of element
