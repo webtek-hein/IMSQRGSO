@@ -58,7 +58,7 @@ class Inventory extends CI_Controller
         $list = $this->inv->addquant($item_det_id);
         $data = [];
         foreach ($list as $val) {
-            $data[] = '<td>'.$val.'</td>';
+            $data[] = '<td>' . $val . '</td>';
         }
         echo json_encode($data);
     }
@@ -77,10 +77,10 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
-    public function detail($id)
+    public function detail($dept,$id)
     {
         $position = $this->session->userdata['logged_in']['position'];
-        if ($position === 'Supply Officer') {
+        if ($position === 'Supply Officer' || $dept === 'dept') {
             $list = $this->inv->viewDetailperDept($id);
         } else {
             $list = $this->inv->viewdetail($id);
@@ -97,9 +97,12 @@ class Inventory extends CI_Controller
             if ($this->session->userdata['logged_in']['position'] !== 'none') {
                 if ($this->session->userdata['logged_in']['position'] !== 'Custodian') {
                     $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>";
-                    if ($this->session->userdata['logged_in']['position'] === 'Supply Officer') {
+                    if ($this->session->userdata['logged_in']['position'] === 'Supply Officer' && $detail['status'] !== 'Accepted') {
+                        $action = "
+                               <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Accept</a>
+                               <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]'  class=\"btn btn-danger\">Return</a>";
+                    } else {
                         $action = "<a href=\'#\' type=\'button\' class=\" btn btn-modal btn-outline-success\" onclick=\"getserial($detail[item_det_id])\" data-toggle=\"modal\" data-id='$detail[dist_id]'data-target=\" .DistributeSP\">Distribute</a >
-                               <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]' class=\"btn btn-success\">Accept</a>
                                <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]'  class=\"btn btn-danger\">Return</a>";
                     }
                 } else {
@@ -252,9 +255,9 @@ class Inventory extends CI_Controller
 
     }
 
-    public function getItem($id)
+    public function getItem($dept,$id)
     {
-        $list = $this->inv->getItem($id);
+        $list = $this->inv->getItem($dept,$id);
         $minimum = $this->inv->countItem($id);
         $data = array(
             'name' => $list->item_name,
