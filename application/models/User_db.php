@@ -50,20 +50,11 @@ class User_db extends CI_Model {
         $query = $this->db->get('user');
         return $query->result_array();
     }
-
-    public function insertUser(){
-        $data = array(
-            'first_name'=> $this->input->post('firstname'),
-            'last_name' => $this->input->post('lastname'),
-            'email'=>$this->input->post('email'),
-            'contact_no'=>$this->input->post('contactno'),
-            'username'=>$this->input->post('username'),
-            'password'=>$this->input->post('password'),
-            'position'=>$this->input->post('position'),
-            'dept_id'=>$this->input->post('dment'),
-        );
-        $this->db->insert('user',$data);
+    public function register($data)
+    {
+        return $this->db->insert('user', $data);
     }
+ 
     public function edituser()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
