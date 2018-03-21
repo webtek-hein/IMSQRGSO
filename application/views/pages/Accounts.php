@@ -90,8 +90,7 @@
                                 <label class=" form-control-label">Username</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                    <input type="text" pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." name="username" id="username" class="form-control has-feedback-left"
-                                           placeholder="Username" required> <span id="username_result"></span>
+                                    <input type="text" pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." name="username" id="username" class="form-control has-feedback-left" placeholder="Username" required> <span id="username_result"></span>
                                 </div>
                                 <small class="form-text text-muted">ex. george12g2</small>
                             </div>
@@ -108,8 +107,7 @@
                                 <label class=" form-control-label">Position</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-briefcase"></i></div>
-                                    <select class="fa fa-chevron-down align" center" id="position" name="position"
-                                    onclick='select_dept()' required>
+                                    <select required class="fa fa-chevron-down align" center" id="position" name="position" onclick='select_dept()' >
                                     <option selected="true" disabled>--Choose Position--</option>
                                     <option value="admin">Admin</option>
                                     <option value="custodian">Custodian</option>
@@ -211,7 +209,7 @@ CITY BUDGET OFFICE</option>
                             <label class=" form-control-label">Username</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" name="uname" id="uname" class="form-control has-feedback-left" pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only."><span id="uname_result"></span>
+                                <input type="text" name="uname" id="uname" class="form-control has-feedback-left" pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." required><span id="uname_result"></span>
                             </div>
                         </div>
                         <div class="form-group">
