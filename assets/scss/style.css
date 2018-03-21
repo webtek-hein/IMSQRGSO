@@ -13,6 +13,17 @@
 /* Bootstrap */
 @import url(../css/animate.css);
 
+.dropdown #DetailDropDn{
+  width: 15px;
+  padding: 0px;
+  margin-top: 30px;
+  margin-left: -130px;
+  position: static;
+}
+.dropdown #DetailDropDn a{
+  font-size: 15px;
+}
+
 tr{
   cursor: pointer;
 }
