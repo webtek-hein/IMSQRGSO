@@ -59,19 +59,20 @@ $(document).ready(function () {
 // 	$('.user-menu').parent().removeClass('open');
 // 	$('.user-menu').parent().toggleClass('open');
 // });
-function saveSerial(){
+function saveSerial() {
     data = $('#viewSerialForm').serializeArray();
     $.ajax({
         url: 'inventory/addSerial',
         method: 'POST',
         data: data,
         success: function (response) {
-            if(response >= 1){
+            if (response >= 1) {
                 alert('Serial has saved.');
             }
         }
     });
 }
+
 function editSupplier(id) {
     var $detailtable = $('#editSupplier-tab-table');
     var supplier;
@@ -159,11 +160,8 @@ function deptDet(id) {
                 .bootstrapTable({
                     url: 'inventory/detail/dept/' + id,
                     columns: [{
-                        field: 'PO',
-                        title: 'PO number'
-                    }, {
-                        field: 'del',
-                        title: 'Delivery Date'
+                        field: 'PR',
+                        title: 'PR number'
                     }, {
                         field: 'rec',
                         title: 'Date Received'
@@ -332,7 +330,11 @@ function init_inventory() {
             pageSize: 10,
             url: 'inventory/viewItem/CO',
             onClickRow: function (data, row) {
-                detail(data.id);
+                if(data.position === 'Supply Officer'){
+                    deptDet(data.id);
+                }else{
+                    detail(data.id);
+                }
             },
             resizable: true,
             columns: [{

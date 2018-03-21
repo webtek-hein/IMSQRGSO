@@ -47,6 +47,7 @@ class Inventory extends CI_Controller
                 'description' => $item['item_description'],
                 'quantity' => $item['quantity'],
                 'unit' => $item['unit'],
+                'position' => $position,
                 'button' => 'Accept'
             );
         }
@@ -96,12 +97,9 @@ class Inventory extends CI_Controller
             }
             if ($this->session->userdata['logged_in']['position'] !== 'none') {
                 if ($this->session->userdata['logged_in']['position'] === 'Admin') {
-                    $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>";
-                    if ($this->session->userdata['logged_in']['position'] === 'Supply Officer' && $detail['status'] !== 'Accepted') {
-                        $action = "
-                               <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Accept</a>
-                               <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]'  class=\"btn btn-danger\">Return</a>";
-                    } 
+                    $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\">
+                        <span class=\"caret\"></span></a>";
+
                 } else {
                     $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <ul id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
@@ -114,17 +112,37 @@ class Inventory extends CI_Controller
 
             }
 
-            $data[] = array(
-                'PO' => $detail['PO_number'],
-                'quant' => $detail['quantity'],
-                'del' => $detail['date_delivered'],
-                'rec' => $detail['date_received'],
-                'exp' => $detail['expiration_date'],
-                'cost' => $detail['unit_cost'],
-                'sup' => $detail['supplier_name'],
-                'or' => $detail['OR_no'],
-                'action' => $action,
-            );
+            if ($position === 'Supply Officer' || $dept === 'dept') {
+                if ($detail['status'] !== 'Accepted') {
+                    $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
+                            data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
+                            class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
+                            data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]'  
+                            class=\"btn btn-danger\">Return</a>";
+                }
+                $data[] = array(
+                    'PR' => $detail['PR_no'],
+                    'quant' => $detail['quantity_distributed'],
+                    'rec' => $detail['date_received'],
+                    'exp' => $detail['expiration_date'],
+                    'cost' => $detail['unit_cost'],
+                    'sup' => $detail['supplier_name'],
+                    'or' => $detail['OR_no'],
+                    'action' => $action
+                );
+            }else{
+                $data[] = array(
+                    'PO' => $detail['PO_number'],
+                    'quant' => $detail['quantity'],
+                    'del' => $detail['date_delivered'],
+                    'rec' => $detail['date_received'],
+                    'exp' => $detail['expiration_date'],
+                    'cost' => $detail['unit_cost'],
+                    'sup' => $detail['supplier_name'],
+                    'or' => $detail['OR_no'],
+                    'action' => $action,
+                );
+            }
         }
         echo json_encode($data);
     }

@@ -357,15 +357,14 @@ class Inventory_model extends CI_Model
 
     public function viewDetailperDept($id)
     {
-        $this->db->select('distribution.status,distribution.dist_id,OR_no,PO_number,
-        item.serial,item_type,date_delivered,distribution.date_received,expiration_date,unit_cost,supplier_name,
-        item_name,item_description,item.quantity as total,unit,SUM(distribution.quantity_distributed) as quantity,
-        itemdetail.item_det_id,item.item_id');
-        $this->db->join('item', 'item.item_id = itemdetail.item_id');
-        $this->db->join('distribution', 'distribution.item_id = item.item_id');
-        $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
-        $this->db->group_by('item.item_id,distribution.dist_id,itemdetail.item_det_id');
-        $query = $this->db->get_where('itemdetail', array('item.item_id' => $id));
+        $this->db->select('item.*,distribution.*,det.unit_cost,det.expiration_date,
+        det.OR_no,det.PO_number,supplier.supplier_name,det.item_det_id');
+        $this->db->join('distribution', 'distribution.dist_id = serial.dist_id', 'inner');
+        $this->db->join('itemdetail det', 'det.item_det_id = serial.item_det_id', 'inner');
+        $this->db->join('item', 'item.item_id = det.item_id ', 'inner');
+        $this->db->join('supplier', 'supplier.supplier_id = det.supplier_id', 'inner');
+        $this->db->group_by('distribution.dist_id,det.item_det_id');
+        $query = $this->db->get_where('serial', array('item.item_id' => $id));
         return $query->result_array();
     }
 
