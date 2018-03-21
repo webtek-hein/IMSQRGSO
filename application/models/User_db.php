@@ -117,4 +117,15 @@ class User_db extends CI_Model {
         $query = $this->db->get('user');
         return $query->row();
     }
+     public function getUsername($username)
+     {
+      $this->db->where('username' , $username);
+      $query = $this->db->get('user');
+      if($query->num_rows()>0){
+       return true;
+      }
+      else {
+       return false;
+      }
+     }
 }
