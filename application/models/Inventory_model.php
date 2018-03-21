@@ -545,7 +545,8 @@ class Inventory_model extends CI_Model
                 );
             }
         }
-        $this->db->update_batch('serial', $data, 'serial_id');
+        return $this->db->update_batch('serial', $data, 'serial_id');
+
     }
 
     public function countItem($id)

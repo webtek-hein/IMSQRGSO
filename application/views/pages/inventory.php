@@ -228,7 +228,7 @@
                                             <h4><b>List of Serial</b></h4>
                                         </div>
                                         <div class="card-body card-block">
-                                            <form class="serial-form" method="POST" action="inventory/addSerial">
+                                            <form id="viewSerialForm" class="serial-form">
                                                 <!-- Dynamic serial tabs here -->
                                                 <ul id="serial-tabs" class="nav nav-tabs">
                                                 </ul>

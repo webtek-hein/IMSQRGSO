@@ -45,8 +45,6 @@ $(document).ready(function () {
     $('#main-menu').find('li a').click(function () {
         localStorage.clear();
     });
-
-
     if (active.split(' ')[0] === 'detail-tab' && active !== null) {
         $('td').attr('onclick', detFunc).click();
     }
@@ -61,7 +59,19 @@ $(document).ready(function () {
 // 	$('.user-menu').parent().removeClass('open');
 // 	$('.user-menu').parent().toggleClass('open');
 // });
-
+function saveSerial(){
+    data = $('#viewSerialForm').serializeArray();
+    $.ajax({
+        url: 'inventory/addSerial',
+        method: 'POST',
+        data: data,
+        success: function (response) {
+            if(response >= 1){
+                alert('Serial has saved.');
+            }
+        }
+    });
+}
 function editSupplier(id) {
     var $detailtable = $('#editSupplier-tab-table');
     var supplier;
@@ -748,9 +758,9 @@ function viewSerial(id) {
 
             if (data[0]['position'] === 'Custodian') {
                 button = "<br><div class=\"col-md-offset-3\">\n" +
-                    "<button id=\"serialP\" type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Previous</button>\n" +
-                    "<button id=\"serialS\" type=\"submit\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Submit</a></button>\n" +
-                    "<button id=\"serialN\" type=\"button\" class=\"next-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>\n" +
+                    "<button id=\"serialP\" type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Previous</button>" +
+                    "<button id=\"serialS\" onclick = \"saveSerial()\" type=\"button\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Save</a></button>" +
+                    "<button id=\"serialN\" type=\"button\" class=\"next-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>" +
                     " </div></div>";
             }
             //if div reaches 10

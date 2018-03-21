@@ -231,8 +231,8 @@ class Inventory extends CI_Controller
 
     public function addSerial()
     {
-        $this->inv->addSerial();
-        redirect('inventory');
+        echo json_encode($this->inv->addSerial());
+//        redirect('inventory');
     }
 
     public function viewDept($type, $id)
