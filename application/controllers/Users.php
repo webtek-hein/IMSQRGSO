@@ -9,7 +9,7 @@ class Users extends CI_Controller {
         parent::__construct();
         $this->load->model('user_db');
     }
-
+  
     public function display_users()
     {
         $users = $this->user_db->get_users();
