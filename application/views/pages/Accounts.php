@@ -204,22 +204,21 @@ CITY BUDGET OFFICE</option>
                             <label class=" form-control-label">Contact No.</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-                                <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$"
-                                       title="ex. 0987654321" id="cno" name="cno">
+                                <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" id="cno" name="cno">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Username</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" name="uname" id="uname" class="form-control has-feedback-left">
+                                <input type="text" name="uname" id="uname" class="form-control has-feedback-left" pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only."><span id="uname_result"></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Password</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-key"></i></div>
-                                <input type="password" name="pword" id="pword" class="form-control has-feedback-left">
+                                <input type="password" name="pword" id="pword" class="form-control has-feedback-left" pattern=".{4,}$">
                             </div>
                         </div>
                                     <div class="form-group">

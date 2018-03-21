@@ -1071,3 +1071,19 @@ function select_dept() {
    }
   });
  });
+
+  $(document).ready(function(){
+  $('#uname').change(function(){
+   var username = $('#uname').val();
+   if(username != ''){
+    $.ajax({
+     url: "Search/checkUsername",
+     method: "POST",
+     data: {username:username},
+     success: function(data){
+      $('#uname_result').html(data);
+     }
+    });
+   }
+  });
+ });
