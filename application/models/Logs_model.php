@@ -19,21 +19,17 @@ class Logs_model extends CI_Model{
         return $query->result_array();
     }
     public function decrease_log($type,$position,$id){
-        $this->db->Select('decrease.timestamp,dept.department,item.item_name,item.item_description,
-        dist.quantity_distributed,item.unit,item.item_type,dist.date_received,dist.receiver,ac.account_code');
-
-        $this->db->join('gsois.itemdetail detail','detail.item_det_id = decrease.item_det_id');
-        $this->db->join('gsois.item item','item.item_id = detail.item_id');
-        $this->db->join('gsois.distribution dist','dist.dist_id = decrease.dist_id');
-        $this->db->join('gsois.department dept','dist.dept_id = dept.dept_id');
-        $this->db->join('gsois.account_code ac','dist.ac_id = ac.ac_id');
-
+        $this->db->Select('i.*,dist.date_received,timestamp,dept.department,ac.account_code,dist.quantity_distributed');
         if($position !== 'Admin'){
-            $this->db->join('gsois.user u','decrease.userid ='.$id);
+            $this->db->Select('CONCAT(u.first_name," ",u.last_name) as receiver,i.*,timestamp,dept.department,ac.account_code,dist.quantity_distributed');
+            $this->db->join('gsois.user u','decreaselog.userid ='.$id);
         }
-        $this->db->group_by('dist.dist_id,decrease.dec_log_id');
-        $query = $this->db->get_where('logs.decreaselog decrease',
-            array('item.item_type'=>$type));
+        $this->db->join('gsois.distribution dist','decreaselog.dist_id = dist.dist_id');
+        $this->db->join(' gsois.department dept','dist.dept_id = dept.dept_id');
+        $this->db->join('gsois.itemdetail det','det.item_det_id = dist.item_det_id');
+        $this->db->join('gsois.item i','det.item_id = i.item_id');
+        $this->db->join('gsois.account_code ac','dist.ac_id = ac.ac_id');
+        $query = $this->db->get_where('logs.decreaselog',array('i.item_type'=>$type));
         return $query->result_array();
     }
 

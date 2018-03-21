@@ -395,9 +395,7 @@
                                         <label for="unit" class=" form-control-label">Purchse Order (PO)
                                             number</label>
                                         <input data-parsley-group="set1" type="text"
-                                               name="PO[]" class="form-control has-feedback-left"
-                                               data-parsley-required-message="Input Purchase Order Number"
-                                               required>
+                                               name="PO[]" class="form-control">
                                     </div>
 
                                     <hr>
