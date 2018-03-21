@@ -12,6 +12,8 @@
                 <ol class="breadcrumb text-right">
                     <li class="active">Dashboard</li>
                     <li class="active">users</li>
+
+
                 </ol>
             </div>
         </div>
@@ -42,29 +44,28 @@
     </div>
 </div>
 <div hidden class="col-lg-12 addUser ">
-        <?php echo validation_errors(); ?>
-        <?php echo form_open('accounts#addUser'); ?>    
     <div class="card-header">
         <button type="button" onclick="addUserBack()" class="btn btn-primary"> Back</a></button>
     </div>
     <div class="form-group">
         <div class="card">
             <div class="card-body card-block">
-                <form data-validate="parsley">
-                    <div class="form-group">
-                        <label class=" form-control-user">First Name</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" name="firstname" id="firstname"
-                                           placeholder="First Name" class="form-control has-feedback-left" required value="<?php echo isset($_POST["FirstName"]) ? $_POST["FirstName"] : ''; ?>">
+                        <form method="POST" action="Users/addUser" data-validate="parsley">
+                            <div class="form-group">
+                                <label class=" form-control-user">First Name</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                    <input type="text" name="firstname" id="firstname"
+                                           placeholder="First Name" class="form-control has-feedback-left" required>
+                                </div>
+                                <small class="form-text text-muted">ex. George</small>
                             </div>
-                            <small class="form-text text-muted">ex. George</small>
-                    </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Last Name</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                    <input type="text" id="lastname" name="lastname" class="form-control has-feedback-left" placeholder="Last Name" required value="<?php echo isset($_POST["LastName"]) ? $_POST["LastName"] : ''; ?>">
+                                    <input type="text" id="lastname" name="lastname" class="form-control has-feedback-left"
+                                           placeholder="Last Name" required>
                                 </div>
                                 <small class="form-text text-muted">ex. Andrews</small>
                             </div>
@@ -72,7 +73,9 @@
                                 <label class=" form-control-label">E-mail</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                    <input id="email" class="form-control has-feedback-left" type="email" name="email" placeholder="E-mail" required value="<?php echo isset($_POST["Email"]) ? $_POST["Email"] : ''; ?>">
+                                    <input id="email" class="form-control has-feedback-left" type="email" name="email"
+                                           placeholder="E-mail"
+                                           required>
                                 </div>
                                 <small class="form-text text-muted">ex. george_andrews@gmail.com</small>
                             </div>
@@ -80,7 +83,8 @@
                                 <label class=" form-control-label">Contact No.</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-                                    <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" name="contactno" placeholder="Contact No." required value="<?php echo isset($_POST["contactno"]) ? $_POST["contactno"] : ''; ?>">
+                                    <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$"
+                                           title="ex. 0987654321" name="contactno" placeholder="Contact No." required>
                                 </div>
                                 <small class="form-text text-muted">ex. (999) 999-9999</small>
                             </div>
@@ -88,7 +92,8 @@
                                 <label class=" form-control-label">Username</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                    <input type="text" pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." name="username" id="username" class="form-control has-feedback-left" placeholder="Username" required value="<?php echo isset($_POST["Username"]) ? $_POST["Username"] : ''; ?>">
+                                    <input type="text" pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." name="username" id="username" class="form-control has-feedback-left"
+                                           placeholder="Username" required>
                                 </div>
                                 <small class="form-text text-muted">ex. george12g2</small>
                             </div>
