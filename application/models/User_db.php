@@ -3,7 +3,7 @@ class User_db extends CI_Model {
 // Read data using username and password
     public function login($data)
     {
-        $condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password'] . "'";
+        $condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password']  . "' AND " . "status=". "'Active'";
         $this->db->select('*');
         $this->db->from('user');
         $this->db->where($condition);
@@ -35,9 +35,11 @@ class User_db extends CI_Model {
 
     public function get_users()
     {
+         $user_id = $this->session->userdata['logged_in']['user_id'];
          $this->db->select('user_id,CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
          user.username,user.position,dept.department,user.status');
         $this->db->join('gsois.department dept','dept.dept_id = user.dept_id','left');
+        $this->db->where('user_id !=', $user_id);     
         $query = $this->db->get('user');
         return $query->result_array();
     }
