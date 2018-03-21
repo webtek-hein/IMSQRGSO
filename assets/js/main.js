@@ -721,6 +721,8 @@ function report_back() {
 
 function addSupplierBack() {
     toggleDiv($('.supplier-tab'), $('.addSupplier'));
+    toggleDiv($('.supplier-tab'), $('.editSupplier-tab'));
+
 }
 
 function addUserBack() {
