@@ -333,8 +333,9 @@ function init_inventory() {
                 if(data.position === 'Supply Officer'){
                     deptDet(data.id);
                 }else{
-                    detail(data.id);
+
                 }
+                detail(data.id);
             },
             resizable: true,
             columns: [{
@@ -508,10 +509,6 @@ function init_list() {
             },
             field: 'quant',
             title: 'QUANTITY DISTRIBUTED'
-        }, {
-            sortable: true,
-            field: 'rec',
-            title: 'DATE RECEIVED'
         }, {
             sortable: true,
             field: 'unit',

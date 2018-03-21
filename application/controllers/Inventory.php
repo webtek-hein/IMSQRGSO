@@ -13,21 +13,25 @@ class Inventory extends CI_Controller
         //$this->load->library('csvimport');
     }
 
-    function import()
-    {
-        $this->inv->insert();
-    }
-
+    //add item
     public function save($counter)
     {
         echo $this->inv->add_item($counter - 1);
     }
 
+    //add bulk of item
     public function saveAll()
     {
         $this->inv->saveAll();
         redirect('inventory');
     }
+
+    function import()
+    {
+        $this->inv->insert();
+    }
+
+
 
     public function viewItem($type)
     {
@@ -98,6 +102,7 @@ class Inventory extends CI_Controller
             if ($this->session->userdata['logged_in']['position'] !== 'none') {
                 if ($this->session->userdata['logged_in']['position'] === 'Admin') {
                     $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\">
+                        
                         <span class=\"caret\"></span></a>";
 
                 } else {
@@ -262,7 +267,7 @@ class Inventory extends CI_Controller
                 'id' => $item['item_id'],
                 'name' => $item['item_name'],
                 'description' => $item['item_description'],
-                'quant' => $item['quantity'],
+                'quant' => $item['quantity_distributed'],
                 'unit' => $item['unit']
             );
         }
@@ -274,10 +279,16 @@ class Inventory extends CI_Controller
     {
         $list = $this->inv->getItem($dept,$id);
         $minimum = $this->inv->countItem($id);
+        $quantity = 0;
+        if($dept === 'dept'){
+            $quantity = $list->quantity_distributed;
+        }else{
+            $quantity = $list->quantity;
+        }
         $data = array(
             'name' => $list->item_name,
             'description' => $list->item_description,
-            'quant' => $list->quantity,
+            'quant' => $quantity,
             'min' => $minimum->min,
             'unit' => $list->unit,
             'item_type' => $list->item_type,
@@ -305,20 +316,20 @@ class Inventory extends CI_Controller
 
     public function getLedger($id)
     {
-        $list = $this->inv->ledger($id);
-        $data = [];
-        var_dump($list);
-        foreach ($list as $item) {
-            $data[] = array(
-                'date' => $item['date_received'],
-                'increased' => $item['date_delivered'],
-                'decreased' => $item['quantity_distributed'],
-                'price' => $item['unit_cost'],
-                'quantity' => $item['quantity'],
-                'balance' => $item['quantity']
-            );
-        }
-        echo json_encode($data);
+//        $list = $this->inv->ledger($id);
+//        $data = [];
+//        var_dump($list);
+//        foreach ($list as $item) {
+//            $data[] = array(
+//                'date' => $item['date_received'],
+//                'increased' => $item['date_delivered'],
+//                'decreased' => $item['quantity_distributed'],
+//                'price' => $item['unit_cost'],
+//                'quantity' => $item['quantity'],
+//                'balance' => $item['quantity']
+//            );
+//        }
+//        echo json_encode($data);
     }
 
 
