@@ -95,14 +95,13 @@ class Inventory extends CI_Controller
         $editquants = "";
         foreach ($list as $detail) {
             if ($detail['item_type'] === 'CO' && $detail['serial'] === '1') {
-                $viewser = "<li ><a onclick='viewSerial($detail[item_det_id])' data-toggle=\"collapse\" 
-                    href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\">
-                              </i > View Serial</a></li>";
+                $viewser = "<a class=\"dropdown-item\" onclick='viewSerial($detail[item_det_id])' data-toggle=\"collapse\" 
+                    href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\"><i class=\"fa fa-folder-open\"></i>
+                              </i > View Serial</a>";
             }
             if ($this->session->userdata['logged_in']['position'] !== 'none') {
                 if ($this->session->userdata['logged_in']['position'] === 'Admin') {
-                    $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\">
-                        
+                    $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"
                         <span class=\"caret\"></span></a>";
 
                 } else {

@@ -18,13 +18,12 @@
   padding: 0px;
   margin-top: 30px;
   margin-left: -130px;
+  position: static;
 }
 .dropdown #DetailDropDn a{
   font-size: 15px;
 }
-#Detail_Det{
-  height: 200px;
-}
+
 tr{
   cursor: pointer;
 }
