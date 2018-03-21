@@ -120,7 +120,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="Address" class=" form-control-label">Contact Number</label>
+                                <label for="Address" class="col-md-12">Contact Number</label>
                                 <div class="col-md-12">
                                     <input id="cno" class="form-control"
                                            type="text" name="contact" data-required="true"
