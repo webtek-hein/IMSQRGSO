@@ -52,13 +52,16 @@ class User_db extends CI_Model {
     }
 
     public function insertUser(){
+        $password = $this->input->post('Password');
+        $options = ['cost' => 12];
+        $hashpassword =  password_hash($password, PASSWORD_DEFAULT, $options);
         $data = array(
             'first_name'=> $this->input->post('firstname'),
             'last_name' => $this->input->post('lastname'),
             'email'=>$this->input->post('email'),
             'contact_no'=>$this->input->post('contactno'),
             'username'=>$this->input->post('username'),
-            'password'=>$this->input->post('password'),
+            'password' => $hashpassword,
             'position'=>$this->input->post('position'),
             'dept_id'=>$this->input->post('dment'),
         );

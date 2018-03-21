@@ -1059,7 +1059,7 @@ function select_dept() {
    var username = $('#username').val();
    if(username != ''){
     $.ajax({
-     url: "<?php echo base_url(); ?>Search/checkUsername",
+     url: "Search/checkUsername",
      method: "POST",
      data: {username:username},
      success: function(data){

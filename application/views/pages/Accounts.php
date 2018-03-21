@@ -74,8 +74,7 @@
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                     <input id="email" class="form-control has-feedback-left" type="email" name="email"
-                                           placeholder="E-mail"
-                                           required>
+                                           placeholder="E-mail">
                                 </div>
                                 <small class="form-text text-muted">ex. george_andrews@gmail.com</small>
                             </div>
@@ -83,8 +82,7 @@
                                 <label class=" form-control-label">Contact No.</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-                                    <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$"
-                                           title="ex. 0987654321" name="contactno" placeholder="Contact No." required>
+                                    <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" name="contactno" placeholder="Contact No.">
                                 </div>
                                 <small class="form-text text-muted">ex. (999) 999-9999</small>
                             </div>
