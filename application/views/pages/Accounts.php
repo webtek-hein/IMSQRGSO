@@ -120,7 +120,6 @@
                                 <div class="input-group" >
                                     <div class="input-group-addon"><i class="fa fa-building"></i></div>
                                     <select class="fa fa-chevron-down align" center" id="dment" name="dment" type="button" >
-                                        <option selected="true" disabled>--Choose Department--</option>
                                         <option value="11">CITY ENVIRONMENT & PARKS MANAGEMENT OFFICE</option>
                                         <option value="12">BUREAU OF FIRE PREVENTION AND SAFETY</option>
                                         <option value="13">GENERAL SERVICES OFFICE</option>

@@ -55,6 +55,12 @@ class User_db extends CI_Model {
         $password = $this->input->post('Password');
         $options = ['cost' => 12];
         $hashpassword =  password_hash($password, PASSWORD_DEFAULT, $options);
+        $position = $this->input->post('position');
+        if($position === 'supply officer'){
+            $dept = $this->input->post('dment');
+        }else{
+            $dept = null;
+        }
         $data = array(
             'first_name'=> $this->input->post('firstname'),
             'last_name' => $this->input->post('lastname'),
@@ -62,8 +68,8 @@ class User_db extends CI_Model {
             'contact_no'=>$this->input->post('contactno'),
             'username'=>$this->input->post('username'),
             'password' => $hashpassword,
-            'position'=>$this->input->post('position'),
-            'dept_id'=>$this->input->post('dment'),
+            'position'=>$position,
+            'dept_id'=>$dept,
         );
         $this->db->insert('user',$data);
     }
