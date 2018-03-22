@@ -100,12 +100,16 @@
                                 <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det"
                                    role="tab" aria-controls="detail" aria-selected="false">Details</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="genLedger" data-toggle="tab" href="#Detail_Ledger"
+                                   role="tab" aria-controls="Ledger" aria-selected="true">General Ledger</a>
+                            </li>
                         </ul>
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <!-- Information-->
                             <div class="tab-pane fade" id="Detail_Info" role="tabpanel"
                                  aria-labelledby="Information-tab">
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <form id="editInformation"
                                           class="serialForm form-horizontal form-label-left"
                                           action="inventory/edititem" method="POST">
@@ -186,28 +190,6 @@
                                     </form>
 
                                 </div>
-                                <!--General Ledger-->
-                                <div class="table-responsive-sm col-lg-8">
-                                    <h5>General Ledger</h5>
-                                    <table id="ledger" data-pagination="true" data-search="true"
-                                           data-toggle="table" data-url="Inventory/getLedger/1"
-                                           class="table-sm table table-no-bordered table-hover">
-                                        <thead>
-                                        <!-- Data-field for getting data  -->
-                                        <tr>
-                                            <th data-field="date">Date</th>
-                                            <th data-field="date">Transaction number</th>
-                                            <th data-field="increased">Increased</th>
-                                            <th data-field="decreased">Decreased</th>
-                                            <th data-field="price">Price</th>
-                                            <th data-field="quantity">Quantity</th>
-                                            <th data-field="balance">Balance</th>
-                                        </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                                <!--End of General Ledger-->
-
                             </div>
                             <!--Detail-->
                             <div class="table-responsive tab-pane fade show active" id="Detail_Det" role="tabpanel"
@@ -241,6 +223,28 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!--General Ledger-->
+                            <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
+                                 aria-labelledby="Ledger-tab">
+                                <table id="ledger" data-pagination="true" data-search="true"
+                                       data-toggle="table" data-url="Inventory/getLedger/1"
+                                       class="table-sm table table-no-bordered table-hover">
+                                    <thead>
+                                    <!-- Data-field for getting data  -->
+                                    <tr>
+                                        <th data-field="date">Date</th>
+                                        <th data-field="date">Transaction number</th>
+                                        <th data-field="increased">Increased</th>
+                                        <th data-field="decreased">Decreased</th>
+                                        <th data-field="price">Price</th>
+                                        <th data-field="quantity">Quantity</th>
+                                        <th data-field="balance">Balance</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <!--End of General Ledger-->
                         </div>
                     </div>
                 </div>
