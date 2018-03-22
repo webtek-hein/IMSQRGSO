@@ -108,7 +108,6 @@
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-briefcase"></i></div>
                                     <select required class="fa fa-chevron-down align" center" id="position" name="position" onclick='select_dept()' >
-                                    <option selected="true" disabled>--Choose Position--</option>
                                     <option value="admin">Admin</option>
                                     <option value="custodian">Custodian</option>
                                     <option value="supply officer">Supply Officer</option>
