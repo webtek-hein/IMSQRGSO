@@ -108,6 +108,7 @@
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-briefcase"></i></div>
                                     <select required class="fa fa-chevron-down align" center" id="position" name="position" onclick='select_dept()' >
+                                    <option selected="true" disabled>--Choose Position--</option>
                                     <option value="admin">Admin</option>
                                     <option value="custodian">Custodian</option>
                                     <option value="supply officer">Supply Officer</option>
@@ -119,6 +120,7 @@
                                 <div class="input-group" >
                                     <div class="input-group-addon"><i class="fa fa-building"></i></div>
                                     <select class="fa fa-chevron-down align" center" id="dment" name="dment" type="button" >
+                                        <option selected="true" disabled>--Choose Department--</option>
                                         <option value="11">CITY ENVIRONMENT & PARKS MANAGEMENT OFFICE</option>
                                         <option value="12">BUREAU OF FIRE PREVENTION AND SAFETY</option>
                                         <option value="13">GENERAL SERVICES OFFICE</option>

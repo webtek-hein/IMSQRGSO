@@ -11,9 +11,11 @@ class User_db extends CI_Model {
         $q = $this->db->get('user')->row();
 
         $password = $data['password'];
-
+        $hash = password_hash($password, PASSWORD_DEFAULT);
         if ($q == true) {
-            if (password_verify($password, $q->password)) {
+            if (!password_verify($password, $hash)) {
+                return false;
+            }else{
                 return true;
             }
         }

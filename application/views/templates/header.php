@@ -48,7 +48,9 @@ if (isset($this->session->userdata['logged_in'])) {
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="./"><img src="assets/images/logo7.png" alt="Logo"></a>
+            <h4 style="color:#D2691E;font-size:100%;"><?= $position.'<br>'.$department?></h4>
             <a class="navbar-brand hidden" href="./"><img src="assets/images/logo6.png" alt="Logo"></a>
+
         </div>
 
         <!-- sidebar menu -->
