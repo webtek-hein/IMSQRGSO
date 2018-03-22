@@ -3,18 +3,21 @@ class User_db extends CI_Model {
 // Read data using username and password
     public function login($data)
     {
-        $condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password']  . "' AND " . "status=". "'Active'";
-        $this->db->select('*');
-        $this->db->from('user');
-        $this->db->where($condition);
-        $this->db->limit(1);
-        $query = $this->db->get();
 
-        if ($query->num_rows() == 1) {
-            return true;
-        } else {
-            return false;
+        $this->db->select('*')
+            ->where('username', $data['username'])
+            ->where('status', 'active')
+            ->limit(1);
+        $q = $this->db->get('user')->row();
+
+        $password = $data['password'];
+
+        if ($q == true) {
+            if (password_verify($password, $q->password)) {
+                return true;
+            }
         }
+            return false;
     }
 
 // Read data from database to show data in admin page
@@ -77,6 +80,9 @@ class User_db extends CI_Model {
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $values = [];
+        $password = $this->input->post('pword');
+        $options = ['cost' => 12];
+        $hashpassword =  password_hash($password, PASSWORD_DEFAULT, $options);
         $id = $this->input->post('id');
         // select user
         $user = $this->db->get_where('user', array('user_id' => $user_id))->row();
@@ -96,7 +102,7 @@ class User_db extends CI_Model {
             'last_name' => $this->input->post('last'),
             'email' => $this->input->post('em'),
             'contact_no' => $this->input->post('cno'),
-            'password' => $this->input->post('pword'),
+            'password' => $hashpassword,
             'username' => $this->input->post('uname'),
             'status' => $this->input->post('Stat')
         );
