@@ -213,15 +213,26 @@
                                         <div class="card-body card-block">
                                             <form id="viewSerialForm" class="serial-form">
                                                 <!-- Dynamic serial tabs here -->
+                                                  <div class="form-group">
+                                                      <div class="checkbox">
+                                                        <label>
+                                                          <input type="checkbox" class="check" id="checkAll"> Check All
+                                                        </label>
+                                                      </div>
+                                                      <!-- qr button -->
+
+                                                      <!-- end of qr button -->
                                                 <ul id="serial-tabs" class="nav nav-tabs">
                                                 </ul>
                                                 <!-- end of serial tabs -->
                                                 <div id="serial-tabcontent" class="tab-content">
                                                 </div>
+                                            </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
+                                <!--end of view serial-->
                             </div>
 
                             <!--General Ledger-->

@@ -765,7 +765,8 @@ function viewSerial(id) {
                     "<button id=\"serialP\" type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Previous</button>" +
                     "<button id=\"serialS\" onclick = \"saveSerial()\" type=\"button\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Save</a></button>" +
                     "<button id=\"serialN\" type=\"button\" class=\"next-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>" +
-                    " </div></div>";
+                    "<input id=\"serialG\" type=\"file webkitdirectory directory multiple\" class=\"generateqr-serialTab  btn-default btn-sm\">Generate QR</input>" +
+                    " </div>";
             }
             //if div reaches 10
             //create another div
@@ -1074,6 +1075,10 @@ function select_dept() {
    }
   });
  });
+ 
+$("#checkAll").click(function () {
+    $(".check").prop('checked', $(this).prop('checked'));
+});
 
   $(document).ready(function(){
   $('#uname').change(function(){
