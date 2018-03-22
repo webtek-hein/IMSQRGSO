@@ -333,9 +333,8 @@ function init_inventory() {
                 if(data.position === 'Supply Officer'){
                     deptDet(data.id);
                 }else{
-
+                    detail(data.id);
                 }
-                detail(data.id);
             },
             resizable: true,
             columns: [{
@@ -371,7 +370,11 @@ function init_inventory() {
             pageSize: 10,
             url: 'inventory/viewItem/MOOE',
             onClickRow: function (data, row) {
-                detail(data.id);
+                if(data.position === 'Supply Officer'){
+                    deptDet(data.id);
+                }else{
+                    detail(data.id);
+                }
             },
             resizable: true,
             columns: [{

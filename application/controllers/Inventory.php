@@ -45,11 +45,16 @@ class Inventory extends CI_Controller
         $data = array();
 
         foreach ($list as $item) {
+            if($position === 'Supply Officer'){
+                $quantity = $item['quant'];
+            }else{
+                $quantity = $item['quantity'];
+            }
             $data[] = array(
                 'id' => $item['item_id'],
                 'item' => $item['item_name'],
                 'description' => $item['item_description'],
-                'quantity' => $item['quantity'],
+                'quantity' => $quantity,
                 'unit' => $item['unit'],
                 'position' => $position,
                 'button' => 'Accept'
@@ -115,7 +120,6 @@ class Inventory extends CI_Controller
                             </div>
                             </div>";
                 }
-
             }
 
             if ($position === 'Supply Officer' || $dept === 'dept') {

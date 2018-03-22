@@ -55,7 +55,9 @@
                                         <th data-sortable="true" data-field="unit">Unit</th>
                                         <th data-sortable="true" data-field="accountcode">Account Code</th>
                                         <th data-sortable="true" data-field="date">Date Acquired</th>
-                                        <th data-sortable="true" data-field="receivedfrom">Received From</th>
+                                        <?php if($this->session->userdata['logged_in']['position'] !== 'Admin'){
+                                            echo "<th data-sortable=\"true\" data-field=\"receivedfrom\">Received From</th>";
+                                        } ;?>
                                     </tr>
                                     </thead>
                                 </table>
@@ -75,7 +77,9 @@
                                         <th data-sortable="true" data-field="unit">Unit</th>
                                         <th data-sortable="true" data-field="accountcode">Account Code</th>
                                         <th data-sortable="true" data-field="date">Date Acquired</th>
-                                        <th data-sortable="true" data-field="receivedfrom">Received From</th>
+                                        <?php if($this->session->userdata['logged_in']['position'] !== 'Admin'){
+                                            echo "<th data-sortable=\"true\" data-field=\"receivedfrom\">Received From</th>";
+                                        } ;?>
                                     </tr>
                                     </thead>
                                 </table>

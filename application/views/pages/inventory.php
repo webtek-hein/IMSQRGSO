@@ -196,6 +196,7 @@
                                         <!-- Data-field for getting data  -->
                                         <tr>
                                             <th data-field="date">Date</th>
+                                            <th data-field="date">Transaction number</th>
                                             <th data-field="increased">Increased</th>
                                             <th data-field="decreased">Decreased</th>
                                             <th data-field="price">Price</th>

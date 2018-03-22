@@ -44,7 +44,13 @@ class Logs extends CI_Controller
 
         $data = array();
         $dec = $this->logs->decrease_log($type,$position,$user_id);
+
         foreach ($dec as $list) {
+            if($position !== 'Admin'){
+                $receiver = $list['receiver'];
+            }else{
+                $receiver = '';
+            }
             $data[] = array(
                 'timestamp' => $list['timestamp'],
                 'department' => $list['department'],
@@ -54,7 +60,7 @@ class Logs extends CI_Controller
                 'unit' => $list['unit'],
                 'date' => $list['date_received'],
                 'accountcode' => $list['account_code'],
-                'receivedfrom' => $list['receiver'],
+                'receivedfrom' =>$receiver ,
             );
         }
         echo json_encode($data);
