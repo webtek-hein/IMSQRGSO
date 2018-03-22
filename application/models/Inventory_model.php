@@ -162,14 +162,15 @@ class Inventory_model extends CI_Model
 
         $id = $this->input->post('id');
         $serial = $this->input->post('serial');
+        $serial_id = [];
+
         $quantity = count($serial);
         $user = $this->session->userdata['logged_in']['user_id'];
 
         if ($quantity == 0) {
             $quantity = $this->input->post('quantity');
-        } else {
-            $quantity = count($serial);
         }
+
         if ($position === 'Custodian') {
 
             $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
@@ -196,20 +197,32 @@ class Inventory_model extends CI_Model
 
             $this->db->insert('distribution', $data);
             //dist_id
-            $insert_id = $this->db->insert_id();
+            $dist_id = $this->db->insert_id();
+
+            $this->db->insert('logs.decreaselog', array('userid' => $user, 'dist_id' => $dist_id));
+            //dec log id
+            $dec_log_id = $this->db->insert_id();
+
 
             // if item has serial
             if (count($serial) != 0) {
-                for ($i = 0; $i < $quantity; $i++) {
+                foreach ($serial as $key => $value) {
+                    // if serial is not null
+                    if ($value !== 'null') {
+                        $serial_id[] = array(
+                            'serial_id' => $key,
+                            'dec_log_id' => $dec_log_id
+                        );
+                    }
                     $serial_data[] = array(
-                        'serial' => $serial[$i],
-                        'dist_id' => $insert_id,
+                        'serial' => $value,
+                        'dist_id' => $dist_id,
                         'item_status' => 'Distributed'
                     );
                 }
                 $this->db->update_batch('serial', $serial_data, 'serial');
+                $this->db->insert_batch('logs.decreaseserial', $serial_id);
             }
-            $this->db->insert('logs.decreaselog', array('userid' => $user, 'dist_id' => $insert_id));
         } else {
             $employee = $this->input->post('owner');
             if (count($serial) != 0) {
@@ -392,7 +405,7 @@ class Inventory_model extends CI_Model
             $this->db->select('sum(quantity_distributed) as quantity_distributed ,item.*');
             $this->db->join('distribution', 'distribution.item_det_id = itemdetail.item_det_id');
         }
-        $this->db->join('item', 'item.item_id='.$id,'inner');
+        $this->db->join('item', 'item.item_id=' . $id, 'inner');
         $query = $this->db->get('itemdetail');
         return $query->row();
     }
@@ -465,13 +478,12 @@ class Inventory_model extends CI_Model
 
     public function departmentInventory($type, $id)
     {
-        $this->db->select('sum(quantity_distributed) as quantity_distributed,item.*');
+        $this->db->select('item.*,sum(quantity_distributed) as quant');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
         $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
-        $this->db->join('department', 'department.dept_id = distribution.dept_id', 'inner');
         $this->db->where('item.item_type', $type);
-        $this->db->where('department.dept_id', $id);
-        $this->db->group_by('distribution.dist_id');
+        $this->db->where('distribution.dept_id', $id);
+        $this->db->group_by('item.item_id');
         $query = $this->db->get('distribution');
         return $query->result_array();
     }

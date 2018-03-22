@@ -256,7 +256,6 @@ class Inventory extends CI_Controller
     public function addSerial()
     {
         echo json_encode($this->inv->addSerial());
-//        redirect('inventory');
     }
 
     public function viewDept($type, $id)
@@ -268,7 +267,7 @@ class Inventory extends CI_Controller
                 'id' => $item['item_id'],
                 'name' => $item['item_name'],
                 'description' => $item['item_description'],
-                'quant' => $item['quantity_distributed'],
+                'quant' => $item['quant'],
                 'unit' => $item['unit']
             );
         }
