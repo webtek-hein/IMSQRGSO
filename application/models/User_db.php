@@ -35,11 +35,9 @@ class User_db extends CI_Model {
 
     public function get_users()
     {
-         $user_id = $this->session->userdata['logged_in']['user_id'];
          $this->db->select('user_id,CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
          user.username,user.position,dept.department,user.status');
         $this->db->join('gsois.department dept','dept.dept_id = user.dept_id','left');
-        $this->db->where('user_id !=', $user_id);     
         $query = $this->db->get('user');
         return $query->result_array();
     }
@@ -57,6 +55,12 @@ class User_db extends CI_Model {
         $password = $this->input->post('Password');
         $options = ['cost' => 12];
         $hashpassword =  password_hash($password, PASSWORD_DEFAULT, $options);
+        $position = $this->input->post('position');
+        if($position === 'supply officer'){
+            $dept = $this->input->post('dment');
+        }else{
+            $dept = null;
+        }
         $data = array(
             'first_name'=> $this->input->post('firstname'),
             'last_name' => $this->input->post('lastname'),
@@ -64,8 +68,8 @@ class User_db extends CI_Model {
             'contact_no'=>$this->input->post('contactno'),
             'username'=>$this->input->post('username'),
             'password' => $hashpassword,
-            'position'=>$this->input->post('position'),
-            'dept_id'=>$this->input->post('dment'),
+            'position'=>$position,
+            'dept_id'=>$dept,
         );
         $this->db->insert('user',$data);
     }
