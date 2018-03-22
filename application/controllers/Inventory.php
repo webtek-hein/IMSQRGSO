@@ -281,7 +281,7 @@ class Inventory extends CI_Controller
         $minimum = $this->inv->countItem($id);
         $quantity = 0;
         if($dept === 'dept'){
-            $quantity = $list->quantity_distributed;
+            $quantity = $list->quant;
         }else{
             $quantity = $list->quantity;
         }

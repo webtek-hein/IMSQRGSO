@@ -402,11 +402,15 @@ class Inventory_model extends CI_Model
     public function getItem($dept, $id)
     {
         if ($dept === 'dept') {
-            $this->db->select('sum(quantity_distributed) as quantity_distributed ,item.*');
-            $this->db->join('distribution', 'distribution.item_det_id = itemdetail.item_det_id');
+            $this->db->select('item.*,sum(quantity_distributed) as quant');
+            $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
+            $this->db->join('item', 'itemdetail.item_id ='.$id, 'inner');
+            $this->db->group_by('item.item_id');
+            $query = $this->db->get('distribution');
+        }else{
+            $this->db->where('item.item_id',$id);
+            $query = $this->db->get('item');
         }
-        $this->db->join('item', 'item.item_id=' . $id, 'inner');
-        $query = $this->db->get('itemdetail');
         return $query->row();
     }
 
@@ -465,14 +469,14 @@ class Inventory_model extends CI_Model
 
     public function viewDetailperDept($id)
     {
-        $this->db->select('item.*,distribution.*,det.unit_cost,det.expiration_date,
-        det.OR_no,det.PO_number,supplier.supplier_name,det.item_det_id');
-        $this->db->join('distribution', 'distribution.dist_id = serial.dist_id', 'inner');
-        $this->db->join('itemdetail det', 'det.item_det_id = serial.item_det_id', 'inner');
-        $this->db->join('item', 'item.item_id = det.item_id ', 'inner');
-        $this->db->join('supplier', 'supplier.supplier_id = det.supplier_id', 'inner');
-        $this->db->group_by('distribution.dist_id,det.item_det_id');
-        $query = $this->db->get_where('serial', array('item.item_id' => $id));
+        $this->db->select('dist_id,item.*,quantity_distributed,
+        distribution.status,distribution.PR_no,itemdetail.*,department,supplier_name');
+        $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
+        $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
+        $this->db->join('department', 'department.dept_id = distribution.dept_id', 'inner');
+        $this->db->join('account_code', ' account_code.ac_id = distribution.ac_id ', 'inner');
+        $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
+        $query = $this->db->get_where('distribution', array('itemdetail.item_id' => $id));
         return $query->result_array();
     }
 
