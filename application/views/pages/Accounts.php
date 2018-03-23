@@ -204,13 +204,6 @@ CITY BUDGET OFFICE</option>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class=" form-control-label">Username</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" name="uname" id="uname" class="form-control has-feedback-left" pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." required><span id="uname_result"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class=" form-control-label">Password</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-key"></i></div>
@@ -220,13 +213,8 @@ CITY BUDGET OFFICE</option>
                                     <div class="form-group">
                                         <label class="col-md-12">Status</label>
                                         <div class="col-md-12">
-                                            <select id="stat" data-parsley-group="set1"
-                                                    list="statuslist" name="Stat"
-                                                    class="form-control" >
-                                                <option selected="true" disabled>--Activate or Deactivate--</option>
-                                                <option value="Inactive">Deactivate</option>
-                                                <option value="Active">Activate</option>
-                                            </select>
+                                            <input type="radio" name="Stat" value="Active" > Active
+                                            <input type="radio" name="Stat" value="Inactive"> Deactivate<br><br>
                                         </div>
                                     </div>
                                     <button class="btn btn-info" type="submit" name="id" id="edtbutton">
