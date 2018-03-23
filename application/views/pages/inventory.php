@@ -67,7 +67,7 @@
                             <div class="table-responsive-sm  tab-pane fade show active" id="tab_content1"
                                  role="tabpanel"
                                  aria-labelledby="CO-tab">
-                                <table data-pagination="true" data-search="true" id="itemtable"
+                                <table data-show-refresh="true" data-pagination="true" data-search="true" id="itemtable"
                                        class="table table-no-bordered table-hover">
                                 </table>
                             </div>
@@ -75,7 +75,7 @@
                             <div class="table-responsive-sm-sm tab-pane fade" id="tab_content2" role="tabpanel"
                                  aria-labelledby="MOOE-tab">
                                 <!-- Implement Bootsrap table-->
-                                <table data-pagination="true" data-search="true" id="MOOEtable"
+                                <table data-show-refresh="true" data-pagination="true" data-search="true" id="MOOEtable"
                                        class="table table-no-bordered table-hover"
                                        data-pagination="true">
                                 </table>
@@ -209,7 +209,7 @@
                                  aria-labelledby="Detail-tab">
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
-                                    <table id="detail-tab-table" data-search="true"
+                                    <table data-show-refresh="true" id="detail-tab-table" data-search="true"
                                            class="table-sm table table-no-bordered table-hover">
                                     </table>
                                 </form>
@@ -226,21 +226,22 @@
                                         <div class="card-body card-block">
                                             <form id="viewSerialForm" class="serial-form">
                                                 <!-- Dynamic serial tabs here -->
-                                                  <div class="form-group">
-                                                      <div class="checkbox">
+                                                <div class="form-group">
+                                                    <div class="checkbox">
                                                         <label>
-                                                          <input type="checkbox" class="check" id="checkAll"> Check All
+                                                            <input type="checkbox" class="check" id="checkAll"> Check
+                                                            All
                                                         </label>
-                                                      </div>
-                                                      <!-- qr button -->
+                                                    </div>
+                                                    <!-- qr button -->
 
-                                                      <!-- end of qr button -->
-                                                <ul id="serial-tabs" class="nav nav-tabs">
-                                                </ul>
-                                                <!-- end of serial tabs -->
-                                                <div id="serial-tabcontent" class="tab-content">
+                                                    <!-- end of qr button -->
+                                                    <ul id="serial-tabs" class="nav nav-tabs">
+                                                    </ul>
+                                                    <!-- end of serial tabs -->
+                                                    <div id="serial-tabcontent" class="tab-content">
+                                                    </div>
                                                 </div>
-                                            </div>
                                             </form>
                                         </div>
                                     </div>
@@ -251,20 +252,8 @@
                             <!--General Ledger-->
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
-                                <table id="ledger" data-pagination="true" data-search="true"
-                                       data-toggle="table" data-url="Inventory/getLedger/1"
+                                <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
                                        class="table-sm table table-no-bordered table-hover">
-                                    <thead>
-                                    <!-- Data-field for getting data  -->
-                                    <tr>
-                                        <th data-field="date">Date</th>
-                                        <th data-field="transaction_number">Transaction number</th>
-                                        <th data-field="increased">Increased</th>
-                                        <th data-field="decreased">Decreased</th>
-                                        <th data-field="price">Unit Cost</th>
-                                        <th data-field="transaction">Transaction</th>
-                                    </tr>
-                                    </thead>
                                 </table>
                             </div>
                             <!--End of General Ledger-->
@@ -472,7 +461,7 @@
                             </ul>
                         </div>
                         <div class="table-responsive-sm-sm tab-content pl-3 p-1" id="myTabContent">
-                            <table data-search="true" data-pagination="true" data-toggle="table"
+                            <table data-show-refresh="true" data-search="true" data-pagination="true" data-toggle="table"
                                    class="table-sm table table-no-bordered table-hover">
                                 <thead>
                                 <tr>

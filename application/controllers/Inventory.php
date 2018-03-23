@@ -100,7 +100,7 @@ class Inventory extends CI_Controller
         $viewser = "";
         $editquants = "";
         foreach ($list as $detail) {
-            if ($detail['item_type'] === 'CO' && $detail['serial'] === '1') {
+            if ($detail['item_type'] === 'CO' && $detail['serialStatus'] === '1') {
                 $viewser = "<a class=\"dropdown-item\" onclick='viewSerial($detail[item_det_id])' data-toggle=\"collapse\" 
                     href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\"><i class=\"fa fa-folder-open\"></i>
                               </i > View Serial</a>";
