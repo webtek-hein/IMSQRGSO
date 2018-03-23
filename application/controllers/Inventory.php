@@ -57,6 +57,7 @@ class Inventory extends CI_Controller
                 'quantity' => $quantity,
                 'unit' => $item['unit'],
                 'position' => $position,
+                'totalcost' => $item['totalcost'],
                 'button' => 'Accept'
             );
         }

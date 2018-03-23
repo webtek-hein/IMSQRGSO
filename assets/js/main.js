@@ -361,7 +361,11 @@ function init_inventory() {
                 sortable: true,
                 field: 'unit',
                 title: 'UNIT'
-            }]
+            },{
+                sortable: true,
+                field: 'totalcost',
+                title: 'Unit COST'
+            },]
             // }, {
             //     sortable: true,
             //     field: 'Price',
@@ -402,6 +406,10 @@ function init_inventory() {
                 sortable: true,
                 field: 'unit',
                 title: 'UNIT'
+            },{
+                sortable: true,
+                field: 'totalcost',
+                title: 'Total COST'
             }]
             // }, {
             //     sortable: true,

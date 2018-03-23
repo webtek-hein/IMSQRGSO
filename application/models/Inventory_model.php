@@ -205,22 +205,29 @@ class Inventory_model extends CI_Model
             $this->db->where('item_det_id', $id);
             $this->db->update('itemdetail');
 
-            $item_id = $this->db->select('item_id')->where('item_id', $id)->get('itemdetail')->row()->item_id;
+            $query = $this->db->select('item.item_id,item.cost')->join('item','itemdetail.item_det_id ='.$id,'inner')->get('itemdetail')->row();
+            $item_id = $query->item_id;
+            $unit_cost = $query->cost;
             $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
             $this->db->where('item_id', $item_id);
             $this->db->update('item');
+
+
+            $date = $this->input->post('date');
+            $transaction_number = $PR_no;
 
 
             $data = array(
                 'dept_id' => $this->input->post('dept'),
                 'ac_id' => $this->input->post('Code'),
                 'quantity_distributed' => $quantity,
-                'date_received' => $this->input->post('date'),
+                'date_received' => $date,
                 'PR_no' => $PR_no,
                 'OBR_no' => $this->input->post('obr'),
                 'item_det_id' => $id,
                 'user_id' => $user,
-                'supply_officer_id' => 1
+                'supply_officer_id' => 1,
+                'cost'=>$unit_cost
             );
 
             $this->db->insert('distribution', $data);
@@ -231,7 +238,15 @@ class Inventory_model extends CI_Model
             //dec log id
             $dec_log_id = $this->db->insert_id();
 
-
+            $this->db->insert('transaction',
+                array(
+                    'date' => $date,
+                    'transaction_number' => $transaction_number,
+                    'increased' => $quantity,
+                    'item_id' => $item_id['item_id'],
+                    'unit_cost'=> $unit_cost,
+                    'transaction' => 'added'
+                ));
             // if item has serial
             if (count($serial) != 0) {
                 foreach ($serial as $key => $value) {
@@ -337,6 +352,7 @@ class Inventory_model extends CI_Model
 
     public function select_item($type)
     {
+        $this->db->select('item.*,cost as totalcost');
         $this->db->where('item_type', $type);
         $query = $this->db->get('item');
         return $query->result_array();
@@ -415,7 +431,10 @@ class Inventory_model extends CI_Model
                 $this->input->post('or')[$counter],
                 $action
             );
-            $latestCost = ($unit_cost+$lastPrice)/($lastQuantity+$quantity);
+            $totalCost = $lastPrice*$lastQuantity;
+            $totalLastCost = $unit_cost*$quantity;
+
+            $latestCost = ($totalCost+$totalLastCost)/($lastQuantity+$quantity);
             $this->db->set('quantity', 'quantity+' . $quantity, FALSE);
             $this->db->set('cost',$latestCost);
             $this->db->where($item_id);
