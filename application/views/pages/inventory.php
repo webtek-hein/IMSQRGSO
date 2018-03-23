@@ -41,10 +41,9 @@
                                 <div class="card-header">
                             <button id="headingTwo" class="btn btn-outline-success">
                                 <i class=" fa fa-plus" ></i><span> New</span></button>
-                             <button id="genReport_Buttons" class="btn btn-outline-primary" data-toggle="tab"
-                                aria-expanded="true"
-                                href="#" data-target=".generateReport">
-                            <i class="fa fa-file-archive-o"></i><span> Reports</span></button> </div>';
+                             <button id="genReport_Buttons" class="btn btn-outline-primary">
+                                <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
+                                </div>';
 
                     }
                     ?>
@@ -214,7 +213,7 @@
                                     </table>
                                 </form>
                                 <?php if ($position === 'Custodian') {
-                                    echo '<a href="#" onclick="insertRow()">Add new detail</a>';
+                                    echo '<a class="btn btn-success" href="#" onclick="insertRow()">Add new detail</a>';
                                 }
                                 ?>
                                 <!-- View Serial-->
@@ -460,7 +459,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="table-responsive-sm-sm tab-content pl-3 p-1" id="myTabContent">
+                        <div class="table-responsive-sm-sm tab-content pl-3 p-1">
                             <table data-show-refresh="true" data-search="true" data-pagination="true" data-toggle="table"
                                    class="table-sm table table-no-bordered table-hover">
                                 <thead>

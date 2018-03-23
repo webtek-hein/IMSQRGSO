@@ -468,6 +468,9 @@ function init_inventory() {
     $('#genReport_Buttons').on('click', function () {
         toggleDiv($('.generateReport'), $('.inventory-tab'));
     });
+    $('#reconcileButton').on('click', function (){
+        toggleDiv($('.reconcilePage'), $('.department-tab'));
+    })
     console.log('init_inventory');
 }
 
@@ -780,6 +783,10 @@ function addUserBack() {
 
 function EditUserBack() {
     toggleDiv($('.accounts-tab'), $('.userDetail'));
+}
+
+function reconcile_back(){
+    toggleDiv($('.department-tab'), $('.reconcilePage'));
 }
 
 function userdetailBack() {
