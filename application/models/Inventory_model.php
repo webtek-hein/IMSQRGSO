@@ -242,10 +242,10 @@ class Inventory_model extends CI_Model
                 array(
                     'date' => $date,
                     'transaction_number' => $transaction_number,
-                    'increased' => $quantity,
+                    'decreased' => $quantity,
                     'item_id' => $item_id['item_id'],
                     'unit_cost'=> $unit_cost,
-                    'transaction' => 'added'
+                    'transaction' => 'issued'
                 ));
             // if item has serial
             if (count($serial) != 0) {
@@ -750,11 +750,8 @@ class Inventory_model extends CI_Model
 
     public function ledger($id)
     {
-        $this->db->select('distribution.date_received,itemdetail.date_delivered,itemdetail.quantity, distribution.quantity_distributed,itemdetail.unit_cost');
-        $this->db->join('distribution', 'distribution.item_id = itemdetail.item_id', 'inner');
-        $this->db->where('itemdetail.item_id', $id);
-        $query = $this->db->get('itemdetail');
-
+        $this->db->where('item_id',$id);
+        $query = $this->db->get('transaction');
         return $query->result_array();
 
 
