@@ -258,12 +258,11 @@
                                     <!-- Data-field for getting data  -->
                                     <tr>
                                         <th data-field="date">Date</th>
-                                        <th data-field="date">Transaction number</th>
+                                        <th data-field="transaction_number">Transaction number</th>
                                         <th data-field="increased">Increased</th>
                                         <th data-field="decreased">Decreased</th>
                                         <th data-field="price">Unit Cost</th>
-                                        <th data-field="price">Total</th>
-                                        <th data-field="balance">Balance</th>
+                                        <th data-field="transaction">Transaction</th>
                                     </tr>
                                     </thead>
                                 </table>

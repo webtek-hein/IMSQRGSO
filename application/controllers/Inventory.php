@@ -323,20 +323,19 @@ class Inventory extends CI_Controller
 
     public function getLedger($id)
     {
-//        $list = $this->inv->ledger($id);
-//        $data = [];
-//        var_dump($list);
-//        foreach ($list as $item) {
-//            $data[] = array(
-//                'date' => $item['date_received'],
-//                'increased' => $item['date_delivered'],
-//                'decreased' => $item['quantity_distributed'],
-//                'price' => $item['unit_cost'],
-//                'quantity' => $item['quantity'],
-//                'balance' => $item['quantity']
-//            );
-//        }
-//        echo json_encode($data);
+        $list = $this->inv->ledger($id);
+        $data = [];
+        foreach ($list as $item) {
+            $data[] = array(
+                'date' => $item['date'],
+                'transaction_number' => $item['transaction_number'],
+                'increased' => $item['increased'],
+                'decreased' => $item['decreased'],
+                'price' => $item['unit_cost'],
+                'transaction' => $item['transaction']
+            );
+        }
+        echo json_encode($data);
     }
 
 
