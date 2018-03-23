@@ -63,9 +63,9 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    public function addquant($item_det_id)
+    public function addquant($item_det_id,$counter)
     {
-        $list = $this->inv->addquant($item_det_id);
+        $list = $this->inv->addquant($item_det_id,$counter-1);
         $data = [];
         foreach ($list as $val) {
             $data[] = '<td>' . $val . '</td>';
@@ -296,6 +296,8 @@ class Inventory extends CI_Controller
             'min' => $minimum->min,
             'unit' => $list->unit,
             'item_type' => $list->item_type,
+            'initialStock' => $list->initialStock,
+            'initialCost' => $list->initialCost
         );
         echo json_encode($data);
     }

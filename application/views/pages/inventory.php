@@ -150,6 +150,19 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label class="col-md-12">Initial Quantity</label>
+                                            <div class="col-md-12">
+                                                <p id="initialStock"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Initial Price</label>
+                                            <div class="col-md-12">
+                                                <p id="initialCost"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="col-md-12">Unit</label>
                                             <div class="col-md-12">
                                                 <input id="unit" name="Unit" data-parsley-group="set1"
@@ -248,8 +261,8 @@
                                         <th data-field="date">Transaction number</th>
                                         <th data-field="increased">Increased</th>
                                         <th data-field="decreased">Decreased</th>
-                                        <th data-field="price">Price</th>
-                                        <th data-field="quantity">Quantity</th>
+                                        <th data-field="price">Unit Cost</th>
+                                        <th data-field="price">Total</th>
                                         <th data-field="balance">Balance</th>
                                     </tr>
                                     </thead>
@@ -319,7 +332,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
-                                        <label for="item" class=" form-control-label">Quantity</label>
+                                        <label for="item" class=" form-control-label">Inital Quantity</label>
                                         <input type="number" name="quant[]"
                                                class="form-control has-feedback-left"
                                                data-parsley-trigger="blur"
@@ -669,7 +682,7 @@
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                         <label>Quantity</label>
                         <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
-                               name="quant" min=0
+                               name="quant[]" min=0
                                class="form-control has-feedback-left">
                         <span class="fa fa-plus-square-o form-control-feedback left"
                               aria-hidden="true"></span>
@@ -677,7 +690,7 @@
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                         <label>Unit Cost</label>
-                        <input type="number" min='0' name="cost" class="form-control has-feedback-left"
+                        <input type="number" min='0' name="cost[]" class="form-control has-feedback-left"
                                id="inputSuccess3">
                         <span class="fa fa-circle-o form-control-feedback left"
                               aria-hidden="true"></span>
@@ -685,14 +698,14 @@
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                         <label>Delivery Date</label>
-                        <input type="date" name="del" class="form-control has-feedback-left">
+                        <input type="date" name="del[]" class="form-control has-feedback-left">
                         <span class="fa fa-calendar-plus-o form-control-feedback left"
                               aria-hidden="true"></span>
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                         <label>Date Received</label>
-                        <input type="date" name="rec" data-validate-length-range="5,20"
+                        <input type="date" name="rec[]" data-validate-length-range="5,20"
                                class="optional form-control has-feedback-left">
                         <span class="fa fa-calendar-check-o form-control-feedback left"
                               aria-hidden="true"></span>
@@ -700,7 +713,7 @@
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                         <label>Expiration Date</label>
-                        <input type="date" name="exp" data-validate-length-range="5,20"
+                        <input type="date" name="exp[]" data-validate-length-range="5,20"
                                class="optional form-control has-feedback-left">
                         <span class="fa fa-calendar-times-o form-control-feedback left"
                               aria-hidden="true"></span>
@@ -708,7 +721,7 @@
 
                     <div class="col-md-4 form-group has-feedback">
                         <label>Supplier</label>
-                        <select list="typelist" name="supp"
+                        <select list="typelist" name="supp[]"
                                 class="supplieropt form-control has-feedback-left"
                                 placeholder="Type">
                         </select>
@@ -718,7 +731,7 @@
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                         <label>Official Receipt Number</label>
                         <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
-                               name="quant" min=0 class="form-control has-feedback-left">
+                               name="quant[]" min=0 class="form-control has-feedback-left">
                         <span class="fa fa-ticket form-control-feedback left"
                               aria-hidden="true"></span>
                     </div>

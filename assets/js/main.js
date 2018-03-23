@@ -105,6 +105,9 @@ function detail(id) {
             $('#total').text(data.quant);
             $('#itemtype').val(data.item_type);
             $('#unit').val(data.unit);
+            $('#initialStock').text(data.initialStock);
+            $('#initialCost').text(data.initialCost);
+
             toggleDiv($('.detail-tab '), $('.inventory-tab'));
             $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + id})
                 .bootstrapTable({
@@ -215,14 +218,14 @@ var counter = 1;
 function insertRow() {
     var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
-        '<td contenteditable style=""><input name="PO" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
-        '<td style=""><input name="del" class="form-control form-control-sm" type="date"></td> ' +
-        '<td style=""><input name="rec" class="form-control form-control-sm" type="date"></td> ' +
-        '<td style=""><input name="exp" class="form-control form-control-sm" type="date"></td> ' +
-        '<td style=""><input name="cost" class="form-control form-control-sm" type="number"></td> ' +
-        '<td style=""><select name="supp" class="supplieropt form-control form-control-sm"></select></td> ' +
-        '<td style=""><input name="quant" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><input name="or" class="form-control form-control-sm" type="text"></td> ' +
+        '<td contenteditable style=""><input name="PO[]" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
+        '<td style=""><input name="del[]" class="form-control form-control-sm" type="date"></td> ' +
+        '<td style=""><input name="rec[]" class="form-control form-control-sm" type="date"></td> ' +
+        '<td style=""><input name="exp[]" class="form-control form-control-sm" type="date"></td> ' +
+        '<td style=""><input name="cost[]" class="form-control form-control-sm" type="number"></td> ' +
+        '<td style=""><select name="supp[]" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
+        '<td style=""><input name="quant[]" class="form-control form-control-sm" type="text"></td> ' +
+        '<td style=""><input name="or[]" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><button type="button" onclick="addquant(counter-1)" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
         '</tr>');
     $.ajax({
@@ -245,7 +248,7 @@ function addquant(counter) {
     console.log($det);
     var temp = [];
     $.ajax({
-        url: 'inventory/addquant/' + $item_det_id,
+        url: 'inventory/addquant/' + $item_det_id + '/' +counter,
         type: 'POST',
         data: data,
         success: function (result) {
