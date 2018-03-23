@@ -247,9 +247,10 @@ function userDetail(id) {
     });
 }
 
-var counter = 1;
 
 function insertRow() {
+    var counter = 0;
+
     var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
         '<td contenteditable style=""><input name="PO[]" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
@@ -260,7 +261,7 @@ function insertRow() {
         '<td style=""><select name="supp[]" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
         '<td style=""><input name="quant[]" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><input name="or[]" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><button type="button" onclick="addquant(counter-1)" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
+        '<td style=""><button type="button" onclick="addquant('+counter+')" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
         '</tr>');
     $.ajax({
         url: 'supplier/supplieroption',
@@ -275,14 +276,14 @@ function insertRow() {
     counter++;
 }
 
-function addquant(counter) {
+function addquant(c) {
     var $item_det_id = $('#DetailDropDn').find('a').data('id');
     var data = $('#addQuant').serializeArray();
-    var $det = $('#detTab' + counter);
+    var $det = $('#detTab' + c);
     console.log($det);
     var temp = [];
     $.ajax({
-        url: 'inventory/addquant/' + $item_det_id + '/' + counter,
+        url: 'inventory/addquant/' + $item_det_id + '/' + c,
         type: 'POST',
         data: data,
         success: function (result) {

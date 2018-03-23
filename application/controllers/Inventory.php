@@ -32,7 +32,6 @@ class Inventory extends CI_Controller
     }
 
 
-
     public function viewItem($type)
     {
         $position = $this->session->userdata['logged_in']['position'];
@@ -45,9 +44,9 @@ class Inventory extends CI_Controller
         $data = array();
 
         foreach ($list as $item) {
-            if($position === 'Supply Officer'){
+            if ($position === 'Supply Officer') {
                 $quantity = $item['quant'];
-            }else{
+            } else {
                 $quantity = $item['quantity'];
             }
             $data[] = array(
@@ -57,16 +56,16 @@ class Inventory extends CI_Controller
                 'quantity' => $quantity,
                 'unit' => $item['unit'],
                 'position' => $position,
-                'totalcost' => $item['totalcost'],
+                'totalcost' => $item['cost'],
                 'button' => 'Accept'
             );
         }
         echo json_encode($data);
     }
 
-    public function addquant($item_det_id,$counter)
+    public function addquant($item_det_id, $counter)
     {
-        $list = $this->inv->addquant($item_det_id,$counter-1);
+        $list = $this->inv->addquant($item_det_id, $counter);
         $data = [];
         foreach ($list as $val) {
             $data[] = '<td>' . $val . '</td>';
@@ -77,8 +76,7 @@ class Inventory extends CI_Controller
     public function distribute()
     {
         $position = $this->session->userdata['logged_in']['position'];
-        $dept = $this->session->userdata['logged_in']['dept_id'];
-        $this->inv->distrib($position, $dept);
+        $this->inv->distrib($position);
         redirect('inventory');
     }
 
@@ -88,7 +86,7 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
-    public function detail($dept,$id)
+    public function detail($dept, $id)
     {
         $position = $this->session->userdata['logged_in']['position'];
         if ($position === 'Supply Officer' || $dept === 'dept') {
@@ -98,17 +96,35 @@ class Inventory extends CI_Controller
         }
         $data = array();
         $viewser = "";
-        $editquants = "";
+        $action = "";
+
         foreach ($list as $detail) {
-            if ($detail['item_type'] === 'CO' && $detail['serialStatus'] === '1') {
+            //if there is a serial
+            if ($detail['serialStatus'] === '1') {
                 $viewser = "<a class=\"dropdown-item\" onclick='viewSerial($detail[item_det_id])' data-toggle=\"collapse\" 
                     href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\"><i class=\"fa fa-folder-open\"></i>
                               </i > View Serial</a>";
             }
+
             if ($this->session->userdata['logged_in']['position'] !== 'none') {
                 if ($this->session->userdata['logged_in']['position'] === 'Admin') {
                     $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"
                         <span class=\"caret\"></span></a>";
+
+                } elseif ($position === 'Supply Officer' || $dept === 'dept') {
+                    if ($detail['status'] !== 'Accepted') {
+                        $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
+                            data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
+                            class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
+                            data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]'  
+                            class=\"btn btn-danger\">Return</a>";
+                    } else {
+                        $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
+                            data-target=\".DistributeSP\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
+                            class=\"btn btn-success\">Distribute</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
+                            data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]'  
+                            class=\"btn btn-danger\">Return</a>";
+                    }
 
                 } else {
                     $action = "<div class=\"dropdown\">
@@ -122,26 +138,18 @@ class Inventory extends CI_Controller
                             </div>";
                 }
             }
-
             if ($position === 'Supply Officer' || $dept === 'dept') {
-                if ($detail['status'] !== 'Accepted') {
-                    $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
-                            class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]'  
-                            class=\"btn btn-danger\">Return</a>";
-                }
                 $data[] = array(
                     'PR' => $detail['PR_no'],
                     'quant' => $detail['quantity_distributed'],
                     'rec' => $detail['date_received'],
                     'exp' => $detail['expiration_date'],
-                    'cost' => $detail['unit_cost'],
+                    'cost' => $detail['cost'],
                     'sup' => $detail['supplier_name'],
                     'or' => $detail['OR_no'],
                     'action' => $action
                 );
-            }else{
+            } else {
                 $data[] = array(
                     'PO' => $detail['PO_number'],
                     'quant' => $detail['quantity'],
@@ -154,6 +162,8 @@ class Inventory extends CI_Controller
                     'action' => $action,
                 );
             }
+
+
         }
         echo json_encode($data);
     }
@@ -280,14 +290,14 @@ class Inventory extends CI_Controller
 
     }
 
-    public function getItem($dept,$id)
+    public function getItem($dept, $id)
     {
-        $list = $this->inv->getItem($dept,$id);
+        $list = $this->inv->getItem($dept, $id);
         $minimum = $this->inv->countItem($id);
         $quantity = 0;
-        if($dept === 'dept'){
+        if ($dept === 'dept') {
             $quantity = $list->quant;
-        }else{
+        } else {
             $quantity = $list->quantity;
         }
         $data = array(

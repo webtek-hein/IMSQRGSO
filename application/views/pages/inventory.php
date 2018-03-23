@@ -66,18 +66,26 @@
                             <div class="table-responsive-sm  tab-pane fade show active" id="tab_content1"
                                  role="tabpanel"
                                  aria-labelledby="CO-tab">
-                                <table data-show-refresh="true" data-pagination="true" data-search="true" id="itemtable"
-                                       class="table table-no-bordered table-hover">
-                                </table>
+                                <?php if ($position === 'Custodian') {
+                                    echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="itemtable"
+                                       class="table table-no-bordered table-hover"></table>';
+                                } else {
+                                    echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="departmentTable"
+                                       class="table table-no-bordered table-hover"></table>';
+                                }
+                                ?>
                             </div>
                             <!--MOOE Tab-->
                             <div class="table-responsive-sm-sm tab-pane fade" id="tab_content2" role="tabpanel"
                                  aria-labelledby="MOOE-tab">
-                                <!-- Implement Bootsrap table-->
-                                <table data-show-refresh="true" data-pagination="true" data-search="true" id="MOOEtable"
-                                       class="table table-no-bordered table-hover"
-                                       data-pagination="true">
-                                </table>
+                                <?php if ($position === 'Custodian') {
+                                    echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="MOOEtable"
+                                       class="table table-no-bordered table-hover"></table>';
+                                } else {
+                                    echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="deptMOOEtable"
+                                       class="table table-no-bordered table-hover"></table>';
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -99,10 +107,14 @@
                                 <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det"
                                    role="tab" aria-controls="detail" aria-selected="false">Details</a>
                             </li>
-                            <li class="nav-item">
+                            <?php if ($position !== 'Supply Officer') {
+                                echo '<li class="nav-item">
                                 <a class="nav-link" id="genLedger" data-toggle="tab" href="#Detail_Ledger"
                                    role="tab" aria-controls="Ledger" aria-selected="true">General Ledger</a>
-                            </li>
+                                </li>';
+                            }
+                            ?>
+
                         </ul>
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <!-- Information-->
@@ -208,7 +220,7 @@
                                  aria-labelledby="Detail-tab">
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
-                                    <table data-show-refresh="true" id="detail-tab-table" data-search="true"
+                                    <table id="detail-tab-table" data-search="true"
                                            class="table-sm table table-no-bordered table-hover">
                                     </table>
                                 </form>
@@ -294,7 +306,6 @@
                                         <input type="text" name="item[]"
                                                class="form-control has-feedback-left"
                                                data-parsley-group="set1"
-                                               data-parsley-length="[1, 20]"
                                                data-parsley-required-message="Please insert Item name"
                                                placeholder="Enter the name of the item"
                                                required>

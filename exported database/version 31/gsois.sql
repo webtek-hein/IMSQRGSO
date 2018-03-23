@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2018 at 01:56 PM
+-- Generation Time: Mar 23, 2018 at 11:13 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -252,6 +252,7 @@ CREATE TABLE `returnitem` (
   `date_returned` date NOT NULL,
   `remarks` text NOT NULL,
   `dist_id` int(11) NOT NULL,
+  `item_det_id` int(15) NOT NULL,
   `receiver` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -314,7 +315,7 @@ CREATE TABLE `transaction` (
   `transaction_number` varchar(250) NOT NULL,
   `increased` int(15) DEFAULT NULL,
   `decreased` int(15) DEFAULT NULL,
-  `unit_cost` int(15) NOT NULL,
+  `unit_cost` double NOT NULL,
   `item_id` int(15) NOT NULL,
   `transaction` varchar(25) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
