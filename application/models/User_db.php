@@ -104,7 +104,6 @@ class User_db extends CI_Model {
             'email' => $this->input->post('em'),
             'contact_no' => $this->input->post('cno'),
             'password' => $hashpassword,
-            'username' => $this->input->post('uname'),
             'status' => $this->input->post('Stat')
         );
         $this->db->set($data);
