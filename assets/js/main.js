@@ -241,6 +241,7 @@ function userDetail(id) {
             $('#last').val(data.lastname);
             $('#em').val(data.email);
             $('#cno').val(data.contactno);
+            $('#uname').val(data.username);
             $('#pword').val(data.password);
             $('#stat').val(data.status);
         }
