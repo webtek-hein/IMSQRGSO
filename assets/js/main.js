@@ -895,7 +895,17 @@ function getserial(id) {
                 $('.serial').html(serials);
 
             }
-            if (serials.length === 0 && (mooe !== null && status !== 'Distributed')) {
+            if (!$.trim(data)) {
+                serials = "no items available";
+                $('.serial').html(serials);
+            }
+
+
+        }
+    });
+
+}
+function noserial(id) {
                 var qua = ("<div class=\"quant form-group\">" +
                     "<label>Quantity<span class=\"required\">*</span>" +
                     "<input type=\'number\' name=\'quantity\' placeholder='quantity\' " +
@@ -903,10 +913,6 @@ function getserial(id) {
                     "</label>" +
                     "</div>");
                 $('.quant').html(qua);
-            }
-        }
-    });
-
 }
 
 //toggle hidden class of element

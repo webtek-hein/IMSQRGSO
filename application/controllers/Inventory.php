@@ -126,7 +126,17 @@ class Inventory extends CI_Controller
                             class=\"btn btn-danger\">Return</a>";
                     }
 
-                } else {
+                } elseif($detail['serialStatus'] === '0') {
+                    $action = "<div class=\"dropdown\">
+                            <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
+                            <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
+                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
+                            <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
+                            <a class=\"dropdown-item\"  href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
+                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a >$viewser
+                            </div>
+                            </div>";
+                }else{
                     $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
