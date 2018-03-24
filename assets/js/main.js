@@ -794,6 +794,39 @@ function userdetailBack() {
     toggleDiv($('.accounts-tab'), $('.userDetail'));
 }
 
+jQuery(function() {
+                jQuery('#output').qrcode("http://www.dynamsoft.com/");
+            })
+            function generate() {
+                jQuery(function() {
+                    var canvas = document.querySelector("#output canvas");
+                    if (canvas != null && canvas.parentNode) {
+                        canvas.parentNode.removeChild(canvas);
+                    }
+                    var text = document.getElementById("text");
+                    jQuery('#output').qrcode(Utf8.encode(text.value));
+                    text.value = "";
+                })
+            }
+
+function save() {
+        var ua = window.navigator.userAgent;
+                           
+        if (ua.indexOf("Chrome") > 0) {
+                // save image without file type
+                    var canvas = document.querySelector("#output canvas");
+                                  
+                // save image as png
+                var link = document.createElement('a');
+            link.download = "test.png";
+            link.href = canvas.toDataURL( "image/png").replace("image/png", "image/octet-stream" );;
+        link.click();
+        }
+        else {
+                alert( "Please use Chrome" );
+         }
+    }
+    
 //view and edit serial
 function viewSerial(id) {
     var $ul = $('#serial-tabs');

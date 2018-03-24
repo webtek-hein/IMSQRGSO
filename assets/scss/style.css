@@ -36,6 +36,11 @@
 }
 /*--End of Department Header(select)--*/
 
+#DitributeItem .col-4{
+  overflow-y: scroll;
+  height:350px;
+}
+
 .table-responsive{
   height: 420px;
 }

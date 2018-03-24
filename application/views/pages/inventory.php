@@ -245,7 +245,15 @@
                                                         </label>
                                                     </div>
                                                     <!-- qr button -->
-
+                                                    <input type="text" id="text" placeholder="insert text here">
+                                                    <?php if ($position === 'Custodian'){
+                                                        echo '<a class="btn btn-primary" onclick="generate()">Generate qr</a>';
+                                                    }
+                                                    ?>
+                                                    <?php if ($position === 'Custodian'){
+                                                        echo '<a class="btn btn-primary onclick="save()"> Save QR Code</a>';
+                                                    }
+                                                    ?>
                                                     <!-- end of qr button -->
                                                     <ul id="serial-tabs" class="nav nav-tabs">
                                                     </ul>
@@ -498,25 +506,26 @@
     <div class="Distribute dist modal fade" id="DitributeItem" tabindex="-1" role="dialog"
          aria-labelledby="distrib-modal"
          aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="largeModalLabel">Distribution</h5>
                 </div>
                 <div class="modal-body">
 
-                    <div class="modal-body">
-
+                    <div class="col-4">
                         <div class="form-group">
-                            <div class="serial col-md-10">
+                            <div class="serial">
                                 <label for="name"></label>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="quant col-md-10">
+                            <div class="quant">
                             </div>
                         </div>
+                    </div>
 
+                    <div class="col-8">
                         <div class="form-group">
                             <div class="col-md-10">
                                 <label for="name">Department</label>
@@ -524,7 +533,6 @@
                                 </select>
                             </div>
                         </div>
-
 
                         <div class="form-group">
                             <div class="col-md-10">
@@ -562,7 +570,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                     <button type="submit" name="id" id="save1" class="btn btn-primary btn-modal">Save</button>
                 </div>
             </div>
