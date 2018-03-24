@@ -885,8 +885,12 @@ function getserial(id) {
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
                 mooe = data[i].serial;
-                var status = data[i].item_status;
-                if (data[i].serial !== null) {
+               var status  = data[i].item_status;
+                console.log(status);
+                if (data[i].serial !== null && status !== 'Distributed') {
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                }
+                if (data[i].serial !== null && status === 'Distributed') {
                     serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {

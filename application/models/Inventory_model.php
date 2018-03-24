@@ -599,12 +599,13 @@ class Inventory_model extends CI_Model
     public function getSerial($det_id, $position)
     {
 
-        $this->db->select('item.serialStatus,serial_id,serial.serial,item_status');
+        $this->db->select('item.serialStatus,serial_id,serial.serial,serial.item_status');
         $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
         $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
         if ($position === 'Custodian') {
-            $this->db->where('item_status !=', 'Distributed');
+            $this->db->where('item_status', 'In-stock');
         } else {
+            $this->db->where('item_status', 'Distributed');
             $this->db->join('distribution', 'distribution.dist_id = serial.dist_id');
         }
         $this->db->where('serial.item_det_id', $det_id);
@@ -734,8 +735,8 @@ class Inventory_model extends CI_Model
         );
         $this->db->insert('returnitem', $data);
 
-        $item_id = $this->db->select('itemdetail.item_id')->join('itemdetail','itemdetail.item_det_id = distribution.item_det_id')
-            ->where('item_det_id', $id)
+        $item_id = $this->db->select('itemdetail.item_id')->join('distribution','itemdetail.item_det_id = distribution.item_det_id')
+            ->where('itemdetail.item_det_id', $id)
             ->get('itemdetail')->row();
         $this->db->set('quantity_distributed', 'quantity_distributed-' . $quantity_returned, FALSE);
         $this->db->where('dist_id',$id);
@@ -748,6 +749,9 @@ class Inventory_model extends CI_Model
                 'serial' => $serial[$i]
             );
         }
+        $dist = $this->db->get('distribution')->row();
+        $transaction_number = ($dist->PR_no);
+        var_dump($transaction_number);
         $this->db->set('item_status', 'Returned');
         $this->db->where($item_id);
         $this->db->where_in('serial', $serial);
@@ -758,7 +762,7 @@ class Inventory_model extends CI_Model
                 'transaction_number' => $transaction_number,
                 'increased' => $quantity_returned,
                 'item_id' =>$item_id->item_id,
-                'unit_cost' => $cost,
+                'unit_cost' => '2234',
                 'transaction' => 'returned'
             ));
 
