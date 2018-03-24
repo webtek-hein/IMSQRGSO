@@ -52,7 +52,7 @@
             <div hidden class="col-lg-12 addSupplier">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="addSupplierBack()" class="btn btn-primary"></i> Back</a></button>
+                        <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.addSupplier'))" class="btn btn-primary"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <div class="tab-content pl-3 p-1 AddSup hidden" id="myTabContent">
@@ -91,7 +91,7 @@
             <div hidden class="col-lg-12 editSupplier-tab">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="addSupplierBack()" class="btn btn-primary"></i> Back</a></button>
+                        <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.editSupplier-tab'))" class="btn btn-primary"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <form id="editInformation"

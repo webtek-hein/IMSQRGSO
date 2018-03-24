@@ -41,7 +41,7 @@
                                 <div class="card-header">
                             <button id="headingTwo" class="btn btn-outline-success">
                                 <i class=" fa fa-plus" ></i><span> New</span></button>
-                             <button id="genReport_Buttons" class="btn btn-outline-primary">
+                             <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" class="btn btn-outline-primary">
                                 <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
                                 </div>';
 
@@ -95,7 +95,8 @@
             <div hidden class="detail-tab col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="detail_back()" class="btn btn-primary"></i> Back</a></button>
+                        <button type="button" onclick="toggleDiv($('.inventory-tab'),$('.detail-tab '))"
+                                class="btn btn-primary"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -246,12 +247,12 @@
                                                     </div>
                                                     <!-- qr button -->
                                                     <input type="text" id="text" placeholder="insert text here">
-                                                    <?php if ($position === 'Custodian'){
+                                                    <?php if ($position === 'Custodian') {
                                                         echo '<a class="btn btn-primary" onclick="generate()">Generate qr</a>';
                                                     }
                                                     ?>
-                                                    <?php if ($position === 'Custodian'){
-                                                        echo '<a class="btn btn-primary onclick="save()"> Save QR Code</a>';
+                                                    <?php if ($position === 'Custodian') {
+                                                        echo '<a class="btn btn-primary onclick="saveQR()"> Save QR Code</a>';
                                                     }
                                                     ?>
                                                     <!-- end of qr button -->
@@ -284,7 +285,8 @@
             <div hidden class="additemDiv col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-outline-primary" id="exit" onclick="addItemBack()">&times; Cancel
+                        <button class="btn btn-outline-primary" id="exit"
+                                onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))">&times; Cancel
                         </button>
                     </div>
                     <div class="card-body card-block col-lg-10 align-self-center">
@@ -450,7 +452,9 @@
             <div hidden class="generateReport col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button onclick="report_back()" class="btn btn-primary">Back</button>
+                        <button onclick="toggleDiv($('.inventory-tab'),$('generateReport'))" class="btn btn-primary">
+                            Back
+                        </button>
                     </div>
                     <div class="card-body">
                         <div class="options">
@@ -479,7 +483,8 @@
                             </ul>
                         </div>
                         <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                            <table data-show-refresh="true" data-search="true" data-pagination="true" data-toggle="table"
+                            <table data-show-refresh="true" data-search="true" data-pagination="true"
+                                   data-toggle="table"
                                    class="table-sm table table-no-bordered table-hover">
                                 <thead>
                                 <tr>
