@@ -14,5 +14,27 @@
 <script src="assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
 <script src="assets/js/bootstrap-dialog.min.js"></script>
 
+<script type="text/javascript" src="assets/jsutf-8.js"></script>
+
+		<script type="text/javascript" src="assets/jsjquery.qrcode.min.js"></script>
+
+		<script type="text/javascript" src="assets/js/grid.js"></script>
+		<script type="text/javascript" src="assets/js/version.js"></script>
+		<script type="text/javascript" src="assets/js/detector.js"></script>
+		<script type="text/javascript" src="assets/js/formatinf.js"></script>
+		<script type="text/javascript" src="assets/js/errorlevel.js"></script>
+		<script type="text/javascript" src="assets/js/bitmat.js"></script>
+		<script type="text/javascript" src="assets/js/datablock.js"></script>
+		<script type="text/javascript" src="assets/js/bmparser.js"></script>
+		<script type="text/javascript" src="assets/js/datamask.js"></script>
+		<script type="text/javascript" src="assets/js/rsdecoder.js"></script>
+		<script type="text/javascript" src="assets/js/gf256poly.js"></script>
+		<script type="text/javascript" src="assets/js/gf256.js"></script>
+		<script type="text/javascript" src="assets/js/decoder.js"></script>
+		<script type="text/javascript" src="assets/js/qrcode.js"></script>
+		<script type="text/javascript" src="assets/js/findpat.js"></script>
+		<script type="text/javascript" src="assets/js/alignpat.js"></script>
+		<script type="text/javascript" src="assets/js/databr.js"></script>
+
 </body>
 </html>

@@ -245,7 +245,15 @@
                                                         </label>
                                                     </div>
                                                     <!-- qr button -->
-
+                                                    <input type="text" id="text" placeholder="insert text here">
+                                                    <?php if ($position === 'Custodian'){
+                                                        echo '<a class="btn btn-primary" onclick="generate()">Generate qr</a>';
+                                                    }
+                                                    ?>
+                                                    <?php if ($position === 'Custodian'){
+                                                        echo '<a class="btn btn-primary onclick="save()"> Save QR Code</a>';
+                                                    }
+                                                    ?>
                                                     <!-- end of qr button -->
                                                     <ul id="serial-tabs" class="nav nav-tabs">
                                                     </ul>
