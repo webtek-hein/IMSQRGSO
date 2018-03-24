@@ -11,7 +11,6 @@ class User_db extends CI_Model {
         $uname = $this->db->get('user')->row();
 
         $password = $data['password'];
-       // $hash = password_hash($password, PASSWORD_DEFAULT);
         if ($uname == true) {
             if (password_verify($password, $uname->password)) {
                 return true;
@@ -56,7 +55,7 @@ class User_db extends CI_Model {
     }
 
     public function insertUser(){
-        $password = $this->input->post('Password');
+        $password = $this->input->post('password');
         $options = ['cost' => 12];
         $hashpassword =  password_hash($password, PASSWORD_DEFAULT, $options);
         $position = $this->input->post('position');
@@ -80,7 +79,6 @@ class User_db extends CI_Model {
     public function edituser()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
-        $values = [];
         $password = $this->input->post('pword');
         $options = ['cost' => 12];
         $hashpassword =  password_hash($password, PASSWORD_DEFAULT, $options);
