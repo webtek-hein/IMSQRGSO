@@ -41,10 +41,9 @@
                                 <div class="card-header">
                             <button id="headingTwo" class="btn btn-outline-success">
                                 <i class=" fa fa-plus" ></i><span> New</span></button>
-                             <button id="genReport_Buttons" class="btn btn-outline-primary" data-toggle="tab"
-                                aria-expanded="true"
-                                href="#" data-target=".generateReport">
-                            <i class="fa fa-file-archive-o"></i><span> Reports</span></button> </div>';
+                             <button id="genReport_Buttons" class="btn btn-outline-primary">
+                                <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
+                                </div>';
 
                     }
                     ?>
@@ -67,18 +66,26 @@
                             <div class="table-responsive-sm  tab-pane fade show active" id="tab_content1"
                                  role="tabpanel"
                                  aria-labelledby="CO-tab">
-                                <table data-pagination="true" data-search="true" id="itemtable"
-                                       class="table table-no-bordered table-hover">
-                                </table>
+                                <?php if ($position === 'Custodian') {
+                                    echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="itemtable"
+                                       class="table table-no-bordered table-hover"></table>';
+                                } else {
+                                    echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="departmentTable"
+                                       class="table table-no-bordered table-hover"></table>';
+                                }
+                                ?>
                             </div>
                             <!--MOOE Tab-->
                             <div class="table-responsive-sm-sm tab-pane fade" id="tab_content2" role="tabpanel"
                                  aria-labelledby="MOOE-tab">
-                                <!-- Implement Bootsrap table-->
-                                <table data-pagination="true" data-search="true" id="MOOEtable"
-                                       class="table table-no-bordered table-hover"
-                                       data-pagination="true">
-                                </table>
+                                <?php if ($position === 'Custodian') {
+                                    echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="MOOEtable"
+                                       class="table table-no-bordered table-hover"></table>';
+                                } else {
+                                    echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="deptMOOEtable"
+                                       class="table table-no-bordered table-hover"></table>';
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -100,10 +107,14 @@
                                 <a class="nav-link active" id="DetDetail" data-toggle="tab" href="#Detail_Det"
                                    role="tab" aria-controls="detail" aria-selected="false">Details</a>
                             </li>
-                            <li class="nav-item">
+                            <?php if ($position !== 'Supply Officer') {
+                                echo '<li class="nav-item">
                                 <a class="nav-link" id="genLedger" data-toggle="tab" href="#Detail_Ledger"
                                    role="tab" aria-controls="Ledger" aria-selected="true">General Ledger</a>
-                            </li>
+                                </li>';
+                            }
+                            ?>
+
                         </ul>
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <!-- Information-->
@@ -214,7 +225,7 @@
                                     </table>
                                 </form>
                                 <?php if ($position === 'Custodian') {
-                                    echo '<a href="#" onclick="insertRow()">Add new detail</a>';
+                                    echo '<a class="btn btn-success" href="#" onclick="insertRow()">Add new detail</a>';
                                 }
                                 ?>
                                 <!-- View Serial-->
@@ -226,21 +237,22 @@
                                         <div class="card-body card-block">
                                             <form id="viewSerialForm" class="serial-form">
                                                 <!-- Dynamic serial tabs here -->
-                                                  <div class="form-group">
-                                                      <div class="checkbox">
+                                                <div class="form-group">
+                                                    <div class="checkbox">
                                                         <label>
-                                                          <input type="checkbox" class="check" id="checkAll"> Check All
+                                                            <input type="checkbox" class="check" id="checkAll"> Check
+                                                            All
                                                         </label>
-                                                      </div>
-                                                      <!-- qr button -->
+                                                    </div>
+                                                    <!-- qr button -->
 
-                                                      <!-- end of qr button -->
-                                                <ul id="serial-tabs" class="nav nav-tabs">
-                                                </ul>
-                                                <!-- end of serial tabs -->
-                                                <div id="serial-tabcontent" class="tab-content">
+                                                    <!-- end of qr button -->
+                                                    <ul id="serial-tabs" class="nav nav-tabs">
+                                                    </ul>
+                                                    <!-- end of serial tabs -->
+                                                    <div id="serial-tabcontent" class="tab-content">
+                                                    </div>
                                                 </div>
-                                            </div>
                                             </form>
                                         </div>
                                     </div>
@@ -251,21 +263,8 @@
                             <!--General Ledger-->
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
-                                <table id="ledger" data-pagination="true" data-search="true"
-                                       data-toggle="table" data-url="Inventory/getLedger/1"
+                                <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
                                        class="table-sm table table-no-bordered table-hover">
-                                    <thead>
-                                    <!-- Data-field for getting data  -->
-                                    <tr>
-                                        <th data-field="date">Date</th>
-                                        <th data-field="date">Transaction number</th>
-                                        <th data-field="increased">Increased</th>
-                                        <th data-field="decreased">Decreased</th>
-                                        <th data-field="price">Unit Cost</th>
-                                        <th data-field="price">Total</th>
-                                        <th data-field="balance">Balance</th>
-                                    </tr>
-                                    </thead>
                                 </table>
                             </div>
                             <!--End of General Ledger-->
@@ -307,7 +306,6 @@
                                         <input type="text" name="item[]"
                                                class="form-control has-feedback-left"
                                                data-parsley-group="set1"
-                                               data-parsley-length="[1, 20]"
                                                data-parsley-required-message="Please insert Item name"
                                                placeholder="Enter the name of the item"
                                                required>
@@ -472,8 +470,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="table-responsive-sm-sm tab-content pl-3 p-1" id="myTabContent">
-                            <table data-search="true" data-pagination="true" data-toggle="table"
+                        <div class="table-responsive-sm-sm tab-content pl-3 p-1">
+                            <table data-show-refresh="true" data-search="true" data-pagination="true" data-toggle="table"
                                    class="table-sm table table-no-bordered table-hover">
                                 <thead>
                                 <tr>

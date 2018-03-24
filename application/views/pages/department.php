@@ -22,11 +22,13 @@
     <div class="animated fadeIn">
         <div class="row">
             <!-- Inventory-->
-            <div class="col-lg-12 inventory-tab ">
+            <div class="col-lg-12 department-tab">
+                <select id="select-dept" type="button" class="col-lg-5 deptopt form-control"></select>
                 <div class="card">
                     <div class="card-header">
-                        <select id="select-dept" type="button" class="col-lg-5 deptopt form-control"><span
-                                    class="fa fa-chevron-down"></span></select>
+                            <button id="reconcileButton" class="btn btn-outline-success">
+                                <i class="fa fa-balance-scale"></i> RECONCILE
+                            </button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -106,6 +108,32 @@
                     </div>
                 </div>
             </div>
+
+            <!--Reconcile Page-->
+            <div hidden class="reconcilePage col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <button onclick="reconcile_back()" class="btn btn-primary">Back</button>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive-sm-sm tab-content pl-3 p-1">
+                            <table data-show-refresh="true" data-search="true" data-pagination="true" data-toggle="table"
+                                   class="table-sm table table-no-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th data-sortable="true" data-field="">Item Name</th>
+                                    <th data-sortable="true" data-field="">Description</th>
+                                    <th data-sortable="true" data-field="">Physical Count</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End of Reconcile Page-->
+
             <!-- View Serial-->
             <div hidden class="Serial col-lg-12 ">
                 <div class="card">
@@ -140,5 +168,4 @@
             </div>
         </div>
         <!--End of View Serial-->
-
         <!-- /page content -->

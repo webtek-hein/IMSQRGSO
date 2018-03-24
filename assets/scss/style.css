@@ -13,6 +13,7 @@
 /* Bootstrap */
 @import url(../css/animate.css);
 
+/*--Action--*/
 .dropdown #DetailDropDn{
   width: 15px;
   padding: 0px;
@@ -23,7 +24,21 @@
 .dropdown #DetailDropDn a{
   font-size: 15px;
 }
+/*--End of Action--*/
 
+.header-left{
+    margin-right:20px;
+}
+
+/*--Department Header(select)--*/
+#select-dept{
+    margin-bottom: 5px;
+}
+/*--End of Department Header(select)--*/
+
+.table-responsive{
+  height: 420px;
+}
 tr{
   cursor: pointer;
 }

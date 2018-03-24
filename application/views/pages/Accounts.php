@@ -203,13 +203,7 @@ CITY BUDGET OFFICE</option>
                                 <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" id="cno" name="cno">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class=" form-control-label">Username</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" name="uname" id="uname" class="form-control has-feedback-left" pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." required><span id="uname_result"></span>
-                            </div>
-                        </div>
+                   
                         <div class="form-group">
                             <label class=" form-control-label">Password</label>
                             <div class="input-group">
@@ -224,7 +218,7 @@ CITY BUDGET OFFICE</option>
                                                     list="statuslist" name="Stat"
                                                     class="form-control" >
                                                 <option selected="true" disabled>--Activate or Deactivate--</option>
-                                                <option value="Inactive">Deactivate</option>
+                                                <option value="Inactive">Inactive</option>
                                                 <option value="Active">Activate</option>
                                             </select>
                                         </div>

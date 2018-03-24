@@ -45,10 +45,11 @@ $(document).ready(function () {
     $('#main-menu').find('li a').click(function () {
         localStorage.clear();
     });
-    if (active.split(' ')[0] === 'detail-tab' && active !== null) {
-        $('td').attr('onclick', detFunc).click();
+    if (active !== null) {
+        if (active.split(' ')[0] === 'detail-tab') {
+            $('td').attr('onclick', detFunc).click();
+        }
     }
-
     //get URL of the document
     var $url = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
 });
@@ -94,6 +95,8 @@ function editSupplier(id) {
 function detail(id) {
     localStorage.setItem('detail', 'detail(' + id + ')');
     var $detailtable = $('#detail-tab-table');
+    var $ledger = $('#ledger');
+
     var item;
     $.ajax({
         url: 'inventory/getitem/inv/' + id,
@@ -109,38 +112,70 @@ function detail(id) {
             $('#initialCost').text(data.initialCost);
 
             toggleDiv($('.detail-tab '), $('.inventory-tab'));
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + id})
-                .bootstrapTable({
-                    url: 'inventory/detail/inv/' + id,
-                    columns: [{
-                        field: 'PO',
-                        title: 'PO number'
-                    }, {
-                        field: 'del',
-                        title: 'Delivery Date'
-                    }, {
-                        field: 'rec',
-                        title: 'Date Received'
-                    }, {
-                        field: 'exp',
-                        title: 'Estimated Useful Life'
-                    }, {
-                        field: 'cost',
-                        title: 'Unit Cost'
-                    }, {
-                        field: 'sup',
-                        title: 'Supplier'
-                    }, {
-                        field: 'quant',
-                        title: 'Quantity'
-                    }, {
-                        field: 'or',
-                        title: 'OR number'
-                    }, {
-                        field: 'action',
-                        title: 'Action'
-                    }]
-                });
+
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + id});
+            $detailtable.bootstrapTable({
+                url: 'inventory/detail/inv/' + id,
+                columns: [{
+                    field: 'PO',
+                    title: 'PO number'
+                }, {
+                    field: 'del',
+                    title: 'Delivery Date'
+                }, {
+                    field: 'rec',
+                    title: 'Date Received'
+                }, {
+                    field: 'exp',
+                    title: 'Estimated Useful Life'
+                }, {
+                    field: 'cost',
+                    title: 'Unit Cost'
+                }, {
+                    field: 'sup',
+                    title: 'Supplier'
+                }, {
+                    field: 'quant',
+                    title: 'Quantity'
+                }, {
+                    field: 'or',
+                    title: 'OR number'
+                }, {
+                    field: 'action',
+                    title: 'Action'
+                }]
+            });
+            $ledger.bootstrapTable('refresh', {url: 'inventory/getLedger/' + id});
+            $ledger.bootstrapTable({
+                pageSize: 10,
+                url: 'inventory/getLedger/' + id,
+                resizable: true,
+                columns: [{
+                    sortable: true,
+                    field: 'date',
+                    title: 'Date'
+                }, {
+                    sortable: true,
+                    field: 'transaction_number',
+                    title: 'Transaction Number'
+                }, {
+                    sortable: true,
+                    field: 'increased',
+                    title: 'Increased'
+                }, {
+                    sortable: true,
+                    field: 'decreased',
+                    title: 'Decreased'
+                }, {
+                    sortable: true,
+                    field: 'price',
+                    title: 'Unit Cost'
+                }, {
+                    sortable: true,
+                    field: 'transaction',
+                    title: 'Transaction'
+                }]
+            });
             serialize_forms();
         }
     });
@@ -206,16 +241,16 @@ function userDetail(id) {
             $('#last').val(data.lastname);
             $('#em').val(data.email);
             $('#cno').val(data.contactno);
-            $('#uname').val(data.username);
             $('#pword').val(data.password);
             $('#stat').val(data.status);
         }
     });
 }
 
-var counter = 1;
 
 function insertRow() {
+    var counter = 0;
+
     var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
         '<td contenteditable style=""><input name="PO[]" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
@@ -226,7 +261,7 @@ function insertRow() {
         '<td style=""><select name="supp[]" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
         '<td style=""><input name="quant[]" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><input name="or[]" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><button type="button" onclick="addquant(counter-1)" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
+        '<td style=""><button type="button" onclick="addquant('+counter+')" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
         '</tr>');
     $.ajax({
         url: 'supplier/supplieroption',
@@ -241,14 +276,14 @@ function insertRow() {
     counter++;
 }
 
-function addquant(counter) {
+function addquant(c) {
     var $item_det_id = $('#DetailDropDn').find('a').data('id');
     var data = $('#addQuant').serializeArray();
-    var $det = $('#detTab' + counter);
+    var $det = $('#detTab' + c);
     console.log($det);
     var temp = [];
     $.ajax({
-        url: 'inventory/addquant/' + $item_det_id + '/' +counter,
+        url: 'inventory/addquant/' + $item_det_id + '/' + c,
         type: 'POST',
         data: data,
         success: function (result) {
@@ -268,6 +303,7 @@ function init_inventory() {
     var $MOOEtable = $('#MOOEtable');
     var $supplier = $('#supplier-table');
     var $userTable = $('#user-table');
+
     $supplier.bootstrapTable('refresh', {url: 'supplier/viewsuppliers'})
         .bootstrapTable({
             pageSize: 10,
@@ -333,9 +369,9 @@ function init_inventory() {
             pageSize: 10,
             url: 'inventory/viewItem/CO',
             onClickRow: function (data, row) {
-                if(data.position === 'Supply Officer'){
+                if (data.position === 'Supply Officer') {
                     deptDet(data.id);
-                }else{
+                } else {
                     detail(data.id);
                 }
             },
@@ -361,7 +397,11 @@ function init_inventory() {
                 sortable: true,
                 field: 'unit',
                 title: 'UNIT'
-            }]
+            }, {
+                sortable: true,
+                field: 'totalcost',
+                title: 'Unit COST'
+            },]
             // }, {
             //     sortable: true,
             //     field: 'Price',
@@ -373,9 +413,9 @@ function init_inventory() {
             pageSize: 10,
             url: 'inventory/viewItem/MOOE',
             onClickRow: function (data, row) {
-                if(data.position === 'Supply Officer'){
+                if (data.position === 'Supply Officer') {
                     deptDet(data.id);
-                }else{
+                } else {
                     detail(data.id);
                 }
             },
@@ -402,6 +442,10 @@ function init_inventory() {
                 sortable: true,
                 field: 'unit',
                 title: 'UNIT'
+            }, {
+                sortable: true,
+                field: 'totalcost',
+                title: 'Total COST'
             }]
             // }, {
             //     sortable: true,
@@ -425,6 +469,9 @@ function init_inventory() {
     $('#genReport_Buttons').on('click', function () {
         toggleDiv($('.generateReport'), $('.inventory-tab'));
     });
+    $('#reconcileButton').on('click', function (){
+        toggleDiv($('.reconcilePage'), $('.department-tab'));
+    })
     console.log('init_inventory');
 }
 
@@ -739,6 +786,10 @@ function EditUserBack() {
     toggleDiv($('.accounts-tab'), $('.userDetail'));
 }
 
+function reconcile_back(){
+    toggleDiv($('.department-tab'), $('.reconcilePage'));
+}
+
 function userdetailBack() {
     toggleDiv($('.accounts-tab'), $('.userDetail'));
 }
@@ -836,7 +887,7 @@ function getserial(id) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null) {
-                    serials.push("<input name=\"serial["+ data[i]['serial_id'] +"]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
@@ -1063,38 +1114,38 @@ function select_dept() {
     }
 }
 
- $(document).ready(function(){
-  $('#username').change(function(){
-   var username = $('#username').val();
-   if(username != ''){
-    $.ajax({
-     url: "Search/checkUsername",
-     method: "POST",
-     data: {username:username},
-     success: function(data){
-      $('#username_result').html(data);
-     }
+$(document).ready(function () {
+    $('#username').change(function () {
+        var username = $('#username').val();
+        if (username != '') {
+            $.ajax({
+                url: "Search/checkUsername",
+                method: "POST",
+                data: {username: username},
+                success: function (data) {
+                    $('#username_result').html(data);
+                }
+            });
+        }
     });
-   }
-  });
- });
- 
+});
+
 $("#checkAll").click(function () {
     $(".check").prop('checked', $(this).prop('checked'));
 });
 
-  $(document).ready(function(){
-  $('#uname').change(function(){
-   var username = $('#uname').val();
-   if(username != ''){
-    $.ajax({
-     url: "Search/checkUsername",
-     method: "POST",
-     data: {username:username},
-     success: function(data){
-      $('#uname_result').html(data);
-     }
+$(document).ready(function () {
+    $('#uname').change(function () {
+        var username = $('#uname').val();
+        if (username != '') {
+            $.ajax({
+                url: "Search/checkUsername",
+                method: "POST",
+                data: {username: username},
+                success: function (data) {
+                    $('#uname_result').html(data);
+                }
+            });
+        }
     });
-   }
-  });
- });
+});

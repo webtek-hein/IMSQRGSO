@@ -8,19 +8,18 @@ class User_db extends CI_Model {
             ->where('username', $data['username'])
             ->where('status', 'active')
             ->limit(1);
-        $q = $this->db->get('user')->row();
+        $uname = $this->db->get('user')->row();
 
         $password = $data['password'];
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-        if ($q == true) {
-            if (!password_verify($password, $hash)) {
-                return false;
-            }else{
+       // $hash = password_hash($password, PASSWORD_DEFAULT);
+        if ($uname == true) {
+            if (password_verify($password, $uname->password)) {
                 return true;
             }
         }
             return false;
     }
+
 
 // Read data from database to show data in admin page
     public function read_user_information($username) {
@@ -105,7 +104,6 @@ class User_db extends CI_Model {
             'email' => $this->input->post('em'),
             'contact_no' => $this->input->post('cno'),
             'password' => $hashpassword,
-            'username' => $this->input->post('uname'),
             'status' => $this->input->post('Stat')
         );
         $this->db->set($data);
