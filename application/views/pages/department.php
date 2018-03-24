@@ -122,24 +122,11 @@
                                    class="table-sm table table-no-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th data-sortable="true" data-field="">List of Item Received</th>
-                                    <th data-sortable="true" data-field="">Count</th>
-                                    <th data-sortable="true" data-field="">List of Item Returned</th>
-                                    <th data-sortable="true" data-field="">Count</th>
-                                    <th data-sortable="true" data-field="">List of Stocked Items</th>
-                                    <th data-sortable="true" data-field="">Count</th>
+                                    <th data-sortable="true" data-field="">Item Name</th>
+                                    <th data-sortable="true" data-field="">Description</th>
+                                    <th data-sortable="true" data-field="">Physical Count</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td><input type="text" class="form-control" /></td>
-                                    <td></td>
-                                    <td><input type="text" class="form-control " /></td>
-                                    <td></td>
-                                    <td><input type="text" class="form-control" /></td>
-                                </tr>
-                                </tbody>
                             </table>
                         </div>
                     </div>
