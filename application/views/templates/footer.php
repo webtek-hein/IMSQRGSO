@@ -2,7 +2,6 @@
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/bootstrap-table.js"></script>
-<script type="text/javascript" src="assets/jsutf-8.js"></script>
 <script type="text/javascript" src="assets/js/grid.js"></script>
 <script type="text/javascript" src="assets/js/version.js"></script>
 <script type="text/javascript" src="assets/js/detector.js"></script>

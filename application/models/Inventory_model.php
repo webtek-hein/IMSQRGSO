@@ -368,7 +368,6 @@ class Inventory_model extends CI_Model
     public function addquant($item_det_id, $counter)
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
-        //1. Get Quantity
         $quantity = $this->input->post('quant')[$counter];
         $supplier = $this->input->post('supp')[$counter];
 
@@ -395,7 +394,10 @@ class Inventory_model extends CI_Model
         $serialStatus = $query->serialStatus;
         $lastQuantity = $query->quantity;
         $lastPrice = $query->cost;
+        $totalLastCost = $lastPrice * $lastQuantity;
+        $totalCost = $unit_cost * $quantity;
 
+        $latestCost = ($totalCost + $totalLastCost) / ($lastQuantity + $quantity);
 
         try {
             $this->db->trans_begin();
@@ -438,10 +440,8 @@ class Inventory_model extends CI_Model
                 $this->input->post('or')[$counter],
                 $action
             );
-            $totalCost = $lastPrice * $lastQuantity;
-            $totalLastCost = $unit_cost * $quantity;
 
-            $latestCost = ($totalCost + $totalLastCost) / ($lastQuantity + $quantity);
+
             $this->db->set('quantity', 'quantity+' . $quantity, FALSE);
             $this->db->set('cost', $latestCost);
             $this->db->where($item_id);
