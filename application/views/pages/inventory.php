@@ -446,63 +446,66 @@
                     </div>
                 </div>
             </div>
-            <!--Genearate Report-->
-            <div hidden class="generateReport col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <button onclick="toggleDiv($('.inventory-tab'),$('generateReport'))" class="btn btn-primary">
-                            Back
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div class="options">
-                            <div class="checkbox opt1">
-                                <label>OPTION: </label>
-                                <label><input type="checkbox" value=""> CO</label>
-
-                                <label><input type="checkbox" value=""> MOOE</label>
-
-                                <label><input type="checkbox" value=""> ALL</label>
-                            </div>
-
-                            <ul class="list-inline opt2">
-                                <li><p>Date of Delivery:
-                                        <select id="deliveryDate" type="button" class="btn btn-default"></select>
-                                    </p>
-                                </li>
-                                <li><p>Purchase Order:
-                                        <select id="PO" type="button" class="btn btn-default"></select>
-                                    </p>
-                                </li>
-                                <li><p>Item Name:
-                                        <select id="Item Name" type="button" class="btn btn-default"></select>
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                            <table data-show-refresh="true" data-search="true" data-pagination="true"
-                                   data-toggle="table"
-                                   class="table-sm table table-no-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th data-sortable="true" data-field="supplier">Item Name</th>
-                                    <th data-sortable="true" data-field="address">Description</th>
-                                    <th data-sortable="true" data-field="contact">Quantity</th>
-                                    <th data-sortable="true" data-field="contact">Unit</th>
-                                    <th data-sortable="true" data-field="contact">Cost</th>
-                                    <th data-sortable="true" data-field="contact">Supplier</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>
+
+<!--Genearate Report-->
+<div hidden class="generateReport col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <button onclick="toggleDiv($('.inventory-tab'),$('generateReport'))" class="btn btn-primary">
+                Back
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="options">
+                <div class="checkbox opt1">
+                    <label>OPTION: </label>
+                    <label><input type="checkbox" value=""> CO</label>
+
+                    <label><input type="checkbox" value=""> MOOE</label>
+
+                    <label><input type="checkbox" value=""> ALL</label>
+                </div>
+
+                <ul class="list-inline opt2">
+                    <li><p>Date of Delivery:
+                            <select id="deliveryDate" type="button" class="btn btn-default"></select>
+                        </p>
+                    </li>
+                    <li><p>Purchase Order:
+                            <select id="PO" type="button" class="btn btn-default"></select>
+                        </p>
+                    </li>
+                    <li><p>Item Name:
+                            <select id="Item Name" type="button" class="btn btn-default"></select>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="table-responsive-sm-sm tab-content pl-3 p-1">
+                <table data-show-refresh="true" data-search="true" data-pagination="true"
+                       data-toggle="table"
+                       class="table-sm table table-no-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th data-sortable="true" data-field="supplier">Item Name</th>
+                        <th data-sortable="true" data-field="address">Description</th>
+                        <th data-sortable="true" data-field="contact">Quantity</th>
+                        <th data-sortable="true" data-field="contact">Unit</th>
+                        <th data-sortable="true" data-field="contact">Cost</th>
+                        <th data-sortable="true" data-field="contact">Supplier</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Genearate Report-->
+
+
 <!-- Distribution Modal -->
 <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST"
       data-validate="parsley">
