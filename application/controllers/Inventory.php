@@ -197,7 +197,7 @@ class Inventory extends CI_Controller
                 'id' => $list['serial_id'],
                 'item_name' => $list['item_name'],
                 'serial' => $list['serial'],
-                'account_code' => $list['description'],
+                'account_code' => $list['account_code'] . ": " . $list['description'],
                 'description' => $list['item_description'],
                 'unit_cost' => $list['unit_cost'],
                 'item_type' => $list['item_type'],
