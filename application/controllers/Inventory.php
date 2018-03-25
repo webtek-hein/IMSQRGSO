@@ -129,12 +129,10 @@ class Inventory extends CI_Controller
                             data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]'  
                             class=\"btn btn-danger\">Return</a>";
                     } else {
-                        $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".DistributeSP\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
-                            class=\"btn btn-success\">Distribute</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]'  
-                            class=\"btn btn-danger\">Return</a></br>
-                            <a href=\imsqrgso/pages/are.html\ type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
+                        $action = 
+                            "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
+                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
+                            <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
                     }
 
                 } elseif($detail['serialStatus'] !== '1') {
