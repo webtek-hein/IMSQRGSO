@@ -454,7 +454,7 @@
 <div hidden class="generateReport col-lg-12">
     <div class="card">
         <div class="card-header">
-            <button onclick="toggleDiv($('.inventory-tab'),$('generateReport'))" class="btn btn-primary">
+            <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))" class="btn btn-primary">
                 Back
             </button>
         </div>
@@ -470,41 +470,60 @@
                 </div>
 
                 <ul class="list-inline opt2">
-                    <li><p>Date of Delivery:
-                            <select id="deliveryDate" type="button" class="btn btn-default"></select>
-                        </p>
-                    </li>
-                    <li><p>Purchase Order:
-                            <select id="PO" type="button" class="btn btn-default"></select>
-                        </p>
-                    </li>
-                    <li><p>Item Name:
-                            <select id="Item Name" type="button" class="btn btn-default"></select>
-                        </p>
-                    </li>
+                    <div class="dropdown">
+                        <label>Rerports on:</label>
+                        <button id="reportsOptions" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+                            -option-
+                        </button>
+
+                        <div class="dropdown-menu" id="reportsOption">
+                            <a class="dropdown-item" href="#">Item Returns</a>
+                            <a class="dropdown-item" href="#">Item Distributed</a>
+                            <a class="dropdown-item" href="#">Delivered Item</a>
+                            <a class="dropdown-item" href="#">Supplier</a>
+                        </div>
+                    </div>
                 </ul>
             </div>
-            <div class="table-responsive-sm-sm tab-content pl-3 p-1">
+            <div class="returnedReport">
                 <table data-show-refresh="true" data-search="true" data-pagination="true"
                        data-toggle="table"
                        class="table-sm table table-no-bordered table-hover">
                     <thead>
                     <tr>
-                        <th data-sortable="true" data-field="supplier">Item Name</th>
-                        <th data-sortable="true" data-field="address">Description</th>
-                        <th data-sortable="true" data-field="contact">Quantity</th>
-                        <th data-sortable="true" data-field="contact">Unit</th>
-                        <th data-sortable="true" data-field="contact">Cost</th>
-                        <th data-sortable="true" data-field="contact">Supplier</th>
+                        <th data-sortable="true" data-field="Item_Name">Item Name</th>
+                        <th data-sortable="true" data-field="Description">Description</th>
+                        <th data-sortable="true" data-field="Unit">Unit</th>
+                        <th data-sortable="true" data-field="Cost">Cost</th>
+                        <th data-sortable="true" data-field="Supplier">Supplier</th>
+                        <th data-sortable="true" data-field="Date_Returned">Date Returned</th>
+                        <th data-sortable="true" data-field="Reason">Reason</th>
+                        <th data-sortable="true" data-field="Return_by">Return by</th>
+                        <th data-sortable="true" data-field="Received_by">Received by</th>
+                        <th data-sortable="true" data-field="Status">Status</th>
                     </tr>
                     </thead>
+                    <tbody>
+                    <tr>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field="">Replaced/ignored</td>
+                    </tr>
+                    </tbody>
                 </table>
             </div>
+
         </div>
     </div>
 </div>
 <!--End of Genearate Report-->
-
 
 <!-- Distribution Modal -->
 <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST"
