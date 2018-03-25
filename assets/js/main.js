@@ -577,9 +577,6 @@ function init_list() {
     $reconcile.bootstrapTable({
         pageSize: 10,
         url: 'inventory/reconcile/CO/11',
-        onClickRow: function (data, row) {
-            deptDet(data.id);
-        },
         resizable: true,
         columns: [{
             sortable: true,
@@ -596,9 +593,9 @@ function init_list() {
                     css: {"color": "green"}
                 };
             },
-            bVisible: false,
             field: 'quant',
-            title: 'QUANTITY DISTRIBUTED'
+            title: 'QUANTITY DISTRIBUTED',
+            visible: false,
         }, {
             sortable: true,
             field: 'count',
