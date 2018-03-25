@@ -1159,7 +1159,7 @@ function select_dept() {
 
     }
 }
-
+//View QR list
 function viewQr() {
     $genQR = $('#genQr');
     $qrCode = [];
@@ -1193,5 +1193,10 @@ function viewQr() {
             }
         });
     });
+
+}
+
+//print QR to pdf
+function download() {
 
 }
