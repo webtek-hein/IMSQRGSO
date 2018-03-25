@@ -129,12 +129,10 @@ class Inventory extends CI_Controller
                             data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[item_det_id]'  
                             class=\"btn btn-danger\">Return</a>";
                     } else {
-                        $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".DistributeSP\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
-                            class=\"btn btn-success\">Distribute</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]'  
-                            class=\"btn btn-danger\">Return</a></br>
-                            <a href=\imsqrgso/pages/are.html\ type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
+                        $action = 
+                            "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
+                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
+                            <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
                     }
 
                 } elseif($detail['serialStatus'] !== '1') {
@@ -308,6 +306,41 @@ class Inventory extends CI_Controller
             );
         }
         echo json_encode($data);
+
+    }
+    public function reconcileview($type, $id)
+    {
+        $list = $this->inv->reconcile($type, $id);
+        $data = array();
+        $count_input = "<input type='text' name='reconcileitem[]' >";
+        foreach ($list as $item) {
+            $ps = $item['physicalcount'];
+            $q = $item['quant'];
+            $result = $q - $ps;
+            if($result == 0){
+                $result = 'equal';
+            }elseif ($result < 0){
+                $result =  $result . ' missing';
+            }else{
+                $result =  'more than ' . $result ;
+            }
+            $data[] = array(
+                'id' => $item['item_id'],
+                'name' => $item['item_name'],
+                'description' => $item['item_description'],
+                'quant' => $item['quant'],
+                'count' => $count_input,
+                'result' => $result
+            );
+        }
+        echo json_encode($data);
+
+    }
+
+    public function compare(){
+
+        echo json_encode($this->inv->compareitem());
+        redirect('department');
 
     }
 

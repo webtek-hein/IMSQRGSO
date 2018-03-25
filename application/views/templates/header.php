@@ -74,9 +74,11 @@ if (isset($this->session->userdata['logged_in'])) {
                                     <a href="Accounts"><i class="menu-icon fa fa-users"></i>USERS</a>
                                   </li>';
                 }
+                if ($position === 'Supply Officer' || $position === 'Custodian') {
                 echo '<li id="li5">
                                     <a href="Return"><i class="menu-icon fa fa-undo"></i>RETURNS</a>
                                   </li>';
+                }
                 ?>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"

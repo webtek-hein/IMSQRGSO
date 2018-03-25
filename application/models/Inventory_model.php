@@ -567,6 +567,35 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    public function reconcile($type, $id)
+    {
+        $this->db->select('item.*,sum(quantity_distributed) as quant');
+        $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
+        $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
+        $this->db->where('item.item_type', $type);
+        $this->db->where('distribution.dept_id', $id);
+        $this->db->group_by('item.item_id');
+        $query = $this->db->get('distribution');
+        return $query->result_array();
+    }
+
+    public function compareitem(){
+
+        $pcount = $this->input->post('reconcileitem');
+        $data = array();
+        foreach ($pcount as $key => $value) {
+            // if serial is not null
+            if ($value !== 'null' || $value !== 0) {
+                $data[] = array(
+                    'item_id' => $key + 1,
+                    'physicalcount' => $value,
+                );
+            }
+        }
+        var_dump($data);
+        return $this->db->update_batch('item',$data,'item_id');
+    }
+
     public function selectdetails()
     {
         $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'inner');

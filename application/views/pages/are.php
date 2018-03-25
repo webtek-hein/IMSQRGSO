@@ -1,7 +1,3 @@
-<html>
-<head>
-</head>
-<body>
     <div id="container">
       <div class="right-invoice">
         <section id="memo">
@@ -9,7 +5,7 @@
         <div class="clearfix"></div>
 
         <section id="client-info">
-           <img src="logo.png" style="width:50px; height:50px;"></img>
+           <img src="assets/images/logo.png" style="width:50px; height:50px;"></img>
           <h2><b>REPUBLIC OF THE PHILIPPINES</b></h2>
           <span>City Government of Baguio</span>
         </section>
@@ -94,9 +90,6 @@
          </div>
  
         <div class="clearfix"></div>
-        
-  </body>
-</html>
 
 <STYLE TYPE="text/css">
 html {
