@@ -395,10 +395,7 @@ class Inventory_model extends CI_Model
         $lastQuantity = $query->quantity;
         $lastPrice = $query->cost;
         $totalLastCost = $lastPrice * $lastQuantity;
-        var_dump($totalLastCost);
         $totalCost = $unit_cost * $quantity;
-        var_dump($totalCost);
-        var_dump($lastQuantity + $quantity);
 
         $latestCost = ($totalCost + $totalLastCost) / ($lastQuantity + $quantity);
         var_dump($latestCost);

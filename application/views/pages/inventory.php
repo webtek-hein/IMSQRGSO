@@ -889,8 +889,8 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                             <?php if ($position === 'Custodian') {
-                                                                echo '<label for="saveqr">Savepdf</label>
-                                                                <input name="saveqr" type="file" onclick="download()" required>'
+                                                                echo '<label for="saveqr">Savepdf
+                                                                <input name="saveqr" type="file" onclick="download()" required></label>'
                                                                 ;
                                                                 }
                                                             ?>
