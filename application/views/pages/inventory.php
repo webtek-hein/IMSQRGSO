@@ -239,20 +239,21 @@
                                             <form id="viewSerialForm" class="serial-form">
                                                 <!-- Dynamic serial tabs here -->
                                                 <div class="form-group">
+
+                                                    <!-- qr button -->
+                                                    <?php if ($position === 'Custodian') {
+                                                        echo '<a class="btn btn-primary" onclick="viewQr()"> View QR Code</a>';
+                                                    }
+                                                    ?>
+                                                    <!-- end of qr button -->
+
                                                     <div class="checkbox">
                                                         <label>
                                                             <input type="checkbox" class="check" id="checkAll"> Check
                                                             All
                                                         </label>
                                                     </div>
-                                                    <!-- qr button -->
-                                                    <?php if ($position === 'Custodian') {
-                                                                echo '<a class="btn btn-primary" onclick="viewQr()"> View QR Code</a>';
-                                                                }
-                                                            ?>
 
-
-                                                    <!-- end of qr button -->
                                                     <ul id="serial-tabs" class="nav nav-tabs">
                                                     </ul>
                                                     <!-- end of serial tabs -->
