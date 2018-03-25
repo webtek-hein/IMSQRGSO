@@ -247,10 +247,7 @@
                                                     </div>
                                                     <!-- qr button -->
                                                     <input type="text" id="text" placeholder="insert text here">
-                                                    <?php if ($position === 'Custodian') {
-                                                        echo '<a class="btn btn-primary" onclick="generate()">Generate qr</a>';
-                                                    }
-                                                    ?>
+                                                    
                                                     <?php if ($position === 'Custodian') {
                                                         echo '<a class="btn btn-primary onclick="saveQR()"> Save QR Code</a>';
                                                     }

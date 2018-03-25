@@ -854,7 +854,7 @@ function viewSerial(id) {
                     "<button id=\"serialP\" type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Previous</button>" +
                     "<button id=\"serialS\" onclick = \"saveSerial()\" type=\"button\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Save</a></button>" +
                     "<button id=\"serialN\" type=\"button\" class=\"next-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>" +
-                    "<input id=\"serialG\" type=\"file webkitdirectory directory multiple\" class=\"generateqr-serialTab  btn-default btn-sm\">Generate QR</input>" +
+                    "<button id=\"serialG\" onclick=\"generate()\" type=\"button\" class=\"btn btn-success\">Generate QR</button>" +
                     " </div>";
             }
             //if div reaches 10
@@ -923,10 +923,10 @@ function getserial(id) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null && status !== 'Distributed') {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" class=\"check\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (data[i].serial !== null && status === 'Distributed') {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" class=\"check\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
