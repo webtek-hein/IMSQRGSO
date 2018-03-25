@@ -26,10 +26,12 @@
     <?php if($this->session->flashdata('msg')): ?>
     <p><?php echo $this->session->flashdata('msg'); ?></p>
 <?php endif; ?>
-    <div class="container-login100" >
-    <div class="container" style="background-color: grey; width:800px; height: 600px;">
+    <div class="fixed-background" style="background-image: url('assets/images/bird.jpg');background-position: center;
+    background-size: cover;">
+    <div class="container" style="width:800px; height: 600px;    opacity: 0.8;
+    filter: alpha(opacity=50\);">
         <div class="col-md-10 col-md-offset-1 main" >
-            <div class="col-md-6 left-side" style="background-image: url('assets/images/bg3.jpg');">
+            <div class="col-md-6 left-side" >
                 <div class="login00-pic js-tilt" data-tilt>
                     <img data-tilt src="<?php echo base_url() ?>assets/images/butterfly.png" alt="IMG" height="220" width="220" style=" margin-left:65px; margin-top: 115px;">
                 </div>
