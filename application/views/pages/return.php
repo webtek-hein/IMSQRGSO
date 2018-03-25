@@ -25,16 +25,16 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <table id="datatable" data-toggle="table" data-url="invetory/returnitem"
+                        <table id="datatable" data-toggle="table" data-url="inventory/viewReturn"
                                class="table table-no-bordered">
                             <thead>
                             <tr>
                                 <th data-sortable="true" data-field="item">Item Name</th>
-                                <th data-sortable="true" data-field="description">Item Description</th>
-                                <th data-sortable="true" data-field="datereturned">Date Returned</th>
+                                <th data-sortable="true" data-field="desc">Item Description</th>
+                                <th data-sortable="true" data-field="date">Date Returned</th>
                                 <th data-sortable="true" data-field="reason">Reason</th>
-                                <th data-sortable="true" data-field="returnedby">Returned By</th>
-                                <th data-sortable="true" data-field="receivedby">Receiver</th>
+                                <th data-sortable="true" data-field="returnperson">Returned By</th>
+                                <th data-sortable="true" data-field="receiver">Receiver</th>
                                 <th data-sortable="true" data-field="status">Status</th>
                                 <th data-sortable="true" data-field="action">Action</th>
                             </tr>

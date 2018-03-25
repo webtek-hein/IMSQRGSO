@@ -771,6 +771,7 @@ class Inventory_model extends CI_Model
         $cost = ($query->cost);
         $serialStatus = ($query->serialStatus);
 
+        var_dump($id);
         $date = $this->input->post('returndate');
         $data = array(
             'return_quantity' => $quantity_returned,
@@ -778,7 +779,7 @@ class Inventory_model extends CI_Model
             'receiver' => $this->input->post('receiver'),
             'remarks' => $this->input->post('remarks'),
             'item_det_id' => $item_det_id,
-            'dist_id',$id
+            'dist_id'=> $id
 
         );
         $this->db->insert('returnitem', $data);
@@ -828,6 +829,17 @@ class Inventory_model extends CI_Model
         return $query->result_array();
 
 
+    }
+
+    public function returns(){
+        $this->db->select('returnitem.remarks,receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no','inner');
+        $this->db->join('itemdetail','returnitem.item_det_id = itemdetail.item_det_id','inner');
+        $this->db->join('item','itemdetail.item_id = item.item_id','inner');
+        $this->db->join('distribution','returnitem.dist_id = distribution.dist_id','inner');
+        $this->db->join('department','department.dept_id = distribution.dept_id','inner');
+        $query = $this->db->get('returnitem');
+
+        return $query->result_array();
     }
 
 }

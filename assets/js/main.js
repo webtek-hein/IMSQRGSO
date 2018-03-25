@@ -964,7 +964,6 @@ function getserial(id) {
         url: 'inventory/getSerial/' + id,
         dataType: 'JSON',
         success: function (data) {
-
             for (var i = 0; i < data.length; i++) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;

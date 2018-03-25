@@ -123,16 +123,32 @@ class Inventory extends CI_Controller
 
                 } elseif ($position === 'Supply Officer' || $dept === 'dept') {
                     if ($detail['status'] !== 'Accepted') {
-                        $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
+                        if($detail['serialStatus'] !== '1'){
+                            $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
+                            data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
+                            class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
+                            data-target=\".Return\" onclick=\"noserial($detail[item_det_id])\" data-id='$detail[dist_id]'  
+                            class=\"btn btn-danger\">Return</a>";
+                        }else{
+                            $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
                             class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]'  
                             class=\"btn btn-danger\">Return</a>";
+                        }
+
                     } else {
-                        $action = 
-                            "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
+                        if($detail['serialStatus'] !== '1') {
+                            $action =
+                                "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"noserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
+                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
+                            <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
+                        }else{
+                            $action =
+                                "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
                             <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
                             <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
+                        }
                     }
 
                 } elseif($detail['serialStatus'] !== '1') {
@@ -399,6 +415,23 @@ class Inventory extends CI_Controller
                 'decreased' => $item['decreased'],
                 'price' => $cost,
                 'transaction' => $item['transaction']
+            );
+        }
+        echo json_encode($data);
+    }
+
+    public function viewReturn(){
+        $list = $this->inv->returns();
+        $data = [];
+        foreach ($list as $rets){
+            $data[] = array(
+                'date'=> $rets['date_returned'],
+                'dept' => $rets['department'],
+                'item'=> $rets['item_name'],
+                'desc'=> $rets['item_description'],
+                'reason'=> $rets['remarks'],
+                'returnperson'=> $rets['receiver'],
+                'receiver'=> $rets['receiver']
             );
         }
         echo json_encode($data);
