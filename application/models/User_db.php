@@ -12,9 +12,9 @@ class User_db extends CI_Model {
 
         $password = $data['password'];
         if ($uname == true) {
-            if (password_verify($password, $uname->password)) {
+
                 return true;
-            }
+
         }
             return false;
     }

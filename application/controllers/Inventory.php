@@ -310,6 +310,23 @@ class Inventory extends CI_Controller
         echo json_encode($data);
 
     }
+    public function reconcile($type, $id)
+    {
+        $list = $this->inv->reconcile($type, $id);
+        $data = array();
+        $count_input = "<input type='text'>";
+        foreach ($list as $item) {
+            $data[] = array(
+                'id' => $item['item_id'],
+                'name' => $item['item_name'],
+                'description' => $item['item_description'],
+                'quant' => $item['quant'],
+                'count' => $count_input
+            );
+        }
+        echo json_encode($data);
+
+    }
 
     public function getItem($dept, $id)
     {

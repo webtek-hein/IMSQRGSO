@@ -548,6 +548,7 @@ function init_list() {
     var $deptOpt = $('.deptopt');
     var $deptTable = $('#departmentTable');
     var $deptMOOEtable = $('#deptMOOEtable');
+    var $reconcile = $('#reconcileTable');
 
     //show account code options
     $.ajax({
@@ -573,6 +574,34 @@ function init_list() {
         }
     });
     // on department change
+    $reconcile.bootstrapTable({
+        pageSize: 10,
+        url: 'inventory/reconcile/CO/11',
+        resizable: true,
+        columns: [{
+            sortable: true,
+            field: 'name',
+            title: 'NAME'
+        }, {
+            sortable: true,
+            field: 'description',
+            title: 'DESCRIPTION'
+        }, {
+            sortable: true,
+            cellStyle: function (data) {
+                return {
+                    css: {"color": "green"}
+                };
+            },
+            field: 'quant',
+            title: 'QUANTITY DISTRIBUTED',
+            visible: false,
+        }, {
+            sortable: true,
+            field: 'count',
+            title: 'PHYSICAL COUNT'
+        }]
+    });
     $deptTable.bootstrapTable({
         pageSize: 10,
         url: 'inventory/viewdept/CO/11',
