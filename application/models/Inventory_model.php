@@ -420,7 +420,7 @@ class Inventory_model extends CI_Model
                               </i > View Serial</a>
                             </div>
                             </div>";
-            }else{
+            } else {
                 $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\">
                             </span></a>
@@ -579,7 +579,8 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public function compareitem(){
+    public function compareitem()
+    {
 
         $pcount = $this->input->post('reconcileitem');
         $data = array();
@@ -593,7 +594,7 @@ class Inventory_model extends CI_Model
             }
         }
         var_dump($data);
-        return $this->db->update_batch('item',$data,'item_id');
+        return $this->db->update_batch('item', $data, 'item_id');
     }
 
     public function selectdetails()
@@ -748,53 +749,73 @@ class Inventory_model extends CI_Model
 
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $id = $this->input->post('id');
-        $insert_id = $this->db->insert_id();
         $serial = $this->input->post('serial');
+
         $quantity_returned = count($serial);
+
 
         if ($quantity_returned == 0) {
             $quantity_returned = $this->input->post('quantity');
         } else {
             $quantity_returned = count($serial);
         }
+
+        $query = $this->db->select('item.serialStatus,distribution.cost,distribution.PR_no,itemdetail.item_det_id,itemdetail.item_id')
+            ->join('distribution', 'itemdetail.item_det_id = distribution.item_det_id')
+            ->join('item', 'itemdetail.item_id = item.item_id')
+            ->where('distribution.dist_id', $id)
+            ->get('itemdetail')->row();
+        $item_det_id = $query->item_det_id;
+        $item_id = $query->item_id;
+        $transaction_number = ($query->PR_no);
+        $cost = ($query->cost);
+        $serialStatus = ($query->serialStatus);
+
         $date = $this->input->post('returndate');
         $data = array(
             'return_quantity' => $quantity_returned,
             'date_returned' => $date,
             'receiver' => $this->input->post('receiver'),
             'remarks' => $this->input->post('remarks'),
-            'item_det_id' => $id
+            'item_det_id' => $item_det_id,
+            'dist_id',$id
 
         );
         $this->db->insert('returnitem', $data);
 
-        $item_id = $this->db->select('itemdetail.item_id')->join('distribution', 'itemdetail.item_det_id = distribution.item_det_id')
-            ->where('itemdetail.item_det_id', $id)
-            ->get('itemdetail')->row();
+
         $this->db->set('quantity_distributed', 'quantity_distributed-' . $quantity_returned, FALSE);
         $this->db->where('dist_id', $id);
         $this->db->update('distribution');
         $item_Returned = 'Returned';
 
-        var_dump($item_id);
-        for ($i = 0; $i < $quantity_returned; $i++) {
-            $serial_data[] = array(
-                'item_status' => $item_Returned,
-                'serial' => $serial[$i]
-            );
+        $this->db->set('quantity', 'quantity+' . $quantity_returned, FALSE);
+        $this->db->where('item_det_id', $item_det_id);
+        $this->db->update('itemdetail');
+
+        $this->db->set('quantity', 'quantity+' . $quantity_returned, FALSE);
+        $this->db->where('item_id', $item_id);
+        $this->db->update('item');
+
+        if ($serialStatus === '1') {
+            for ($i = 0; $i < $quantity_returned; $i++) {
+                $serial_data[] = array(
+                    'item_status' => $item_Returned,
+                    'serial' => $serial[$i]
+                );
+            }
+            $this->db->set('item_status', 'Returned');
+            $this->db->where_in('serial', $serial);
+            $this->db->update('serial');
+
         }
-        $dist = $this->db->get('distribution')->row();
-        $transaction_number = ($dist->PR_no);
-        $this->db->set('item_status', 'Returned');
-        $this->db->where_in('serial', $serial);
-        $this->db->update('serial');
         $this->db->insert('transaction',
             array(
                 'date' => $date,
                 'transaction_number' => $transaction_number,
                 'increased' => $quantity_returned,
-                'item_id' => $item_id->item_id,
-                'unit_cost' => '2234',
+                'item_id' => $item_id,
+                'unit_cost' => $cost,
                 'transaction' => 'returned'
             ));
 
