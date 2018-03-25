@@ -134,7 +134,7 @@ class Inventory extends CI_Controller
                             class=\"btn btn-success\">Distribute</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]'  
                             class=\"btn btn-danger\">Return</a></br>
-                            <a href=\imsqrgso/pages/are.php\ type=\'button\' class=\"btn btn-primary\">Generate Form</a>";
+                            <a href=\imsqrgso/pages/are.html\ type=\'button\' class=\"btn btn-primary\">Generate Form</a>";
                     }
 
                 } elseif($detail['serialStatus'] !== '1') {
@@ -198,7 +198,7 @@ class Inventory extends CI_Controller
                 'id' => $list['serial_id'],
                 'item_name' => $list['item_name'],
                 'serial' => $list['serial'],
-                'account_code' => $list['account_code'] . ": " . $list['description'],
+                'account_code' => $list['account_code'] . "\n" . $list['description'],
                 'description' => $list['item_description'],
                 'unit_cost' => $list['unit_cost'],
                 'item_type' => $list['item_type'],
