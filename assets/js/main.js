@@ -1182,6 +1182,7 @@ function viewQr() {
             success: function (data) {
                 if(data.length === 0){
                     $qrDiv.html('Please select a serial from the list.');
+                    $('.dload').css({display:'none'});
                 }else{
                     for (var i = 0; i <= data.length - 1; i++) {
                         $qrCode += data[i];

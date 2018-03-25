@@ -889,7 +889,7 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                             <?php if ($position === 'Custodian') {
-                                                                echo '<a class="btn btn-primary onclick="download()"> Download</a>';
+                                                                echo '<a class="dload btn btn-primary onclick="download()"> Download</a>';
                                                                 }
                                                             ?>
                                                         </div>
