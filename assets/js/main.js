@@ -854,7 +854,7 @@ function viewSerial(id) {
                     "<button id=\"serialP\" type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Previous</button>" +
                     "<button id=\"serialS\" onclick = \"saveSerial()\" type=\"button\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Save</a></button>" +
                     "<button id=\"serialN\" type=\"button\" class=\"next-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>" +
-                    "<button id=\"serialG\" onclick=\"generate()\" type=\"button\" class=\"btn btn-success\">Generate QR</button>" +
+                    "<button id=\"serialG\" onclick=\"generate()\" type=\"button\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#myModal\">Generate QR</button>" +
                     " </div>";
             }
             //if div reaches 10
