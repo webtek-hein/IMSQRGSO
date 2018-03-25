@@ -198,7 +198,7 @@ class Inventory extends CI_Controller
                 'id' => $list['serial_id'],
                 'item_name' => $list['item_name'],
                 'serial' => $list['serial'],
-                'account_code' => $list['account_code'] . ": " . $list['description'],
+                'account_code' => $list['account_code'] . "\n" . $list['description'],
                 'description' => $list['item_description'],
                 'unit_cost' => $list['unit_cost'],
                 'item_type' => $list['item_type'],
@@ -357,12 +357,14 @@ class Inventory extends CI_Controller
         $list = $this->inv->ledger($id);
         $data = [];
         foreach ($list as $item) {
+            $cost = "PHP ".number_format($item['unit_cost'],2);
+
             $data[] = array(
                 'date' => $item['date'],
                 'transaction_number' => $item['transaction_number'],
                 'increased' => $item['increased'],
                 'decreased' => $item['decreased'],
-                'price' => $item['unit_cost'],
+                'price' => $cost,
                 'transaction' => $item['transaction']
             );
         }
