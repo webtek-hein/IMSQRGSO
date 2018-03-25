@@ -116,13 +116,17 @@
                         <button onclick="toggleDiv($('.department-tab'), $('.reconcilePage'))" class="btn btn-primary">Back</button>
 
                     </div>
+                    <form id="compareitem" role="form"
+                          action="inventory/compare/" method="POST">
                     <div class="card-body">
                         <div class="table-responsive-sm-sm tab-content pl-3 p-1">
                             <table dclass="table table-no-bordered"
-                                   data-pagination="true" data-search="true" data-url="inventory/viewDept/CO/11" id="reconcileTable">
+                                   data-pagination="true" data-search="true" id="reconcileTable">
                             </table>
                         </div>
                     </div>
+                        <button class="btn btn-success" type="submit" name="id" id="save1" href="#">Reconcile Items</button>
+                    </form>
                 </div>
             </div>
             <!--End of Reconcile Page-->

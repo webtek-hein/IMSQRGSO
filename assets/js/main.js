@@ -576,7 +576,7 @@ function init_list() {
     // on department change
     $reconcile.bootstrapTable({
         pageSize: 10,
-        url: 'inventory/reconcile/CO/11',
+        url: 'inventory/reconcileview/CO/11',
         resizable: true,
         columns: [{
             sortable: true,
@@ -594,13 +594,18 @@ function init_list() {
                 };
             },
             field: 'quant',
-            title: 'QUANTITY DISTRIBUTED',
-            visible: false,
+            title: 'QUANTITY DISTRIBUTED'
+           // visible: false,
         }, {
             sortable: true,
             field: 'count',
             title: 'PHYSICAL COUNT'
-        }]
+        },
+            {
+                sortable: true,
+                field: 'result',
+                title: 'RESULT'
+            }]
     });
     $deptTable.bootstrapTable({
         pageSize: 10,

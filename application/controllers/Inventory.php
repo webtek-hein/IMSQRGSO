@@ -310,21 +310,39 @@ class Inventory extends CI_Controller
         echo json_encode($data);
 
     }
-    public function reconcile($type, $id)
+    public function reconcileview($type, $id)
     {
         $list = $this->inv->reconcile($type, $id);
         $data = array();
-        $count_input = "<input type='text'>";
+        $count_input = "<input type='text' name='reconcileitem[]' >";
         foreach ($list as $item) {
+            $ps = $item['physicalcount'];
+            $q = $item['quant'];
+            $result = $q - $ps;
+            if($result == 0){
+                $result = 'equal';
+            }elseif ($result < 0){
+                $result =  $result . ' missing';
+            }else{
+                $result =  'more than ' . $result ;
+            }
             $data[] = array(
                 'id' => $item['item_id'],
                 'name' => $item['item_name'],
                 'description' => $item['item_description'],
                 'quant' => $item['quant'],
-                'count' => $count_input
+                'count' => $count_input,
+                'result' => $result
             );
         }
         echo json_encode($data);
+
+    }
+
+    public function compare(){
+
+        echo json_encode($this->inv->compareitem());
+        redirect('department');
 
     }
 
