@@ -199,7 +199,6 @@ class Inventory_model extends CI_Model
         $id = $this->input->post('id');
         $serial = $this->input->post('serial');
         $serial_id = [];
-        var_dump($id);
         $quantity = count($serial);
         $user = $this->session->userdata['logged_in']['user_id'];
 
@@ -212,7 +211,6 @@ class Inventory_model extends CI_Model
             ->get('itemdetail')->row();
         $item_id = $query->item_id;
         $unit_cost = $query->cost;
-        var_dump($item_id);
         if ($position === 'Custodian') {
             $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
             $this->db->where('item_det_id', $id);
@@ -298,7 +296,6 @@ class Inventory_model extends CI_Model
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $filename = ($_FILES["csv_file"]["tmp_name"]) or die("can't open file");
         $file = (fopen($filename, "r"));
-        var_dump($file);
         while (($row = fgetcsv($file, 10000, ",")) !== FALSE) {
             $data = array(
                 'quantity' => $row[0],
@@ -398,7 +395,6 @@ class Inventory_model extends CI_Model
         $totalCost = $unit_cost * $quantity;
 
         $latestCost = ($totalCost + $totalLastCost) / ($lastQuantity + $quantity);
-        var_dump($latestCost);
         try {
             $this->db->trans_begin();
             // 2. Insert to item detail
@@ -751,6 +747,7 @@ class Inventory_model extends CI_Model
         $this->db->update('distribution');
         $item_Returned = 'Returned';
 
+        var_dump($item_id);
         for ($i = 0; $i < $quantity_returned; $i++) {
             $serial_data[] = array(
                 'item_status' => $item_Returned,
@@ -759,9 +756,7 @@ class Inventory_model extends CI_Model
         }
         $dist = $this->db->get('distribution')->row();
         $transaction_number = ($dist->PR_no);
-        var_dump($transaction_number);
         $this->db->set('item_status', 'Returned');
-        $this->db->where($item_id);
         $this->db->where_in('serial', $serial);
         $this->db->update('serial');
         $this->db->insert('transaction',
