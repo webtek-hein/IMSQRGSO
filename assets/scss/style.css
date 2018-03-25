@@ -36,9 +36,15 @@
 }
 /*--End of Department Header(select)--*/
 
+/*--View Serial--*/
 #DitributeItem .col-4{
   overflow-y: scroll;
   height:350px;
+}
+/*End of View Serial*/
+
+#serial-tabs li{
+  margin-right: 10px;
 }
 
 .table-responsive{
