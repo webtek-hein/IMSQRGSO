@@ -1,4 +1,38 @@
 $(document).ready(function () {
+
+    $('#uname').change(function () {
+        var username = $('#uname').val();
+        if (username != '') {
+            $.ajax({
+                url: "Search/checkUsername",
+                method: "POST",
+                data: {username: username},
+                success: function (data) {
+                    $('#uname_result').html(data);
+                }
+            });
+        }
+    });
+
+    $("#checkAll").click(function () {
+        $(".check").prop('checked', $(this).prop('checked'));
+    });
+
+    $('#username').change(function () {
+        var username = $('#username').val();
+        if (username != '') {
+            $.ajax({
+                url: "Search/checkUsername",
+                method: "POST",
+                data: {username: username},
+                success: function (data) {
+                    $('#username_result').html(data);
+                }
+            });
+        }
+    });
+
+
     $('#vmap').vectorMap({
         map: 'world_en',
         backgroundColor: null,
@@ -401,11 +435,11 @@ function init_inventory() {
                 sortable: true,
                 field: 'cost',
                 title: 'Unit COST'
-            },{
+            }, {
                 sortable: true,
                 field: 'totalcost',
                 title: 'Total COST'
-            },{
+            }, {
                 sortable: true,
                 field: 'serialStatus',
                 title: 'Serial',
@@ -458,11 +492,11 @@ function init_inventory() {
                 sortable: true,
                 field: 'cost',
                 title: 'Unit COST'
-            },{
+            }, {
                 sortable: true,
                 field: 'totalcost',
                 title: 'Total COST'
-            },{
+            }, {
                 sortable: true,
                 field: 'serialStatus',
                 title: 'Serial',
@@ -799,35 +833,6 @@ function userdetailBack() {
     toggleDiv($('.accounts-tab'), $('.userDetail'));
 }
 
-function generate() {
-    var $output = $('#output');
-    var canvas = $output.find('canvas')[0];
-    if (canvas != null && canvas.parentNode) {
-        canvas.parentNode.removeChild(canvas);
-    }
-    var text = $('#text');
-    $output.qrcode(Utf8.encode(text.val()));
-    text.value = "";
-}
-function saveQR() {
-    var ua = window.navigator.userAgent;
-
-    if (ua.indexOf("Chrome") > 0) {
-        // save image without file type
-        var canvas = $output.find('canvas')[0];
-
-        // save image as png
-        var link = document.createElement('a');
-        link.download = "test.png";
-        link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-
-        link.click();
-    }
-    else {
-        alert("Please use Chrome");
-    }
-}
-
 
 //view and edit serial
 function viewSerial(id) {
@@ -864,8 +869,8 @@ function viewSerial(id) {
                         divClass = "";
                         listClass = "disabled";
                     }
-                    input.push("<label>Serial " + (i + 1) +
-                        "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
+                    input.push("<input type=\"checkbox\"  value =\"" + data[i]['serial'] + "\" class='selSerial' name=\"selectedSerial[]\" value=\"" + data[i]['serial'] + "\"><label class='col-12'>Serial " + (i + 1) +
+                        "<input value =\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                         "min=0  " +
                         "class=\"form-control\"></label><br>");
                     if (input.length === 10) {
@@ -963,7 +968,6 @@ function toggleDiv(elementToShow, elementToHide) {
 
 }
 
-
 // add another item function
 function init_bulkFucntion() {
     var $div = $('.clone-tab');
@@ -1027,7 +1031,6 @@ function init_bulkFucntion() {
     });
 
 }
-
 
 //add input fields
 // function addinputFields() {
@@ -1157,38 +1160,38 @@ function select_dept() {
     }
 }
 
-$(document).ready(function () {
-    $('#username').change(function () {
-        var username = $('#username').val();
-        if (username != '') {
-            $.ajax({
-                url: "Search/checkUsername",
-                method: "POST",
-                data: {username: username},
-                success: function (data) {
-                    $('#username_result').html(data);
+function viewQr() {
+    $genQR = $('#genQr');
+    $qrCode = [];
+    $qrDiv = $('#generatedQR');
+    $genQR.modal('show', function (e) {
+        $selectedSerial = $('.selSerial');
+        $data = [];
+        for (var i = 0; i < $selectedSerial.length - 1; i++) {
+            if ($selectedSerial[i].checked === true) {
+                if ($selectedSerial[i].value !== "") {
+                    $data.push($selectedSerial[i].value);
                 }
-            });
+            }
         }
-    });
-});
-
-$("#checkAll").click(function () {
-    $(".check").prop('checked', $(this).prop('checked'));
-});
-
-$(document).ready(function () {
-    $('#uname').change(function () {
-        var username = $('#uname').val();
-        if (username != '') {
-            $.ajax({
-                url: "Search/checkUsername",
-                method: "POST",
-                data: {username: username},
-                success: function (data) {
-                    $('#uname_result').html(data);
+        $.ajax({
+            url: "generateqr/saveQR",
+            method: "POST",
+            dataType: 'JSON',
+            data: {selectedSerial: $data},
+            success: function (data) {
+                if(data.length === 0){
+                    $qrDiv.html('Please select a serial from the list.');
+                }else{
+                    for (var i = 0; i <= data.length - 1; i++) {
+                        $qrCode += data[i];
+                    }
+                    $qrDiv.html($qrCode);
                 }
-            });
-        }
+
+
+            }
+        });
     });
-});
+
+}

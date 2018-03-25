@@ -247,7 +247,7 @@
                                                     </div>
                                                     <!-- qr button -->
                                                     <?php if ($position === 'Custodian') {
-                                                                echo '<a class="btn btn-primary onclick="generate()" data-toggle="modal" data-target="#myModal"> Save QR Code</a>';
+                                                                echo '<a class="btn btn-primary" onclick="viewQr()"> View QR Code</a>';
                                                                 }
                                                             ?>
 
@@ -875,7 +875,7 @@
     </div>
 </form>
  <!-- Modal for generate qr -->
-                                                  <div class="modal fade" id="myModal" role="dialog">
+                                                  <div class="modal fade" id="genQr" role="dialog">
                                                     <div class="modal-dialog">
                                                     
                                                       <!-- Modal content-->
@@ -884,12 +884,12 @@
                                                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                         </div>
                                                         <div class="modal-body">
-                                                          <p>generate qr</p>
+                                                          <div id="generatedQR">Loading qr images.....</div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                             <?php if ($position === 'Custodian') {
-                                                                echo '<a class="btn btn-primary onclick="saveQR()"> Save QR Code</a>';
+                                                                echo '<a class="btn btn-primary onclick="viewQR()"> Save QR Code</a>';
                                                                 }
                                                             ?>
                                                         </div>

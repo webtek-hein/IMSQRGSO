@@ -357,12 +357,14 @@ class Inventory extends CI_Controller
         $list = $this->inv->ledger($id);
         $data = [];
         foreach ($list as $item) {
+            $cost = "PHP ".number_format($item['unit_cost'],2);
+
             $data[] = array(
                 'date' => $item['date'],
                 'transaction_number' => $item['transaction_number'],
                 'increased' => $item['increased'],
                 'decreased' => $item['decreased'],
-                'price' => $item['unit_cost'],
+                'price' => $cost,
                 'transaction' => $item['transaction']
             );
         }
