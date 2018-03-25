@@ -133,7 +133,8 @@ class Inventory extends CI_Controller
                             data-target=\".DistributeSP\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
                             class=\"btn btn-success\">Distribute</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]'  
-                            class=\"btn btn-danger\">Return</a>";
+                            class=\"btn btn-danger\">Return</a></br>
+                            <a href=\imsqrgso/pages/are.php\ type=\'button\' class=\"btn btn-primary\">Generate Form</a>";
                     }
 
                 } elseif($detail['serialStatus'] !== '1') {
