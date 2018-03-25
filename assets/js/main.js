@@ -161,11 +161,11 @@ function detail(id) {
                 }, {
                     sortable: true,
                     field: 'increased',
-                    title: 'Increased'
+                    title: '+ Increased'
                 }, {
                     sortable: true,
                     field: 'decreased',
-                    title: 'Decreased'
+                    title: '- Decreased'
                 }, {
                     sortable: true,
                     field: 'price',
@@ -193,7 +193,7 @@ function deptDet(id) {
             $('#total').html(data.quant);
             $('#itemtype').html(data.item_type);
             $('#unit').html(data.unit);
-            toggleDiv($('.detail-tab '), $('.inventory-tab'));
+            toggleDiv($('.detail-tab '), $('.department-tab'));
             $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/dept/' + id})
                 .bootstrapTable({
                     url: 'inventory/detail/dept/' + id,
@@ -261,7 +261,7 @@ function insertRow() {
         '<td style=""><select name="supp[]" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
         '<td style=""><input name="quant[]" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><input name="or[]" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><button type="button" onclick="addquant('+counter+')" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
+        '<td style=""><button type="button" onclick="addquant(' + counter + ')" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
         '</tr>');
     $.ajax({
         url: 'supplier/supplieroption',
@@ -399,9 +399,22 @@ function init_inventory() {
                 title: 'UNIT'
             }, {
                 sortable: true,
-                field: 'totalcost',
+                field: 'cost',
                 title: 'Unit COST'
-            },]
+            },{
+                sortable: true,
+                field: 'totalcost',
+                title: 'Total COST'
+            },{
+                sortable: true,
+                field: 'serialStatus',
+                title: 'Serial',
+                cellStyle: function (data) {
+                    return {
+                        css: {"color": "green"}
+                    };
+                },
+            }]
             // }, {
             //     sortable: true,
             //     field: 'Price',
@@ -428,7 +441,6 @@ function init_inventory() {
                 sortable: true,
                 field: 'description',
                 title: 'DESCRIPTION'
-
             }, {
                 sortable: true,
                 cellStyle: function (data) {
@@ -444,8 +456,21 @@ function init_inventory() {
                 title: 'UNIT'
             }, {
                 sortable: true,
+                field: 'cost',
+                title: 'Unit COST'
+            },{
+                sortable: true,
                 field: 'totalcost',
                 title: 'Total COST'
+            },{
+                sortable: true,
+                field: 'serialStatus',
+                title: 'Serial',
+                cellStyle: function (data) {
+                    return {
+                        css: {"color": "green"}
+                    };
+                },
             }]
             // }, {
             //     sortable: true,
@@ -453,6 +478,7 @@ function init_inventory() {
             //     title: 'PRICE'
             // }]
         });
+
 
     $('#headingTwo').on('click', function () {
         toggleDiv($('.additemDiv'), $('.inventory-tab'));
@@ -469,7 +495,7 @@ function init_inventory() {
     $('#genReport_Buttons').on('click', function () {
         toggleDiv($('.generateReport'), $('.inventory-tab'));
     });
-    $('#reconcileButton').on('click', function (){
+    $('#reconcileButton').on('click', function () {
         toggleDiv($('.reconcilePage'), $('.department-tab'));
     })
     console.log('init_inventory');
@@ -759,24 +785,6 @@ function save(counter) {
     });
 }
 
-//go back to inventory
-function detail_back() {
-    toggleDiv($('.inventory-tab'), $('.detail-tab '));
-}
-
-function addItemBack() {
-    toggleDiv($('.inventory-tab'), $('.additemDiv'));
-}
-
-function report_back() {
-    toggleDiv($('.inventory-tab'), $('.generateReport'));
-}
-
-function addSupplierBack() {
-    toggleDiv($('.supplier-tab'), $('.addSupplier'));
-    toggleDiv($('.supplier-tab'), $('.editSupplier-tab'));
-
-}
 
 function addUserBack() {
     toggleDiv($('.accounts-tab'), $('.addUser'));
@@ -786,47 +794,41 @@ function EditUserBack() {
     toggleDiv($('.accounts-tab'), $('.userDetail'));
 }
 
-function reconcile_back(){
-    toggleDiv($('.department-tab'), $('.reconcilePage'));
-}
 
 function userdetailBack() {
     toggleDiv($('.accounts-tab'), $('.userDetail'));
 }
 
-jQuery(function() {
-                jQuery('#output').qrcode("http://www.dynamsoft.com/");
-            })
-            function generate() {
-                jQuery(function() {
-                    var canvas = document.querySelector("#output canvas");
-                    if (canvas != null && canvas.parentNode) {
-                        canvas.parentNode.removeChild(canvas);
-                    }
-                    var text = document.getElementById("text");
-                    jQuery('#output').qrcode(Utf8.encode(text.value));
-                    text.value = "";
-                })
-            }
-
-function save() {
-        var ua = window.navigator.userAgent;
-                           
-        if (ua.indexOf("Chrome") > 0) {
-                // save image without file type
-                    var canvas = document.querySelector("#output canvas");
-                                  
-                // save image as png
-                var link = document.createElement('a');
-            link.download = "test.png";
-            link.href = canvas.toDataURL( "image/png").replace("image/png", "image/octet-stream" );;
-        link.click();
-        }
-        else {
-                alert( "Please use Chrome" );
-         }
+function generate() {
+    var $output = $('#output');
+    var canvas = $output.find('canvas')[0];
+    if (canvas != null && canvas.parentNode) {
+        canvas.parentNode.removeChild(canvas);
     }
-    
+    var text = $('#text');
+    $output.qrcode(Utf8.encode(text.val()));
+    text.value = "";
+}
+function saveQR() {
+    var ua = window.navigator.userAgent;
+
+    if (ua.indexOf("Chrome") > 0) {
+        // save image without file type
+        var canvas = $output.find('canvas')[0];
+
+        // save image as png
+        var link = document.createElement('a');
+        link.download = "test.png";
+        link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+
+        link.click();
+    }
+    else {
+        alert("Please use Chrome");
+    }
+}
+
+
 //view and edit serial
 function viewSerial(id) {
     var $ul = $('#serial-tabs');
@@ -852,7 +854,7 @@ function viewSerial(id) {
                     "<button id=\"serialP\" type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Previous</button>" +
                     "<button id=\"serialS\" onclick = \"saveSerial()\" type=\"button\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Save</a></button>" +
                     "<button id=\"serialN\" type=\"button\" class=\"next-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>" +
-                    "<input id=\"serialG\" type=\"file webkitdirectory directory multiple\" class=\"generateqr-serialTab  btn-default btn-sm\">Generate QR</input>" +
+                    "<button id=\"serialG\" onclick=\"generate()\" type=\"button\" class=\"btn btn-success\">Generate QR</button>" +
                     " </div>";
             }
             //if div reaches 10
@@ -916,11 +918,15 @@ function getserial(id) {
         url: 'inventory/getSerial/' + id,
         dataType: 'JSON',
         success: function (data) {
+
             for (var i = 0; i < data.length; i++) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
-                if (data[i].serial !== null) {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                if (data[i].serial !== null && status !== 'Distributed') {
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" class=\"check\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                }
+                if (data[i].serial !== null && status === 'Distributed') {
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" class=\"check\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
@@ -932,20 +938,19 @@ function getserial(id) {
                 serials = "no items available";
                 $('.serial').html(serials);
             }
-
-
         }
     });
 
 }
+
 function noserial(id) {
-                var qua = ("<div class=\"quant form-group\">" +
-                    "<label>Quantity<span class=\"required\">*</span>" +
-                    "<input type=\'number\' name=\'quantity\' placeholder='quantity\' " +
-                    "class=\'form-control col-md-7 col-xs-12\' required>" +
-                    "</label>" +
-                    "</div>");
-                $('.quant').html(qua);
+    var qua = ("<div class=\"quant form-group\">" +
+        "<label>Quantity<span class=\"required\">*</span>" +
+        "<input type=\'number\' name=\'quantity\' placeholder='quantity\' " +
+        "class=\'form-control col-md-7 col-xs-12\' required>" +
+        "</label>" +
+        "</div>");
+    $('.quant').html(qua);
 }
 
 //toggle hidden class of element

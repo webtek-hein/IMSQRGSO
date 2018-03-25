@@ -68,7 +68,7 @@
             <div hidden class="col-lg-12 detail-tab ">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="detail_back()" class="btn btn"></i> Back</a></button>
+                        <button type="button" onclick="toggleDiv($('.department-tab'),$('.detail-tab '))" class="btn btn"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -113,7 +113,7 @@
             <div hidden class="reconcilePage col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button onclick="reconcile_back()" class="btn btn-primary">Back</button>
+                        <button onclick="toggleDiv($('.department-tab'), $('.reconcilePage'))" class="btn btn-primary">Back</button>
 
                     </div>
                     <div class="card-body">

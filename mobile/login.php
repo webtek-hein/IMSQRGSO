@@ -8,10 +8,29 @@
 		  // Innitialize Variable
 		  $result='';
 	   	  $username = $_POST['username'];
-          $password = $_POST['password'];
+        $password = $_POST['password'];
 		  
+        //query the hash
+        $hashsql = 'SELECT password FROM user WHERE username = :username';
+        $hashstmt = $conn->prepare($hashsql);
+        $hashstmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $hashstmt->execute();
+        $hashpasswords = $hashstmt->fetchAll();
+        if ($hashstmt->rowCount()) {
+          $salt;
+          foreach ($hashpasswords as $hashpassword) {
+            $salt = $hashpassword['password'];
+          }
+          if (password_verify($password, $salt)) {
+            $result = "true";
+          } else {
+            $result = "false";
+          }
+        } else {
+          $result = "false";
+        }
 		  // Query database for row exist or not
-          $sql = 'SELECT * FROM user WHERE  username = :username AND password = :password';
+         /* $sql = 'SELECT * FROM user WHERE  username = :username AND password = :password';
           $stmt = $conn->prepare($sql);
           $stmt->bindParam(':username', $username, PDO::PARAM_STR);
           $stmt->bindParam(':password', $password, PDO::PARAM_STR);
@@ -23,7 +42,7 @@
           elseif(!$stmt->rowCount())
           {
 			  	$result="false";
-          }
+          }*/
 		  
 		  // send result back to android
    		  echo $result;

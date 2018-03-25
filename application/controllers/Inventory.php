@@ -44,6 +44,14 @@ class Inventory extends CI_Controller
         $data = array();
 
         foreach ($list as $item) {
+            $cost = "PHP ".number_format($item['cost'],2);
+            $totalCost = "PHP ".number_format($item['totalcost'],2);
+            if($item['serialStatus'] === '1'){
+                $serialStatus = 'Yes';
+            }else{
+                $serialStatus = 'No';
+            }
+            ;
             if ($position === 'Supply Officer') {
                 $quantity = $item['quant'];
             } else {
@@ -56,7 +64,9 @@ class Inventory extends CI_Controller
                 'quantity' => $quantity,
                 'unit' => $item['unit'],
                 'position' => $position,
-                'totalcost' => $item['cost'],
+                'cost' => $cost,
+                'totalcost' => $totalCost,
+                'serialStatus' => $serialStatus,
                 'button' => 'Accept'
             );
         }
@@ -126,7 +136,7 @@ class Inventory extends CI_Controller
                             class=\"btn btn-danger\">Return</a>";
                     }
 
-                } elseif($detail['serialStatus'] === '0') {
+                } elseif($detail['serialStatus'] !== '1') {
                     $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
@@ -187,7 +197,7 @@ class Inventory extends CI_Controller
                 'id' => $list['serial_id'],
                 'item_name' => $list['item_name'],
                 'serial' => $list['serial'],
-                'account_code' => $list['description'],
+                'account_code' => $list['account_code'] . ": " . $list['description'],
                 'description' => $list['item_description'],
                 'unit_cost' => $list['unit_cost'],
                 'item_type' => $list['item_type'],

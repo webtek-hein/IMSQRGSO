@@ -15,7 +15,7 @@ class Inventory_model extends CI_Model
         $date = $this->input->post('rec')[$counter];
         $transaction_number = $this->input->post('or')[$counter];
         if ($serialStatus === null) {
-            $serialStatus = 0;
+            $serialStatus = '0';
         }
         $data = array(
             'item_name' => $this->input->post('item')[$counter],
@@ -102,7 +102,7 @@ class Inventory_model extends CI_Model
             $data[] = array(
                 'item_name' => $item_name[$key],
                 'quantity' => $this->input->post('quant')[$key],
-                'cost'=> $this->input->post('quant')[$key],
+                'cost' => $this->input->post('quant')[$key],
                 'item_description' => $this->input->post('description')[$key],
                 'unit' => $this->input->post('Unit')[$key],
                 'item_type' => $this->input->post('Type')[$key],
@@ -131,14 +131,14 @@ class Inventory_model extends CI_Model
 
 
         foreach ($insert_id as $key => $value) {
-            $trans_data[]=array(
-                'date'=>$date[$key],
-                'transaction_number'=>$transaction_number[$key],
-                'unit_cost'=> $cost[$key],
-                'item_id'=>$insert_id[$key],
+            $trans_data[] = array(
+                'date' => $date[$key],
+                'transaction_number' => $transaction_number[$key],
+                'unit_cost' => $cost[$key],
+                'item_id' => $insert_id[$key],
                 'increased' => $quantity[$key],
                 'transaction' => 'added'
-                );
+            );
             $data1[] = array(
                 'PO_number' => $this->input->post('PO')[$key],
                 'date_delivered' => $this->input->post('del')[$key],
@@ -177,7 +177,7 @@ class Inventory_model extends CI_Model
             }
         }
 
-        $this->db->insert_batch('transaction',$trans_data);
+        $this->db->insert_batch('transaction', $trans_data);
 
         // 3. Insert into logs
         $this->db->insert_batch('logs.increaselog', $detail);
@@ -208,7 +208,7 @@ class Inventory_model extends CI_Model
         }
         $query = $this->db->select('item.item_id,item.cost')
             ->join('item', 'itemdetail.item_id = item.item_id ', 'inner')
-            ->where('itemdetail.item_det_id',$id)
+            ->where('itemdetail.item_det_id', $id)
             ->get('itemdetail')->row();
         $item_id = $query->item_id;
         $unit_cost = $query->cost;
@@ -357,7 +357,7 @@ class Inventory_model extends CI_Model
 
     public function select_item($type)
     {
-        $this->db->select('item.*,cost as totalcost');
+        $this->db->select('item.*,(cost*quantity) as totalcost');
         $this->db->where('item_type', $type);
         $query = $this->db->get('item');
         return $query->result_array();
@@ -368,7 +368,6 @@ class Inventory_model extends CI_Model
     public function addquant($item_det_id, $counter)
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
-        //1. Get Quantity
         $quantity = $this->input->post('quant')[$counter];
         $supplier = $this->input->post('supp')[$counter];
 
@@ -395,8 +394,14 @@ class Inventory_model extends CI_Model
         $serialStatus = $query->serialStatus;
         $lastQuantity = $query->quantity;
         $lastPrice = $query->cost;
+        $totalLastCost = $lastPrice * $lastQuantity;
+        var_dump($totalLastCost);
+        $totalCost = $unit_cost * $quantity;
+        var_dump($totalCost);
+        var_dump($lastQuantity + $quantity);
 
-
+        $latestCost = ($totalCost + $totalLastCost) / ($lastQuantity + $quantity);
+        var_dump($latestCost);
         try {
             $this->db->trans_begin();
             // 2. Insert to item detail
@@ -407,26 +412,34 @@ class Inventory_model extends CI_Model
             $this->db->select('supplier_name');
             $this->db->where('supplier_id', $supplier);
             $supp = $this->db->get('supplier')->row()->supplier_name;
-            $viewser="";
-            if ($item_type === 'CO') {
-                if ($serialStatus === '1') {
-                    $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
-                    $this->db->insert_batch('serial', $serial);
-                    $viewser = "<a class=\"dropdown-item\" onclick='viewSerial($insert_id)' data-toggle=\"collapse\" 
-                    href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\"><i class=\"fa fa-folder-open\"></i>
-                              </i > View Serial</a>";
-                }
-            }
-
-            $action = $action = "<div class=\"dropdown\">
+            $viewser = "";
+            if ($serialStatus === '1') {
+                $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
+                $this->db->insert_batch('serial', $serial);
+                $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($insert_id)\"data-toggle=\"modal\" data-id='$insert_id'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             <a class=\"dropdown-item\"  href=\"#\" data-toggle=\"modal\" data-quantity='$quantity' data-id='$insert_id'data-target=\" .Edit\">
+                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ><a class=\"dropdown-item\" onclick='viewSerial($insert_id)' data-toggle=\"collapse\" 
+                               href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\"><i class=\"fa fa-folder-open\"></i>
+                              </i > View Serial</a>
+                            </div>
+                            </div>";
+            }else{
+                $action = "<div class=\"dropdown\">
+                            <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\">
+                            </span></a>
+                            <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
+                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($insert_id)\"data-toggle=\"modal\" data-id='$insert_id'data-target=\" .Distribute\">
+                            <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
+                            <a class=\"dropdown-item\"  href=\"#\" data-toggle=\"modal\" data-quantity='$quantity' data-id='$insert_id'data-target=\" .Edit\">
                             <i class=\"fa fa-adjust\" ></i > Edit Quantity</a >$viewser
                             </div>
                             </div>";
+            }
+
             $data1 = array(
                 $this->input->post('PO')[$counter],
                 $this->input->post('del')[$counter],
@@ -438,10 +451,8 @@ class Inventory_model extends CI_Model
                 $this->input->post('or')[$counter],
                 $action
             );
-            $totalCost = $lastPrice * $lastQuantity;
-            $totalLastCost = $unit_cost * $quantity;
 
-            $latestCost = ($totalCost + $totalLastCost) / ($lastQuantity + $quantity);
+
             $this->db->set('quantity', 'quantity+' . $quantity, FALSE);
             $this->db->set('cost', $latestCost);
             $this->db->where($item_id);
@@ -599,12 +610,13 @@ class Inventory_model extends CI_Model
     public function getSerial($det_id, $position)
     {
 
-        $this->db->select('item.serialStatus,serial_id,serial.serial,item_status');
+        $this->db->select('item.serialStatus,serial_id,serial.serial,serial.item_status');
         $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
         $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
         if ($position === 'Custodian') {
-            $this->db->where('item_status !=', 'Distributed');
+            $this->db->where('item_status', 'In-stock');
         } else {
+            $this->db->where('item_status', 'Distributed');
             $this->db->join('distribution', 'distribution.dist_id = serial.dist_id');
         }
         $this->db->where('serial.item_det_id', $det_id);
@@ -698,7 +710,7 @@ class Inventory_model extends CI_Model
 
     public function mobiledetail()
     {
-        $this->db->select('serial.serial_id, item.item_name, serial.serial, account_code.description, item.item_description, itemdetail.unit_cost, item.item_type, itemdetail.expiration_date, serial.employee');
+        $this->db->select('serial.serial_id, item.item_name, serial.serial, account_code.account_code, account_code.description, item.item_description, itemdetail.unit_cost, item.item_type, itemdetail.expiration_date, serial.employee');
         $this->db->distinct();
         $this->db->join('itemdetail', 'itemdetail.item_id = item.item_id', 'left');
         $this->db->join('serial', 'serial.item_det_id = itemdetail.item_det_id', 'left');
@@ -734,11 +746,11 @@ class Inventory_model extends CI_Model
         );
         $this->db->insert('returnitem', $data);
 
-        $item_id = $this->db->select('itemdetail.item_id')->join('itemdetail','itemdetail.item_det_id = distribution.item_det_id')
-            ->where('item_det_id', $id)
+        $item_id = $this->db->select('itemdetail.item_id')->join('distribution', 'itemdetail.item_det_id = distribution.item_det_id')
+            ->where('itemdetail.item_det_id', $id)
             ->get('itemdetail')->row();
         $this->db->set('quantity_distributed', 'quantity_distributed-' . $quantity_returned, FALSE);
-        $this->db->where('dist_id',$id);
+        $this->db->where('dist_id', $id);
         $this->db->update('distribution');
         $item_Returned = 'Returned';
 
@@ -748,6 +760,9 @@ class Inventory_model extends CI_Model
                 'serial' => $serial[$i]
             );
         }
+        $dist = $this->db->get('distribution')->row();
+        $transaction_number = ($dist->PR_no);
+        var_dump($transaction_number);
         $this->db->set('item_status', 'Returned');
         $this->db->where($item_id);
         $this->db->where_in('serial', $serial);
@@ -757,8 +772,8 @@ class Inventory_model extends CI_Model
                 'date' => $date,
                 'transaction_number' => $transaction_number,
                 'increased' => $quantity_returned,
-                'item_id' =>$item_id->item_id,
-                'unit_cost' => $cost,
+                'item_id' => $item_id->item_id,
+                'unit_cost' => '2234',
                 'transaction' => 'returned'
             ));
 
