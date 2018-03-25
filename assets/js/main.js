@@ -161,11 +161,11 @@ function detail(id) {
                 }, {
                     sortable: true,
                     field: 'increased',
-                    title: 'Increased'
+                    title: '+ Increased'
                 }, {
                     sortable: true,
                     field: 'decreased',
-                    title: 'Decreased'
+                    title: '- Decreased'
                 }, {
                     sortable: true,
                     field: 'price',
@@ -399,9 +399,22 @@ function init_inventory() {
                 title: 'UNIT'
             }, {
                 sortable: true,
-                field: 'totalcost',
+                field: 'cost',
                 title: 'Unit COST'
-            },]
+            },{
+                sortable: true,
+                field: 'totalcost',
+                title: 'Total COST'
+            },{
+                sortable: true,
+                field: 'serialStatus',
+                title: 'Serial',
+                cellStyle: function (data) {
+                    return {
+                        css: {"color": "green"}
+                    };
+                },
+            }]
             // }, {
             //     sortable: true,
             //     field: 'Price',
@@ -428,7 +441,6 @@ function init_inventory() {
                 sortable: true,
                 field: 'description',
                 title: 'DESCRIPTION'
-
             }, {
                 sortable: true,
                 cellStyle: function (data) {
@@ -444,8 +456,21 @@ function init_inventory() {
                 title: 'UNIT'
             }, {
                 sortable: true,
+                field: 'cost',
+                title: 'Unit COST'
+            },{
+                sortable: true,
                 field: 'totalcost',
                 title: 'Total COST'
+            },{
+                sortable: true,
+                field: 'serialStatus',
+                title: 'Serial',
+                cellStyle: function (data) {
+                    return {
+                        css: {"color": "green"}
+                    };
+                },
             }]
             // }, {
             //     sortable: true,
@@ -453,6 +478,7 @@ function init_inventory() {
             //     title: 'PRICE'
             // }]
         });
+
 
     $('#headingTwo').on('click', function () {
         toggleDiv($('.additemDiv'), $('.inventory-tab'));
@@ -892,6 +918,7 @@ function getserial(id) {
         url: 'inventory/getSerial/' + id,
         dataType: 'JSON',
         success: function (data) {
+
             for (var i = 0; i < data.length; i++) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
@@ -911,8 +938,6 @@ function getserial(id) {
                 serials = "no items available";
                 $('.serial').html(serials);
             }
-
-
         }
     });
 
