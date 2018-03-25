@@ -33,23 +33,7 @@ $(document).ready(function () {
     });
 
 
-    $('#vmap').vectorMap({
-        map: 'world_en',
-        backgroundColor: null,
-        color: '#ffffff',
-        hoverOpacity: 0.7,
-        selectedColor: '#1de9b6',
-        enableZoom: true,
-        showTooltip: true,
-        values: sample_data,
-        scaleColors: ['#1de9b6', '#03a9f5'],
-        normalizeFunction: 'polynomial'
-    });
-    //initialize
-    init_inventory();
-    init_list();
-    modal();
-    init_bulkFucntion();
+
     [].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {
         new SelectFx(el);
     });
@@ -86,6 +70,27 @@ $(document).ready(function () {
     }
     //get URL of the document
     var $url = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+    if($url === 'dashboard'){
+        $('#vmap').vectorMap({
+            map: 'world_en',
+            backgroundColor: null,
+            color: '#ffffff',
+            hoverOpacity: 0.7,
+            selectedColor: '#1de9b6',
+            enableZoom: true,
+            showTooltip: true,
+            values: sample_data,
+            scaleColors: ['#1de9b6', '#03a9f5'],
+            normalizeFunction: 'polynomial'
+        });
+        console.log('vmap_loaded');
+    }else{
+        //initialize
+        init_inventory();
+        init_list();
+        modal();
+        init_bulkFucntion();
+    }
 });
 
 // $('.user-area> a').on('click', function(event) {
@@ -1214,7 +1219,7 @@ function viewQr() {
             success: function (data) {
                 if(data.length === 0){
                     $qrDiv.html('Please select a serial from the list.');
-                    $('.dload').css({display:'none'});
+                    $('input[name=saveqr]').css({display:'none'});
                 }else{
                     for (var i = 0; i <= data.length - 1; i++) {
                         $qrCode += data[i];

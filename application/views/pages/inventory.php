@@ -239,20 +239,21 @@
                                             <form id="viewSerialForm" class="serial-form">
                                                 <!-- Dynamic serial tabs here -->
                                                 <div class="form-group">
+
+                                                    <!-- qr button -->
+                                                    <?php if ($position === 'Custodian') {
+                                                        echo '<a class="btn btn-primary" onclick="viewQr()"> View QR Code</a>';
+                                                    }
+                                                    ?>
+                                                    <!-- end of qr button -->
+
                                                     <div class="checkbox">
                                                         <label>
                                                             <input type="checkbox" class="check" id="checkAll"> Check
                                                             All
                                                         </label>
                                                     </div>
-                                                    <!-- qr button -->
-                                                    <?php if ($position === 'Custodian') {
-                                                                echo '<a class="btn btn-primary" onclick="viewQr()"> View QR Code</a>';
-                                                                }
-                                                            ?>
 
-
-                                                    <!-- end of qr button -->
                                                     <ul id="serial-tabs" class="nav nav-tabs">
                                                     </ul>
                                                     <!-- end of serial tabs -->
@@ -445,63 +446,85 @@
                     </div>
                 </div>
             </div>
-            <!--Genearate Report-->
-            <div hidden class="generateReport col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <button onclick="toggleDiv($('.inventory-tab'),$('generateReport'))" class="btn btn-primary">
-                            Back
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div class="options">
-                            <div class="checkbox opt1">
-                                <label>OPTION: </label>
-                                <label><input type="checkbox" value=""> CO</label>
+        </div>
+    </div>
+</div>
 
-                                <label><input type="checkbox" value=""> MOOE</label>
+<!--Genearate Report-->
+<div hidden class="generateReport col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))" class="btn btn-primary">
+                Back
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="options">
+                <div class="checkbox opt1">
+                    <label>OPTION: </label>
+                    <label><input type="checkbox" value=""> CO</label>
 
-                                <label><input type="checkbox" value=""> ALL</label>
-                            </div>
+                    <label><input type="checkbox" value=""> MOOE</label>
 
-                            <ul class="list-inline opt2">
-                                <li><p>Date of Delivery:
-                                        <select id="deliveryDate" type="button" class="btn btn-default"></select>
-                                    </p>
-                                </li>
-                                <li><p>Purchase Order:
-                                        <select id="PO" type="button" class="btn btn-default"></select>
-                                    </p>
-                                </li>
-                                <li><p>Item Name:
-                                        <select id="Item Name" type="button" class="btn btn-default"></select>
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                            <table data-show-refresh="true" data-search="true" data-pagination="true"
-                                   data-toggle="table"
-                                   class="table-sm table table-no-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th data-sortable="true" data-field="supplier">Item Name</th>
-                                    <th data-sortable="true" data-field="address">Description</th>
-                                    <th data-sortable="true" data-field="contact">Quantity</th>
-                                    <th data-sortable="true" data-field="contact">Unit</th>
-                                    <th data-sortable="true" data-field="contact">Cost</th>
-                                    <th data-sortable="true" data-field="contact">Supplier</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
+                    <label><input type="checkbox" value=""> ALL</label>
                 </div>
+
+                <ul class="list-inline opt2">
+                    <div class="dropdown">
+                        <label>Rerports on:</label>
+                        <button id="reportsOptions" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+                            -option-
+                        </button>
+
+                        <div class="dropdown-menu" id="reportsOption">
+                            <a class="dropdown-item" href="#">Item Returns</a>
+                            <a class="dropdown-item" href="#">Item Distributed</a>
+                            <a class="dropdown-item" href="#">Delivered Item</a>
+                            <a class="dropdown-item" href="#">Supplier</a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+            <div class="returnedReport">
+                <table data-show-refresh="true" data-search="true" data-pagination="true"
+                       data-toggle="table"
+                       class="table-sm table table-no-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th data-sortable="true" data-field="Item_Name">Item Name</th>
+                        <th data-sortable="true" data-field="Description">Description</th>
+                        <th data-sortable="true" data-field="Unit">Unit</th>
+                        <th data-sortable="true" data-field="Cost">Cost</th>
+                        <th data-sortable="true" data-field="Supplier">Supplier</th>
+                        <th data-sortable="true" data-field="Date_Returned">Date Returned</th>
+                        <th data-sortable="true" data-field="Reason">Reason</th>
+                        <th data-sortable="true" data-field="Return_by">Return by</th>
+                        <th data-sortable="true" data-field="Received_by">Received by</th>
+                        <th data-sortable="true" data-field="Status">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field=""></td>
+                        <td data-sortable="true" data-field="">Replaced/ignored</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
 
         </div>
     </div>
 </div>
+<!--End of Genearate Report-->
+
 <!-- Distribution Modal -->
 <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST"
       data-validate="parsley">
@@ -889,8 +912,8 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                             <?php if ($position === 'Custodian') {
-                                                                echo '<label for="saveqr">Savepdf</label>
-                                                                <input name="saveqr" type="file" onclick="download()" required>'
+                                                                echo '<label for="saveqr">Savepdf
+                                                                <input name="saveqr" type="file" onclick="download()" required></label>'
                                                                 ;
                                                                 }
                                                             ?>
