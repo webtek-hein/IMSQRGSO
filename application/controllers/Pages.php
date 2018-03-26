@@ -15,7 +15,6 @@ class Pages extends CI_Controller {
             show_404();
         }
 
-
         if($page == 'login'){
             $this->load->view('pages/login');
             if (isset($this->session->userdata['logged_in'])) {
@@ -23,6 +22,8 @@ class Pages extends CI_Controller {
             }
         }else {
             $data['title'] = ucfirst($page);
+            $data['name'] = $this->session->userdata['user_in']['name'];
+
             $this->load->view('templates/header', $data);
             $this->load->view('pages/' . $page, $data);
             $this->load->view('templates/footer');

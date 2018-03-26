@@ -235,6 +235,7 @@ class Inventory_model extends CI_Model
                 'item_det_id' => $item_det_id,
                 'user_id' => $user,
                 'supply_officer_id' => 1,
+                'status' => 'pending',
                 'cost' => $unit_cost
             );
 
