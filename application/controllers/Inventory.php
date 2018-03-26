@@ -316,13 +316,16 @@ class Inventory extends CI_Controller
         foreach ($list as $item) {
             $ps = $item['physicalcount'];
             $q = $item['quant'];
+
             $result = $q - $ps;
             if($result == 0){
                 $result = 'equal';
-            }elseif ($result < 0){
-                $result =  $result . ' missing';
+            }elseif($result > $q){
+                $result = $result . ' missing';
+            }elseif ($result < $q){
+                $result = 'more than ' . abs($result);
             }else{
-                $result =  'more than ' . $result ;
+                $result = '';
             }
             $data[] = array(
                 'id' => $item['item_id'],

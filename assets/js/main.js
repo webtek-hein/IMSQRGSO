@@ -594,8 +594,8 @@ function init_list() {
                 };
             },
             field: 'quant',
-            title: 'QUANTITY DISTRIBUTED'
-           // visible: false,
+            title: 'QUANTITY DISTRIBUTED',
+            visible: true,
         }, {
             sortable: true,
             field: 'count',
