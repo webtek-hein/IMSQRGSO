@@ -26,7 +26,7 @@ class Logs_model extends CI_Model
         if ($position !== 'Admin') {
             $this->db->Select('dist.quantity_distributed,timestamp,dept.department,i.*,account_code,
         dist.date_received,CONCAT(u.first_name," ",u.last_name) as receiver');
-        }else{
+        } else {
             $this->db->Select('dist.quantity_distributed,timestamp,dept.department,i.*,account_code,
         dist.date_received');
         }
@@ -54,10 +54,20 @@ class Logs_model extends CI_Model
 
     }
 
-    public function return_log()
+    public function return_log($position, $dept,$type)
     {
-        $this->db->select('timestamp, item_name, item_description, date_returned, reason, returned_by, received_by, returned_status');
-        $query = $this->db->get('logs.returnlog');
+
+         $this->db->select('retlog.*,department,item_name,item_description,ret.*');
+            $this->db->join('gsois.returnitem ret', 'ret.return_id = retlog.return_id', 'inner');
+            $this->db->join('gsois.distribution dist', ' dist.dist_id = ret.dist_id', 'inner');
+            $this->db->join('gsois.department dept', ' dist.dept_id = dept.dept_id', 'inner');
+            $this->db->join('gsois.itemdetail det', ' det.item_det_id = dist.item_det_id', 'inner');
+            $this->db->join('gsois.item i', ' i.item_id = det.item_id', 'inner');
+            if ($position === 'Supply Officer') {
+                $this->db->where('dist.dept_id', $dept);
+            }
+            $this->db->where('i.item_type',$type);
+        $query= $this->db->get('logs.returnlog retlog');
         return $query->result_array();
     }
 }

@@ -1,5 +1,37 @@
 $(document).ready(function () {
 
+    //return table
+    $returnTable = $('#returnTable');
+    $returnTable.bootstrapTable('refresh', {url: 'inventory/viewReturn'}).bootstrapTable({
+        url: 'inventory/viewReturn',
+        columns: [{
+            field: 'item',
+            title: 'Item Returned'
+        }, {
+            field: 'desc',
+            title: 'Description'
+        }, {
+            field: 'date',
+            title: 'Date Returned'
+        }, {
+            field: 'reason',
+            title: 'Reason'
+        }, {
+            field: 'returnperson',
+            title: 'Returned to'
+        }, {
+            field: 'receiver',
+            title: 'Received by'
+        }, {
+            field: 'status',
+            title: 'Status'
+        }, {
+            field: 'action',
+            title: 'Action'
+        }]
+    });
+
+
     $('#uname').change(function () {
         var username = $('#uname').val();
         if (username != '') {
@@ -99,6 +131,18 @@ $(document).ready(function () {
 // 	$('.user-menu').parent().removeClass('open');
 // 	$('.user-menu').parent().toggleClass('open');
 // });
+function return_action($action,$retun_id){
+    $.ajax({
+        url: 'inventory/return_actions',
+        method: 'POST',
+        data: {action: $action, return_id: $retun_id},
+        success: function (response) {
+            if(response === '1'){
+                location.reload();
+            }
+        }
+    });
+}
 function saveSerial() {
     data = $('#viewSerialForm').serializeArray();
     $.ajax({
