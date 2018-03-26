@@ -751,10 +751,13 @@ class Inventory_model extends CI_Model
         $id = $this->input->post('id');
         $serial = $this->input->post('serial');
 
-        if(isset($serial)){
-            $quantity_returned = count($serial);
-        }else{
+        $quantity_returned = count($serial);
+
+
+        if ($quantity_returned == 0) {
             $quantity_returned = $this->input->post('quantity');
+        } else {
+            $quantity_returned = count($serial);
         }
 
         $query = $this->db->select('item.serialStatus,distribution.cost,distribution.PR_no,itemdetail.item_det_id,itemdetail.item_id')
@@ -768,19 +771,7 @@ class Inventory_model extends CI_Model
         $cost = ($query->cost);
         $serialStatus = ($query->serialStatus);
 
-        if ($serialStatus === '1') {
-            for ($i = 0; $i < $quantity_returned; $i++) {
-                $serial_data[] = array(
-                    'item_status' => 'returned',
-                    'serial' => $serial[$i]
-                );
-            }
-            $this->db->set('item_status', 'Returned');
-            $this->db->where_in('serial', $serial);
-            $this->db->update('serial');
-
-        }
-
+        var_dump($id);
         $date = $this->input->post('returndate');
         $data = array(
             'return_quantity' => $quantity_returned,
@@ -793,12 +784,42 @@ class Inventory_model extends CI_Model
         );
         $this->db->insert('returnitem', $data);
 
-        $return_id = $this->db->insert_id();
 
-        $this->db->insert('logs.returnlog',array(
-            'return_id' => $return_id,
-            'userid' => $user_id
-        ));
+        $this->db->set('quantity_distributed', 'quantity_distributed-' . $quantity_returned, FALSE);
+        $this->db->where('dist_id', $id);
+        $this->db->update('distribution');
+        $item_Returned = 'Returned';
+
+        $this->db->set('quantity', 'quantity+' . $quantity_returned, FALSE);
+        $this->db->where('item_det_id', $item_det_id);
+        $this->db->update('itemdetail');
+
+        $this->db->set('quantity', 'quantity+' . $quantity_returned, FALSE);
+        $this->db->where('item_id', $item_id);
+        $this->db->update('item');
+
+        if ($serialStatus === '1') {
+            for ($i = 0; $i < $quantity_returned; $i++) {
+                $serial_data[] = array(
+                    'item_status' => $item_Returned,
+                    'serial' => $serial[$i]
+                );
+            }
+            $this->db->set('item_status', 'Returned');
+            $this->db->where_in('serial', $serial);
+            $this->db->update('serial');
+
+        }
+        $this->db->insert('transaction',
+            array(
+                'date' => $date,
+                'transaction_number' => $transaction_number,
+                'increased' => $quantity_returned,
+                'item_id' => $item_id,
+                'unit_cost' => $cost,
+                'transaction' => 'returned'
+            ));
+
     }
 
     public function ledger($id)
@@ -810,72 +831,15 @@ class Inventory_model extends CI_Model
 
     }
 
-    public function returns($department,$position){
-
-        $this->db->select('receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no','inner');
+    public function returns(){
+        $this->db->select('returnitem.remarks,receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no','inner');
         $this->db->join('itemdetail','returnitem.item_det_id = itemdetail.item_det_id','inner');
         $this->db->join('item','itemdetail.item_id = item.item_id','inner');
         $this->db->join('distribution','returnitem.dist_id = distribution.dist_id','inner');
         $this->db->join('department','department.dept_id = distribution.dept_id','inner');
-        if($position === 'Supply Officer'){
-            $this->db->where('distribution.dept_id',$department);
-        }
-        $this->db->where('returnitem.status','pending');
-
         $query = $this->db->get('returnitem');
 
         return $query->result_array();
     }
-    public function acceptReturn($return_id){
-        $query = $this->db
-            ->where('return_id',$return_id)
-            ->join('distribution','distribution.dist_id = returnitem.dist_id')
-            ->join('itemdetail','returnitem.item_det_id = itemdetail.item_det_id')
-            ->get('returnitem')
-            ->row();
 
-        $dist_id = $query->dist_id;
-        $item_det_id = $query->item_det_id;
-        $item_id = $query->item_id;
-        $quantity_returned = $query->return_quantity;
-        $date = $query->date_returned;
-        $transaction_number = $query->PR_no;
-        $cost = $query->cost;
-
-        $this->db->set('quantity_distributed', 'quantity_distributed-' . $quantity_returned, FALSE);
-        $this->db->where('dist_id', $dist_id);
-        $this->db->update('distribution');
-
-        $this->db->set('quantity', 'quantity+' . $quantity_returned, FALSE);
-        $this->db->where('item_det_id', $item_det_id);
-        $this->db->update('itemdetail');
-
-        $this->db->set('quantity', 'quantity+' . $quantity_returned, FALSE);
-        $this->db->where('item_id', $item_id);
-        $this->db->update('item');
-
-        $this->db->insert('transaction',
-            array(
-                'date' => $date,
-                'transaction_number' => $transaction_number,
-                'increased' => $quantity_returned,
-                'item_id' => $item_id,
-                'unit_cost' => $cost,
-                'transaction' => 'returned'
-            ));
-        $this->db->set('status','accepted');
-        $this->db->where('return_id',$return_id);
-        return $this->db->update('returnitem');
-    }
-
-    public function declineReturn($return_id){
-        $this->db->set('status','declined');
-        $this->db->where('return_id',$return_id);
-        return $this->db->update('returnitem');
-    }
-    public function cancelReturn($return_id){
-        $this->db->set('status','cancelled');
-        $this->db->where('return_id',$return_id);
-        return $this->db->update('returnitem');
-    }
 }

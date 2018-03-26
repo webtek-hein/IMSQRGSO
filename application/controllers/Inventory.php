@@ -424,21 +424,9 @@ class Inventory extends CI_Controller
     }
 
     public function viewReturn(){
-        $position = $this->session->userdata['logged_in']['position'];
-        $department = $this->session->userdata['logged_in']['dept_id'];
-
-        $action = "";
-        $list = $this->inv->returns($department,$position);
+        $list = $this->inv->returns();
         $data = [];
-
         foreach ($list as $rets){
-            if($position === 'Custodian'){
-                $action ='<button onclick="return_action(0,'.$rets['return_id'].')" class="btn btn-primary">Accept</button> 
-                <button onclick="return_action(1,'.$rets['return_id'].')" class="btn btn-danger">Decline</button>';
-
-            }else if($position === 'Supply Officer'){
-                $action ='<button onclick="return_action(2,'.$rets['return_id'].')" class="btn btn-primary">Cancel</button>';
-            }
             $data[] = array(
                 'date'=> $rets['date_returned'],
                 'dept' => $rets['department'],
@@ -446,25 +434,11 @@ class Inventory extends CI_Controller
                 'desc'=> $rets['item_description'],
                 'reason'=> $rets['remarks'],
                 'returnperson'=> $rets['receiver'],
-                'receiver'=> $rets['receiver'],
-                'status' => $rets['status'],
-                'action'=>$action
+                'receiver'=> $rets['receiver']
             );
         }
         echo json_encode($data);
     }
-    public function return_actions(){
-        $action = $this->input->post('action');
-        $return_id = $this->input->post('return_id');
-        //accept
-        if($action === '0'){
-            echo $this->inv->acceptReturn($return_id);
-            // decline
-        }elseif ($action === '1'){
-            echo $this->inv->declineReturn($return_id);
-            //cancel
-        }else{
-            echo $this->inv->cancelReturn($return_id);
-        }
-    }
+
+
 }

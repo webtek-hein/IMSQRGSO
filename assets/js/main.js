@@ -1,37 +1,5 @@
 $(document).ready(function () {
 
-    //return table
-    $returnTable = $('#returnTable');
-    $returnTable.bootstrapTable('refresh', {url: 'inventory/viewReturn'}).bootstrapTable({
-        url: 'inventory/viewReturn',
-        columns: [{
-            field: 'item',
-            title: 'Item Returned'
-        }, {
-            field: 'desc',
-            title: 'Description'
-        }, {
-            field: 'date',
-            title: 'Date Returned'
-        }, {
-            field: 'reason',
-            title: 'Reason'
-        }, {
-            field: 'returnperson',
-            title: 'Returned to'
-        }, {
-            field: 'receiver',
-            title: 'Received by'
-        }, {
-            field: 'status',
-            title: 'Status'
-        }, {
-            field: 'action',
-            title: 'Action'
-        }]
-    });
-
-
     $('#uname').change(function () {
         var username = $('#uname').val();
         if (username != '') {
@@ -131,18 +99,6 @@ $(document).ready(function () {
 // 	$('.user-menu').parent().removeClass('open');
 // 	$('.user-menu').parent().toggleClass('open');
 // });
-function return_action($action,$retun_id){
-    $.ajax({
-        url: 'inventory/return_actions',
-        method: 'POST',
-        data: {action: $action, return_id: $retun_id},
-        success: function (response) {
-            if(response === '1'){
-                location.reload();
-            }
-        }
-    });
-}
 function saveSerial() {
     data = $('#viewSerialForm').serializeArray();
     $.ajax({
@@ -151,7 +107,7 @@ function saveSerial() {
         data: data,
         success: function (response) {
             if (response >= 1) {
-                alert('Serial has saved.');
+                $('.serialdrop').click();
             }
         }
     });
@@ -347,7 +303,8 @@ function insertRow() {
         '<td style=""><select name="supp[]" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
         '<td style=""><input name="quant[]" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><input name="or[]" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><button type="button" onclick="addquant(' + counter + ')" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
+        '<td style=""><i onclick="addquant(' + counter + ')" class="fa fa-check-circle-o" id="rowcheck"></i>' +
+        '<i onclick="removeRow(' + counter + ')" class="fa fa-times-circle-o" id="rowcancel"></i></td> ' +
         '</tr>');
     $.ajax({
         url: 'supplier/supplieroption',
@@ -361,7 +318,10 @@ function insertRow() {
     });
     counter++;
 }
-
+//remove inserted row
+function removeRow($counter) {
+    $('#detTab'+$counter).remove();
+}
 function addquant(c) {
     var $item_det_id = $('#DetailDropDn').find('a').data('id');
     var data = $('#addQuant').serializeArray();
@@ -961,7 +921,8 @@ function viewSerial(id) {
                         "class=\"form-control\"></label><br>");
                     if (input.length === 10) {
                         div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
-                        list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
+                        list.push("<li class=\"" + listClass + "\"><a id=\"t"+serialTabCounter+"\"" +
+                            "data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
                         $serialContent.append(div);
                         $('#tab' + serialTabCounter).html(input.join('') + button);
                         div = [];
@@ -995,6 +956,7 @@ function viewSerial(id) {
 
             });
 
+            $('#t1').click();
         }
     });
 
@@ -1282,4 +1244,8 @@ function viewQr() {
 //print QR to pdf
 function download() {
 
+}
+
+function closeSerial() {
+    $('.serialdrop').click();
 }
