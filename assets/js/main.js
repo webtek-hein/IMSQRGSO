@@ -151,7 +151,7 @@ function saveSerial() {
         data: data,
         success: function (response) {
             if (response >= 1) {
-                alert('Serial has saved.');
+                $('.serialdrop').click();
             }
         }
     });
@@ -961,7 +961,8 @@ function viewSerial(id) {
                         "class=\"form-control\"></label><br>");
                     if (input.length === 10) {
                         div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
-                        list.push("<li class=\"" + listClass + "\"><a data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
+                        list.push("<li class=\"" + listClass + "\"><a id=\"t"+serialTabCounter+"\"" +
+                            "data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
                         $serialContent.append(div);
                         $('#tab' + serialTabCounter).html(input.join('') + button);
                         div = [];
@@ -995,6 +996,7 @@ function viewSerial(id) {
 
             });
 
+            $('#t1').click();
         }
     });
 
