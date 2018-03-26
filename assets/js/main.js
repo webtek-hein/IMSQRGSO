@@ -347,7 +347,8 @@ function insertRow() {
         '<td style=""><select name="supp[]" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
         '<td style=""><input name="quant[]" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><input name="or[]" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><button type="button" onclick="addquant(' + counter + ')" class="btn btn-primary btn-sm" ">Submit</button></td> ' +
+        '<td style=""><button type="button" onclick="addquant(' + counter + ')" class="btn btn-primary btn-sm" ">Submit</button>' +
+        '<button type="button" onclick="removeRow(' + counter + ')" class="btn btn-danger btn-sm" ">Remove</button></td> ' +
         '</tr>');
     $.ajax({
         url: 'supplier/supplieroption',
@@ -361,7 +362,10 @@ function insertRow() {
     });
     counter++;
 }
-
+//remove inserted row
+function removeRow($counter) {
+    $('#detTab'+$counter).remove();
+}
 function addquant(c) {
     var $item_det_id = $('#DetailDropDn').find('a').data('id');
     var data = $('#addQuant').serializeArray();
@@ -1284,4 +1288,8 @@ function viewQr() {
 //print QR to pdf
 function download() {
 
+}
+
+function closeSerial() {
+    $('.serialdrop').click();
 }
