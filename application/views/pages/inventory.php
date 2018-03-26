@@ -226,7 +226,7 @@
                                     </table>
                                 </form>
                                 <?php if ($position === 'Custodian') {
-                                    echo '<a class="btn btn-success" href="#" onclick="insertRow()">Add new detail</a>';
+                                    echo '<btn class="btn btn-success" onclick="insertRow()">Add new detail</btn>';
                                 }
                                 ?>
                                 <!-- View Serial-->
@@ -242,7 +242,8 @@
 
                                                     <!-- qr button -->
                                                     <?php if ($position === 'Custodian') {
-                                                        echo '<a class="btn btn-primary" onclick="viewQr()"> View QR Code</a>';
+                                                        echo '<a class="btn btn-primary" onclick="closeSerial()"> Close</a>
+                                                        <a class="btn btn-primary" onclick="viewQr()"> View QR Code</a>';
                                                     }
                                                     ?>
                                                     <!-- end of qr button -->
@@ -472,7 +473,8 @@
                 <ul class="list-inline opt2">
                     <div class="dropdown">
                         <label>Rerports on:</label>
-                        <button id="reportsOptions" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+                        <button id="reportsOptions" class="btn btn-secondary dropdown-toggle" type="button"
+                                data-toggle="dropdown">
                             -option-
                         </button>
 

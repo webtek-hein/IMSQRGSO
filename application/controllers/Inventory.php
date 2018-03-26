@@ -86,7 +86,9 @@ class Inventory extends CI_Controller
     public function distribute()
     {
         $position = $this->session->userdata['logged_in']['position'];
-        $this->inv->distrib($position);
+        $user = $this->session->userdata['logged_in']['user_id'];
+
+        $this->inv->distrib($position,$user);
         redirect('inventory');
     }
 
@@ -111,7 +113,7 @@ class Inventory extends CI_Controller
         foreach ($list as $detail) {
             //if there is a serial
             if ($detail['serialStatus'] === '1') {
-                $viewser = "<a class=\"dropdown-item\" onclick='viewSerial($detail[item_det_id])' data-toggle=\"collapse\" 
+                $viewser = "<a class=\"serialdrop dropdown-item\" onclick='viewSerial($detail[item_det_id])' data-toggle=\"collapse\" 
                     href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\"><i class=\"fa fa-folder-open\"></i>
                               </i > View Serial</a>";
             }
@@ -121,7 +123,7 @@ class Inventory extends CI_Controller
                     $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"
                         <span class=\"caret\"></span></a>";
 
-                } elseif ($position === 'Supply Officer' || $dept === 'dept') {
+                } elseif ($position === 'Supply Officer') {
                     if ($detail['status'] !== 'Accepted') {
                         if($detail['serialStatus'] !== '1'){
                             $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
@@ -151,6 +153,8 @@ class Inventory extends CI_Controller
                         }
                     }
 
+                }elseif ($dept === 'dept'){
+                    $action = $detail['status'];
                 } elseif($detail['serialStatus'] !== '1') {
                     $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
@@ -311,9 +315,11 @@ class Inventory extends CI_Controller
     public function viewDept($type, $id)
     {
         $list = $this->inv->departmentInventory($type, $id);
+        $position = $this->session->userdata['logged_in']['position'];
         $data = array();
         foreach ($list as $item) {
             $data[] = array(
+                'position' => $position,
                 'id' => $item['item_id'],
                 'name' => $item['item_name'],
                 'description' => $item['item_description'],
@@ -424,9 +430,21 @@ class Inventory extends CI_Controller
     }
 
     public function viewReturn(){
-        $list = $this->inv->returns();
+        $position = $this->session->userdata['logged_in']['position'];
+        $department = $this->session->userdata['logged_in']['dept_id'];
+
+        $action = "";
+        $list = $this->inv->returns($department,$position);
         $data = [];
+
         foreach ($list as $rets){
+            if($position === 'Custodian'){
+                $action ='<button onclick="return_action(0,'.$rets['return_id'].')" class="btn btn-primary">Accept</button> 
+                <button onclick="return_action(1,'.$rets['return_id'].')" class="btn btn-danger">Decline</button>';
+
+            }else if($position === 'Supply Officer'){
+                $action ='<button onclick="return_action(2,'.$rets['return_id'].')" class="btn btn-primary">Cancel</button>';
+            }
             $data[] = array(
                 'date'=> $rets['date_returned'],
                 'dept' => $rets['department'],
@@ -434,11 +452,26 @@ class Inventory extends CI_Controller
                 'desc'=> $rets['item_description'],
                 'reason'=> $rets['remarks'],
                 'returnperson'=> $rets['receiver'],
-                'receiver'=> $rets['receiver']
+                'receiver'=> $rets['receiver'],
+                'status' => $rets['status'],
+                'action'=>$action
             );
         }
         echo json_encode($data);
     }
-
+    public function return_actions(){
+        $action = $this->input->post('action');
+        $return_id = $this->input->post('return_id');
+        //accept
+        if($action === '0'){
+            echo $this->inv->acceptReturn($return_id);
+            // decline
+        }elseif ($action === '1'){
+            echo $this->inv->declineReturn($return_id);
+            //cancel
+        }else{
+            echo $this->inv->cancelReturn($return_id);
+        }
+    }
 
 }

@@ -1,4 +1,37 @@
 $(document).ready(function () {
+    //return table
+    $returnTable = $('#returnTable');
+    $returnTable.bootstrapTable('refresh', {url: 'inventory/viewReturn'}).bootstrapTable({
+        url: 'inventory/viewReturn',
+        columns: [{
+            field: 'dept',
+            title: 'Department'
+        },{
+            field: 'item',
+            title: 'Item Returned'
+        }, {
+            field: 'desc',
+            title: 'Description'
+        }, {
+            field: 'date',
+            title: 'Date Returned'
+        }, {
+            field: 'reason',
+            title: 'Reason'
+        }, {
+            field: 'returnperson',
+            title: 'Returned to'
+        }, {
+            field: 'receiver',
+            title: 'Received by'
+        }, {
+            field: 'status',
+            title: 'Status'
+        }, {
+            field: 'action',
+            title: 'Action'
+        }]
+    });
 
     $('#uname').change(function () {
         var username = $('#uname').val();
@@ -92,7 +125,19 @@ $(document).ready(function () {
         init_bulkFucntion();
     }
 });
-
+//action for returns
+function return_action($action,$retun_id){
+    $.ajax({
+        url: 'inventory/return_actions',
+        method: 'POST',
+        data: {action: $action, return_id: $retun_id},
+        success: function (response) {
+            if(response === '1'){
+                location.reload();
+            }
+        }
+    });
+}
 // $('.user-area> a').on('click', function(event) {
 // 	event.preventDefault();
 // 	event.stopPropagation();
@@ -120,7 +165,6 @@ function editSupplier(id) {
         url: 'supplier/getSupplier/' + id,
         dataType: 'JSON',
         success: function (data) {
-            console.log(data);
             toggleDiv($('.editSupplier-tab '), $('.supplier-tab'));
             $('#edtbuttonsupplier').val(id);
             $('#supplier').val(data.name);
@@ -220,10 +264,17 @@ function detail(id) {
     });
 }
 
-function deptDet(id) {
+function deptDet(id,position) {
     var $detailtable = $('#detail-tab-table');
     var $detailTab = $('.detail-tab ');
     var item;
+    if(position === 'Supply Officer'){
+        $field = 'action';
+        $title = 'Action'
+    }else{
+        $field = 'action';
+        $title = 'Status';
+    }
     $.ajax({
         url: 'inventory/getitem/dept/' + id,
         dataType: 'JSON',
@@ -261,8 +312,8 @@ function deptDet(id) {
                         field: 'or',
                         title: 'OR number'
                     }, {
-                        field: 'action',
-                        title: 'Action'
+                        field: $field,
+                        title: $title
                     }]
                 });
             serialize_forms();
@@ -416,7 +467,7 @@ function init_inventory() {
             url: 'inventory/viewItem/CO',
             onClickRow: function (data, row) {
                 if (data.position === 'Supply Officer') {
-                    deptDet(data.id);
+                    deptDet(data.id,data.position);
                 } else {
                     detail(data.id);
                 }
@@ -473,7 +524,7 @@ function init_inventory() {
             url: 'inventory/viewItem/MOOE',
             onClickRow: function (data, row) {
                 if (data.position === 'Supply Officer') {
-                    deptDet(data.id);
+                    deptDet(data.id,data.position);
                 } else {
                     detail(data.id);
                 }
@@ -618,7 +669,7 @@ function init_list() {
         pageSize: 10,
         url: 'inventory/viewdept/CO/11',
         onClickRow: function (data, row) {
-            deptDet(data.id);
+            deptDet(data.id,data.position);
         },
         resizable: true,
         columns: [{
@@ -648,7 +699,7 @@ function init_list() {
         pageSize: 10,
         url: 'inventory/viewdept/MOOE/11',
         onClickRow: function (data, row) {
-            deptDet(data.id);
+            deptDet(data.id,data.position);
         },
         resizable: true,
         columns: [{

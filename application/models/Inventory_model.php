@@ -186,34 +186,34 @@ class Inventory_model extends CI_Model
     }
 
     //Distribute item
-    public function distrib($position)
+    public function distrib($position, $user)
     {
         $serial_data = [];
         $dept = $this->input->post('dept');
+
         //Count PR of department
         $this->db->select('count(PR_no) as PR_no');
         $this->db->where('dept_id', $dept);
         $query = $this->db->get('distribution')->row();
         $PR_no = intval($query->PR_no) + 1;
 
-        $id = $this->input->post('id');
+        $item_det_id = $this->input->post('id');
         $serial = $this->input->post('serial');
         $serial_id = [];
-        $quantity = count($serial);
-        $user = $this->session->userdata['logged_in']['user_id'];
-
-        if ($quantity == 0) {
+        if (isset($serial)) {
+            $quantity = count($serial);
+        }else{
             $quantity = $this->input->post('quantity');
         }
         $query = $this->db->select('item.item_id,item.cost')
             ->join('item', 'itemdetail.item_id = item.item_id ', 'inner')
-            ->where('itemdetail.item_det_id', $id)
+            ->where('itemdetail.item_det_id', $item_det_id)
             ->get('itemdetail')->row();
         $item_id = $query->item_id;
         $unit_cost = $query->cost;
         if ($position === 'Custodian') {
             $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
-            $this->db->where('item_det_id', $id);
+            $this->db->where('item_det_id', $item_det_id);
             $this->db->update('itemdetail');
 
             $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
@@ -232,7 +232,7 @@ class Inventory_model extends CI_Model
                 'date_received' => $date,
                 'PR_no' => $PR_no,
                 'OBR_no' => $this->input->post('obr'),
-                'item_det_id' => $id,
+                'item_det_id' => $item_det_id,
                 'user_id' => $user,
                 'supply_officer_id' => 1,
                 'cost' => $unit_cost
@@ -256,7 +256,7 @@ class Inventory_model extends CI_Model
                     'transaction' => 'issued'
                 ));
             // if item has serial
-            if (count($serial) != 0) {
+            if (isset($serial)) {
                 foreach ($serial as $key => $value) {
                     // if serial is not null
                     if ($value !== 'null') {
@@ -265,6 +265,7 @@ class Inventory_model extends CI_Model
                             'dec_log_id' => $dec_log_id
                         );
                     }
+
                     $serial_data[] = array(
                         'serial' => $value,
                         'dist_id' => $dist_id,
@@ -283,7 +284,7 @@ class Inventory_model extends CI_Model
             } else {
                 $quantity = $this->input->post('quantity');
 
-                $mooedata = array('dist_id' => $id, 'employee' => $employee, 'quantity_distributed' => $quantity);
+                $mooedata = array('dist_id' => $dist_id, 'employee' => $employee, 'quantity_distributed' => $quantity);
 
                 $this->db->insert('mooedistribution', $mooedata);
             }
@@ -291,7 +292,8 @@ class Inventory_model extends CI_Model
 
     }
 
-    public function insert()
+    public
+    function insert()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $filename = ($_FILES["csv_file"]["tmp_name"]) or die("can't open file");
@@ -344,7 +346,8 @@ class Inventory_model extends CI_Model
 
     }
 
-    public function viewincrease()
+    public
+    function viewincrease()
     {
         $query = $this->db->get('item');
         return $query->result_array();
@@ -352,7 +355,8 @@ class Inventory_model extends CI_Model
     }
 
 
-    public function select_item($type)
+    public
+    function select_item($type)
     {
         $this->db->select('item.*,(cost*quantity) as totalcost');
         $this->db->where('item_type', $type);
@@ -360,9 +364,10 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //Add quantity to a specific item
+//Add quantity to a specific item
 
-    public function addquant($item_det_id, $counter)
+    public
+    function addquant($item_det_id, $counter)
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $quantity = $this->input->post('quant')[$counter];
@@ -474,7 +479,8 @@ class Inventory_model extends CI_Model
         }
     }
 
-    public function getItem($dept, $id)
+    public
+    function getItem($dept, $id)
     {
         if ($dept === 'dept') {
             $this->db->select('item.*,sum(quantity_distributed) as quant');
@@ -489,7 +495,8 @@ class Inventory_model extends CI_Model
         return $query->row();
     }
 
-    public function edititem()
+    public
+    function edititem()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $values = [];
@@ -532,7 +539,8 @@ class Inventory_model extends CI_Model
         $this->db->insert_batch('logs.editLog', $values);
     }
 
-    public function viewdetail($id)
+    public
+    function viewdetail($id)
     {
         $this->db->select('OR_no,PO_number,item.serialStatus,item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
         item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
@@ -542,7 +550,8 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public function viewDetailperDept($id)
+    public
+    function viewDetailperDept($id)
     {
         $this->db->select('dist_id,item.item_type,item.serialStatus,quantity_distributed,distribution.cost,
         distribution.status,distribution.PR_no,itemdetail.*,department,supplier_name');
@@ -555,7 +564,8 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public function departmentInventory($type, $id)
+    public
+    function departmentInventory($type, $id)
     {
         $this->db->select('item.*,sum(quantity_distributed) as quant');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
@@ -567,7 +577,8 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public function reconcile($type, $id)
+    public
+    function reconcile($type, $id)
     {
         $this->db->select('item.*,sum(quantity_distributed) as quant');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
@@ -579,7 +590,8 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public function compareitem()
+    public
+    function compareitem()
     {
 
         $pcount = $this->input->post('reconcileitem');
@@ -597,20 +609,23 @@ class Inventory_model extends CI_Model
         return $this->db->update_batch('item', $data, 'item_id');
     }
 
-    public function selectdetails()
+    public
+    function selectdetails()
     {
         $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'inner');
         $query = $this->db->get('item');
         return $query->result_array();
     }
 
-    public function select_departments()
+    public
+    function select_departments()
     {
         $query = $this->db->get('department');
         return $query->result_array();
     }
 
-    public function get_department_list()
+    public
+    function get_department_list()
     {
         $this->db->order_by('res_center_code');
         $query = $this->db->get('department');
@@ -618,19 +633,22 @@ class Inventory_model extends CI_Model
 
     }
 
-    public function select_acc_codes()
+    public
+    function select_acc_codes()
     {
         $query = $this->db->get('account_code');
         return $query->result_array();
     }
 
-    public function return_item()
+    public
+    function return_item()
     {
         $query = $this->db->get('return');
         return $query->result_array();
     }
 
-    public function getSerial($det_id, $position)
+    public
+    function getSerial($det_id, $position)
     {
 
         $this->db->select('item.serialStatus,serial_id,serial.serial,serial.item_status');
@@ -647,7 +665,8 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public function addSerial()
+    public
+    function addSerial()
     {
         $serial = $this->input->post('serial');
         $data = array();
@@ -664,7 +683,8 @@ class Inventory_model extends CI_Model
 
     }
 
-    public function countItem($id)
+    public
+    function countItem($id)
     {
         $minimum = $this->db->select('count(*) as min')
             ->join('itemdetail', 'item.item_id = itemdetail.item_id ', 'inner')
@@ -676,7 +696,8 @@ class Inventory_model extends CI_Model
         return $minimum;
     }
 
-    public function editquant()
+    public
+    function editquant()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $values = [];
@@ -718,7 +739,8 @@ class Inventory_model extends CI_Model
 
     }
 
-    public function accept()
+    public
+    function accept()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $dist_id = $this->input->post('id');
@@ -731,7 +753,8 @@ class Inventory_model extends CI_Model
 
     }
 
-    public function mobiledetail()
+    public
+    function mobiledetail()
     {
         $this->db->select('serial.serial_id, item.item_name, serial.serial, account_code.account_code, account_code.description, item.item_description, itemdetail.unit_cost, item.item_type, itemdetail.expiration_date, serial.employee');
         $this->db->distinct();
@@ -744,20 +767,18 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public function returnitem()
+    public
+    function returnitem()
     {
 
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $id = $this->input->post('id');
         $serial = $this->input->post('serial');
 
-        $quantity_returned = count($serial);
-
-
-        if ($quantity_returned == 0) {
-            $quantity_returned = $this->input->post('quantity');
-        } else {
+        if(isset($serial)){
             $quantity_returned = count($serial);
+        }else{
+            $quantity_returned = $this->input->post('quantity');
         }
 
         $query = $this->db->select('item.serialStatus,distribution.cost,distribution.PR_no,itemdetail.item_det_id,itemdetail.item_id')
@@ -771,37 +792,10 @@ class Inventory_model extends CI_Model
         $cost = ($query->cost);
         $serialStatus = ($query->serialStatus);
 
-        var_dump($id);
-        $date = $this->input->post('returndate');
-        $data = array(
-            'return_quantity' => $quantity_returned,
-            'date_returned' => $date,
-            'receiver' => $this->input->post('receiver'),
-            'remarks' => $this->input->post('remarks'),
-            'item_det_id' => $item_det_id,
-            'dist_id'=> $id
-
-        );
-        $this->db->insert('returnitem', $data);
-
-
-        $this->db->set('quantity_distributed', 'quantity_distributed-' . $quantity_returned, FALSE);
-        $this->db->where('dist_id', $id);
-        $this->db->update('distribution');
-        $item_Returned = 'Returned';
-
-        $this->db->set('quantity', 'quantity+' . $quantity_returned, FALSE);
-        $this->db->where('item_det_id', $item_det_id);
-        $this->db->update('itemdetail');
-
-        $this->db->set('quantity', 'quantity+' . $quantity_returned, FALSE);
-        $this->db->where('item_id', $item_id);
-        $this->db->update('item');
-
         if ($serialStatus === '1') {
             for ($i = 0; $i < $quantity_returned; $i++) {
                 $serial_data[] = array(
-                    'item_status' => $item_Returned,
+                    'item_status' => 'returned',
                     'serial' => $serial[$i]
                 );
             }
@@ -810,16 +804,26 @@ class Inventory_model extends CI_Model
             $this->db->update('serial');
 
         }
-        $this->db->insert('transaction',
-            array(
-                'date' => $date,
-                'transaction_number' => $transaction_number,
-                'increased' => $quantity_returned,
-                'item_id' => $item_id,
-                'unit_cost' => $cost,
-                'transaction' => 'returned'
-            ));
 
+        $date = $this->input->post('returndate');
+        $data = array(
+            'return_quantity' => $quantity_returned,
+            'date_returned' => $date,
+            'receiver' => $this->input->post('receiver'),
+            'remarks' => $this->input->post('remarks'),
+            'item_det_id' => $item_det_id,
+            'dist_id'=> $id,
+            'status'=>'pending'
+
+        );
+        $this->db->insert('returnitem', $data);
+
+        $return_id = $this->db->insert_id();
+
+        $this->db->insert('logs.returnlog',array(
+            'return_id' => $return_id,
+            'userid' => $user_id
+        ));
     }
 
     public function ledger($id)
@@ -831,15 +835,73 @@ class Inventory_model extends CI_Model
 
     }
 
-    public function returns(){
-        $this->db->select('returnitem.remarks,receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no','inner');
+    public function returns($department,$position){
+
+        $this->db->select('receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no','inner');
         $this->db->join('itemdetail','returnitem.item_det_id = itemdetail.item_det_id','inner');
         $this->db->join('item','itemdetail.item_id = item.item_id','inner');
         $this->db->join('distribution','returnitem.dist_id = distribution.dist_id','inner');
         $this->db->join('department','department.dept_id = distribution.dept_id','inner');
+        if($position === 'Supply Officer'){
+            $this->db->where('distribution.dept_id',$department);
+        }
+        $this->db->where('returnitem.status','pending');
+
         $query = $this->db->get('returnitem');
 
         return $query->result_array();
+    }
+    public function acceptReturn($return_id){
+        $query = $this->db
+            ->where('return_id',$return_id)
+            ->join('distribution','distribution.dist_id = returnitem.dist_id')
+            ->join('itemdetail','returnitem.item_det_id = itemdetail.item_det_id')
+            ->get('returnitem')
+            ->row();
+
+        $dist_id = $query->dist_id;
+        $item_det_id = $query->item_det_id;
+        $item_id = $query->item_id;
+        $quantity_returned = $query->return_quantity;
+        $date = $query->date_returned;
+        $transaction_number = $query->PR_no;
+        $cost = $query->cost;
+
+        $this->db->set('quantity_distributed', 'quantity_distributed-' . $quantity_returned, FALSE);
+        $this->db->where('dist_id', $dist_id);
+        $this->db->update('distribution');
+
+        $this->db->set('quantity', 'quantity+' . $quantity_returned, FALSE);
+        $this->db->where('item_det_id', $item_det_id);
+        $this->db->update('itemdetail');
+
+        $this->db->set('quantity', 'quantity+' . $quantity_returned, FALSE);
+        $this->db->where('item_id', $item_id);
+        $this->db->update('item');
+
+        $this->db->insert('transaction',
+            array(
+                'date' => $date,
+                'transaction_number' => $transaction_number,
+                'increased' => $quantity_returned,
+                'item_id' => $item_id,
+                'unit_cost' => $cost,
+                'transaction' => 'returned'
+            ));
+        $this->db->set('status','accepted');
+        $this->db->where('return_id',$return_id);
+        return $this->db->update('returnitem');
+    }
+
+    public function declineReturn($return_id){
+        $this->db->set('status','declined');
+        $this->db->where('return_id',$return_id);
+        return $this->db->update('returnitem');
+    }
+    public function cancelReturn($return_id){
+        $this->db->set('status','cancelled');
+        $this->db->where('return_id',$return_id);
+        return $this->db->update('returnitem');
     }
 
 }

@@ -44,39 +44,38 @@
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
                                 <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
-                                       data-url="logs/returnLog" class="table table-no-bordered">
+                                       data-url="logs/returnLog/CO" class="table table-no-bordered">
                                     <thead>
                                     <tr>
                                         <th data-sortable="true" data-field="timestamp">Timestamp</th>
-                                        <th data-sortable="true" data-field="serial">Serial no.</th>
-                                        <th data-sortable="true" data-field="item">Item Name</th>
-                                        <th data-sortable="true" data-field="description">Item Description</th>
+                                        <th data-sortable="true" data-field="item">Returned Item</th>
+                                        <th data-sortable="true" data-field="description">Description</th>
                                         <th data-sortable="true" data-field="datereturned">Date Returned</th>
                                         <th data-sortable="true" data-field="reason">Reason</th>
                                         <th data-sortable="true" data-field="returnedby">Returned By</th>
                                         <th data-sortable="true" data-field="receivedby">Received By</th>
-                                        <th data-sortable="true" data-field="status">Returned Status</th>
+                                        <th data-sortable="true" data-field="status">Status</th>
                                     </tr>
                                     </thead>
                                 </table>
+
 
 
                             </div>
                             <!--MOOE Tab-->
                             <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
                                 <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
-                                       data-url="logs/returnLog" class="table table-no-bordered">
+                                       data-url="logs/returnLog/MOOE" class="table table-no-bordered">
                                     <thead>
                                     <tr>
                                         <th data-sortable="true" data-field="timestamp">Timestamp</th>
-                                        <th data-sortable="true" data-field="serial">Serial no.</th>
-                                        <th data-sortable="true" data-field="item">Item Name</th>
-                                        <th data-sortable="true" data-field="description">Item Description</th>
+                                        <th data-sortable="true" data-field="item">Returned Item</th>
+                                        <th data-sortable="true" data-field="description">Description</th>
                                         <th data-sortable="true" data-field="datereturned">Date Returned</th>
                                         <th data-sortable="true" data-field="reason">Reason</th>
                                         <th data-sortable="true" data-field="returnedby">Returned By</th>
                                         <th data-sortable="true" data-field="receivedby">Received By</th>
-                                        <th data-sortable="true" data-field="status">Returned Status</th>
+                                        <th data-sortable="true" data-field="status">Status</th>
                                     </tr>
                                     </thead>
                                 </table>
