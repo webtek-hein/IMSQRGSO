@@ -1,5 +1,37 @@
 $(document).ready(function () {
 
+    //return table
+    $returnTable = $('#returnTable');
+    $returnTable.bootstrapTable('refresh', {url: 'inventory/viewReturn'}).bootstrapTable({
+        url: 'inventory/viewReturn',
+        columns: [{
+            field: 'item',
+            title: 'Item Returned'
+        }, {
+            field: 'desc',
+            title: 'Description'
+        }, {
+            field: 'date',
+            title: 'Date Returned'
+        }, {
+            field: 'reason',
+            title: 'Reason'
+        }, {
+            field: 'returnperson',
+            title: 'Returned to'
+        }, {
+            field: 'receiver',
+            title: 'Received by'
+        }, {
+            field: 'status',
+            title: 'Status'
+        }, {
+            field: 'action',
+            title: 'Action'
+        }]
+    });
+
+
     $('#uname').change(function () {
         var username = $('#uname').val();
         if (username != '') {
@@ -99,6 +131,18 @@ $(document).ready(function () {
 // 	$('.user-menu').parent().removeClass('open');
 // 	$('.user-menu').parent().toggleClass('open');
 // });
+function return_action($action,$retun_id){
+    $.ajax({
+        url: 'inventory/return_actions',
+        method: 'POST',
+        data: {action: $action, return_id: $retun_id},
+        success: function (response) {
+            if(response === '1'){
+                location.reload();
+            }
+        }
+    });
+}
 function saveSerial() {
     data = $('#viewSerialForm').serializeArray();
     $.ajax({
@@ -222,6 +266,7 @@ function detail(id) {
 
 function deptDet(id) {
     var $detailtable = $('#detail-tab-table');
+    var $detailTab = $('.detail-tab ');
     var item;
     $.ajax({
         url: 'inventory/getitem/dept/' + id,
@@ -232,7 +277,9 @@ function deptDet(id) {
             $('#total').html(data.quant);
             $('#itemtype').html(data.item_type);
             $('#unit').html(data.unit);
-            toggleDiv($('.detail-tab '), $('.department-tab'));
+            toggleDiv($detailTab, $('.department-tab'));
+            toggleDiv($detailTab, $('.inventory-tab'));
+
             $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/dept/' + id})
                 .bootstrapTable({
                     url: 'inventory/detail/dept/' + id,
@@ -286,9 +333,9 @@ function userDetail(id) {
     });
 }
 
+var counter = 0;
 
 function insertRow() {
-    var counter = 0;
 
     var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
@@ -961,7 +1008,6 @@ function getserial(id) {
         url: 'inventory/getSerial/' + id,
         dataType: 'JSON',
         success: function (data) {
-
             for (var i = 0; i < data.length; i++) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
@@ -1001,9 +1047,6 @@ function toggleDiv(elementToShow, elementToHide) {
 
     elementToShow.removeAttr('hidden');
     elementToHide.attr('hidden', 'hidden');
-
-    localStorage.setItem('active', elementToShow[0].className);
-    localStorage.setItem('hidden', elementToHide[0].className);
 
 }
 
