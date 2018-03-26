@@ -1,37 +1,5 @@
 $(document).ready(function () {
 
-    //return table
-    $returnTable = $('#returnTable');
-    $returnTable.bootstrapTable('refresh', {url: 'inventory/viewReturn'}).bootstrapTable({
-        url: 'inventory/viewReturn',
-        columns: [{
-            field: 'item',
-            title: 'Item Returned'
-        }, {
-            field: 'desc',
-            title: 'Description'
-        }, {
-            field: 'date',
-            title: 'Date Returned'
-        }, {
-            field: 'reason',
-            title: 'Reason'
-        }, {
-            field: 'returnperson',
-            title: 'Returned to'
-        }, {
-            field: 'receiver',
-            title: 'Received by'
-        }, {
-            field: 'status',
-            title: 'Status'
-        }, {
-            field: 'action',
-            title: 'Action'
-        }]
-    });
-
-
     $('#uname').change(function () {
         var username = $('#uname').val();
         if (username != '') {
@@ -131,18 +99,6 @@ $(document).ready(function () {
 // 	$('.user-menu').parent().removeClass('open');
 // 	$('.user-menu').parent().toggleClass('open');
 // });
-function return_action($action,$retun_id){
-    $.ajax({
-        url: 'inventory/return_actions',
-        method: 'POST',
-        data: {action: $action, return_id: $retun_id},
-        success: function (response) {
-            if(response === '1'){
-                location.reload();
-            }
-        }
-    });
-}
 function saveSerial() {
     data = $('#viewSerialForm').serializeArray();
     $.ajax({
@@ -347,8 +303,8 @@ function insertRow() {
         '<td style=""><select name="supp[]" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
         '<td style=""><input name="quant[]" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><input name="or[]" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><button type="button" onclick="addquant(' + counter + ')" class="btn btn-primary btn-sm" ">Submit</button>' +
-        '<button type="button" onclick="removeRow(' + counter + ')" class="btn btn-danger btn-sm" ">Remove</button></td> ' +
+        '<td style=""><i onclick="addquant(' + counter + ')" class="fa fa-check-circle-o" id="rowcheck"></i>' +
+        '<i onclick="removeRow(' + counter + ')" class="fa fa-times-circle-o" id="rowcancel"></i></td> ' +
         '</tr>');
     $.ajax({
         url: 'supplier/supplieroption',

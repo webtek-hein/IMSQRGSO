@@ -84,22 +84,21 @@ class Logs extends CI_Controller
         echo json_encode($data);
     }
 
-    public function returnLog($type)
+    public function returnLog()
     {
-        $dept_id = $this->session->userdata['logged_in']['dept_id'];
-        $position = $this->session->userdata['logged_in']['position'];
-        $ret = $this->logs->return_log($dept_id,$position,$type);
+        $ret = $this->logs->return_log();
         $data = [];
         foreach ($ret as $list) {
             $data[] = array(
                 'timestamp' => $list['timestamp'],
+                'serial' => $list['serial'],
                 'item' => $list['item_name'],
                 'description' => $list['item_description'],
                 'datereturned' => $list['date_returned'],
-                'reason' => $list['remarks'],
-                'returnedby' => $list['receiver'],
-                'receivedby' => $list['receiver'],
-                'status' => $list['status'],
+                'reason' => $list['reason'],
+                'returnedby' => $list['returned_by'],
+                'receivedby' => $list['received_by'],
+                'status' => $list['returned_status'],
             );
         }
         echo json_encode($data);

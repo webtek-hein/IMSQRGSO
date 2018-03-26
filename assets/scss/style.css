@@ -49,9 +49,21 @@
 }
 /*--End of View Serial--*/
 
+/*--Reports Button Option--*/
 #reportsOption{
   margin-top: 38px;
   margin-left: 90px;
+}
+/*--Ends of Reports Button Option--*/
+
+
+#detail-tab-table #rowcheck{
+  font-size: 25px;
+  color:green;
+}
+#detail-tab-table #rowcancel{
+  font-size: 25px;
+  color:red;
 }
 
 .table-responsive{
