@@ -635,7 +635,6 @@
     </div>
 </form>
 <!--Edit Quantity-->
-<form class="form-horizontal form-label-left" method="POST" action="inventory/editquantity">
     <div class="Edit modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="distrib-modal"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -646,23 +645,12 @@
                 </div>
 
                 <div class="modal-body">
-
-                    <div class="form-group">
-                        <label for="quantity">Quantity<span
-                                    class="required">*</span>
-                        </label>
-                        <input type="number" id="quantity" class="form-control"
-                               data-validate-length-range="20" data-validate-words="2" name="quantity"
-                               required
-                               placeholder="Quantity">
-                    </div>
                     <div class="form-group">
                         <label for="name">Remarks / Reason<span
                                     class="required">*</span>
                         </label>
                         <textarea class="form-control" name="remarks" id="remarks"></textarea>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -673,7 +661,6 @@
             </div>
         </div>
     </div>
-</form>
 <!--Distribution for Supply Officer-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/distribute"
       method="POST" data-validate="parsley">
