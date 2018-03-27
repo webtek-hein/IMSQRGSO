@@ -35,14 +35,14 @@
                             <input type="file" name="csv_file" id="csv_file" required accept=".csv"/>
                         </div>
                         <br/>
-                        <button type="submit" name="import_csv" class="btn btn-info" id="import_csv_btn">Import CSV
-                        </button>
                     </form>
                                 <div class="card-header">
                             <button id="headingTwo" class="btn btn-outline-success">
                                 <i class=" fa fa-plus" ></i><span> New</span></button>
-                             <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" class="btn btn-outline-primary">
+                            <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" class="btn btn-outline-primary">
                                 <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
+                            <button type="submit" name="import_csv" class="btn btn-outline-info" id="import_csv_btn">
+                                <i class="fa fa-folder-open-o"></i> Import CSV</button>
                                 </div>';
 
                     }
@@ -115,6 +115,10 @@
                                 </li>';
                             }
                             ?>
+                            <li class="nav-item">
+                                <a class="nav-link" id="removedItems" data-toggle="tab" href="#removed_Items"
+                                   role="tab" aria-controls="removedItems" aria-selected="false">Removed Items</a>
+                            </li>
 
                         </ul>
                         <div class="tab-content pl-3 p-1" id="myTabContent">
@@ -276,6 +280,32 @@
                                 </table>
                             </div>
                             <!--End of General Ledger-->
+
+                            <!--Removed Items-->
+                            <div class="tab-pane fade" id="removed_Items" role="tabpanel"
+                                 aria-labelledby="removed-tab">
+                                <table id="removed-tab-table" data-search="true"
+                                           class="table-sm table table-no-bordered table-hover">
+
+                                    <theader>
+                                        <tr>
+                                            <th>PO number</th>
+                                            <th>Delivery Date</th>
+                                            <th>Date Received</th>
+                                            <th>Estimated Useful Life</th>
+                                            <th>Unit Cost</th>
+                                            <th>Supplier</th>
+                                            <th>Quantity</th>
+                                            <th>OR number</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </theader>
+
+
+                                    </table>
+                            </div>
+                            <!--End of Removed Items-->
+
                         </div>
                     </div>
                 </div>

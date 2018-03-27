@@ -162,7 +162,9 @@ class Inventory extends CI_Controller
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             <a class=\"dropdown-item\"  href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
-                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a >$viewser
+                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a >
+                            <a class=\"dropdown-item\"  href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
+                            <i class=\"fa fa-remove\" ></i > Remove Item</a >$viewser
                             </div>
                             </div>";
                 }else{
@@ -172,7 +174,9 @@ class Inventory extends CI_Controller
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             <a class=\"dropdown-item\"  href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
-                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a >$viewser
+                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a >
+                            <a class=\"dropdown-item\"  href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
+                            <i class=\"fa fa-remove\" ></i > Remove Item</a >$viewser
                             </div>
                             </div>";
                 }
