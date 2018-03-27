@@ -596,12 +596,13 @@ class Inventory_model extends CI_Model
     {
 
         $pcount = $this->input->post('reconcileitem');
+        $id = $this->input->post('ids');
         $data = array();
-        foreach ($pcount as $key => $value) {
+        foreach (array_combine($id,$pcount) as $key => $value) {
             // if serial is not null
             if ($value !== 'null' || $value !== 0) {
                 $data[] = array(
-                    'item_id' => $key + 1,
+                    'item_id' => $key,
                     'physicalcount' => $value,
                 );
             }

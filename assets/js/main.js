@@ -638,6 +638,13 @@ function init_list() {
         resizable: true,
         columns: [{
             sortable: true,
+            field: 'id',
+            //visible: false,
+            formatter : function(value,row,index) {
+                return '<input hidden name="ids[]" autofocus value="'+value+'"/>';
+            }
+        },{
+            sortable: true,
             field: 'name',
             title: 'NAME'
         }, {
