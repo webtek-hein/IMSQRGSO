@@ -26,8 +26,10 @@
     <?php if($this->session->flashdata('msg')): ?>
     <p><?php echo $this->session->flashdata('msg'); ?></p>
 <?php endif; ?>
-    <div class="fixed-background" style="background-image: url('assets/images/bird.jpg');background-position: center;
+    <div class="fixed-background">
+        <img data-tilt src="<?php echo base_url() ?>assets/images/bird.jpg" alt="IMG" style="background-position: center;
     background-size: cover;">
+    </div>
     <div class="container" style="width:800px; height: 600px;    opacity: 0.8;
     filter: alpha(opacity=50\);">
         <div class="col-md-10 col-md-offset-1 main" >
