@@ -641,6 +641,11 @@ function init_list() {
             field: 'name',
             title: 'NAME'
         }, {
+            sortable:true,
+            fielde: 'date',
+            title: 'DATE'
+
+        },{
             sortable: true,
             field: 'description',
             title: 'DESCRIPTION'
@@ -663,6 +668,10 @@ function init_list() {
                 sortable: true,
                 field: 'result',
                 title: 'RESULT'
+        }, {
+            sortable:true,
+            fields: 'remarks',
+            title: 'REMARKS'
             }]
     });
     $deptTable.bootstrapTable({

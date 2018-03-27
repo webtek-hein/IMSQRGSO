@@ -32,14 +32,14 @@
     </div>
     <div class="container" style="width:800px; height: 600px;    opacity: 0.8;
     filter: alpha(opacity=50\);">
-        <div class="col-md-10 col-md-offset-1 main" >
-            <div class="col-md-6 left-side" >
+        <div class="col-md-12 col-md-offset-1 main" >
+            <div id="left-side" class="col-md-6" >
                 <div class="login00-pic js-tilt" data-tilt>
                     <img data-tilt src="<?php echo base_url() ?>assets/images/butterfly.png" alt="IMG" height="220" width="220" style=" margin-left:65px; margin-top: 115px;">
                 </div>
             </div><!--col-sm-6-->
 
-            <div class="col-md-6 right-side" >
+            <div id="right-side" class="col-md-6">
                 <h3>Login</h3>
 
                 <!--Form with header-->
