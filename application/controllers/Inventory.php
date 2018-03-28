@@ -101,8 +101,10 @@ class Inventory extends CI_Controller
     public function detail($dept, $id)
     {
         $position = $this->session->userdata['logged_in']['position'];
+        $dept = $this->session->userdata['logged_in']['dept_id'];
+
         if ($position === 'Supply Officer' || $dept === 'dept') {
-            $list = $this->inv->viewDetailperDept($id);
+            $list = $this->inv->viewDetailperDept($id,$dept);
         } else {
             $list = $this->inv->viewdetail($id);
         }
@@ -124,7 +126,7 @@ class Inventory extends CI_Controller
                         <span class=\"caret\"></span></a>";
 
                 } elseif ($position === 'Supply Officer') {
-                    if ($detail['status'] !== 'Accepted') {
+                    if ($detail['dist_stat'] !== 'Accepted') {
                         if($detail['serialStatus'] !== '1'){
                             $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
@@ -154,7 +156,7 @@ class Inventory extends CI_Controller
                     }
 
                 }elseif ($dept === 'dept'){
-                    $action = $detail['status'];
+                    $action = $detail['dist_stat'];
                 } elseif($detail['serialStatus'] !== '1') {
                     $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>

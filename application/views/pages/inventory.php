@@ -122,10 +122,11 @@
 
                         </ul>
                         <div class="tab-content pl-3 p-1" id="myTabContent">
-                            <!-- Information-->
                             <div class="tab-pane fade" id="Detail_Info" role="tabpanel"
                                  aria-labelledby="Information-tab">
-                                <div class="col-lg-12">
+                            <!-- Information-->
+                            <?php if($position === 'Custodian'){
+                                echo '<div class="col-lg-12">
                                     <form id="editInformation"
                                           class="serialForm form-horizontal form-label-left"
                                           action="inventory/edititem" method="POST">
@@ -210,15 +211,31 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <?php if ($position === 'Custodian') {
-                                            echo '<button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
+                                        
+                                        <div class ="form-group">
+                                             <button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
                                                     <i class="fa fa-check"></i> save
-                                                </button>';
-                                        }
-                                        ?>
+                                                </button>
+                                        </div>
                                     </form>
-
                                 </div>
+                           ';
+                            }else{
+                                echo '<div class="tab-pane fade show active" id="Detail_Info" role="tabpanel"
+                                 aria-labelledby="Information-ta">
+                                <p class="col-md-12">Item Name : <span id="itemname"></p>
+
+
+                                <p class="col-md-12">Description: <span id="itemdesc"></p>
+
+                                <p class="col-md-12">Total Quantity: <span id="total"></p>
+
+                                <p class="col-md-12">Unit: <span id="unit"></p>
+
+                                <p class="col-md-12">Type: <span id="itemtype"></p>
+                            </div>';
+                            }
+                            ?>
                             </div>
                             <!--Detail-->
                             <div class="table-responsive tab-pane fade show active" id="Detail_Det" role="tabpanel"
@@ -619,7 +636,7 @@
 
                         <div class="item form-group">
                             <div id="container2" class="col-md-10">
-                                <label for="name">Receiving Person</label>
+                                <label for="name">Supply Officer</label>
                                 <input id="owner" class="form-control col-md-7 col-xs-12" name="owner"
                                        type="text">
                             </div>

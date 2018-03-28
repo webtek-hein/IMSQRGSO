@@ -114,7 +114,6 @@
                 <div class="card">
                     <div class="card-header">
                         <button onclick="toggleDiv($('.department-tab'), $('.reconcilePage'))" class="btn btn-primary">Back</button>
-
                     </div>
                     <form id="compareitem" role="form"
                           action="inventory/compare/" method="POST">
