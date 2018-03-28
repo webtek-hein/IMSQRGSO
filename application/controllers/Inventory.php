@@ -337,17 +337,16 @@ class Inventory extends CI_Controller
     {
         $list = $this->inv->reconcile($type, $id);
         $data = array();
-        $count_input = "<input type='text' name='reconcileitem[]' >";
         foreach ($list as $item) {
             $ps = $item['physicalcount'];
             $q = $item['quant'];
-
-            $result = $q - $ps;
-            if($result == 0){
+            $count_input = "<input type='text' name='reconcileitem[]' value='$ps' >";
+            $result = ($q) - $ps;
+            if(($result) == 0){
                 $result = 'equal';
-            }elseif($result > $q){
-                $result = $result . ' missing';
-            }elseif ($result < $q){
+            }elseif(($result) > 0){
+                $result = ($result) . ' missing';
+            }elseif (($result) <0){
                 $result = 'more than ' . abs($result);
             }else{
                 $result = '';
@@ -368,7 +367,7 @@ class Inventory extends CI_Controller
     public function compare(){
 
         echo json_encode($this->inv->compareitem());
-        redirect('department');
+      //  redirect('department');
 
     }
 
