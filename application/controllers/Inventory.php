@@ -101,10 +101,11 @@ class Inventory extends CI_Controller
     public function detail($dept, $id)
     {
         $position = $this->session->userdata['logged_in']['position'];
-        $dept = $this->session->userdata['logged_in']['dept_id'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
+
 
         if ($position === 'Supply Officer' || $dept === 'dept') {
-            $list = $this->inv->viewDetailperDept($id,$dept);
+            $list = $this->inv->viewDetailperDept($id,$dept_id,$position);
         } else {
             $list = $this->inv->viewdetail($id);
         }

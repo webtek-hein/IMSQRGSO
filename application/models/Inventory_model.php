@@ -553,7 +553,7 @@ class Inventory_model extends CI_Model
     }
 
     public
-    function viewDetailperDept($id,$dept)
+    function viewDetailperDept($id,$dept,$position)
     {
         $this->db->select('dist_id,item.item_type,item.serialStatus,quantity_distributed,distribution.cost,
         distribution.status as dist_stat,distribution.PR_no,itemdetail.*,department,supplier_name');
@@ -563,7 +563,9 @@ class Inventory_model extends CI_Model
         $this->db->join('account_code', ' account_code.ac_id = distribution.ac_id ', 'inner');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
         $this->db->where('itemdetail.status','active');
-        $this->db->where('distribution.dept_id',$dept);
+        if($position === 'Supply Officer'){
+            $this->db->where('distribution.dept_id',$dept);
+        }
         $query = $this->db->get_where('distribution', array('itemdetail.item_id' => $id));
         return $query->result_array();
     }
