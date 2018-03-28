@@ -1316,3 +1316,6 @@ function download() {
 function closeSerial() {
     $('.serialdrop').click();
 }
+function removeDetail($id){
+    alert($id);
+}

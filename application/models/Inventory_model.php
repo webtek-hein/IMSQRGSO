@@ -546,6 +546,7 @@ class Inventory_model extends CI_Model
         $this->db->select('OR_no,PO_number,item.serialStatus,item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
         item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
         $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'inner');
+        $this->db->where('itemdetail.status','active');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
         $query = $this->db->get_where('item', array('item.item_id' => $id));;
         return $query->result_array();
@@ -561,6 +562,7 @@ class Inventory_model extends CI_Model
         $this->db->join('department', 'department.dept_id = distribution.dept_id', 'inner');
         $this->db->join('account_code', ' account_code.ac_id = distribution.ac_id ', 'inner');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
+        $this->db->where('itemdetail.status','active');
         $query = $this->db->get_where('distribution', array('itemdetail.item_id' => $id));
         return $query->result_array();
     }
