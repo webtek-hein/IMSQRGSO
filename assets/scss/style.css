@@ -56,7 +56,7 @@
 }
 /*--Ends of Reports Button Option--*/
 
-
+/*--Inventory Detail Action--*/
 #detail-tab-table #rowcheck{
   font-size: 25px;
   color:green;
@@ -64,6 +64,25 @@
 #detail-tab-table #rowcancel{
   font-size: 25px;
   color:red;
+}
+/*--End of Inventory Detail Action--*/
+
+/*--Inventory CSV File--*/
+#import_csv{
+  margin-bottom: 5px;
+}
+/*--End of Inventory CSV File--*/
+
+/*--Topnav User Info--*/
+#header .header-left h5{
+  font-size: 15px;
+  color:#D2691E;
+}
+/*--End of Topnav User Info--*/
+
+.reconcilePage #save1{
+  margin-left: 20px;
+  margin-bottom: 5px;
 }
 
 .table-responsive{

@@ -29,21 +29,22 @@
                     if ($position === 'Custodian') {
 
 
-                        echo '<form method="post" id="import_csv" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Select CSV File</label>
-                            <input type="file" name="csv_file" id="csv_file" required accept=".csv"/>
-                        </div>
-                        <br/>
-                    </form>
-                                <div class="card-header">
-                            <button id="headingTwo" class="btn btn-outline-success">
-                                <i class=" fa fa-plus" ></i><span> New</span></button>
-                            <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" class="btn btn-outline-primary">
-                                <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
-                            <button type="submit" name="import_csv" class="btn btn-outline-info" id="import_csv_btn">
-                                <i class="fa fa-folder-open-o"></i> Import CSV</button>
-                                </div>';
+                        echo '<div class="card-header">
+                                <form method="post" id="import_csv">
+                                <div class="form-group">
+                                    <label>Select CSV File</label>
+                                    <input type="file" name="csv_file" id=""/>
+                                </div>
+                                    <button type="submit" name="import_csv" class="btn btn-info btn-sm" id="import_csv_btn" method="post" 
+                                    required accept=".csv" enctype="multipart/form-data">Import CSV</button> 
+                                </form> 
+
+
+                                <button id="headingTwo" class="btn btn-outline-success">
+                                    <i class=" fa fa-plus" ></i><span> New</span></button>
+                                <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" class="btn btn-outline-primary">
+                                    <i class="fa fa-file-archive-o"></i><span> Reports</span></button>                
+                             </div>';
 
                     }
                     ?>
