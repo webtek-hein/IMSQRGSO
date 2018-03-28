@@ -599,25 +599,24 @@ class Inventory_model extends CI_Model
     public
     function compareitem()
     {
-
-        $pcount = $this->input->post('reconcileitem');
         $remarks = $this->input->post('remarks');
+        $pcount = $this->input->post('reconcileitem');
         $id = $this->input->post('ids');
+        $keys = $this->input->post('ids');
 
-        $item_combine = array_combine($id,$pcount);
-
-        var_dump($item_combine);
         $data = array();
-        foreach ($item_combine as $key => $value) {
+        foreach ($keys as $key => $value) {
             // if serial is not null
             if ($value !== 'null' || $value !== 0) {
-                $data[] = array(
-                    'item_id' => $key,
-                    'physicalcount' => $value
+                $data[$value] = array(
+                    'item_id' => $id[$key],
+                    'physicalcount' => $pcount[$key],
+                    'remarks' => $remarks[$key]
                 );
             }
         }
         var_dump($data);
+
         return $this->db->update_batch('item', $data,'item_id');
     }
 
