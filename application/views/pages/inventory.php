@@ -112,14 +112,14 @@
                             <?php if ($position !== 'Supply Officer') {
                                 echo '<li class="nav-item">
                                 <a class="nav-link" id="genLedger" data-toggle="tab" href="#Detail_Ledger"
-                                   role="tab" aria-controls="Ledger" aria-selected="true">General Ledger</a>
-                                </li>';
-                            }
-                            ?>
-                            <li class="nav-item">
+                                   role="tab" aria-controls="Ledger" aria-selected="true">General Ledger</a></li>
+                                <li class="nav-item">
                                 <a class="nav-link" id="removedItems" data-toggle="tab" href="#removed_Items"
                                    role="tab" aria-controls="removedItems" aria-selected="false">Removed Items</a>
-                            </li>
+                            </li>';
+                            }
+                            ?>
+
 
                         </ul>
                         <div class="tab-content pl-3 p-1" id="myTabContent">
@@ -620,10 +620,10 @@
                         </div>
 
                         <div class="item form-group">
-                            <div id="container2" class="col-md-10">
+                            <div class="col-md-10">
                                 <label for="name">Supply Officer</label>
-                                <input id="owner" class="form-control col-md-7 col-xs-12" name="owner"
-                                       type="text">
+                                <select list="typelist" name="owner" class="ownerOpt form-control" required>
+                                </select>
                             </div>
                         </div>
                     </div>

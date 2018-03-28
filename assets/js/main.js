@@ -1,4 +1,22 @@
 $(document).ready(function () {
+
+    //supply officer options
+    var $ownerOpt = $('.ownerOpt');
+    var users = [];
+    $.ajax({
+        url: "inventory/getSupplyOfficers/11",
+        dataType: 'JSON',
+        success: function (data) {
+            for(var i =0; i <= data.length-1; i++){
+                users += "<option value=" + data[i].user_id + ">" + data[i].name + "<br>";
+            }
+            $ownerOpt.html(users);
+
+        }
+    });
+
+
+
     //return table
     $returnTable = $('#returnTable');
     $returnTable.bootstrapTable('refresh', {url: 'inventory/viewReturn'}).bootstrapTable({
@@ -327,6 +345,9 @@ function deptDet(id,position) {
                         field: 'PR',
                         title: 'PR number'
                     }, {
+                        field: 'receiver',
+                        title: 'Supply Officer'
+                    },{
                         field: 'rec',
                         title: 'Date Received'
                     }, {
@@ -637,6 +658,8 @@ function init_list() {
     var accountCode = [];
     var supplier = [];
     var $deptOpt = $('.deptopt');
+    var $ownerOpt = $('.ownerOpt');
+
     var $deptTable = $('#departmentTable');
     var $deptMOOEtable = $('#deptMOOEtable');
     var $reconcile = $('#reconcileTable');
@@ -662,6 +685,21 @@ function init_list() {
                 department += "<option value=" + data[i].dept_id + ">" + data[i].department + "<br>";
             }
             $deptOpt.html(department);
+            $deptOpt.change(function () {
+                $id = $(this).val()
+                var users = [];
+                $.ajax({
+                    url: "inventory/getSupplyOfficers/"+$id,
+                    dataType: 'JSON',
+                    success: function (data) {
+                        for(var i =0; i <= data.length-1; i++){
+                            users += "<option value=" + data[i].user_id + ">" + data[i].name + "<br>";
+                        }
+                        $ownerOpt.html(users);
+
+                    }
+                });
+            });
         }
     });
     $reconcile.bootstrapTable({

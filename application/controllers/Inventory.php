@@ -182,9 +182,10 @@ class Inventory extends CI_Controller
                             </div>";
                 }
             }
-            if ($position === 'Supply Officer' || $dept === 'dept') {
+            if ($dept === 'dept') {
                 $data[] = array(
                     'PR' => $detail['PR_no'],
+                    'receiver' => $detail['receiver'],
                     'quant' => $detail['quantity_distributed'],
                     'rec' => $detail['date_received'],
                     'exp' => $detail['expiration_date'],
@@ -523,5 +524,12 @@ class Inventory extends CI_Controller
     //revert removed details
     public function revert($id,$serialStatus){
         $this->inv->revert($id,$serialStatus);
+    }
+    //get list of supply officer
+
+    public function getSupplyOfficers($id){
+        $list = $this->inv->getSuppOfficers($id);
+
+        echo json_encode($list);
     }
 }

@@ -188,6 +188,7 @@ class Inventory_model extends CI_Model
     //Distribute item
     public function distrib($position, $user)
     {
+        $owner = $this->input->post('owner');
         $serial_data = [];
         $dept = $this->input->post('dept');
 
@@ -234,7 +235,7 @@ class Inventory_model extends CI_Model
                 'OBR_no' => $this->input->post('obr'),
                 'item_det_id' => $item_det_id,
                 'user_id' => $user,
-                'supply_officer_id' => 1,
+                'supply_officer_id' => $owner,
                 'status' => 'pending',
                 'cost' => $unit_cost
             );
@@ -554,12 +555,14 @@ class Inventory_model extends CI_Model
     public
     function viewDetailperDept($dept,$id,$dept_id,$position)
     {
-        $this->db->select('dist_id,item.item_type,item.serialStatus,quantity_distributed,distribution.cost,
+        $this->db->select('CONCAT(first_name," ",last_name) as receiver,
+        dist_id,item.item_type,item.serialStatus,quantity_distributed,distribution.cost,
         distribution.status as dist_stat,distribution.PR_no,itemdetail.*,department,supplier_name');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
         $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
         $this->db->join('department', 'department.dept_id = distribution.dept_id', 'inner');
         $this->db->join('account_code', ' account_code.ac_id = distribution.ac_id ', 'inner');
+        $this->db->join('user', ' distribution.supply_officer_id = user.user_id ', 'inner');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
         if($position === 'Supply Officer'){
             $this->db->where('distribution.dept_id',$dept_id);
@@ -973,6 +976,12 @@ class Inventory_model extends CI_Model
         $this->db->set('quantity', 'quantity+' . $detailQuant, FALSE);
         $this->db->where('item_id',$item_id);
         $this->db->update('item');
+    }
+    public function getSuppOfficers($id){
+        return $this->db->select('user_id,CONCAT(first_name," ",last_name) as name')
+            ->where('position','Supply Officer')
+            ->where('dept_id',$id)
+            ->get('user')->result_array();
     }
 
 }
