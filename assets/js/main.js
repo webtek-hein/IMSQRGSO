@@ -649,7 +649,7 @@ function init_list() {
             title: 'NAME'
         }, {
             sortable:true,
-            fielde: 'date',
+            field: 'date',
             title: 'DATE'
 
         },{
@@ -665,7 +665,7 @@ function init_list() {
             },
             field: 'quant',
             title: 'QUANTITY DISTRIBUTED',
-            visible: true,
+            visible: true
         }, {
             sortable: true,
             field: 'count',
@@ -677,10 +677,11 @@ function init_list() {
                 title: 'RESULT'
         }, {
             sortable:true,
-            fields: 'remarks',
+            field: 'remarks',
             title: 'REMARKS'
             }]
     });
+
     $deptTable.bootstrapTable({
         pageSize: 10,
         url: 'inventory/viewdept/CO/11',

@@ -583,12 +583,12 @@ class Inventory_model extends CI_Model
     public
     function reconcile($type, $id)
     {
-        $this->db->select('item.*,sum(quantity_distributed) as quant');
+        $this->db->select('item.*,sum(quantity_distributed) as quant,distribution.date_received');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
         $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
         $this->db->where('item.item_type', $type);
         $this->db->where('distribution.dept_id', $id);
-        $this->db->group_by('item.item_id');
+        $this->db->group_by('item.item_id,distribution.date_received');
         $query = $this->db->get('distribution');
         return $query->result_array();
     }
@@ -598,19 +598,24 @@ class Inventory_model extends CI_Model
     {
 
         $pcount = $this->input->post('reconcileitem');
+        $remarks = $this->input->post('remarks');
         $id = $this->input->post('ids');
+
+        $item_combine = array_combine($id,$pcount);
+
+        var_dump($item_combine);
         $data = array();
-        foreach (array_combine($id,$pcount) as $key => $value) {
+        foreach ($item_combine as $key => $value) {
             // if serial is not null
             if ($value !== 'null' || $value !== 0) {
                 $data[] = array(
                     'item_id' => $key,
-                    'physicalcount' => $value,
+                    'physicalcount' => $value
                 );
             }
         }
         var_dump($data);
-        return $this->db->update_batch('item', $data, 'item_id');
+        return $this->db->update_batch('item', $data,'item_id');
     }
 
     public

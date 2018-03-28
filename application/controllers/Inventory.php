@@ -338,10 +338,16 @@ class Inventory extends CI_Controller
         $list = $this->inv->reconcile($type, $id);
         $data = array();
         foreach ($list as $item) {
+
             $ps = $item['physicalcount'];
             $q = $item['quant'];
-            $count_input = "<input type='text' name='reconcileitem[]' value='$ps' >";
+            $remarks = $item['remarks'];
             $result = ($q) - $ps;
+
+            $count_input = "<input autofocus type='text' name='reconcileitem[]' value='$ps' >";
+
+            $remarks_input = "<input autofocus type='text' name='remarks[]' value='$remarks' >";
+
             if(($result) == 0){
                 $result = 'equal';
             }elseif(($result) > 0){
@@ -354,10 +360,12 @@ class Inventory extends CI_Controller
             $data[] = array(
                 'id' => $item['item_id'],
                 'name' => $item['item_name'],
+                'date' => $item['date_received'],
                 'description' => $item['item_description'],
                 'quant' => $item['quant'],
                 'count' => $count_input,
-                'result' => $result
+                'result' => $result,
+                'remarks' => $remarks_input
             );
         }
         echo json_encode($data);
@@ -367,7 +375,7 @@ class Inventory extends CI_Controller
     public function compare(){
 
         echo json_encode($this->inv->compareitem());
-      //  redirect('department');
+        redirect('department');
 
     }
 
