@@ -349,7 +349,7 @@ class Inventory extends CI_Controller
 
             $count_input = "<input autofocus type='text' name='reconcileitem[]' value='$ps' >";
 
-            $remarks_input = "<input autofocus type='text' name='remarks[]' value='$remarks' >";
+            $remarks_input = "<textarea autofocus type='text' name='remarks[]' >$remarks</textarea>";
 
             if(($result) == 0){
                 $result = 'equal';
