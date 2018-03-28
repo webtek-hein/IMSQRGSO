@@ -486,5 +486,14 @@ class Inventory extends CI_Controller
             echo $this->inv->cancelReturn($return_id);
         }
     }
-
+    public function incLog(){
+        $incCount = $this->inv->incLog();
+        $data = array();
+        foreach ($incCount as $list){
+            $data[] = array(
+                'increaseCount' => $list['countInc'],
+            );
+        }
+        echo json_encode($data);
+    }
 }

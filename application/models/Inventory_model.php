@@ -914,5 +914,10 @@ class Inventory_model extends CI_Model
         $this->db->where('return_id',$return_id);
         return $this->db->update('returnitem');
     }
-
+    public function incLog(){
+        $this->db->SELECT('COUNT(inc_log_id) as countInc');
+        $this->db->where('date(timestamp)','CURDATE()',false);
+        $query = $this->db->get('logs.increaselog');
+        return $query->result_array();
+    }
 }
