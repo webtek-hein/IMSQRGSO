@@ -773,7 +773,7 @@ class Inventory_model extends CI_Model
         $this->db->join('serial', 'serial.item_det_id = itemdetail.item_det_id', 'left');
         $this->db->join('distribution', 'distribution.item_det_id = itemdetail.item_det_id', 'left');
         $this->db->join('account_code', 'account_code.ac_id = distribution.ac_id', 'left');
-        $this->db->where('serial.item_status', 'Distributed');
+        $this->db->where('serial.serial !=', NULL);
         $query = $this->db->get('item');
         return $query->result_array();
     }
