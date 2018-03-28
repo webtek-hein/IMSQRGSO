@@ -411,30 +411,29 @@ class Inventory_model extends CI_Model
             $this->db->select('supplier_name');
             $this->db->where('supplier_id', $supplier);
             $supp = $this->db->get('supplier')->row()->supplier_name;
-            $viewser = "";
             if ($serialStatus === '1') {
                 $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
                 $this->db->insert_batch('serial', $serial);
                 $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
-                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($insert_id)\"data-toggle=\"modal\" data-id='$insert_id'data-target=\" .Distribute\">
+                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($item_det_id)\"data-toggle=\"modal\" data-id='$item_det_id'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
-                            <a class=\"dropdown-item\"  href=\"#\" data-toggle=\"modal\" data-quantity='$quantity' data-id='$insert_id'data-target=\" .Edit\">
-                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a ><a class=\"dropdown-item\" onclick='viewSerial($insert_id)' data-toggle=\"collapse\" 
-                               href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\"><i class=\"fa fa-folder-open\"></i>
-                              </i > View Serial</a>
+                            <a class=\"serialdrop dropdown-item\" onclick='viewSerial($item_det_id)' data-toggle=\"collapse\" 
+                            href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\"><i class=\"fa fa-folder-open\"></i>
+                            </i > View Serial </a >
+                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($item_det_id,$serialStatus)\" data-target=\" . Edit\">
+                            <i class=\"fa fa-remove\" ></i > Remove Item</a >
                             </div>
                             </div>";
             } else {
                 $action = "<div class=\"dropdown\">
-                            <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\">
-                            </span></a>
+                            <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
-                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($insert_id)\"data-toggle=\"modal\" data-id='$insert_id'data-target=\" .Distribute\">
+                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($item_det_id)\"data-toggle=\"modal\" data-id='$item_det_id'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
-                            <a class=\"dropdown-item\"  href=\"#\" data-toggle=\"modal\" data-quantity='$quantity' data-id='$insert_id'data-target=\" .Edit\">
-                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a >$viewser
+                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($item_det_id,$serialStatus)\" data-target=\" .Edit\">
+                            <i class=\"fa fa-remove\" ></i > Remove Item</a >
                             </div>
                             </div>";
             }
@@ -541,7 +540,7 @@ class Inventory_model extends CI_Model
     }
 
     public
-    function viewdetail($id)
+    function viewdetail($id,$position)
     {
         $this->db->select('OR_no,PO_number,item.serialStatus,item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
         item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
@@ -553,7 +552,7 @@ class Inventory_model extends CI_Model
     }
 
     public
-    function viewDetailperDept($id,$dept,$position)
+    function viewDetailperDept($dept,$id,$dept_id,$position)
     {
         $this->db->select('dist_id,item.item_type,item.serialStatus,quantity_distributed,distribution.cost,
         distribution.status as dist_stat,distribution.PR_no,itemdetail.*,department,supplier_name');
@@ -562,11 +561,13 @@ class Inventory_model extends CI_Model
         $this->db->join('department', 'department.dept_id = distribution.dept_id', 'inner');
         $this->db->join('account_code', ' account_code.ac_id = distribution.ac_id ', 'inner');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
-        $this->db->where('itemdetail.status','active');
         if($position === 'Supply Officer'){
-            $this->db->where('distribution.dept_id',$dept);
+            $this->db->where('distribution.dept_id',$dept_id);
+        }elseif ($position === 'Custodian' && $dept !== 'dept'){
+            $this->db->where('itemdetail.status','active');
+
         }
-        $query = $this->db->get_where('distribution', array('itemdetail.item_id' => $id));
+        $query = $this->db->get_where('distribution', array('distribution.item_det_id' => $id));
         return $query->result_array();
     }
 
@@ -920,4 +921,58 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('logs.increaselog');
         return $query->result_array();
     }
+    public function rmDet($id,$serialStatus){
+        $this->db->set('status','removed');
+        $this->db->where('item_det_id',$id);
+        $this->db->update('itemdetail');
+
+        if($serialStatus === '1'){
+            $this->db->set('record_status','0');
+            $this->db->where('item_det_id',$id);
+            $this->db->where('dist_id',null,FALSE);
+            $this->db->update('serial');
+        }
+
+        $query = $this->db->select('item_id,quantity')
+            ->where('item_det_id',$id)->get('itemdetail')->row();
+
+        $item_id = $query->item_id;
+        $detailQuant = $query->quantity;
+
+        $this->db->set('quantity', 'quantity-' . $detailQuant, FALSE);
+        $this->db->where('item_id',$item_id);
+        $this->db->update('item');
+    }
+
+    public function rmItems($id){
+        $this->db->select('OR_no,PO_number,item.serialStatus,item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
+        item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
+        $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'inner');
+        $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
+        $this->db->where('itemdetail.status','removed');
+        $query = $this->db->get_where('item', array('item.item_id' => $id));;
+        return $query->result_array();
+    }
+    public function revert($id,$serialStatus){
+        $this->db->set('status','active');
+        $this->db->where('item_det_id',$id);
+        $this->db->update('itemdetail');
+
+        if($serialStatus === '1'){
+            $this->db->set('record_status','1');
+            $this->db->where('item_det_id',$id);
+            $this->db->update('serial');
+        }
+
+        $query = $this->db->select('item_id,quantity')
+            ->where('item_det_id',$id)->get('itemdetail')->row();
+
+        $item_id = $query->item_id;
+        $detailQuant = $query->quantity;
+
+        $this->db->set('quantity', 'quantity+' . $detailQuant, FALSE);
+        $this->db->where('item_id',$item_id);
+        $this->db->update('item');
+    }
+
 }

@@ -103,11 +103,10 @@ class Inventory extends CI_Controller
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
 
-
         if ($position === 'Supply Officer' || $dept === 'dept') {
-            $list = $this->inv->viewDetailperDept($id,$dept_id,$position);
+            $list = $this->inv->viewDetailperDept($dept,$id,$dept_id,$position);
         } else {
-            $list = $this->inv->viewdetail($id);
+            $list = $this->inv->viewdetail($id,$position);
         }
         $data = array();
         $viewser = "";
@@ -164,10 +163,10 @@ class Inventory extends CI_Controller
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
-                            <a class=\"dropdown-item\"  href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
-                            <i class=\"fa fa-adjust\" ></i > Edit Quantity</a >
-                            <a class=\"dropdown-item\"  href=\"#\" data-toggle=\"modal\" data-quantity='$detail[quantity]' data-id='$detail[item_det_id]'data-target=\" .Edit\">
-                            <i class=\"fa fa-remove\"></i > Remove Item</a >$viewser
+                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($detail[item_det_id],$detail[serialStatus])\" data-target=\" . Edit\">
+                            <i class=\"fa fa - remove\" ></i > Remove Item</a >
+                            </div>
+                            $viewser
                             </div>
                             </div>";
                 }else{
@@ -177,7 +176,7 @@ class Inventory extends CI_Controller
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             $viewser
-                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($detail[item_det_id])\" data-target=\" .Edit\">
+                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($detail[item_det_id],$detail[serialStatus])\" data-target=\" .Edit\">
                             <i class=\"fa fa-remove\" ></i > Remove Item</a >
                             </div>
                             </div>";
@@ -472,6 +471,7 @@ class Inventory extends CI_Controller
         }
         echo json_encode($data);
     }
+    //actions for returning
     public function return_actions(){
         $action = $this->input->post('action');
         $return_id = $this->input->post('return_id');
@@ -495,5 +495,33 @@ class Inventory extends CI_Controller
             );
         }
         echo json_encode($data);
+    }
+    //remove detail
+    public function removeDetail($id,$serialStatus){
+        $this->inv->rmDet($id,$serialStatus);
+    }
+
+    //show removed items
+    public function showRemovedItems($id){
+        $list = $this->inv->rmItems($id);
+        $data = [];
+        foreach ($list as $removedItems){
+            $data[] = array(
+                'PO' => $removedItems['PO_number'],
+                'quant' => $removedItems['quantity'],
+                'del' => $removedItems['date_delivered'],
+                'rec' => $removedItems['date_received'],
+                'exp' => $removedItems['expiration_date'],
+                'cost' => $removedItems['unit_cost'],
+                'sup' => $removedItems['supplier_name'],
+                'or' => $removedItems['OR_no'],
+                'action' => "<button onclick=\"revertDetail($removedItems[item_det_id],$removedItems[serialStatus])\" class=\"btn btn-success\">Revert</button>",
+            );
+        }
+    echo json_encode($data);
+    }
+    //revert removed details
+    public function revert($id,$serialStatus){
+        $this->inv->revert($id,$serialStatus);
     }
 }

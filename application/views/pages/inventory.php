@@ -302,24 +302,8 @@
                             <!--Removed Items-->
                             <div class="tab-pane fade" id="removed_Items" role="tabpanel"
                                  aria-labelledby="removed-tab">
-                                <table id="removed-tab-table" data-search="true"
+                                <table id="removed-table" data-search="true" data-show-refresh='true'
                                            class="table-sm table table-no-bordered table-hover">
-
-                                    <theader>
-                                        <tr>
-                                            <th>PO number</th>
-                                            <th>Delivery Date</th>
-                                            <th>Date Received</th>
-                                            <th>Estimated Useful Life</th>
-                                            <th>Unit Cost</th>
-                                            <th>Supplier</th>
-                                            <th>Quantity</th>
-                                            <th>OR number</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </theader>
-
-
                                     </table>
                             </div>
                             <!--End of Removed Items-->
@@ -652,33 +636,7 @@
         </div>
     </div>
 </form>
-<!--Edit Quantity-->
-    <div class="Edit modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="distrib-modal"
-         aria-hidden="true">
-        <div class="modal-dialog">
 
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="largeModalLabel">Adjustment</h5>
-                </div>
-
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="name">Remarks / Reason<span
-                                    class="required">*</span>
-                        </label>
-                        <textarea class="form-control" name="remarks" id="remarks"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i
-                                class="fa fa-arrow-down"></i> Save
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 <!--Distribution for Supply Officer-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/distribute"
       method="POST" data-validate="parsley">
