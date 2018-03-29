@@ -592,14 +592,13 @@ class Inventory_model extends CI_Model
     public
     function reconcile($type, $id)
     {
-        $this->db->select('item.*,sum(quantity_distributed) as quant,sum(reconciliation.physical_count) as pc,reconciliation.remarks,reconciliation.*,distribution.date_received');
+        $this->db->select('item.*,sum(quantity_distributed) as quant,reconciliation.physical_count as pc,reconciliation.remarks,reconciliation.*,distribution.date_received');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
         $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
         $this->db->join('reconciliation', 'distribution.item_det_id = reconciliation.dist_id', 'inner');
         $this->db->where('item.item_type', $type);
         $this->db->where('distribution.dept_id', $id);
         $this->db->group_by('reconciliation.recon_id,reconciliation.dist_id,distribution.date_received');
-        $this->db->limit(1);
         $query = $this->db->get('distribution');
         return $query->result_array();
     }
