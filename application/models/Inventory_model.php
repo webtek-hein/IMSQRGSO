@@ -919,7 +919,7 @@ class Inventory_model extends CI_Model
         return $this->db->update('returnitem');
     }
 
-    //count total items received dash
+    //count total items received dash custodian
     public function itemsrec(){
         $this->db->SELECT('COUNT(inc_log_id) as countInc');
         $this->db->where('date(timestamp)','CURDATE()',false);
@@ -927,7 +927,7 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //count issued items dash
+    //count issued items dash custodian
     public function issued(){
         $this->db->SELECT('COUNT(dec_log_id) as issued');
         $this->db->where('date(timestamp)','CURDATE()',false);
@@ -935,7 +935,7 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //count return items dash
+    //count return items dash custodian
     public function returndash(){
         $this->db->SELECT('COUNT(ret_log_id) as returned');
         $this->db->where('date(timestamp)','CURDATE()',false);
@@ -943,11 +943,26 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //total cost dash
+    //total cost dash custodian
     public function totalcost(){
-        $this->db->SELECT('sum(unit_cost) as total cost');
-        $this->db->where('date_received','CURDATE()');
+        $this->db->SELECT('sum(unit_cost) as totalcost');
+        $this->db->where('date_received','CURDATE()', false);
         $query = $this->db->get('gsois.itemdetail');
+        return $query->result_array();
+    }
+
+    //total expired items dash custodian and admin
+    public function totalexpired(){
+        $this->db->SELECT('count(expiration_date) as expired');
+        $this->db->where('expiration_date <=','CURDATE()',false);
+        $query = $this->db->get('gsois.itemdetail');
+        return $query->result_array();
+    }
+
+    //total user dash admin
+    public function totaluser(){
+        $this->db->SELECT('count(user_id) as totaluser');
+        $query = $this->db->get('gsois.user');
         return $query->result_array();
     }
 

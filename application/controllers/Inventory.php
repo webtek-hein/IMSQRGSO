@@ -488,7 +488,7 @@ class Inventory extends CI_Controller
         }
     }
 
-    //total items received dash custodian
+    //total items received dash custodian and admin
     public function itemsReceived(){
         $itemsreceivedCount = $this->inv->itemsrec();
         $data = array();
@@ -500,7 +500,7 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    //total issued items dash custodian
+    //total issued items dash custodian and admin
     public function issuedItems(){
         $issueditemsCount = $this->inv->issued();
         $data = array();
@@ -512,7 +512,7 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    //total returned items dash custodian
+    //total returned items dash custodian and admin
     public function returnedItems(){
         $returneditemsCount = $this->inv->returndash();
         $data = array();
@@ -524,13 +524,37 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    //total cost dash custodian
+    //total cost dash custodian and admin
     public function totalCost(){
         $totalcostSum = $this->inv->totalcost();
         $data = array();
         foreach ($totalcostSum as $list){
             $data[] = array(
-                'totalcostSum' => $list['total cost'],
+                'totalcostSum' => $list['totalcost'],
+            );
+        }
+        echo json_encode($data);
+    }
+
+    //total expired items dash custodian and admin
+    public function totalExpired(){
+        $totalexpiredCount = $this->inv->totalexpired();
+        $data = array();
+        foreach ($totalexpiredCount as $list){
+            $data[] = array(
+                'totalexpiredcount' => $list['expired'],
+            );
+        }
+        echo json_encode($data);
+    }
+
+    //total user dash admin
+    public function totalUser(){
+        $totaluserCount = $this->inv->totaluser();
+        $data = array();
+        foreach ($totaluserCount as $list){
+            $data[] = array(
+                'totalusercount' => $list['totaluser'],
             );
         }
         echo json_encode($data);
