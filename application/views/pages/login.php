@@ -27,8 +27,7 @@
     <p><?php echo $this->session->flashdata('msg'); ?></p>
 <?php endif; ?>
     <div class="fixed-background">
-        <img data-tilt src="<?php echo base_url() ?>assets/images/bird.jpg" alt="IMG" style="background-position: center;
-    background-size: cover;">
+        <img data-tilt src="<?php echo base_url() ?>assets/images/bird.jpg" alt="IMG" style="max-width: 100%;height: auto;width: auto\9;">
     </div>
     <div class="container" style="width:800px; height: 600px;    opacity: 0.8;
     filter: alpha(opacity=50\);">
