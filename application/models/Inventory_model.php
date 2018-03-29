@@ -967,6 +967,7 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('gsois.user');
         return $query->result_array();
     }
+
     //count items issued for the day
     public function itemsThisDay($userid){
         $this->db->SELECT('count(logs.dist_id) as totalItems');
