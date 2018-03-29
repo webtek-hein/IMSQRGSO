@@ -1,4 +1,22 @@
 $(document).ready(function () {
+
+    //supply officer options
+    var $ownerOpt = $('.ownerOpt');
+    var users = [];
+    $.ajax({
+        url: "inventory/getSupplyOfficers/11",
+        dataType: 'JSON',
+        success: function (data) {
+            for(var i =0; i <= data.length-1; i++){
+                users += "<option value=" + data[i].user_id + ">" + data[i].name + "<br>";
+            }
+            $ownerOpt.html(users);
+
+        }
+    });
+
+
+
     //return table
     $returnTable = $('#returnTable');
     $returnTable.bootstrapTable('refresh', {url: 'inventory/viewReturn'}).bootstrapTable({
@@ -179,6 +197,7 @@ function detail(id) {
     localStorage.setItem('detail', 'detail(' + id + ')');
     var $detailtable = $('#detail-tab-table');
     var $ledger = $('#ledger');
+    var $rmItems = $('#removed-table');
 
     var item;
     $.ajax({
@@ -259,6 +278,38 @@ function detail(id) {
                     title: 'Transaction'
                 }]
             });
+            $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + id});
+            $rmItems.bootstrapTable({
+                url: 'inventory/showRemovedItems/' + id,
+                columns: [{
+                    field: 'PO',
+                    title: 'PO number'
+                }, {
+                    field: 'del',
+                    title: 'Delivery Date'
+                }, {
+                    field: 'rec',
+                    title: 'Date Received'
+                }, {
+                    field: 'exp',
+                    title: 'Estimated Useful Life'
+                }, {
+                    field: 'cost',
+                    title: 'Unit Cost'
+                }, {
+                    field: 'sup',
+                    title: 'Supplier'
+                }, {
+                    field: 'quant',
+                    title: 'Quantity'
+                }, {
+                    field: 'or',
+                    title: 'OR number'
+                }, {
+                    field: 'action',
+                    title: 'Action'
+                }]
+            });
             serialize_forms();
         }
     });
@@ -294,6 +345,9 @@ function deptDet(id,position) {
                         field: 'PR',
                         title: 'PR number'
                     }, {
+                        field: 'receiver',
+                        title: 'Supply Officer'
+                    },{
                         field: 'rec',
                         title: 'Date Received'
                     }, {
@@ -604,6 +658,8 @@ function init_list() {
     var accountCode = [];
     var supplier = [];
     var $deptOpt = $('.deptopt');
+    var $ownerOpt = $('.ownerOpt');
+
     var $deptTable = $('#departmentTable');
     var $deptMOOEtable = $('#deptMOOEtable');
     var $reconcile = $('#reconcileTable');
@@ -629,9 +685,23 @@ function init_list() {
                 department += "<option value=" + data[i].dept_id + ">" + data[i].department + "<br>";
             }
             $deptOpt.html(department);
+            $deptOpt.change(function () {
+                $id = $(this).val()
+                var users = [];
+                $.ajax({
+                    url: "inventory/getSupplyOfficers/"+$id,
+                    dataType: 'JSON',
+                    success: function (data) {
+                        for(var i =0; i <= data.length-1; i++){
+                            users += "<option value=" + data[i].user_id + ">" + data[i].name + "<br>";
+                        }
+                        $ownerOpt.html(users);
+
+                    }
+                });
+            });
         }
     });
-    // on department change
     $reconcile.bootstrapTable({
         pageSize: 10,
         url: 'inventory/reconcileview/CO/11',
@@ -747,11 +817,10 @@ function init_list() {
         //     title: 'PRICE'
         // }]
     });
-
+    // on department change
     $('#select-dept').change(function () {
         var id = $(this).val();
         var type = $('#myTab').find('[aria-selected=true]')[0].id;
-        console.log($('#myTab').find('[aria-selected=true]')[0].id);
         if (type === 'CO-tab') {
             $deptTable.bootstrapTable('refresh', {url: 'inventory/viewdept/CO/' + id});
         } else {
@@ -1317,6 +1386,29 @@ function download() {
 function closeSerial() {
     $('.serialdrop').click();
 }
-function removeDetail($id){
-    alert($id);
+//remove Detail
+function removeDetail($id,$serialStatus){
+    var $detailtable = $('#detail-tab-table');
+    var $rmItems = $('#removed-table');
+    $.ajax({
+        url: "inventory/removeDetail/"+$id+"/"+$serialStatus,
+        method: "POST",
+        success: function (data) {
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $id});
+            $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $id});
+        }
+    });
+}
+//revert removed detail
+function revertDetail($det_id,$serialStatus) {
+    var $detailtable = $('#detail-tab-table');
+    var $rmItems = $('#removed-table');
+    $.ajax({
+        url: "inventory/revert/"+$det_id+"/"+$serialStatus,
+        method: "POST",
+        success: function (data) {
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $det_id});
+            $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $det_id});
+        }
+    });
 }

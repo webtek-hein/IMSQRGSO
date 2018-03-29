@@ -29,21 +29,22 @@
                     if ($position === 'Custodian') {
 
 
-                        echo '<form method="post" id="import_csv" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Select CSV File</label>
-                            <input type="file" name="csv_file" id="csv_file" required accept=".csv"/>
-                        </div>
-                        <br/>
-                    </form>
-                                <div class="card-header">
-                            <button id="headingTwo" class="btn btn-outline-success">
-                                <i class=" fa fa-plus" ></i><span> New</span></button>
-                            <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" class="btn btn-outline-primary">
-                                <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
-                            <button type="submit" name="import_csv" class="btn btn-outline-info" id="import_csv_btn">
-                                <i class="fa fa-folder-open-o"></i> Import CSV</button>
-                                </div>';
+                        echo '<div class="card-header">
+                                <form method="post" id="import_csv">
+                                <div class="form-group">
+                                    <label>Select CSV File</label>
+                                    <input type="file" name="csv_file" id=""/>
+                                </div>
+                                    <button type="submit" name="import_csv" class="btn btn-info btn-sm" id="import_csv_btn" method="post" 
+                                    required accept=".csv" enctype="multipart/form-data">Import CSV</button> 
+                                </form> 
+
+
+                                <button id="headingTwo" class="btn btn-outline-success">
+                                    <i class=" fa fa-plus" ></i><span> New</span></button>
+                                <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" class="btn btn-outline-primary">
+                                    <i class="fa fa-file-archive-o"></i><span> Reports</span></button>                
+                             </div>';
 
                     }
                     ?>
@@ -111,14 +112,14 @@
                             <?php if ($position !== 'Supply Officer') {
                                 echo '<li class="nav-item">
                                 <a class="nav-link" id="genLedger" data-toggle="tab" href="#Detail_Ledger"
-                                   role="tab" aria-controls="Ledger" aria-selected="true">General Ledger</a>
-                                </li>';
-                            }
-                            ?>
-                            <li class="nav-item">
+                                   role="tab" aria-controls="Ledger" aria-selected="true">General Ledger</a></li>
+                                <li class="nav-item">
                                 <a class="nav-link" id="removedItems" data-toggle="tab" href="#removed_Items"
                                    role="tab" aria-controls="removedItems" aria-selected="false">Removed Items</a>
-                            </li>
+                            </li>';
+                            }
+                            ?>
+
 
                         </ul>
                         <div class="tab-content pl-3 p-1" id="myTabContent">
@@ -301,24 +302,8 @@
                             <!--Removed Items-->
                             <div class="tab-pane fade" id="removed_Items" role="tabpanel"
                                  aria-labelledby="removed-tab">
-                                <table id="removed-tab-table" data-search="true"
+                                <table id="removed-table" data-search="true" data-show-refresh='true'
                                            class="table-sm table table-no-bordered table-hover">
-
-                                    <theader>
-                                        <tr>
-                                            <th>PO number</th>
-                                            <th>Delivery Date</th>
-                                            <th>Date Received</th>
-                                            <th>Estimated Useful Life</th>
-                                            <th>Unit Cost</th>
-                                            <th>Supplier</th>
-                                            <th>Quantity</th>
-                                            <th>OR number</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </theader>
-
-
                                     </table>
                             </div>
                             <!--End of Removed Items-->
@@ -635,10 +620,10 @@
                         </div>
 
                         <div class="item form-group">
-                            <div id="container2" class="col-md-10">
+                            <div class="col-md-10">
                                 <label for="name">Supply Officer</label>
-                                <input id="owner" class="form-control col-md-7 col-xs-12" name="owner"
-                                       type="text">
+                                <select list="typelist" name="owner" class="ownerOpt form-control" required>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -651,33 +636,7 @@
         </div>
     </div>
 </form>
-<!--Edit Quantity-->
-    <div class="Edit modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="distrib-modal"
-         aria-hidden="true">
-        <div class="modal-dialog">
 
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="largeModalLabel">Adjustment</h5>
-                </div>
-
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="name">Remarks / Reason<span
-                                    class="required">*</span>
-                        </label>
-                        <textarea class="form-control" name="remarks" id="remarks"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i
-                                class="fa fa-arrow-down"></i> Save
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 <!--Distribution for Supply Officer-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/distribute"
       method="POST" data-validate="parsley">
