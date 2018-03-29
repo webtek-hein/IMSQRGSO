@@ -364,6 +364,7 @@ class Inventory_model extends CI_Model
     {
         $this->db->select('item.*,(cost*quantity) as totalcost');
         $this->db->where('item_type', $type);
+        $this->db->order_by('item_id','desc');
         $query = $this->db->get('item');
         return $query->result_array();
     }
@@ -550,7 +551,9 @@ class Inventory_model extends CI_Model
         $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'inner');
         $this->db->where('itemdetail.status','active');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
+        $this->db->order_by('itemdetail.item_det_id','desc');
         $query = $this->db->get_where('item', array('item.item_id' => $id));;
+
         return $query->result_array();
     }
 
@@ -572,6 +575,7 @@ class Inventory_model extends CI_Model
             $this->db->where('itemdetail.status','active');
 
         }
+        $this->db->order_by('dist_id','desc');
         $query = $this->db->get_where('distribution', array('distribution.item_det_id' => $id));
         return $query->result_array();
     }
@@ -585,6 +589,7 @@ class Inventory_model extends CI_Model
         $this->db->where('item.item_type', $type);
         $this->db->where('distribution.dept_id', $id);
         $this->db->group_by('item.item_id');
+        $this->db->order_by('item.item_id','desc');
         $query = $this->db->get('distribution');
         return $query->result_array();
     }
@@ -599,6 +604,7 @@ class Inventory_model extends CI_Model
         $this->db->where('item.item_type', $type);
         $this->db->where('distribution.dept_id', $id);
         $this->db->group_by('reconciliation.recon_id,reconciliation.dist_id,distribution.date_received');
+        $this->db->order_by('item.item_id','desc');
         $query = $this->db->get('distribution');
         return $query->result_array();
     }
