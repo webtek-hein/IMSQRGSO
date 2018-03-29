@@ -607,6 +607,23 @@ class Inventory extends CI_Controller
             echo $list['totalItemsReturned'];
         }
     }
+    //items expired for SupplyOfficer
+     public function itemsExpiredSO()
+    {
+        $totalEx = $this->inv->itemsExpired();
+        foreach ($totalEx as $list) {
+            echo $list['totalItemsExpired'];
+        }
+    }
+    //total items cost Supply 
+     public function itemTcostSO()
+    {
+        $totalEx = $this->inv->itemsTcost();
+        foreach ($totalEx as $list) {
+            echo $list['itemTcost'];
+        }
+    }
+
     //deliver Reports
     public function getReport($report){
         if($report === '0'){

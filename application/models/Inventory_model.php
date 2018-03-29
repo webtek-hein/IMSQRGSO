@@ -996,6 +996,25 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('logs.returnlog');
         return $query->result_array();
     }
+    //count expired items supply officer
+    public function itemsExpired(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $this->db->SELECT('count(gsois.itemdetail.item_id) as totalItemsExpired');
+        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
+        $this->db->WHERE('gsois.itemdetail.expiration_date >=','CURDATE()',false);
+        $this->db->JOIN('gsois.distribution','gsois.distribution.item_det_id = gsois.itemdetail.item_det_id');
+        $query = $this->db->get('gsois.itemdetail');
+        return $query->result_array();
+    }
+    //total cost supply officer
+    public function itemsTcost(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $this->db->select('sum(gsois.distribution.cost*gsois.distribution.quantity_distributed) as itemTcost');
+        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
+        $this->db->WHERE('gsois.distribution.status', 'Accepted');
+        $query = $this->db->get('gsois.distribution');
+        return $query->result_array();
+    }
 //end of supplier dashboard
     public function rmDet($id,$serialStatus){
         $this->db->set('status','removed');
