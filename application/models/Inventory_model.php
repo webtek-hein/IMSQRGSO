@@ -287,7 +287,7 @@ class Inventory_model extends CI_Model
                 $this->db->update('serial');
             } else {
                 $quantity = $this->input->post('quantity');
-
+                $dist_id = $this->input->post('id');
                 $mooedata = array('dist_id' => $dist_id, 'employee' => $employee, 'quantity_distributed' => $quantity);
 
                 $this->db->insert('mooedistribution', $mooedata);
