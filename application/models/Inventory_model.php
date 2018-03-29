@@ -929,6 +929,7 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('logs.increaselog');
         return $query->result_array();
     }
+
     //count issued items dash custodian
     public function issued(){
         $this->db->SELECT('COUNT(dec_log_id) as issued');
@@ -936,6 +937,7 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('logs.decreaselog');
         return $query->result_array();
     }
+
     //count return items dash custodian
     public function returndash(){
         $this->db->SELECT('COUNT(ret_log_id) as returned');
@@ -943,6 +945,7 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('logs.returnlog');
         return $query->result_array();
     }
+
     //total cost dash custodian
     public function totalcost(){
         $this->db->SELECT('sum(unit_cost) as totalcost');
@@ -950,6 +953,7 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('gsois.itemdetail');
         return $query->result_array();
     }
+
     //total expired items dash custodian and admin
     public function totalexpired(){
         $this->db->SELECT('count(expiration_date) as expired');
@@ -961,6 +965,14 @@ class Inventory_model extends CI_Model
     public function totaluser(){
         $this->db->SELECT('count(user_id) as totaluser');
         $query = $this->db->get('gsois.user');
+        return $query->result_array();
+    }
+    //count items issued for the day
+    public function itemsThisDay($userid){
+        $this->db->SELECT('count(logs.dist_id) as totalItems');
+                 ->WHERE('gsois.user.user_id', $userid);
+                 ->JOIN('gsois.user','logs.decreaselog.userid = gsois.user.user_id');
+        $query = $this->db->get('logs.deacreaselog.dist_id');
         return $query->result_array();
     }
 
