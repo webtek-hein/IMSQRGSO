@@ -24,7 +24,6 @@ if ($position === 'Admin') {
             <div class="card1-body pb-0">
                 <i class="fa fa-book" style="font-size:40px;"></i>
                 <h4 class="mb-0">
-                    <span class="count">10468</span>
                 </h4>
                 <p class="text-light">Total Items Received</p>
             </div>
@@ -83,8 +82,7 @@ if ($position === 'Admin') {
         <div class="dashnotif text-white bg-flat-color-6" style = "height: 130px; padding: 15px; background: #f49230;" >
             <div class="car1d-body pb-0" >
                 <i class="fa fa-users" style = "font-size:40px;" ></i >
-                <h4 class="mb-0" >
-                    <span class="count" > 10468</span >
+                <h4 class="mb-0" id="tUser">
                 </h4 >
                 <p class="text-light" > Total Users </p >
             </div >
