@@ -1058,15 +1058,20 @@ class Inventory_model extends CI_Model
             ->where('dept_id',$id)
             ->get('user')->result_array();
     }
-
-    public function deliveredReports()
+    //items delivered/added report
+    public function deliveredReports($type)
     {
-        return $this->db->select('date_delivered,item.*')
-            ->join('item', 'itemdetail.item_id = item.item_id')
-            ->get('itemdetail')->result_array();
+         $this->db->select('date_delivered,item.*')
+            ->join('item', 'itemdetail.item_id = item.item_id');
+            if($type === 'CO'){
+                $this->db->where('item.item_type',$type);
+            }elseif ($type === 'MOOE'){
+                $this->db->where('item.item_type',$type);
+            }
+        return $this->db->get('itemdetail')->result_array();
     }
-
-    public function issuedReports()
+    //items issued reports
+    public function issuedReports($type)
     {
         $this->db->select('PR_no,,distribution.cost,department,distribution.date_received,CONCAT(first_name," ",last_name) as supply_officer,item.*,account_code');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
@@ -1074,11 +1079,16 @@ class Inventory_model extends CI_Model
         $this->db->join('department', 'distribution.dept_id = department.dept_id');
         $this->db->join('user', 'distribution.supply_officer_id = user.user_id');
         $this->db->join('account_code', 'distribution.ac_id = account_code.ac_id');
+        if($type === 'CO'){
+            $this->db->where('item.item_type',$type);
+        }elseif ($type === 'MOOE'){
+            $this->db->where('item.item_type',$type);
+        }
         $query = $this->db->get('distribution');
         return $query->result_array();
     }
-
-    public function returnedReports()
+    // items return reports
+    public function returnedReports($type)
     {
         $this->db->select('receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no');
         $this->db->join('itemdetail', 'returnitem.item_det_id = itemdetail.item_det_id', 'inner');
@@ -1086,16 +1096,26 @@ class Inventory_model extends CI_Model
         $this->db->join('distribution', 'returnitem.dist_id = distribution.dist_id', 'inner');
         $this->db->join('department', 'department.dept_id = distribution.dept_id', 'inner');
         $this->db->where('returnitem.status', 'accepted');
+        if($type === 'CO'){
+            $this->db->where('item.item_type',$type);
+        }elseif ($type === 'MOOE'){
+            $this->db->where('item.item_type',$type);
+        }
 
         $query = $this->db->get('returnitem');
 
         return $query->result_array();
     }
-    public function supplierReport(){
+    //supplier report
+    public function supplierReport($type){
         $this->db->select('supplier_name,item.*,itemdetail.date_delivered');
         $this->db->join('itemdetail', 'itemdetail.supplier_id = supplier.supplier_id', 'inner');
         $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
-
+        if($type === 'CO'){
+            $this->db->where('item.item_type',$type);
+        }elseif ($type === 'MOOE'){
+            $this->db->where('item.item_type',$type);
+        }
         $query = $this->db->get('supplier');
 
         return $query->result_array();

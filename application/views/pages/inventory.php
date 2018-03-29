@@ -492,7 +492,19 @@
             </button>
         </div>
         <div class="card-body">
-                <div class="select">
+            <div class="options">
+                <div class="checkbox opt1">
+                    <label>OPTION: </label>
+                    <label><input type="radio" name="type" value="CO"> Capital Outlay</label>
+
+                    <label><input type="radio" name="type" value="MOOE"> MOOE</label>
+
+                    <label><input type="radio" name="type" value="ALL" checked> ALL</label>
+                </div>
+
+
+            </div>
+            <div class="select">
                     <label>Rerports on:</label>
                     <select id="reportsOption">
                         <option value="0">Delivered Item</option>
@@ -501,18 +513,6 @@
                         <option value="3">Supplier</option>
                     </select>
                 </div>
-            <div class="options">
-                <div class="checkbox opt1">
-                    <label>OPTION: </label>
-                    <label><input type="radio" name="type" value="CO"> Capital Outlay</label>
-
-                    <label><input type="radio" name="type" value="MOOE"> MOOE</label>
-
-                    <label><input type="radio" name="type" value="ALL"> ALL</label>
-                </div>
-
-
-            </div>
             <div class="returnedReport">
                 <table id="reportTable" data-show-refresh="true" data-search="true" data-pagination="true"
                        class="table-sm table table-no-bordered table-hover">
