@@ -1,46 +1,16 @@
 $(document).ready(function () {
 
-//load data total user dash
+//load data dash
 $(document).ready(function () {
     setInterval(function () {
         $( "#tUser" ).load("inventory/totalUser");
+        $( "#itemsrec" ).load("inventory/itemsReceived");
+        $( "#itemsiss" ).load("inventory/issuedItems");
+        $( "#retitem" ).load("inventory/returnedItems");
+        $( "#expitems" ).load("inventory/totalExpired");
+        $( "#tcost" ).load("inventory/totalCost");
     },1000);
 });
-
-//load data items received dash
-    $(document).ready(function () {
-        setInterval(function () {
-            $( "#itemsrec" ).load("inventory/itemsReceived");
-        },1000);
-    });
-
-//load data items issued dash
-    $(document).ready(function () {
-        setInterval(function () {
-            $( "#itemsiss" ).load("inventory/issuedItems");
-        },1000);
-    });
-
-//load data items issued dash
-    $(document).ready(function () {
-        setInterval(function () {
-            $( "#retitem" ).load("inventory/returnedItems");
-        },1000);
-    });
-
-//load data items issued dash
-    $(document).ready(function () {
-        setInterval(function () {
-            $( "#expitems" ).load("inventory/totalExpired");
-        },1000);
-    });
-
-//load data items issued dash
-    $(document).ready(function () {
-        setInterval(function () {
-            $( "#tcost" ).load("inventory/totalCost");
-        },1000);
-    });
 
     //supply officer options
     var $ownerOpt = $('.ownerOpt');
