@@ -935,7 +935,7 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //count return items dash
+    //count returned items dash
     public function returndash(){
         $this->db->SELECT('COUNT(ret_log_id) as returned');
         $this->db->where('date(timestamp)','CURDATE()',false);
@@ -943,7 +943,7 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //total cost dash
+    //sum total cost dash
     public function totalcost(){
         $this->db->SELECT('sum(unit_cost) as total cost');
         $this->db->where('date_received','CURDATE()');

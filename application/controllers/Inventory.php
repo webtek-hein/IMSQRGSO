@@ -488,7 +488,7 @@ class Inventory extends CI_Controller
         }
     }
 
-    //total items received dash custodian
+    //count items received dash custodian
     public function itemsReceived(){
         $itemsreceivedCount = $this->inv->itemsrec();
         $data = array();
@@ -500,7 +500,7 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    //total issued items dash custodian
+    //count issued items dash custodian
     public function issuedItems(){
         $issueditemsCount = $this->inv->issued();
         $data = array();
@@ -512,7 +512,7 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    //total returned items dash custodian
+    //count returned items dash custodian
     public function returnedItems(){
         $returneditemsCount = $this->inv->returndash();
         $data = array();
@@ -524,7 +524,7 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    //total cost dash custodian
+    //sum total cost dash custodian
     public function totalCost(){
         $totalcostSum = $this->inv->totalcost();
         $data = array();
