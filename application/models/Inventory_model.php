@@ -1001,6 +1001,7 @@ class Inventory_model extends CI_Model
         $query = $this->db->get_where('item', array('item.item_id' => $id));;
         return $query->result_array();
     }
+
     public function revert($id,$serialStatus){
         $this->db->set('status','active');
         $this->db->where('item_det_id',$id);
@@ -1022,6 +1023,7 @@ class Inventory_model extends CI_Model
         $this->db->where('item_id',$item_id);
         $this->db->update('item');
     }
+
     public function getSuppOfficers($id){
         return $this->db->select('user_id,CONCAT(first_name," ",last_name) as name')
             ->where('position','Supply Officer')
