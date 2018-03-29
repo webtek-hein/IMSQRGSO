@@ -961,11 +961,25 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('gsois.itemdetail');
         return $query->result_array();
     }
+    public function totalexpired(){
+        $this->db->SELECT('count(expiration_date) as expired');
+        $this->db->where('expiration_date <=','CURDATE()',false);
+        $query = $this->db->get('gsois.itemdetail');
+        return $query->result_array();
+    }
 
     //total user dash admin
     public function totaluser(){
         $this->db->SELECT('count(user_id) as totaluser');
         $query = $this->db->get('gsois.user');
+        return $query->result_array();
+    }
+    //count items issued for the day
+    public function itemsThisDay($userid){
+        $this->db->SELECT('count(logs.dist_id) as totalItems');
+                 ->WHERE('gsois.user.user_id', $userid);
+                 ->JOIN('gsois.user','logs.decreaselog.userid = gsois.user.user_id');
+        $query = $this->db->get('logs.deacreaselog.dist_id');
         return $query->result_array();
     }
 

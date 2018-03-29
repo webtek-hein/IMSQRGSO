@@ -597,4 +597,15 @@ class Inventory extends CI_Controller
 
         echo json_encode($list);
     }
+
+    public function itemsThisDay(){
+        $itemsIssuedCount = $this->inv->itemsrec();
+        $data = array();
+        foreach ($itemsIssuedCount as $list){
+            $data[] = array(
+                'itemsIssuedCount' => $list['totalItems'],
+            );
+        }
+        echo json_encode($data);
+    }
 }
