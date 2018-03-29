@@ -487,16 +487,55 @@ class Inventory extends CI_Controller
             echo $this->inv->cancelReturn($return_id);
         }
     }
-    public function incLog(){
-        $incCount = $this->inv->incLog();
+
+    //total items received dash custodian
+    public function itemsReceived(){
+        $itemsreceivedCount = $this->inv->itemsrec();
         $data = array();
-        foreach ($incCount as $list){
+        foreach ($itemsreceivedCount as $list){
             $data[] = array(
-                'increaseCount' => $list['countInc'],
+                'itemsreceivedCount' => $list['countInc'],
             );
         }
         echo json_encode($data);
     }
+
+    //total issued items dash custodian
+    public function issuedItems(){
+        $issueditemsCount = $this->inv->issued();
+        $data = array();
+        foreach ($issueditemsCount as $list){
+            $data[] = array(
+                'issuedCount' => $list['issued'],
+            );
+        }
+        echo json_encode($data);
+    }
+
+    //total returned items dash custodian
+    public function returnedItems(){
+        $returneditemsCount = $this->inv->returndash();
+        $data = array();
+        foreach ($returneditemsCount as $list){
+            $data[] = array(
+                'returnedCount' => $list['returned'],
+            );
+        }
+        echo json_encode($data);
+    }
+
+    //total cost dash custodian
+    public function totalCost(){
+        $totalcostSum = $this->inv->totalcost();
+        $data = array();
+        foreach ($totalcostSum as $list){
+            $data[] = array(
+                'totalcostSum' => $list['total cost'],
+            );
+        }
+        echo json_encode($data);
+    }
+
     //remove detail
     public function removeDetail($id,$serialStatus){
         $this->inv->rmDet($id,$serialStatus);
