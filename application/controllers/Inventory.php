@@ -591,22 +591,20 @@ class Inventory extends CI_Controller
 
         echo json_encode($list);
     }
+//supplier dashboard
     //count items issued for the supplier for this day
     public function itemsThisDay(){
         $itemsIssuedCount = $this->inv->itemsThisDay();
-        $data = array();
         foreach ($itemsIssuedCount as $list){
-            $data[] = array(
-                'itemsIssuedCount' => $list['totalItems'],
-            );
+                echo $list['totalItems'];
         }
-        echo json_encode($data);
     }
+    //items returned for the supplier for this day
      public function itemsReturnedThisDay()
     {
         $totalReturned = $this->inv->itemsReturnedThisDay();
         foreach ($totalReturned as $list) {
-            echo $list['totalItems'];
+            echo $list['totalItemsReturned'];
         }
     }   
 }

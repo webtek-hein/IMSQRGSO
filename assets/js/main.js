@@ -9,6 +9,8 @@ $(document).ready(function () {
         $( "#retitem" ).load("inventory/returnedItems");
         $( "#expitems" ).load("inventory/totalExpired");
         $( "#tcost" ).load("inventory/totalCost");
+        $( "#tItemsDay" ).load("inventory/itemsThisDay");
+        $( "#tReturnedDay" ).load("inventory/itemsReturnedThisDay");
     },1000);
 });
 

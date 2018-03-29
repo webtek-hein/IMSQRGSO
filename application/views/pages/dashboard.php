@@ -152,9 +152,7 @@ if ($position === 'Supply Officer') {
         <div class="card1 text-white bg-flat-color-1" style="height: 130px; padding: 15px;">
             <div class="card1-body pb-0">
                 <i class="fa fa-book" style="font-size:40px;"></i>
-                <h4 class="mb-0">
-                    <span class="count">10468</span>
-                </h4>
+                <h4 class="mb-0" id="tItemsDay"></h4>
                 <p class="text-light">Total Items Received</p>
             </div>
         </div>
@@ -164,9 +162,7 @@ if ($position === 'Supply Officer') {
         <div class="card1 text-white bg-flat-color-3" style = "height: 130px; padding: 15px;" >
             <div class="card1-body pb-0" >
                 <i class="fa fa-undo" style = "font-size:40px;" ></i >
-                <h4 class="mb-0" >
-                    <span class="count" > 10468</span >
-                </h4 >
+                <h4 class="mb-0" id="tReturnedDay"></h4 >
                 <p class="text-light" > Returned Items </p >
             </div >
         </div >

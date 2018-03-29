@@ -988,7 +988,7 @@ class Inventory_model extends CI_Model
     //count items returned for the day
     public function itemsReturnedThisDay(){
         $user_id = $this->session->userdata['logged_in']['user_id'];
-        $this->db->SELECT('count(logs.returnlog.ret_log_id) as totalItems');
+        $this->db->SELECT('count(logs.returnlog.ret_log_id) as totalItemsReturned');
         $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
         $this->db->WHERE('date(timestamp)','CURDATE()',false);
         $this->db->JOIN('gsois.returnitem','gsois.returnitem.return_id = logs.returnlog.return_id');   
