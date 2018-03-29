@@ -606,5 +606,17 @@ class Inventory extends CI_Controller
         foreach ($totalReturned as $list) {
             echo $list['totalItemsReturned'];
         }
-    }   
+    }
+    //deliver Reports
+    public function getReport($report){
+        if($report === '0'){
+            echo json_encode($this->inv->deliveredReports());
+        }elseif ($report === '1'){
+            echo json_encode($this->inv->issuedReports());
+        }elseif ($report === '2'){
+            echo json_encode($this->inv->returnedReports());
+        }else{
+            echo json_encode($this->inv->supplierReport());
+        }
+    }
 }

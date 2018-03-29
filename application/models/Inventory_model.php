@@ -1059,4 +1059,45 @@ class Inventory_model extends CI_Model
             ->get('user')->result_array();
     }
 
+    public function deliveredReports()
+    {
+        return $this->db->select('date_delivered,item.*')
+            ->join('item', 'itemdetail.item_id = item.item_id')
+            ->get('itemdetail')->result_array();
+    }
+
+    public function issuedReports()
+    {
+        $this->db->select('PR_no,,distribution.cost,department,distribution.date_received,CONCAT(first_name," ",last_name) as supply_officer,item.*,account_code');
+        $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
+        $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
+        $this->db->join('department', 'distribution.dept_id = department.dept_id');
+        $this->db->join('user', 'distribution.supply_officer_id = user.user_id');
+        $this->db->join('account_code', 'distribution.ac_id = account_code.ac_id');
+        $query = $this->db->get('distribution');
+        return $query->result_array();
+    }
+
+    public function returnedReports()
+    {
+        $this->db->select('receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no');
+        $this->db->join('itemdetail', 'returnitem.item_det_id = itemdetail.item_det_id', 'inner');
+        $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
+        $this->db->join('distribution', 'returnitem.dist_id = distribution.dist_id', 'inner');
+        $this->db->join('department', 'department.dept_id = distribution.dept_id', 'inner');
+        $this->db->where('returnitem.status', 'accepted');
+
+        $query = $this->db->get('returnitem');
+
+        return $query->result_array();
+    }
+    public function supplierReport(){
+        $this->db->select('supplier_name,item.*,itemdetail.date_delivered');
+        $this->db->join('itemdetail', 'itemdetail.supplier_id = supplier.supplier_id', 'inner');
+        $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
+
+        $query = $this->db->get('supplier');
+
+        return $query->result_array();
+    }
 }
