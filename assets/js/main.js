@@ -12,6 +12,130 @@ $(document).ready(function () {
     },1000);
 });
 
+    $returnTable = $('#returnTable');
+    $reportTable = $('#reportTable');
+    var $selectValue =  '0';
+
+    $reportTable.bootstrapTable({
+        url: 'inventory/getReport/'+$selectValue,
+        columns: [{
+            field: 'date_delivered',
+            title: 'Date',
+        },{
+            field: 'item_name',
+            title: 'Item Name'
+        }, {
+            field: 'item_description',
+            title: 'Description'
+        }, {
+            field: 'item_type',
+            title: 'Type'
+        }, {
+            field: 'quantity',
+            title: 'Quantity'
+        }, {
+            field: 'cost',
+            title: 'Unit Cost'
+        }]
+    });
+
+    $('#reportsOption').change(function () {
+        $selectValue =  $(this).val();
+        //Item Returns
+        if($selectValue === '0'){
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: 'inventory/getReport/'+$selectValue,
+                columns: [{
+                    field: 'date_delivered',
+                    title: 'Date'
+                },{
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type'
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'cost',
+                    title: 'Unit Cost'
+                }]
+            });
+        }else if ($selectValue === '1'){
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: 'inventory/getReport/'+$selectValue,
+                columns: [{
+                    field: 'PR_no',
+                    title: 'PR #',
+                },{
+                    field: 'department',
+                    title: 'Department'
+                }, {
+                    field: 'date_received',
+                    title: 'Date'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type'
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'cost',
+                    title: 'Cost'
+                }, {
+                    field: 'account_code',
+                    title: 'Account Code'
+                }, {
+                    field: 'supply_officer',
+                    title: 'Supply Officer'
+                }]
+            });
+        }else if ($selectValue === '2'){
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: 'inventory/getReport/'+$selectValue,
+                columns: [{
+                    field: 'department',
+                    title: 'Department',
+                }, {
+                    field: 'date_returned',
+                    title: 'Date'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Returned'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type'
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'receiver',
+                    title: 'Returned to'
+                },{
+                    field: 'status',
+                    title: 'Status'
+                }, {
+                    field: 'remarks',
+                    title: 'Remarks'
+                }]
+            });
+
         }else{
             $reportTable.bootstrapTable('destroy');
             $reportTable.bootstrapTable({
