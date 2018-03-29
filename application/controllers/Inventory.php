@@ -496,65 +496,50 @@ class Inventory extends CI_Controller
     public function itemsReceived()
     {
         $itemsreceivedCount = $this->inv->itemsrec();
-        $data = array();
         foreach ($itemsreceivedCount as $list) {
-            $data[] = array(
-                'itemsreceivedCount' => $list['countInc'],
-            );
+                echo $list['countInc'];
         }
-        echo json_encode($data);
     }
 
     //total issued items dash custodian and admin
     public function issuedItems()
     {
         $issueditemsCount = $this->inv->issued();
-        $data = array();
         foreach ($issueditemsCount as $list) {
-            $data[] = array(
-                'issuedCount' => $list['issued'],
-            );
+                echo $list['issued'];
         }
-        echo json_encode($data);
     }
 
     //total returned items dash custodian and admin
     public function returnedItems()
     {
         $returneditemsCount = $this->inv->returndash();
-        $data = array();
         foreach ($returneditemsCount as $list) {
-            $data[] = array(
-                'returnedCount' => $list['returned'],
-            );
+                echo $list['returned'];
         }
-        echo json_encode($data);
     }
 
     //total cost dash custodian and admin
     public function totalCost()
     {
         $totalcostSum = $this->inv->totalcost();
-        $data = array();
         foreach ($totalcostSum as $list) {
-            $data[] = array(
-                'totalcostSum' => $list['totalcost'],
-            );
+                $totalcost = (int)$list['totalcost'];
+                if($totalcost>= 1000000000000) echo "&#8369; ".round(($totalcost/1000000000000),2).' trillion';
+                else if($totalcost>=1000000000) echo "&#8369; ".round(($totalcost/1000000000),2).' billion';
+                else if($totalcost>=1000000) echo "&#8369; ".round(($totalcost/1000000),2).' million';
+                else echo "&#8369; ".number_format($totalcost,2);
+
         }
-        echo json_encode($data);
     }
 
     //total expired items dash custodian and admin
     public function totalExpired()
     {
         $totalexpiredCount = $this->inv->totalexpired();
-        $data = array();
         foreach ($totalexpiredCount as $list) {
-            $data[] = array(
-                'totalexpiredcount' => $list['expired'],
-            );
+                echo $list['expired'];
         }
-        echo json_encode($data);
     }
 
     //total user dash admin

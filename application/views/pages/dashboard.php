@@ -23,7 +23,7 @@ if ($position === 'Admin') {
         <div class="card1 text-white bg-flat-color-1" style="height: 130px; padding: 15px;">
             <div class="card1-body pb-0">
                 <i class="fa fa-book" style="font-size:40px;"></i>
-                <h4 class="mb-0">
+                <h4 class="mb-0" id="itemsrec">
                 </h4>
                 <p class="text-light">Total Items Received</p>
             </div>
@@ -34,8 +34,7 @@ if ($position === 'Admin') {
         <div class="card1 text-white bg-flat-color-2" style = "height: 130px; padding: 15px;" >
             <div class="card1-body pb-0" >
                 <i class="fa fa-truck" style = "font-size:40px;" ></i >
-                <h4 class="mb-0" >
-                    <span class="count" > 10468</span >
+                <h4 class="mb-0" id="itemsiss" >
                 </h4 >
                 <p class="text-light" > Issued Items </p >
             </div >
@@ -46,8 +45,7 @@ if ($position === 'Admin') {
         <div class="card1 text-white bg-flat-color-3" style = "height: 130px; padding: 15px;" >
             <div class="card1-body pb-0" >
                 <i class="fa fa-undo" style = "font-size:40px;" ></i >
-                <h4 class="mb-0" >
-                    <span class="count" > 10468</span >
+                <h4 class="mb-0" id="retitem">
                 </h4 >
                 <p class="text-light" > Returned Items </p >
             </div >
@@ -58,8 +56,7 @@ if ($position === 'Admin') {
         <div class="card1 text-white bg-flat-color-4" style = "height: 130px; padding: 15px;" >
             <div class="card1-body pb-0" >
                 <i class="fa fa-clock-o" style = "font-size:40px;" ></i >
-                <h4 class="mb-0" >
-                    <span class="count" > 10468</span >
+                <h4 class="mb-0" id="expitems">
                 </h4 >
                 <p class="text-light" > Expired Items </p >
             </div >
@@ -70,8 +67,7 @@ if ($position === 'Admin') {
         <div class="card1 text-white bg-flat-color-5" style = "height: 130px; padding: 15px;" >
             <div class="card1-body pb-0" >
                 <i class="fa fa-money" style = "font-size:40px;" ></i >
-                <h4 class="mb-0" >
-                    <span class="count" > 10468</span >
+                <h4 class="mb-0" id="tcost">
                 </h4 >
                 <p class="text-light" > Total Cost </p >
             </div >
@@ -97,8 +93,7 @@ if ($position === 'Custodian') {
         <div class="card1 text-white bg-flat-color-1" style="height: 130px; padding: 15px;">
             <div class="card1-body pb-0">
                 <i class="fa fa-book" style="font-size:40px;"></i>
-                <h4 class="mb-0">
-                    <span class="count">10468</span>
+                <h4 class="mb-0" id="itemsrec">
                 </h4>
                 <p class="text-light">Total Items Received</p>
             </div>
@@ -109,8 +104,7 @@ if ($position === 'Custodian') {
         <div class="card1 text-white bg-flat-color-2" style = "height: 130px; padding: 15px;" >
             <div class="card1-body pb-0" >
                 <i class="fa fa-truck" style = "font-size:40px;" ></i >
-                <h4 class="mb-0" >
-                    <span class="count" > 10468</span >
+                <h4 class="mb-0" id="itemsiss">
                 </h4 >
                 <p class="text-light" > Issued Items </p >
             </div >
@@ -121,8 +115,7 @@ if ($position === 'Custodian') {
         <div class="card1 text-white bg-flat-color-3" style = "height: 130px; padding: 15px;" >
             <div class="card1-body pb-0" >
                 <i class="fa fa-undo" style = "font-size:40px;" ></i >
-                <h4 class="mb-0" >
-                    <span class="count" > 10468</span >
+                <h4 class="mb-0" id="retitem">
                 </h4 >
                 <p class="text-light" > Returned Items </p >
             </div >
@@ -133,8 +126,7 @@ if ($position === 'Custodian') {
         <div class="card1 text-white bg-flat-color-4" style = "height: 130px; padding: 15px;" >
             <div class="card1-body pb-0" >
                 <i class="fa fa-clock-o" style = "font-size:40px;" ></i >
-                <h4 class="mb-0" >
-                    <span class="count" > 10468</span >
+                <h4 class="mb-0" id="expitems">
                 </h4 >
                 <p class="text-light" > Expired Items </p >
             </div >
@@ -145,8 +137,7 @@ if ($position === 'Custodian') {
         <div class="card1 text-white bg-flat-color-5" style = "height: 130px; padding: 15px;" >
             <div class="card1-body pb-0" >
                 <i class="fa fa-money" style = "font-size:40px;" ></i >
-                <h4 class="mb-0" >
-                    <span class="count" > 10468</span >
+                <h4 class="mb-0" id="tcost">
                 </h4 >
                 <p class="text-light" > Total Cost </p >
             </div >
