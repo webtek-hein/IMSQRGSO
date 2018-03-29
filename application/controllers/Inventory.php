@@ -162,8 +162,6 @@ class Inventory extends CI_Controller
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
-                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($detail[item_det_id],$detail[serialStatus])\" data-target=\" . Edit\">
-                            <i class=\"fa fa - remove\" ></i > Remove Item</a >
                             </div>
                             $viewser
                             </div>
@@ -175,8 +173,7 @@ class Inventory extends CI_Controller
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             $viewser
-                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($detail[item_det_id],$detail[serialStatus])\" data-target=\" .Edit\">
-                            <i class=\"fa fa-remove\" ></i > Remove Item</a >
+                            
                             </div>
                             </div>";
                 }
@@ -195,6 +192,7 @@ class Inventory extends CI_Controller
                 );
             } else {
                 $data[] = array(
+                    'removed'=>'<button onclick=\"removeDetail($detail[item_det_id],$detail[serialStatus])\" class=\"fa fa-remove\" >X</button>',
                     'PO' => $detail['PO_number'],
                     'quant' => $detail['quantity'],
                     'del' => $detail['date_delivered'],
@@ -606,16 +604,15 @@ class Inventory extends CI_Controller
     }
 
     //get list of supply officer
-
     public function getSupplyOfficers($id)
     {
         $list = $this->inv->getSuppOfficers($id);
 
         echo json_encode($list);
     }
-
+    //count items issued for the supplier for this day
     public function itemsThisDay(){
-        $itemsIssuedCount = $this->inv->itemsrec();
+        $itemsIssuedCount = $this->inv->itemsThisDay();
         $data = array();
         foreach ($itemsIssuedCount as $list){
             $data[] = array(

@@ -969,11 +969,13 @@ class Inventory_model extends CI_Model
     }
 
     //count items issued for the day
-    public function itemsThisDay($userid){
-        $this->db->SELECT('count(logs.dist_id) as totalItems');
-        $this->db->WHERE('gsois.user.user_id', $userid);
-        $this->db->JOIN('gsois.user','logs.decreaselog.userid = gsois.user.user_id');
-        $query = $this->db->get('logs.deacreaselog.dist_id');
+    public function itemsThisDay(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $this->db->SELECT('count(decreaselog.dist_id) as totalItems');
+        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
+        $this->db->WHERE('date(timestamp)','CURDATE()',false);
+        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');       
+        $query = $this->db->get('logs.decreaselog');
         return $query->result_array();
     }
 
