@@ -606,16 +606,15 @@ class Inventory extends CI_Controller
     }
 
     //get list of supply officer
-
     public function getSupplyOfficers($id)
     {
         $list = $this->inv->getSuppOfficers($id);
 
         echo json_encode($list);
     }
-
+    //count items issued for the supplier for this day
     public function itemsThisDay(){
-        $itemsIssuedCount = $this->inv->itemsrec();
+        $itemsIssuedCount = $this->inv->itemsThisDay();
         $data = array();
         foreach ($itemsIssuedCount as $list){
             $data[] = array(
