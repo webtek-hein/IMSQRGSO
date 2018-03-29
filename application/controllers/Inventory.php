@@ -342,7 +342,7 @@ class Inventory extends CI_Controller
         $data = array();
         foreach ($list as $item) {
 
-            $ps = $item['physical_count'];
+            $ps = $item['pc'];
             $q = $item['quant'];
             $remarks = $item['remarks'];
             $result = ($q) - $ps;
