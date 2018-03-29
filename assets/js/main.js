@@ -219,6 +219,9 @@ function detail(id) {
             $detailtable.bootstrapTable({
                 url: 'inventory/detail/inv/' + id,
                 columns: [{
+                    field: 'removed',
+                    title: ''
+                },{
                     field: 'PO',
                     title: 'PO number'
                 }, {
@@ -397,9 +400,9 @@ function userDetail(id) {
 var counter = 0;
 
 function insertRow() {
-
     var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
+        '<td  style=""></td>'+
         '<td contenteditable style=""><input name="PO[]" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
         '<td style=""><input name="del[]" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="rec[]" class="form-control form-control-sm" type="date"></td> ' +

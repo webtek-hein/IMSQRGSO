@@ -23,7 +23,7 @@
         <div class="row">
             <!-- Inventory-->
             <div class="col-lg-12 department-tab">
-                <select id="select-dept" type="button" class="col-lg-5 deptopt form-control"></select>
+                <select id="select-dept" class="col-lg-4 deptopt form-control"></select>
                 <div class="card">
                     <div class="card-header">
                             <button id="reconcileButton" class="btn btn-outline-success">
@@ -118,6 +118,10 @@
                     <form id="compareitem" role="form"
                           action="inventory/compare/" method="POST">
                     <div class="card-body">
+
+                        <select>Date</select>
+                        <input class="form-group col-2" placeholder="Date">
+
                         <div class="table-responsive-sm-sm tab-content pl-3 p-1">
                             <table dclass="table table-no-bordered"
                                    data-pagination="true" data-search="true" id="reconcileTable">
@@ -126,6 +130,7 @@
                     </div>
                         <button class="btn btn-success" type="submit" name="id" id="save1" href="#">Reconcile Items</button>
                     </form>
+
                 </div>
             </div>
             <!--End of Reconcile Page-->

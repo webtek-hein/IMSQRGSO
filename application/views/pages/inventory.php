@@ -574,6 +574,8 @@
 
                     <div class="col-4">
                         <div class="form-group">
+                            <h6>Quantity:</h6>
+                            <br>
                             <div class="serial">
                                 <label for="name"></label>
                             </div>

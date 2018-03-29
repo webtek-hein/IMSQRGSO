@@ -80,10 +80,12 @@
 }
 /*--End of Topnav User Info--*/
 
+/*--Reconcile Button--*/
 .reconcilePage #save1{
   margin-left: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
+/*--End of Reconcile Button--*/
 
 .table-responsive{
   height: 420px;
