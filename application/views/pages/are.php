@@ -6,7 +6,7 @@
 
         <section id="client-info">
            <img src="assets/images/logo.png" style="width:50px; height:50px;"></img>
-          <h2><b>REPUBLIC OF THE PHILIPPINES</b></h2>
+          <h5><b>REPUBLIC OF THE PHILIPPINES</b></h5>
           <span>City Government of Baguio</span>
         </section>
         
@@ -17,12 +17,12 @@
           <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
             <thead>
                 <tr>
-                <th><h3 style="margin-top:10px;"><b>ACKNOWLEDGEMENT RECEIPT FOR EQUIPMENT</b></h3>
+                <th><h6 style="margin-top:10px; text-align: center;"><b>ACKNOWLEDGEMENT RECEIPT FOR EQUIPMENT</b></h6>
                 <br>
-                <h4 style="position:left; float:left; margin-top:-10px;">Department <input type="text"> </input></h4>
-                 <h4 style="position:right; float:right; margin-top:-10px;">ARE NO. <input type="text"> </input></h4>
+                <h6 style="position:left; float:left; margin-top:-10px;">Department: <input type="text"> </input></h6>
+                 <h6 style="position:right; float:right; margin-top:-10px;">ARE NO. <input type="text"> </input></h6>
                 <br>
-                <h4 style="position:right; float:right; margin-top:-5px; margin-right:-204px;">Date: <input type="text"> </input></h4>
+                <h6 style="position:right; float:right; margin-top:-5px; margin-right:28px;">Date: <input type="text"> </input></h6>
                 </th>
                 </tr>
           </thead>
@@ -67,28 +67,44 @@
           <tr>
             <td class="tfoot3">Received from:
               <br>
-              <h4 style="text-align:center; margin-top:50px;">EUGENE D. BUYUCAN</h4>
-              <span style="text-align:center; margin-left:118px;">Asst. City General Services Officer</span>
-              <br><br><br><br>
-              <hr style="width:100px;"></hr>
-              <h4 style="text-align:center; margin-top:10px;">Date</h4>
+              <h6 style="text-align:center; margin-top:40px;">EUGENE D. BUYUCAN</h6>
+              <span style="text-align:center; margin: 0; display: block;">Asst. City General Services Officer</span>
+              <br><br>
+              <hr style="width:150px;"></hr>
+              <h6 style="text-align:center; margin-top:10px;">Date</h6>
             </td>
             <td class="tfoot4">Received by:
               <br>
-              <h4 style="text-align:center; margin-top:50px;">ATTY. CARLOS M. CANILAO</h4>
-              <span style="text-align:center; margin-left:80px;">City Administrator</span>
-              <br><br><br><br>
-              <hr style="width:100px;"></hr>
-              <h4 style="text-align:center; margin-top:10px;">Date</h4>
+              <h6 style="text-align:center; margin-top:40px;">ATTY. CARLOS M. CANILAO</h6>
+              <span style="text-align:center; margin: 0; display: block;">City Administrator</span>
+              <br><br>
+              <hr style="width:150px;"></hr>
+              <h6 style="text-align:center; margin-top:10px;">Date</h6>
             </td>
           </tr>
           </tfoot>
         </table>
 
         </div>
-        <input id="printpagebutton" type="button" value="Print" onclick="download()"/>
+            <br>
+            <a href="javascript:forprint()">
+                <input id="printpagebutton" type="button" value="Print"/></a>
          </div>
- 
+
+        <script>
+            function forprint(){
+                if (!window.print){
+                    return
+                }
+                var printButton = document.getElementById("printpagebutton");
+                //Set the print button visibility to 'hidden'
+                printButton.style.visibility = 'hidden';
+
+                window.print()
+                printButton.style.visibility = 'visible';
+
+            }
+        </script>
         <div class="clearfix"></div>
 
 <STYLE TYPE="text/css">
@@ -168,7 +184,8 @@ b, strong, .bold {
 
 
 input[type="text"] { 
-    border: none 
+    border: none;
+    background: none;
 }
 
 table {
@@ -317,15 +334,3 @@ table {
 }
 
 </STYLE>
-
-<script type="text/javascript">
-function download() {
-        //Get the print button and put it into a variable
-        var printButton = document.getElementById("printpagebutton");
-        //Set the print button visibility to 'hidden' 
-        printButton.style.visibility = 'hidden';
-        //Print the page content
-        window.print()
-        printButton.style.visibility = 'visible';
-    }
-</script>

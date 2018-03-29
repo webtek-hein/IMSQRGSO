@@ -962,11 +962,21 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('gsois.itemdetail');
         return $query->result_array();
     }
-
     //total user dash admin
     public function totaluser(){
         $this->db->SELECT('count(user_id) as totaluser');
         $query = $this->db->get('gsois.user');
+        return $query->result_array();
+    }
+
+    //count items issued for the day
+    public function itemsThisDay(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $this->db->SELECT('count(decreaselog.dist_id) as totalItems');
+        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
+        $this->db->WHERE('date(timestamp)','CURDATE()',false);
+        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');       
+        $query = $this->db->get('logs.decreaselog');
         return $query->result_array();
     }
 

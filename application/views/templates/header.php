@@ -56,7 +56,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     <a href="<?php echo base_url() ?>dashboard"><i class="menu-icon fa fa-dashboard"></i> DASHBOARD </a>
                 </li>
                 <li>
-                    <a href="Inventory"><i class="menu-icon fa fa-book"></i> INVENTORY</a>
+                    <a href="inventory"><i class="menu-icon fa fa-book"></i> INVENTORY</a>
                 </li>
 
                 <?php $position = $this->session->userdata['logged_in']['position'];
@@ -65,7 +65,7 @@ if (isset($this->session->userdata['logged_in'])) {
                                      <a href="department"><i class="menu-icon fa fa-institution"></i>DEPARTMENT</a>
                                   </li>' .
                         '<li id="li3">
-                                    <a href="Supplier"><i class="menu-icon fa fa-truck"></i>SUPPLIER</a>
+                                    <a href="supplier"><i class="menu-icon fa fa-truck"></i>SUPPLIER</a>
                                  </li>';
                 }
                 if ($position === 'Admin') {
@@ -75,7 +75,7 @@ if (isset($this->session->userdata['logged_in'])) {
                 }
                 if ($position === 'Supply Officer' || $position === 'Custodian') {
                 echo '<li id="li5">
-                                    <a href="Return"><i class="menu-icon fa fa-undo"></i>RETURNS</a>
+                                    <a href="return"><i class="menu-icon fa fa-undo"></i>RETURNS</a>
                                   </li>';
                 }
                 ?>

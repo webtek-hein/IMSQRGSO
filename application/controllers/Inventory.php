@@ -44,14 +44,13 @@ class Inventory extends CI_Controller
         $data = array();
 
         foreach ($list as $item) {
-            $cost = "PHP ".number_format($item['cost'],2);
-            $totalCost = "PHP ".number_format($item['totalcost'],2);
-            if($item['serialStatus'] === '1'){
+            $cost = "PHP " . number_format($item['cost'], 2);
+            $totalCost = "PHP " . number_format($item['totalcost'], 2);
+            if ($item['serialStatus'] === '1') {
                 $serialStatus = 'Yes';
-            }else{
+            } else {
                 $serialStatus = 'No';
-            }
-            ;
+            };
             if ($position === 'Supply Officer') {
                 $quantity = $item['quant'];
             } else {
@@ -88,7 +87,7 @@ class Inventory extends CI_Controller
         $position = $this->session->userdata['logged_in']['position'];
         $user = $this->session->userdata['logged_in']['user_id'];
 
-        $this->inv->distrib($position,$user);
+        $this->inv->distrib($position, $user);
         redirect('inventory');
     }
 
@@ -104,9 +103,9 @@ class Inventory extends CI_Controller
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
 
         if ($position === 'Supply Officer' || $dept === 'dept') {
-            $list = $this->inv->viewDetailperDept($dept,$id,$dept_id,$position);
+            $list = $this->inv->viewDetailperDept($dept, $id, $dept_id, $position);
         } else {
-            $list = $this->inv->viewdetail($id,$position);
+            $list = $this->inv->viewdetail($id, $position);
         }
         $data = array();
         $viewser = "";
@@ -127,13 +126,13 @@ class Inventory extends CI_Controller
 
                 } elseif ($position === 'Supply Officer') {
                     if ($detail['dist_stat'] !== 'Accepted') {
-                        if($detail['serialStatus'] !== '1'){
+                        if ($detail['serialStatus'] !== '1') {
                             $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
                             class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Return\" onclick=\"noserial($detail[item_det_id])\" data-id='$detail[dist_id]'  
                             class=\"btn btn-danger\">Return</a>";
-                        }else{
+                        } else {
                             $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
                             class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
@@ -142,12 +141,12 @@ class Inventory extends CI_Controller
                         }
 
                     } else {
-                        if($detail['serialStatus'] !== '1') {
+                        if ($detail['serialStatus'] !== '1') {
                             $action =
                                 "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"noserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
                             <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
                             <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
-                        }else{
+                        } else {
                             $action =
                                 "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
                             <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
@@ -155,29 +154,26 @@ class Inventory extends CI_Controller
                         }
                     }
 
-                }elseif ($dept === 'dept'){
+                } elseif ($dept === 'dept') {
                     $action = $detail['dist_stat'];
-                } elseif($detail['serialStatus'] !== '1') {
+                } elseif ($detail['serialStatus'] !== '1') {
                     $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
-                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($detail[item_det_id],$detail[serialStatus])\" data-target=\" . Edit\">
-                            <i class=\"fa fa - remove\" ></i > Remove Item</a >
                             </div>
                             $viewser
                             </div>
                             </div>";
-                }else{
+                } else {
                     $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             $viewser
-                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($detail[item_det_id],$detail[serialStatus])\" data-target=\" .Edit\">
-                            <i class=\"fa fa-remove\" ></i > Remove Item</a >
+                            
                             </div>
                             </div>";
                 }
@@ -196,6 +192,7 @@ class Inventory extends CI_Controller
                 );
             } else {
                 $data[] = array(
+                    'removed'=>'<button onclick=\"removeDetail($detail[item_det_id],$detail[serialStatus])\" class=\"fa fa-remove\" >X</button>',
                     'PO' => $detail['PO_number'],
                     'quant' => $detail['quantity'],
                     'del' => $detail['date_delivered'],
@@ -336,6 +333,7 @@ class Inventory extends CI_Controller
         echo json_encode($data);
 
     }
+
     public function reconcileview($type, $id)
     {
         $list = $this->inv->reconcile($type, $id);
@@ -351,15 +349,15 @@ class Inventory extends CI_Controller
 
             $remarks_input = "<textarea autofocus type='text' name='remarks[]' >$remarks</textarea>";
 
-            if($result == 0){
+            if ($result == 0) {
                 $result = 'equal';
-            }elseif ($result == $q) {
+            } elseif ($result == $q) {
                 $result = 'no input';
-            } elseif($result > 0){
+            } elseif ($result > 0) {
                 $result = ($result) . ' missing';
-            }elseif (($result) <0){
+            } elseif (($result) < 0) {
                 $result = 'more than ' . abs($result);
-            }else{
+            } else {
                 $result = '';
             }
             $data[] = array(
@@ -377,10 +375,11 @@ class Inventory extends CI_Controller
 
     }
 
-    public function compare(){
+    public function compare()
+    {
 
         echo json_encode($this->inv->compareitem());
-       redirect('department');
+        redirect('department');
 
     }
 
@@ -430,7 +429,7 @@ class Inventory extends CI_Controller
         $list = $this->inv->ledger($id);
         $data = [];
         foreach ($list as $item) {
-            $cost = "PHP ".number_format($item['unit_cost'],2);
+            $cost = "PHP " . number_format($item['unit_cost'], 2);
 
             $data[] = array(
                 'date' => $item['date'],
@@ -444,57 +443,61 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    public function viewReturn(){
+    public function viewReturn()
+    {
         $position = $this->session->userdata['logged_in']['position'];
         $department = $this->session->userdata['logged_in']['dept_id'];
 
         $action = "";
-        $list = $this->inv->returns($department,$position);
+        $list = $this->inv->returns($department, $position);
         $data = [];
 
-        foreach ($list as $rets){
-            if($position === 'Custodian'){
-                $action ='<button onclick="return_action(0,'.$rets['return_id'].')" class="btn btn-primary">Accept</button> 
-                <button onclick="return_action(1,'.$rets['return_id'].')" class="btn btn-danger">Decline</button>';
+        foreach ($list as $rets) {
+            if ($position === 'Custodian') {
+                $action = '<button onclick="return_action(0,' . $rets['return_id'] . ')" class="btn btn-primary">Accept</button> 
+                <button onclick="return_action(1,' . $rets['return_id'] . ')" class="btn btn-danger">Decline</button>';
 
-            }else if($position === 'Supply Officer'){
-                $action ='<button onclick="return_action(2,'.$rets['return_id'].')" class="btn btn-primary">Cancel</button>';
+            } else if ($position === 'Supply Officer') {
+                $action = '<button onclick="return_action(2,' . $rets['return_id'] . ')" class="btn btn-primary">Cancel</button>';
             }
             $data[] = array(
-                'date'=> $rets['date_returned'],
+                'date' => $rets['date_returned'],
                 'dept' => $rets['department'],
-                'item'=> $rets['item_name'],
-                'desc'=> $rets['item_description'],
-                'reason'=> $rets['remarks'],
-                'returnperson'=> $rets['receiver'],
-                'receiver'=> $rets['receiver'],
+                'item' => $rets['item_name'],
+                'desc' => $rets['item_description'],
+                'reason' => $rets['remarks'],
+                'returnperson' => $rets['receiver'],
+                'receiver' => $rets['receiver'],
                 'status' => $rets['status'],
-                'action'=>$action
+                'action' => $action
             );
         }
         echo json_encode($data);
     }
+
     //actions for returning
-    public function return_actions(){
+    public function return_actions()
+    {
         $action = $this->input->post('action');
         $return_id = $this->input->post('return_id');
         //accept
-        if($action === '0'){
+        if ($action === '0') {
             echo $this->inv->acceptReturn($return_id);
             // decline
-        }elseif ($action === '1'){
+        } elseif ($action === '1') {
             echo $this->inv->declineReturn($return_id);
             //cancel
-        }else{
+        } else {
             echo $this->inv->cancelReturn($return_id);
         }
     }
 
     //total items received dash custodian and admin
-    public function itemsReceived(){
+    public function itemsReceived()
+    {
         $itemsreceivedCount = $this->inv->itemsrec();
         $data = array();
-        foreach ($itemsreceivedCount as $list){
+        foreach ($itemsreceivedCount as $list) {
             $data[] = array(
                 'itemsreceivedCount' => $list['countInc'],
             );
@@ -503,10 +506,11 @@ class Inventory extends CI_Controller
     }
 
     //total issued items dash custodian and admin
-    public function issuedItems(){
+    public function issuedItems()
+    {
         $issueditemsCount = $this->inv->issued();
         $data = array();
-        foreach ($issueditemsCount as $list){
+        foreach ($issueditemsCount as $list) {
             $data[] = array(
                 'issuedCount' => $list['issued'],
             );
@@ -515,10 +519,11 @@ class Inventory extends CI_Controller
     }
 
     //total returned items dash custodian and admin
-    public function returnedItems(){
+    public function returnedItems()
+    {
         $returneditemsCount = $this->inv->returndash();
         $data = array();
-        foreach ($returneditemsCount as $list){
+        foreach ($returneditemsCount as $list) {
             $data[] = array(
                 'returnedCount' => $list['returned'],
             );
@@ -527,10 +532,11 @@ class Inventory extends CI_Controller
     }
 
     //total cost dash custodian and admin
-    public function totalCost(){
+    public function totalCost()
+    {
         $totalcostSum = $this->inv->totalcost();
         $data = array();
-        foreach ($totalcostSum as $list){
+        foreach ($totalcostSum as $list) {
             $data[] = array(
                 'totalcostSum' => $list['totalcost'],
             );
@@ -539,10 +545,11 @@ class Inventory extends CI_Controller
     }
 
     //total expired items dash custodian and admin
-    public function totalExpired(){
+    public function totalExpired()
+    {
         $totalexpiredCount = $this->inv->totalexpired();
         $data = array();
-        foreach ($totalexpiredCount as $list){
+        foreach ($totalexpiredCount as $list) {
             $data[] = array(
                 'totalexpiredcount' => $list['expired'],
             );
@@ -551,10 +558,11 @@ class Inventory extends CI_Controller
     }
 
     //total user dash admin
-    public function totalUser(){
+    public function totalUser()
+    {
         $totaluserCount = $this->inv->totaluser();
         $data = array();
-        foreach ($totaluserCount as $list){
+        foreach ($totaluserCount as $list) {
             $data[] = array(
                 'totalusercount' => $list['totaluser'],
             );
@@ -563,15 +571,17 @@ class Inventory extends CI_Controller
     }
 
     //remove detail
-    public function removeDetail($id,$serialStatus){
-        $this->inv->rmDet($id,$serialStatus);
+    public function removeDetail($id, $serialStatus)
+    {
+        $this->inv->rmDet($id, $serialStatus);
     }
 
     //show removed items
-    public function showRemovedItems($id){
+    public function showRemovedItems($id)
+    {
         $list = $this->inv->rmItems($id);
         $data = [];
-        foreach ($list as $removedItems){
+        foreach ($list as $removedItems) {
             $data[] = array(
                 'PO' => $removedItems['PO_number'],
                 'quant' => $removedItems['quantity'],
@@ -584,17 +594,31 @@ class Inventory extends CI_Controller
                 'action' => "<button onclick=\"revertDetail($removedItems[item_det_id],$removedItems[serialStatus])\" class=\"btn btn-success\">Revert</button>",
             );
         }
-    echo json_encode($data);
+        echo json_encode($data);
     }
-    //revert removed details
-    public function revert($id,$serialStatus){
-        $this->inv->revert($id,$serialStatus);
-    }
-    //get list of supply officer
 
-    public function getSupplyOfficers($id){
+    //revert removed details
+    public function revert($id, $serialStatus)
+    {
+        $this->inv->revert($id, $serialStatus);
+    }
+
+    //get list of supply officer
+    public function getSupplyOfficers($id)
+    {
         $list = $this->inv->getSuppOfficers($id);
 
         echo json_encode($list);
+    }
+    //count items issued for the supplier for this day
+    public function itemsThisDay(){
+        $itemsIssuedCount = $this->inv->itemsThisDay();
+        $data = array();
+        foreach ($itemsIssuedCount as $list){
+            $data[] = array(
+                'itemsIssuedCount' => $list['totalItems'],
+            );
+        }
+        echo json_encode($data);
     }
 }
