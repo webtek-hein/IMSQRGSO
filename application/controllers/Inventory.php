@@ -602,11 +602,24 @@ class Inventory extends CI_Controller
         }
         echo json_encode($data);
     }
+
+    //deliver Reports
+    public function getReport($report){
+        if($report === '0'){
+            echo json_encode($this->inv->deliveredReports());
+        }elseif ($report === '1'){
+            echo json_encode($this->inv->issuedReports());
+        }elseif ($report === '2'){
+            echo json_encode($this->inv->returnedReports());
+        }else{
+            echo json_encode($this->inv->supplierReport());
+        }
+    }
      public function itemsReturnedThisDay()
     {
         $totalReturned = $this->inv->itemsReturnedThisDay();
         foreach ($totalReturned as $list) {
             echo $list['totalItems'];
         }
-    }   
+    }
 }

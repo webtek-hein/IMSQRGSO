@@ -492,65 +492,30 @@
             </button>
         </div>
         <div class="card-body">
+                <div class="select">
+                    <label>Rerports on:</label>
+                    <select id="reportsOption">
+                        <option value="0">Delivered Item</option>
+                        <option value="1">Distributed Items</option>
+                        <option value="2">Returned Items</option>
+                        <option value="3">Supplier</option>
+                    </select>
+                </div>
             <div class="options">
                 <div class="checkbox opt1">
                     <label>OPTION: </label>
-                    <label><input type="checkbox" value=""> CO</label>
+                    <label><input type="radio" name="type" value="CO"> Capital Outlay</label>
 
-                    <label><input type="checkbox" value=""> MOOE</label>
+                    <label><input type="radio" name="type" value="MOOE"> MOOE</label>
 
-                    <label><input type="checkbox" value=""> ALL</label>
+                    <label><input type="radio" name="type" value="ALL"> ALL</label>
                 </div>
 
-                <ul class="list-inline opt2">
-                    <div class="dropdown">
-                        <label>Rerports on:</label>
-                        <button id="reportsOptions" class="btn btn-secondary dropdown-toggle" type="button"
-                                data-toggle="dropdown">
-                            -option-
-                        </button>
 
-                        <div class="dropdown-menu" id="reportsOption">
-                            <a class="dropdown-item" href="#">Item Returns</a>
-                            <a class="dropdown-item" href="#">Item Distributed</a>
-                            <a class="dropdown-item" href="#">Delivered Item</a>
-                            <a class="dropdown-item" href="#">Supplier</a>
-                        </div>
-                    </div>
-                </ul>
             </div>
             <div class="returnedReport">
-                <table data-show-refresh="true" data-search="true" data-pagination="true"
-                       data-toggle="table"
+                <table id="reportTable" data-show-refresh="true" data-search="true" data-pagination="true"
                        class="table-sm table table-no-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th data-sortable="true" data-field="Item_Name">Item Name</th>
-                        <th data-sortable="true" data-field="Description">Description</th>
-                        <th data-sortable="true" data-field="Unit">Unit</th>
-                        <th data-sortable="true" data-field="Cost">Cost</th>
-                        <th data-sortable="true" data-field="Supplier">Supplier</th>
-                        <th data-sortable="true" data-field="Date_Returned">Date Returned</th>
-                        <th data-sortable="true" data-field="Reason">Reason</th>
-                        <th data-sortable="true" data-field="Return_by">Return by</th>
-                        <th data-sortable="true" data-field="Received_by">Received by</th>
-                        <th data-sortable="true" data-field="Status">Status</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td data-sortable="true" data-field=""></td>
-                        <td data-sortable="true" data-field=""></td>
-                        <td data-sortable="true" data-field=""></td>
-                        <td data-sortable="true" data-field=""></td>
-                        <td data-sortable="true" data-field=""></td>
-                        <td data-sortable="true" data-field=""></td>
-                        <td data-sortable="true" data-field=""></td>
-                        <td data-sortable="true" data-field=""></td>
-                        <td data-sortable="true" data-field=""></td>
-                        <td data-sortable="true" data-field="">Replaced/ignored</td>
-                    </tr>
-                    </tbody>
                 </table>
             </div>
 
