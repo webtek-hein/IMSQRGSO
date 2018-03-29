@@ -561,13 +561,9 @@ class Inventory extends CI_Controller
     public function totalUser()
     {
         $totaluserCount = $this->inv->totaluser();
-        $data = array();
         foreach ($totaluserCount as $list) {
-            $data[] = array(
-                'totalusercount' => $list['totaluser'],
-            );
+            echo $list['totaluser'];
         }
-        echo json_encode($data);
     }
 
     //remove detail

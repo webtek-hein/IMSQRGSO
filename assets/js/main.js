@@ -1,5 +1,12 @@
 $(document).ready(function () {
 
+//load data
+$(document).ready(function () {
+    setInterval(function () {
+        $( "#tUser" ).load("inventory/totalUser");
+    },1000);
+});
+
     //supply officer options
     var $ownerOpt = $('.ownerOpt');
     var users = [];
@@ -14,8 +21,6 @@ $(document).ready(function () {
 
         }
     });
-
-
 
     //return table
     $returnTable = $('#returnTable');
