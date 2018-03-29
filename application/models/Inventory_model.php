@@ -973,11 +973,11 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('gsois.user');
         return $query->result_array();
     }
-
+//Supply Dashboard
     //count items issued for the day
     public function itemsThisDay(){
         $user_id = $this->session->userdata['logged_in']['user_id'];
-        $this->db->SELECT('count(decreaselog.dist_id) as totalItems');
+        $this->db->SELECT('count(decreaselog.dec_log_id) as totalItems');
         $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
         $this->db->WHERE('date(timestamp)','CURDATE()',false);
         $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');       
@@ -985,6 +985,18 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    //count items returned for the day
+    public function itemsReturnedThisDay(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $this->db->SELECT('count(logs.returnlog.ret_log_id) as totalItems');
+        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
+        $this->db->WHERE('date(timestamp)','CURDATE()',false);
+        $this->db->JOIN('gsois.returnitem','gsois.returnitem.return_id = logs.returnlog.return_id');   
+        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = gsois.returnitem.dist_id');           
+        $query = $this->db->get('logs.returnlog');
+        return $query->result_array();
+    }
+//end of supplier dashboard
     public function rmDet($id,$serialStatus){
         $this->db->set('status','removed');
         $this->db->where('item_det_id',$id);
