@@ -243,6 +243,8 @@ class Inventory_model extends CI_Model
             //dist_id
             $dist_id = $this->db->insert_id();
 
+            $this->db->insert('reconciliation',array('dist_id' => $dist_id));
+
             $this->db->insert('logs.decreaselog', array('userid' => $user, 'dist_id' => $dist_id));
             //dec log id
             $dec_log_id = $this->db->insert_id();
@@ -586,13 +588,14 @@ class Inventory_model extends CI_Model
     public
     function reconcile($type, $id)
     {
-        $this->db->select('item.*,sum(quantity_distributed) as quant,distribution.date_received');
+        $this->db->select('item.*,sum(quantity_distributed) as quant,reconciliation.*,distribution.date_received');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
         $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
+        $this->db->join('reconciliation', 'distribution.dist_id = reconciliation.dist_id', 'inner');
         $this->db->where('item.item_type', $type);
         $this->db->where('distribution.dept_id', $id);
-        $this->db->group_by('item.item_id,distribution.date_received');
-        $query = $this->db->get('distribution');
+        $this->db->group_by('reconciliation.dist_id,reconciliation.recon_id');
+        $query = $this->db->get('distribution,reconciliation rc');
         return $query->result_array();
     }
 
@@ -609,15 +612,15 @@ class Inventory_model extends CI_Model
             // if serial is not null
             if ($value !== 'null' || $value !== 0) {
                 $data[$value] = array(
-                    'item_id' => $id[$key],
-                    'physicalcount' => $pcount[$key],
+                    'recon_id' => $id[$key],
+                    'physical_count' => $pcount[$key],
                     'remarks' => $remarks[$key]
                 );
             }
         }
         var_dump($data);
 
-        return $this->db->update_batch('item', $data,'item_id');
+        return $this->db->update_batch('reconciliation', $data,'recon_id');
     }
 
     public

@@ -342,7 +342,7 @@ class Inventory extends CI_Controller
         $data = array();
         foreach ($list as $item) {
 
-            $ps = $item['physicalcount'];
+            $ps = $item['physical_count'];
             $q = $item['quant'];
             $remarks = $item['remarks'];
             $result = ($q) - $ps;
@@ -351,9 +351,11 @@ class Inventory extends CI_Controller
 
             $remarks_input = "<textarea autofocus type='text' name='remarks[]' >$remarks</textarea>";
 
-            if(($result) == 0){
+            if($result == 0){
                 $result = 'equal';
-            }elseif(($result) > 0){
+            }elseif ($result == $q) {
+                $result = 'no input';
+            } elseif($result > 0){
                 $result = ($result) . ' missing';
             }elseif (($result) <0){
                 $result = 'more than ' . abs($result);
@@ -361,7 +363,7 @@ class Inventory extends CI_Controller
                 $result = '';
             }
             $data[] = array(
-                'id' => $item['item_id'],
+                'id' => $item['recon_id'],
                 'name' => $item['item_name'],
                 'date' => $item['date_received'],
                 'description' => $item['item_description'],
@@ -378,7 +380,7 @@ class Inventory extends CI_Controller
     public function compare(){
 
         echo json_encode($this->inv->compareitem());
-        redirect('department');
+       redirect('department');
 
     }
 
