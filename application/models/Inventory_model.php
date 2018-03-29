@@ -203,7 +203,7 @@ class Inventory_model extends CI_Model
         $serial_id = [];
         if (isset($serial)) {
             $quantity = count($serial);
-        } else {
+        }else{
             $quantity = $this->input->post('quantity');
         }
         $query = $this->db->select('item.item_id,item.cost')
@@ -244,7 +244,7 @@ class Inventory_model extends CI_Model
             //dist_id
             $dist_id = $this->db->insert_id();
 
-            $this->db->insert('reconciliation', array('dist_id' => $dist_id));
+            $this->db->insert('reconciliation',array('dist_id' => $dist_id));
 
             $this->db->insert('logs.decreaselog', array('userid' => $user, 'dist_id' => $dist_id));
             //dec log id
@@ -364,7 +364,7 @@ class Inventory_model extends CI_Model
     {
         $this->db->select('item.*,(cost*quantity) as totalcost');
         $this->db->where('item_type', $type);
-        $this->db->order_by('item_id', 'desc');
+        $this->db->order_by('item_id','desc');
         $query = $this->db->get('item');
         return $query->result_array();
     }
@@ -544,21 +544,21 @@ class Inventory_model extends CI_Model
     }
 
     public
-    function viewdetail($id, $position)
+    function viewdetail($id,$position)
     {
         $this->db->select('OR_no,PO_number,item.serialStatus,item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
         item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
         $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'inner');
-        $this->db->where('itemdetail.status', 'active');
+        $this->db->where('itemdetail.status','active');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
-        $this->db->order_by('itemdetail.item_det_id', 'desc');
+        $this->db->order_by('itemdetail.item_det_id','desc');
         $query = $this->db->get_where('item', array('item.item_id' => $id));;
 
         return $query->result_array();
     }
 
     public
-    function viewDetailperDept($dept, $id, $dept_id, $position)
+    function viewDetailperDept($dept,$id,$dept_id,$position)
     {
         $this->db->select('CONCAT(first_name," ",last_name) as receiver,
         dist_id,item.item_type,item.serialStatus,quantity_distributed,distribution.cost,
@@ -569,13 +569,13 @@ class Inventory_model extends CI_Model
         $this->db->join('account_code', ' account_code.ac_id = distribution.ac_id ', 'inner');
         $this->db->join('user', ' distribution.supply_officer_id = user.user_id ', 'inner');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
-        if ($position === 'Supply Officer') {
-            $this->db->where('distribution.dept_id', $dept_id);
-        } elseif ($position === 'Custodian' && $dept !== 'dept') {
-            $this->db->where('itemdetail.status', 'active');
+        if($position === 'Supply Officer'){
+            $this->db->where('distribution.dept_id',$dept_id);
+        }elseif ($position === 'Custodian' && $dept !== 'dept'){
+            $this->db->where('itemdetail.status','active');
 
         }
-        $this->db->order_by('dist_id', 'desc');
+        $this->db->order_by('dist_id','desc');
         $query = $this->db->get_where('distribution', array('distribution.item_det_id' => $id));
         return $query->result_array();
     }
@@ -589,7 +589,7 @@ class Inventory_model extends CI_Model
         $this->db->where('item.item_type', $type);
         $this->db->where('distribution.dept_id', $id);
         $this->db->group_by('item.item_id');
-        $this->db->order_by('item.item_id', 'desc');
+        $this->db->order_by('item.item_id','desc');
         $query = $this->db->get('distribution');
         return $query->result_array();
     }
@@ -604,7 +604,7 @@ class Inventory_model extends CI_Model
         $this->db->where('item.item_type', $type);
         $this->db->where('distribution.dept_id', $id);
         $this->db->group_by('reconciliation.recon_id,reconciliation.dist_id,distribution.date_received');
-        $this->db->order_by('item.item_id', 'desc');
+        $this->db->order_by('item.item_id','desc');
         $query = $this->db->get('distribution');
         return $query->result_array();
     }
@@ -630,7 +630,7 @@ class Inventory_model extends CI_Model
         }
         var_dump($data);
 
-        return $this->db->update_batch('reconciliation', $data, 'recon_id');
+        return $this->db->update_batch('reconciliation', $data,'recon_id');
     }
 
     public
@@ -799,9 +799,9 @@ class Inventory_model extends CI_Model
         $id = $this->input->post('id');
         $serial = $this->input->post('serial');
 
-        if (isset($serial)) {
+        if(isset($serial)){
             $quantity_returned = count($serial);
-        } else {
+        }else{
             $quantity_returned = $this->input->post('quantity');
         }
 
@@ -836,15 +836,15 @@ class Inventory_model extends CI_Model
             'receiver' => $this->input->post('receiver'),
             'remarks' => $this->input->post('remarks'),
             'item_det_id' => $item_det_id,
-            'dist_id' => $id,
-            'status' => 'pending'
+            'dist_id'=> $id,
+            'status'=>'pending'
 
         );
         $this->db->insert('returnitem', $data);
 
         $return_id = $this->db->insert_id();
 
-        $this->db->insert('logs.returnlog', array(
+        $this->db->insert('logs.returnlog',array(
             'return_id' => $return_id,
             'userid' => $user_id
         ));
@@ -859,30 +859,27 @@ class Inventory_model extends CI_Model
 
     }
 
-    public function returns($department, $position)
-    {
+    public function returns($department,$position){
 
-        $this->db->select('receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no', 'inner');
-        $this->db->join('itemdetail', 'returnitem.item_det_id = itemdetail.item_det_id', 'inner');
-        $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
-        $this->db->join('distribution', 'returnitem.dist_id = distribution.dist_id', 'inner');
-        $this->db->join('department', 'department.dept_id = distribution.dept_id', 'inner');
-        if ($position === 'Supply Officer') {
-            $this->db->where('distribution.dept_id', $department);
+        $this->db->select('receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no','inner');
+        $this->db->join('itemdetail','returnitem.item_det_id = itemdetail.item_det_id','inner');
+        $this->db->join('item','itemdetail.item_id = item.item_id','inner');
+        $this->db->join('distribution','returnitem.dist_id = distribution.dist_id','inner');
+        $this->db->join('department','department.dept_id = distribution.dept_id','inner');
+        if($position === 'Supply Officer'){
+            $this->db->where('distribution.dept_id',$department);
         }
-        $this->db->where('returnitem.status', 'pending');
+        $this->db->where('returnitem.status','pending');
 
         $query = $this->db->get('returnitem');
 
         return $query->result_array();
     }
-
-    public function acceptReturn($return_id)
-    {
+    public function acceptReturn($return_id){
         $query = $this->db
-            ->where('return_id', $return_id)
-            ->join('distribution', 'distribution.dist_id = returnitem.dist_id')
-            ->join('itemdetail', 'returnitem.item_det_id = itemdetail.item_det_id')
+            ->where('return_id',$return_id)
+            ->join('distribution','distribution.dist_id = returnitem.dist_id')
+            ->join('itemdetail','returnitem.item_det_id = itemdetail.item_det_id')
             ->get('returnitem')
             ->row();
 
@@ -915,86 +912,75 @@ class Inventory_model extends CI_Model
                 'unit_cost' => $cost,
                 'transaction' => 'returned'
             ));
-        $this->db->set('status', 'accepted');
-        $this->db->where('return_id', $return_id);
+        $this->db->set('status','accepted');
+        $this->db->where('return_id',$return_id);
         return $this->db->update('returnitem');
     }
 
-    public function declineReturn($return_id)
-    {
-        $this->db->set('status', 'declined');
-        $this->db->where('return_id', $return_id);
+    public function declineReturn($return_id){
+        $this->db->set('status','declined');
+        $this->db->where('return_id',$return_id);
         return $this->db->update('returnitem');
     }
-
-    public function cancelReturn($return_id)
-    {
-        $this->db->set('status', 'cancelled');
-        $this->db->where('return_id', $return_id);
+    public function cancelReturn($return_id){
+        $this->db->set('status','cancelled');
+        $this->db->where('return_id',$return_id);
         return $this->db->update('returnitem');
     }
 
     //count total items received dash custodian
-    public function itemsrec()
-    {
+    public function itemsrec(){
         $this->db->SELECT('COUNT(inc_log_id) as countInc');
-        $this->db->where('date(timestamp)', 'CURDATE()', false);
+        $this->db->where('date(timestamp)','CURDATE()',false);
         $query = $this->db->get('logs.increaselog');
         return $query->result_array();
     }
 
     //count issued items dash custodian
-    public function issued()
-    {
+    public function issued(){
         $this->db->SELECT('COUNT(dec_log_id) as issued');
-        $this->db->where('date(timestamp)', 'CURDATE()', false);
+        $this->db->where('date(timestamp)','CURDATE()',false);
         $query = $this->db->get('logs.decreaselog');
         return $query->result_array();
     }
 
     //count return items dash custodian
-    public function returndash()
-    {
+    public function returndash(){
         $this->db->SELECT('COUNT(ret_log_id) as returned');
-        $this->db->where('date(timestamp)', 'CURDATE()', false);
+        $this->db->where('date(timestamp)','CURDATE()',false);
         $query = $this->db->get('logs.returnlog');
         return $query->result_array();
     }
 
     //total cost dash custodian
-    public function totalcost()
-    {
-        $this->db->SELECT('sum(unit_cost) as totalcost');
-        $this->db->where('date_received', 'CURDATE()', false);
+    public function totalcost(){
+        $this->db->SELECT('sum(unit_cost * quantity) as totalcost');
+        $this->db->where('date_received','CURDATE()', false);
         $query = $this->db->get('gsois.itemdetail');
         return $query->result_array();
     }
 
     //total expired items dash custodian and admin
-    public function totalexpired()
-    {
+    public function totalexpired(){
         $this->db->SELECT('count(expiration_date) as expired');
-        $this->db->where('expiration_date <=', 'CURDATE()', false);
+        $this->db->where('expiration_date <=','CURDATE()',false);
         $query = $this->db->get('gsois.itemdetail');
         return $query->result_array();
     }
-
     //total user dash admin
-    public function totaluser()
-    {
+    public function totaluser(){
         $this->db->SELECT('count(user_id) as totaluser');
         $query = $this->db->get('gsois.user');
         return $query->result_array();
     }
 //Supply Dashboard
     //count items issued for the day
-    public function itemsThisDay()
-    {
+    public function itemsThisDay(){
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $this->db->SELECT('count(decreaselog.dec_log_id) as totalItems');
         $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
-        $this->db->WHERE('date(timestamp)', 'CURDATE()', false);
-        $this->db->JOIN('gsois.distribution', 'gsois.distribution.dist_id = logs.decreaselog.dist_id');
+        $this->db->WHERE('date(timestamp)','CURDATE()',false);
+        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');       
         $query = $this->db->get('logs.decreaselog');
         return $query->result_array();
     }
@@ -1005,80 +991,71 @@ class Inventory_model extends CI_Model
         $this->db->SELECT('count(logs.returnlog.ret_log_id) as totalItems');
         $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
         $this->db->WHERE('date(timestamp)','CURDATE()',false);
-        $this->db->JOIN('gsois.returnitem','gsois.returnitem.return_id = logs.returnlog.return_id');
-        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = gsois.returnitem.dist_id');
+        $this->db->JOIN('gsois.returnitem','gsois.returnitem.return_id = logs.returnlog.return_id');   
+        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = gsois.returnitem.dist_id');           
         $query = $this->db->get('logs.returnlog');
         return $query->result_array();
     }
 //end of supplier dashboard
-    public function rmDet($id,$serialStatus)
-    {
-        $this->db->set('status', 'removed');
-        $this->db->where('item_det_id', $id);
-    }
-    public function rmDet($id, $serialStatus)
-    {
-        $this->db->set('status', 'removed');
-        $this->db->where('item_det_id', $id);
+    public function rmDet($id,$serialStatus){
+        $this->db->set('status','removed');
+        $this->db->where('item_det_id',$id);
         $this->db->update('itemdetail');
 
-        if ($serialStatus === '1') {
-            $this->db->set('record_status', '0');
-            $this->db->where('item_det_id', $id);
-            $this->db->where('dist_id', null, FALSE);
+        if($serialStatus === '1'){
+            $this->db->set('record_status','0');
+            $this->db->where('item_det_id',$id);
+            $this->db->where('dist_id',null,FALSE);
             $this->db->update('serial');
         }
 
         $query = $this->db->select('item_id,quantity')
-            ->where('item_det_id', $id)->get('itemdetail')->row();
+            ->where('item_det_id',$id)->get('itemdetail')->row();
 
         $item_id = $query->item_id;
         $detailQuant = $query->quantity;
 
         $this->db->set('quantity', 'quantity-' . $detailQuant, FALSE);
-        $this->db->where('item_id', $item_id);
+        $this->db->where('item_id',$item_id);
         $this->db->update('item');
     }
 
-    public function rmItems($id)
-    {
+    public function rmItems($id){
         $this->db->select('OR_no,PO_number,item.serialStatus,item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
         item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
         $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'inner');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
-        $this->db->where('itemdetail.status', 'removed');
+        $this->db->where('itemdetail.status','removed');
         $query = $this->db->get_where('item', array('item.item_id' => $id));;
         return $query->result_array();
     }
 
-    public function revert($id, $serialStatus)
-    {
-        $this->db->set('status', 'active');
-        $this->db->where('item_det_id', $id);
+    public function revert($id,$serialStatus){
+        $this->db->set('status','active');
+        $this->db->where('item_det_id',$id);
         $this->db->update('itemdetail');
 
-        if ($serialStatus === '1') {
-            $this->db->set('record_status', '1');
-            $this->db->where('item_det_id', $id);
+        if($serialStatus === '1'){
+            $this->db->set('record_status','1');
+            $this->db->where('item_det_id',$id);
             $this->db->update('serial');
         }
 
         $query = $this->db->select('item_id,quantity')
-            ->where('item_det_id', $id)->get('itemdetail')->row();
+            ->where('item_det_id',$id)->get('itemdetail')->row();
 
         $item_id = $query->item_id;
         $detailQuant = $query->quantity;
 
         $this->db->set('quantity', 'quantity+' . $detailQuant, FALSE);
-        $this->db->where('item_id', $item_id);
+        $this->db->where('item_id',$item_id);
         $this->db->update('item');
     }
 
-    public function getSuppOfficers($id)
-    {
+    public function getSuppOfficers($id){
         return $this->db->select('user_id,CONCAT(first_name," ",last_name) as name')
-            ->where('position', 'Supply Officer')
-            ->where('dept_id', $id)
+            ->where('position','Supply Officer')
+            ->where('dept_id',$id)
             ->get('user')->result_array();
     }
 
