@@ -162,9 +162,9 @@
                     </table>
                 </div>
             </div>
-            <a type="button" class="btn btn-success" data-toggle="modal"
+            <a type="button" class="compare btn btn-success" data-toggle="modal"
                data-target= ".invdate">Reconcile Items</a>
-            <a type="button" class="btn btn-success" id="compare">Compare</a>
+            <a type="button" class="compare btn btn-success">Compare</a>
 
         </div>
 
@@ -194,7 +194,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" name="id" class="btn btn-primary btn-modal" id="save1">
+                        <button type="button" onclick="reconcile()" name="id" class="btn btn-primary btn-modal" id="save1">
                             <i class="fa fa-arrow-down"></i> Save
                         </button>
                     </div>

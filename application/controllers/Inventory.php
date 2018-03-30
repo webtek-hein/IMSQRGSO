@@ -350,9 +350,9 @@ class Inventory extends CI_Controller
             $q = $item['quant'];
             $remarks = $item['remarks'];
 
-            $count_input = "<input autofocus type='number' min='0' name='reconcileitem[]' class='reconitem form-control' value='$ps' >";
+            $count_input = "<input autofocus type='number' min='0' name='reconcileitem[]' class='reconitem form-control' value='$ps'>";
 
-            $remarks_input = "<textarea autofocus type='text' name='remarks[]' >$remarks</textarea>";
+            $remarks_input = "<textarea autofocus type='text' name='remarks[]' class='remarks'>$remarks</textarea>";
 
             $data[] = array(
                 'id' => $item['recon_id'],
@@ -368,11 +368,9 @@ class Inventory extends CI_Controller
 
     }
 
-    public function compare()
+    public function reconcile()
     {
-
-        echo json_encode($this->inv->compareitem());
-        redirect('department');
+        echo json_encode($this->inv->endingInventory());
 
     }
 

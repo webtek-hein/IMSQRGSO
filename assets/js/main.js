@@ -821,7 +821,8 @@ function init_inventory() {
     $('#headingZero').on('click', function () {
         toggleDiv($('.addUser'), $('.accounts-tab'));
     });
-    $('#compare').on('click',function(){
+
+    $('.compare').on('click',function(){
         var quant = [];
         var pc = [];
         var $result = [];
@@ -836,13 +837,14 @@ function init_inventory() {
            } else if ($result > 0) {
                $result = ($result) + ' missing';
            } else if (($result) < 0) {
-               $result = 'more than ' + MATH.abs($result);
+               $result = 'more than ' + Math.abs($result);
            } else {
                $result = '';
            }
             $('.result')[i].innerHTML = $result;
         }
     });
+
     $('select.itemtype').change(function () {
         $('.hideInput').toggleClass('hidden');
     });
@@ -931,7 +933,7 @@ function init_list() {
             field: 'id',
             //visible: false,
             formatter : function(value,row,index) {
-                return '<input hidden name="ids[]" autofocus value="'+value+'"/>';
+                return '<input hidden name="ids[]" class="reconid" autofocus value="'+value+'"/>';
             }
         },{
             sortable: true,
@@ -952,12 +954,11 @@ function init_list() {
             cellStyle: function (data) {
                 return {
                     classes: 'quantity',
-                    css: {"color": "green"}
+                    css: {"color": "green"},
                 };
             },
             field: 'quant',
             title: 'QUANTITY DISTRIBUTED',
-            visible: false
         }, {
             sortable: true,
             field: 'count',
@@ -1642,6 +1643,31 @@ function revertDetail($det_id,$serialStatus) {
         success: function (data) {
             $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $det_id});
             $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $det_id});
+        }
+    });
+}
+
+//for reconciliation
+function reconcile() {
+    $date = $('#date').val();
+    $id = [];
+    $q = [];
+    $p = [];
+    $r = [];
+    var $recon = $('.reconitem ');
+
+    for(var i = 0;i <= $recon.length-1;i++) {
+        $q.push($('.quantity')[i].textContent);
+        $p.push($recon[i].value);
+        $r.push($('.remarks')[i].value)
+        $id.push($('.reconid')[i].value)
+    }
+    $.ajax({
+        url: "inventory/reconcile",
+        method: "POST",
+        data: {logical: $q,physical:$p,remarks:$r,date:$date,id:$id},
+        success: function (data) {
+            $('.invdate').modal('toggle');
         }
     });
 }
