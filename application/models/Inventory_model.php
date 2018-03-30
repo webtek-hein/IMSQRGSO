@@ -829,10 +829,7 @@ var_dump($pcount);
             $this->db->update('serial');
 
         }
-        $this->db->set('quantity_distributed', $quantdist - $quantity_returned);
-        $this->db->where_in('dist_id', $id);
-        $this->db->update('distribution');
-
+        
         $date = $this->input->post('returndate');
         $data = array(
             'return_quantity' => $quantity_returned,
