@@ -44,6 +44,13 @@ class Inventory extends CI_Controller
         $data = array();
 
         foreach ($list as $item) {
+           // $ps = $item['pc'];
+          //  $q = $item['quant'];
+         //   $remarks = $item['remarks'];
+
+            $count_input = "<input autofocus type='number' min='0' name='reconcileitem[]' class='reconitem form-control' value=''>";
+
+            $remarks_input = "<textarea autofocus type='text' name='remarks[]' class='remarks'></textarea>";
             $cost = "PHP " . number_format($item['cost'], 2);
             $totalCost = "PHP " . number_format($item['totalcost'], 2);
             if ($item['serialStatus'] === '1') {
@@ -66,7 +73,10 @@ class Inventory extends CI_Controller
                 'cost' => $cost,
                 'totalcost' => $totalCost,
                 'serialStatus' => $serialStatus,
-                'button' => 'Accept'
+                'button' => 'Accept',
+                'count' => $count_input,
+                'result' => 'Enter physical count',
+                'remarks' => $remarks_input
             );
         }
         echo json_encode($data);

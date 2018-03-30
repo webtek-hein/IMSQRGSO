@@ -635,6 +635,78 @@ function init_inventory() {
     var $MOOEtable = $('#MOOEtable');
     var $supplier = $('#supplier-table');
     var $userTable = $('#user-table');
+    var $reconcile = $('#reconcileTable');
+
+    $reconcile.bootstrapTable({
+        pageSize: 10,
+        url: 'inventory/viewItem/CO',
+        resizable: true,
+
+        columns: [{
+            sortable: true,
+            field: 'item',
+            title: 'NAME'
+        }, {
+            sortable: true,
+            field: 'description',
+            title: 'DESCRIPTION'
+        }, {
+            sortable: true,
+            cellStyle: function (data) {
+                return {
+                    css: {"color": "green"}
+                };
+            },
+            field: 'quantity',
+            title: 'IN-STOCK'
+        }, {
+            sortable: true,
+            field: 'unit',
+            title: 'UNIT'
+        }, {
+            sortable: true,
+            field: 'cost',
+            title: 'Unit COST'
+        }, {
+            sortable: true,
+            field: 'totalcost',
+            title: 'Total COST'
+        }, {
+            sortable: true,
+            field: 'serialStatus',
+            title: 'Serial',
+            cellStyle: function (data) {
+                return {
+                    css: {"color": "green"}
+                };
+            }
+        }, {
+            sortable: true,
+            field: 'count',
+            title: 'PHYSICAL COUNT'
+        }, {
+                sortable: true,
+                cellStyle: function(data) {
+                    return {
+                        classes: 'result',
+                        css: {"color": "green"}
+                    };
+                },
+                field: 'result',
+                title: 'RESULT'
+
+            }, {
+                sortable:true,
+                field: 'remarks',
+                title: 'REMARKS'
+            }
+        ]
+        // }, {
+        //     sortable: true,
+        //     field: 'Price',
+        //     title: 'PRICE'
+        // }]
+    });
 
     $supplier.bootstrapTable('refresh', {url: 'supplier/viewsuppliers'})
         .bootstrapTable({
@@ -745,7 +817,7 @@ function init_inventory() {
                     return {
                         css: {"color": "green"}
                     };
-                },
+                }
             }]
             // }, {
             //     sortable: true,
@@ -884,7 +956,6 @@ function init_list() {
 
     var $deptTable = $('#departmentTable');
     var $deptMOOEtable = $('#deptMOOEtable');
-    var $reconcile = $('#reconcileTable');
 
     //show account code options
     $.ajax({
@@ -923,63 +994,6 @@ function init_list() {
                 });
             });
         }
-    });
-    $reconcile.bootstrapTable({
-        pageSize: 10,
-        url: 'inventory/reconcileview/CO/11',
-        resizable: true,
-        columns: [{
-            sortable: true,
-            field: 'id',
-            //visible: false,
-            formatter : function(value,row,index) {
-                return '<input hidden name="ids[]" class="reconid" autofocus value="'+value+'"/>';
-            }
-        },{
-            sortable: true,
-            field: 'name',
-            title: 'NAME'
-        }, {
-            sortable:true,
-            field: 'date',
-            title: 'DATE',
-            visible: false
-
-        },{
-            sortable: true,
-            field: 'description',
-            title: 'DESCRIPTION'
-        }, {
-            sortable: true,
-            cellStyle: function (data) {
-                return {
-                    classes: 'quantity',
-                    css: {"color": "green"},
-                };
-            },
-            field: 'quant',
-            title: 'QUANTITY DISTRIBUTED',
-        }, {
-            sortable: true,
-            field: 'count',
-            title: 'PHYSICAL COUNT'
-        },
-            {
-                sortable: true,
-                cellStyle: function(data) {
-                    return {
-                        classes: 'result',
-                        css: {"color": "green"}
-                    };
-                },
-                field: 'result',
-                title: 'RESULT'
-
-        }, {
-            sortable:true,
-            field: 'remarks',
-            title: 'REMARKS'
-            }]
     });
 
     $deptTable.bootstrapTable({
