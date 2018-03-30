@@ -244,7 +244,7 @@ class Inventory_model extends CI_Model
             //dist_id
             $dist_id = $this->db->insert_id();
 
-            $this->db->insert('reconciliation',array('dist_id' => $dist_id));
+            $this->db->insert('reconciliation',array('dist_id' => $dist_id,'item_id'=>$item_id));
 
             $this->db->insert('logs.decreaselog', array('userid' => $user, 'dist_id' => $dist_id));
             //dec log id
@@ -608,30 +608,37 @@ class Inventory_model extends CI_Model
     }
 
     public
-    function compareitem()
+    function endingInventory()
     {
         $remarks = $this->input->post('remarks');
-        $pcount = $this->input->post('reconcileitem');
-        $invdate = $this->input->post('date');
-        $id = $this->input->post('ids');
-        $keys = $this->input->post('ids');
-        var_dump($invdate);
-var_dump($pcount);
-        $data = array();
-        foreach ($keys as $key => $value) {
-            // if serial is not null
-            if ($value !== 'null' || $value !== 0) {
-                $data[$value] = array(
-                    'recon_id' => $id[$key],
-                    'physical_count' => $pcount[$key],
-                    'remarks' => $remarks[$key],
-                    'inventory_date' => $invdate
-                );
-            }
-        }
-        var_dump($data);
+        $logical = $this->input->post('logical');
+        $physical = $this->input->post('physical');
+        $date = $this->input->post('date');
+        $id = $this->input->post('id');
+        $distribution_data = [];
+        $data = [];
 
-        return $this->db->update_batch('reconciliation', $data,'recon_id');
+        $dist_id = $this->db->select('dist_id')->where_in('recon_id',$id)->get('reconciliation')->result_array();
+        $cost = $this->db->select('cost')->where_in($dist_id)->get('distribution')->result_array();
+
+        foreach ($id as $key => $value) {
+            $data[] = array(
+                'recon_id' => $value,
+                'inventory_date' => $date,
+                'physical_count' => $physical[$key],
+                'last_quantity' => $logical[$key],
+                'remarks' => $remarks[$key],
+                'ending_cost' => $cost[$key]['cost']
+            );
+
+            $distribution_data[] = array(
+                'dist_id'=>$dist_id[$key]['dist_id'],
+                'quantity_distributed'=>$physical[$key],
+            );
+        }
+        var_dump($dist_id);
+        $this->db->update_batch('reconciliation',$data,'recon_id');
+        $this->db->update_batch('distribution',$distribution_data,'dist_id');
     }
 
     public

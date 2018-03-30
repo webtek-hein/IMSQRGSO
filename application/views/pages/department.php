@@ -25,11 +25,6 @@
             <div class="col-lg-12 department-tab">
                 <select id="select-dept" class="col-lg-4 deptopt form-control"></select>
                 <div class="card">
-                    <div class="card-header">
-                            <button id="reconcileButton" class="btn btn-outline-success">
-                                <i class="fa fa-balance-scale"></i> RECONCILE
-                            </button>
-                    </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item active">
@@ -162,9 +157,9 @@
                     </table>
                 </div>
             </div>
-            <a type="button" class="btn btn-success" data-toggle="modal"
+            <a type="button" class="compare btn btn-success" data-toggle="modal"
                data-target= ".invdate">Reconcile Items</a>
-            <a type="button" class="btn btn-success" id="compare">Compare</a>
+            <a type="button" class="compare btn btn-success">Compare</a>
 
         </div>
 
@@ -194,7 +189,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" name="id" class="btn btn-primary btn-modal" id="save1">
+                        <button type="button" onclick="reconcile()" name="id" class="btn btn-primary btn-modal" id="save1">
                             <i class="fa fa-arrow-down"></i> Save
                         </button>
                     </div>

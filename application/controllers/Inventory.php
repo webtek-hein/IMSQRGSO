@@ -44,6 +44,13 @@ class Inventory extends CI_Controller
         $data = array();
 
         foreach ($list as $item) {
+           // $ps = $item['pc'];
+          //  $q = $item['quant'];
+         //   $remarks = $item['remarks'];
+
+            $count_input = "<input autofocus type='number' min='0' name='reconcileitem[]' class='reconitem form-control' value=''>";
+
+            $remarks_input = "<textarea autofocus type='text' name='remarks[]' class='remarks'></textarea>";
             $cost = "PHP " . number_format($item['cost'], 2);
             $totalCost = "PHP " . number_format($item['totalcost'], 2);
             if ($item['serialStatus'] === '1') {
@@ -66,7 +73,10 @@ class Inventory extends CI_Controller
                 'cost' => $cost,
                 'totalcost' => $totalCost,
                 'serialStatus' => $serialStatus,
-                'button' => 'Accept'
+                'button' => 'Accept',
+                'count' => $count_input,
+                'result' => 'Enter physical count',
+                'remarks' => $remarks_input
             );
         }
         echo json_encode($data);
@@ -318,8 +328,13 @@ class Inventory extends CI_Controller
 
     public function viewDept($type, $id)
     {
-        $list = $this->inv->departmentInventory($type, $id);
+        $department = $this->session->userdata['logged_in']['dept_id'];
         $position = $this->session->userdata['logged_in']['position'];
+        if($position == 'Supply Officer'){
+            $list = $this->inv->departmentInventory($type,$department);
+        }else {
+            $list = $this->inv->departmentInventory($type, $id);
+        }
         $data = array();
         foreach ($list as $item) {
             $data[] = array(
@@ -345,9 +360,9 @@ class Inventory extends CI_Controller
             $q = $item['quant'];
             $remarks = $item['remarks'];
 
-            $count_input = "<input autofocus type='number' min='0' name='reconcileitem[]' class='reconitem form-control' value='$ps' >";
+            $count_input = "<input autofocus type='number' min='0' name='reconcileitem[]' class='reconitem form-control' value='$ps'>";
 
-            $remarks_input = "<textarea autofocus type='text' name='remarks[]' >$remarks</textarea>";
+            $remarks_input = "<textarea autofocus type='text' name='remarks[]' class='remarks'>$remarks</textarea>";
 
             $data[] = array(
                 'id' => $item['recon_id'],
@@ -363,11 +378,9 @@ class Inventory extends CI_Controller
 
     }
 
-    public function compare()
+    public function reconcile()
     {
-
-        echo json_encode($this->inv->compareitem());
-        redirect('department');
+        echo json_encode($this->inv->endingInventory());
 
     }
 

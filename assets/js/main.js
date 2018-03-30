@@ -635,6 +635,78 @@ function init_inventory() {
     var $MOOEtable = $('#MOOEtable');
     var $supplier = $('#supplier-table');
     var $userTable = $('#user-table');
+    var $reconcile = $('#reconcileTable');
+
+    $reconcile.bootstrapTable({
+        pageSize: 10,
+        url: 'inventory/viewItem/CO',
+        resizable: true,
+
+        columns: [{
+            sortable: true,
+            field: 'item',
+            title: 'NAME'
+        }, {
+            sortable: true,
+            field: 'description',
+            title: 'DESCRIPTION'
+        }, {
+            sortable: true,
+            cellStyle: function (data) {
+                return {
+                    css: {"color": "green"}
+                };
+            },
+            field: 'quantity',
+            title: 'IN-STOCK'
+        }, {
+            sortable: true,
+            field: 'unit',
+            title: 'UNIT'
+        }, {
+            sortable: true,
+            field: 'cost',
+            title: 'Unit COST'
+        }, {
+            sortable: true,
+            field: 'totalcost',
+            title: 'Total COST'
+        }, {
+            sortable: true,
+            field: 'serialStatus',
+            title: 'Serial',
+            cellStyle: function (data) {
+                return {
+                    css: {"color": "green"}
+                };
+            }
+        }, {
+            sortable: true,
+            field: 'count',
+            title: 'PHYSICAL COUNT'
+        }, {
+                sortable: true,
+                cellStyle: function(data) {
+                    return {
+                        classes: 'result',
+                        css: {"color": "green"}
+                    };
+                },
+                field: 'result',
+                title: 'RESULT'
+
+            }, {
+                sortable:true,
+                field: 'remarks',
+                title: 'REMARKS'
+            }
+        ]
+        // }, {
+        //     sortable: true,
+        //     field: 'Price',
+        //     title: 'PRICE'
+        // }]
+    });
 
     $supplier.bootstrapTable('refresh', {url: 'supplier/viewsuppliers'})
         .bootstrapTable({
@@ -745,7 +817,7 @@ function init_inventory() {
                     return {
                         css: {"color": "green"}
                     };
-                },
+                }
             }]
             // }, {
             //     sortable: true,
@@ -821,7 +893,8 @@ function init_inventory() {
     $('#headingZero').on('click', function () {
         toggleDiv($('.addUser'), $('.accounts-tab'));
     });
-    $('#compare').on('click',function(){
+
+    $('.compare').on('click',function(){
         var quant = [];
         var pc = [];
         var $result = [];
@@ -836,13 +909,14 @@ function init_inventory() {
            } else if ($result > 0) {
                $result = ($result) + ' missing';
            } else if (($result) < 0) {
-               $result = 'more than ' + MATH.abs($result);
+               $result = 'more than ' + Math.abs($result);
            } else {
                $result = '';
            }
             $('.result')[i].innerHTML = $result;
         }
     });
+
     $('select.itemtype').change(function () {
         $('.hideInput').toggleClass('hidden');
     });
@@ -864,7 +938,7 @@ function init_inventory() {
                     }
                 }
                 $select.html(options);
-                toggleDiv($('.reconcilePage'), $('.department-tab'));
+                toggleDiv($('.reconcilePage'), $('.inventory-tab'));
             }
         });
 
@@ -882,7 +956,6 @@ function init_list() {
 
     var $deptTable = $('#departmentTable');
     var $deptMOOEtable = $('#deptMOOEtable');
-    var $reconcile = $('#reconcileTable');
 
     //show account code options
     $.ajax({
@@ -921,64 +994,6 @@ function init_list() {
                 });
             });
         }
-    });
-    $reconcile.bootstrapTable({
-        pageSize: 10,
-        url: 'inventory/reconcileview/CO/11',
-        resizable: true,
-        columns: [{
-            sortable: true,
-            field: 'id',
-            //visible: false,
-            formatter : function(value,row,index) {
-                return '<input hidden name="ids[]" autofocus value="'+value+'"/>';
-            }
-        },{
-            sortable: true,
-            field: 'name',
-            title: 'NAME'
-        }, {
-            sortable:true,
-            field: 'date',
-            title: 'DATE',
-            visible: false
-
-        },{
-            sortable: true,
-            field: 'description',
-            title: 'DESCRIPTION'
-        }, {
-            sortable: true,
-            cellStyle: function (data) {
-                return {
-                    classes: 'quantity',
-                    css: {"color": "green"}
-                };
-            },
-            field: 'quant',
-            title: 'QUANTITY DISTRIBUTED',
-            visible: false
-        }, {
-            sortable: true,
-            field: 'count',
-            title: 'PHYSICAL COUNT'
-        },
-            {
-                sortable: true,
-                cellStyle: function(data) {
-                    return {
-                        classes: 'result',
-                        css: {"color": "green"}
-                    };
-                },
-                field: 'result',
-                title: 'RESULT'
-
-        }, {
-            sortable:true,
-            field: 'remarks',
-            title: 'REMARKS'
-            }]
     });
 
     $deptTable.bootstrapTable({
@@ -1289,7 +1304,7 @@ function viewSerial(id) {
                         "<input value =\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                         "min=0  " +
                         "class=\"form-control\"></label><br>");
-                    if (input.length === 10) {
+                    if (input.length = 10) {
                         div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
                         list.push("<li class=\"" + listClass + "\"><a id=\"t"+serialTabCounter+"\"" +
                             "data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
@@ -1642,6 +1657,31 @@ function revertDetail($det_id,$serialStatus) {
         success: function (data) {
             $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $det_id});
             $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $det_id});
+        }
+    });
+}
+
+//for reconciliation
+function reconcile() {
+    $date = $('#date').val();
+    $id = [];
+    $q = [];
+    $p = [];
+    $r = [];
+    var $recon = $('.reconitem ');
+
+    for(var i = 0;i <= $recon.length-1;i++) {
+        $q.push($('.quantity')[i].textContent);
+        $p.push($recon[i].value);
+        $r.push($('.remarks')[i].value)
+        $id.push($('.reconid')[i].value)
+    }
+    $.ajax({
+        url: "inventory/reconcile",
+        method: "POST",
+        data: {logical: $q,physical:$p,remarks:$r,date:$date,id:$id},
+        success: function (data) {
+            $('.invdate').modal('toggle');
         }
     });
 }

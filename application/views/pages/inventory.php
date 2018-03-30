@@ -24,7 +24,6 @@
             <!-- Inventory-->
             <div class="inventory-tab col-lg-12">
                 <div class="card">
-
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if ($position === 'Custodian') {
 
@@ -43,9 +42,10 @@
                                 <button id="headingTwo" class="btn btn-outline-success">
                                     <i class=" fa fa-plus" ></i><span> New</span></button>
                                 <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" class="btn btn-outline-primary">
-                                    <i class="fa fa-file-archive-o"></i><span> Reports</span></button>                
-                             </div>';
-
+                                    <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
+                                 <button id="reconcileButton" class="btn btn-outline-success">
+                                 <i class="fa fa-balance-scale"></i> RECONCILE</button>
+                                </div>';
                     }
                     ?>
                     <div class="card-body">
@@ -884,5 +884,61 @@
     </div>
 </div>
 <!--end of Return-->
+<!--Reconcile Page-->
+<!--add inventory date-->
+<div hidden class="reconcilePage col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))" class="btn btn-primary">Back</button>
+        </div>
+        <form id="compareitem" role="form"
+              action="inventory/compare/" method="POST">
+            <div class="table-responsive-sm-sm tab-content pl-3 p-1">
+                <table class="table table-no-bordered"
+                       data-pagination="true" data-search="true" id="reconcileTable">
+                </table>
+            </div>
+    </div>
+    <a type="button" class="compare btn btn-success" data-toggle="modal"
+       data-target= ".invdate">Reconcile Items</a>
+    <a type="button" class="compare btn btn-success">Compare</a>
+
+</div>
+
+<!--End of Reconcile Page-->
+
+<div class="invdate modal fade" id="addinvdate" tabindex="-1" role="dialog"
+     aria-labelledby="largeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="largeModalLabel">Date of Inventory</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label for="invdate">Date of Inventory</label>
+                        <input id="date" class="form-control col-md-7 col-xs-12"
+                               data-validate-length-range="6"
+                               data-validate-words="2" name="date" required type="date">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" onclick="reconcile()" name="id" class="btn btn-primary btn-modal" id="save1">
+                    <i class="fa fa-arrow-down"></i> Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<!--end of add inventory date-->
 </div>
 
