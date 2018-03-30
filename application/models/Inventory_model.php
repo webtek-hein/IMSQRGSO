@@ -998,9 +998,9 @@ class Inventory_model extends CI_Model
     }
     //count expired items supply officer
     public function itemsExpired(){
-        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
         $this->db->SELECT('count(gsois.itemdetail.item_id) as totalItemsExpired');
-        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
+        $this->db->WHERE('gsois.distribution.dept_id', $dept_id);
         $this->db->WHERE('gsois.itemdetail.expiration_date >=','CURDATE()',false);
         $this->db->JOIN('gsois.distribution','gsois.distribution.item_det_id = gsois.itemdetail.item_det_id');
         $query = $this->db->get('gsois.itemdetail');
@@ -1008,10 +1008,10 @@ class Inventory_model extends CI_Model
     }
     //total cost supply officer
     public function itemsTcost(){
-        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
         $this->db->select('sum(gsois.distribution.cost*gsois.distribution.quantity_distributed) as itemTcost');
-        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
-        $this->db->WHERE('gsois.distribution.status', 'Accepted');
+        $this->db->WHERE('gsois.distribution.dept_id', $dept_id);
+        $this->db->WHERE('gsois.distribution.status','Accepted');
         $query = $this->db->get('gsois.distribution');
         return $query->result_array();
     }
