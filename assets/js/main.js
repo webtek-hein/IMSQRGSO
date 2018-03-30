@@ -824,13 +824,24 @@ function init_inventory() {
     $('#compare').on('click',function(){
         var quant = [];
         var pc = [];
-        var result = [];
-        $('.compare,.quantity').each(function() {
-            pc = ($(this).val());
-            quant = $('.quantity',this);
-            result = pc -  ($(this).text());
-        });
-
+        var $result = [];
+        var $recon = $('.reconitem ');
+        for(var i = 0;i <= $recon.length-1;i++){
+            $q = $('.quantity')[i].textContent;
+            $result = $q-$recon[i].value;
+            if ($result === 0) {
+               $result = 'equal';
+           } else if ($result === $q){
+               $result = 'no input';
+           } else if ($result > 0) {
+               $result = ($result) + ' missing';
+           } else if (($result) < 0) {
+               $result = 'more than ' + MATH.abs($result);
+           } else {
+               $result = '';
+           }
+            $('.result')[i].innerHTML = $result;
+        }
     });
     $('select.itemtype').change(function () {
         $('.hideInput').toggleClass('hidden');
@@ -946,7 +957,7 @@ function init_list() {
             },
             field: 'quant',
             title: 'QUANTITY DISTRIBUTED',
-            visible: true
+            visible: false
         }, {
             sortable: true,
             field: 'count',

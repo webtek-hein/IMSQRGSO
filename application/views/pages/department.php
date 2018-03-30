@@ -157,7 +157,7 @@
                 <form id="compareitem" role="form"
                       action="inventory/compare/" method="POST">
                 <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                    <table dclass="table table-no-bordered"
+                    <table class="table table-no-bordered"
                            data-pagination="true" data-search="true" id="reconcileTable">
                     </table>
                 </div>
