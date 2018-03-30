@@ -283,6 +283,7 @@ class Inventory_model extends CI_Model
             $employee = $this->input->post('owner');
             if (count($serial) != 0) {
                 $this->db->set('employee', $employee);
+                $this->db->set('item_status', 'UserDistributed');
                 $this->db->where_in('serial', $serial);
                 $this->db->update('serial');
             } else {
@@ -829,7 +830,7 @@ var_dump($pcount);
             $this->db->update('serial');
 
         }
-        
+
         $date = $this->input->post('returndate');
         $data = array(
             'return_quantity' => $quantity_returned,
