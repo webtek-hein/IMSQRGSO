@@ -624,8 +624,12 @@ class Inventory extends CI_Controller
     public function itemTcostSO()
     {
         $totalEx = $this->inv->itemsTcost();
-        foreach ($totalEx as $list) {
-            echo $list['itemTcost'];
+        if(count($totalEx) == 0){
+            echo "0";
+        }else{
+            foreach ($totalEx as $list) {
+                echo $list['itemTcost'];
+            }
         }
     }
 

@@ -11,7 +11,7 @@ $(document).ready(function () {
         $( "#tcost" ).load("inventory/totalCost");
         $( "#tItemsDay" ).load("inventory/itemsThisDay");
         $( "#tReturnedDay" ).load("inventory/itemsReturnedThisDay");
-        $( "#tExprdSO" ).load("inventory/itemsExpired");
+        $( "#tExprdSO" ).load("inventory/itemsExpiredSO");
         $( "#tCostSO" ).load("inventory/itemTcostSO");
 
     },1000);
