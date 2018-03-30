@@ -164,6 +164,7 @@
             </div>
             <a type="button" class="btn btn-success" data-toggle="modal"
                data-target= ".invdate">Reconcile Items</a>
+            <a type="button" class="btn btn-success" id="compare">Compare</a>
 
         </div>
 

@@ -802,7 +802,7 @@ function init_inventory() {
                     return {
                         css: {"color": "green"}
                     };
-                },
+                }
             }]
             // }, {
             //     sortable: true,
@@ -821,6 +821,17 @@ function init_inventory() {
     $('#headingZero').on('click', function () {
         toggleDiv($('.addUser'), $('.accounts-tab'));
     });
+    $('#compare').on('click',function(){
+        var quant = [];
+        var pc = [];
+        var result = [];
+        $('.compare,.quantity').each(function() {
+            pc = ($(this).val());
+            quant = $('.quantity',this);
+            result = pc -  ($(this).text());
+        });
+
+    });
     $('select.itemtype').change(function () {
         $('.hideInput').toggleClass('hidden');
     });
@@ -829,7 +840,7 @@ function init_inventory() {
     });
     $('#reconcileButton').on('click', function () {
         toggleDiv($('.reconcilePage'), $('.department-tab'));
-    })
+    });
     console.log('init_inventory');
 }
 
@@ -912,6 +923,7 @@ function init_list() {
             sortable: true,
             cellStyle: function (data) {
                 return {
+                    classes: 'quantity',
                     css: {"color": "green"}
                 };
             },
@@ -925,8 +937,15 @@ function init_list() {
         },
             {
                 sortable: true,
+                cellStyle: function(data) {
+                    return {
+                        classes: 'result',
+                        css: {"color": "green"}
+                    };
+                },
                 field: 'result',
                 title: 'RESULT'
+
         }, {
             sortable:true,
             field: 'remarks',
