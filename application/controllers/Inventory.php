@@ -35,7 +35,7 @@ class Inventory extends CI_Controller
     public function viewItem($type)
     {
         $position = $this->session->userdata['logged_in']['position'];
-        $department = $this->session->userdata['logged_in']['dept_id'];
+        $z = $this->session->userdata['logged_in']['dept_id'];
         if ($position === 'Supply Officer') {
             $list = $this->inv->departmentInventory($type, $department);
         } else {
