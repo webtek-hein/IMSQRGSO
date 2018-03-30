@@ -96,7 +96,7 @@ $(document).ready(function () {
                     field: 'item_type',
                     title: 'Type'
                 }, {
-                    field: 'quantity',
+                    field: 'quantity_distributed',
                     title: 'Quantity'
                 }, {
                     field: 'cost',
@@ -129,7 +129,7 @@ $(document).ready(function () {
                     field: 'item_type',
                     title: 'Type'
                 }, {
-                    field: 'quantity',
+                    field: 'return_quantity',
                     title: 'Quantity'
                 }, {
                     field: 'receiver',

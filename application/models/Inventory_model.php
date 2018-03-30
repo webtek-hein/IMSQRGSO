@@ -1096,7 +1096,7 @@ var_dump($pcount);
     //items issued reports
     public function issuedReports($type)
     {
-        $this->db->select('PR_no,,distribution.cost,department,distribution.date_received,CONCAT(first_name," ",last_name) as supply_officer,item.*,account_code');
+        $this->db->select('PR_no,distribution.quantity_distributed,distribution.cost,department,distribution.date_received,CONCAT(first_name," ",last_name) as supply_officer,item.*,account_code');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
         $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
         $this->db->join('department', 'distribution.dept_id = department.dept_id');
