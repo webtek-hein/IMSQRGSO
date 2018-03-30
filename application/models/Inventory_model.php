@@ -426,8 +426,6 @@ class Inventory_model extends CI_Model
                             <a class=\"serialdrop dropdown-item\" onclick='viewSerial($item_det_id)' data-toggle=\"collapse\" 
                             href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\"><i class=\"fa fa-folder-open\"></i>
                             </i > View Serial </a >
-                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($item_det_id,$serialStatus)\" data-target=\" . Edit\">
-                            <i class=\"fa fa-remove\" ></i > Remove Item</a >
                             </div>
                             </div>";
             } else {
@@ -436,13 +434,12 @@ class Inventory_model extends CI_Model
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($item_det_id)\"data-toggle=\"modal\" data-id='$item_det_id'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
-                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($item_det_id,$serialStatus)\" data-target=\" .Edit\">
-                            <i class=\"fa fa-remove\" ></i > Remove Item</a >
                             </div>
                             </div>";
             }
 
             $data1 = array(
+                '<a href="#" onclick="removeDetail('.$item_det_id.')"> <i class="fa fa-remove"></i> </a>',
                 $this->input->post('PO')[$counter],
                 $this->input->post('del')[$counter],
                 $this->input->post('rec')[$counter],
@@ -1001,9 +998,9 @@ var_dump($pcount);
     }
     //count expired items supply officer
     public function itemsExpired(){
-        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
         $this->db->SELECT('count(gsois.itemdetail.item_id) as totalItemsExpired');
-        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
+        $this->db->WHERE('gsois.distribution.dept_id', $dept_id);
         $this->db->WHERE('gsois.itemdetail.expiration_date >=','CURDATE()',false);
         $this->db->JOIN('gsois.distribution','gsois.distribution.item_det_id = gsois.itemdetail.item_det_id');
         $query = $this->db->get('gsois.itemdetail');
@@ -1011,10 +1008,10 @@ var_dump($pcount);
     }
     //total cost supply officer
     public function itemsTcost(){
-        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
         $this->db->select('sum(gsois.distribution.cost*gsois.distribution.quantity_distributed) as itemTcost');
-        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
-        $this->db->WHERE('gsois.distribution.status', 'Accepted');
+        $this->db->WHERE('gsois.distribution.dept_id', $dept_id);
+        $this->db->WHERE('gsois.distribution.status','Accepted');
         $query = $this->db->get('gsois.distribution');
         return $query->result_array();
     }
@@ -1141,5 +1138,11 @@ var_dump($pcount);
         $query = $this->db->get('supplier');
 
         return $query->result_array();
+    }
+    //reconciliation date
+    public function getInventoryDates(){
+        $this->db->select('inventory_date');
+        $this->db->group_by('inventory_date');
+        $this->db->get('reconciliation');
     }
 }

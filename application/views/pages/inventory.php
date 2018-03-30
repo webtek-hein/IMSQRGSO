@@ -539,7 +539,7 @@
 
                     <div class="col-4">
                         <div class="form-group">
-                            <h6>Quantity:</h6>
+                            <p>Quantity Left: <span id="quantLeft"></span></p>
                             <br>
                             <div class="serial">
                                 <label for="name"></label>
