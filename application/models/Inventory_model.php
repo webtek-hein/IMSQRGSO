@@ -48,6 +48,9 @@ class Inventory_model extends CI_Model
             //item insert id
             $item_id = array('item_id' => $this->db->insert_id());
 
+
+            $this->db->insert('reconciliation',$item_id);
+
             // 2. Insert to item detail
             $this->db->insert('itemdetail', $data1 + $item_id);
 
@@ -128,9 +131,12 @@ class Inventory_model extends CI_Model
         $transaction_number = $this->input->post('or');
         $cost = $this->input->post('cost');
         $quantity = $this->input->post('quant');
-
+        $rec_item_id[] = [];
 
         foreach ($insert_id as $key => $value) {
+            $rec_item_id[] = array(
+              'item_id'=>$insert_id[$key]
+            );
             $trans_data[] = array(
                 'date' => $date[$key],
                 'transaction_number' => $transaction_number[$key],
@@ -151,6 +157,8 @@ class Inventory_model extends CI_Model
                 'or_no' => $transaction_number[$key]
             );
         }
+
+        $this->db->insert_batch('reconciliation',$rec_item_id);
 
         // 2. Insert to item detail
         $this->db->insert_batch('itemdetail', $data1);
@@ -243,8 +251,6 @@ class Inventory_model extends CI_Model
             $this->db->insert('distribution', $data);
             //dist_id
             $dist_id = $this->db->insert_id();
-
-            $this->db->insert('reconciliation',array('dist_id' => $dist_id,'item_id'=>$item_id));
 
             $this->db->insert('logs.decreaselog', array('userid' => $user, 'dist_id' => $dist_id));
             //dec log id
@@ -363,8 +369,9 @@ class Inventory_model extends CI_Model
     public
     function select_item($type)
     {
-        $this->db->select('item.*,(cost*quantity) as totalcost');
+        $this->db->select('item.*,(cost*quantity) as totalcost,recon_id');
         $this->db->where('item_type', $type);
+        $this->db->join('reconciliation','reconciliation.item_id = item.item_id','inner');
         $this->db->order_by('item_id','desc');
         $query = $this->db->get('item');
         return $query->result_array();
@@ -615,12 +622,19 @@ class Inventory_model extends CI_Model
         $physical = $this->input->post('physical');
         $date = $this->input->post('date');
         $id = $this->input->post('id');
-        $distribution_data = [];
+        $item_data = [];
         $data = [];
 
-        $dist_id = $this->db->select('dist_id')->where_in('recon_id',$id)->get('reconciliation')->result_array();
-        $cost = $this->db->select('cost')->where_in($dist_id)->get('distribution')->result_array();
+        $item_id = $this->db->select('item_id')->where_in('recon_id',$id)->get('reconciliation')->result_array();
+        $cost = $this->db->select('cost')->where_in($item_id)->get('item')->result_array();
+        $item_det_id = $this->db->select('item_det_id')->where_in($item_id)->get('itemdetail')->result_array();
 
+        $serials = $this->db->select('item_det_id')->where_in($item_det_id)->get('serial')->result_array();
+        if(!empty($serials)){
+            $this->db->set('record_status','0');
+            $this->db->where_in($serials);
+            $this->db->update('serial');
+        }
         foreach ($id as $key => $value) {
             $data[] = array(
                 'recon_id' => $value,
@@ -631,14 +645,16 @@ class Inventory_model extends CI_Model
                 'ending_cost' => $cost[$key]['cost']
             );
 
-            $distribution_data[] = array(
-                'dist_id'=>$dist_id[$key]['dist_id'],
-                'quantity_distributed'=>$physical[$key],
+            $item_data[] = array(
+                'item_id'=>$item_id[$key]['item_id'],
+                'quantity'=>$physical[$key],
+                'cost'=>$cost[$key]['cost'],
+                'initialCost'=>$cost[$key]['cost'],
+                'initialStock'=>$physical[$key],
             );
         }
-        var_dump($dist_id);
         $this->db->update_batch('reconciliation',$data,'recon_id');
-        $this->db->update_batch('distribution',$distribution_data,'dist_id');
+        $this->db->update_batch('item',$item_data,'item_id');
     }
 
     public
@@ -861,7 +877,8 @@ class Inventory_model extends CI_Model
 
     public function ledger($id)
     {
-        $this->db->where('item_id', $id);
+        $this->db->where('transaction.item_id', $id);
+        $this->db->join('item','item.item_id = transaction.item_id');
         $query = $this->db->get('transaction');
         return $query->result_array();
 

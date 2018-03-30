@@ -35,6 +35,7 @@ class Inventory extends CI_Controller
     public function viewItem($type)
     {
         $position = $this->session->userdata['logged_in']['position'];
+        $department = $this->session->userdata['logged_in']['dept_id'];
         $z = $this->session->userdata['logged_in']['dept_id'];
         if ($position === 'Supply Officer') {
             $list = $this->inv->departmentInventory($type, $department);
@@ -44,10 +45,6 @@ class Inventory extends CI_Controller
         $data = array();
 
         foreach ($list as $item) {
-           // $ps = $item['pc'];
-          //  $q = $item['quant'];
-         //   $remarks = $item['remarks'];
-
             $count_input = "<input autofocus type='number' min='0' name='reconcileitem[]' class='reconitem form-control' value=''>";
 
             $remarks_input = "<textarea autofocus type='text' name='remarks[]' class='remarks'></textarea>";
@@ -64,7 +61,7 @@ class Inventory extends CI_Controller
                 $quantity = $item['quantity'];
             }
             $data[] = array(
-                'id' => $item['item_id'],
+                'id' => $item['recon_id'],
                 'item' => $item['item_name'],
                 'description' => $item['item_description'],
                 'quantity' => $quantity,
@@ -434,7 +431,8 @@ class Inventory extends CI_Controller
 
             $data[] = array(
                 'date' => $item['date'],
-                'transaction_number' => $item['transaction_number'],
+                'quantity' => $item['quantity'],
+                'reference' => $item['transaction_number'],
                 'increased' => $item['increased'],
                 'decreased' => $item['decreased'],
                 'price' => $cost,
