@@ -25,11 +25,6 @@
             <div class="col-lg-12 department-tab">
                 <select id="select-dept" class="col-lg-4 deptopt form-control"></select>
                 <div class="card">
-                    <div class="card-header">
-                            <button id="reconcileButton" class="btn btn-outline-success">
-                                <i class="fa fa-balance-scale"></i> RECONCILE
-                            </button>
-                    </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item active">
