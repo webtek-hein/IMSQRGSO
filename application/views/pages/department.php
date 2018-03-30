@@ -109,32 +109,6 @@
                 </div>
             </div>
 
-            <!--Reconcile Page-->
-            <div hidden class="reconcilePage col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <button onclick="toggleDiv($('.department-tab'), $('.reconcilePage'))" class="btn btn-primary">Back</button>
-                    </div>
-                    <form id="compareitem" role="form"
-                          action="inventory/compare/" method="POST">
-                    <div class="card-body">
-                        <label for="inventoryDates">Dates</label>
-                        <select id="inventoryDates"></select>
-                        <input class="form-group col-2" placeholder="Date">
-
-                        <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                            <table dclass="table table-no-bordered"
-                                   data-pagination="true" data-search="true" id="reconcileTable">
-                            </table>
-                        </div>
-                    </div>
-                        <button class="btn btn-success" type="submit" name="id" id="save1" href="#">Reconcile Items</button>
-                    </form>
-
-                </div>
-            </div>
-            <!--End of Reconcile Page-->
-
             <!-- View Serial-->
             <div hidden class="Serial col-lg-12 ">
                 <div class="card">
@@ -154,7 +128,9 @@
                 </div>
             </div>
         </div>
+    </div>
         <!-- View Serial-->
+
         <div hidden class="Serial  page-content">
             <div id="data1" class="panel-collapse collapse" role="tabpanel">
                 <h4><b>List of Serial</b></h4>
@@ -169,4 +145,61 @@
             </div>
         </div>
         <!--End of View Serial-->
+    </div>
+
+        <!--Reconcile Page-->
+    <!--add inventory date-->
+        <div hidden class="reconcilePage col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <button onclick="toggleDiv($('.department-tab'), $('.reconcilePage'))" class="btn btn-primary">Back</button>
+                </div>
+                <form id="compareitem" role="form"
+                      action="inventory/compare/" method="POST">
+                <div class="table-responsive-sm-sm tab-content pl-3 p-1">
+                    <table dclass="table table-no-bordered"
+                           data-pagination="true" data-search="true" id="reconcileTable">
+                    </table>
+                </div>
+            </div>
+            <a type="button" class="btn btn-success" data-toggle="modal"
+               data-target= ".invdate">Reconcile Items</a>
+
+        </div>
+
+    <!--End of Reconcile Page-->
+
+        <div class="invdate modal fade" id="addinvdate" tabindex="-1" role="dialog"
+             aria-labelledby="largeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="largeModalLabel">Date of Inventory</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <label for="invdate">Date of Inventory</label>
+                                <input id="date" class="form-control col-md-7 col-xs-12"
+                                       data-validate-length-range="6"
+                                       data-validate-words="2" name="date" required type="date">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" name="id" class="btn btn-primary btn-modal" id="save1">
+                            <i class="fa fa-arrow-down"></i> Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--end of add inventory date-->
         <!-- /page content -->

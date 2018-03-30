@@ -364,7 +364,6 @@ class Inventory extends CI_Controller
             $data[] = array(
                 'id' => $item['recon_id'],
                 'name' => $item['item_name'],
-                'date' => $item['date_received'],
                 'description' => $item['item_description'],
                 'quant' => $item['quant'],
                 'count' => $count_input,
