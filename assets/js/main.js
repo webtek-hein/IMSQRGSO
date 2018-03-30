@@ -839,7 +839,24 @@ function init_inventory() {
         toggleDiv($('.generateReport'), $('.inventory-tab'));
     });
     $('#reconcileButton').on('click', function () {
-        toggleDiv($('.reconcilePage'), $('.department-tab'));
+        var $select = $('#inventoryDates');
+        var options = [];
+        $.ajax({
+            url: "inventory/getInvDates",
+            dataType: 'JSON',
+            success: function (data) {
+                if(data === null){
+                    options += '<option>NO Inventory Dates</option>';
+                }else{
+                    for(var i=0;i <= data.length-1;i++){
+                        options += '<option>'+data+'</option>';
+                    }
+                }
+                $select.html(options);
+                toggleDiv($('.reconcilePage'), $('.department-tab'));
+            }
+        });
+
     });
     console.log('init_inventory');
 }
@@ -1608,17 +1625,6 @@ function removeDetail($id,$serialStatus){
 function revertDetail($det_id,$serialStatus) {
     var $detailtable = $('#detail-tab-table');
     var $rmItems = $('#removed-table');
-    $.ajax({
-        url: "inventory/revert/"+$det_id+"/"+$serialStatus,
-        method: "POST",
-        success: function (data) {
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $det_id});
-            $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $det_id});
-        }
-    });
-}
-function getInvDate(){
-    var $detailtable = $('#inventoryDates');
     $.ajax({
         url: "inventory/revert/"+$det_id+"/"+$serialStatus,
         method: "POST",
