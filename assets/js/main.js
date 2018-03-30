@@ -901,7 +901,8 @@ function init_list() {
         }, {
             sortable:true,
             field: 'date',
-            title: 'DATE'
+            title: 'DATE',
+            visible: false
 
         },{
             sortable: true,

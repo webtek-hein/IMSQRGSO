@@ -597,13 +597,13 @@ class Inventory_model extends CI_Model
     public
     function reconcile($type, $id)
     {
-        $this->db->select('item.*,sum(quantity_distributed) as quant,reconciliation.physical_count as pc,reconciliation.remarks,reconciliation.*,distribution.date_received');
+        $this->db->select('item.*,sum(quantity_distributed) as quant,reconciliation.physical_count as pc,reconciliation.remarks,reconciliation.*');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
         $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
         $this->db->join('reconciliation', 'distribution.item_det_id = reconciliation.dist_id', 'inner');
         $this->db->where('item.item_type', $type);
         $this->db->where('distribution.dept_id', $id);
-        $this->db->group_by('reconciliation.recon_id,reconciliation.dist_id,distribution.date_received');
+        $this->db->group_by('reconciliation.recon_id,reconciliation.dist_id,item.item_id');
         $this->db->order_by('item.item_id','desc');
         $query = $this->db->get('distribution');
         return $query->result_array();
@@ -614,9 +614,11 @@ class Inventory_model extends CI_Model
     {
         $remarks = $this->input->post('remarks');
         $pcount = $this->input->post('reconcileitem');
+        $invdate = $this->input->post('date');
         $id = $this->input->post('ids');
         $keys = $this->input->post('ids');
-
+        var_dump($invdate);
+var_dump($pcount);
         $data = array();
         foreach ($keys as $key => $value) {
             // if serial is not null
@@ -624,7 +626,8 @@ class Inventory_model extends CI_Model
                 $data[$value] = array(
                     'recon_id' => $id[$key],
                     'physical_count' => $pcount[$key],
-                    'remarks' => $remarks[$key]
+                    'remarks' => $remarks[$key],
+                    'inventory_date' => $invdate
                 );
             }
         }
