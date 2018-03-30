@@ -1136,4 +1136,10 @@ class Inventory_model extends CI_Model
 
         return $query->result_array();
     }
+    //reconciliation date
+    public function getInventoryDates(){
+        $this->db->select('inventory_date');
+        $this->db->group_by('inventory_date');
+        $this->db->get('reconciliation');
+    }
 }

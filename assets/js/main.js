@@ -1597,3 +1597,14 @@ function revertDetail($det_id,$serialStatus) {
         }
     });
 }
+function getInvDate(){
+    var $detailtable = $('#inventoryDates');
+    $.ajax({
+        url: "inventory/revert/"+$det_id+"/"+$serialStatus,
+        method: "POST",
+        success: function (data) {
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $det_id});
+            $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $det_id});
+        }
+    });
+}

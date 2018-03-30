@@ -118,8 +118,8 @@
                     <form id="compareitem" role="form"
                           action="inventory/compare/" method="POST">
                     <div class="card-body">
-
-                        <select>Date</select>
+                        <label for="inventoryDates">Dates</label>
+                        <select id="inventoryDates"></select>
                         <input class="form-group col-2" placeholder="Date">
 
                         <div class="table-responsive-sm-sm tab-content pl-3 p-1">

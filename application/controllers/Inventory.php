@@ -642,4 +642,7 @@ class Inventory extends CI_Controller
             echo json_encode($this->inv->supplierReport($type));
         }
     }
+    public function getInvDates(){
+        echo json_encode($this->inv->getInventoryDates());
+    }
 }
