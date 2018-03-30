@@ -983,7 +983,7 @@ function init_list() {
 
     $deptTable.bootstrapTable({
         pageSize: 10,
-        url: 'inventory/viewdept/CO/11',
+        url: 'inventory/viewdept/CO',
         onClickRow: function (data, row) {
             deptDet(data.id,data.position);
         },
@@ -1013,7 +1013,7 @@ function init_list() {
     });
     $deptMOOEtable.bootstrapTable({
         pageSize: 10,
-        url: 'inventory/viewdept/MOOE/11',
+        url: 'inventory/viewdept/MOOE',
         onClickRow: function (data, row) {
             deptDet(data.id,data.position);
         },

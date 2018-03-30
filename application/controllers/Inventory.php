@@ -316,9 +316,10 @@ class Inventory extends CI_Controller
         echo json_encode($this->inv->addSerial());
     }
 
-    public function viewDept($type, $id)
+    public function viewDept($type)
     {
-        $list = $this->inv->departmentInventory($type, $id);
+        $department = $this->session->userdata['logged_in']['dept_id'];
+        $list = $this->inv->departmentInventory($type,$department);
         $position = $this->session->userdata['logged_in']['position'];
         $data = array();
         foreach ($list as $item) {
