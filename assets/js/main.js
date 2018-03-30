@@ -1119,10 +1119,10 @@ function getserial(id) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null && status !== 'Distributed') {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "] type=\"text\" id=\"text\" placeholder=\"insert text here\" \" type=\"checkbox\" class=\"check\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (data[i].serial !== null && status === 'Distributed') {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "] type=\"text\" id=\"text\" placeholder=\"insert text here\" \" type=\"checkbox\" class=\"check\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
