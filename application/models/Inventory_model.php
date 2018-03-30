@@ -805,7 +805,7 @@ var_dump($pcount);
             $quantity_returned = $this->input->post('quantity');
         }
 
-        $query = $this->db->select('item.serialStatus,distribution.cost,distribution.PR_no,itemdetail.item_det_id,itemdetail.item_id')
+        $query = $this->db->select('item.serialStatus,distribution.cost,distribution.quantity_distributed,distribution.PR_no,itemdetail.item_det_id,itemdetail.item_id')
             ->join('distribution', 'itemdetail.item_det_id = distribution.item_det_id')
             ->join('item', 'itemdetail.item_id = item.item_id')
             ->where('distribution.dist_id', $id)
@@ -814,6 +814,7 @@ var_dump($pcount);
         $item_id = $query->item_id;
         $transaction_number = ($query->PR_no);
         $cost = ($query->cost);
+        $quantdist = ($query->quantity_distributed);
         $serialStatus = ($query->serialStatus);
 
         if ($serialStatus === '1') {
@@ -828,6 +829,9 @@ var_dump($pcount);
             $this->db->update('serial');
 
         }
+        $this->db->set('quantity_distributed', $quantdist - $quantity_returned);
+        $this->db->where_in('dist_id', $id);
+        $this->db->update('distribution');
 
         $date = $this->input->post('returndate');
         $data = array(
