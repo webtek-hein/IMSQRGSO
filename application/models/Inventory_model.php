@@ -977,6 +977,7 @@ class Inventory_model extends CI_Model
         $this->db->SELECT('count(decreaselog.dec_log_id) as totalItems');
         $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
         $this->db->WHERE('date(timestamp)','CURDATE()',false);
+        $this->db->WHERE('gsois.distribution.status','Accepted');
         $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');       
         $query = $this->db->get('logs.decreaselog');
         return $query->result_array();
@@ -998,6 +999,7 @@ class Inventory_model extends CI_Model
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
         $this->db->SELECT('count(gsois.itemdetail.item_id) as totalItemsExpired');
         $this->db->WHERE('gsois.distribution.dept_id', $dept_id);
+        $this->db->WHERE('gsois.distribution.status','Accepted');
         $this->db->WHERE('gsois.itemdetail.expiration_date >=','CURDATE()',false);
         $this->db->JOIN('gsois.distribution','gsois.distribution.item_det_id = gsois.itemdetail.item_det_id');
         $query = $this->db->get('gsois.itemdetail');
