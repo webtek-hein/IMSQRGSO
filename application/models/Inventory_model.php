@@ -954,7 +954,7 @@ class Inventory_model extends CI_Model
 
     //total cost dash custodian
     public function totalcost(){
-        $this->db->SELECT('sum(unit_cost) as totalcost');
+        $this->db->SELECT('sum(unit_cost * quantity) as totalcost');
         $this->db->where('date_received','CURDATE()', false);
         $query = $this->db->get('gsois.itemdetail');
         return $query->result_array();
@@ -973,11 +973,11 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('gsois.user');
         return $query->result_array();
     }
-
+//Supply Dashboard
     //count items issued for the day
     public function itemsThisDay(){
         $user_id = $this->session->userdata['logged_in']['user_id'];
-        $this->db->SELECT('count(decreaselog.dist_id) as totalItems');
+        $this->db->SELECT('count(decreaselog.dec_log_id) as totalItems');
         $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
         $this->db->WHERE('date(timestamp)','CURDATE()',false);
         $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');       
@@ -985,6 +985,37 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    //count items returned for the day
+    public function itemsReturnedThisDay(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $this->db->SELECT('count(logs.returnlog.ret_log_id) as totalItemsReturned');
+        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
+        $this->db->WHERE('date(timestamp)','CURDATE()',false);
+        $this->db->JOIN('gsois.returnitem','gsois.returnitem.return_id = logs.returnlog.return_id');   
+        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = gsois.returnitem.dist_id');           
+        $query = $this->db->get('logs.returnlog');
+        return $query->result_array();
+    }
+    //count expired items supply officer
+    public function itemsExpired(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $this->db->SELECT('count(gsois.itemdetail.item_id) as totalItemsExpired');
+        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
+        $this->db->WHERE('gsois.itemdetail.expiration_date >=','CURDATE()',false);
+        $this->db->JOIN('gsois.distribution','gsois.distribution.item_det_id = gsois.itemdetail.item_det_id');
+        $query = $this->db->get('gsois.itemdetail');
+        return $query->result_array();
+    }
+    //total cost supply officer
+    public function itemsTcost(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $this->db->select('sum(gsois.distribution.cost*gsois.distribution.quantity_distributed) as itemTcost');
+        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
+        $this->db->WHERE('gsois.distribution.status', 'Accepted');
+        $query = $this->db->get('gsois.distribution');
+        return $query->result_array();
+    }
+//end of supplier dashboard
     public function rmDet($id,$serialStatus){
         $this->db->set('status','removed');
         $this->db->where('item_det_id',$id);
@@ -1046,5 +1077,66 @@ class Inventory_model extends CI_Model
             ->where('dept_id',$id)
             ->get('user')->result_array();
     }
+    //items delivered/added report
+    public function deliveredReports($type)
+    {
+         $this->db->select('date_delivered,item.*')
+            ->join('item', 'itemdetail.item_id = item.item_id');
+            if($type === 'CO'){
+                $this->db->where('item.item_type',$type);
+            }elseif ($type === 'MOOE'){
+                $this->db->where('item.item_type',$type);
+            }
+        return $this->db->get('itemdetail')->result_array();
+    }
+    //items issued reports
+    public function issuedReports($type)
+    {
+        $this->db->select('PR_no,,distribution.cost,department,distribution.date_received,CONCAT(first_name," ",last_name) as supply_officer,item.*,account_code');
+        $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
+        $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
+        $this->db->join('department', 'distribution.dept_id = department.dept_id');
+        $this->db->join('user', 'distribution.supply_officer_id = user.user_id');
+        $this->db->join('account_code', 'distribution.ac_id = account_code.ac_id');
+        if($type === 'CO'){
+            $this->db->where('item.item_type',$type);
+        }elseif ($type === 'MOOE'){
+            $this->db->where('item.item_type',$type);
+        }
+        $query = $this->db->get('distribution');
+        return $query->result_array();
+    }
+    // items return reports
+    public function returnedReports($type)
+    {
+        $this->db->select('receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no');
+        $this->db->join('itemdetail', 'returnitem.item_det_id = itemdetail.item_det_id', 'inner');
+        $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
+        $this->db->join('distribution', 'returnitem.dist_id = distribution.dist_id', 'inner');
+        $this->db->join('department', 'department.dept_id = distribution.dept_id', 'inner');
+        $this->db->where('returnitem.status', 'accepted');
+        if($type === 'CO'){
+            $this->db->where('item.item_type',$type);
+        }elseif ($type === 'MOOE'){
+            $this->db->where('item.item_type',$type);
+        }
 
+        $query = $this->db->get('returnitem');
+
+        return $query->result_array();
+    }
+    //supplier report
+    public function supplierReport($type){
+        $this->db->select('supplier_name,item.*,itemdetail.date_delivered');
+        $this->db->join('itemdetail', 'itemdetail.supplier_id = supplier.supplier_id', 'inner');
+        $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
+        if($type === 'CO'){
+            $this->db->where('item.item_type',$type);
+        }elseif ($type === 'MOOE'){
+            $this->db->where('item.item_type',$type);
+        }
+        $query = $this->db->get('supplier');
+
+        return $query->result_array();
+    }
 }

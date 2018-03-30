@@ -1,11 +1,184 @@
 $(document).ready(function () {
 
-//load data
+//load data dash
 $(document).ready(function () {
     setInterval(function () {
         $( "#tUser" ).load("inventory/totalUser");
+        $( "#itemsrec" ).load("inventory/itemsReceived");
+        $( "#itemsiss" ).load("inventory/issuedItems");
+        $( "#retitem" ).load("inventory/returnedItems");
+        $( "#expitems" ).load("inventory/totalExpired");
+        $( "#tcost" ).load("inventory/totalCost");
+        $( "#tItemsDay" ).load("inventory/itemsThisDay");
+        $( "#tReturnedDay" ).load("inventory/itemsReturnedThisDay");
+        $( "#tExprdSO" ).load("inventory/itemsExpired");
+        $( "#tCostSO" ).load("inventory/itemTcostSO");
+
     },1000);
 });
+
+    $returnTable = $('#returnTable');
+    $reportTable = $('#reportTable');
+    var $reportOption = $('#reportsOption');
+    var $selectValue =  '0';
+    //report table
+    $reportTable.bootstrapTable({
+        url: 'inventory/getReport/'+$selectValue+'/ALL',
+        columns: [{
+            field: 'date_delivered',
+            title: 'Date',
+        },{
+            field: 'item_name',
+            title: 'Item Name'
+        }, {
+            field: 'item_description',
+            title: 'Description'
+        }, {
+            field: 'item_type',
+            title: 'Type'
+        }, {
+            field: 'quantity',
+            title: 'Quantity'
+        }, {
+            field: 'cost',
+            title: 'Unit Cost'
+        }]
+    });
+    //select report on change
+
+    $reportOption.change(function () {
+        $selectValue =  $(this).val();
+        //Item Returns
+        if($selectValue === '0'){
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: 'inventory/getReport/'+$selectValue+'/ALL',
+                columns: [{
+                    field: 'date_delivered',
+                    title: 'Date'
+                },{
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type'
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'cost',
+                    title: 'Unit Cost'
+                }]
+            });
+        }else if ($selectValue === '1'){
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: 'inventory/getReport/'+$selectValue+'/ALL',
+                columns: [{
+                    field: 'PR_no',
+                    title: 'PR #',
+                },{
+                    field: 'department',
+                    title: 'Department'
+                }, {
+                    field: 'date_received',
+                    title: 'Date'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type'
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'cost',
+                    title: 'Cost'
+                }, {
+                    field: 'account_code',
+                    title: 'Account Code'
+                }, {
+                    field: 'supply_officer',
+                    title: 'Supply Officer'
+                }]
+            });
+        }else if ($selectValue === '2'){
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: 'inventory/getReport/'+$selectValue+'/ALL',
+                columns: [{
+                    field: 'department',
+                    title: 'Department',
+                }, {
+                    field: 'date_returned',
+                    title: 'Date'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Returned'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type'
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'receiver',
+                    title: 'Returned to'
+                },{
+                    field: 'status',
+                    title: 'Status'
+                }, {
+                    field: 'remarks',
+                    title: 'Remarks'
+                }]
+            });
+        }else{
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: 'inventory/getReport/'+$selectValue+'/ALL',
+                columns: [{
+                    field: 'supplier_name',
+                    title: 'Supplier',
+                },{
+                    field: 'date_delivered',
+                    title: 'Date',
+                },{
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type'
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'unit',
+                    title: 'Unit'
+                }, {
+                    field: 'cost',
+                    title: 'Cost'
+                }]
+            });
+        }
+    });
+    $('input[type=radio][name=type]').change(function () {
+        $type = $(this).val();
+        $reportOptVal = $reportOption.val();
+        $returnTable.bootstrapTable('refresh', {url: 'inventory/getReport/'+$reportOptVal+'/'+$type});
+    });
 
     //supply officer options
     var $ownerOpt = $('.ownerOpt');
@@ -23,7 +196,7 @@ $(document).ready(function () {
     });
 
     //return table
-    $returnTable = $('#returnTable');
+
     $returnTable.bootstrapTable('refresh', {url: 'inventory/viewReturn'}).bootstrapTable({
         url: 'inventory/viewReturn',
         columns: [{

@@ -3,9 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class GenerateQR extends CI_Controller
 {
+    public function index(){
+        $this->load->library('pdf');
+    }
     function saveQR(){
 
         include "qrlib.php";
+
 
         //set it to writable location, a place for temp generated PNG files
         $PNG_TEMP_DIR =FCPATH.'assets'.DIRECTORY_SEPARATOR.'qrcodes'.DIRECTORY_SEPARATOR;
