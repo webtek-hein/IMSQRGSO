@@ -293,6 +293,8 @@
                             <!--General Ledger-->
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
+                                <label>From</label> <input type="date" value="<?php echo date("Y-m-d");?>">
+                                <label>To </label> <input type="date" value="<?php echo date("Y-m-d");?>">
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
                                        class="table-sm table table-no-bordered table-hover">
                                 </table>
@@ -889,7 +891,7 @@
 <div hidden class="reconcilePage col-lg-12">
     <div class="card">
         <div class="card-header">
-            <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))" class="btn btn-primary">Back</button>
+            <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))" class="btn btn-primary">Back</button>
         </div>
         <form id="compareitem" role="form"
               action="inventory/compare/" method="POST">

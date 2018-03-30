@@ -439,8 +439,8 @@ function detail(id) {
                     title: 'Date'
                 }, {
                     sortable: true,
-                    field: 'transaction_number',
-                    title: 'Transaction Number'
+                    field: 'reference',
+                    title: 'Reference'
                 }, {
                     sortable: true,
                     field: 'increased',
@@ -453,6 +453,10 @@ function detail(id) {
                     sortable: true,
                     field: 'price',
                     title: 'Unit Cost'
+                }, {
+                    sortable: true,
+                    field: 'quantity',
+                    title: 'Running Quantity'
                 }, {
                     sortable: true,
                     field: 'transaction',
@@ -643,6 +647,11 @@ function init_inventory() {
         resizable: true,
 
         columns: [{
+            formatter:function(data,row){
+                return "<input class=reconid hidden value="+data+"></input>";
+            },
+            field: 'id'
+        },{
             sortable: true,
             field: 'item',
             title: 'NAME'
@@ -654,6 +663,7 @@ function init_inventory() {
             sortable: true,
             cellStyle: function (data) {
                 return {
+                    classes: 'quantity',
                     css: {"color": "green"}
                 };
             },
@@ -1681,7 +1691,7 @@ function reconcile() {
         method: "POST",
         data: {logical: $q,physical:$p,remarks:$r,date:$date,id:$id},
         success: function (data) {
-            $('.invdate').modal('toggle');
+            // $('.invdate').modal('toggle');
         }
     });
 }
