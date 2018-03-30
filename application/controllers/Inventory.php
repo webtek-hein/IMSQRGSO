@@ -344,30 +344,18 @@ class Inventory extends CI_Controller
             $ps = $item['pc'];
             $q = $item['quant'];
             $remarks = $item['remarks'];
-            $result = ($q) - $ps;
 
-            $count_input = "<input autofocus type='text' name='reconcileitem[]' value='$ps' >";
+            $count_input = "<input autofocus type='number' min='0' name='reconcileitem[]' class='reconitem form-control' value='$ps' >";
 
             $remarks_input = "<textarea autofocus type='text' name='remarks[]' >$remarks</textarea>";
 
-            if ($result == 0) {
-                $result = 'equal';
-            } elseif ($result == $q) {
-                $result = 'no input';
-            } elseif ($result > 0) {
-                $result = ($result) . ' missing';
-            } elseif (($result) < 0) {
-                $result = 'more than ' . abs($result);
-            } else {
-                $result = '';
-            }
             $data[] = array(
                 'id' => $item['recon_id'],
                 'name' => $item['item_name'],
                 'description' => $item['item_description'],
                 'quant' => $item['quant'],
                 'count' => $count_input,
-                'result' => $result,
+                'result' => 'Enter physical count',
                 'remarks' => $remarks_input
             );
         }
