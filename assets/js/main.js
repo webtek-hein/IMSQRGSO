@@ -397,7 +397,7 @@ function detail(id) {
             $detailtable.bootstrapTable({
                 url: 'inventory/detail/inv/' + id,
                 columns: [{
-                    field: 'removed',
+                    field: 'remove',
                     title: ''
                 },{
                     field: 'PO',
@@ -1045,10 +1045,12 @@ function serialize_forms() {
 function modal() {
     //distribute modal
     var item_id = 1;
-    $('.Distribute').on('show.bs.modal', function () {
+    $('.Distribute').on('show.bs.modal', function (e) {
+        var $quantityLeft = $(e.relatedTarget).data('quantity');
         var $listDist = $('#listdist').empty();
         var $quantity = $('#distquant').val();
         var $serialTab = $('#serialtab');
+
         var input = "";
         var div = "";
         var active = 'active';
@@ -1056,8 +1058,10 @@ function modal() {
         var counter = 1;
         var incount = 1;
 
+        $('#quantLeft').html($quantityLeft);
+
         while (skip <= $quantity) {
-            input = "<input class=\"form-control col-md-7 col-xs-12\" data-validate-length-range=\"6\" " +
+            input = "<input  class=\"form-control col-md-7 col-xs-12\" data-validate-length-range=\"6\" " +
                 "data-validate-words=\"2\" name=\"serial\" required type=\"text\" placeholder=\"Serial\">";
             list = "<li role=\"presentation\" class=" + active + ">" +
                 "<a href=\"#step" + counter + "\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" " +
@@ -1312,11 +1316,11 @@ function getserial(id) {
 
 }
 
-function noserial(id) {
+function noserial(id,q) {
     var qua = ("<div class=\"quant form-group\">" +
         "<label>Quantity<span class=\"required\">*</span>" +
-        "<input type=\'number\' name=\'quantity\' placeholder='quantity\' " +
-        "class=\'form-control col-md-7 col-xs-12\' required>" +
+        "<input min=\"0\" max=\""+q+"\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
+        "class=\'form-control col-md-12 col-xs-12\' required>" +
         "</label>" +
         "</div>");
     $('.quant').html(qua);

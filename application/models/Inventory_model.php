@@ -426,8 +426,6 @@ class Inventory_model extends CI_Model
                             <a class=\"serialdrop dropdown-item\" onclick='viewSerial($item_det_id)' data-toggle=\"collapse\" 
                             href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\"><i class=\"fa fa-folder-open\"></i>
                             </i > View Serial </a >
-                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($item_det_id,$serialStatus)\" data-target=\" . Edit\">
-                            <i class=\"fa fa-remove\" ></i > Remove Item</a >
                             </div>
                             </div>";
             } else {
@@ -436,13 +434,12 @@ class Inventory_model extends CI_Model
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($item_det_id)\"data-toggle=\"modal\" data-id='$item_det_id'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
-                            <a class=\"dropdown-item\" data-toggle=\"modal\" onclick=\"removeDetail($item_det_id,$serialStatus)\" data-target=\" .Edit\">
-                            <i class=\"fa fa-remove\" ></i > Remove Item</a >
                             </div>
                             </div>";
             }
 
             $data1 = array(
+                '<a href="#" onclick="removeDetail('.$item_det_id.')"> <i class="fa fa-remove"></i> </a>',
                 $this->input->post('PO')[$counter],
                 $this->input->post('del')[$counter],
                 $this->input->post('rec')[$counter],
