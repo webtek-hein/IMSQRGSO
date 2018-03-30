@@ -130,7 +130,7 @@ class Inventory extends CI_Controller
                             $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
                             class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Return\" onclick=\"noserial($detail[item_det_id])\" data-id='$detail[dist_id]'  
+                            data-target=\".Return\" onclick=\"noserial($detail[item_det_id],,$detail[quantity])\" data-id='$detail[dist_id]'  
                             class=\"btn btn-danger\">Return</a>";
                         } else {
                             $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
@@ -143,8 +143,8 @@ class Inventory extends CI_Controller
                     } else {
                         if ($detail['serialStatus'] !== '1') {
                             $action =
-                                "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"noserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
-                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
+                                "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"noserial($detail[item_det_id],$detail[quantity])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
+                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
                             <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
                         } else {
                             $action =
@@ -160,7 +160,8 @@ class Inventory extends CI_Controller
                     $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
-                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
+                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id],$detail[quantity])\"data-toggle=\"modal\" 
+                            data-id='$detail[item_det_id]'data-target=\" .Distribute\" data-quantity=\"$detail[quantity]\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             </div>
                             $viewser
@@ -170,10 +171,10 @@ class Inventory extends CI_Controller
                     $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
-                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\" data-id='$detail[item_det_id]'data-target=\" .Distribute\">
+                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\"
+                             data-id='$detail[item_det_id]'data-target=\" .Distribute\" data-quantity=\"$detail[quantity]\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             $viewser
-                            
                             </div>
                             </div>";
                 }
@@ -192,7 +193,7 @@ class Inventory extends CI_Controller
                 );
             } else {
                 $data[] = array(
-                    'removed'=>'<button onclick=\"removeDetail($detail[item_det_id],$detail[serialStatus])\" class=\"fa fa-remove\" >X</button>',
+                    'remove' => '<a href="#" onclick="removeDetail('.$detail['item_det_id'].')"> <i class="fa fa-remove"></i> </a>',
                     'PO' => $detail['PO_number'],
                     'quant' => $detail['quantity'],
                     'del' => $detail['date_delivered'],
@@ -497,7 +498,7 @@ class Inventory extends CI_Controller
     {
         $itemsreceivedCount = $this->inv->itemsrec();
         foreach ($itemsreceivedCount as $list) {
-                echo $list['countInc'];
+            echo $list['countInc'];
         }
     }
 
@@ -506,7 +507,7 @@ class Inventory extends CI_Controller
     {
         $issueditemsCount = $this->inv->issued();
         foreach ($issueditemsCount as $list) {
-                echo $list['issued'];
+            echo $list['issued'];
         }
     }
 
@@ -515,7 +516,7 @@ class Inventory extends CI_Controller
     {
         $returneditemsCount = $this->inv->returndash();
         foreach ($returneditemsCount as $list) {
-                echo $list['returned'];
+            echo $list['returned'];
         }
     }
 
@@ -524,11 +525,11 @@ class Inventory extends CI_Controller
     {
         $totalcostSum = $this->inv->totalcost();
         foreach ($totalcostSum as $list) {
-                $totalcost = (int)$list['totalcost'];
-                if($totalcost>= 1000000000000) echo "&#8369; ".round(($totalcost/1000000000000),2).' trillion';
-                else if($totalcost>=1000000000) echo "&#8369; ".round(($totalcost/1000000000),2).' billion';
-                else if($totalcost>=1000000) echo "&#8369; ".round(($totalcost/1000000),2).' million';
-                else echo "&#8369; ".number_format($totalcost,2);
+            $totalcost = (int)$list['totalcost'];
+            if ($totalcost >= 1000000000000) echo "&#8369; " . round(($totalcost / 1000000000000), 2) . ' trillion';
+            else if ($totalcost >= 1000000000) echo "&#8369; " . round(($totalcost / 1000000000), 2) . ' billion';
+            else if ($totalcost >= 1000000) echo "&#8369; " . round(($totalcost / 1000000), 2) . ' million';
+            else echo "&#8369; " . number_format($totalcost, 2);
 
         }
     }
@@ -538,7 +539,7 @@ class Inventory extends CI_Controller
     {
         $totalexpiredCount = $this->inv->totalexpired();
         foreach ($totalexpiredCount as $list) {
-                echo $list['expired'];
+            echo $list['expired'];
         }
     }
 
@@ -593,30 +594,34 @@ class Inventory extends CI_Controller
     }
 //supplier dashboard
     //count items issued for the supplier for this day
-    public function itemsThisDay(){
+    public function itemsThisDay()
+    {
         $itemsIssuedCount = $this->inv->itemsThisDay();
-        foreach ($itemsIssuedCount as $list){
-                echo $list['totalItems'];
+        foreach ($itemsIssuedCount as $list) {
+            echo $list['totalItems'];
         }
     }
+
     //items returned for the supplier for this day
-     public function itemsReturnedThisDay()
+    public function itemsReturnedThisDay()
     {
         $totalReturned = $this->inv->itemsReturnedThisDay();
         foreach ($totalReturned as $list) {
             echo $list['totalItemsReturned'];
         }
     }
+
     //items expired for SupplyOfficer
-     public function itemsExpiredSO()
+    public function itemsExpiredSO()
     {
         $totalEx = $this->inv->itemsExpired();
         foreach ($totalEx as $list) {
             echo $list['totalItemsExpired'];
         }
     }
-    //total items cost Supply 
-     public function itemTcostSO()
+
+    //total items cost Supply
+    public function itemTcostSO()
     {
         $totalEx = $this->inv->itemsTcost();
         foreach ($totalEx as $list) {
@@ -625,15 +630,19 @@ class Inventory extends CI_Controller
     }
 
     //deliver Reports
-    public function getReport($report){
-        if($report === '0'){
-            echo json_encode($this->inv->deliveredReports());
-        }elseif ($report === '1'){
-            echo json_encode($this->inv->issuedReports());
-        }elseif ($report === '2'){
-            echo json_encode($this->inv->returnedReports());
-        }else{
-            echo json_encode($this->inv->supplierReport());
+    public function getReport($report, $type)
+    {
+        if ($report === '0') {
+            echo json_encode($this->inv->deliveredReports($type));
+        } elseif ($report === '1') {
+            echo json_encode($this->inv->issuedReports($type));
+        } elseif ($report === '2') {
+            echo json_encode($this->inv->returnedReports($type));
+        } else {
+            echo json_encode($this->inv->supplierReport($type));
         }
+    }
+    public function getInvDates(){
+        echo json_encode($this->inv->getInventoryDates());
     }
 }
