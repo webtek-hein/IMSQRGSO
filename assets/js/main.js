@@ -1314,7 +1314,7 @@ function viewSerial(id) {
                         "<input value =\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                         "min=0  " +
                         "class=\"form-control\"></label><br>");
-                    if (input.length = 10) {
+                    if (input.length === 10) {
                         div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
                         list.push("<li class=\"" + listClass + "\"><a id=\"t"+serialTabCounter+"\"" +
                             "data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
