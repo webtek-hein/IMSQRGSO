@@ -515,6 +515,20 @@
                         <option value="3">Supplier</option>
                     </select>
                 </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>From</label>
+                        <input type="date" name="from" data-validate-length-range="5,20"
+                               class="optional form-control has-feedback-left">
+                        <span class="fa fa-calendar-times-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label>To</label>
+                        <input type="date" name="to" data-validate-length-range="5,20"
+                               class="optional form-control has-feedback-left">
+                        <span class="fa fa-calendar-times-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                    </div>
             <div class="returnedReport">
                 <table id="reportTable" data-show-refresh="true" data-search="true" data-pagination="true"
                        class="table-sm table table-no-bordered table-hover">
