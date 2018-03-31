@@ -852,9 +852,9 @@ function init_inventory() {
             url: 'inventory/viewItem/MOOE',
             onClickRow: function (data, row) {
                 if (data.position === 'Supply Officer') {
-                    deptDet(data.id,data.position);
+                    deptDet(data.item_id,data.position);
                 } else {
-                    detail(data.id);
+                    detail(data.item_id);
                 }
             },
             resizable: true,

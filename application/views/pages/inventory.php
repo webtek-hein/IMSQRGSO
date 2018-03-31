@@ -67,7 +67,7 @@
                             <div class="table-responsive-sm  tab-pane fade show active" id="tab_content1"
                                  role="tabpanel"
                                  aria-labelledby="CO-tab">
-                                <?php if ($position === 'Custodian') {
+                                <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="itemtable"
                                        class="table table-no-bordered table-hover"></table>';
                                 } else {
