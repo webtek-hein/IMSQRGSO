@@ -434,6 +434,7 @@ class Inventory extends CI_Controller
                 'reference' => $item['transaction_number'],
                 'increased' => $item['increased'],
                 'decreased' => $item['decreased'],
+                'running_quantity'=>$item['running_quantity'],
                 'price' => $cost,
                 'transaction' => $item['transaction']
             );

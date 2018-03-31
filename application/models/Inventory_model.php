@@ -69,6 +69,7 @@ class Inventory_model extends CI_Model
                     'increased' => $quantity,
                     'item_id' => $item_id['item_id'],
                     'unit_cost' => $cost,
+                    'running_quantity'=> $quantity,
                     'transaction' => 'added'
                 ));
             // 3. Insert into logs
@@ -143,6 +144,7 @@ class Inventory_model extends CI_Model
                 'unit_cost' => $cost[$key],
                 'item_id' => $insert_id[$key],
                 'increased' => $quantity[$key],
+                'running_quantity'=>$quantity[$key],
                 'transaction' => 'added'
             );
             $data1[] = array(
@@ -214,12 +216,13 @@ class Inventory_model extends CI_Model
         }else{
             $quantity = $this->input->post('quantity');
         }
-        $query = $this->db->select('item.item_id,item.cost')
+        $query = $this->db->select('item.item_id,item.cost,item.quantity')
             ->join('item', 'itemdetail.item_id = item.item_id ', 'inner')
             ->where('itemdetail.item_det_id', $item_det_id)
             ->get('itemdetail')->row();
         $item_id = $query->item_id;
         $unit_cost = $query->cost;
+        $last_quantiy = $query->quantity;
         if ($position === 'Custodian') {
             $this->db->set('quantity', 'quantity-' . $quantity, FALSE);
             $this->db->where('item_det_id', $item_det_id);
@@ -263,6 +266,7 @@ class Inventory_model extends CI_Model
                     'decreased' => $quantity,
                     'item_id' => $item_id,
                     'unit_cost' => $unit_cost,
+                    'running_quantity'=>$last_quantiy+$quantity,
                     'transaction' => 'issued'
                 ));
             // if item has serial
@@ -478,6 +482,7 @@ class Inventory_model extends CI_Model
                     'increased' => $quantity,
                     'item_id' => $item_id['item_id'],
                     'unit_cost' => $unit_cost,
+                    'running_quantity'=>$lastQuantity+$quantity,
                     'transaction' => 'added'
                 ));
             if ($this->db->trans_status() === FALSE) {
@@ -908,9 +913,11 @@ class Inventory_model extends CI_Model
     }
     public function acceptReturn($return_id){
         $query = $this->db
+            ->select('item.quantity,returnitem.*,distribution.cost,item.item_id,')
             ->where('return_id',$return_id)
             ->join('distribution','distribution.dist_id = returnitem.dist_id')
             ->join('itemdetail','returnitem.item_det_id = itemdetail.item_det_id')
+            ->join('item','item.item_id = returnitem.item_det_id')
             ->get('returnitem')
             ->row();
 
@@ -918,6 +925,7 @@ class Inventory_model extends CI_Model
         $item_det_id = $query->item_det_id;
         $item_id = $query->item_id;
         $quantity_returned = $query->return_quantity;
+        $lastQuant = $query->quantity;
         $date = $query->date_returned;
         $transaction_number = $query->PR_no;
         $cost = $query->cost;
@@ -941,6 +949,7 @@ class Inventory_model extends CI_Model
                 'increased' => $quantity_returned,
                 'item_id' => $item_id,
                 'unit_cost' => $cost,
+                'running_quantity'=>$quantity_returned+$lastQuant,
                 'transaction' => 'returned'
             ));
         $this->db->set('status','accepted');

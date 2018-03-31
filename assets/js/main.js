@@ -466,7 +466,7 @@ function detail(id) {
                     title: 'Unit Cost'
                 }, {
                     sortable: true,
-                    field: 'quantity',
+                    field: 'running_quantity',
                     title: 'Running Quantity'
                 }, {
                     sortable: true,
