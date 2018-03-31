@@ -491,13 +491,14 @@ class Inventory_model extends CI_Model
     public
     function getItem($dept, $id)
     {
+
         if ($dept === 'dept') {
             $this->db->select('item.*,sum(quantity_distributed) as quant');
             $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
             $this->db->join('item', 'itemdetail.item_id =' . $id, 'inner');
             $this->db->group_by('item.item_id');
             $query = $this->db->get('distribution');
-        } else {
+        }else {
             $this->db->where('item.item_id', $id);
             $query = $this->db->get('item');
         }

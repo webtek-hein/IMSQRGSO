@@ -62,6 +62,7 @@ class Inventory extends CI_Controller
             }
             $data[] = array(
                 'id' => $item['recon_id'],
+                'item_id' => $item['item_id'],
                 'item' => $item['item_name'],
                 'description' => $item['item_description'],
                 'quantity' => $quantity,
