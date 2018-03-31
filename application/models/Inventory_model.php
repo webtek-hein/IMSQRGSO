@@ -848,7 +848,7 @@ class Inventory_model extends CI_Model
                     'serial' => $serial[$i]
                 );
             }
-            $this->db->set('item_status', 'Returned');
+            $this->db->set('item_status', 'Pending');
             $this->db->where_in('serial', $serial);
             $this->db->update('serial');
 
