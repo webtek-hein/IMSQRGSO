@@ -16,7 +16,6 @@ $(document).ready(function () {
 
     },1000);
 });
-
     $returnTable = $('#returnTable');
     $reportTable = $('#reportTable');
     var $reportOption = $('#reportsOption');
@@ -25,8 +24,11 @@ $(document).ready(function () {
     $reportTable.bootstrapTable({
         url: 'inventory/getReport/'+$selectValue+'/ALL',
         columns: [{
+            field: 'or',
+            title: 'OR_number'
+        },{
             field: 'date_delivered',
-            title: 'Date',
+            title: 'Date Delivered'
         },{
             field: 'item_name',
             title: 'Item Name'
@@ -42,6 +44,9 @@ $(document).ready(function () {
         }, {
             field: 'cost',
             title: 'Unit Cost'
+        }, {
+            field: 'supplier',
+            title: 'Supplier'
         }]
     });
     //select report on change
@@ -54,8 +59,11 @@ $(document).ready(function () {
             $reportTable.bootstrapTable({
                 url: 'inventory/getReport/'+$selectValue+'/ALL',
                 columns: [{
+                    field: 'OR_no',
+                    title: 'OR_number'
+                },{
                     field: 'date_delivered',
-                    title: 'Date'
+                    title: 'Date Delivered'
                 },{
                     field: 'item_name',
                     title: 'Item Name'
@@ -71,6 +79,9 @@ $(document).ready(function () {
                 }, {
                     field: 'cost',
                     title: 'Unit Cost'
+                }, {
+                    field: 'supplier',
+                    title: 'Supplier'
                 }]
             });
         }else if ($selectValue === '1'){
@@ -79,7 +90,7 @@ $(document).ready(function () {
                 url: 'inventory/getReport/'+$selectValue+'/ALL',
                 columns: [{
                     field: 'PR_no',
-                    title: 'PR #',
+                    title: 'PR #'
                 },{
                     field: 'department',
                     title: 'Department'
@@ -1691,7 +1702,10 @@ function reconcile() {
         method: "POST",
         data: {logical: $q,physical:$p,remarks:$r,date:$date,id:$id},
         success: function (data) {
-            // $('.invdate').modal('toggle');
+            $('.invdate').modal('toggle');
         }
     });
+}
+function printToPDF(){
+    alert('test');
 }

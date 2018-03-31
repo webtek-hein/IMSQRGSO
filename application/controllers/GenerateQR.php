@@ -56,4 +56,5 @@ class GenerateQR extends CI_Controller
         echo  json_encode($qrImages);
 
     }
+
 }

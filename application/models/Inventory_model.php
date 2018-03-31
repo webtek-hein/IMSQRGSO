@@ -1108,9 +1108,11 @@ class Inventory_model extends CI_Model
     //items delivered/added report
     public function deliveredReports($type)
     {
-         $this->db->select('date_delivered,item.*')
-            ->join('item', 'itemdetail.item_id = item.item_id');
-            if($type === 'CO'){
+         $this->db->select('item.item_name,item.item_description,item.item_type,itemdetail.*,supplier_name')
+            ->join('item', 'itemdetail.item_id = item.item_id')
+            ->join('supplier', 'itemdetail.supplier_id = supplier.supplier_id');
+
+        if($type === 'CO'){
                 $this->db->where('item.item_type',$type);
             }elseif ($type === 'MOOE'){
                 $this->db->where('item.item_type',$type);

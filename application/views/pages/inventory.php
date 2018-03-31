@@ -293,6 +293,7 @@
                             <!--General Ledger-->
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
+                                <button onclick="printToPDF()" class="btn btn-primary">Print </button>
                                 <label>From</label> <input type="date" value="<?php echo date("Y-m-d");?>">
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d");?>">
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
