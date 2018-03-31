@@ -109,7 +109,6 @@ class Inventory extends CI_Controller
     {
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
-
         if ($position === 'Supply Officer' || $dept === 'dept') {
             $list = $this->inv->viewDetailperDept($dept, $id, $dept_id, $position);
         } else {
@@ -118,7 +117,6 @@ class Inventory extends CI_Controller
         $data = array();
         $viewser = "";
         $action = "";
-
         foreach ($list as $detail) {
             //if there is a serial
             if ($detail['serialStatus'] === '1') {

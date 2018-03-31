@@ -385,13 +385,17 @@ class Inventory_model extends CI_Model
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $quantity = $this->input->post('quant')[$counter];
         $supplier = $this->input->post('supp')[$counter];
+        $po = '';
+        if(isset($this->input->post('PO')[$counter])){
+            $po = $this->input->post('PO')[$counter];
+        }
 
         $date = $this->input->post('rec')[$counter];
         $unit_cost = $this->input->post('cost')[$counter];
         $transaction_number = $this->input->post('or')[$counter];
 
         $data1 = array(
-            'PO_number' => $this->input->post('PO')[$counter],
+            'PO_number' => $po,
             'date_delivered' => $this->input->post('del')[$counter],
             'date_received' => $date,
             'unit_cost' => $unit_cost,
@@ -448,7 +452,7 @@ class Inventory_model extends CI_Model
 
             $data1 = array(
                 '<a href="#" onclick="removeDetail('.$item_det_id.')"> <i class="fa fa-remove"></i> </a>',
-                $this->input->post('PO')[$counter],
+               $po,
                 $this->input->post('del')[$counter],
                 $this->input->post('rec')[$counter],
                 $this->input->post('exp')[$counter],
@@ -572,17 +576,17 @@ class Inventory_model extends CI_Model
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
         $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
         $this->db->join('department', 'department.dept_id = distribution.dept_id', 'inner');
-        $this->db->join('account_code', ' account_code.ac_id = distribution.ac_id ', 'inner');
+        $this->db->join('account_code', 'account_code.ac_id = distribution.ac_id ', 'inner');
         $this->db->join('user', ' distribution.supply_officer_id = user.user_id ', 'inner');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
         if($position === 'Supply Officer'){
             $this->db->where('distribution.dept_id',$dept_id);
         }elseif ($position === 'Custodian' && $dept !== 'dept'){
             $this->db->where('itemdetail.status','active');
-
         }
+        $this->db->where('item.item_id',$id);
         $this->db->order_by('dist_id','desc');
-        $query = $this->db->get_where('distribution', array('distribution.item_det_id' => $id));
+        $query = $this->db->get('distribution');
         return $query->result_array();
     }
 

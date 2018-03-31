@@ -596,14 +596,14 @@ function insertRow() {
     var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
         '<td  style=""></td>'+
-        '<td contenteditable style=""><input name="PO[]" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
-        '<td style=""><input name="del[]" class="form-control form-control-sm" type="date"></td> ' +
-        '<td style=""><input name="rec[]" class="form-control form-control-sm" type="date"></td> ' +
-        '<td style=""><input name="exp[]" class="form-control form-control-sm" type="date"></td> ' +
-        '<td style=""><input name="cost[]" class="form-control form-control-sm" type="number"></td> ' +
-        '<td style=""><select name="supp[]" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
-        '<td style=""><input name="quant[]" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><input name="or[]" class="form-control form-control-sm" type="text"></td> ' +
+        '<td contenteditable style=""><input name="PO[' + counter + ']" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
+        '<td style=""><input name="del['+counter+']" class="form-control form-control-sm" type="date"></td> ' +
+        '<td style=""><input name="rec['+counter+']" class="form-control form-control-sm" type="date"></td> ' +
+        '<td style=""><input name="exp['+counter+']" class="form-control form-control-sm" type="date"></td> ' +
+        '<td style=""><input name="cost['+counter+']" class="form-control form-control-sm" type="number"></td> ' +
+        '<td style=""><select name="supp['+counter+']" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
+        '<td style=""><input name="quant['+counter+']" class="form-control form-control-sm" type="text"></td> ' +
+        '<td style=""><input name="or['+counter+']" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><i onclick="addquant(' + counter + ')" class="fa fa-check-circle-o" id="rowcheck"></i>' +
         '<i onclick="removeRow(' + counter + ')" class="fa fa-times-circle-o" id="rowcancel"></i></td> ' +
         '</tr>');
