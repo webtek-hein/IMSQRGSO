@@ -914,7 +914,7 @@ class Inventory_model extends CI_Model
     }
     public function acceptReturn($return_id){
         $query = $this->db
-            ->select('item.quantity,returnitem.*,distribution.cost,item.item_id,')
+            ->select('PR_no,item.quantity,returnitem.*,distribution.cost,item.item_id,')
             ->where('return_id',$return_id)
             ->join('distribution','distribution.dist_id = returnitem.dist_id')
             ->join('itemdetail','returnitem.item_det_id = itemdetail.item_det_id')
@@ -950,7 +950,7 @@ class Inventory_model extends CI_Model
                 'increased' => $quantity_returned,
                 'item_id' => $item_id,
                 'unit_cost' => $cost,
-                'running_quantity'=>$quantity_returned+$lastQuantreturns,
+                'running_quantity'=>$quantity_returned+$lastQuant,
                 'transaction' => 'returned'
             ));
         $this->db->set('status','accepted');
