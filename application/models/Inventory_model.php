@@ -132,7 +132,7 @@ class Inventory_model extends CI_Model
         $transaction_number = $this->input->post('or');
         $cost = $this->input->post('cost');
         $quantity = $this->input->post('quant');
-        $rec_item_id[] = [];
+        $rec_item_id = [];
 
         foreach ($insert_id as $key => $value) {
             $rec_item_id[] = array(
