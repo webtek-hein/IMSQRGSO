@@ -192,6 +192,7 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <br><br>
                                     <button class="btn btn-info" type="submit" name="id" id="edtbutton">
                                         <i class="fa fa-check"></i> save changes
                                     </button>
