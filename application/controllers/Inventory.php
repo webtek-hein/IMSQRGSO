@@ -109,6 +109,7 @@ class Inventory extends CI_Controller
     {
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
+
         if ($position === 'Supply Officer' || $dept === 'dept') {
             $list = $this->inv->viewDetailperDept($dept, $id, $dept_id, $position);
         } else {
@@ -199,7 +200,7 @@ class Inventory extends CI_Controller
                 );
             } else {
                 $data[] = array(
-                    'remove' => '<a href="#" onclick="removeDetail('.$detail['item_det_id'].')"> <i class="fa fa-remove"></i> </a>',
+                    'remove' => '<a onclick="removeDetail('.$detail['item_det_id'].')"> <i class="fa fa-remove"></i></a>',
                     'PO' => $detail['PO_number'],
                     'quant' => $detail['quantity'],
                     'del' => $detail['date_delivered'],
@@ -330,10 +331,12 @@ class Inventory extends CI_Controller
             $list = $this->inv->departmentInventory($type,$department);
         }else {
             $list = $this->inv->departmentInventory($type, $id);
+            $department = $id;
         }
         $data = array();
         foreach ($list as $item) {
             $data[] = array(
+                'dept_id'=> $department,
                 'position' => $position,
                 'id' => $item['item_id'],
                 'name' => $item['item_name'],
@@ -427,11 +430,15 @@ class Inventory extends CI_Controller
         $data = [];
         foreach ($list as $item) {
             $cost = "PHP " . number_format($item['unit_cost'], 2);
-
+            if(isset($item['increased'])){
+                $refIndication = 'OR #';
+            }else{
+                $refIndication = 'OR #';
+            }
             $data[] = array(
                 'date' => $item['date'],
                 'quantity' => $item['quantity'],
-                'reference' => $item['transaction_number'],
+                'reference' => $refIndication." ".$item['transaction_number'],
                 'increased' => $item['increased'],
                 'decreased' => $item['decreased'],
                 'running_quantity'=>$item['running_quantity'],
@@ -461,6 +468,7 @@ class Inventory extends CI_Controller
             }
             $data[] = array(
                 'date' => $rets['date_returned'],
+                'quantity'=>$rets['return_quantity'],
                 'dept' => $rets['department'],
                 'item' => $rets['item_name'],
                 'desc' => $rets['item_description'],

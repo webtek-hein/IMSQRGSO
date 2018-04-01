@@ -220,6 +220,9 @@ $(document).ready(function () {
             field: 'desc',
             title: 'Description'
         }, {
+            field: 'quantity',
+            title: 'Quantity'
+        }, {
             field: 'date',
             title: 'Date Returned'
         }, {
@@ -511,7 +514,7 @@ function detail(id) {
     });
 }
 
-function deptDet(id,position) {
+function deptDet(id,position,dept_id) {
     var $detailtable = $('#detail-tab-table');
     var $detailTab = $('.detail-tab ');
     var item;
@@ -795,7 +798,7 @@ function init_inventory() {
             url: 'inventory/viewItem/CO',
             onClickRow: function (data, row) {
                 if (data.position === 'Supply Officer') {
-                    deptDet(data.item_id,data.position);
+                    deptDet(data.item_id,data.position,data.det_id);
                 } else {
                     detail(data.item_id);
                 }
@@ -852,7 +855,7 @@ function init_inventory() {
             url: 'inventory/viewItem/MOOE',
             onClickRow: function (data, row) {
                 if (data.position === 'Supply Officer') {
-                    deptDet(data.item_id,data.position);
+                    deptDet(data.item_id,data.position,data.dept_id);
                 } else {
                     detail(data.item_id);
                 }
@@ -1021,7 +1024,7 @@ function init_list() {
         pageSize: 10,
         url: 'inventory/viewdept/CO/11',
         onClickRow: function (data, row) {
-            deptDet(data.id,data.position);
+            deptDet(data.id,data.position,data.dept_id);
         },
         resizable: true,
         columns: [{
@@ -1051,7 +1054,7 @@ function init_list() {
         pageSize: 10,
         url: 'inventory/viewdept/MOOE/11',
         onClickRow: function (data, row) {
-            deptDet(data.id,data.position);
+            deptDet(data.id,data.position,data.dept_id);
         },
         resizable: true,
         columns: [{
@@ -1401,12 +1404,17 @@ function getserial(id) {
 }
 
 function noserial(id,q) {
-    var qua = ("<div class=\"quant form-group\">" +
-        "<label>Quantity<span class=\"required\">*</span>" +
-        "<input min=\"0\" max=\""+q+"\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
-        "class=\'form-control col-md-12 col-xs-12\' required>" +
-        "</label>" +
-        "</div>");
+    var qua = '';
+    if(q!== 0){
+        qua = ("<div class=\"quant form-group\">" +
+            "<label>Quantity<span class=\"required\">*</span>" +
+            "<input min=\"0\" max=\""+q+"\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
+            "class=\'form-control col-md-12 col-xs-12\' required>" +
+            "</label>" +
+            "</div>");
+    }else{
+        qua = ("<p>No stock left. Please restock.</p>");
+    }
     $('.quant').html(qua);
 }
 
@@ -1664,7 +1672,9 @@ function removeDetail($id,$serialStatus){
         method: "POST",
         success: function (data) {
             $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $id});
-            $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $id});
+            $('#removedItems').click(function () {
+                $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $id});
+            });
         }
     });
 }
@@ -1676,8 +1686,10 @@ function revertDetail($det_id,$serialStatus) {
         url: "inventory/revert/"+$det_id+"/"+$serialStatus,
         method: "POST",
         success: function (data) {
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $det_id});
             $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $det_id});
+            $('#DetDetail').click(function () {
+                $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $det_id});
+            });
         }
     });
 }

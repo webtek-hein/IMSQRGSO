@@ -898,7 +898,7 @@ class Inventory_model extends CI_Model
 
     public function returns($department,$position){
 
-        $this->db->select('receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no','inner');
+        $this->db->select('return_quantity,receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no','inner');
         $this->db->join('itemdetail','returnitem.item_det_id = itemdetail.item_det_id','inner');
         $this->db->join('item','itemdetail.item_id = item.item_id','inner');
         $this->db->join('distribution','returnitem.dist_id = distribution.dist_id','inner');
@@ -950,7 +950,7 @@ class Inventory_model extends CI_Model
                 'increased' => $quantity_returned,
                 'item_id' => $item_id,
                 'unit_cost' => $cost,
-                'running_quantity'=>$quantity_returned+$lastQuant,
+                'running_quantity'=>$quantity_returned+$lastQuantreturns,
                 'transaction' => 'returned'
             ));
         $this->db->set('status','accepted');

@@ -79,7 +79,7 @@
                             <!--MOOE Tab-->
                             <div class="table-responsive-sm-sm tab-pane fade" id="tab_content2" role="tabpanel"
                                  aria-labelledby="MOOE-tab">
-                                <?php if ($position === 'Custodian') {
+                                <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="MOOEtable"
                                        class="table table-no-bordered table-hover"></table>';
                                 } else {

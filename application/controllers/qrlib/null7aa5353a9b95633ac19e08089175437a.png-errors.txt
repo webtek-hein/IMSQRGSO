@@ -1,4 +1,4 @@
-2018-03-25 09:02:37: 
+2018-03-31 07:44:20: 
 <div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
 
 <h4>A PHP Error was encountered</h4>
@@ -76,7 +76,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -180,7 +180,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -284,7 +284,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -388,7 +388,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -492,7 +492,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -596,7 +596,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -700,7 +700,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -804,7 +804,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -908,7 +908,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -1012,7 +1012,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -1116,7 +1116,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -1220,7 +1220,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -1324,7 +1324,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -1428,7 +1428,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -1532,7 +1532,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -1636,7 +1636,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
@@ -1740,7 +1740,7 @@
 		
 			<p style="margin-left:10px">
 			File: C:\Users\hpb\Desktop\here\imsqrgso\application\controllers\GenerateQR.php<br />
-			Line: 43<br />
+			Line: 51<br />
 			Function: png			</p>
 
 		
