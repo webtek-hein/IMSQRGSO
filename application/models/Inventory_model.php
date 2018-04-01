@@ -572,6 +572,16 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    public function retquant($dept_id,$id){
+        $this->db->select('sum(returnitem.return_quantity) as retq');
+        $this->db->join('itemdetail','returnitem.item_det_id = itemdetail.item_det_id');
+        $this->db->join('distribution','distribution.dist_id = returnitem.dist_id');
+        $this->db->join('department','department.dept_id = distribution.dept_id');
+        $this->db->where('department.dept_id',$dept_id);
+        $this->db->where('itemdetail.item_id',$id);
+        $query = $this->db->get('returnitem');
+        return $query->result_array();
+    }
     public
     function viewDetailperDept($dept,$id,$dept_id,$position)
     {
