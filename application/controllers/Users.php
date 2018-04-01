@@ -64,7 +64,7 @@ class Users extends CI_Controller {
 
     public function addUser(){
         $this->user_db->insertUser();
-        redirect('Accounts');
+        redirect('accounts');
 
     }
  

@@ -440,8 +440,8 @@ class Inventory extends CI_Controller
         $data = [];
         foreach ($list as $item) {
             $cost = "PHP " . number_format($item['unit_cost'], 2);
-            if(isset($item['increased'])){
-                $refIndication = 'OR #';
+            if($item['transaction'] !== 'added'){
+                $refIndication = 'PR #';
             }else{
                 $refIndication = 'OR #';
             }

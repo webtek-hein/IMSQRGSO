@@ -649,6 +649,8 @@ class Inventory_model extends CI_Model
         $cost = $this->db->select('cost')->where_in($item_id)->get('item')->result_array();
         $item_det_id = $this->db->select('item_det_id')->where_in($item_id)->get('itemdetail')->result_array();
 
+
+
         $serials = $this->db->select('item_det_id')->where_in($item_det_id)->get('serial')->result_array();
         if(!empty($serials)){
             $this->db->set('record_status','0');
@@ -672,7 +674,24 @@ class Inventory_model extends CI_Model
                 'initialCost'=>$cost[$key]['cost'],
                 'initialStock'=>$physical[$key],
             );
+            $new_detail[] = array(
+                'quantity'=>$physical[$key],
+                'unit_cost'=>$cost[$key]['cost'],
+                'item_id'=>$item_id[$key]['item_id']
+            );
+            $last_detail[] = array(
+                'item_det_id'=>$item_det_id[$key]['item_det_id'],
+                'status'=>'inactive'
+            );
         }
+
+        $this->db->insert_batch('itemdetail',$new_detail);
+
+        //make all details inactive
+        $this->db->update_batch('itemdetail',$last_detail,'item_det_id');
+
+        $this->db->insert_batch('itemdetail',$new_detail);
+
         $this->db->update_batch('reconciliation',$data,'recon_id');
         $this->db->update_batch('item',$item_data,'item_id');
     }
