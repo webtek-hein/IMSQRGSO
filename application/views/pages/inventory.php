@@ -134,7 +134,7 @@
 
                                         <div class="form-group">
                                             <label class="col-md-12">Item Name</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <input id="itemname"
                                                        type="text" name="item"
                                                        class="form-control"
@@ -146,7 +146,7 @@
 
                                         <div class="form-group">
                                             <label class="col-md-12">Description</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                             <textarea id="itemdesc" data-parsley-group="set1"
                                                       name="description" id="message"
                                                       class="form-control"
@@ -162,27 +162,27 @@
 
                                         <div class="form-group">
                                             <label class="col-md-12">Total Quantity</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <p id="total"></p>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-md-12">Initial Quantity</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <p id="initialStock"></p>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-12">Initial Price</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <p id="initialCost"></p>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-md-12">Unit</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <input id="unit" name="Unit" data-parsley-group="set1"
                                                        class="form-control" class="unit"
                                                        list="list"
@@ -203,7 +203,7 @@
 
                                         <div class="form-group">
                                             <label class="col-md-12">Type</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <select id="itemtype" data-parsley-group="set1" id="type"
                                                         list="typelist" name="Type"
                                                         class="form-control" required>
@@ -214,7 +214,7 @@
                                         </div>
                                         
                                         <div class ="form-group">
-                                             <button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
+                                             <button class="btn btn-success col-12" type="submit" name="id" id="edtbutton">
                                                     <i class="fa fa-check"></i> save
                                                 </button>
                                         </div>
