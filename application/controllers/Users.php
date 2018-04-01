@@ -45,7 +45,7 @@ class Users extends CI_Controller {
     public function edituser()
     {
         $this->user_db->edituser();
-        redirect('accounts');
+        redirect('Accounts');
     }
     public function getmobileuser($username)
     {
@@ -64,7 +64,7 @@ class Users extends CI_Controller {
 
     public function addUser(){
         $this->user_db->insertUser();
-        redirect('accounts');
+        redirect('Accounts');
 
     }
  

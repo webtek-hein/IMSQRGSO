@@ -119,9 +119,6 @@ class User_db extends CI_Model {
                 'userid' => $user_id,
             );
         }
-
-        //insert to edit log table
-        $this->db->insert_batch('logs.editLog', $values);
     }
 
     public function getUser($id)

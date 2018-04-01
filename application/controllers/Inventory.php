@@ -621,13 +621,14 @@ class Inventory extends CI_Controller
     //total items cost Supply
     public function itemTcostSO()
     {
-        $totalEx = $this->inv->itemsTcost();
-        if(count($totalEx) == 0){
-            echo "0";
-        }else{
-            foreach ($totalEx as $list) {
-                echo $list['itemTcost'];
-            }
+        $totalcostSum = $this->inv->itemsTcost();
+        foreach ($totalcostSum as $list) {
+            $itemTcost = (int)$list['itemTcost'];
+            if ($itemTcost >= 1000000000000) echo "&#8369; " . round(($itemTcost / 1000000000000), 2) . ' trillion';
+            else if ($itemTcost >= 1000000000) echo "&#8369; " . round(($itemTcost / 1000000000), 2) . ' billion';
+            else if ($itemTcost >= 1000000) echo "&#8369; " . round(($itemTcost / 1000000), 2) . ' million';
+            else echo "&#8369; " . number_format($itemTcost, 2);
+
         }
     }
 
