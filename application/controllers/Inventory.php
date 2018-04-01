@@ -469,7 +469,8 @@ class Inventory extends CI_Controller
 
         foreach ($list as $rets) {
             if ($position === 'Custodian') {
-                $action = '<a  href="#" data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-primary">Accept</a>
+                $action = '<a type="button" href="#" data-toggle="modal" data-target=".ViewSerial" class=" btn btn-primary">View Serial</a>
+                <a type="button" href="#" data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-primary">Accept</a>
                 <button onclick="return_action(1,' . $rets['return_id'] . ')" class="btn btn-danger">Decline</button>';
 
             } else if ($position === 'Supply Officer') {
