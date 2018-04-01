@@ -1210,6 +1210,8 @@ function modal() {
         $(".serial").html("");
         $(".quant").html("");
     });
+    $(".dist").on("hidden.bs.modal", function () {
+    });
     //Wizard
     $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
 
@@ -1404,6 +1406,7 @@ function getserial(id) {
 }
 
 function noserial(id,q) {
+    console.log(q);
     var qua = '';
     if(q!== 0){
         qua = ("<div class=\"quant form-group\">" +

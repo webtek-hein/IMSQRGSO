@@ -624,7 +624,7 @@
 <!--Distribution for Supply Officer-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/distribute"
       method="POST" data-validate="parsley">
-    <div class="DistributeSP modal fade" id="DitributeItemSP" tabindex="-1" role="dialog"
+    <div class="DistributeSP distsp modal fade" id="DitributeItemSP" tabindex="-1" role="dialog"
          aria-labelledby="largeModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">

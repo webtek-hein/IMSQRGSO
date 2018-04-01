@@ -148,8 +148,8 @@ class Inventory extends CI_Controller
                     } else {
                         if ($detail['serialStatus'] !== '1') {
                             $action =
-                                "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"noserial($detail[item_det_id],$detail[quantity])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
-                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
+                                "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
+                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
                             <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
                         } else {
                             $action =
