@@ -802,7 +802,7 @@
 
 <!-- accept -->
 <form class="form-horizontal form-label-left" method="POST" action="inventory/acceptitem">
-    <div class="Accept modal fade" id="accept_modal" tabindex="-1" role="dialog"
+    <div class="Accept acceptsp modal fade" id="accept_modal" tabindex="-1" role="dialog"
          aria-hidden="true">
         <div class="modal-dialog">
 

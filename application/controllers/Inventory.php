@@ -135,7 +135,7 @@ class Inventory extends CI_Controller
                             $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
                             class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Return\" onclick=\"noserial($detail[item_det_id],,$detail[quantity])\" data-id='$detail[dist_id]'  
+                            data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed])\" data-id='$detail[dist_id]'  
                             class=\"btn btn-danger\">Return</a>";
                         } else {
                             $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 

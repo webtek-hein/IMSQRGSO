@@ -1218,6 +1218,10 @@ function modal() {
         $(".serialsp").html("");
         $(".quantsp").html("");
     });
+    $(".acceptsp").on("hidden.bs.modal", function () {
+        $(".serialsp").html("");
+        $(".quantsp").html("");
+    });
     //Wizard
     $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
 
