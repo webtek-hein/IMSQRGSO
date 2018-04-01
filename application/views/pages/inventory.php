@@ -508,7 +508,7 @@
 
             </div>
             <div class="select">
-                    <label>Rerports on:</label>
+                    <label>Reports on:</label>
                     <select id="reportsOption">
                         <option value="0">Delivered Item</option>
                         <option value="1">Distributed Items</option>
