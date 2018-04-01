@@ -113,5 +113,44 @@
         </div>
     </div>
     <!-- /Ignore -->
+<!-- accept return -->
+    <div class="AcceptReturn modal fade" id="accept_modal" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Are you sure you want to Accept?</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <div class="serial">
+                                <label for="name"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="quant">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="form-group">
+                            <label for="name">Remarks</label>
+                            <textarea class="form-control" name="remarks" id="remarks"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button name="id" class="btn btn-primary" id="returnAct"><i
+                                class="fa fa-arrow-down"></i> Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- end accept return -->
 
 </div>

@@ -79,7 +79,7 @@
                             <!--MOOE Tab-->
                             <div class="table-responsive-sm-sm tab-pane fade" id="tab_content2" role="tabpanel"
                                  aria-labelledby="MOOE-tab">
-                                <?php if ($position === 'Custodian') {
+                                <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="MOOEtable"
                                        class="table table-no-bordered table-hover"></table>';
                                 } else {
@@ -134,7 +134,7 @@
 
                                         <div class="form-group">
                                             <label class="col-md-12">Item Name</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <input id="itemname"
                                                        type="text" name="item"
                                                        class="form-control"
@@ -146,7 +146,7 @@
 
                                         <div class="form-group">
                                             <label class="col-md-12">Description</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                             <textarea id="itemdesc" data-parsley-group="set1"
                                                       name="description" id="message"
                                                       class="form-control"
@@ -162,27 +162,27 @@
 
                                         <div class="form-group">
                                             <label class="col-md-12">Total Quantity</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <p id="total"></p>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-md-12">Initial Quantity</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <p id="initialStock"></p>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-12">Initial Price</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <p id="initialCost"></p>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-md-12">Unit</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <input id="unit" name="Unit" data-parsley-group="set1"
                                                        class="form-control" class="unit"
                                                        list="list"
@@ -203,7 +203,7 @@
 
                                         <div class="form-group">
                                             <label class="col-md-12">Type</label>
-                                            <div class="col-md-12">
+                                            <div class="col-md-5">
                                                 <select id="itemtype" data-parsley-group="set1" id="type"
                                                         list="typelist" name="Type"
                                                         class="form-control" required>
@@ -214,7 +214,7 @@
                                         </div>
                                         
                                         <div class ="form-group">
-                                             <button class="btn btn-outline-info" type="submit" name="id" id="edtbutton">
+                                             <button class="btn btn-success col-12" type="submit" name="id" id="edtbutton">
                                                     <i class="fa fa-check"></i> save
                                                 </button>
                                         </div>
@@ -624,7 +624,7 @@
 <!--Distribution for Supply Officer-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/distribute"
       method="POST" data-validate="parsley">
-    <div class="DistributeSP modal fade" id="DitributeItemSP" tabindex="-1" role="dialog"
+    <div class="DistributeSP distsp modal fade" id="DitributeItemSP" tabindex="-1" role="dialog"
          aria-labelledby="largeModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -638,12 +638,12 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <div class="serial col-md-10">
+                        <div class="serialsp col-md-10">
                             <label for="name"></label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="quant col-md-10">
+                        <div class="quantsp col-md-10">
                         </div>
                     </div>
                     <div class="form-group">
@@ -802,7 +802,7 @@
 
 <!-- accept -->
 <form class="form-horizontal form-label-left" method="POST" action="inventory/acceptitem">
-    <div class="Accept modal fade" id="accept_modal" tabindex="-1" role="dialog"
+    <div class="Accept acceptsp modal fade" id="accept_modal" tabindex="-1" role="dialog"
          aria-hidden="true">
         <div class="modal-dialog">
 
@@ -829,7 +829,7 @@
 <!--Return-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/deptreturn"
       method="POST" data-validate="parsley">
-    <div class="Return modal fade" id="return" tabindex="-1" role="dialog"
+    <div class="Return returnsp modal fade" id="return" tabindex="-1" role="dialog"
          aria-labelledby="largeModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -842,10 +842,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <div class="serial col-md-10">
+                        <div class="serialsp col-md-10">
                         </div>
                     </div>
-                    <div class=" quant form-group">
+                    <div class=" quantsp form-group">
                     </div>
 
                     <div class="form-group ">

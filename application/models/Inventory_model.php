@@ -851,19 +851,6 @@ class Inventory_model extends CI_Model
         $quantdist = ($query->quantity_distributed);
         $serialStatus = ($query->serialStatus);
 
-        if ($serialStatus === '1') {
-            for ($i = 0; $i < $quantity_returned; $i++) {
-                $serial_data[] = array(
-                    'item_status' => 'returned',
-                    'serial' => $serial[$i]
-                );
-            }
-            $this->db->set('item_status', 'Pending');
-            $this->db->where_in('serial', $serial);
-            $this->db->update('serial');
-
-        }
-
         $date = $this->input->post('returndate');
         $data = array(
             'return_quantity' => $quantity_returned,
@@ -878,6 +865,20 @@ class Inventory_model extends CI_Model
         $this->db->insert('returnitem', $data);
 
         $return_id = $this->db->insert_id();
+
+        if ($serialStatus === '1') {
+            for ($i = 0; $i < $quantity_returned; $i++) {
+                $serial_data[] = array(
+                    'item_status' => 'returned',
+                    'serial' => $serial[$i]
+                );
+            }
+            $this->db->set('item_status', 'Pending');
+            $this->db->set('return_id', $return_id);
+            $this->db->where_in('serial', $serial);
+            $this->db->update('serial');
+        }
+
 
         $this->db->insert('logs.returnlog',array(
             'return_id' => $return_id,
@@ -912,15 +913,22 @@ class Inventory_model extends CI_Model
 
         return $query->result_array();
     }
-    public function acceptReturn($return_id){
+    public function acceptReturn($return_id,$serial){
         $query = $this->db
-            ->select('item.quantity,returnitem.*,distribution.cost,item.item_id,')
+            ->select('item.serialStatus,item.serialStatus,PR_no,item.quantity,returnitem.*,distribution.cost,item.item_id')
             ->where('return_id',$return_id)
             ->join('distribution','distribution.dist_id = returnitem.dist_id')
             ->join('itemdetail','returnitem.item_det_id = itemdetail.item_det_id')
             ->join('item','item.item_id = returnitem.item_det_id')
             ->get('returnitem')
             ->row();
+        $serialStatus = $query->serialStatus;
+        if($serialStatus === '1'){
+            $this->db->set('item_status','Returned');
+            $this->db->where('item_status','Pending');
+            $this->db->where_in('serial_id',$serial);
+            $this->db->update('serial');
+        }
 
         $dist_id = $query->dist_id;
         $item_det_id = $query->item_det_id;
@@ -1190,4 +1198,19 @@ class Inventory_model extends CI_Model
         $this->db->group_by('inventory_date');
         $this->db->get('reconciliation');
     }
+
+    //get return data
+    public function getRetData($serialStatus,$id){
+        if($serialStatus === '1'){
+            $this->db->select('serial_id,serial');
+            $this->db->where('return_id',$id);
+            $query = $this->db->get('serial');
+        }else{
+            $this->db->select('return_quantity,remarks');
+            $this->db->where('return_id',$id);
+            $query = $this->db->get('returnitem');
+        }
+        return $query->result_array();
+    }
+
 }

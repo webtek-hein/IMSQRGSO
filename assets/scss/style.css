@@ -87,12 +87,19 @@
 }
 /*--End of Reconcile Button--*/
 
+/*----*/
+#edtbutton{
+  margin-top: 10px;
+}
+/*----*/
+
 .table-responsive{
   height: 420px;
 }
 tr{
   cursor: pointer;
 }
+
 .gaugejs-wrap {
   position: relative;
   margin: 0 auto; }

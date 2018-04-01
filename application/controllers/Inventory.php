@@ -109,6 +109,7 @@ class Inventory extends CI_Controller
     {
         $position = $this->session->userdata['logged_in']['position'];
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
+
         if ($position === 'Supply Officer' || $dept === 'dept') {
             $list = $this->inv->viewDetailperDept($dept, $id, $dept_id, $position);
         } else {
@@ -127,8 +128,6 @@ class Inventory extends CI_Controller
 
             if ($this->session->userdata['logged_in']['position'] !== 'none') {
                 if ($this->session->userdata['logged_in']['position'] === 'Admin') {
-                    $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"
-                        <span class=\"caret\"></span></a>";
 
                 } elseif ($position === 'Supply Officer') {
                     if ($detail['dist_stat'] !== 'Accepted') {
@@ -136,7 +135,7 @@ class Inventory extends CI_Controller
                             $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
                             class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Return\" onclick=\"noserial($detail[item_det_id],,$detail[quantity])\" data-id='$detail[dist_id]'  
+                            data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed])\" data-id='$detail[dist_id]'  
                             class=\"btn btn-danger\">Return</a>";
                         } else {
                             $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
@@ -149,8 +148,8 @@ class Inventory extends CI_Controller
                     } else {
                         if ($detail['serialStatus'] !== '1') {
                             $action =
-                                "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"noserial($detail[item_det_id],$detail[quantity])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
-                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
+                                "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
+                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
                             <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
                         } else {
                             $action =
@@ -197,9 +196,20 @@ class Inventory extends CI_Controller
                     'or' => $detail['OR_no'],
                     'action' => $action
                 );
-            } else {
+            } elseif($position === 'Admin'){
                 $data[] = array(
-                    'remove' => '<a href="#" onclick="removeDetail('.$detail['item_det_id'].')"> <i class="fa fa-remove"></i> </a>',
+                    'PO' => $detail['PO_number'],
+                    'quant' => $detail['quantity'],
+                    'del' => $detail['date_delivered'],
+                    'rec' => $detail['date_received'],
+                    'exp' => $detail['expiration_date'],
+                    'cost' => $detail['unit_cost'],
+                    'sup' => $detail['supplier_name'],
+                    'or' => $detail['OR_no'],
+                );
+            }else{
+                $data[] = array(
+                    'remove' => '<a onclick="removeDetail('.$detail['item_det_id'].')"> <i class="fa fa-remove"></i></a>',
                     'PO' => $detail['PO_number'],
                     'quant' => $detail['quantity'],
                     'del' => $detail['date_delivered'],
@@ -330,10 +340,12 @@ class Inventory extends CI_Controller
             $list = $this->inv->departmentInventory($type,$department);
         }else {
             $list = $this->inv->departmentInventory($type, $id);
+            $department = $id;
         }
         $data = array();
         foreach ($list as $item) {
             $data[] = array(
+                'dept_id'=> $department,
                 'position' => $position,
                 'id' => $item['item_id'],
                 'name' => $item['item_name'],
@@ -427,11 +439,15 @@ class Inventory extends CI_Controller
         $data = [];
         foreach ($list as $item) {
             $cost = "PHP " . number_format($item['unit_cost'], 2);
-
+            if(isset($item['increased'])){
+                $refIndication = 'OR #';
+            }else{
+                $refIndication = 'OR #';
+            }
             $data[] = array(
                 'date' => $item['date'],
                 'quantity' => $item['quantity'],
-                'reference' => $item['transaction_number'],
+                'reference' => $refIndication." ".$item['transaction_number'],
                 'increased' => $item['increased'],
                 'decreased' => $item['decreased'],
                 'running_quantity'=>$item['running_quantity'],
@@ -453,7 +469,9 @@ class Inventory extends CI_Controller
 
         foreach ($list as $rets) {
             if ($position === 'Custodian') {
-                $action = '<button onclick="return_action(0,' . $rets['return_id'] . ')" class="btn btn-primary">Accept</button> 
+                $action = '<a type="button" data-func="return_action(0,' . $rets['return_id'].','.$rets['serialStatus']
+                    . ')" onclick="retData('.$rets['serialStatus'] .','.$rets['return_id'] .')" 
+            data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-primary">Accept</a>
                 <button onclick="return_action(1,' . $rets['return_id'] . ')" class="btn btn-danger">Decline</button>';
 
             } else if ($position === 'Supply Officer') {
@@ -461,6 +479,7 @@ class Inventory extends CI_Controller
             }
             $data[] = array(
                 'date' => $rets['date_returned'],
+                'quantity'=>$rets['return_quantity'],
                 'dept' => $rets['department'],
                 'item' => $rets['item_name'],
                 'desc' => $rets['item_description'],
@@ -478,10 +497,11 @@ class Inventory extends CI_Controller
     public function return_actions()
     {
         $action = $this->input->post('action');
+        $serial = $this->input->post('serial');
         $return_id = $this->input->post('return_id');
         //accept
         if ($action === '0') {
-            echo $this->inv->acceptReturn($return_id);
+            echo $this->inv->acceptReturn($return_id,$serial);
             // decline
         } elseif ($action === '1') {
             echo $this->inv->declineReturn($return_id);
@@ -647,5 +667,9 @@ class Inventory extends CI_Controller
     }
     public function getInvDates(){
         echo json_encode($this->inv->getInventoryDates());
+    }
+
+    function getRetData($status,$id){
+        echo json_encode($this->inv->getRetData($status,$id));
     }
 }
