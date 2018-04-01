@@ -128,8 +128,6 @@ class Inventory extends CI_Controller
 
             if ($this->session->userdata['logged_in']['position'] !== 'none') {
                 if ($this->session->userdata['logged_in']['position'] === 'Admin') {
-                    $action = "<a data-toggle=\"dropdown\" class=\"btn btn-default btn-s dropdown-toggle\" type=\"button\" aria-expanded=\"false\"
-                        <span class=\"caret\"></span></a>";
 
                 } elseif ($position === 'Supply Officer') {
                     if ($detail['dist_stat'] !== 'Accepted') {
@@ -198,7 +196,18 @@ class Inventory extends CI_Controller
                     'or' => $detail['OR_no'],
                     'action' => $action
                 );
-            } else {
+            } elseif($position === 'Admin'){
+                $data[] = array(
+                    'PO' => $detail['PO_number'],
+                    'quant' => $detail['quantity'],
+                    'del' => $detail['date_delivered'],
+                    'rec' => $detail['date_received'],
+                    'exp' => $detail['expiration_date'],
+                    'cost' => $detail['unit_cost'],
+                    'sup' => $detail['supplier_name'],
+                    'or' => $detail['OR_no'],
+                );
+            }else{
                 $data[] = array(
                     'remove' => '<a onclick="removeDetail('.$detail['item_det_id'].')"> <i class="fa fa-remove"></i></a>',
                     'PO' => $detail['PO_number'],
