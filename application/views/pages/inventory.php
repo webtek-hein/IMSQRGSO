@@ -638,12 +638,12 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <div class="serial col-md-10">
+                        <div class="serialsp col-md-10">
                             <label for="name"></label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="quant col-md-10">
+                        <div class="quantsp col-md-10">
                         </div>
                     </div>
                     <div class="form-group">
@@ -829,7 +829,7 @@
 <!--Return-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/deptreturn"
       method="POST" data-validate="parsley">
-    <div class="Return modal fade" id="return" tabindex="-1" role="dialog"
+    <div class="Return returnsp modal fade" id="return" tabindex="-1" role="dialog"
          aria-labelledby="largeModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -842,10 +842,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <div class="serial col-md-10">
+                        <div class="serialsp col-md-10">
                         </div>
                     </div>
-                    <div class=" quant form-group">
+                    <div class=" quantsp form-group">
                     </div>
 
                     <div class="form-group ">

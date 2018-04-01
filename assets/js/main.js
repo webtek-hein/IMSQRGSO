@@ -1210,7 +1210,13 @@ function modal() {
         $(".serial").html("");
         $(".quant").html("");
     });
-    $(".dist").on("hidden.bs.modal", function () {
+    $(".distsp").on("hidden.bs.modal", function () {
+        $(".serialsp").html("");
+        $(".quantsp").html("");
+    });
+    $(".returnsp").on("hidden.bs.modal", function () {
+        $(".serialsp").html("");
+        $(".quantsp").html("");
     });
     //Wizard
     $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
@@ -1394,11 +1400,13 @@ function getserial(id) {
                     serials = "Please input serial first.";
                 }
                 $('.serial').html(serials);
+                $('.serialsp').html(serials);
 
             }
             if (!$.trim(data)) {
                 serials = "no items available";
                 $('.serial').html(serials);
+                $('.serialsp').html(serials);
             }
         }
     });
@@ -1419,6 +1427,7 @@ function noserial(id,q) {
         qua = ("<p>No stock left. Please restock.</p>");
     }
     $('.quant').html(qua);
+    $('.quantsp').html(qua);
 }
 
 //toggle hidden class of element
