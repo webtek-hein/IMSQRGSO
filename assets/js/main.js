@@ -1,35 +1,39 @@
 $(document).ready(function () {
 
+    $('.AcceptReturn').on('show.bs.modal', function (e) {
+        f = $(e.relatedTarget).data('func');
+        $('#returnAct').attr('onclick', f);
+    });
 //load data dash
-$(document).ready(function () {
-    setInterval(function () {
-        $( "#tUser" ).load("inventory/totalUser");
-        $( "#itemsrec" ).load("inventory/itemsReceived");
-        $( "#itemsiss" ).load("inventory/issuedItems");
-        $( "#retitem" ).load("inventory/returnedItems");
-        $( "#expitems" ).load("inventory/totalExpired");
-        $( "#tcost" ).load("inventory/totalCost");
-        $( "#tItemsDay" ).load("inventory/itemsThisDay");
-        $( "#tReturnedDay" ).load("inventory/itemsReturnedThisDay");
-        $( "#tExprdSO" ).load("inventory/itemsExpiredSO");
-        $( "#tCostSO" ).load("inventory/itemTcostSO");
+    $(document).ready(function () {
+        setInterval(function () {
+            $("#tUser").load("inventory/totalUser");
+            $("#itemsrec").load("inventory/itemsReceived");
+            $("#itemsiss").load("inventory/issuedItems");
+            $("#retitem").load("inventory/returnedItems");
+            $("#expitems").load("inventory/totalExpired");
+            $("#tcost").load("inventory/totalCost");
+            $("#tItemsDay").load("inventory/itemsThisDay");
+            $("#tReturnedDay").load("inventory/itemsReturnedThisDay");
+            $("#tExprdSO").load("inventory/itemsExpiredSO");
+            $("#tCostSO").load("inventory/itemTcostSO");
 
-    },1000);
-});
+        }, 1000);
+    });
     $returnTable = $('#returnTable');
     $reportTable = $('#reportTable');
     var $reportOption = $('#reportsOption');
-    var $selectValue =  '0';
+    var $selectValue = '0';
     //report table
     $reportTable.bootstrapTable({
-        url: 'inventory/getReport/'+$selectValue+'/ALL',
+        url: 'inventory/getReport/' + $selectValue + '/ALL',
         columns: [{
             field: 'or',
             title: 'OR_number'
-        },{
+        }, {
             field: 'date_delivered',
             title: 'Date Delivered'
-        },{
+        }, {
             field: 'item_name',
             title: 'Item Name'
         }, {
@@ -52,19 +56,19 @@ $(document).ready(function () {
     //select report on change
 
     $reportOption.change(function () {
-        $selectValue =  $(this).val();
+        $selectValue = $(this).val();
         //Item Returns
-        if($selectValue === '0'){
+        if ($selectValue === '0') {
             $reportTable.bootstrapTable('destroy');
             $reportTable.bootstrapTable({
-                url: 'inventory/getReport/'+$selectValue+'/ALL',
+                url: 'inventory/getReport/' + $selectValue + '/ALL',
                 columns: [{
                     field: 'OR_no',
                     title: 'OR_number'
-                },{
+                }, {
                     field: 'date_delivered',
                     title: 'Date Delivered'
-                },{
+                }, {
                     field: 'item_name',
                     title: 'Item Name'
                 }, {
@@ -84,14 +88,14 @@ $(document).ready(function () {
                     title: 'Supplier'
                 }]
             });
-        }else if ($selectValue === '1'){
+        } else if ($selectValue === '1') {
             $reportTable.bootstrapTable('destroy');
             $reportTable.bootstrapTable({
-                url: 'inventory/getReport/'+$selectValue+'/ALL',
+                url: 'inventory/getReport/' + $selectValue + '/ALL',
                 columns: [{
                     field: 'PR_no',
                     title: 'PR #'
-                },{
+                }, {
                     field: 'department',
                     title: 'Department'
                 }, {
@@ -120,10 +124,10 @@ $(document).ready(function () {
                     title: 'Supply Officer'
                 }]
             });
-        }else if ($selectValue === '2'){
+        } else if ($selectValue === '2') {
             $reportTable.bootstrapTable('destroy');
             $reportTable.bootstrapTable({
-                url: 'inventory/getReport/'+$selectValue+'/ALL',
+                url: 'inventory/getReport/' + $selectValue + '/ALL',
                 columns: [{
                     field: 'department',
                     title: 'Department',
@@ -145,7 +149,7 @@ $(document).ready(function () {
                 }, {
                     field: 'receiver',
                     title: 'Returned to'
-                },{
+                }, {
                     field: 'status',
                     title: 'Status'
                 }, {
@@ -153,17 +157,17 @@ $(document).ready(function () {
                     title: 'Remarks'
                 }]
             });
-        }else{
+        } else {
             $reportTable.bootstrapTable('destroy');
             $reportTable.bootstrapTable({
-                url: 'inventory/getReport/'+$selectValue+'/ALL',
+                url: 'inventory/getReport/' + $selectValue + '/ALL',
                 columns: [{
                     field: 'supplier_name',
                     title: 'Supplier',
-                },{
+                }, {
                     field: 'date_delivered',
                     title: 'Date',
-                },{
+                }, {
                     field: 'item_name',
                     title: 'Item Name'
                 }, {
@@ -188,7 +192,7 @@ $(document).ready(function () {
     $('input[type=radio][name=type]').change(function () {
         $type = $(this).val();
         $reportOptVal = $reportOption.val();
-        $returnTable.bootstrapTable('refresh', {url: 'inventory/getReport/'+$reportOptVal+'/'+$type});
+        $returnTable.bootstrapTable('refresh', {url: 'inventory/getReport/' + $reportOptVal + '/' + $type});
     });
 
     //supply officer options
@@ -198,7 +202,7 @@ $(document).ready(function () {
         url: "inventory/getSupplyOfficers/11",
         dataType: 'JSON',
         success: function (data) {
-            for(var i =0; i <= data.length-1; i++){
+            for (var i = 0; i <= data.length - 1; i++) {
                 users += "<option value=" + data[i].user_id + ">" + data[i].name + "<br>";
             }
             $ownerOpt.html(users);
@@ -213,7 +217,7 @@ $(document).ready(function () {
         columns: [{
             field: 'dept',
             title: 'Department'
-        },{
+        }, {
             field: 'item',
             title: 'Item Returned'
         }, {
@@ -276,7 +280,6 @@ $(document).ready(function () {
     });
 
 
-
     [].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {
         new SelectFx(el);
     });
@@ -313,7 +316,7 @@ $(document).ready(function () {
     }
     //get URL of the document
     var $url = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
-    if($url === 'dashboard'){
+    if ($url === 'dashboard') {
         $('#vmap').vectorMap({
             map: 'world_en',
             backgroundColor: null,
@@ -327,7 +330,7 @@ $(document).ready(function () {
             normalizeFunction: 'polynomial'
         });
         console.log('vmap_loaded');
-    }else{
+    } else {
         //initialize
         init_inventory();
         init_list();
@@ -335,19 +338,26 @@ $(document).ready(function () {
         init_bulkFucntion();
     }
 });
+
 //action for returns
-function return_action($action,$retun_id){
+function return_action($action, $retun_id, $s) {
+    var $serial = [];
+    if ($s === 1) {
+        $ser = $('.ser');
+        for (var i = 0; i <= $ser.length - 1; i++) {
+            $serial.push($ser[i].value);
+        }
+    }
     $.ajax({
         url: 'inventory/return_actions',
         method: 'POST',
-        data: {action: $action, return_id: $retun_id},
+        data: {serial:$serial,action: $action, return_id: $retun_id},
         success: function (response) {
-            if(response === '1'){
-                location.reload();
-            }
+            $('.AcceptReturn').modal('toggle');
         }
     });
 }
+
 // $('.user-area> a').on('click', function(event) {
 // 	event.preventDefault();
 // 	event.stopPropagation();
@@ -413,7 +423,7 @@ function detail(id) {
                 columns: [{
                     field: 'remove',
                     title: ''
-                },{
+                }, {
                     field: 'PO',
                     title: 'PO number'
                 }, {
@@ -514,14 +524,14 @@ function detail(id) {
     });
 }
 
-function deptDet(id,position,dept_id) {
+function deptDet(id, position, dept_id) {
     var $detailtable = $('#detail-tab-table');
     var $detailTab = $('.detail-tab ');
     var item;
-    if(position === 'Supply Officer'){
+    if (position === 'Supply Officer') {
         $field = 'action';
         $title = 'Action'
-    }else{
+    } else {
         $field = 'action';
         $title = 'Status';
     }
@@ -546,7 +556,7 @@ function deptDet(id,position,dept_id) {
                     }, {
                         field: 'receiver',
                         title: 'Supply Officer'
-                    },{
+                    }, {
                         field: 'rec',
                         title: 'Date Received'
                     }, {
@@ -598,15 +608,15 @@ var counter = 0;
 function insertRow() {
     var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
-        '<td  style=""></td>'+
+        '<td  style=""></td>' +
         '<td contenteditable style=""><input name="PO[' + counter + ']" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
-        '<td style=""><input name="del['+counter+']" class="form-control form-control-sm" type="date"></td> ' +
-        '<td style=""><input name="rec['+counter+']" class="form-control form-control-sm" type="date"></td> ' +
-        '<td style=""><input name="exp['+counter+']" class="form-control form-control-sm" type="date"></td> ' +
-        '<td style=""><input name="cost['+counter+']" class="form-control form-control-sm" type="number"></td> ' +
-        '<td style=""><select name="supp['+counter+']" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
-        '<td style=""><input name="quant['+counter+']" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><input name="or['+counter+']" class="form-control form-control-sm" type="text"></td> ' +
+        '<td style=""><input name="del[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
+        '<td style=""><input name="rec[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
+        '<td style=""><input name="exp[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
+        '<td style=""><input name="cost[' + counter + ']" class="form-control form-control-sm" type="number"></td> ' +
+        '<td style=""><select name="supp[' + counter + ']" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
+        '<td style=""><input name="quant[' + counter + ']" class="form-control form-control-sm" type="text"></td> ' +
+        '<td style=""><input name="or[' + counter + ']" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><i onclick="addquant(' + counter + ')" class="fa fa-check-circle-o" id="rowcheck"></i>' +
         '<i onclick="removeRow(' + counter + ')" class="fa fa-times-circle-o" id="rowcancel"></i></td> ' +
         '</tr>');
@@ -622,10 +632,12 @@ function insertRow() {
     });
     counter++;
 }
+
 //remove inserted row
 function removeRow($counter) {
-    $('#detTab'+$counter).remove();
+    $('#detTab' + $counter).remove();
 }
+
 function addquant(c) {
     var $item_det_id = $('#DetailDropDn').find('a').data('id');
     var data = $('#addQuant').serializeArray();
@@ -661,11 +673,11 @@ function init_inventory() {
         resizable: true,
 
         columns: [{
-            formatter:function(data,row){
-                return "<input class=reconid hidden value="+data+"></input>";
+            formatter: function (data, row) {
+                return "<input class=reconid hidden value=" + data + "></input>";
             },
             field: 'id'
-        },{
+        }, {
             sortable: true,
             field: 'item',
             title: 'NAME'
@@ -709,21 +721,21 @@ function init_inventory() {
             field: 'count',
             title: 'PHYSICAL COUNT'
         }, {
-                sortable: true,
-                cellStyle: function(data) {
-                    return {
-                        classes: 'result',
-                        css: {"color": "green"}
-                    };
-                },
-                field: 'result',
-                title: 'RESULT'
+            sortable: true,
+            cellStyle: function (data) {
+                return {
+                    classes: 'result',
+                    css: {"color": "green"}
+                };
+            },
+            field: 'result',
+            title: 'RESULT'
 
-            }, {
-                sortable:true,
-                field: 'remarks',
-                title: 'REMARKS'
-            }
+        }, {
+            sortable: true,
+            field: 'remarks',
+            title: 'REMARKS'
+        }
         ]
         // }, {
         //     sortable: true,
@@ -798,7 +810,7 @@ function init_inventory() {
             url: 'inventory/viewItem/CO',
             onClickRow: function (data, row) {
                 if (data.position === 'Supply Officer') {
-                    deptDet(data.item_id,data.position,data.det_id);
+                    deptDet(data.item_id, data.position, data.det_id);
                 } else {
                     detail(data.item_id);
                 }
@@ -855,7 +867,7 @@ function init_inventory() {
             url: 'inventory/viewItem/MOOE',
             onClickRow: function (data, row) {
                 if (data.position === 'Supply Officer') {
-                    deptDet(data.item_id,data.position,data.dept_id);
+                    deptDet(data.item_id, data.position, data.dept_id);
                 } else {
                     detail(data.item_id);
                 }
@@ -918,25 +930,25 @@ function init_inventory() {
         toggleDiv($('.addUser'), $('.accounts-tab'));
     });
 
-    $('.compare').on('click',function(){
+    $('.compare').on('click', function () {
         var quant = [];
         var pc = [];
         var $result = [];
         var $recon = $('.reconitem ');
-        for(var i = 0;i <= $recon.length-1;i++){
+        for (var i = 0; i <= $recon.length - 1; i++) {
             $q = $('.quantity')[i].textContent;
-            $result = $q-$recon[i].value;
+            $result = $q - $recon[i].value;
             if ($result === 0) {
-               $result = 'equal';
-           } else if ($result === $q){
-               $result = 'no input';
-           } else if ($result > 0) {
-               $result = ($result) + ' missing';
-           } else if (($result) < 0) {
-               $result = 'more than ' + Math.abs($result);
-           } else {
-               $result = '';
-           }
+                $result = 'equal';
+            } else if ($result === $q) {
+                $result = 'no input';
+            } else if ($result > 0) {
+                $result = ($result) + ' missing';
+            } else if (($result) < 0) {
+                $result = 'more than ' + Math.abs($result);
+            } else {
+                $result = '';
+            }
             $('.result')[i].innerHTML = $result;
         }
     });
@@ -954,11 +966,11 @@ function init_inventory() {
             url: "inventory/getInvDates",
             dataType: 'JSON',
             success: function (data) {
-                if(data === null){
+                if (data === null) {
                     options += '<option>NO Inventory Dates</option>';
-                }else{
-                    for(var i=0;i <= data.length-1;i++){
-                        options += '<option>'+data+'</option>';
+                } else {
+                    for (var i = 0; i <= data.length - 1; i++) {
+                        options += '<option>' + data + '</option>';
                     }
                 }
                 $select.html(options);
@@ -1006,10 +1018,10 @@ function init_list() {
                 $id = $(this).val()
                 var users = [];
                 $.ajax({
-                    url: "inventory/getSupplyOfficers/"+$id,
+                    url: "inventory/getSupplyOfficers/" + $id,
                     dataType: 'JSON',
                     success: function (data) {
-                        for(var i =0; i <= data.length-1; i++){
+                        for (var i = 0; i <= data.length - 1; i++) {
                             users += "<option value=" + data[i].user_id + ">" + data[i].name + "<br>";
                         }
                         $ownerOpt.html(users);
@@ -1024,7 +1036,7 @@ function init_list() {
         pageSize: 10,
         url: 'inventory/viewdept/CO/11',
         onClickRow: function (data, row) {
-            deptDet(data.id,data.position,data.dept_id);
+            deptDet(data.id, data.position, data.dept_id);
         },
         resizable: true,
         columns: [{
@@ -1054,7 +1066,7 @@ function init_list() {
         pageSize: 10,
         url: 'inventory/viewdept/MOOE/11',
         onClickRow: function (data, row) {
-            deptDet(data.id,data.position,data.dept_id);
+            deptDet(data.id, data.position, data.dept_id);
         },
         resizable: true,
         columns: [{
@@ -1342,7 +1354,7 @@ function viewSerial(id) {
                         "class=\"form-control\"></label><br>");
                     if (input.length === 10) {
                         div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
-                        list.push("<li class=\"" + listClass + "\"><a id=\"t"+serialTabCounter+"\"" +
+                        list.push("<li class=\"" + listClass + "\"><a id=\"t" + serialTabCounter + "\"" +
                             "data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
                         $serialContent.append(div);
                         $('#tab' + serialTabCounter).html(input.join('') + button);
@@ -1417,17 +1429,17 @@ function getserial(id) {
 
 }
 
-function noserial(id,q) {
+function noserial(id, q) {
     console.log(q);
     var qua = '';
-    if(q!== 0){
+    if (q !== 0) {
         qua = ("<div class=\"quant form-group\">" +
             "<label>Quantity<span class=\"required\">*</span>" +
-            "<input min=\"0\" max=\""+q+"\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
+            "<input min=\"0\" max=\"" + q + "\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
             "class=\'form-control col-md-12 col-xs-12\' required>" +
             "</label>" +
             "</div>");
-    }else{
+    } else {
         qua = ("<p>No stock left. Please restock.</p>");
     }
     $('.quant').html(qua);
@@ -1633,6 +1645,7 @@ function select_dept() {
 
     }
 }
+
 //View QR list
 function viewQr() {
     $genQR = $('#genQr');
@@ -1654,10 +1667,10 @@ function viewQr() {
             dataType: 'JSON',
             data: {selectedSerial: $data},
             success: function (data) {
-                if(data.length === 0){
+                if (data.length === 0) {
                     $qrDiv.html('Please select a serial from the list.');
-                    $('input[name=saveqr]').css({display:'none'});
-                }else{
+                    $('input[name=saveqr]').css({display: 'none'});
+                } else {
                     for (var i = 0; i <= data.length - 1; i++) {
                         $qrCode += data[i];
                     }
@@ -1679,12 +1692,13 @@ function download() {
 function closeSerial() {
     $('.serialdrop').click();
 }
+
 //remove Detail
-function removeDetail($id,$serialStatus){
+function removeDetail($id, $serialStatus) {
     var $detailtable = $('#detail-tab-table');
     var $rmItems = $('#removed-table');
     $.ajax({
-        url: "inventory/removeDetail/"+$id+"/"+$serialStatus,
+        url: "inventory/removeDetail/" + $id + "/" + $serialStatus,
         method: "POST",
         success: function (data) {
             $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $id});
@@ -1694,12 +1708,13 @@ function removeDetail($id,$serialStatus){
         }
     });
 }
+
 //revert removed detail
-function revertDetail($det_id,$serialStatus) {
+function revertDetail($det_id, $serialStatus) {
     var $detailtable = $('#detail-tab-table');
     var $rmItems = $('#removed-table');
     $.ajax({
-        url: "inventory/revert/"+$det_id+"/"+$serialStatus,
+        url: "inventory/revert/" + $det_id + "/" + $serialStatus,
         method: "POST",
         success: function (data) {
             $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $det_id});
@@ -1719,7 +1734,7 @@ function reconcile() {
     $r = [];
     var $recon = $('.reconitem ');
 
-    for(var i = 0;i <= $recon.length-1;i++) {
+    for (var i = 0; i <= $recon.length - 1; i++) {
         $q.push($('.quantity')[i].textContent);
         $p.push($recon[i].value);
         $r.push($('.remarks')[i].value)
@@ -1728,12 +1743,31 @@ function reconcile() {
     $.ajax({
         url: "inventory/reconcile",
         method: "POST",
-        data: {logical: $q,physical:$p,remarks:$r,date:$date,id:$id},
+        data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
         success: function (data) {
             $('.invdate').modal('toggle');
         }
     });
 }
-function printToPDF(){
+
+function printToPDF() {
     alert('test');
 }
+
+function retData($serialStatus, $id) {
+    var serialData = [];
+    $.ajax({
+        url: 'inventory/getRetData/' + $serialStatus + '/' + $id,
+        dataType: 'JSON',
+        success: function (data) {
+            if ($serialStatus === 1) {
+                serialData += '<p>Serials Returned:</p>';
+                for (var i = 0; i <= data.length - 1; i++) {
+                    serialData += '<input hidden class="ser" value=' + data[i].serial_id + '>' + data[i].serial + '<br>';
+                }
+                $('.serial').html(serialData);
+            }
+        }
+    });
+}
+

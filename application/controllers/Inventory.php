@@ -469,8 +469,9 @@ class Inventory extends CI_Controller
 
         foreach ($list as $rets) {
             if ($position === 'Custodian') {
-                $action = '<a type="button" href="#" data-toggle="modal" data-target=".ViewSerial" class=" btn btn-primary">View Serial</a>
-                <a type="button" href="#" data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-primary">Accept</a>
+                $action = '<a type="button" data-func="return_action(0,' . $rets['return_id'].','.$rets['serialStatus']
+                    . ')" onclick="retData('.$rets['serialStatus'] .','.$rets['return_id'] .')" 
+            data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-primary">Accept</a>
                 <button onclick="return_action(1,' . $rets['return_id'] . ')" class="btn btn-danger">Decline</button>';
 
             } else if ($position === 'Supply Officer') {
@@ -496,10 +497,11 @@ class Inventory extends CI_Controller
     public function return_actions()
     {
         $action = $this->input->post('action');
+        $serial = $this->input->post('serial');
         $return_id = $this->input->post('return_id');
         //accept
         if ($action === '0') {
-            echo $this->inv->acceptReturn($return_id);
+            echo $this->inv->acceptReturn($return_id,$serial);
             // decline
         } elseif ($action === '1') {
             echo $this->inv->declineReturn($return_id);
@@ -664,5 +666,9 @@ class Inventory extends CI_Controller
     }
     public function getInvDates(){
         echo json_encode($this->inv->getInventoryDates());
+    }
+
+    function getRetData($status,$id){
+        echo json_encode($this->inv->getRetData($status,$id));
     }
 }
