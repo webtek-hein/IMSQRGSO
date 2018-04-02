@@ -1752,7 +1752,15 @@ function reconcile() {
 }
 
 function printToPDF() {
-    alert('test');
+    $('#ledger').tableExport({type:'pdf',
+        jspdf: {orientation: 'l',
+            format: 'a3',
+            margins: {left:10, right:10, top:20, bottom:20},
+            autotable: {styles: {fillColor: 'inherit',
+                    textColor: 'inherit'},
+                tableWidth: 'auto'}
+        }
+    });
 }
 
 function retData($serialStatus, $id) {

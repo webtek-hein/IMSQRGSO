@@ -21,6 +21,10 @@
 <script type="text/javascript" src="assets/js/databr.js"></script>
 <script type="text/javascript" src="assets/js/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="assets/js/utf-8.js"></script>
+<script type="text/javascript" src="assets/plugins/tableExport/libs/FileSaver/FileSaver.min.js"></script>
+<script type="text/javascript" src="assets/plugins/tableExport/libs/jsPDF/jspdf.min.js"></script>
+<script type="text/javascript" src="assets/plugins/tableExport/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+<script type="text/javascript" src="assets/plugins/tableExport/tableExport.min.js"></script>
 
 <script src="assets/js/main.js"></script>
 <?php if ($title === 'Dashboard') {
