@@ -907,6 +907,7 @@
 <div hidden class="reconcilePage col-lg-12">
     <div class="card">
         <div class="card-header">
+            <button onclick="printToPDFreconcile()" class="btn btn-primary">Print </button>
             <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))" class="btn btn-primary">Back</button>
         </div>
         <form id="compareitem" role="form"

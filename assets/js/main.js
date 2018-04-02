@@ -1804,6 +1804,19 @@ function printToPDFreport() {
         }
     });
 }
+function printToPDFreconcile() {
+    $('#reconcileTable').tableExport({type:'pdf',
+        jspdf: {orientation: 'l',
+            format: 'a4',
+            margins: {left:10, right:10, top:20, bottom:20},
+            autotable: {styles: {
+                    fillColor: 'inherit',
+                    textColor: 'inherit'},
+                tableWidth: 'auto'}
+        }
+    });
+}
+
 
 function retData($serialStatus, $id) {
     var serialData = [];
