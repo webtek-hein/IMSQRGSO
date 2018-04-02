@@ -27,6 +27,8 @@
 <script type="text/javascript" src="assets/plugins/tableExport/tableExport.min.js"></script>
 
 <script src="assets/js/main.js"></script>
+<script src="assets/js/validation.js"></script>
+
 <?php if ($title === 'Dashboard') {
     echo '<script src="assets/js/lib/chart-js/Chart.bundle.js"></script>' .
         '<script src="assets/js/dashboard.js"></script>' .

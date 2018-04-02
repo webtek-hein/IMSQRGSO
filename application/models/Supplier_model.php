@@ -3,14 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Supplier_model extends CI_Model{
     public function insertSupplier(){
-        $id = $this->input->post('id');
         $data = array(
             'supplier_name'=> $this->input->post('supplier'),
             'contact' => $this->input->post('contact'),
             'location'=>$this->input->post('address')
         );
-        $this->db->where('supplier_id',$id);
-        $this->db->update('supplier',$data);
+        $this->db->insert('supplier',$data);
     }
     public function getSupplier(){
         $query = $this->db->get('supplier');
