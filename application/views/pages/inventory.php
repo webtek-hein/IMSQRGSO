@@ -27,14 +27,14 @@
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if ($position === 'Custodian') {
 
-                               // <form method="post" id="import_csv">
-                                // <div class="form-group">
-                                    // <label>Select CSV File</label>
-                                    // <input type="file" name="csv_file" id=""/>
-                                // </div>
-                                    // <button type="submit" name="import_csv" class="btn btn-info btn-sm" id="import_csv_btn" method="post" 
-                                    // required accept=".csv" enctype="multipart/form-data">Import CSV</button> 
-                                // </form> 
+                        // <form method="post" id="import_csv">
+                        // <div class="form-group">
+                        // <label>Select CSV File</label>
+                        // <input type="file" name="csv_file" id=""/>
+                        // </div>
+                        // <button type="submit" name="import_csv" class="btn btn-info btn-sm" id="import_csv_btn" method="post"
+                        // required accept=".csv" enctype="multipart/form-data">Import CSV</button>
+                        // </form>
                         echo '<div class="card-header">
  
 
@@ -125,9 +125,9 @@
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <div class="tab-pane fade" id="Detail_Info" role="tabpanel"
                                  aria-labelledby="Information-tab">
-                            <!-- Information-->
-                            <?php if($position === 'Custodian'){
-                                echo '<div class="col-lg-12">
+                                <!-- Information-->
+                                <?php if ($position === 'Custodian') {
+                                    echo '<div class="col-lg-12">
                                     <form id="editInformation"
                                           class="serialForm form-horizontal form-label-left"
                                           action="inventory/edititem" method="POST">
@@ -221,8 +221,8 @@
                                     </form>
                                 </div>
                            ';
-                            }else{
-                                echo '<div class="col-lg-12">
+                                } else {
+                                    echo '<div class="col-lg-12">
                                     <form id="editInformation"
                                           class="serialForm form-horizontal form-label-left"
                                           action="inventory/edititem" method="POST">
@@ -310,8 +310,8 @@
                                     </form>
                                 </div>
                            ';
-                            }
-                            ?>
+                                }
+                                ?>
                             </div>
                             <!--Detail-->
                             <div class="table-responsive tab-pane fade show active" id="Detail_Det" role="tabpanel"
@@ -368,9 +368,9 @@
                             <!--General Ledger-->
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
-                                <button onclick="printToPDF()" class="btn btn-primary">Print </button>
-                                <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d");?>">
-                                <label>To </label> <input type="date" value="<?php echo date("Y-m-d");?>"> -->
+                                <button onclick="printToPDF()" class="btn btn-primary">Print</button>
+                                <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
+                                <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
                                        class="table-sm table table-no-bordered table-hover">
                                 </table>
@@ -381,8 +381,8 @@
                             <div class="tab-pane fade" id="removed_Items" role="tabpanel"
                                  aria-labelledby="removed-tab">
                                 <table id="removed-table" data-search="true" data-show-refresh='true'
-                                           class="table-sm table table-no-bordered table-hover">
-                                    </table>
+                                       class="table-sm table table-no-bordered table-hover">
+                                </table>
                             </div>
                             <!--End of Removed Items-->
 
@@ -582,15 +582,15 @@
 
             </div>
             <div class="select">
-                    <label>Reports on:</label>
-                    <select id="reportsOption">
-                        <option value="0">Delivered Item</option>
-                        <option value="1">Distributed Items</option>
-                        <option value="2">Returned Items</option>
-                        <option value="3">Supplier</option>
-                    </select>
-                </div>
-            <button onclick="printToPDFreport()" class="btn btn-primary">Print </button>
+                <label>Reports on:</label>
+                <select id="reportsOption">
+                    <option value="0">Delivered Item</option>
+                    <option value="1">Distributed Items</option>
+                    <option value="2">Returned Items</option>
+                    <option value="3">Supplier</option>
+                </select>
+            </div>
+            <button onclick="printToPDFreport()" class="btn btn-primary">Print</button>
             <!--  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                       <label>From</label>
                       <input type="date" name="from" data-validate-length-range="5,20"
@@ -605,14 +605,14 @@
                       <span class="fa fa-calendar-times-o form-control-feedback left"
                             aria-hidden="true"></span>
                   </div>-->
-          <div class="returnedReport">
-              <table id="reportTable" data-show-refresh="true" data-search="true" data-pagination="true"
-                     class="table-sm table table-no-bordered table-hover">
-              </table>
-          </div>
+            <div class="returnedReport">
+                <table id="reportTable" data-show-refresh="true" data-search="true" data-pagination="true"
+                       class="table-sm table table-no-bordered table-hover">
+                </table>
+            </div>
 
-      </div>
-  </div>
+        </div>
+    </div>
 </div>
 <!--End of Genearate Report-->
 
@@ -920,9 +920,10 @@
                         <div class="serialsp col-md-10">
                         </div>
                     </div>
-                    <div class=" quantsp form-group">
+                    <div class="form-group">
+                        <div class=" quantsp form-group">
+                        </div>
                     </div>
-
                     <div class="form-group ">
                         <label>Date Returned</label>
                         <input type="date" name="returndate" data-validate-length-range="5,20"
@@ -981,7 +982,7 @@
 <div hidden class="reconcilePage col-lg-12">
     <div class="card">
         <div class="card-header">
-            <button onclick="printToPDFreconcile()" class="btn btn-primary">Print </button>
+            <button onclick="printToPDFreconcile()" class="btn btn-primary">Print</button>
             <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))" class="btn btn-primary">Back</button>
         </div>
         <form id="compareitem" role="form"
@@ -993,7 +994,7 @@
             </div>
     </div>
     <a type="button" class="compare btn btn-success" data-toggle="modal"
-       data-target= ".invdate">Reconcile Items</a>
+       data-target=".invdate">Reconcile Items</a>
     <a type="button" class="compare btn btn-success">Compare</a>
 
 </div>
