@@ -425,7 +425,7 @@
                                         <input type="text" name="item[]"
                                                class="form-control has-feedback-left"
                                                data-parsley-group="set1"
-                                               data-parsley-required-message="Please insert Item name"
+                                               data-parsley-required-message="Item Name is required"
                                                placeholder="Enter the name of the item"
                                                required>
                                     </div>
@@ -455,7 +455,7 @@
                                                data-parsley-trigger="blur"
                                                data-parsley-group="set1"
                                                data-parsley-length="[1, 20]"
-                                               data-parsley-required-message="Please insert Item name"
+                                               data-parsley-required-message="Item quantity is required"
                                                placeholder="Enter the quantity"
                                                required>
                                     </div>
@@ -493,7 +493,6 @@
                                                   data-parsley-trigger="blur"
                                                   data-parsley-minlength="1"
                                                   data-parsley-maxlength="500"
-                                                  data-parsley-minlength-message="Description must"
                                                   data-parsley-validation-threshold="10"
                                                   data-parsley-required-messag="Put description of the items"
                                                   required></textarea>
@@ -532,7 +531,7 @@
                                     </div>
                                     <div class="form-group has-feedback">
                                         <label for="unit" class=" form-control-label">Official Receipt Number</label>
-                                        <input data-parsley-group="set1" type="text"
+                                        <input data-parsley-group="set1"
                                                name="or[]" class="form-control has-feedback-left"
                                                data-parsley-required-message="Input Official Receipt"
                                                required>
@@ -540,7 +539,7 @@
                                     <div class="form-group has-feedback">
                                         <label for="unit" class=" form-control-label">Purchse Order (PO)
                                             number</label>
-                                        <input data-parsley-group="set1" type="text"
+                                        <input data-parsley-group="set1"
                                                name="PO[]" class="form-control">
                                     </div>
 

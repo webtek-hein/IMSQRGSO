@@ -117,9 +117,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
             <div class="col-sm-5">
                 <div class="float-right">
-                    <button>
-                        <a class="nav-link" href="login/logout"><i class="fa fa-power -off"></i>Sign Out</a>
-                    </button>
+                        <a class="" href="login/logout"><i class="fa fa-power-off"> Sign Out</i></a>
                 </div>
 
             </div>

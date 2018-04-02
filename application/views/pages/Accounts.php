@@ -82,7 +82,7 @@
                                 <label class=" form-control-label">Contact No.</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-                                    <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" name="contactno" placeholder="Contact No.">
+                                    <input class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" name="contactno" placeholder="Contact No.">
                                 </div>
                                 <small class="form-text text-muted">ex. (999) 999-9999</small>
                             </div>
@@ -90,7 +90,7 @@
                                 <label class=" form-control-label">Username</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                    <input type="text" pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." name="username" id="username" class="form-control has-feedback-left" placeholder="Username" required> <span id="username_result"></span>
+                                    <input pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." name="username" id="username" class="form-control has-feedback-left" placeholder="Username" required> <span id="username_result"></span>
                                 </div>
                                 <small class="form-text text-muted">ex. george12g2</small>
                             </div>

@@ -13,6 +13,11 @@
 /* Bootstrap */
 @import url(../css/animate.css);
 
+.parsley-errors-list .parsley-required{
+  list-style: none;
+  color: red;
+  margin-left: 10px;
+}
 /*--Action--*/
 .dropdown #DetailDropDn{
   width: 15px;
@@ -92,6 +97,8 @@
   margin-top: 10px;
 }
 /*----*/
+
+
 
 .table-responsive{
   height: 420px;
