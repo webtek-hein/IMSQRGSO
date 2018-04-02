@@ -74,7 +74,7 @@
                                 <div class="form-group">
                                     <label for="Address" class=" form-control-label">Contact Number</label>
                                     <input id="contactno" class="form-control has-feedback-left"
-                                           type="text" name="contact" data-required="true"
+                                           name="contact" data-required="true"
                                            data-error-message="Please Enter Contact Number">
                                 </div>
                                 <hr>
