@@ -674,7 +674,7 @@
                                 <label for="name">OBR Number</label>
                                 <input id="obr" class="form-control col-md-7 col-xs-12"
                                        data-validate-length-range="6"
-                                       data-validate-words="2" name="obr" required type="text">
+                                       data-validate-words="2" name="obr" required>
                             </div>
                         </div>
 
