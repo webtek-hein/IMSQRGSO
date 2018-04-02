@@ -132,11 +132,13 @@ class Inventory extends CI_Controller
                 } elseif ($position === 'Supply Officer') {
                     if ($detail['dist_stat'] !== 'Accepted') {
                         if ($detail['serialStatus'] !== '1') {
-                            $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
+                            foreach ($returnquant as $retq) {
+                                $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
                             class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed])\" data-id='$detail[dist_id]'  
+                            data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed],$retq[retq])\" data-id='$detail[dist_id]'  
                             class=\"btn btn-danger\">Return</a>";
+                            }
                         } else {
                             $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
@@ -163,16 +165,17 @@ class Inventory extends CI_Controller
                 } elseif ($dept === 'dept') {
                     $action = $detail['dist_stat'];
                 } elseif ($detail['serialStatus'] !== '1') {
-                    $action = "<div class=\"dropdown\">
+                        $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
-                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id],$detail[quantity])\"data-toggle=\"modal\" 
+                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id],$detail[quantity],0)\"data-toggle=\"modal\" 
                             data-id='$detail[item_det_id]'data-target=\" .Distribute\" data-quantity=\"$detail[quantity]\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             </div>
                             $viewser
                             </div>
                             </div>";
+
                 } else {
                     $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>

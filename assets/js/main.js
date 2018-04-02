@@ -1430,13 +1430,14 @@ function getserial(id) {
 }
 
 function noserial(id, q,retquant) {
-    console.log(q);
+    //console.log(retquant);
     var qua = '';
     var result = q - retquant;
+   // console.log(result);
     if (q !== 0) {
         qua = ("<div class=\"quant form-group\">" +
             "<label>Quantity<span class=\"required\">*</span>" +
-            "<input min=\"0\" max=\"" + retquant + "\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
+            "<input min=\"0\" max=\"" + result + "\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
             "class=\'form-control col-md-12 col-xs-12\' required>" +
             "</label>" +
             "</div>");
