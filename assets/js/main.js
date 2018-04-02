@@ -1692,7 +1692,7 @@ function viewQr() {
             }
         }
         $.ajax({
-            url: "generateqr/saveQR",
+            url: "GenerateQR/saveQR",
             method: "POST",
             dataType: 'JSON',
             data: {selectedSerial: $data},
