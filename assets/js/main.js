@@ -1396,6 +1396,34 @@ function viewSerial(id) {
 }
 
 //get serial checkbox
+function getserialreturn(id) {
+    var serials = [];
+    var mooe = [];
+    $.ajax({
+        url: 'inventory/getSerialreturn/' + id,
+        dataType: 'JSON',
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                mooe = data[i].serial;
+                var status = data[i].item_status;
+                if (data[i].serial !== null && (status === 'Distributed' || status === 'UserDistributed') ) {
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                }
+                if (serials.length === 0) {
+                    serials = "Please input serial first.";
+                }
+                $('.serial').html(serials);
+                $('.serialsp').html(serials);
+            }
+            if (!$.trim(data)) {
+                serials = "no items available";
+                $('.serial').html(serials);
+                $('.serialsp').html(serials);
+            }
+        }
+    });
+}
+
 function getserial(id) {
     var serials = [];
     var mooe = [];

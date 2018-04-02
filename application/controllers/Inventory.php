@@ -136,7 +136,7 @@ class Inventory extends CI_Controller
                                 $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
                             class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed],$retq[retq])\" data-id='$detail[dist_id]'  
+                            data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed])\" data-id='$detail[dist_id]'  
                             class=\"btn btn-danger\">Return</a>";
                             }
                         } else {
@@ -157,7 +157,7 @@ class Inventory extends CI_Controller
                             } else {
                                 $action =
                                     "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
-                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
+                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
                             <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
                             }
                         }
@@ -309,6 +309,26 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    public function getSerialreturn($det_id)
+    {
+        //supply officer
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+
+        $list = $this->inv->getSerialreturn($det_id, $position);
+
+        $data = array();
+        foreach ($list as $serial) {
+            $data[] = array(
+                'serialStatus' => $serial['serialStatus'],
+                'serial_id' => $serial['serial_id'],
+                'serial' => $serial['serial'],
+                'position' => $position,
+                'item_status' => $serial['item_status']
+            );
+        }
+        echo json_encode($data);
+    }
     //get serial
     public function getSerial($det_id)
     {
