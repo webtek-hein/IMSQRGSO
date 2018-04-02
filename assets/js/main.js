@@ -1365,7 +1365,7 @@ function viewSerial(id) {
                 }
             } else {
                 for (i = 0; i < data.length; i++) {
-                    input.push("<label>Serial " + (i + 1) +
+                    input.push("<input type=\"checkbox\"  value =\"" + data[i]['serial'] + "\" class='selSerial' name=\"selectedSerial[]\" value=\"" + data[i]['serial'] + "\"><label>Serial " + (i + 1) +
                         "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                         "min=0  " +
                         "class=\"form-control\"></label><br>");
