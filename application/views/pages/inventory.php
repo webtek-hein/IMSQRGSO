@@ -294,8 +294,8 @@
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
                                 <button onclick="printToPDF()" class="btn btn-primary">Print </button>
-                                <label>From</label> <input type="date" value="<?php echo date("Y-m-d");?>">
-                                <label>To </label> <input type="date" value="<?php echo date("Y-m-d");?>">
+                                <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d");?>">
+                                <label>To </label> <input type="date" value="<?php echo date("Y-m-d");?>"> -->
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
                                        class="table-sm table table-no-bordered table-hover">
                                 </table>
@@ -516,28 +516,29 @@
                         <option value="3">Supplier</option>
                     </select>
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <label>From</label>
-                        <input type="date" name="from" data-validate-length-range="5,20"
-                               class="optional form-control has-feedback-left">
-                        <span class="fa fa-calendar-times-o form-control-feedback left"
-                              aria-hidden="true"></span>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <label>To</label>
-                        <input type="date" name="to" data-validate-length-range="5,20"
-                               class="optional form-control has-feedback-left">
-                        <span class="fa fa-calendar-times-o form-control-feedback left"
-                              aria-hidden="true"></span>
-                    </div>
-            <div class="returnedReport">
-                <table id="reportTable" data-show-refresh="true" data-search="true" data-pagination="true"
-                       class="table-sm table table-no-bordered table-hover">
-                </table>
-            </div>
+            <button onclick="printToPDFreport()" class="btn btn-primary">Print </button>
+            <!--  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                      <label>From</label>
+                      <input type="date" name="from" data-validate-length-range="5,20"
+                             class="optional form-control has-feedback-left">
+                      <span class="fa fa-calendar-times-o form-control-feedback left"
+                            aria-hidden="true"></span>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                      <label>To</label>
+                      <input type="date" name="to" data-validate-length-range="5,20"
+                             class="optional form-control has-feedback-left">
+                      <span class="fa fa-calendar-times-o form-control-feedback left"
+                            aria-hidden="true"></span>
+                  </div>-->
+          <div class="returnedReport">
+              <table id="reportTable" data-show-refresh="true" data-search="true" data-pagination="true"
+                     class="table-sm table table-no-bordered table-hover">
+              </table>
+          </div>
 
-        </div>
-    </div>
+      </div>
+  </div>
 </div>
 <!--End of Genearate Report-->
 

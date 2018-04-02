@@ -28,7 +28,7 @@ $(document).ready(function () {
     $reportTable.bootstrapTable({
         url: 'inventory/getReport/' + $selectValue + '/ALL',
         columns: [{
-            field: 'or',
+            field: 'OR_no',
             title: 'OR_number'
         }, {
             field: 'date_delivered',
@@ -46,10 +46,10 @@ $(document).ready(function () {
             field: 'quantity',
             title: 'Quantity'
         }, {
-            field: 'cost',
+            field: 'unit_cost',
             title: 'Unit Cost'
         }, {
-            field: 'supplier',
+            field: 'supplier_name',
             title: 'Supplier'
         }]
     });
@@ -1759,6 +1759,18 @@ function printToPDF() {
             margins: {left:10, right:10, top:20, bottom:20},
             autotable: {styles: {
                 fillColor: 'inherit',
+                    textColor: 'inherit'},
+                tableWidth: 'auto'}
+        }
+    });
+}
+function printToPDFreport() {
+    $('#reportTable').tableExport({type:'pdf',
+        jspdf: {orientation: 'l',
+            format: 'a4',
+            margins: {left:10, right:10, top:20, bottom:20},
+            autotable: {styles: {
+                    fillColor: 'inherit',
                     textColor: 'inherit'},
                 tableWidth: 'auto'}
         }
