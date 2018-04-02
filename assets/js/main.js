@@ -1754,9 +1754,10 @@ function reconcile() {
 function printToPDF() {
     $('#ledger').tableExport({type:'pdf',
         jspdf: {orientation: 'l',
-            format: 'a3',
+            format: 'a4',
             margins: {left:10, right:10, top:20, bottom:20},
-            autotable: {styles: {fillColor: 'inherit',
+            autotable: {styles: {
+                fillColor: 'inherit',
                     textColor: 'inherit'},
                 tableWidth: 'auto'}
         }
