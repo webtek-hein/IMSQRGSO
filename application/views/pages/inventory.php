@@ -567,20 +567,9 @@
             <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))" class="btn btn-primary">
                 Back
             </button>
+            <button onclick="printToPDFreport()" class="btn btn-primary">Print</button>
         </div>
         <div class="card-body">
-            <div class="options">
-                <div class="checkbox opt1">
-                    <label>OPTION: </label>
-                    <label><input type="radio" name="type" value="CO"> Capital Outlay</label>
-
-                    <label><input type="radio" name="type" value="MOOE"> MOOE</label>
-
-                    <label><input type="radio" name="type" value="ALL" checked> ALL</label>
-                </div>
-
-
-            </div>
             <div class="select">
                 <label>Reports on:</label>
                 <select id="reportsOption">
@@ -590,7 +579,6 @@
                     <option value="3">Supplier</option>
                 </select>
             </div>
-            <button onclick="printToPDFreport()" class="btn btn-primary">Print</button>
             <!--  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                       <label>From</label>
                       <input type="date" name="from" data-validate-length-range="5,20"
