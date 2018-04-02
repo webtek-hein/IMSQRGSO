@@ -222,19 +222,94 @@
                                 </div>
                            ';
                             }else{
-                                echo '<div class="tab-pane fade show active" id="Detail_Info" role="tabpanel"
-                                 aria-labelledby="Information-ta">
-                                <p class="col-md-12">Item Name : <span id="itemname"></p>
+                                echo '<div class="col-lg-12">
+                                    <form id="editInformation"
+                                          class="serialForm form-horizontal form-label-left"
+                                          action="inventory/edititem" method="POST">
 
+                                        <div class="form-group">
+                                            <label class="col-md-12">Item Name</label>
+                                            <div class="col-md-5">
+                                                <input id="itemname"
+                                                       type="text" name="item"
+                                                       class="form-control"
+                                                       data-parsley-group="set1"
+                                                       data-parsley-required-message="Please insert Item name"
+                                                       required>
+                                            </div>
+                                        </div>
 
-                                <p class="col-md-12">Description: <span id="itemdesc"></p>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Description</label>
+                                            <div class="col-md-5">
+                                            <textarea id="itemdesc" data-parsley-group="set1"
+                                                      name="description" id="message"
+                                                      class="form-control"
+                                                      data-parsley-trigger="blur"
+                                                      data-parsley-minlength="1"
+                                                      data-parsley-maxlength="500"
+                                                      data-parsley-minlength-message="Description must"
+                                                      data-parsley-validation-threshold="10"
+                                                      data-parsley-required-messag="Put description of the items"
+                                                      required></textarea>
+                                            </div>
+                                        </div>
 
-                                <p class="col-md-12">Total Quantity: <span id="total"></p>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Total Quantity</label>
+                                            <div class="col-md-5">
+                                                <p id="total"></p>
+                                            </div>
+                                        </div>
 
-                                <p class="col-md-12">Unit: <span id="unit"></p>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Initial Quantity</label>
+                                            <div class="col-md-5">
+                                                <p id="initialStock"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Initial Price</label>
+                                            <div class="col-md-5">
+                                                <p id="initialCost"></p>
+                                            </div>
+                                        </div>
 
-                                <p class="col-md-12">Type: <span id="itemtype"></p>
-                            </div>';
+                                        <div class="form-group">
+                                            <label class="col-md-12">Unit</label>
+                                            <div class="col-md-5">
+                                                <input id="unit" name="Unit" data-parsley-group="set1"
+                                                       class="form-control" class="unit"
+                                                       list="list"
+                                                       data-parsley-required-message="Select the Unit"
+                                                       required>
+                                                <datalist id="list">
+                                                    <option value="piece">piece</option>
+                                                    <option value="box">box</option>
+                                                    <option value="set">set</option>
+                                                    <option value="ream">ream</option>
+                                                    <option value="dozen">dozen</option>
+                                                    <option value="bundle">bundle</option>
+                                                    <option value="sack">sack</option>
+                                                    <option value="others">others</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-12">Type</label>
+                                            <div class="col-md-5">
+                                                <select id="itemtype" data-parsley-group="set1" id="type"
+                                                        list="typelist" name="Type"
+                                                        class="form-control" required>
+                                                    <option value="CO">Capital Outlay</option>
+                                                    <option value="MOOE">MOOE</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                           ';
                             }
                             ?>
                             </div>
