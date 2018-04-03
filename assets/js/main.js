@@ -1715,7 +1715,7 @@ function viewQr() {
     $genQR.modal('show', function (e) {
         $selectedSerial = $('.selSerial');
         $data = [];
-        for (var i = 0; i < $selectedSerial.length - 1; i++) {
+        for (var i = 0; i < $selectedSerial.length ; i++) {
             if ($selectedSerial[i].checked === true) {
                 if ($selectedSerial[i].value !== "") {
                     $data.push($selectedSerial[i].value);

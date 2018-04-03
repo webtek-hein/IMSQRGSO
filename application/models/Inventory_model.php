@@ -266,7 +266,7 @@ class Inventory_model extends CI_Model
                     'decreased' => $quantity,
                     'item_id' => $item_id,
                     'unit_cost' => $unit_cost,
-                    'running_quantity'=>$last_quantiy+$quantity,
+                    'running_quantity'=>$last_quantiy-$quantity,
                     'transaction' => 'issued'
                 ));
             // if item has serial
@@ -748,7 +748,7 @@ class Inventory_model extends CI_Model
             $this->db->or_where('item_status', 'Distributed');
             $this->db->join('distribution', 'distribution.dist_id = serial.dist_id');
         }
-        $this->db->where('serial.serial_id', $sid);
+        $this->db->where('serial.dist_id', $sid);
         $this->db->where('serial.item_det_id', $det_id);
         $query = $this->db->get('serial');
         return $query->result_array();
@@ -782,7 +782,7 @@ class Inventory_model extends CI_Model
             $this->db->where('item_status', 'Distributed');
             $this->db->join('distribution', 'distribution.dist_id = serial.dist_id');
         }
-        $this->db->where('serial.serial_id', $sid);
+        $this->db->where('serial.dist_id', $sid);
         $this->db->where('serial.item_det_id', $det_id);
         $query = $this->db->get('serial');
         return $query->result_array();
