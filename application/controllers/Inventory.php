@@ -158,8 +158,7 @@ class Inventory extends CI_Controller
                                     "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"getserialbtn($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
                             <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
                             <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
-                                    "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
-                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a>";
+
                             }
                         }
                     }
