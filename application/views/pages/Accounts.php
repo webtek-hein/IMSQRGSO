@@ -84,7 +84,7 @@
                                     <div class="input-group-addon"><i class="fa fa-phone"></i></div>
                                     <input class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" name="contactno" placeholder="Contact No.">
                                 </div>
-                                <small class="form-text text-muted">ex. (999) 999-9999</small>
+                                <small class="form-text text-muted">ex. 09263401202</small>
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Username</label>

@@ -5,7 +5,7 @@ class User_db extends CI_Model {
     {
 
         $this->db->select('*')
-            ->where('username', $data['username'])
+            ->where('username like binary', $data['username'])
             ->where('status', 'active')
             ->limit(1);
         $uname = $this->db->get('user')->row();
