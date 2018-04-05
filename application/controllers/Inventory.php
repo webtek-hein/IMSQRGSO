@@ -315,7 +315,7 @@ class Inventory extends CI_Controller
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
 
-        $list = $this->inv->getSerialreturn($det_id, $position,$sid);
+        $list = $this->inv->getSerialReturn($det_id,$sid);
 
         $data = array();
         foreach ($list as $serial) {
@@ -324,7 +324,9 @@ class Inventory extends CI_Controller
                 'serial_id' => $serial['serial_id'],
                 'serial' => $serial['serial'],
                 'position' => $position,
-                'item_status' => $serial['item_status']
+                'item_status' => $serial['item_status'],
+                'dist_id' => $serial['dist_id'],
+                'item_det_id' => $serial['item_det_id']
             );
         }
         echo json_encode($data);
