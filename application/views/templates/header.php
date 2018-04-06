@@ -56,7 +56,13 @@ if (isset($this->session->userdata['logged_in'])) {
                     <a href="<?php echo base_url() ?>dashboard"><i class="menu-icon fa fa-dashboard"></i> DASHBOARD </a>
                 </li>
                 <li>
-                    <a href="inventory"><i class="menu-icon fa fa-book"></i> INVENTORY</a>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if ($position === 'Supply Officer') {
+                    echo '<a href="department"><i class="menu-icon fa fa-book"></i> INVENTORY</a>';
+                    }else{
+                        echo '<a href="inventory"><i class="menu-icon fa fa-book"></i> INVENTORY</a>';
+                    }
+                    ?>
                 </li>
 
                 <?php $position = $this->session->userdata['logged_in']['position'];
