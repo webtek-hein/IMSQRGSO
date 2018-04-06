@@ -1823,6 +1823,7 @@ function printToPDF() {
         }
     });
 }
+
 function printToPDFreport() {
     $('#reportTable').tableExport({type:'pdf',
         jspdf: {orientation: 'l',
@@ -1835,6 +1836,7 @@ function printToPDFreport() {
         }
     });
 }
+
 function printToPDFreconcile() {
     $('#reconcileTable').tableExport({type:'pdf',
         jspdf: {orientation: 'l',
@@ -1847,7 +1849,6 @@ function printToPDFreconcile() {
         }
     });
 }
-
 
 function retData($serialStatus, $id) {
     var serialData = [];
@@ -1866,3 +1867,10 @@ function retData($serialStatus, $id) {
     });
 }
 
+function printDiv(){
+    var printContents = $('#QRImages').html();
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+}
