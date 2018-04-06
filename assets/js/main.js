@@ -351,7 +351,7 @@ function return_action($action, $retun_id, $s) {
     $.ajax({
         url: 'inventory/return_actions',
         method: 'POST',
-        data: {serial:$serial,action: $action, return_id: $retun_id},
+        data: {serial: $serial, action: $action, return_id: $retun_id},
         success: function (response) {
             $('.AcceptReturn').modal('toggle');
         }
@@ -1342,13 +1342,17 @@ function viewSerial(id) {
             }
             //if div reaches 10
             //create another div
-            if (data.length >= 10) {
+            if (data.length > 10) {
+                var f=data.length;
+
                 for (i = 0; i < data.length; i++) {
                     if (serialTabCounter !== 1) {
                         divClass = "";
                         listClass = "disabled";
                     }
-                    input.push("<input type=\"checkbox\"  value =\"" + data[i]['serial'] + "\" class='selSerial' name=\"selectedSerial[]\" value=\"" + data[i]['serial'] + "\"><label class='col-12'>Serial " + (i + 1) +
+
+                    input.push("<input type=\"checkbox\"  value =\"" + data[i]['serial'] + "\" class='check selSerial' " +
+                        "name=\"selectedSerial[]\" value=\"" + data[i]['serial'] + "\"><label class='col-12'>Serial " + (i + 1) +
                         "<input value =\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                         "min=0  " +
                         "class=\"form-control\"></label><br>");
@@ -1358,18 +1362,20 @@ function viewSerial(id) {
                             "data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
                         $serialContent.append(div);
                         $('#tab' + serialTabCounter).html(input.join('') + button);
+                        f-=input.length;
                         div = [];
                         input = [];
                         serialTabCounter++;
                     }
+
                 }
             } else {
                 for (i = 0; i < data.length; i++) {
-                    input.push("<input type=\"checkbox\"  value =\"" + data[i]['serial'] + "\" class='selSerial' name=\"selectedSerial[]\" value=\"" + data[i]['serial'] + "\"><label>Serial " + (i + 1) +
+                    input.push("<input type=\"checkbox\"  value =\"" + data[i]['serial'] + "\" class='check selSerial' " +
+                        "name=\"selectedSerial[]\" value=\"" + data[i]['serial'] + "\"><label>Serial " + (i + 1) +
                         "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                         "min=0  " +
                         "class=\"form-control\"></label><br>");
-
                 }
                 div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
                 list.push("<li class=\"" + listClass + "\"><a class=\"nav-link\" data-toggle=\"tab\" href=\"#tab" +
@@ -1377,6 +1383,17 @@ function viewSerial(id) {
                 $serialContent.append(div);
                 $('#tab1').toggleClass('show').html(input.join('') + button);
             }
+            if(f>=1){
+                div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
+                list.push("<li class=\"" + listClass + "\"><a id=\"t" + serialTabCounter + "\"" +
+                    "data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
+                $serialContent.append(div);
+                for (i = 0; i < data.length; i++) {
+
+                    $('#tab' + serialTabCounter).html(input.join('') + button);
+                }
+            }
+
             $ul.html(list);
 
             $('.next-serialTab').on('click', function () {
@@ -1396,17 +1413,17 @@ function viewSerial(id) {
 }
 
 //get serial checkbox
-function getserialreturn(id,sid) {
+function getserialreturn(id, sid) {
     var serials = [];
     var mooe = [];
     $.ajax({
-        url: 'inventory/getSerialreturn/' + id+ '/' + sid,
+        url: 'inventory/getSerialreturn/' + id + '/' + sid,
         dataType: 'JSON',
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
-                if (data[i].serial !== null && (status === 'Distributed' || status === 'UserDistributed') ) {
+                if (data[i].serial !== null && (status === 'Distributed' || status === 'UserDistributed')) {
                     serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
@@ -1427,7 +1444,7 @@ function getserial(id) {
     var serials = [];
     var mooe = [];
     $.ajax({
-        url: 'inventory/getSerial/' + id ,
+        url: 'inventory/getSerial/' + id,
         dataType: 'JSON',
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
@@ -1455,7 +1472,8 @@ function getserial(id) {
     });
 
 }
-function getserialbtn(id,sid) {
+
+function getserialbtn(id, sid) {
     var serials = [];
     var mooe = [];
     $.ajax({
@@ -1488,11 +1506,11 @@ function getserialbtn(id,sid) {
 
 }
 
-function noserial(id, q,retquant) {
+function noserial(id, q, retquant) {
     //console.log(retquant);
     var qua = '';
     var result = q - retquant;
-   // console.log(result);
+    // console.log(result);
     if (q !== 0) {
         qua = ("<div class=\"quant form-group\">" +
             "<label>Quantity<span class=\"required\">*</span>" +
@@ -1715,7 +1733,7 @@ function viewQr() {
     $genQR.modal('show', function (e) {
         $selectedSerial = $('.selSerial');
         $data = [];
-        for (var i = 0; i < $selectedSerial.length ; i++) {
+        for (var i = 0; i < $selectedSerial.length; i++) {
             if ($selectedSerial[i].checked === true) {
                 if ($selectedSerial[i].value !== "") {
                     $data.push($selectedSerial[i].value);
@@ -1812,40 +1830,55 @@ function reconcile() {
 }
 
 function printToPDF() {
-    $('#ledger').tableExport({type:'pdf',
-        jspdf: {orientation: 'l',
+    $('#ledger').tableExport({
+        type: 'pdf',
+        jspdf: {
+            orientation: 'l',
             format: 'a4',
-            margins: {left:10, right:10, top:20, bottom:20},
-            autotable: {styles: {
-                fillColor: 'inherit',
-                    textColor: 'inherit'},
-                tableWidth: 'auto'}
+            margins: {left: 10, right: 10, top: 20, bottom: 20},
+            autotable: {
+                styles: {
+                    fillColor: 'inherit',
+                    textColor: 'inherit'
+                },
+                tableWidth: 'auto'
+            }
         }
     });
 }
 
 function printToPDFreport() {
-    $('#reportTable').tableExport({type:'pdf',
-        jspdf: {orientation: 'l',
+    $('#reportTable').tableExport({
+        type: 'pdf',
+        jspdf: {
+            orientation: 'l',
             format: 'a4',
-            margins: {left:10, right:10, top:20, bottom:20},
-            autotable: {styles: {
+            margins: {left: 10, right: 10, top: 20, bottom: 20},
+            autotable: {
+                styles: {
                     fillColor: 'inherit',
-                    textColor: 'inherit'},
-                tableWidth: 'auto'}
+                    textColor: 'inherit'
+                },
+                tableWidth: 'auto'
+            }
         }
     });
 }
 
 function printToPDFreconcile() {
-    $('#reconcileTable').tableExport({type:'pdf',
-        jspdf: {orientation: 'l',
+    $('#reconcileTable').tableExport({
+        type: 'pdf',
+        jspdf: {
+            orientation: 'l',
             format: 'a4',
-            margins: {left:10, right:10, top:20, bottom:20},
-            autotable: {styles: {
+            margins: {left: 10, right: 10, top: 20, bottom: 20},
+            autotable: {
+                styles: {
                     fillColor: 'inherit',
-                    textColor: 'inherit'},
-                tableWidth: 'auto'}
+                    textColor: 'inherit'
+                },
+                tableWidth: 'auto'
+            }
         }
     });
 }
@@ -1867,7 +1900,7 @@ function retData($serialStatus, $id) {
     });
 }
 
-function printDiv(){
+function printDiv() {
     var printContents = $('#QRImages').html();
     var originalContents = document.body.innerHTML;
     document.body.innerHTML = printContents;
