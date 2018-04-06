@@ -231,6 +231,7 @@
                                             <label class="col-md-12">Item Name</label>
                                             <div class="col-md-5">
                                                 <input id="itemname"
+                                                       readonly="readonly"
                                                        type="text" name="item"
                                                        class="form-control"
                                                        data-parsley-group="set1"
@@ -240,9 +241,17 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label class="col-md-12"></label>
+                                            <div class="col-md-5">
+                                                <p id="total"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="col-md-12">Description</label>
                                             <div class="col-md-5">
                                             <textarea id="itemdesc" data-parsley-group="set1"
+                                                      readonly="readonly"
                                                       name="description" id="message"
                                                       class="form-control"
                                                       data-parsley-trigger="blur"
@@ -279,6 +288,7 @@
                                             <label class="col-md-12">Unit</label>
                                             <div class="col-md-5">
                                                 <input id="unit" name="Unit" data-parsley-group="set1"
+                                                       readonly="readonly"
                                                        class="form-control" class="unit"
                                                        list="list"
                                                        data-parsley-required-message="Select the Unit"
@@ -299,12 +309,11 @@
                                         <div class="form-group">
                                             <label class="col-md-12">Type</label>
                                             <div class="col-md-5">
-                                                <select id="itemtype" data-parsley-group="set1" id="type"
+                                                <input id="itemtype" data-parsley-group="set1" id="type"
+                                                        readonly="readonly"
                                                         list="typelist" name="Type"
                                                         class="form-control" required>
-                                                    <option value="CO">Capital Outlay</option>
-                                                    <option value="MOOE">MOOE</option>
-                                                </select>
+                                                </input>
                                             </div>
                                         </div>
                                     </form>
