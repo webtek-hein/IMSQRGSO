@@ -573,10 +573,10 @@
 <div hidden class="generateReport col-lg-12">
     <div class="card">
         <div class="card-header">
-            <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))" class="btn btn-primary">
+            <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))" class="btn btn-primary fa fa-arrow-left">
                 Back
             </button>
-            <button onclick="printToPDFreport()" class="btn btn-primary">Print</button>
+            <button onclick="printToPDFreport()" class="btn btn-primary fa fa-download">Download as PDF</button>
         </div>
         <div class="card-body">
             <div class="select">
@@ -978,8 +978,8 @@
 <div hidden class="reconcilePage col-lg-12">
     <div class="card">
         <div class="card-header">
-            <button onclick="printToPDFreconcile()" class="btn btn-primary">Print</button>
-            <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))" class="btn btn-primary">Back</button>
+            <button onclick="printToPDFreconcile()" class="btn btn-primary fa fa-download">Download as PDF</button>
+            <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))" class="btn btn-primary fa fa-arrow-left">Back</button>
         </div>
         <form id="compareitem" role="form"
               action="inventory/compare/" method="POST">

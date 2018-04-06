@@ -25,7 +25,7 @@ if ($position === 'Admin') {
                 <i class="fa fa-book" style="font-size:40px;"></i>
                 <h4 class="mb-0" id="itemsrec">
                 </h4>
-                <p class="text-light">Total Items Received</p>
+                <p class="text-light">New Items Received</p>
             </div>
         </div>
     </div>' .
@@ -69,7 +69,7 @@ if ($position === 'Admin') {
                 <i class="fa fa-money" style = "font-size:40px;" ></i >
                 <h4 class="mb-0" id="tcost">
                 </h4 >
-                <p class="text-light" > Total Cost </p >
+                <p class="text-light" > Total Inventory Cost </p >
             </div >
         </div >
     </div >'.
@@ -95,7 +95,7 @@ if ($position === 'Custodian') {
                 <i class="fa fa-book" style="font-size:40px;"></i>
                 <h4 class="mb-0" id="itemsrec">
                 </h4>
-                <p class="text-light">Total Items Received</p>
+                <p class="text-light">New Items Received</p>
             </div>
         </div>
     </div>' .
@@ -139,7 +139,7 @@ if ($position === 'Custodian') {
                 <i class="fa fa-money" style = "font-size:40px;" ></i >
                 <h4 class="mb-0" id="tcost">
                 </h4 >
-                <p class="text-light" > Total Cost </p >
+                <p class="text-light" > Total Inventory Cost </p >
             </div >
         </div >
     </div >';
@@ -194,7 +194,7 @@ if ($position === 'Supply Officer') {
             <div class="card1-body pb-0" >
                 <i class="fa fa-money" style = "font-size:40px;" ></i >
                 <h4 class="mb-0" id="tCostSO"></h4 >
-                <p class="text-light" > Total Cost </p >
+                <p class="text-light" > Total Inventory Cost </p >
             </div >
         </div >
     </div >';
