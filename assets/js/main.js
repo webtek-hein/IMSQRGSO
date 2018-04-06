@@ -404,7 +404,7 @@ function detail(id) {
 
     var item;
     $.ajax({
-        url: 'inventory/getitem/inv/' + id,
+        url: 'inventory/getitem/inv/' + id+'/0',
         dataType: 'JSON',
         success: function (data) {
             $('#edtbutton').val(id);
@@ -418,9 +418,9 @@ function detail(id) {
 
             toggleDiv($('.detail-tab '), $('.inventory-tab'));
 
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + id});
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + id+'/0'});
             $detailtable.bootstrapTable({
-                url: 'inventory/detail/inv/' + id,
+                url: 'inventory/detail/inv/' + id +'/0',
                 columns: [{
                     field: 'remove',
                     title: ''
@@ -537,11 +537,12 @@ function deptDet(id, position, dept_id) {
         $field = 'action';
         $title = 'Action'
     } else {
+        dept_id = $('#select-dept').val();
         $field = 'action';
         $title = 'Status';
     }
     $.ajax({
-        url: 'inventory/getitem/dept/' + id,
+        url: 'inventory/getitem/dept/' + id+'/'+dept_id,
         dataType: 'JSON',
         success: function (data) {
             $('#itemname').html(data.name);
@@ -552,9 +553,9 @@ function deptDet(id, position, dept_id) {
             toggleDiv($detailTab, $('.department-tab'));
             toggleDiv($detailTab, $('.inventory-tab'));
 
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/dept/' + id})
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/dept/' + id+'/'+dept_id})
                 .bootstrapTable({
-                    url: 'inventory/detail/dept/' + id,
+                    url: 'inventory/detail/dept/' + id+'/'+dept_id,
                     columns: [{
                         field: 'PR',
                         title: 'PR number'
@@ -1356,7 +1357,7 @@ function viewSerial(id) {
                         listClass = "disabled";
                     }
 
-                    input.push("<input type=\"checkbox\"  value =\"" + data[i]['serial'] + "\" class='check selSerial' " +
+                    input.push("<input type=\"checkbox\" tabindex='-1' value =\"" + data[i]['serial'] + "\" class='check selSerial' " +
                         "name=\"selectedSerial[]\" value=\"" + data[i]['serial'] + "\"><label class='col-12'>Serial " + (i + 1) +
                         "<input value =\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                         "min=0  " +
@@ -1376,7 +1377,7 @@ function viewSerial(id) {
                 }
             } else {
                 for (i = 0; i < data.length; i++) {
-                    input.push("<input type=\"checkbox\"  value =\"" + data[i]['serial'] + "\" class='check selSerial' " +
+                    input.push("<input type=\"checkbox\" tabindex='-1' value =\"" + data[i]['serial'] + "\" class='check selSerial' " +
                         "name=\"selectedSerial[]\" value=\"" + data[i]['serial'] + "\"><label>Serial " + (i + 1) +
                         "<input value=\"" + data[i]['serial'] + "\" type=\"text\" name=\"serial[" + data[i]['serial_id'] + "]\"" +
                         "min=0  " +
@@ -1785,10 +1786,6 @@ function removeDetail($id, $serialStatus) {
         url: "inventory/removeDetail/" + $id + "/" + $serialStatus,
         method: "POST",
         success: function (data) {
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $id});
-            $('#removedItems').click(function () {
-                $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $id});
-            });
         }
     });
 }
@@ -1803,7 +1800,6 @@ function revertDetail($det_id, $serialStatus) {
         success: function (data) {
             $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $det_id});
             $('#DetDetail').click(function () {
-                $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $det_id});
             });
         }
     });

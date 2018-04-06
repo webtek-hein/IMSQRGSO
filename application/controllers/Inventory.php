@@ -105,16 +105,21 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
-    public function detail($dept, $id)
+    public function detail($dept, $id,$dept_id)
     {
         $position = $this->session->userdata['logged_in']['position'];
-        $dept_id = $this->session->userdata['logged_in']['dept_id'];
         $returnquant = $this->inv->retquant($dept_id,$id);
-        if ($position === 'Supply Officer' || $dept === 'dept') {
-            $list = $this->inv->viewDetailperDept($dept, $id, $dept_id, $position);
-        } else {
+
+
+        if ($position === 'Supply Officer') {
+            $dept_id = $this->session->userdata['logged_in']['dept_id'];
+            $list = $this->inv->viewDetailperDept( $id, $dept_id);
+        } elseif($position === 'Custodian' && $dept === 'dept'){
+            $list = $this->inv->viewDetailperDept($id, $dept_id);
+        }else{
             $list = $this->inv->viewdetail($id, $position);
         }
+
         $data = array();
         $viewser = "";
         $action = "";
@@ -213,7 +218,7 @@ class Inventory extends CI_Controller
                 );
             }else{
                 $data[] = array(
-                    'remove' => '<a onclick="removeDetail('.$detail['item_det_id'].')"> <i class="fa fa-remove"></i></a>',
+                    'remove' => '<a onclick="removeDetail('.$detail['item_det_id'].','.$detail['serialStatus'].')"> <i class="fa fa-remove"></i></a>',
                     'PO' => $detail['PO_number'],
                     'quant' => $detail['quantity'],
                     'del' => $detail['date_delivered'],
@@ -438,9 +443,9 @@ class Inventory extends CI_Controller
 
     }
 
-    public function getItem($dept, $id)
+    public function getItem($dept, $id,$dept_id)
     {
-        $list = $this->inv->getItem($dept, $id);
+        $list = $this->inv->getItem($dept, $id,$dept_id);
         $minimum = $this->inv->countItem($id);
         $quantity = 0;
         if ($dept === 'dept') {

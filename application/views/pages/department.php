@@ -23,7 +23,10 @@
         <div class="row">
             <!-- Inventory-->
             <div class="col-lg-12 department-tab">
-                <select id="select-dept" class="col-lg-4 deptopt form-control"></select>
+                <?php if($this->session->userdata['logged_in']['position'] === 'Custodian'){
+                    echo '<select id="select-dept" class="col-lg-4 deptopt form-control"></select>';
+                }
+                ?>
                 <div class="card">
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">

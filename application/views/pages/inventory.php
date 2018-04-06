@@ -77,7 +77,7 @@
                                 ?>
                             </div>
                             <!--MOOE Tab-->
-                            <div class="table-responsive-sm-sm tab-pane fade" id="tab_content2" role="tabpanel"
+                            <div class="table-responsive-sm tab-pane fade" id="tab_content2" role="tabpanel"
                                  aria-labelledby="MOOE-tab">
                                 <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="MOOEtable"
@@ -328,7 +328,7 @@
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
                                     <table id="detail-tab-table" data-search="true"
-                                           class="table-sm table table-no-bordered table-hover">
+                                           class="table table-no-bordered table-hover">
                                     </table>
                                 </form>
                                 <?php if ($position === 'Custodian') {
@@ -453,7 +453,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2 has-feedback">
-                                                <input type="checkbox" name="serialStatus[]" value="1"> With serial
+                                                <input type="checkbox" tabindex="-1" name="serialStatus[]" value="1"> With serial
                                             </div>
                                         </div>
                                     </div>
@@ -465,7 +465,7 @@
                                                data-parsley-group="set1"
                                                data-parsley-length="[1, 20]"
                                                data-parsley-required-message="Item quantity is required"
-                                               placeholder="Enter the quantity"
+                                               placeholder="Enter the quantity" min="0"
                                                required>
                                     </div>
                                     <div class="form-group has-feedback">

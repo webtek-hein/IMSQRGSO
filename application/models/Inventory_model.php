@@ -437,9 +437,9 @@ class Inventory_model extends CI_Model
                 $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
-                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($item_det_id)\"data-toggle=\"modal\" data-id='$item_det_id'data-target=\" .Distribute\">
+                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($insert_id)\"data-toggle=\"modal\" data-id='$insert_id'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
-                            <a class=\"serialdrop dropdown-item\" onclick='viewSerial($item_det_id)' data-toggle=\"collapse\" 
+                            <a class=\"serialdrop dropdown-item\" onclick='viewSerial($insert_id)' data-toggle=\"collapse\" 
                             href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\"><i class=\"fa fa-folder-open\"></i>
                             </i > View Serial </a >
                             </div>
@@ -448,14 +448,14 @@ class Inventory_model extends CI_Model
                 $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
-                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($item_det_id)\"data-toggle=\"modal\" data-id='$item_det_id'data-target=\" .Distribute\">
+                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($insert_id)\"data-toggle=\"modal\" data-id='$insert_id'data-target=\" .Distribute\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             </div>
                             </div>";
             }
 
             $data1 = array(
-                '<a href="#" onclick="removeDetail('.$item_det_id.')"> <i class="fa fa-remove"></i> </a>',
+                '<a onclick="removeDetail('.$insert_id.','.$serialStatus.')"> <i class="fa fa-remove"></i></a>',
                $po,
                 $this->input->post('del')[$counter],
                 $this->input->post('rec')[$counter],
@@ -498,18 +498,18 @@ class Inventory_model extends CI_Model
     }
 
     public
-    function getItem($dept, $id)
+    function getItem($dept, $id,$dept_id)
     {
+        $this->db->where('item.item_id', $id);
 
         if ($dept === 'dept') {
             $this->db->select('item.*,sum(quantity_distributed) as quant');
             $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
             $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
-            $this->db->where('item.item_id', $id);
+            $this->db->where('distribution.dept_id',$dept_id);
             $this->db->group_by('item.item_id');
             $query = $this->db->get('distribution');
         }else {
-            $this->db->where('item.item_id', $id);
             $query = $this->db->get('item');
         }
         return $query->row();
@@ -584,7 +584,7 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
     public
-    function viewDetailperDept($dept,$id,$dept_id,$position)
+    function viewDetailperDept($id,$dept_id)
     {
         $this->db->select('CONCAT(first_name," ",last_name) as receiver,
         distribution.dist_id,item.item_type,item.serialStatus,quantity_distributed,distribution.cost,
@@ -596,11 +596,7 @@ class Inventory_model extends CI_Model
         $this->db->join('account_code', 'account_code.ac_id = distribution.ac_id ', 'inner');
         $this->db->join('user', ' distribution.supply_officer_id = user.user_id ', 'inner');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
-        if($position === 'Supply Officer'){
-            $this->db->where('distribution.dept_id',$dept_id);
-        }elseif ($position === 'Custodian' && $dept !== 'dept'){
-            $this->db->where('itemdetail.status','active');
-        }
+        $this->db->where('distribution.dept_id',$dept_id);
         $this->db->where('item.item_id',$id);
         $this->db->order_by('dist_id','desc');
         $query = $this->db->get('distribution');
@@ -1065,6 +1061,7 @@ class Inventory_model extends CI_Model
     //total cost dash custodian
     public function totalcost(){
         $this->db->SELECT('sum(unit_cost * quantity) as totalcost');
+        $this->db->where('date_received','CURDATE()', false);
         $query = $this->db->get('gsois.itemdetail');
         return $query->result_array();
     }
@@ -1095,23 +1092,12 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public function pendingItem(){
-        $user_id = $this->session->userdata['logged_in']['user_id'];
-        $this->db->SELECT('count(decreaselog.dec_log_id) as totalItems');
-        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
-        $this->db->WHERE('gsois.distribution.status','pending');
-        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');       
-        $query = $this->db->get('logs.decreaselog');
-        return $query->result_array();
-    }
-
     //count items returned for the day
     public function itemsReturnedThisDay(){
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $this->db->SELECT('count(logs.returnlog.ret_log_id) as totalItemsReturned');
         $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
         $this->db->WHERE('date(timestamp)','CURDATE()',false);
-        $this->db->WHERE('gsois.returnitem.status','accepted');
         $this->db->JOIN('gsois.returnitem','gsois.returnitem.return_id = logs.returnlog.return_id');   
         $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = gsois.returnitem.dist_id');           
         $query = $this->db->get('logs.returnlog');
@@ -1123,7 +1109,7 @@ class Inventory_model extends CI_Model
         $this->db->SELECT('count(gsois.itemdetail.item_id) as totalItemsExpired');
         $this->db->WHERE('gsois.distribution.dept_id', $dept_id);
         $this->db->WHERE('gsois.distribution.status','Accepted');
-        $this->db->WHERE('gsois.itemdetail.expiration_date <=','CURDATE()',false);
+        $this->db->WHERE('gsois.itemdetail.expiration_date >=','CURDATE()',false);
         $this->db->JOIN('gsois.distribution','gsois.distribution.item_det_id = gsois.itemdetail.item_det_id');
         $query = $this->db->get('gsois.itemdetail');
         return $query->result_array();
