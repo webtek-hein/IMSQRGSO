@@ -93,7 +93,8 @@
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.editSupplier-tab'))" class="btn btn-primary"></i> Back</a></button>
                     </div>
-                    <div class="card-body">
+                    <?php if ($position === 'Custodian') {
+                        echo '<div class="card-body">
                         <form id="editInformation"
                               class="serialForm form-horizontal form-label-left"
                               action="supplier/addSupplier" method="POST" data-validate="parsley">
@@ -129,13 +130,53 @@
                                            data-error-message="Please Enter Contact Number" required>
                                 </div>
                             </div>
-                           
-                           <?php if ($position === 'Custodian') {
-                            echo '<button class="btn btn-outline-info" type="submit" name="id" id="edtbuttonsupplier"><i class="fa fa-check"></i> Save</button>';
-                           }
-                           ?>
+                            <button class="btn btn-outline-info" type="submit" name="id" id="edtbuttonsupplier"><i class="fa fa-check"></i> Save</button>
                         </form>
-                    </div>
+                    </div>';
+                    } else {
+                        echo '<div class="card-body">
+                        <form id="editInformation"
+                              class="serialForm form-horizontal form-label-left"
+                              action="supplier/addSupplier" method="POST" data-validate="parsley">
+
+                            <div class="form-group">
+                                <label for="Supplier Name" class="col-md-12">Supplier Name</label>
+                                <div class="col-md-12">
+                                    <input type="text" name="supplier"
+                                           readonly="readonly"
+                                           id="supplier"
+                                           data-required="true"
+                                           class="form-control"
+                                           data-error-message="Please enter the Supplier Name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Address" class="col-md-12">Address</label>
+                                <div class="col-md-12">
+                                    <input type="text" id="location" name="address"
+                                           readonly="readonly"
+                                           data-required="true"
+                                           data-parsley-minlength="1"
+                                           data-parsley-maxlength="200"
+                                           class="form-control has-feedback-left"
+                                           data-error-message="Please Enter the Address" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Address" class="col-md-12">Contact Number</label>
+                                <div class="col-md-12">
+                                    <input id="cno" class="form-control"
+                                           readonly="readonly"
+                                           type="text" name="contact" data-required="true"
+                                           data-parsley-minlength="1"
+                                           data-parsley-maxlength="11"
+                                           data-error-message="Please Enter Contact Number" required>
+                                </div>
+                            </div>
+                        </form>
+                    </div>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>
