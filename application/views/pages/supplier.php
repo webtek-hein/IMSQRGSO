@@ -97,7 +97,7 @@
                         echo '<div class="card-body">
                         <form id="editInformation"
                               class="serialForm form-horizontal form-label-left"
-                              action="supplier/addSupplier" method="POST" data-validate="parsley">
+                              action="supplier/editSupplier" method="POST" data-validate="parsley">
 
                             <div class="form-group">
                                 <label for="Supplier Name" class="col-md-12">Supplier Name</label>
