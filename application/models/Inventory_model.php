@@ -1111,6 +1111,7 @@ class Inventory_model extends CI_Model
         $this->db->SELECT('count(logs.returnlog.ret_log_id) as totalItemsReturned');
         $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
         $this->db->WHERE('date(timestamp)','CURDATE()',false);
+        $this->db->WHERE('gsois.returnitem.status','accepted');
         $this->db->JOIN('gsois.returnitem','gsois.returnitem.return_id = logs.returnlog.return_id');   
         $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = gsois.returnitem.dist_id');           
         $query = $this->db->get('logs.returnlog');
