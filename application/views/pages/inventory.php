@@ -924,19 +924,19 @@
                     <div class="form-group ">
                         <label>Date Returned</label>
                         <input type="date" name="returndate" data-validate-length-range="5,20"
-                               class="optional form-control has-feedback-left">
+                               class="optional form-control has-feedback-left" required>
                     </div>
 
                     <div class="form-group">
                         <label>Receiver</label>
                         <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
-                               name="receiver">
+                               name="receiver" required>
                     </div>
                     <div class="form-group">
                         <label for="name">Remarks<span
                                     class="required">*</span>
                         </label>
-                        <textarea class="form-control" name="remarks" id="remarks"></textarea>
+                        <textarea class="form-control" name="remarks" id="remarks" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
