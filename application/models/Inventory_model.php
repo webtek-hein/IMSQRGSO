@@ -1065,7 +1065,6 @@ class Inventory_model extends CI_Model
     //total cost dash custodian
     public function totalcost(){
         $this->db->SELECT('sum(unit_cost * quantity) as totalcost');
-        $this->db->where('date_received','CURDATE()', false);
         $query = $this->db->get('gsois.itemdetail');
         return $query->result_array();
     }
@@ -1096,6 +1095,16 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    public function pendingItem(){
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $this->db->SELECT('count(decreaselog.dec_log_id) as totalItems');
+        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
+        $this->db->WHERE('gsois.distribution.status','pending');
+        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');       
+        $query = $this->db->get('logs.decreaselog');
+        return $query->result_array();
+    }
+
     //count items returned for the day
     public function itemsReturnedThisDay(){
         $user_id = $this->session->userdata['logged_in']['user_id'];
@@ -1113,7 +1122,7 @@ class Inventory_model extends CI_Model
         $this->db->SELECT('count(gsois.itemdetail.item_id) as totalItemsExpired');
         $this->db->WHERE('gsois.distribution.dept_id', $dept_id);
         $this->db->WHERE('gsois.distribution.status','Accepted');
-        $this->db->WHERE('gsois.itemdetail.expiration_date >=','CURDATE()',false);
+        $this->db->WHERE('gsois.itemdetail.expiration_date <=','CURDATE()',false);
         $this->db->JOIN('gsois.distribution','gsois.distribution.item_det_id = gsois.itemdetail.item_det_id');
         $query = $this->db->get('gsois.itemdetail');
         return $query->result_array();

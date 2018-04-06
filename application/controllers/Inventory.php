@@ -666,6 +666,15 @@ class Inventory extends CI_Controller
         }
     }
 
+    //count pending items for the supplier
+    public function pendingItems()
+    {
+        $itemsPendCount = $this->inv->pendingItem();
+        foreach ($itemsPendCount as $list) {
+            echo $list['totalItems'];
+        }
+    }
+
     //items returned for the supplier for this day
     public function itemsReturnedThisDay()
     {

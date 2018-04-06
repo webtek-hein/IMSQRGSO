@@ -14,6 +14,7 @@ $(document).ready(function () {
             $("#expitems").load("inventory/totalExpired");
             $("#tcost").load("inventory/totalCost");
             $("#tItemsDay").load("inventory/itemsThisDay");
+            $("#pendItems").load("inventory/pendingItems");
             $("#tReturnedDay").load("inventory/itemsReturnedThisDay");
             $("#tExprdSO").load("inventory/itemsExpiredSO");
             $("#tCostSO").load("inventory/itemTcostSO");
