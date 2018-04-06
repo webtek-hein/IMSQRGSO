@@ -484,6 +484,10 @@ function detail(id) {
                     title: 'Running Quantity'
                 }, {
                     sortable: true,
+                    field: 'running_balance',
+                    title: 'Running Balance'
+                }, {
+                    sortable: true,
                     field: 'transaction',
                     title: 'Transaction'
                 }]

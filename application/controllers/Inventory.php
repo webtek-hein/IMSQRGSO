@@ -485,6 +485,7 @@ class Inventory extends CI_Controller
         $data = [];
         foreach ($list as $item) {
             $cost = "PHP " . number_format($item['unit_cost'], 2);
+            $balance = "PHP " . number_format($item['running_quantity'] * $item['unit_cost'], 2);
             if($item['transaction'] !== 'added'){
                 $refIndication = 'PR #';
             }else{
@@ -497,6 +498,7 @@ class Inventory extends CI_Controller
                 'increased' => $item['increased'],
                 'decreased' => $item['decreased'],
                 'running_quantity'=>$item['running_quantity'],
+                'running_balance' => $balance,
                 'price' => $cost,
                 'transaction' => $item['transaction']
             );
