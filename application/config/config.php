@@ -7,8 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |--------------------------------------------------------------------------
 |
 | URL to your CodeIgniter root. Typically this will be your base URL,
-| WITH a trailing slash:
-|
+| WITH a trailing slash:-
 |	http://example.com/
 |
 | WARNING: You MUST set this value!

@@ -354,7 +354,7 @@ function return_action($action, $retun_id, $s) {
         method: 'POST',
         data: {serial: $serial, action: $action, return_id: $retun_id},
         success: function (response) {
-            $('.AcceptReturn').modal('toggle');
+          //  $('.AcceptReturn').modal('toggle');
         }
     });
 }
