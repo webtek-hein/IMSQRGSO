@@ -1026,12 +1026,20 @@ class Inventory_model extends CI_Model
     public function declineReturn($return_id){
         $this->db->set('status','declined');
         $this->db->where('return_id',$return_id);
-        return $this->db->update('returnitem');
+        $this->db->update('returnitem');
+
+        $this->db->set('item_status','Distributed');
+        $this->db->where('return_id',$return_id);
+        $this->db->update('serial');
     }
     public function cancelReturn($return_id){
         $this->db->set('status','cancelled');
         $this->db->where('return_id',$return_id);
-        return $this->db->update('returnitem');
+        $this->db->update('returnitem');
+
+        $this->db->set('item_status','Distributed');
+        $this->db->where('return_id',$return_id);
+        $this->db->update('serial');
     }
 
     //count total items received dash custodian
@@ -1080,6 +1088,16 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 //Supply Dashboard
+    //
+    public function pendingItem(){
+        $user_id = $this ->session->userdata['logged_in']['user_id'];
+        $this->db->SELECT('count(decreaselog.dec_log_id) as totalItems');
+        $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
+        $this->db->WHERE('gsois.distribution.status','pending');
+        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');
+        $query = $this->db->get('logs.decreaselog');
+        return $query->result_array();
+    }
     //count items issued for the day
     public function itemsThisDay(){
         $user_id = $this->session->userdata['logged_in']['user_id'];

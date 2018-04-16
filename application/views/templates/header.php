@@ -30,7 +30,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <!--<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>-->
     <script
             src="assets/js/jquery-3.3.1.min.js"
             integrity=""
