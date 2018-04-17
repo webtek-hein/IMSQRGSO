@@ -139,15 +139,11 @@ class Inventory extends CI_Controller
                         if ($detail['serialStatus'] !== '1') {
                             foreach ($returnquant as $retq) {
                                 $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Accept\" onclick=\"getserial($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]' 
-                            class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed])\" data-id='$detail[dist_id]'  
                             class=\"btn btn-danger\">Return</a>";
                             }
                         } else {
                             $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Accept\" onclick=\"getserial($detail[item_det_id])\" data-id='$detail[dist_id]' 
-                            class=\"btn btn-success\">Accept</a><a href=\'#\' type=\'button\' data-toggle=\"modal\" 
                             data-target=\".Return\" onclick=\"getserialbtn($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]'  
                             class=\"btn btn-danger\">Return</a>";
                         }
