@@ -5,26 +5,12 @@ $( "input[type=number]" ).on("keypress paste",function () {
         return false;
     }
 });
-$( "input[name=rec]" ).on("blur",function () {
-    del_date = new Date($('input[name=datedelivered]').val());
-    date_rec = new Date($('input[name=datereceived]').val());
-
-    if(del_date > date_rec){
-        $(this).val('');
-    }
-});
-
-$( "input[name=exp]" ).on("blur",function () {
-    date_rec = new Date($('input[name=datereceived]').val());
-    exp_date = new Date($('input[name=ExpirationDate]').val());
-
-    if(exp_date < date_rec || exp_date === date_rec){
-        $(this).val('');
-    }
-});
+//text validations
+//Only [A-Za-z] allowed
 $('input[type=text]').keypress(function () {
     var x = event.charCode;
-    if(x >= 0 && x <= 64 && x !== 32){
+    if(!(x >= 65 && x <= 122) && x !== 32 || x === 95 || x === 94){
+        alert(x);
         return false;
     }
 });
