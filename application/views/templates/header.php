@@ -117,7 +117,7 @@ if (isset($this->session->userdata['logged_in'])) {
             <div class="col-sm-7">
                 <a> <?=$name?></a>
                 <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-                    <h5><?= $position.' /'.$department?></h5>
+                    <h5><?= $position.' / '.$department?></h5>
             </div>
             </div>
 
