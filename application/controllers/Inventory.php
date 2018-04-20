@@ -190,29 +190,32 @@ class Inventory extends CI_Controller
                 }
             }
             if ($dept === 'dept') {
+                $cost = "PHP " . number_format($detail['cost'], 2);
                 $data[] = array(
                     'PR' => $detail['PR_no'],
                     'receiver' => $detail['receiver'],
                     'quant' => $detail['quantity_distributed'],
                     'rec' => $detail['date_received'],
                     'exp' => $detail['expiration_date'],
-                    'cost' => $detail['cost'],
+                    'cost' => $cost,
                     'sup' => $detail['supplier_name'],
                     'or' => $detail['OR_no'],
                     'action' => $action
                 );
             } elseif($position === 'Admin'){
+                $cost = "PHP " . number_format($detail['unit_cost'], 2);
                 $data[] = array(
                     'PO' => $detail['PO_number'],
                     'quant' => $detail['quantity'],
                     'del' => $detail['date_delivered'],
                     'rec' => $detail['date_received'],
                     'exp' => $detail['expiration_date'],
-                    'cost' => $detail['unit_cost'],
+                    'cost' => $cost,
                     'sup' => $detail['supplier_name'],
                     'or' => $detail['OR_no'],
                 );
             }else{
+                $cost = "PHP " . number_format($detail['unit_cost'], 2);
                 $data[] = array(
                     'remove' => '<a onclick="removeDetail('.$detail['item_det_id'].','.$detail['serialStatus'].')"> <i class="fa fa-remove"></i></a>',
                     'PO' => $detail['PO_number'],
@@ -220,7 +223,7 @@ class Inventory extends CI_Controller
                     'del' => $detail['date_delivered'],
                     'rec' => $detail['date_received'],
                     'exp' => $detail['expiration_date'],
-                    'cost' => $detail['unit_cost'],
+                    'cost' => $cost,
                     'sup' => $detail['supplier_name'],
                     'or' => $detail['OR_no'],
                     'action' => $action,

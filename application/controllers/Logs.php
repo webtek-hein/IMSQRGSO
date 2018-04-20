@@ -21,6 +21,7 @@ class Logs extends CI_Controller
         $inc = $this->logs->increase_log($type,$position,$userid);
         $data = [];
         foreach ($inc as $list) {
+            $cost = "PHP " . number_format($list['unit_cost'], 2);
             $data[] = array(
                 'timestamp' => $list['timestamp'],
                 'item' => $list['item_name'],
@@ -30,7 +31,7 @@ class Logs extends CI_Controller
                 'del' => $list['date_delivered'],
                 'rec' => $list['date_received'],
                 'exp' => $list['expiration_date'],
-                'cost' => $list['unit_cost'],
+                'cost' => $cost,
             );
         }
         echo json_encode($data);
