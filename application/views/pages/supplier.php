@@ -59,14 +59,14 @@
                             <form method="POST" action="supplier/addSupplier" data-validate="parsley">
                                 <div class="form-group">
                                     <label for="Supplier Name" class=" form-control-label">Supplier Name</label>
-                                    <input type="text" name="supplier" id="supplier-name"
+                                    <input  name="supplier" id="supplier-name"
                                            data-required="true"
                                            class="form-control has-feedback-left"
                                            data-error-message="Please enter the Supplier Name">
                                 </div>
                                 <div class="form-group">
                                     <label for="Address" class=" form-control-label">Address</label>
-                                    <input type="text" id="address" name="address"
+                                    <input  id="address" name="address"
                                            data-required="true"
                                            class="form-control has-feedback-left"
                                            data-error-message="Please Enter the Address">
@@ -102,7 +102,7 @@
                             <div class="form-group">
                                 <label for="Supplier Name" class="col-md-12">Supplier Name</label>
                                 <div class="col-md-12">
-                                    <input type="text" name="supplier"
+                                    <input name="supplier"
                                            id="supplier"
                                            data-required="true"
                                            class="form-control"
@@ -112,7 +112,7 @@
                             <div class="form-group">
                                 <label for="Address" class="col-md-12">Address</label>
                                 <div class="col-md-12">
-                                    <input type="text" id="location" name="address"
+                                    <input id="location" name="address"
                                            data-required="true"
                                            data-parsley-minlength="1"
                                            data-parsley-maxlength="200"
@@ -124,7 +124,7 @@
                                 <label for="Address" class="col-md-12">Contact Number</label>
                                 <div class="col-md-12">
                                     <input id="cno" class="form-control"
-                                           type="text" name="contact" data-required="true"
+                                           name="contact" data-required="true"
                                            data-parsley-minlength="1"
                                            data-parsley-maxlength="11"
                                            data-error-message="Please Enter Contact Number" required>
@@ -142,7 +142,7 @@
                             <div class="form-group">
                                 <label for="Supplier Name" class="col-md-12">Supplier Name</label>
                                 <div class="col-md-12">
-                                    <input type="text" name="supplier"
+                                    <input name="supplier"
                                            readonly="readonly"
                                            id="supplier"
                                            data-required="true"
@@ -153,7 +153,7 @@
                             <div class="form-group">
                                 <label for="Address" class="col-md-12">Address</label>
                                 <div class="col-md-12">
-                                    <input type="text" id="location" name="address"
+                                    <input id="location" name="address"
                                            readonly="readonly"
                                            data-required="true"
                                            data-parsley-minlength="1"
@@ -167,7 +167,7 @@
                                 <div class="col-md-12">
                                     <input id="cno" class="form-control"
                                            readonly="readonly"
-                                           type="text" name="contact" data-required="true"
+                                           name="contact" data-required="true"
                                            data-parsley-minlength="1"
                                            data-parsley-maxlength="11"
                                            data-error-message="Please Enter Contact Number" required>
