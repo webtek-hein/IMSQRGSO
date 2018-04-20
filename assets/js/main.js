@@ -815,6 +815,7 @@ function init_inventory() {
             pageSize: 10,
             url: 'inventory/viewItem/CO',
             onClickRow: function (data, row) {
+                console.log(data);
                 if (data.position === 'Supply Officer') {
                     deptDet(data.item_id, data.position, data.det_id);
                 } else {
@@ -1786,6 +1787,8 @@ function removeDetail($id, $serialStatus) {
         url: "inventory/removeDetail/" + $id + "/" + $serialStatus,
         method: "POST",
         success: function (data) {
+            $detailtable.bootstrapTable('refresh',{url:'inventory/detail/inv/'+$id+'/0'});
+            $rmItems.bootstrapTable('refresh',{url:'inventory/showRemovedItems/'+$id});
         }
     });
 }
@@ -1799,8 +1802,7 @@ function revertDetail($det_id, $serialStatus) {
         method: "POST",
         success: function (data) {
             $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $det_id});
-            $('#DetDetail').click(function () {
-            });
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $det_id+'/0'});
         }
     });
 }
