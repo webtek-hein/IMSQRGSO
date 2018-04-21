@@ -1783,12 +1783,17 @@ function closeSerial() {
 function removeDetail($id, $serialStatus) {
     var $detailtable = $('#detail-tab-table');
     var $rmItems = $('#removed-table');
+    $tab = $('.nav-link.active.show').attr('href');
+    $table = $($tab).find('table')[1];
+
+
     $.ajax({
         url: "inventory/removeDetail/" + $id + "/" + $serialStatus,
         method: "POST",
         success: function (data) {
             $detailtable.bootstrapTable('refresh',{url:'inventory/detail/inv/'+$id+'/0'});
             $rmItems.bootstrapTable('refresh',{url:'inventory/showRemovedItems/'+$id});
+            $table.bootstrapTable('refresh');
         }
     });
 }
