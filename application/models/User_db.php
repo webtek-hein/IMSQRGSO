@@ -62,7 +62,7 @@ class User_db extends CI_Model {
         if($position === 'supply officer'){
             $dept = $this->input->post('dment');
         }else{
-            $dept = null;
+            $dept = 13;
         }
         $data = array(
             'first_name'=> $this->input->post('firstname'),

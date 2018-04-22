@@ -56,7 +56,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     <a href="<?php echo base_url() ?>dashboard"><i class="menu-icon fa fa-dashboard"></i> DASHBOARD </a>
                 </li>
                 <li>
-                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    <?php 
                     if ($position === 'Supply Officer') {
                     echo '<a href="department"><i class="menu-icon fa fa-book"></i> INVENTORY</a>';
                     }else{
@@ -65,7 +65,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     ?>
                 </li>
 
-                <?php $position = $this->session->userdata['logged_in']['position'];
+                <?php
                 if ($position === 'Admin' || $position === 'Custodian') {
                     echo '<li id="dept">
                                      <a href="department"><i class="menu-icon fa fa-institution"></i>DEPARTMENT</a>
@@ -114,13 +114,12 @@ if (isset($this->session->userdata['logged_in'])) {
         <div class="header-menu">
 
             <div class="header-left">
-            <div class="col-sm-7">
+            <div class="col-sm-7" style="color:black;">
                 <a> <?=$name?></a>
                 <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-                    <h5><?= $position.' / '.$department?></h5>
+                    <h5><?= $position.' : '.$department?></h5>
             </div>
             </div>
-
             <div class="col-sm-5">
                 <div class="float-right">
                         <a class="" href="login/logout"><i class="fa fa-power-off"> Sign Out</i></a>

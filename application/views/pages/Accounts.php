@@ -109,7 +109,7 @@
                                     <div class="input-group-addon"><i class="fa fa-briefcase"></i></div>
                                     <select required class="fa fa-chevron-down align" center" id="position" name="position" onclick='select_dept()' >
                                     <option value="admin">Admin</option>
-                                    <option value="custodian">Custodian</option>
+                                    <option value="custodian" selected>Custodian</option>
                                     <option value="supply officer">Supply Officer</option>
                                     </select>
                                 </div>
@@ -186,7 +186,6 @@
                                             <select id="stat" data-parsley-group="set1"
                                                     list="statuslist" name="Stat"
                                                     class="form-control" >
-                                                <option selected="true" disabled>--Activate or Deactivate--</option>
                                                 <option value="Inactive">Inactive</option>
                                                 <option value="Active">Activate</option>
                                             </select>
