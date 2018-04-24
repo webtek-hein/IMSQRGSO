@@ -19,13 +19,16 @@
 </div>
 
 <div class="content mt-3">
+
     <div class="animated fadeIn">
         <div class="row">
             <!-- Inventory-->
             <div class="col-lg-12 department-tab">
-                <?php if($this->session->userdata['logged_in']['position'] === 'Custodian'){
-                    echo '<select id="select-dept" class="col-lg-4 deptopt form-control"></select>';
-                }
+                <?php
+                    $position = ($this->session->userdata['logged_in']['position']);
+                    if ($position === 'Custodian' || $position === 'Admin') {
+                        echo '<select id="select-dept" class="col-lg-5 deptopt form-control"></select>';
+                    }
                 ?>
                 <div class="card">
                     <div class="card-body">
@@ -66,7 +69,8 @@
             <div hidden class="col-lg-12 detail-tab ">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="toggleDiv($('.department-tab'),$('.detail-tab '))" class="btn btn"></i> Back</a></button>
+                        <button type="button" onclick="toggleDiv($('.department-tab'),$('.detail-tab '))"
+                                class="btn btn"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -106,7 +110,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- View Serial-->
             <div hidden class="Serial col-lg-12 ">
                 <div class="card">
@@ -127,80 +130,79 @@
             </div>
         </div>
     </div>
-        <!-- View Serial-->
-
-        <div hidden class="Serial  page-content">
-            <div id="data1" class="panel-collapse collapse" role="tabpanel">
-                <h4><b>List of Serial</b></h4>
-                <form class="serial-form" method="POST" action="inventory/addSerial">
-                    <!-- Dynamic serial tabs here -->
-                    <ul id="serial-tabs" class="nav nav-tabs">
-                    </ul>
-                    <!-- end of serial tabs -->
-                    <div id="serial-tabcontent" class="tab-content">
-                    </div>
-                </form>
-            </div>
+    <!-- View Serial-->
+    <div hidden class="Serial  page-content">
+        <div id="data1" class="panel-collapse collapse" role="tabpanel">
+            <h4><b>List of Serial</b></h4>
+            <form class="serial-form" method="POST" action="inventory/addSerial">
+                <!-- Dynamic serial tabs here -->
+                <ul id="serial-tabs" class="nav nav-tabs">
+                </ul>
+                <!-- end of serial tabs -->
+                <div id="serial-tabcontent" class="tab-content">
+                </div>
+            </form>
         </div>
-        <!--End of View Serial-->
     </div>
+    <!--End of View Serial-->
+</div>
 
-        <!--Reconcile Page-->
-    <!--add inventory date-->
-        <div hidden class="reconcilePage col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <button onclick="toggleDiv($('.department-tab'), $('.reconcilePage'))" class="btn btn-primary">Back</button>
-                </div>
-                <form id="compareitem" role="form"
-                      action="inventory/compare/" method="POST">
-                <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                    <table class="table table-no-bordered"
-                           data-pagination="true" data-search="true" id="reconcileTable">
-                    </table>
-                </div>
-            </div>
-            <a type="button" class="compare btn btn-success" data-toggle="modal"
-               data-target= ".invdate">Reconcile Items</a>
-            <a type="button" class="compare btn btn-success">Compare</a>
-
+<!--Reconcile Page-->
+<!--add inventory date-->
+<div hidden class="reconcilePage col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <button onclick="toggleDiv($('.department-tab'), $('.reconcilePage'))" class="btn btn-primary">Back</button>
         </div>
+        <form id="compareitem" role="form"
+              action="inventory/compare/" method="POST">
+            <div class="table-responsive-sm-sm tab-content pl-3 p-1">
+                <table class="table table-no-bordered"
+                       data-pagination="true" data-search="true" id="reconcileTable">
+                </table>
+            </div>
+    </div>
+    <a type="button" class="compare btn btn-success" data-toggle="modal"
+       data-target=".invdate">Reconcile Items</a>
+    <a type="button" class="compare btn btn-success">Compare</a>
 
-    <!--End of Reconcile Page-->
+</div>
 
-        <div class="invdate modal fade" id="addinvdate" tabindex="-1" role="dialog"
-             aria-labelledby="largeModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="largeModalLabel">Date of Inventory</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
+<!--End of Reconcile Page-->
 
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <label for="invdate">Date of Inventory</label>
-                                <input id="date" class="form-control col-md-7 col-xs-12"
-                                       data-validate-length-range="6"
-                                       data-validate-words="2" name="date" required type="date">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" onclick="reconcile()" name="id" class="btn btn-primary btn-modal" id="save1">
-                            <i class="fa fa-arrow-down"></i> Save
-                        </button>
+<div class="invdate modal fade" id="addinvdate" tabindex="-1" role="dialog"
+     aria-labelledby="largeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="largeModalLabel">Date of Inventory</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label for="invdate">Date of Inventory</label>
+                        <input id="date" class="form-control col-md-7 col-xs-12"
+                               data-validate-length-range="6"
+                               data-validate-words="2" name="date" required type="date">
                     </div>
                 </div>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" onclick="reconcile()" name="id" class="btn btn-primary btn-modal" id="save1">
+                    <i class="fa fa-arrow-down"></i> Save
+                </button>
+            </div>
         </div>
-    </form>
-    <!--end of add inventory date-->
+    </div>
+</div>
+</form>
+<!--end of add inventory date-->
 
 <!-- accept -->
 <form class="form-horizontal form-label-left" method="POST" action="inventory/acceptitem">
@@ -332,4 +334,4 @@
         </div>
     </div>
 </form>
-        <!-- /page content -->
+<!-- /page content -->

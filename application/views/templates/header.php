@@ -92,9 +92,10 @@ if (isset($this->session->userdata['logged_in'])) {
                     <?php
                     echo '<ul class="sub-menu children dropdown-menu">';
                     if ($position !== 'Supply Officer') {
-                        echo '<li><a href=' . base_url() . 'edit>EDIT LOG</a></li>' .
-                            '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
-                            '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>';;
+                        echo '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
+                            '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>'.
+                            '<li><a href=' . base_url() . 'edit>EDIT LOG</a></li>';
+
                     }
                     echo '<li><a href=' . base_url() . 'return_log>RETURN LOG</a></li>';
                     echo '</ul></li>';

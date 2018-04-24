@@ -24,15 +24,17 @@
             <!-- Supplier-->
             <div class="col-lg-12 supplier-tab">
                 <div class="card">
-                    <div class="card-header">
-                        <?php $position = $this->session->userdata['logged_in']['position'];
-                        if ($position === 'Custodian') {
-                            echo '<button onclick="addSupplier()" class="btn btn-primary">
-                                <i class="fa fa-plus"></i><span> Add Supplier</span>
-                            </button>';
-                        }
-                        ?>
-                    </div>
+                    <?php $position = $this->session->userdata['logged_in']['position'];
+                    if ($position === 'Custodian') {
+
+
+                        echo '<div class="card-header">
+                                  <button onclick="addSupplier()" class="btn btn-primary">
+                                  <i class="fa fa-plus"></i><span> Add Supplier</span>
+                                  </button>
+                              </div>';
+                    }
+                    ?>
                     <div class="card-body">
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <table id="supplier-table" data-search="true" data-pagination="true"
@@ -52,21 +54,22 @@
             <div hidden class="col-lg-12 addSupplier">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.addSupplier'))" class="btn btn-primary"></i> Back</a></button>
+                        <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.addSupplier'))"
+                                class="btn btn-primary"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <div class="tab-content pl-3 p-1 AddSup hidden" id="myTabContent">
                             <form method="POST" action="supplier/addSupplier" data-validate="parsley">
                                 <div class="form-group">
                                     <label for="Supplier Name" class=" form-control-label">Supplier Name</label>
-                                    <input  name="supplier" id="supplier-name"
+                                    <input name="supplier" id="supplier-name"
                                            data-required="true"
                                            class="form-control has-feedback-left"
                                            data-error-message="Please enter the Supplier Name">
                                 </div>
                                 <div class="form-group">
                                     <label for="Address" class=" form-control-label">Address</label>
-                                    <input  id="address" name="address"
+                                    <input id="address" name="address"
                                            data-required="true"
                                            class="form-control has-feedback-left"
                                            data-error-message="Please Enter the Address">
@@ -91,7 +94,8 @@
             <div hidden class="col-lg-12 editSupplier-tab">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.editSupplier-tab'))" class="btn btn-primary"></i> Back</a></button>
+                        <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.editSupplier-tab'))"
+                                class="btn btn-primary"></i> Back</a></button>
                     </div>
                     <?php if ($position === 'Custodian') {
                         echo '<div class="card-body">
