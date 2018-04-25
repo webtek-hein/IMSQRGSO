@@ -1909,9 +1909,10 @@ function retData($serialStatus, $id) {
 }
 
 function printDiv() {
+    var originalContents = $(document.body).html();
+    var header = '<h1>Serial Codes</h1><br><p>General Service Office</p>'
     var printContents = $('#QRImages').html();
-    var originalContents = document.body.innerHTML;
-    document.body.innerHTML = printContents;
+    document.body.innerHTML = header+printContents;
     window.print();
     document.body.innerHTML = originalContents;
 }

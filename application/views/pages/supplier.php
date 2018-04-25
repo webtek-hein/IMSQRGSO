@@ -102,7 +102,6 @@
                         <form id="editInformation"
                               class="serialForm form-horizontal form-label-left"
                               action="supplier/editSupplier" method="POST" data-validate="parsley">
-
                             <div class="form-group">
                                 <label for="Supplier Name" class="col-md-12">Supplier Name</label>
                                 <div class="col-md-12">
@@ -134,7 +133,10 @@
                                            data-error-message="Please Enter Contact Number" required>
                                 </div>
                             </div>
-                            <button class="btn btn-outline-info" type="submit" name="id" id="edtbuttonsupplier"><i class="fa fa-check"></i> Save</button>
+                            <br><hr>
+                            <div class="form-group">
+                                <button class="btn btn-outline-info" type="submit" name="id" id="edtbuttonsupplier"><i class="fa fa-check"></i> Save</button>
+                            </div>
                         </form>
                     </div>';
                     } else {
@@ -142,7 +144,6 @@
                         <form id="editInformation"
                               class="serialForm form-horizontal form-label-left"
                               action="supplier/addSupplier" method="POST" data-validate="parsley">
-
                             <div class="form-group">
                                 <label for="Supplier Name" class="col-md-12">Supplier Name</label>
                                 <div class="col-md-12">

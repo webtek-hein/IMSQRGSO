@@ -1028,7 +1028,6 @@
         </div>
     </div>
 </div>
-</form>
 <!--end of add inventory date-->
 </div>
 
