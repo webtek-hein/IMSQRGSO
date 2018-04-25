@@ -97,7 +97,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.inventory-tab'),$('.detail-tab '))"
-                                class="btn btn-primary"></i> Back</a></button>
+                                class="btn btn-primary fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -978,8 +978,8 @@
 <div hidden class="reconcilePage col-lg-12">
     <div class="card">
         <div class="card-header">
-            <button onclick="printToPDFreconcile()" class="btn btn-primary fa fa-download">Download as PDF</button>
             <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))" class="btn btn-primary fa fa-arrow-left">Back</button>
+            <button onclick="printToPDFreconcile()" class="btn btn-primary fa fa-download">Download as PDF</button>
         </div>
         <form id="compareitem" role="form"
               action="inventory/compare/" method="POST">
