@@ -82,10 +82,10 @@ $(document).ready(function () {
                     field: 'quantity',
                     title: 'Quantity'
                 }, {
-                    field: 'cost',
+                    field: 'unit_cost',
                     title: 'Unit Cost'
                 }, {
-                    field: 'supplier',
+                    field: 'supplier_name',
                     title: 'Supplier'
                 }]
             });
@@ -534,12 +534,10 @@ function deptDet(id, position, dept_id) {
     var $detailTab = $('.detail-tab ');
     var item;
     if (position === 'Supply Officer') {
-        $field = 'action';
-        $title = 'Action'
+      $visible = true;
     } else {
         dept_id = $('#select-dept').val();
-        $field = 'action';
-        $title = 'Status';
+        $visible = false;
     }
     $.ajax({
         url: 'inventory/getitem/dept/' + id+'/'+dept_id,
@@ -581,8 +579,10 @@ function deptDet(id, position, dept_id) {
                         field: 'or',
                         title: 'OR number'
                     }, {
-                        field: $field,
-                        title: $title
+                        
+                        field: 'action',
+                        title: 'Action',
+                        visible: $visible
                     }]
                 });
             serialize_forms();
@@ -1838,39 +1838,41 @@ function reconcile() {
 }
 
 function printToPDF() {
-    $('#ledger').tableExport({
-        type: 'pdf',
-        jspdf: {
-            orientation: 'l',
-            format: 'a4',
-            margins: {left: 10, right: 10, top: 20, bottom: 20},
-            autotable: {
-                styles: {
-                    fillColor: 'inherit',
-                    textColor: 'inherit'
-                },
-                tableWidth: 'auto'
-            }
-        }
-    });
+
+    // $('#ledger').tableExport({
+    //     type: 'pdf',
+    //     jspdf: {
+    //         orientation: 'l',
+    //         format: 'a4',
+    //         margins: {left: 10, right: 10, top: 20, bottom: 20},
+    //         autotable: {
+    //             styles: {
+    //                 fillColor: 'inherit',
+    //                 textColor: 'inherit'
+    //             },
+    //             tableWidth: 'auto'
+    //         }
+    //     }
+    // });
 }
 
 function printToPDFreport() {
-    $('#reportTable').tableExport({
-        type: 'pdf',
-        jspdf: {
-            orientation: 'l',
-            format: 'a4',
-            margins: {left: 10, right: 10, top: 20, bottom: 20},
-            autotable: {
-                styles: {
-                    fillColor: 'inherit',
-                    textColor: 'inherit'
-                },
-                tableWidth: 'auto'
-            }
-        }
-    });
+    $report = $('#reportsOption').val();
+    alert($report);
+    var header;
+    if($report === '0'){
+       header  = '<h1>Delivered Items</h1><br><p>General Service Office</p>';
+    }else if($report === '1'){
+        header = '<h1>Distributed Items</h1><br><p>General Service Office</p>';
+    }else if($report === '2'){
+        header = '<h1>Returned Items</h1><br><p>General Service Office</p>';
+    }else{
+        header = '<h1>Supplier Items</h1><br><p>General Service Office</p>';
+    }
+    var printContents = $('.fixed-table-body').html();
+    document.body.innerHTML = header+printContents;
+    window.print();
+    location.reload();
 }
 
 function printToPDFreconcile() {
