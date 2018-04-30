@@ -167,12 +167,96 @@
                     <tr>
                         <td></td>
                         <td></td>
-                        <td><button type="button" id="transferButton" class="btn btn-success">Transfer</button>
-                            <button type="button" id="historyButton" class="btn btn-primary">History</button>
+                        <td><button type="button" id="transferButton" class="btn btn-success"  data-toggle="modal" data-target=".transfer">Transfer</button>
+                            <button type="button" id="historyButton" class="btn btn-primary" data-toggle="modal" data-target=".history">History</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+<!--Transfer-->
+<div class="modal fade transfer" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel2">Transfer</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label for="name">Last Owner:</label>
+                        <select list="typelist" name="dept" class="deptopt form-control" required>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label for="date">Date of Transfer</label>
+                        <input id="date" class="form-control col-md-7 col-xs-12"
+                               data-validate-length-range="6"
+                               data-validate-words="2" name="date" required type="date">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label for="name">Remarks</label>
+                        <input id="obr" class="form-control col-md-7 col-xs-12"
+                               data-validate-length-range="6"
+                               data-validate-words="2" name="obr" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                   <textarea id="itemdesc" data-parsley-group="set1"
+                             name="description" id="message"
+                             class="form-control"
+                             data-parsley-trigger="blur"
+                             data-parsley-minlength="1"
+                             data-parsley-maxlength="500"
+                             data-parsley-minlength-message="Description must"
+                             data-parsley-validation-threshold="10"
+                             data-parsley-required-messag="Put description of the items"
+                             required></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--History-->
+<div class="modal fade history" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title" id="history">History</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date Transfer</th>
+                        <th>Supply Officer</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
 
         </div>
     </div>
