@@ -1069,7 +1069,6 @@ class Inventory_model extends CI_Model
     //total cost dash custodian
     public function totalcost(){
         $this->db->SELECT('sum(unit_cost * quantity) as totalcost');
-        $this->db->where('date_received','CURDATE()', false);
         $query = $this->db->get('gsois.itemdetail');
         return $query->result_array();
     }
