@@ -281,6 +281,79 @@
     </div>
 </form>
 
+<!--Transfer-->
+<form role="form" class="form-horizontal form-label-left" action="inventory/deptreturn"
+      method="POST" data-validate="parsley">
+    <div class="transfer modal fade" id="tranfer" tabindex="-1" role="dialog"
+         aria-labelledby="largeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="largeModalLabel">Transfer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="serialsp col-md-10">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class=" quantsp form-group">
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <label>Item</label>
+                        <input type="date" name="returndate" data-validate-length-range="5,20"
+                               class="optional form-control has-feedback-left">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
+                               name="quantity">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Transfer Date</label>
+                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
+                               name="date" required type="date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>From</label>
+                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
+                               name="receiver">
+                    </div>
+
+                    <div class="form-group">
+                        <label>To</label>
+                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
+                               name="receiver">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Remarks<span
+                                    class="required">*</span>
+                        </label>
+                        <textarea class="form-control" name="remarks" id="remarks"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" name="id" class="btn btn-primary btn-modal" id="save1">
+                        <i class="fa fa-arrow-down"></i> Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
 <!--Distribution for Supply Officer-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/distribute"
       method="POST" data-validate="parsley">
