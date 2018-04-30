@@ -49,7 +49,7 @@
                             <!-- Capital Outaly tab-->
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
-                                <table id="departmentTable" data-url="inventory/viewDept/CO/11"
+                                <table id="departmentTable" data-show-refresh = "true" data-url="inventory/viewDept/CO/11"
                                        class="table table-no-bordered"
                                        data-pagination="true" data-search="true">
                                 </table>
@@ -57,8 +57,7 @@
                             <!--MOOE Tab-->
                             <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
                                 <!-- Implement Bootsrap table-->
-                                <table id="deptMOOEtable" data-pagination="true" data-search="true"
-                                       data-url="inventory/viewDept/MOOE/11" class="table table-no-bordered">
+                                <table id="deptMOOEtable" data-pagination="true" data-show-refresh = "true" data-search="true" data-url="inventory/viewDept/MOOE/11" class="table table-no-bordered">
                                 </table>
                             </div>
                         </div>
