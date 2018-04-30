@@ -291,7 +291,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="largeModalLabel">Return</h5>
+                    <h5 class="modal-title" id="largeModalLabel">Transfer</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -305,23 +305,44 @@
                         <div class=" quantsp form-group">
                         </div>
                     </div>
+
                     <div class="form-group ">
-                        <label>Date Returned</label>
+                        <label>Item</label>
                         <input type="date" name="returndate" data-validate-length-range="5,20"
                                class="optional form-control has-feedback-left">
                     </div>
 
                     <div class="form-group">
-                        <label>Receiver</label>
+                        <label>Quantity</label>
+                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
+                               name="quantity">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Transfer Date</label>
+                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
+                               name="date" required type="date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>From</label>
                         <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
                                name="receiver">
                     </div>
+
+                    <div class="form-group">
+                        <label>To</label>
+                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
+                               name="receiver">
+                    </div>
+
                     <div class="form-group">
                         <label for="name">Remarks<span
                                     class="required">*</span>
                         </label>
                         <textarea class="form-control" name="remarks" id="remarks"></textarea>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
