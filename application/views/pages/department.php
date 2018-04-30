@@ -146,6 +146,38 @@
     <!--End of View Serial-->
 </div>
 
+
+<!-- Accountability-->
+<div hidden id="account" class="accountability col-lg-12 accountability-tab">
+    <div class="card">
+        <div class="card-header">
+            <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability-tab '))"
+                    class="btn btn"></i> Back</a></button>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                <th>Serial</th>
+                <th>Name</th>
+                <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><button type="button" id="transferButton" class="btn btn-success">Transfer</button>
+                            <button type="button" id="historyButton" class="btn btn-primary">History</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
 <!--Reconcile Page-->
 <!--add inventory date-->
 <div hidden class="reconcilePage col-lg-12">
@@ -282,72 +314,79 @@
 </form>
 
 <!--Transfer-->
-<form role="form" class="form-horizontal form-label-left" action="inventory/deptreturn"
-      method="POST" data-validate="parsley">
-    <div class="transfer modal fade" id="tranfer" tabindex="-1" role="dialog"
-         aria-labelledby="largeModalLabel"
+<form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST"
+      data-validate="parsley">
+    <div class="transfer dist modal fade" id="transfer" tabindex="-1" role="dialog"
+         aria-labelledby="return-modal"
          aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="largeModalLabel">Transfer</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <div class="serialsp col-md-10">
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <p>Quantity Left: <span id="quantLeft"></span></p>
+                            <br>
+                            <div class="serial">
+                                <label for="name"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="quant">
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class=" quantsp form-group">
+
+                    <div class="col-8">
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <label for="name">Item</label>
+                                <select list="typelist" name="dept" class="deptopt form-control" required>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <label for="name">Qauntity</label>
+                                <select list="typelist" name="Code" id="accode" class="form-control" required>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <label for="date">Transfer Date</label>
+                                <input id="date" class="form-control col-md-7 col-xs-12"
+                                       data-validate-length-range="6"
+                                       data-validate-words="2" name="date" required type="date">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <label for="name">From</label>
+                                <input id="obr" class="form-control col-md-7 col-xs-12"
+                                       data-validate-length-range="6"
+                                       data-validate-words="2" name="obr" required>
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <div class="col-md-10">
+                                <label for="name">To</label>
+                                <select list="typelist" name="owner" class="form-control" required>
+                                </select>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="form-group ">
-                        <label>Item</label>
-                        <input type="date" name="returndate" data-validate-length-range="5,20"
-                               class="optional form-control has-feedback-left">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Quantity</label>
-                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
-                               name="quantity">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Transfer Date</label>
-                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
-                               name="date" required type="date">
-                    </div>
-
-                    <div class="form-group">
-                        <label>From</label>
-                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
-                               name="receiver">
-                    </div>
-
-                    <div class="form-group">
-                        <label>To</label>
-                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
-                               name="receiver">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="name">Remarks<span
-                                    class="required">*</span>
-                        </label>
-                        <textarea class="form-control" name="remarks" id="remarks"></textarea>
-                    </div>
-
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" name="id" class="btn btn-primary btn-modal" id="save1">
-                        <i class="fa fa-arrow-down"></i> Save
-                    </button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="submit" name="id" id="save1" class="btn btn-primary btn-modal">Save</button>
                 </div>
             </div>
         </div>

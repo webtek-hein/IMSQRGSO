@@ -1237,6 +1237,10 @@ function modal() {
         $(".serialsp").html("");
         $(".quantsp").html("");
     });
+    $(".transfer").on("hidden.bs.modal", function () {
+        $(".serialsp").html("");
+        $(".quantsp").html("");
+        })
     $(".acceptsp").on("hidden.bs.modal", function () {
         $(".serialsp").html("");
         $(".quantsp").html("");
@@ -1917,4 +1921,9 @@ function printDiv() {
     document.body.innerHTML = header+printContents;
     window.print();
     document.body.innerHTML = originalContents;
+}
+function accountability () {
+    toggleDiv($('#account'),$('.detail-tab'));
+
+
 }
