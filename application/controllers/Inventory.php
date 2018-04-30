@@ -135,20 +135,7 @@ class Inventory extends CI_Controller
                 if ($this->session->userdata['logged_in']['position'] === 'Admin') {
 
                 } elseif ($position === 'Supply Officer') {
-                    if ($detail['dist_stat'] !== 'Accepted') {
-                        if ($detail['serialStatus'] !== '1') {
-                            foreach ($returnquant as $retq) {
-                                $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed])\" data-id='$detail[dist_id]'  
-                            class=\"btn btn-danger\">Return</a>";
-                            }
-                        } else {
-                            $action = "<a href=\'#\' type=\'button\' data-toggle=\"modal\" 
-                            data-target=\".Return\" onclick=\"getserialbtn($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]'  
-                            class=\"btn btn-danger\">Return</a>";
-                        }
 
-                    } else {
                         foreach ($returnquant as $ret) {
                             if ($detail['serialStatus'] !== '1') {
                                 $action =
@@ -158,11 +145,11 @@ class Inventory extends CI_Controller
                                 $action =
                                     "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".DistributeSP\" onclick=\"getserialbtn($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Distribute</a>
                             <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
-                            <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
+                            <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>
+                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".transfer\" onclick=\"getserialbtn($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]' class=\"btn btn-success\">Transfer</a>";
 
                             }
                         }
-                    }
                 } elseif ($dept === 'dept') {
                     $action = $detail['dist_stat'];
                 } elseif ($detail['serialStatus'] !== '1') {
