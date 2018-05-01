@@ -171,8 +171,8 @@
                 <div class="form-group">
                     <div class="col-md-10">
                         <label for="name">Last Owner:</label>
-                        <select list="typelist" name="dept" class="deptopt form-control" required>
-                        </select>
+                        <input name="name" class="name form-control" required>
+                        </input>
                     </div>
                 </div>
 
@@ -188,13 +188,21 @@
                 <div class="form-group">
                     <div class="col-md-10">
                         <label for="name">Remarks</label>
-                        <input id="obr" class="form-control col-md-7 col-xs-12"
-                               data-validate-length-range="6"
-                               data-validate-words="2" name="obr" required>
+                        <textarea id="itemdesc" data-parsley-group="set1"
+                                  name="description" id="message"
+                                  class="form-control"
+                                  data-parsley-trigger="blur"
+                                  data-parsley-minlength="1"
+                                  data-parsley-maxlength="500"
+                                  data-parsley-minlength-message="Description must"
+                                  data-parsley-validation-threshold="10"
+                                  data-parsley-required-messag="Put description of the items"
+                                  required></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
+                    <div class="col-md-10">
                    <textarea id="itemdesc" data-parsley-group="set1"
                              name="description" id="message"
                              class="form-control"
@@ -205,6 +213,7 @@
                              data-parsley-validation-threshold="10"
                              data-parsley-required-messag="Put description of the items"
                              required></textarea>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
