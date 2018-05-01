@@ -149,32 +149,14 @@
 
 <!-- Accountability-->
 <div hidden id="account" class="accountability col-lg-12 accountability-tab">
-    <div class="card">
-        <div class="card-header">
+
             <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability-tab '))"
                     class="btn btn"></i> Back</a></button>
-        </div>
-        <div class="card-body">
+
             <table class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                <th>Serial</th>
-                <th>Name</th>
-                <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td><button type="button" id="transferButton" class="btn btn-success"  data-toggle="modal" data-target=".transfer">Transfer</button>
-                            <button type="button" id="historyButton" class="btn btn-primary" data-toggle="modal" data-target=".history">History</button>
-                        </td>
-                    </tr>
-                </tbody>
+
             </table>
-        </div>
-    </div>
+
 </div>
 
 <!--Transfer-->

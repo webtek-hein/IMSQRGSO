@@ -298,6 +298,28 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    public function getEndUser(){
+        //supply officer
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+
+        $action = "<button type=\"button\" id=\"transferButton\" class=\"btn btn-success\"  data-toggle=\"modal\" data-target=\".transfer\">Transfer</button>
+                            <button type=\"button\" id=\"historyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".history\">History</button>";
+
+        $list = $this->inv->getEndUserDist();
+
+        $data = array();
+        foreach ($list as $serial) {
+            $data[] = array(
+                'serial_id' => $serial['serial_id'],
+                'serial' => $serial['serial'],
+                //'owner' => $serial['dist_id'],
+                'action' => $action
+            );
+        }
+        echo json_encode($data);
+    }
+
     public function getSerialreturn($det_id,$sid)
     {
         //supply officer

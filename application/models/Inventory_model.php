@@ -725,12 +725,25 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    public function getEndUserDist(){
+
+        $status = array('UserDistributed');
+        $this->db->select('item.serialStatus,serial.*');
+        $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
+        $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
+        $this->db->join('distribution', 'distribution.dist_id = serial.dist_id','inner');
+        $this->db->where_in('item_status', $status);
+        $query = $this->db->get('serial');
+        return $query->result_array();
+    }
+
     public
     function return_item()
     {
         $query = $this->db->get('return');
         return $query->result_array();
     }
+
     public
     function getSerialReturn($det_id,$sid)
     {
@@ -745,6 +758,7 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('serial');
         return $query->result_array();
     }
+
     public
     function getSerial($det_id, $position)
     {
@@ -762,7 +776,8 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('serial');
         return $query->result_array();
     }
-    function getSerialbtn($det_id, $position,$sid)
+
+    public function getSerialbtn($det_id, $position,$sid)
     {
 
         $this->db->select('item.serialStatus,serial_id,serial.serial,serial.item_status');
