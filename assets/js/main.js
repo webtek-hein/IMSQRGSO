@@ -532,6 +532,7 @@ function detail(id) {
 function deptDet(id, position, dept_id) {
     var $detailtable = $('#detail-tab-table');
     var $detailTab = $('.detail-tab ');
+    $accountabilitytable = $('#account');
     var item;
     if (position === 'Supply Officer') {
       $visible = true;
@@ -585,6 +586,19 @@ function deptDet(id, position, dept_id) {
                         visible: $visible
                     }]
                 });
+            $accountabilitytable.bootstrapTable({
+                url: 'inventory/getEndUser',
+                columns: [{
+                    field: 'serial',
+                    title: 'Serial'
+                }, {
+                    field: 'owner',
+                    title: 'Owner'
+                }, {
+                    field: 'action',
+                    title: 'Action'
+                }]
+            });
             serialize_forms();
         }
     });
@@ -1237,6 +1251,10 @@ function modal() {
         $(".serialsp").html("");
         $(".quantsp").html("");
     });
+    $(".transfer").on("hidden.bs.modal", function () {
+        $(".serialsp").html("");
+        $(".quantsp").html("");
+        })
     $(".acceptsp").on("hidden.bs.modal", function () {
         $(".serialsp").html("");
         $(".quantsp").html("");
@@ -1917,4 +1935,9 @@ function printDiv() {
     document.body.innerHTML = header+printContents;
     window.print();
     document.body.innerHTML = originalContents;
+}
+function accountability () {
+    toggleDiv($('#account'),$('.detail-tab'));
+
+
 }
