@@ -730,8 +730,9 @@ class Inventory_model extends CI_Model
     public function getEndUserDist($dist_id){
 
             $status = array('Distributed','UserDistributed');
-            $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,item.serialStatus,serial.*');
+            $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,enduser.name AS enduser,item.serialStatus,serial.*');
             $this->db->join('user', 'user.user_id = serial.employee', 'inner');
+            $this->db->join('enduser', 'enduser.serial_id = serial.serial_id', 'left');
             $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
             $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
             $this->db->join('distribution', 'distribution.dist_id = serial.dist_id', 'inner');

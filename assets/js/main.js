@@ -1434,7 +1434,7 @@ function gettransfer(id) {
                 $('.owner').html("<label for=\"name\">Current Owner:</label>" +
                     " <input name=\"enduser\" class=\"name form-control\" disabled value=" + name + ">");
                 $('.serialsp').html("<label for=\"name\">Serial:</label>" +
-                    " <input name=\"serial\" class=\"name form-control\"  value=" + data[i].serial + ">");
+                    " <input name=\"serial\" class=\"name form-control\" readonly value=" + data[i].serial + ">");
             }
         }
         });
