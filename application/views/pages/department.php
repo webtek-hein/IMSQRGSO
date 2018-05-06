@@ -68,8 +68,8 @@
             <div hidden class="col-lg-12 detail-tab ">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="toggleDiv($('.department-tab'),$('.detail-tab '))"
-                                class="btn btn"></i> Back</a></button>
+                        <button type="button"  onclick="toggleDiv($('.department-tab'),$('.detail-tab '))"
+                                class="btn btn-primary fa fa-arrow-left" ></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
