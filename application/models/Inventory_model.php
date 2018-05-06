@@ -279,23 +279,24 @@ class Inventory_model extends CI_Model
                             'dec_log_id' => $dec_log_id
                         );
                     }
-
+                    $employee = $this->input->post('owner');
                     $serial_data[] = array(
                         'serial' => $value,
                         'dist_id' => $dist_id,
-                        'item_status' => 'Distributed'
+                        'item_status' => 'Distributed',
+                        'employee' => $employee
                     );
                 }
                 $this->db->update_batch('serial', $serial_data, 'serial');
                 $this->db->insert_batch('logs.decreaseserial', $serial_id);
             }
         } else {
-            $employee = $this->input->post('owner');
+
             if (count($serial) != 0) {
-                $this->db->set('employee', $employee);
                 $this->db->set('item_status', 'UserDistributed');
                 $this->db->where_in('serial', $serial);
                 $this->db->update('serial');
+
             } else {
                 $quantity = $this->input->post('quantity');
                 $dist_id = $this->input->post('id');
@@ -725,13 +726,15 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public function getEndUserDist(){
+    public function getEndUserDist($dist_id){
 
-        $status = array('UserDistributed');
-        $this->db->select('item.serialStatus,serial.*');
+        $status = array('Distributed','UserDistributed');
+        $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,item.serialStatus,serial.*');
+        $this->db->join('user', 'user.user_id = serial.employee', 'inner');
         $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
         $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
         $this->db->join('distribution', 'distribution.dist_id = serial.dist_id','inner');
+        $this->db->where('serial.dist_id', $dist_id);
         $this->db->where_in('item_status', $status);
         $query = $this->db->get('serial');
         return $query->result_array();
