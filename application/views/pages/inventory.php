@@ -678,7 +678,7 @@
                         <div class="item form-group">
                             <div class="col-md-10">
                                 <label for="name">Supply Officer</label>
-                                <select list="typelist" name="owner[]" class="ownerOpt form-control" required>
+                                <select list="typelist" name="owner" class="ownerOpt form-control" required>
                                 </select>
                             </div>
                         </div>

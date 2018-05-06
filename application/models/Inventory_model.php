@@ -291,8 +291,9 @@ class Inventory_model extends CI_Model
                 $this->db->insert_batch('logs.decreaseserial', $serial_id);
             }
         } else {
-
+            $employee = $this->input->post('owner');
             if (count($serial) != 0) {
+                $this->db->set('employee', $employee);
                 $this->db->set('item_status', 'UserDistributed');
                 $this->db->where_in('serial', $serial);
                 $this->db->update('serial');
@@ -728,16 +729,17 @@ class Inventory_model extends CI_Model
 
     public function getEndUserDist($dist_id){
 
-        $status = array('Distributed','UserDistributed');
-        $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,item.serialStatus,serial.*');
-        $this->db->join('user', 'user.user_id = serial.employee', 'inner');
-        $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
-        $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
-        $this->db->join('distribution', 'distribution.dist_id = serial.dist_id','inner');
-        $this->db->where('serial.dist_id', $dist_id);
-        $this->db->where_in('item_status', $status);
-        $query = $this->db->get('serial');
-        return $query->result_array();
+            $status = array('Distributed','UserDistributed');
+            $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,item.serialStatus,serial.*');
+            $this->db->join('user', 'user.user_id = serial.employee', 'inner');
+            $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
+            $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
+            $this->db->join('distribution', 'distribution.dist_id = serial.dist_id', 'inner');
+            $this->db->where('serial.dist_id', $dist_id);
+            $this->db->where_in('item_status', $status);
+            $query = $this->db->get('serial');
+            return $query->result_array();
+
     }
 
     public
@@ -747,6 +749,38 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    public function userdistrib($position,$user){
+
+        $employee = $this->input->post('transfername');
+        $serial = $this->input->post('serial');
+        $serialid = $this->input->post('serialid');
+        $date = $this->input->post('date');
+        $data = array(
+            'name' => $employee,
+            'serial_id' => $serialid,
+            'transfer_date' => $date
+        );
+        $this->db->where('enduser.serial_id',$serialid);
+        $query = $this->db->get('enduser');
+        if ($query->num_rows() > 0){
+            $this->db->where('serial_id',$serialid);
+            $this->db->update('enduser', $data);
+        }else {
+            $this->db->insert('enduser', $data);
+        }
+
+        $this->db->set('item_status', 'UserDistributed');
+        $this->db->where('serial', $serial);
+        $this->db->update('serial');
+
+    }
+    public function getTrans ($serialid){
+        $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,serial.serial,serial.serial_id');
+        $this->db->join('user', 'user.user_id = serial.employee', 'inner');
+        $this->db->where('serial.serial_id', $serialid);
+        $query = $this->db->get('serial');
+        return $query->result_array();
+    }
     public
     function getSerialReturn($det_id,$sid)
     {

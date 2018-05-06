@@ -298,18 +298,25 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    public function userDistribute(){
+        $position = $this->session->userdata['logged_in']['position'];
+        $user = $this->session->userdata['logged_in']['user_id'];
+
+        $this->inv->userdistrib($position, $user);
+        redirect('department');
+    }
     public function getEndUser($dist_id){
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
 
-        $action = "<button type=\"button\" id=\"transferButton\" class=\"btn btn-success\"  data-toggle=\"modal\" data-target=\".transfer\">Transfer</button>
-                            <button type=\"button\" id=\"historyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".history\">History</button>";
-
         $list = $this->inv->getEndUserDist($dist_id);
 
         $data = array();
         foreach ($list as $serial) {
+            $action = "<button onclick=gettransfer($serial[serial_id]);  id=\"transferButton\" class=\"btn btn-success\"  data-id='$serial[serial_id]' data-toggle=\"modal\" data-target=\".transfer\">Transfer</button>
+                            <button type=\"button\" id=\"historyButton\" class=\"btn btn-primary\" data-id='$serial[serial_id]'data-toggle=\"modal\" data-target=\".history\">History</button>";
+
             $data[] = array(
                 'serial_id' => $serial['serial_id'],
                 'serial' => $serial['serial'],
@@ -317,9 +324,21 @@ class Inventory extends CI_Controller
                 'action' => $action
             );
         }
+
         echo json_encode($data);
     }
 
+    public function getTransfer($serialid)
+    {
+        $name = $this->inv->getTrans($serialid);
+        foreach ($name as $owner) {
+            $data[] = array(
+                'currentname' => $owner['name'],
+                'serial' => $owner['serial'],
+                'serial_id' => $owner['serial_id']);
+        }
+        echo json_encode($data);
+    }
     public function getSerialreturn($det_id,$sid)
     {
         //supply officer

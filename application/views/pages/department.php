@@ -160,19 +160,34 @@
 </div>
 
 <!--Transfer-->
-<div class="modal fade transfer" tabindex="-1" role="dialog" aria-hidden="true">
+<form role="form" class="form-horizontal form-label-left" action="inventory/userDistribute" method="POST"
+      data-validate="parsley">
+<div class="modal fade transfer" tabindex="-1" role="dialog" aria-hidden="true" >
     <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel2">Transfer</h4>
             </div>
+
             <div class="modal-body">
+
+                <div class="form-group">
+                    <div class="serialsp col-md-10">
+                        <label for="name"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="owner col-md-10">
+                        <label for="name">Current Owner:</label>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <div class="col-md-10">
-                        <label for="name">Last Owner:</label>
-                        <input name="name" class="name form-control" required>
-                        </input>
+                        <label for="name">Transfer to:</label>
+                        <input name="transfername" class="name form-control" required>
                     </div>
                 </div>
 
@@ -200,31 +215,16 @@
                                   required></textarea>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <div class="col-md-10">
-                   <textarea id="itemdesc" data-parsley-group="set1"
-                             name="description" id="message"
-                             class="form-control"
-                             data-parsley-trigger="blur"
-                             data-parsley-minlength="1"
-                             data-parsley-maxlength="500"
-                             data-parsley-minlength-message="Description must"
-                             data-parsley-validation-threshold="10"
-                             data-parsley-required-messag="Put description of the items"
-                             required></textarea>
-                    </div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" name="serialid" id="save1" class="btn btn-primary btn-modal">Save changes</button>
             </div>
 
         </div>
     </div>
 </div>
-
+</form>
 <!--History-->
 <div class="modal fade history" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">

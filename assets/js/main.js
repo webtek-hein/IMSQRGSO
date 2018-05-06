@@ -1423,7 +1423,23 @@ function viewSerial(id) {
     });
 
 }
+function gettransfer(id) {
+    $.ajax({
+        url: 'inventory/gettransfer/' + id,
+        dataType: 'JSON',
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                var name = data[i].currentname.replace(/\s/g, '&nbsp;');
 
+                $('.owner').html("<label for=\"name\">Current Owner:</label>" +
+                    " <input name=\"enduser\" class=\"name form-control\" disabled value=" + name + ">");
+                $('.serialsp').html("<label for=\"name\">Serial:</label>" +
+                    " <input name=\"serial\" class=\"name form-control\"  value=" + data[i].serial + ">");
+            }
+        }
+        });
+
+}
 //get serial checkbox
 function getserialreturn(id, sid) {
     var serials = [];
