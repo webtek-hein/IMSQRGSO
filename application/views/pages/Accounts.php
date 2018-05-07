@@ -84,7 +84,7 @@
                                     <div class="input-group-addon"><i class="fa fa-phone"></i></div>
                                     <input class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" name="contactno" placeholder="Contact No.">
                                 </div>
-                                <small class="form-text text-muted">ex. 09263401202</small>
+                                <small class="form-text text-muted">format: +639XXXXXXXXX or 09XXXXXXXXX</small>
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Username</label>
@@ -98,10 +98,10 @@
                                 <label class=" form-control-label">Password</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-key"></i></div>
-                                    <input type="password" name="password" id="password" class="form-control has-feedback-left" pattern=".{4,}$"
+                                    <input type="password" title="Must be longer that 5 characters." name="password" id="password" class="form-control has-feedback-left" pattern=".{6,}$"
                                            placeholder="Password" required>
                                 </div>
-                                <small class="form-text text-muted">ex. Password_123</small>
+                                <small class="form-text text-muted">Format: >5 characters</small>
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Position</label>
@@ -148,14 +148,14 @@
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                 <input type="text" name="first" id="first" 
-                                       class="form-control has-feedback-left" >
+                                       class="form-control has-feedback-left" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Last Name</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" id="last" name="last" class="form-control has-feedback-left">
+                                <input type="text" id="last" name="last" class="form-control has-feedback-left" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -164,6 +164,7 @@
                                 <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                 <input id="em" class="form-control has-feedback-left" type="email" name="em">
                             </div>
+                            <small class="form-text text-muted">ex. person@gmail.com</small>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Contact No.</label>
@@ -171,14 +172,17 @@
                                 <div class="input-group-addon"><i class="fa fa-phone"></i></div>
                                 <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" id="cno" name="cno">
                             </div>
+                                <small class="form-text text-muted">Format: +639XXXXXXXXX or 09XXXXXXXXX</small>
+
                         </div>
                    
                         <div class="form-group">
                             <label class=" form-control-label">Password</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-key"></i></div>
-                                <input type="password" name="pword" id="pword" class="form-control has-feedback-left" pattern=".{4,}$">
+                                <input type="password" name="pword" id="pword" class="form-control has-feedback-left" pattern=".{6,}$">
                             </div>
+                            <small class="form-text text-muted">Format: >5 characters</small>
                         </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Status</label>
