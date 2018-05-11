@@ -356,8 +356,7 @@
 
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox" class="check" id="checkAll"> Check
-                                                            All
+                                                            <input type="checkbox" class="check" id="checkAll" style="width:20px;height:20px;background:white;border-radius:5px;border:2px solid #555;"> Check All
                                                         </label>
                                                     </div>
 
@@ -377,7 +376,7 @@
                             <!--General Ledger-->
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
-                                <button onclick="printToPDF()" class="btn btn-primary">Download as PDF</button>
+                                <button onclick="printToPDF()" class="btn btn-primary fa fa-download">Download as PDF</button>
                                 <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
@@ -453,7 +452,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2 has-feedback">
-                                                <input type="checkbox" tabindex="-1" name="serialStatus[]" value="1"> With serial
+                                                <input type="checkbox" tabindex="-1" name="serialStatus[]" style="width:30px;height:30px;background:white;border-radius:5px;border:2px solid #555;" value="1"> With serial
                                             </div>
                                         </div>
                                     </div>
