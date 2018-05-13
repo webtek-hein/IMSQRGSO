@@ -97,7 +97,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.inventory-tab'),$('.detail-tab '))"
-                                class="btn btn-primary fa fa-arrow-left"></i> Back</a></button>
+                                class="btn btn-outline-primary fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -131,10 +131,12 @@
                                     <form id="editInformation"
                                           class="serialForm form-horizontal form-label-left"
                                           action="inventory/edititem" method="POST">
-
+                                   
+                                   <div class="col-6 pull right">
+                                   
                                         <div class="form-group">
                                             <label class="col-md-12">Item Name</label>
-                                            <div class="col-md-5">
+                                            <div class="col-md-12">
                                                 <input id="itemname"
                                                        type="text" name="item"
                                                        class="form-control"
@@ -146,7 +148,7 @@
 
                                         <div class="form-group">
                                             <label class="col-md-12">Description</label>
-                                            <div class="col-md-5">
+                                            <div class="col-md-12">
                                             <textarea id="itemdesc" data-parsley-group="set1"
                                                       name="description" id="message"
                                                       class="form-control"
@@ -161,28 +163,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-12">Total Quantity</label>
-                                            <div class="col-md-5">
-                                                <p id="total"></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-12">Initial Quantity</label>
-                                            <div class="col-md-5">
-                                                <p id="initialStock"></p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-12">Initial Price</label>
-                                            <div class="col-md-5">
-                                                <p id="initialCost"></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
                                             <label class="col-md-12">Unit</label>
-                                            <div class="col-md-5">
+                                            <div class="col-md-12">
                                                 <input id="unit" name="Unit" data-parsley-group="set1"
                                                        class="form-control" class="unit"
                                                        list="list"
@@ -203,7 +185,7 @@
 
                                         <div class="form-group">
                                             <label class="col-md-12">Type</label>
-                                            <div class="col-md-5">
+                                            <div class="col-md-12">
                                                 <select id="itemtype" data-parsley-group="set1" id="type"
                                                         list="typelist" name="Type"
                                                         class="form-control" required>
@@ -213,11 +195,36 @@
                                             </div>
                                         </div>
                                         
-                                        <div class ="form-group">
+                                        
+                                        <div class ="form-group pull-right">
                                              <button class="btn btn-success col-12" type="submit" name="id" id="edtbutton">
                                                     <i class="fa fa-check"></i> save
                                                 </button>
                                         </div>
+                                        
+                                   </div>
+                                        
+                                   <div class="col-6 pull-left">
+                                        <div class="form-group">
+                                            <label class="col-md-12">Total Quantity</label>
+                                            <div class="col-md-5">
+                                                <p id="total"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-12">Initial Quantity</label>
+                                            <div class="col-md-5">
+                                                <p id="initialStock"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Initial Price</label>
+                                            <div class="col-md-5">
+                                                <p id="initialCost"></p>
+                                            </div>
+                                        </div>
+                                    </div>
                                     </form>
                                 </div>
                            ';

@@ -152,9 +152,9 @@
 
             <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability-tab '))"
                     class="btn btn"></i> Back</a></button>
+        </div>
 
-            <table class="table table-striped table-bordered">
-
+            <table id="accountabilityTable" class="table table-striped table-bordered">
             </table>
 
 </div>
@@ -238,17 +238,14 @@
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Date Transfer</th>
-                        <th>Supply Officer</th>
+                        <th>Date Transfered</th>
+                        <th>Current User</th>
+                        <th>Last User</th>
+                        <th>Remarks</th>
                     </tr>
                     </thead>
                 </table>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-
         </div>
     </div>
 </div>
