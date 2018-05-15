@@ -64,12 +64,14 @@
                     </div>
                 </div>
             </div>
+
             <!-- Detail-->
             <div hidden class="col-lg-12 detail-tab ">
                 <div class="card">
                     <div class="card-header">
                         <button type="button"  onclick="toggleDiv($('.department-tab'),$('.detail-tab '))"
-                                class="btn btn-primary fa fa-arrow-left" ></i> Back</a></button>
+                                class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back</button>
+                        <button type="button" id="#" class="btn btn-primary">Print ARE</button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -144,18 +146,20 @@
         </div>
     </div>
     <!--End of View Serial-->
-</div>
 
-
-<!-- Accountability-->
-<div hidden id="account" class="accountability col-lg-12 accountability-tab">
-
-            <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability-tab '))"
-                    class="btn btn"></i> Back</a></button>
+    <!-- Accountability-->
+    <div hidden id="account" class="accountability col-lg-12 accountability-tab">
+        <div class="card">
+            <div class="card-header">
+                <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability-tab '))"
+                        class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back</button>
+            </div>
+            <div class="card-body">
+                <table id="accountabilityTable" class="table table-striped table-bordered">
+                </table>
+            </div>
         </div>
-
-            <table id="accountabilityTable" class="table table-striped table-bordered">
-            </table>
+    </div>
 
 </div>
 

@@ -6,7 +6,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-8">
+    <div class="col-md-6 col-lg-3">
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
@@ -89,7 +89,7 @@ if ($position === 'Admin') {
 
 <?php $position = $this->session->userdata['logged_in']['position'];
 if ($position === 'Custodian') {
-    echo '<div class="col-sm-8 col-lg-3">
+    echo '<div class="col-sm-6 col-lg-3">
         <div class="card1 text-white bg-flat-color-1" style="height: 130px; padding: 15px;">
             <div class="card1-body pb-0">
                 <i class="fa fa-book" style="font-size:40px;"></i>

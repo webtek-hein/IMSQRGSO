@@ -894,6 +894,7 @@ function init_inventory() {
                 cellStyle: function (data) {
                     return {
                         css: {"color": "green"}
+
                     };
                 },
                 field: 'quantity',
