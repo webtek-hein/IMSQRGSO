@@ -1432,7 +1432,7 @@ function gettransfer(id) {
                 var name = data[i].currentname.replace(/\s/g, '&nbsp;');
 
                 $('.owner').html("<label for=\"name\">Current Owner:</label>" +
-                    " <input name=\"enduser\" class=\"name form-control\" disabled value=" + name + ">");
+                    " <input name=\"currentuser\" class=\"name form-control\" readonly value=" + name + ">");
                 $('.serialsp').html("<label for=\"name\">Serial:</label>" +
                     " <input name=\"serial\" class=\"name form-control\" readonly value=" + data[i].serial + ">");
             }
@@ -1951,6 +1951,9 @@ function accountability (dist_id) {
         }, {
             field: 'owner',
             title: 'Owner'
+        }, {
+            field: 'date',
+            title: 'Accountability Date'
         }, {
             field: 'action',
             title: 'Action'
