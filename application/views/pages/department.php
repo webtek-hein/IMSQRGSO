@@ -238,16 +238,7 @@
                 <h4 class="modal-title" id="history">History</h4>
             </div>
             <div class="modal-body">
-                <table class="table table-striped table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Date Transfered</th>
-                        <th>Current User</th>
-                        <th>Last User</th>
-                        <th>Remarks</th>
-                    </tr>
-                    </thead>
+                <table id="history" class="table table-striped table-bordered">
                 </table>
             </div>
         </div>

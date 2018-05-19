@@ -1424,6 +1424,27 @@ function viewSerial(id) {
     });
 
 }
+function gettransferlog(id){
+
+    var $historytable = $('#history');
+
+    $historytable.bootstrapTable({
+        url: 'logs/gettransfer/' + id,
+        columns: [{
+            sortable: true,
+            field: 'transfer_date',
+            title: 'Transfer date'
+        }, {
+            sortable: true,
+            field: 'current_owner',
+            title: 'Current Owner'
+        }, {
+            sortable: true,
+            field: 'last_owner',
+            title: 'Last Owner'
+        }]
+    });
+}
 function gettransfer(id) {
     $.ajax({
         url: 'inventory/gettransfer/' + id,

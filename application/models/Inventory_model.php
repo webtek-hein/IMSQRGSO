@@ -280,8 +280,7 @@ class Inventory_model extends CI_Model
                         );
                     }
 
-                    $employee = $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name')
-                        ->get('user')->row();
+                    $employee = $this->input->post('owner');
 
                     $serial_data[] = array(
                         'serial' => $value,
@@ -289,11 +288,14 @@ class Inventory_model extends CI_Model
                         'item_status' => 'Distributed',
                         'employee' => $employee
                     );
+                    $this->db->select('CONCAT(first_name," ",last_name) as name');
+                    $this->db->where('user.user_id',$employee);
+                    $emp = $this->db->get('user')->row();
 
                     $enduser_data[] = array(
                         'serial_id' => $key,
-                        'transfer_date' => $date,
-                        'name' => $employee
+                        'accountability_date' => $date,
+                        'name' => $emp->name
                     );
                 }
                 $this->db->update_batch('serial', $serial_data, 'serial');
@@ -738,7 +740,7 @@ class Inventory_model extends CI_Model
     }
 
     public function getEndUserDist($dist_id){
-        
+
             $this->db->select('enduser.*,serial.serial');
             $this->db->join('serial', 'enduser.serial_id = serial.serial_id', 'left');
             $this->db->where('serial.dist_id', $dist_id);
@@ -778,6 +780,14 @@ class Inventory_model extends CI_Model
         $this->db->set('item_status', 'UserDistributed');
         $this->db->where('serial', $serial);
         $this->db->update('serial');
+
+        $transfer_data = array(
+            'serial_id' => $serialid,
+            'last_owner' => $lastowner,
+            'current_owner' => $transferowner ,
+            'transfer_date' => $date
+        );
+        $this->db->insert('logs.transferlog',$transfer_data);
 
     }
     public function getTrans ($serialid){
@@ -1162,7 +1172,7 @@ class Inventory_model extends CI_Model
         $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
         $this->db->WHERE('date(timestamp)','CURDATE()',false);
         $this->db->WHERE('gsois.distribution.status','Accepted');
-        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');       
+        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');
         $query = $this->db->get('logs.decreaselog');
         return $query->result_array();
     }
@@ -1173,8 +1183,8 @@ class Inventory_model extends CI_Model
         $this->db->SELECT('count(logs.returnlog.ret_log_id) as totalItemsReturned');
         $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
         $this->db->WHERE('date(timestamp)','CURDATE()',false);
-        $this->db->JOIN('gsois.returnitem','gsois.returnitem.return_id = logs.returnlog.return_id');   
-        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = gsois.returnitem.dist_id');           
+        $this->db->JOIN('gsois.returnitem','gsois.returnitem.return_id = logs.returnlog.return_id');
+        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = gsois.returnitem.dist_id');
         $query = $this->db->get('logs.returnlog');
         return $query->result_array();
     }
