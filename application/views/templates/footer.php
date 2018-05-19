@@ -35,11 +35,15 @@
         '<script src="assets/js/widgets.js"></script>';
 }
 ?>
+<script src="assets/js/lib/chart-js/Chart.min.js"></script>
 <script src="assets/js/lib/vector-map/jquery.vmap.min.js"></script>
 <script src="assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
 <script src="assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
+<script src="assets/js/lib/data-table/dataTables.bootstrap4.js"></script>
 <script src="assets/js/bootstrap-dialog.min.js"></script>
-
+<script src="assets/js/sb-admin-datatables.min.js"></script>
+<script src="assets/js/sb-admin-charts.min.js"></script>
+<script src="assets/js/sb-admin.min.js"></script>
 
 </body>
 </html>

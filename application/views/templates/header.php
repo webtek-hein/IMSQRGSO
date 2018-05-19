@@ -27,6 +27,8 @@ if (isset($this->session->userdata['logged_in'])) {
     <link rel="stylesheet" href="assets/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="assets/scss/style.css">
+    <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="assets/css/sb-admin.css">
 
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
