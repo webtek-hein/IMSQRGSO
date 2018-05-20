@@ -50,14 +50,14 @@
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
                                 <table id="departmentTable" data-show-refresh = "true" data-url="inventory/viewDept/CO/11"
-                                       class="table table-no-bordered"
+                                       class="table table-bordered table-sm"
                                        data-pagination="true" data-search="true">
                                 </table>
                             </div>
                             <!--MOOE Tab-->
                             <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
                                 <!-- Implement Bootsrap table-->
-                                <table id="deptMOOEtable" data-pagination="true" data-show-refresh = "true" data-search="true" data-url="inventory/viewDept/MOOE/11" class="table table-no-bordered">
+                                <table id="deptMOOEtable" data-pagination="true" data-show-refresh = "true" data-search="true" data-url="inventory/viewDept/MOOE/11" class="table table-bordered table-sm">
                                 </table>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                             <!--Detail-->
                             <div class="tab-pane fade" id="Detail_Det" role="tabpanel" aria-labelledby="Detail-tab">
                                 <!-- Implement Bootsrap table-->
-                                <table id="detail-tab-table" class="table table-no-bordered table-hover">
+                                <table id="detail-tab-table" class="table table-bordered table-sm table-hover">
                                 </table>
                             </div>
                         </div>
@@ -155,7 +155,7 @@
                         class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back</button>
             </div>
         <div class="card-body">
-                <table id="accountTable" class="table table-striped table-bordered">
+                <table id="accountTable" class="table table-striped table-bordered table-sm">
                 </table>
         </div>
         </div>
@@ -238,7 +238,7 @@
                 <h4 class="modal-title" id="history">History</h4>
             </div>
             <div id = 'hist' class="modal-body">
-                <table id="history" class="table table-striped table-bordered">
+                <table id="history" class="table table-striped table-bordered table-sm">
                 </table>
             </div>
         </div>
@@ -255,7 +255,7 @@
         <form id="compareitem" role="form"
               action="inventory/compare/" method="POST">
             <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                <table class="table table-no-bordered"
+                <table class="table table-bordered table-sm"
                        data-pagination="true" data-search="true" id="reconcileTable">
                 </table>
             </div>
