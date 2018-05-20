@@ -237,7 +237,7 @@
             <div class="modal-header">
                 <h4 class="modal-title" id="history">History</h4>
             </div>
-            <div class="modal-body">
+            <div id = 'hist' class="modal-body">
                 <table id="history" class="table table-striped table-bordered">
                 </table>
             </div>
