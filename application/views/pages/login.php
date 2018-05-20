@@ -67,6 +67,7 @@
                     </div>
                              <div class="container-login100-form-btn">
                             <input type="submit" class="login100-form-btn" value=" Login " name="submit"/>
+                                 <a href="<?php echo base_url() ?>forget" class="pull-right">Forgot Password</a>
                 </div>
                 <!--/Form with header-->
 
