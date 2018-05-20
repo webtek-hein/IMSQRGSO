@@ -332,12 +332,36 @@
                             <!--Detail-->
                             <div class="table-responsive tab-pane fade show active" id="Detail_Det" role="tabpanel"
                                  aria-labelledby="Detail-tab">
+
+                                <ul class="nav nav-tabs" id="serialTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="serialw-tab" data-toggle="tab" href="#withSerial"
+                                           role="tab"
+                                           aria-controls="W/Serial" aria-selected="true">With Serial</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="serialw-tab" data-toggle="tab" href="#woSerial"
+                                           role="tab"
+                                           aria-controls="woSerial" aria-selected="false">Without Serial</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-pane fade" id="withSerial" role="tabpanel"
+                                     aria-labelledby="Detail-tab">
+
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
                                     <table id="detail-tab-table" data-search="true"
                                            class="table table-no-bordered table-hover">
                                     </table>
                                 </form>
+                                </div>
+
+                                <div class="tab-pane fade" id="woSerial" role="tabpanel"
+                                     aria-labelledby="Detail-tab">
+
+                                </div>
+
                                 <?php if ($position === 'Custodian') {
                                     echo '<btn class="btn btn-success" onclick="insertRow()">Add new detail</btn>';
                                 }
