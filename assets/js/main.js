@@ -1862,27 +1862,51 @@ function revertDetail($det_id, $serialStatus) {
 
 //for reconciliation
 function reconcile() {
-    $date = $('#date').val();
+    $date = $('#inventoryDate').val();
+    $status = $('#serialTab').find('.active').data('status');
     $id = [];
     $q = [];
     $p = [];
     $r = [];
+    var counter = 0;
     var $recon = $('.reconitem ');
 
     for (var i = 0; i <= $recon.length - 1; i++) {
+        if($('.quantity')[i].textContent != $recon[i].value){
+            counter++;
+        }
         $q.push($('.quantity')[i].textContent);
         $p.push($recon[i].value);
         $r.push($('.remarks')[i].value)
         $id.push($('.reconid')[i].value)
     }
-    $.ajax({
-        url: "inventory/reconcile",
-        method: "POST",
-        data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
-        success: function (data) {
-            $('.invdate').modal('toggle');
+
+    if($status === 1){
+        $('.invdate').modal('toggle');
+        if(counter >= 1){
+            alert();
         }
-    });
+        // $.ajax({
+        //     url: "inventory/getDiscrepancy",
+        //     method: "POST",
+        //     data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
+        //     success: function (data) {
+        //         $('.invdate').modal('toggle');
+        //     }
+        // });
+
+    }else{
+        $.ajax({
+            url: "inventory/reconcile",
+            method: "POST",
+            data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
+            success: function (data) {
+                $('.invdate').modal('toggle');
+            }
+        });
+    }
+
+
 }
 
 function printToPDF() {
