@@ -55,7 +55,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.addSupplier'))"
-                                class="btn btn-primary"></i> Back</a></button>
+                                class="btn btn-primary fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <div class="tab-content pl-3 p-1 AddSup hidden" id="myTabContent">
@@ -95,7 +95,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.editSupplier-tab'))"
-                                class="btn btn-primary"></i> Back</a></button>
+                                class="btn btn-primary fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <?php if ($position === 'Custodian') {
                         echo '<div class="card-body">
