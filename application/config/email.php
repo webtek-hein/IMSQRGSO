@@ -7,13 +7,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Time: 7:15 PM
  */
 
-$config['mailpath'] = '/usr/sbin/sendmail';
+//$config['mailpath'] = '/usr/sbin/sendmail';
 $config['charset'] = 'iso-8859-1';
 $config['wordwrap'] = TRUE;
 $config['newline']  = "\r\n";
 $config['mailtype'] = 'text';
 
-$config['protocol'] = 'smtp';
+$config['protocol'] = 'mail';
 $config['smtp_host']='smtp.gmail.com';
 $config['smtp_port']='465';
 $config['smtp_user'] = 'emailpassswordsup@gmail.com';

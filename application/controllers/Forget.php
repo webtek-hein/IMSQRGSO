@@ -57,7 +57,7 @@ class Forget extends CI_Controller
         $this->email->from('emailpassswordsup@gmail.com', 'testing');
         $this->email->to($user->email);
         $this->email->subject('Password reset');
-        $this->email->message('You have requested the new password, Here is you new password:'. $password);
+        $this->email->message('You have requested a new password, Here is you temporary password:'. $password);
         $this->email->send();
         echo $this->email->print_debugger();
 
