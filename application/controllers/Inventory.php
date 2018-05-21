@@ -142,7 +142,7 @@ class Inventory extends CI_Controller
                                     "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed],$ret[retq])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a>";
                             } else {
                                 $action =
-                                    "<button onclick='accountability($detail[dist_id])' id=\"accountButton\" type=\'button\' class=\"btn btn-success\">Accountability</button>
+                                    "<button onclick='accountability($detail[did])' id=\"accountButton\" type=\'button\' class=\"btn btn-success\">Accountability</button>
                             <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
                             <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
 
@@ -315,12 +315,13 @@ class Inventory extends CI_Controller
         $data = array();
         foreach ($list as $serial) {
             $action = "<button onclick=gettransfer($serial[serial_id]);  id=\"transferButton\" class=\"btn btn-success\"  data-id='$serial[serial_id]' data-toggle=\"modal\" data-target=\".transfer\">Transfer</button>
-                            <button type=\"button\" id=\"historyButton\" class=\"btn btn-primary\" data-id='$serial[serial_id]'data-toggle=\"modal\" data-target=\".history\">History</button>";
+                            <button onclick=gettransferlog($serial[serial_id]); type=\"button\" id=\"historyButton\" class=\"btn btn-primary\" data-id='$serial[serial_id]'>History</button>";
 
                 $data[] = array(
                     'serial_id' => $serial['serial_id'],
                     'serial' => $serial['serial'],
                     'owner' => $serial['name'],
+                    'date' => $serial['accountability_date'] . ' to ' . date("Y-m-d"),
                     'action' => $action
                 );
         }
@@ -759,4 +760,61 @@ class Inventory extends CI_Controller
     function getRetData($status,$id){
         echo json_encode($this->inv->getRetData($status,$id));
     }
+
+    function reconcileInventory(){
+        echo json_encode($this->inv->reconcileInv());
+    }
+
+
+    function getDiscrepancy(){
+        $list = $this->inv->getDiscrepancy();
+        $data = array();
+        foreach ($list as $item) {
+                $data[] = array(
+                    'item_name' => $item['item_name'],
+                    'item_id' => $item['item_id'],
+                    'serials' => implode(array_map(function($serial){return('<input class="item" type="checkbox" value='.$serial.' //>'.$serial.'<br>');},
+                        explode(',',$item['serials'])))
+                );
+        }
+
+        echo json_encode($data);
+    }
+    function recSerializedItems(){
+        $this->inv->recSerializedItems();
+    }
+    function viewItemPerStatus($status){
+        $list = $this->inv->viewItemPerSerial($status);
+        $data = array();
+        foreach ($list as $item) {
+            $count_input = "<input autofocus type='number' min='0' name='reconcileitem[]' class='reconitem form-control' value=''>";
+
+            $remarks_input = "<textarea autofocus type='text' name='remarks[]' class='remarks'></textarea>";
+            $cost = "PHP " . number_format($item['cost'], 2);
+            $totalCost = "PHP " . number_format($item['totalcost'], 2);
+            if ($item['serialStatus'] === '1') {
+                $serialStatus = 'Yes';
+            } else {
+                $serialStatus = 'No';
+            };
+
+            $data[] = array(
+                'id' => $item['recon_id'],
+                'item_id' => $item['item_id'],
+                'item' => $item['item_name'],
+                'description' => $item['item_description'],
+                'quantity' => $quantity = $item['quantity'],
+                'unit' => $item['unit'],
+                'cost' => $cost,
+                'totalcost' => $totalCost,
+                'serialStatus' => $serialStatus,
+                'button' => 'Accept',
+                'count' => $count_input,
+                'result' => 'Enter physical count',
+                'remarks' => $remarks_input
+            );
+        }
+        echo json_encode($data);
+    }
+
 }

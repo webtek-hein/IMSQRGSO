@@ -49,7 +49,7 @@ class Inventory_model extends CI_Model
             $item_id = array('item_id' => $this->db->insert_id());
 
 
-            $this->db->insert('reconciliation',$item_id);
+            $this->db->insert('reconciliation',$item_id + array('beginning_inventory'=>$date));
 
             // 2. Insert to item detail
             $this->db->insert('itemdetail', $data1 + $item_id);
@@ -279,16 +279,28 @@ class Inventory_model extends CI_Model
                             'dec_log_id' => $dec_log_id
                         );
                     }
+
                     $employee = $this->input->post('owner');
+
                     $serial_data[] = array(
                         'serial' => $value,
                         'dist_id' => $dist_id,
                         'item_status' => 'Distributed',
                         'employee' => $employee
                     );
+                    $this->db->select('CONCAT(first_name," ",last_name) as name');
+                    $this->db->where('user.user_id',$employee);
+                    $emp = $this->db->get('user')->row();
+
+                    $enduser_data[] = array(
+                        'serial_id' => $key,
+                        'accountability_date' => $date,
+                        'name' => $emp->name
+                    );
                 }
                 $this->db->update_batch('serial', $serial_data, 'serial');
                 $this->db->insert_batch('logs.decreaseserial', $serial_id);
+                $this->db->insert_batch('enduser',$enduser_data);
             }
         } else {
             $employee = $this->input->post('owner');
@@ -378,6 +390,20 @@ class Inventory_model extends CI_Model
         $this->db->select('item.*,(cost*quantity) as totalcost,recon_id');
         $this->db->where('item_type', $type);
         $this->db->join('reconciliation','reconciliation.item_id = item.item_id','inner');
+        $this->db->where('reconciliation.inventory_date',null,false);
+        $this->db->order_by('item_id','desc');
+        $query = $this->db->get('item');
+        return $query->result_array();
+    }
+
+
+    public
+    function viewItemPerSerial($status)
+    {
+        $this->db->select('item.*,(cost*quantity) as totalcost,recon_id');
+        $this->db->where('serialStatus', $status);
+        $this->db->join('reconciliation','reconciliation.item_id = item.item_id','inner');
+        $this->db->where('reconciliation.inventory_date',null,false);
         $this->db->order_by('item_id','desc');
         $query = $this->db->get('item');
         return $query->result_array();
@@ -590,7 +616,7 @@ class Inventory_model extends CI_Model
     {
         $this->db->select('CONCAT(first_name," ",last_name) as receiver,
         distribution.dist_id,item.item_type,item.serialStatus,quantity_distributed,distribution.cost,
-        distribution.status as dist_stat,distribution.PR_no,itemdetail.*,department,supplier_name,serial.serial_id');
+        distribution.status as dist_stat,distribution.PR_no,itemdetail.*,department,supplier_name,serial.serial_id,serial.dist_id as did');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
         $this->db->join('serial', 'serial.serial_id = distribution.dist_id', 'inner');
         $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
@@ -649,14 +675,6 @@ class Inventory_model extends CI_Model
         $cost = $this->db->select('cost')->where_in($item_id)->get('item')->result_array();
         $item_det_id = $this->db->select('item_det_id')->where_in($item_id)->get('itemdetail')->result_array();
 
-
-
-        $serials = $this->db->select('item_det_id')->where_in($item_det_id)->get('serial')->result_array();
-        if(!empty($serials)){
-            $this->db->set('record_status','0');
-            $this->db->where_in($serials);
-            $this->db->update('serial');
-        }
         foreach ($id as $key => $value) {
             $data[] = array(
                 'recon_id' => $value,
@@ -729,16 +747,10 @@ class Inventory_model extends CI_Model
 
     public function getEndUserDist($dist_id){
 
-            $status = array('Distributed','UserDistributed');
-            $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,enduser.name AS enduser,item.serialStatus,serial.*');
-            $this->db->join('user', 'user.user_id = serial.employee', 'inner');
-            $this->db->join('enduser', 'enduser.serial_id = serial.serial_id', 'left');
-            $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
-            $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
-            $this->db->join('distribution', 'distribution.dist_id = serial.dist_id', 'inner');
+            $this->db->select('enduser.*,serial.serial');
+            $this->db->join('serial', 'enduser.serial_id = serial.serial_id', 'left');
             $this->db->where('serial.dist_id', $dist_id);
-            $this->db->where_in('item_status', $status);
-            $query = $this->db->get('serial');
+            $query = $this->db->get('enduser');
             return $query->result_array();
 
     }
@@ -752,14 +764,15 @@ class Inventory_model extends CI_Model
 
     public function userdistrib($position,$user){
 
-        $employee = $this->input->post('transfername');
+        $lastowner = $this->input->post('currentuser');
+        $transferowner = $this->input->post('transfername');
         $serial = $this->input->post('serial');
         $serialid = $this->input->post('serialid');
         $date = $this->input->post('date');
         $data = array(
-            'name' => $employee,
+            'name' => $transferowner,
             'serial_id' => $serialid,
-            'transfer_date' => $date
+            'accountability_date' => $date
         );
         $this->db->where('enduser.serial_id',$serialid);
         $query = $this->db->get('enduser');
@@ -773,6 +786,14 @@ class Inventory_model extends CI_Model
         $this->db->set('item_status', 'UserDistributed');
         $this->db->where('serial', $serial);
         $this->db->update('serial');
+
+        $transfer_data = array(
+            'serial_id' => $serialid,
+            'last_owner' => $lastowner,
+            'current_owner' => $transferowner ,
+            'transfer_date' => $date
+        );
+        $this->db->insert('logs.transferlog',$transfer_data);
 
     }
     public function getTrans ($serialid){
@@ -1157,7 +1178,7 @@ class Inventory_model extends CI_Model
         $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
         $this->db->WHERE('date(timestamp)','CURDATE()',false);
         $this->db->WHERE('gsois.distribution.status','Accepted');
-        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');       
+        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = logs.decreaselog.dist_id');
         $query = $this->db->get('logs.decreaselog');
         return $query->result_array();
     }
@@ -1168,8 +1189,8 @@ class Inventory_model extends CI_Model
         $this->db->SELECT('count(logs.returnlog.ret_log_id) as totalItemsReturned');
         $this->db->WHERE('gsois.distribution.supply_officer_id', $user_id);
         $this->db->WHERE('date(timestamp)','CURDATE()',false);
-        $this->db->JOIN('gsois.returnitem','gsois.returnitem.return_id = logs.returnlog.return_id');   
-        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = gsois.returnitem.dist_id');           
+        $this->db->JOIN('gsois.returnitem','gsois.returnitem.return_id = logs.returnlog.return_id');
+        $this->db->JOIN('gsois.distribution','gsois.distribution.dist_id = gsois.returnitem.dist_id');
         $query = $this->db->get('logs.returnlog');
         return $query->result_array();
     }
@@ -1339,5 +1360,140 @@ class Inventory_model extends CI_Model
         }
         return $query->result_array();
     }
+
+    //inventory with no discrepancy
+    public function reconcileInv(){
+        $remarks = $this->input->post('remarks');
+        $logical = $this->input->post('logical');
+        $physical = $this->input->post('physical');
+        $date = $this->input->post('date');
+        $id = $this->input->post('id');
+        $newReconcileData = array();
+        $data = array();
+
+        $item_id = $this->db->select('item_id')->where_in('recon_id',$id)->get('reconciliation')->result_array();
+        $cost = $this->db->select('cost')->where_in($item_id)->get('item')->result_array();
+
+        foreach ($id as $key => $value) {
+            $data[] = array(
+                'recon_id' => $value,
+                'inventory_date' => $date,
+                'physical_count' => $physical[$key],
+                'last_quantity' => $logical[$key],
+                'remarks' => $remarks[$key],
+                'ending_cost' => $cost[$key]['cost']
+            );
+
+            $newReconcileData[] = array(
+                'item_id' => $item_id[$key]['item_id'],
+                'beginning_inventory'=>$date
+            );
+        }
+
+        $this->db->update_batch('reconciliation',$data,'recon_id');
+
+        $this->db->insert_batch('reconciliation',$newReconcileData);
+    }
+
+    public function getDiscrepancy(){
+        $logical = $this->input->post('logical');
+        $physical = $this->input->post('physical');
+        $id = $this->input->post('id');
+        $data = array();
+        $item[] = array();
+        $missing = 0;
+
+        $item_id = $this->db->select('item_id')->where_in('recon_id',$id)->get('reconciliation')->result_array();
+
+        foreach ($id as $key => $value) {
+            $missing = $logical[$key] - $physical[$key];
+            if($missing > 0){
+                $item[] = array('item.item_id'=>$item_id[$key]['item_id']);
+                $data[] = array(
+                    'recon_id' => $value,
+                    'item_id' => $item_id[$key]['item_id'],
+                    'missing' => $missing,
+                );
+            }
+        }
+
+        $serial = $this->db->select('item_name,item.item_id, GROUP_CONCAT(serial) as serials')
+            ->join('itemdetail','itemdetail.item_det_id = serial.item_det_id','inner')
+            ->join('item','item.item_id = itemdetail.item_id','inner')
+            ->where('serial !=',null,false)
+            ->where('record_status','1')
+            ->where_in($item)->group_by('item.item_id')
+            ->get('serial')->result_array();
+
+        return $serial;
+
+    }
+    function recSerializedItems(){
+        $remarks = $this->input->post('remarks');
+        $logical = $this->input->post('logical');
+        $physical = $this->input->post('physical');
+        $date = $this->input->post('date');
+        $id = $this->input->post('id');
+        $serial = $this->input->post('serials');
+        $newReconcileData = array();
+        $data = array();
+        $serialList = array();
+
+        $item_id = $this->db->select('item_id')->where_in('recon_id',$id)->get('reconciliation')->result_array();
+        $cost = $this->db->select('cost')->where_in($item_id)->get('item')->result_array();
+
+        foreach ($id as $key => $value) {
+            $data[] = array(
+                'recon_id' => $value,
+                'inventory_date' => $date,
+                'physical_count' => $physical[$key],
+                'last_quantity' => $logical[$key],
+                'remarks' => $remarks[$key],
+                'ending_cost' => $cost[$key]['cost']
+            );
+
+            $newReconcileData[] = array(
+                'item_id' => $item_id[$key]['item_id'],
+                'beginning_inventory'=>$date
+            );
+        }
+
+        $item = $this->db->select('item.item_id,count(item.item_id) as quantity')
+            ->join('itemdetail','itemdetail.item_det_id = serial.item_det_id','inner')
+            ->join('item','item.item_id = itemdetail.item_id','inner')
+            ->where_in('serial',$serial)
+            ->group_by('item.item_id')->get('serial')->result_array();
+
+        $itemdetail = $this->db->select('itemdetail.item_det_id,count(itemdetail.item_det_id) as quantity')
+            ->join('itemdetail','itemdetail.item_det_id = serial.item_det_id','inner')
+            ->where_in('serial',$serial)
+            ->group_by('itemdetail.item_det_id')->get('serial')->result_array();
+
+        foreach ($item as $list){
+            $this->db->set('quantity', 'quantity-'.$list['quantity'], FALSE);
+            $this->db->where('item_id', $list['item_id']);
+            $this->db->update('item');
+        }
+
+        foreach ($itemdetail as $list){
+            $this->db->set('quantity', 'quantity-'.$list['quantity'], FALSE);
+            $this->db->where('item_det_id', $list['item_det_id']);
+            $this->db->update('itemdetail');
+        }
+
+
+        $this->db->insert_batch('reconciliation',$newReconcileData,'item_id');
+
+        $this->db->update_batch('reconciliation',$data,'recon_id');
+
+        $this->db->set('record_status','0');
+        $this->db->where_in('serial',$serial);
+        $this->db->update('serial');
+
+
+
+
+    }
+
 
 }

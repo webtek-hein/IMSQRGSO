@@ -50,26 +50,28 @@
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
                                 <table id="departmentTable" data-show-refresh = "true" data-url="inventory/viewDept/CO/11"
-                                       class="table table-no-bordered"
+                                       class="table table-bordered table-sm"
                                        data-pagination="true" data-search="true">
                                 </table>
                             </div>
                             <!--MOOE Tab-->
                             <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
                                 <!-- Implement Bootsrap table-->
-                                <table id="deptMOOEtable" data-pagination="true" data-show-refresh = "true" data-search="true" data-url="inventory/viewDept/MOOE/11" class="table table-no-bordered">
+                                <table id="deptMOOEtable" data-pagination="true" data-show-refresh = "true" data-search="true" data-url="inventory/viewDept/MOOE/11" class="table table-bordered table-sm">
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- Detail-->
             <div hidden class="col-lg-12 detail-tab ">
                 <div class="card">
                     <div class="card-header">
                         <button type="button"  onclick="toggleDiv($('.department-tab'),$('.detail-tab '))"
-                                class="btn btn-primary fa fa-arrow-left" ></i> Back</a></button>
+                                class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back</button>
+                        <button type="button" id="#" class="btn btn-primary">Print ARE</button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -102,7 +104,7 @@
                             <!--Detail-->
                             <div class="tab-pane fade" id="Detail_Det" role="tabpanel" aria-labelledby="Detail-tab">
                                 <!-- Implement Bootsrap table-->
-                                <table id="detail-tab-table" class="table table-no-bordered table-hover">
+                                <table id="detail-tab-table" class="table table-bordered table-sm table-hover">
                                 </table>
                             </div>
                         </div>
@@ -144,18 +146,20 @@
         </div>
     </div>
     <!--End of View Serial-->
-</div>
 
-
-<!-- Accountability-->
-<div hidden id="account" class="accountability col-lg-12 accountability-tab">
-
-            <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability-tab '))"
-                    class="btn btn"></i> Back</a></button>
-
-            <table class="table table-striped table-bordered">
-
-            </table>
+    <!-- Accountability-->
+    <div hidden id="account" class="accountability col-lg-12 accountability-tab">
+        <div class="card">
+            <div class="card-header">
+                <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability-tab '))"
+                        class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back</button>
+            </div>
+        <div class="card-body">
+                <table id="accountTable" class="table table-striped table-bordered table-sm">
+                </table>
+        </div>
+        </div>
+    </div>
 
 </div>
 
@@ -225,32 +229,21 @@
     </div>
 </div>
 </form>
-<!--History-->
-<div class="modal fade history" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
 
-            <div class="modal-header">
-                <h4 class="modal-title" id="history">History</h4>
-            </div>
-            <div class="modal-body">
-                <table class="table table-striped table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Date Transfer</th>
-                        <th>Supply Officer</th>
-                    </tr>
-                    </thead>
+<!--History-->
+<div hidden id="historyPage" class="history col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <button type="button" onclick="toggleDiv($('.department-tab'),$('.history'))"
+                    class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back</button>
+        </div>
+
+            <div id = 'hist' class="table-responsive-sm-sm tab-content pl-3 p-1">
+                <table id="history" class="table table-striped table-bordered table-sm">
                 </table>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-
-        </div>
     </div>
+
 </div>
 
 <!--Reconcile Page-->
@@ -263,7 +256,7 @@
         <form id="compareitem" role="form"
               action="inventory/compare/" method="POST">
             <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                <table class="table table-no-bordered"
+                <table class="table table-bordered table-sm"
                        data-pagination="true" data-search="true" id="reconcileTable">
                 </table>
             </div>

@@ -45,6 +45,8 @@
                                     <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
                                  <button id="reconcileButton" class="btn btn-outline-success">
                                  <i class="fa fa-balance-scale"></i> RECONCILE</button>
+                                <button id="reconcileButton" class="btn btn-outline-success">
+                                 <i class="fa fa-balance-scale"></i> Generate AIR </button>
                                 </div>';
                     }
                     ?>
@@ -69,10 +71,10 @@
                                  aria-labelledby="CO-tab">
                                 <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="itemtable"
-                                       class="table table-no-bordered table-hover"></table>';
+                                       class="table table-bordered table-sm table-hover"></table>';
                                 } else {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="departmentTable"
-                                       class="table table-no-bordered table-hover"></table>';
+                                       class="table table-bordered table-sm table-hover"></table>';
                                 }
                                 ?>
                             </div>
@@ -81,10 +83,10 @@
                                  aria-labelledby="MOOE-tab">
                                 <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="MOOEtable"
-                                       class="table table-no-bordered table-hover"></table>';
+                                       class="table table-bordered table-sm table-hover"></table>';
                                 } else {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="deptMOOEtable"
-                                       class="table table-no-bordered table-hover"></table>';
+                                       class="table table-bordered table-sm table-hover"></table>';
                                 }
                                 ?>
                             </div>
@@ -97,7 +99,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.inventory-tab'),$('.detail-tab '))"
-                                class="btn btn-primary fa fa-arrow-left"></i> Back</a></button>
+                                class="btn btn-outline-primary fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -131,10 +133,12 @@
                                     <form id="editInformation"
                                           class="serialForm form-horizontal form-label-left"
                                           action="inventory/edititem" method="POST">
-
+                                   
+                                   <div class="col-6 pull right">
+                                   
                                         <div class="form-group">
                                             <label class="col-md-12">Item Name</label>
-                                            <div class="col-md-5">
+                                            <div class="col-md-12">
                                                 <input id="itemname"
                                                        type="text" name="item"
                                                        class="form-control"
@@ -146,7 +150,7 @@
 
                                         <div class="form-group">
                                             <label class="col-md-12">Description</label>
-                                            <div class="col-md-5">
+                                            <div class="col-md-12">
                                             <textarea id="itemdesc" data-parsley-group="set1"
                                                       name="description" id="message"
                                                       class="form-control"
@@ -161,28 +165,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-12">Total Quantity</label>
-                                            <div class="col-md-5">
-                                                <p id="total"></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-12">Initial Quantity</label>
-                                            <div class="col-md-5">
-                                                <p id="initialStock"></p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-12">Initial Price</label>
-                                            <div class="col-md-5">
-                                                <p id="initialCost"></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
                                             <label class="col-md-12">Unit</label>
-                                            <div class="col-md-5">
+                                            <div class="col-md-12">
                                                 <input id="unit" name="Unit" data-parsley-group="set1"
                                                        class="form-control" class="unit"
                                                        list="list"
@@ -203,7 +187,7 @@
 
                                         <div class="form-group">
                                             <label class="col-md-12">Type</label>
-                                            <div class="col-md-5">
+                                            <div class="col-md-12">
                                                 <select id="itemtype" data-parsley-group="set1" id="type"
                                                         list="typelist" name="Type"
                                                         class="form-control" required>
@@ -213,11 +197,36 @@
                                             </div>
                                         </div>
                                         
-                                        <div class ="form-group">
+                                        
+                                        <div class ="form-group pull-right">
                                              <button class="btn btn-success col-12" type="submit" name="id" id="edtbutton">
                                                     <i class="fa fa-check"></i> save
                                                 </button>
                                         </div>
+                                        
+                                   </div>
+                                        
+                                   <div class="col-6 pull-left">
+                                        <div class="form-group">
+                                            <label class="col-md-12">Total Quantity</label>
+                                            <div class="col-md-5">
+                                                <p id="total"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-12">Initial Quantity</label>
+                                            <div class="col-md-5">
+                                                <p id="initialStock"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Initial Price</label>
+                                            <div class="col-md-5">
+                                                <p id="initialCost"></p>
+                                            </div>
+                                        </div>
+                                    </div>
                                     </form>
                                 </div>
                            ';
@@ -325,12 +334,14 @@
                             <!--Detail-->
                             <div class="table-responsive tab-pane fade show active" id="Detail_Det" role="tabpanel"
                                  aria-labelledby="Detail-tab">
+
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
                                     <table id="detail-tab-table" data-search="true"
-                                           class="table table-no-bordered table-hover">
+                                           class="table table-bordered table-sm table-hover">
                                     </table>
                                 </form>
+
                                 <?php if ($position === 'Custodian') {
                                     echo '<btn class="btn btn-success" onclick="insertRow()">Add new detail</btn>';
                                 }
@@ -356,7 +367,9 @@
 
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox" class="check" id="checkAll" style="width:20px;height:20px;background:white;border-radius:5px;border:2px solid #555;"> Check All
+                                                            <input type="checkbox" class="check" id="checkAll"
+                                                                   style="width:20px;height:20px;background:white;border-radius:5px;border:2px solid #555;">
+                                                            Check All
                                                         </label>
                                                     </div>
 
@@ -376,11 +389,12 @@
                             <!--General Ledger-->
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
-                                <button onclick="printToPDF()" class="btn btn-primary fa fa-download">Download as PDF</button>
+                                <button onclick="printToPDF()" class="btn btn-primary fa fa-download">Download as PDF
+                                </button>
                                 <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
-                                       class="table-sm table table-no-bordered table-hover">
+                                       class="table-sm table table-bordered table-sm table-hover">
                                 </table>
                             </div>
                             <!--End of General Ledger-->
@@ -389,7 +403,7 @@
                             <div class="tab-pane fade" id="removed_Items" role="tabpanel"
                                  aria-labelledby="removed-tab">
                                 <table id="removed-table" data-search="true" data-show-refresh='true'
-                                       class="table-sm table table-no-bordered table-hover">
+                                       class="table-sm table table-bordered table-sm table-hover">
                                 </table>
                             </div>
                             <!--End of Removed Items-->
@@ -452,7 +466,9 @@
                                                 </select>
                                             </div>
                                             <div class="col-2 has-feedback">
-                                                <input type="checkbox" tabindex="-1" name="serialStatus[]" style="width:30px;height:30px;background:white;border-radius:5px;border:2px solid #555;" value="1"> With serial
+                                                <input type="checkbox" tabindex="-1" name="serialStatus[]"
+                                                       style="width:30px;height:30px;background:white;border-radius:5px;border:2px solid #555;"
+                                                       value="1"> With serial
                                             </div>
                                         </div>
                                     </div>
@@ -572,7 +588,8 @@
 <div hidden class="generateReport col-lg-12">
     <div class="card">
         <div class="card-header">
-            <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))" class="btn btn-primary fa fa-arrow-left">
+            <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))"
+                    class="btn btn-primary fa fa-arrow-left">
                 Back
             </button>
             <button onclick="printToPDFreport()" class="btn btn-primary fa fa-download">Download as PDF</button>
@@ -603,7 +620,7 @@
                   </div>-->
             <div class="returnedReport">
                 <table id="reportTable" data-show-refresh="true" data-search="true" data-pagination="true"
-                       class="table-sm table table-no-bordered table-hover">
+                       class="table-sm table table-bordered table-sm table-hover">
                 </table>
             </div>
 
@@ -973,20 +990,46 @@
 </div>
 <!--end of Return-->
 <!--Reconcile Page-->
-<!--add inventory date-->
 <div hidden class="reconcilePage col-lg-12">
     <div class="card">
         <div class="card-header">
-            <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))" class="btn btn-primary fa fa-arrow-left">Back</button>
-            <button onclick="printToPDFreconcile()" class="btn btn-primary fa fa-download">Download as PDF</button>
+            <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))"
+                    class="btn btn-primary fa fa-arrow-left"> Back
+            </button>
+            <button onclick="printToPDFreconcile()" class="btn btn-primary fa fa-download"> Download as PDF</button>
         </div>
-        <form id="compareitem" role="form"
-              action="inventory/compare/" method="POST">
-            <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                <table class="table table-no-bordered"
-                       data-pagination="true" data-search="true" id="reconcileTable">
-                </table>
+        <div class="card-body">
+
+            <ul class="nav nav-tabs" id="serialTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-status="1" id="non-serialized-tab" data-toggle="tab" href="#nonSerTab"
+                       role="tab"
+                       aria-controls="serialized" aria-selected="false">Serialized Items</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-status="0" id="serialized-tab" data-toggle="tab" href="#serTab"
+                       role="tab"
+                       aria-controls="co" aria-selected="true">non-Serialized Items</a>
+                </li>
+
+            </ul>
+            <div class="tab-content pl-3 p-1" id="">
+                <div class="table-responsive-sm tab-pane fade show active" id="nonSerTab" role="tabpanel"
+                     aria-labelledby="nonSer-tab">
+                    <table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="serializedItems"
+                           class="table table-bordered table-sm table-hover"></table>
+                </div>
+                <div class="table-responsive-sm  tab-pane fade " id="serTab"
+                     role="tabpanel"
+                     aria-labelledby="nonSerialized-tab">
+                  <table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="withoutSerial"
+                                       class="table table-bordered table-sm table-hover"></table>
+
+                </div>
+
             </div>
+        </div>
+
     </div>
     <a type="button" class="compare btn btn-success" data-toggle="modal"
        data-target=".invdate">Reconcile Items</a>
@@ -994,6 +1037,22 @@
 
 </div>
 
+<div hidden class="discrepancies col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <button type="button" onclick="toggleDiv($('.inventory-tab'),$('.discrepancies'))"
+                    class="btn btn-primary fa fa-arrow-left"> Back
+            </button>
+        </div>
+
+        <div class="card-body">
+            <p>Please select the serials that was lost: </p>
+            <div id="items">Serial not found.</div>
+            <button type="button" onclick="toggleDiv($('.reconcilePage'),$('.discrepancies'));">Cancel</button>
+            <button type="button" onclick="getAllSerial()">Submit</button>
+        </div>
+    </div>
+</div>
 <!--End of Reconcile Page-->
 
 <div class="invdate modal fade" id="addinvdate" tabindex="-1" role="dialog"
@@ -1012,7 +1071,7 @@
                 <div class="form-group">
                     <div class="col-md-10">
                         <label for="invdate">Date of Inventory</label>
-                        <input id="date" class="form-control col-md-7 col-xs-12"
+                        <input id="inventoryDate" class="form-control col-md-7 col-xs-12"
                                data-validate-length-range="6"
                                data-validate-words="2" name="date" required type="date">
                     </div>

@@ -222,7 +222,7 @@
 
                 <div class="x_content">
                     <div class="x_panel">
-                        <table id="datatable" data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/serial" data-show-toggle="true" class="table table-striped table-bordered">
+                        <table id="datatable" data-pagination="true" data-search="true" data-toggle="table" data-url="inventory/serial" data-show-toggle="true" class="table table-striped table-bordered table-sm">
                             <thead>
                             <tr data-toggle="collapse" data-target="#accordion" class="clickable">
                                 <th data-sortable="true">Serial no.</th>

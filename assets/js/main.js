@@ -497,7 +497,7 @@ function detail(id) {
                 url: 'inventory/showRemovedItems/' + id,
                 columns: [{
                     field: 'PO',
-                    title: 'PO number'
+                    title: 'PO Number'
                 }, {
                     field: 'del',
                     title: 'Delivery Date'
@@ -556,7 +556,7 @@ function deptDet(id, position, dept_id) {
                     url: 'inventory/detail/dept/' + id+'/'+dept_id,
                     columns: [{
                         field: 'PR',
-                        title: 'PR number'
+                        title: 'PR Number'
                     }, {
                         field: 'receiver',
                         title: 'Supply Officer'
@@ -672,11 +672,12 @@ function init_inventory() {
     var $MOOEtable = $('#MOOEtable');
     var $supplier = $('#supplier-table');
     var $userTable = $('#user-table');
-    var $reconcile = $('#reconcileTable');
+    var $ws = $('#withoutSerial');
+    var $serializedItems = $('#serializedItems');
 
-    $reconcile.bootstrapTable({
+    $ws.bootstrapTable({
         pageSize: 10,
-        url: 'inventory/viewItem/CO',
+        url: 'inventory/viewItemPerStatus/0',
         resizable: true,
 
         columns: [{
@@ -687,11 +688,11 @@ function init_inventory() {
         }, {
             sortable: true,
             field: 'item',
-            title: 'NAME'
+            title: 'Name'
         }, {
             sortable: true,
             field: 'description',
-            title: 'DESCRIPTION'
+            title: 'Description'
         }, {
             sortable: true,
             cellStyle: function (data) {
@@ -701,32 +702,23 @@ function init_inventory() {
                 };
             },
             field: 'quantity',
-            title: 'IN-STOCK'
+            title: 'In-Stock'
         }, {
             sortable: true,
             field: 'unit',
-            title: 'UNIT'
+            title: 'Unit'
         }, {
             sortable: true,
             field: 'cost',
-            title: 'Unit COST'
+            title: 'Unit Cost'
         }, {
             sortable: true,
             field: 'totalcost',
-            title: 'Total COST'
-        }, {
-            sortable: true,
-            field: 'serialStatus',
-            title: 'Serial',
-            cellStyle: function (data) {
-                return {
-                    css: {"color": "green"}
-                };
-            }
+            title: 'Total Cost'
         }, {
             sortable: true,
             field: 'count',
-            title: 'PHYSICAL COUNT'
+            title: 'Physical Count'
         }, {
             sortable: true,
             cellStyle: function (data) {
@@ -736,12 +728,80 @@ function init_inventory() {
                 };
             },
             field: 'result',
-            title: 'RESULT'
+            title: 'Results'
 
         }, {
             sortable: true,
             field: 'remarks',
-            title: 'REMARKS'
+            title: 'Remarks'
+        }
+        ]
+        // }, {
+        //     sortable: true,
+        //     field: 'Price',
+        //     title: 'PRICE'
+        // }]
+    });
+
+    $serializedItems.bootstrapTable({
+        pageSize: 10,
+        url: 'inventory/viewItemPerStatus/1',
+        resizable: true,
+
+        columns: [{
+            formatter: function (data, row) {
+                return "<input class=reconid hidden value=" + data + "></input>";
+            },
+            field: 'id'
+        }, {
+            sortable: true,
+            field: 'item',
+            title: 'Name'
+        }, {
+            sortable: true,
+            field: 'description',
+            title: 'Description'
+        }, {
+            sortable: true,
+            cellStyle: function (data) {
+                return {
+                    classes: 'quantity',
+                    css: {"color": "green"}
+                };
+            },
+            field: 'quantity',
+            title: 'In-Stock'
+        }, {
+            sortable: true,
+            field: 'unit',
+            title: 'Unit'
+        }, {
+            sortable: true,
+            field: 'cost',
+            title: 'Unit Cost'
+        }, {
+            sortable: true,
+            field: 'totalcost',
+            title: 'Total Cost'
+        }, {
+            sortable: true,
+            field: 'count',
+            title: 'Physical Count'
+        }, {
+            sortable: true,
+            cellStyle: function (data) {
+                return {
+                    classes: 'result',
+                    css: {"color": "green"}
+                };
+            },
+            field: 'result',
+            title: 'Results'
+
+        }, {
+            sortable: true,
+            field: 'remarks',
+            title: 'Remarks'
         }
         ]
         // }, {
@@ -784,7 +844,7 @@ function init_inventory() {
             columns: [{
                 sortable: true,
                 field: 'name',
-                title: 'NAME'
+                title: 'Name'
             }, {
                 sortable: true,
                 field: 'email',
@@ -827,11 +887,11 @@ function init_inventory() {
             columns: [{
                 sortable: true,
                 field: 'item',
-                title: 'NAME'
+                title: 'Name'
             }, {
                 sortable: true,
                 field: 'description',
-                title: 'DESCRIPTION'
+                title: 'Description'
             }, {
                 sortable: true,
                 cellStyle: function (data) {
@@ -840,19 +900,19 @@ function init_inventory() {
                     };
                 },
                 field: 'quantity',
-                title: 'IN-STOCK'
+                title: 'In-Stock'
             }, {
                 sortable: true,
                 field: 'unit',
-                title: 'UNIT'
+                title: 'Unit'
             }, {
                 sortable: true,
                 field: 'cost',
-                title: 'Unit COST'
+                title: 'Unit Cost'
             }, {
                 sortable: true,
                 field: 'totalcost',
-                title: 'Total COST'
+                title: 'Total Cost'
             }, {
                 sortable: true,
                 field: 'serialStatus',
@@ -884,24 +944,25 @@ function init_inventory() {
             columns: [{
                 sortable: true,
                 field: 'item',
-                title: 'NAME'
+                title: 'Name'
             }, {
                 sortable: true,
                 field: 'description',
-                title: 'DESCRIPTION'
+                title: 'Description'
             }, {
                 sortable: true,
                 cellStyle: function (data) {
                     return {
                         css: {"color": "green"}
+
                     };
                 },
                 field: 'quantity',
-                title: 'IN-STOCK'
+                title: 'In-Stock'
             }, {
                 sortable: true,
                 field: 'unit',
-                title: 'UNIT'
+                title: 'Unit'
             }, {
                 sortable: true,
                 field: 'cost',
@@ -909,7 +970,7 @@ function init_inventory() {
             }, {
                 sortable: true,
                 field: 'totalcost',
-                title: 'Total COST'
+                title: 'Total Cost'
             }, {
                 sortable: true,
                 field: 'serialStatus',
@@ -1050,11 +1111,11 @@ function init_list() {
         columns: [{
             sortable: true,
             field: 'name',
-            title: 'NAME'
+            title: 'Name'
         }, {
             sortable: true,
             field: 'description',
-            title: 'DESCRIPTION'
+            title: 'Description'
         }, {
             sortable: true,
             cellStyle: function (data) {
@@ -1063,11 +1124,11 @@ function init_list() {
                 };
             },
             field: 'quant',
-            title: 'QUANTITY DISTRIBUTED'
+            title: 'Quantity Distributed'
         }, {
             sortable: true,
             field: 'unit',
-            title: 'UNIT'
+            title: 'Unit'
         }]
     });
     $deptMOOEtable.bootstrapTable({
@@ -1080,11 +1141,11 @@ function init_list() {
         columns: [{
             sortable: true,
             field: 'name',
-            title: 'NAME'
+            title: 'Name'
         }, {
             sortable: true,
             field: 'description',
-            title: 'DESCRIPTION'
+            title: 'Description'
         }, {
             sortable: true,
             cellStyle: function (data) {
@@ -1093,11 +1154,11 @@ function init_list() {
                 };
             },
             field: 'quant',
-            title: 'QUANTITY DISTRIBUTED'
+            title: 'Qauntity Distributed'
         }, {
             sortable: true,
             field: 'unit',
-            title: 'UNIT'
+            title: 'Unit'
         }]
         // }, {
         //     sortable: true,
@@ -1273,12 +1334,11 @@ function modal() {
 
 //add item save
 function save(counter) {
-    $('#addItemForm').parsley().whenValidate({group: 'set' + counter}).done(function () {
         var list = $('#list' + counter);
         var step = $('#step' + counter + 'B');
         $.ajax({
             type: 'POST',
-            url: 'inventory/save/' + counter,
+            url: 'Inventory/save/' + counter,
             data: $('#addItemForm').serializeArray(),
             success: function (response) {
                 if (response) {
@@ -1307,7 +1367,6 @@ function save(counter) {
             }
 
         });
-    });
 }
 
 
@@ -1423,6 +1482,32 @@ function viewSerial(id) {
     });
 
 }
+function gettransferlog(id){
+
+    var $historytable = $('#history');
+    $historytable.bootstrapTable('destroy');
+            $historytable.bootstrapTable({
+                url: 'logs/gettransfer/' + id,
+                columns: [{
+                    sortable: true,
+                    field: 'serial',
+                    title: 'Serial'
+                }, {
+                    sortable: true,
+                    field: 'transfer_date',
+                    title: 'Transfer date'
+                }, {
+                    sortable: true,
+                    field: 'current_owner',
+                    title: 'Current Owner'
+                }, {
+                    sortable: true,
+                    field: 'last_owner',
+                    title: 'Last Owner'
+                }]
+            });
+
+}
 function gettransfer(id) {
     $.ajax({
         url: 'inventory/gettransfer/' + id,
@@ -1432,7 +1517,7 @@ function gettransfer(id) {
                 var name = data[i].currentname.replace(/\s/g, '&nbsp;');
 
                 $('.owner').html("<label for=\"name\">Current Owner:</label>" +
-                    " <input name=\"enduser\" class=\"name form-control\" disabled value=" + name + ">");
+                    " <input name=\"currentuser\" class=\"name form-control\" readonly value=" + name + ">");
                 $('.serialsp').html("<label for=\"name\">Serial:</label>" +
                     " <input name=\"serial\" class=\"name form-control\" readonly value=" + data[i].serial + ">");
             }
@@ -1835,27 +1920,71 @@ function revertDetail($det_id, $serialStatus) {
 
 //for reconciliation
 function reconcile() {
-    $date = $('#date').val();
+    $date = $('#inventoryDate').val();
+    $status = $('#serialTab').find('.active').data('status');
     $id = [];
     $q = [];
     $p = [];
     $r = [];
+    var counter = 0;
     var $recon = $('.reconitem ');
-
     for (var i = 0; i <= $recon.length - 1; i++) {
+        if($('.quantity')[i].textContent != $recon[i].value){
+            counter++;
+        }
         $q.push($('.quantity')[i].textContent);
         $p.push($recon[i].value);
         $r.push($('.remarks')[i].value)
         $id.push($('.reconid')[i].value)
     }
-    $.ajax({
-        url: "inventory/reconcile",
-        method: "POST",
-        data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
-        success: function (data) {
+
+    if(counter >= 1){
+        if($status === 1){
             $('.invdate').modal('toggle');
+            toggleDiv($('.inventory-tab'),$('.reconcilePage'));
+            toggleDiv($('.discrepancies'),$('.inventory-tab'));
+            item_name = [];
+            serial = [];
+            $.ajax({
+                url: "Inventory/getDiscrepancy",
+                method: "POST",
+                dataType: 'JSON',
+                data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
+                success: function (data) {
+                    for(i=0; i <= data.length - 1 ; i++){
+                        item_name.push('<h4>'+data[i].item_name+'</h4><div id="item'+data[i].item_id+'">'
+                            +data[i].serials+'</div>');
+                    }
+
+                    $('#items').html(item_name);
+
+                }
+            });
+
+        }else{
+            // $.ajax({
+            //     url: "Inventory/reconcile",
+            //     method: "POST",
+            //     data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
+            //     success: function (data) {
+            //         $('.invdate').modal('toggle');
+            //     }
+            // });
         }
-    });
+    }else{
+        $.ajax({
+            url:"Inventory/reconcileInventory",
+            method: "POST",
+            data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
+            success: function (data) {
+                $('.invdate').modal('toggle');
+                console.log(data);
+            }
+        })
+    }
+
+
+
 }
 
 function printToPDF() {
@@ -1952,9 +2081,47 @@ function accountability (dist_id) {
             field: 'owner',
             title: 'Owner'
         }, {
+            field: 'date',
+            title: 'Accountability Date'
+        }, {
             field: 'action',
             title: 'Action'
         }]
     });
     serialize_forms();
+}
+
+function getAllSerial() {
+    $date = $('#inventoryDate').val();
+    $status = $('#serialTab').find('.active').data('status');
+    $id = [];
+    $q = [];
+    $p = [];
+    $r = [];
+    let counter = 0;
+    let $recon = $('.reconitem ');
+    let quantity = $('.quantity');
+
+    for (let i = 0; i <= $recon.length - 1; i++) {
+        if(quantity[i].textContent !== $recon[i].value){
+            counter++;
+        }
+        $q.push(quantity[i].textContent);
+        $p.push($recon[i].value);
+        $r.push($('.remarks')[i].value)
+        $id.push($('.reconid')[i].value)
+    }
+    $serials= $('input.item:checked');
+    serials = [];
+    for(i=0;i<=$serials.length-1;i++){
+        serials.push($serials[i].value);
+    }
+    $.ajax({
+        url: 'Inventory/recSerializedItems',
+        method: 'POST',
+        data: {serials: serials,logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
+        success: function () {
+            location.reload();
+        }
+    })
 }

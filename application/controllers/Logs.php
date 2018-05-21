@@ -105,4 +105,20 @@ class Logs extends CI_Controller
         }
         echo json_encode($data);
     }
+
+    public function gettransfer($serialid){
+        $dept_id = $this->session->userdata['logged_in']['dept_id'];
+        $position = $this->session->userdata['logged_in']['position'];
+        $transfer = $this->logs->transfer_log($serialid);
+        $data = [];
+        foreach ($transfer as $list) {
+            $data[] = array(
+                'serial' => $list['serial'],
+                'transfer_date' => $list['transfer_date'],
+                'current_owner' => $list['current_owner'],
+                'last_owner' => $list['last_owner']
+            );
+        }
+        echo json_encode($data);
+    }
 }

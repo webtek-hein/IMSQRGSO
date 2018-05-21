@@ -14,13 +14,17 @@ class Pages extends CI_Controller {
         if(!file_exists(APPPATH.'views/pages/'.$page.'.php')){
             show_404();
         }
-
         if($page == 'login'){
             $this->load->view('pages/login');
+
             if (isset($this->session->userdata['logged_in'])) {
                 redirect('dashboard');
             }
-        }else {
+
+        } else if ($page === 'forgot'){
+            $this->load->view('pages/forgot');
+        }
+        else {
             $data['title'] = ucfirst($page);
             $data['name'] = $this->session->userdata['user_in']['name'];
 
@@ -28,5 +32,6 @@ class Pages extends CI_Controller {
             $this->load->view('pages/' . $page, $data);
             $this->load->view('templates/footer');
         }
+
     }
 }

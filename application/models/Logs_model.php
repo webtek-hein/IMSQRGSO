@@ -70,4 +70,14 @@ class Logs_model extends CI_Model
         $query= $this->db->get('logs.returnlog retlog');
         return $query->result_array();
     }
+
+    public function transfer_log($serialid){
+
+        $this->db->select('transferlog.*,serial.serial');
+        $this->db->join('gsois.serial','serial.serial_id = transferlog.serial_id','inner');
+        $this->db->where('transferlog.serial_id',$serialid);
+        $query = $this->db->get('logs.transferlog');
+
+        return $query->result_array();
+    }
 }
