@@ -45,6 +45,8 @@
                                     <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
                                  <button id="reconcileButton" class="btn btn-outline-success">
                                  <i class="fa fa-balance-scale"></i> RECONCILE</button>
+                                <button id="reconcileButton" class="btn btn-outline-success">
+                                 <i class="fa fa-balance-scale"></i> Generate AIR </button>
                                 </div>';
                     }
                     ?>
@@ -1046,7 +1048,7 @@
         <div class="card-body">
             <p>Please select the serials that was lost: </p>
             <div id="items">Serial not found.</div>
-            <button>Cancel</button>
+            <button type="button" onclick="toggleDiv($('.reconcilePage'),$('.discrepancies'));">Cancel</button>
             <button type="button" onclick="getAllSerial()">Submit</button>
         </div>
     </div>

@@ -717,15 +717,6 @@ function init_inventory() {
             title: 'Total Cost'
         }, {
             sortable: true,
-            field: 'serialStatus',
-            title: 'Serial',
-            cellStyle: function (data) {
-                return {
-                    css: {"color": "green"}
-                };
-            }
-        }, {
-            sortable: true,
             field: 'count',
             title: 'Physical Count'
         }, {
@@ -792,15 +783,6 @@ function init_inventory() {
             sortable: true,
             field: 'totalcost',
             title: 'Total Cost'
-        }, {
-            sortable: true,
-            field: 'serialStatus',
-            title: 'Serial',
-            cellStyle: function (data) {
-                return {
-                    css: {"color": "green"}
-                };
-            }
         }, {
             sortable: true,
             field: 'count',
@@ -2139,7 +2121,7 @@ function getAllSerial() {
         method: 'POST',
         data: {serials: serials,logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
         success: function () {
-
+            location.reload();
         }
     })
 }

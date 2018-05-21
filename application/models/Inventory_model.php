@@ -1408,7 +1408,7 @@ class Inventory_model extends CI_Model
         foreach ($id as $key => $value) {
             $missing = $logical[$key] - $physical[$key];
             if($missing > 0){
-                $item[] = array('item_id'=>$item_id[$key]['item_id']);
+                $item[] = array('item.item_id'=>$item_id[$key]['item_id']);
                 $data[] = array(
                     'recon_id' => $value,
                     'item_id' => $item_id[$key]['item_id'],
@@ -1421,7 +1421,8 @@ class Inventory_model extends CI_Model
             ->join('itemdetail','itemdetail.item_det_id = serial.item_det_id','inner')
             ->join('item','item.item_id = itemdetail.item_id','inner')
             ->where('serial !=',null,false)
-            ->where_in($item)->group_by('item_id')
+            ->where('record_status','1')
+            ->where_in($item)->group_by('item.item_id')
             ->get('serial')->result_array();
 
         return $serial;
@@ -1436,6 +1437,7 @@ class Inventory_model extends CI_Model
         $serial = $this->input->post('serials');
         $newReconcileData = array();
         $data = array();
+        $serialList = array();
 
         $item_id = $this->db->select('item_id')->where_in('recon_id',$id)->get('reconciliation')->result_array();
         $cost = $this->db->select('cost')->where_in($item_id)->get('item')->result_array();
@@ -1455,8 +1457,6 @@ class Inventory_model extends CI_Model
                 'beginning_inventory'=>$date
             );
         }
-
-
 
         $item = $this->db->select('item.item_id,count(item.item_id) as quantity')
             ->join('itemdetail','itemdetail.item_det_id = serial.item_det_id','inner')
@@ -1485,6 +1485,14 @@ class Inventory_model extends CI_Model
         $this->db->insert_batch('reconciliation',$newReconcileData,'item_id');
 
         $this->db->update_batch('reconciliation',$data,'recon_id');
+
+        $this->db->set('record_status','0');
+        $this->db->where_in('serial',$serial);
+        $this->db->update('serial');
+
+
+
+
     }
 
 
