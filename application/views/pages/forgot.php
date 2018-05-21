@@ -26,10 +26,9 @@
             echo validation_errors();
             echo "</div>";
             ?>
-            <a href="<?php echo base_url() ?>login" style="text-decoration:none; font-family:sans-serif; text-align: center;">Sign In</a>
+            <a href="login" style="text-decoration:none; font-family:sans-serif; text-align: center;">Sign In</a>
             <br>
-            <a href="<?php echo base_url() ?>signup" style="text-decoration:none; font-family:sans-serif;"><div
-                    style="text-align: center;">Click Here To Sign Up</div> </a>
+            <a href="<?php echo base_url() ?>signup" style="text-decoration:none; font-family:sans-serif;"></a>
 
 
         </fieldset>

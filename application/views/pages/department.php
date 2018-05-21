@@ -148,7 +148,7 @@
     <!--End of View Serial-->
 
     <!-- Accountability-->
-    <div hidden id="accountTable" class="accountability col-lg-12 accountability-tab">
+    <div hidden id="account" class="accountability col-lg-12 accountability-tab">
         <div class="card">
             <div class="card-header">
                 <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability-tab '))"
