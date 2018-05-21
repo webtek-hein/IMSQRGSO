@@ -69,10 +69,10 @@
                                  aria-labelledby="CO-tab">
                                 <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="itemtable"
-                                       class="table table-no-bordered table-hover"></table>';
+                                       class="table table-bordered table-sm table-hover"></table>';
                                 } else {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="departmentTable"
-                                       class="table table-no-bordered table-hover"></table>';
+                                       class="table table-bordered table-sm table-hover"></table>';
                                 }
                                 ?>
                             </div>
@@ -81,10 +81,10 @@
                                  aria-labelledby="MOOE-tab">
                                 <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="MOOEtable"
-                                       class="table table-no-bordered table-hover"></table>';
+                                       class="table table-bordered table-sm table-hover"></table>';
                                 } else {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="deptMOOEtable"
-                                       class="table table-no-bordered table-hover"></table>';
+                                       class="table table-bordered table-sm table-hover"></table>';
                                 }
                                 ?>
                             </div>
@@ -336,7 +336,7 @@
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
                                     <table id="detail-tab-table" data-search="true"
-                                           class="table table-no-bordered table-hover">
+                                           class="table table-bordered table-sm table-hover">
                                     </table>
                                 </form>
 
@@ -389,7 +389,7 @@
                                 <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
-                                       class="table-sm table table-no-bordered table-hover">
+                                       class="table-sm table table-bordered table-sm table-hover">
                                 </table>
                             </div>
                             <!--End of General Ledger-->
@@ -398,7 +398,7 @@
                             <div class="tab-pane fade" id="removed_Items" role="tabpanel"
                                  aria-labelledby="removed-tab">
                                 <table id="removed-table" data-search="true" data-show-refresh='true'
-                                       class="table-sm table table-no-bordered table-hover">
+                                       class="table-sm table table-bordered table-sm table-hover">
                                 </table>
                             </div>
                             <!--End of Removed Items-->
@@ -612,7 +612,7 @@
                   </div>-->
             <div class="returnedReport">
                 <table id="reportTable" data-show-refresh="true" data-search="true" data-pagination="true"
-                       class="table-sm table table-no-bordered table-hover">
+                       class="table-sm table table-bordered table-sm table-hover">
                 </table>
             </div>
 
@@ -992,24 +992,24 @@
 
         <ul class="nav nav-tabs" id="serialTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="serialw-tab" data-toggle="tab" href="#withSerial"
+                <a class="nav-link active" data-status="1" id="serialw-tab" data-toggle="tab" href="#withSerial"
                    role="tab"
                    aria-controls="W/Serial" aria-selected="true">With Serial</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="serialw-tab" data-toggle="tab" href="#woSerial"
-                   role="tab"
+                   role="tab" data-status="0"
                    aria-controls="woSerial" aria-selected="false">Without Serial</a>
             </li>
         </ul>
 
-        <div class="tab-pane fade" id="withSerial" role="tabpanel"
+        <div class="tab-pane fade active show" id="withSerial" role="tabpanel"
              aria-labelledby="Detail-tab">
 
             <form id="compareitem" role="form"
                   action="inventory/compare/" method="POST">
                 <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                    <table class="table table-no-bordered"
+                    <table class="table table-bordered table-sm"
                            data-pagination="true" data-search="true" id="reconcileTable">
                     </table>
                 </div>
@@ -1022,7 +1022,7 @@
             <form id="compareitem" role="form"
                   action="inventory/compare/" method="POST">
                 <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                    <table class="table table-no-bordered"
+                    <table class="table table-bordered table-sm"
                            data-pagination="true" data-search="true" id="reconcileTable">
                     </table>
                 </div>
@@ -1054,7 +1054,7 @@
                 <div class="form-group">
                     <div class="col-md-10">
                         <label for="invdate">Date of Inventory</label>
-                        <input id="date" class="form-control col-md-7 col-xs-12"
+                        <input id="inventoryDate" class="form-control col-md-7 col-xs-12"
                                data-validate-length-range="6"
                                data-validate-words="2" name="date" required type="date">
                     </div>

@@ -44,7 +44,7 @@
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
                                 <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
-                                       data-url="logs/editLog/CO" class="table table-striped">
+                                       data-url="logs/editLog/CO" class="table table-striped table-bordered table-sm">
                                     <thead>
                                     <tr>
                                         <th data-sortable="true" data-field="timestamp">Timestamp</th>
@@ -58,7 +58,7 @@
                             <!--MOOE Tab-->
                             <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
                                 <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
-                                       data-url="logs/editLog/MOOE" class="table table-striped ">
+                                       data-url="logs/editLog/MOOE" class="table table-striped table-bordered table-sm">
                                     <thead>
                                     <tr>
                                         <th data-sortable="true" data-field="timestamp">Timestamp</th>
