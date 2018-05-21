@@ -816,5 +816,8 @@ class Inventory extends CI_Controller
         }
         echo json_encode($data);
     }
+    public function reconcileNS(){
+        $this->inv->nonSerializedRec();
+    }
 
 }

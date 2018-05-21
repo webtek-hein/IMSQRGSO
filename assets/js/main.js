@@ -1926,16 +1926,28 @@ function reconcile() {
     $q = [];
     $p = [];
     $r = [];
-    var counter = 0;
-    var $recon = $('.reconitem ');
-    for (var i = 0; i <= $recon.length - 1; i++) {
-        if($('.quantity')[i].textContent != $recon[i].value){
+    let counter = 0;
+    let serializedItems = $('#serializedItems');
+    let ns = $('#withoutSerial');
+    if($status === 1){
+        $recon = serializedItems.find('.reconitem ');
+        $quantity = serializedItems.find('.quantity');
+        $remarks = serializedItems.find('.remarks');
+        $reconID = serializedItems.find('.reconid');
+    }else{
+        $recon = ns.find('.reconitem ');
+        $quantity = ns.find('.quantity');
+        $remarks = ns.find('.remarks');
+        $reconID = ns.find('.reconid');
+    }
+    for (let i = 0; i <= $recon.length - 1; i++) {
+        if($quantity[i].textContent !== $recon[i].value){
             counter++;
         }
-        $q.push($('.quantity')[i].textContent);
+        $q.push($quantity[i].textContent);
         $p.push($recon[i].value);
-        $r.push($('.remarks')[i].value)
-        $id.push($('.reconid')[i].value)
+        $r.push($remarks[i].value);
+        $id.push($reconID[i].value);
     }
 
     if(counter >= 1){
@@ -1962,14 +1974,15 @@ function reconcile() {
             });
 
         }else{
-            // $.ajax({
-            //     url: "Inventory/reconcile",
-            //     method: "POST",
-            //     data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
-            //     success: function (data) {
-            //         $('.invdate').modal('toggle');
-            //     }
-            // });
+            $.ajax({
+                url: "Inventory/reconcileNS",
+                method: "POST",
+                data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
+                success: function (data) {
+                    $('.invdate').modal('toggle');
+                    location.reload();
+                }
+            });
         }
     }else{
         $.ajax({
