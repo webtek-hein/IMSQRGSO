@@ -365,7 +365,9 @@
 
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox" class="check" id="checkAll" style="width:20px;height:20px;background:white;border-radius:5px;border:2px solid #555;"> Check All
+                                                            <input type="checkbox" class="check" id="checkAll"
+                                                                   style="width:20px;height:20px;background:white;border-radius:5px;border:2px solid #555;">
+                                                            Check All
                                                         </label>
                                                     </div>
 
@@ -385,7 +387,8 @@
                             <!--General Ledger-->
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
-                                <button onclick="printToPDF()" class="btn btn-primary fa fa-download">Download as PDF</button>
+                                <button onclick="printToPDF()" class="btn btn-primary fa fa-download">Download as PDF
+                                </button>
                                 <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
@@ -461,7 +464,9 @@
                                                 </select>
                                             </div>
                                             <div class="col-2 has-feedback">
-                                                <input type="checkbox" tabindex="-1" name="serialStatus[]" style="width:30px;height:30px;background:white;border-radius:5px;border:2px solid #555;" value="1"> With serial
+                                                <input type="checkbox" tabindex="-1" name="serialStatus[]"
+                                                       style="width:30px;height:30px;background:white;border-radius:5px;border:2px solid #555;"
+                                                       value="1"> With serial
                                             </div>
                                         </div>
                                     </div>
@@ -581,7 +586,8 @@
 <div hidden class="generateReport col-lg-12">
     <div class="card">
         <div class="card-header">
-            <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))" class="btn btn-primary fa fa-arrow-left">
+            <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))"
+                    class="btn btn-primary fa fa-arrow-left">
                 Back
             </button>
             <button onclick="printToPDFreport()" class="btn btn-primary fa fa-download">Download as PDF</button>
@@ -982,51 +988,44 @@
 </div>
 <!--end of Return-->
 <!--Reconcile Page-->
-<!--add inventory date-->
 <div hidden class="reconcilePage col-lg-12">
     <div class="card">
         <div class="card-header">
-            <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))" class="btn btn-primary fa fa-arrow-left"> Back</button>
+            <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))"
+                    class="btn btn-primary fa fa-arrow-left"> Back
+            </button>
             <button onclick="printToPDFreconcile()" class="btn btn-primary fa fa-download"> Download as PDF</button>
         </div>
+        <div class="card-body">
 
-        <ul class="nav nav-tabs" id="serialTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" data-status="1" id="serialw-tab" data-toggle="tab" href="#withSerial"
-                   role="tab"
-                   aria-controls="W/Serial" aria-selected="true">With Serial</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="serialw-tab" data-toggle="tab" href="#woSerial"
-                   role="tab" data-status="0"
-                   aria-controls="woSerial" aria-selected="false">Without Serial</a>
-            </li>
-        </ul>
+            <ul class="nav nav-tabs" id="serialTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-status="1" id="non-serialized-tab" data-toggle="tab" href="#nonSerTab"
+                       role="tab"
+                       aria-controls="serialized" aria-selected="false">Serialized Items</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-status="0" id="serialized-tab" data-toggle="tab" href="#serTab"
+                       role="tab"
+                       aria-controls="co" aria-selected="true">non-Serialized Items</a>
+                </li>
 
-        <div class="tab-pane fade active show" id="withSerial" role="tabpanel"
-             aria-labelledby="Detail-tab">
-
-            <form id="compareitem" role="form"
-                  action="inventory/compare/" method="POST">
-                <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                    <table class="table table-bordered table-sm"
-                           data-pagination="true" data-search="true" id="reconcileTable">
-                    </table>
+            </ul>
+            <div class="tab-content pl-3 p-1" id="">
+                <div class="table-responsive-sm tab-pane fade show active" id="nonSerTab" role="tabpanel"
+                     aria-labelledby="nonSer-tab">
+                    <table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="serializedItems"
+                           class="table table-bordered table-sm table-hover"></table>
                 </div>
-            </form>
+                <div class="table-responsive-sm  tab-pane fade " id="serTab"
+                     role="tabpanel"
+                     aria-labelledby="nonSerialized-tab">
+                  <table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="withoutSerial"
+                                       class="table table-bordered table-sm table-hover"></table>
 
-        </div>
-        <div class="tab-pane fade" id="woSerial" role="tabpanel"
-             aria-labelledby="Detail-tab">
-
-            <form id="compareitem" role="form"
-                  action="inventory/compare/" method="POST">
-                <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                    <table class="table table-bordered table-sm"
-                           data-pagination="true" data-search="true" id="reconcileTable">
-                    </table>
                 </div>
 
+            </div>
         </div>
 
     </div>
@@ -1036,6 +1035,22 @@
 
 </div>
 
+<div hidden class="discrepancies col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <button type="button" onclick="toggleDiv($('.inventory-tab'),$('.discrepancies'))"
+                    class="btn btn-primary fa fa-arrow-left"> Back
+            </button>
+        </div>
+
+        <div class="card-body">
+            <p>Please select the serials that was lost: </p>
+            <div id="items">Serial not found.</div>
+            <button>Cancel</button>
+            <button type="button" onclick="getAllSerial()">Submit</button>
+        </div>
+    </div>
+</div>
 <!--End of Reconcile Page-->
 
 <div class="invdate modal fade" id="addinvdate" tabindex="-1" role="dialog"
