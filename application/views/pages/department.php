@@ -229,20 +229,21 @@
     </div>
 </div>
 </form>
-<!--History-->
-<div class="modal fade history" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
 
-            <div class="modal-header">
-                <h4 class="modal-title" id="history">History</h4>
-            </div>
-            <div id = 'hist' class="modal-body">
+<!--History-->
+<div hidden id="historyPage" class="history col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <button type="button" onclick="toggleDiv($('.department-tab'),$('.history'))"
+                    class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back</button>
+        </div>
+
+            <div id = 'hist' class="table-responsive-sm-sm tab-content pl-3 p-1">
                 <table id="history" class="table table-striped table-bordered table-sm">
                 </table>
             </div>
-        </div>
     </div>
+
 </div>
 
 <!--Reconcile Page-->
