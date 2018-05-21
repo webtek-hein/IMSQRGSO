@@ -315,7 +315,7 @@ class Inventory extends CI_Controller
         $data = array();
         foreach ($list as $serial) {
             $action = "<button onclick=gettransfer($serial[serial_id]);  id=\"transferButton\" class=\"btn btn-success\"  data-id='$serial[serial_id]' data-toggle=\"modal\" data-target=\".transfer\">Transfer</button>
-                            <button onclick=gettransferlog($serial[serial_id]); type=\"button\" id=\"historyButton\" class=\"btn btn-primary\" data-id='$serial[serial_id]'data-toggle=\"modal\" data-target=\".history\">History</button>";
+                            <button onclick=gettransferlog($serial[serial_id]); type=\"button\" id=\"historyButton\" class=\"btn btn-primary\" data-id='$serial[serial_id]'>History</button>";
 
                 $data[] = array(
                     'serial_id' => $serial['serial_id'],
