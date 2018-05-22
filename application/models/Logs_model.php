@@ -51,14 +51,14 @@ class Logs_model extends CI_Model
         $query = $this->db->get('logs.editlog');
         return $query->result_array();
     }
-    public function edit_log($type, $position, $id)
+    public function edit_log($itemid, $position, $id)
     {
         $this->db->select('edit.item_id,edit.timestamp,edit.field_edited,edit.old_value,edit.new_value');
         $this->db->join('gsois.item item', 'item.item_id = edit.item_id');
         if ($position !== 'Admin') {
             $this->db->join('gsois.user u', 'edit.userid =' . $id);
         }
-        $this->db->where('item.item_type', $type);
+        $this->db->where('item.item_id', $itemid);
         $this->db->group_by('edit.userid,edit.item_id,edit.timestamp,edit.field_edited,edit.old_value,edit.new_value');
         $query = $this->db->get('logs.editlog edit');
         return $query->result_array();

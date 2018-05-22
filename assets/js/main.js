@@ -1248,9 +1248,13 @@ function init_editlog(){
         url: 'logs/editlogitem/CO',
         onClickRow: function (data, row) {
             editlogdet(data.id);
+
         },
         resizable: true,
         columns: [{
+            field: 'id',
+            visible: false
+        }, {
             sortable: true,
             field: 'name',
             title: 'Item Name'
@@ -1270,12 +1274,15 @@ function init_editlog(){
     });
     $editlogtablemooe.bootstrapTable({
         pageSize: 10,
-        url: 'logs/editlog/MOOE ',
+        url: 'logs/editlogitem/MOOE ',
         onClickRow: function (data, row) {
             editlogdet(data.id);
         },
         resizable: true,
         columns: [{
+            field: 'id',
+            visible: false
+        },{
             sortable: true,
             field: 'name',
             title: 'Item Name'
@@ -1297,6 +1304,33 @@ function init_editlog(){
 }
 
 function editlogdet(id){
+
+var editmodal = $('#editlogmodal');
+var $editmodaltable = $('#editlog');
+editmodal.modal("show");
+
+    $editmodaltable.bootstrapTable({
+        pageSize: 10,
+        url: 'logs/editlog/'+id,
+        resizable: true,
+        columns: [{
+            sortable: true,
+            field: 'timestamp',
+            title: 'Date Transfered'
+        }, {
+            sortable: true,
+            field: 'fieldedited',
+            title: 'Field Edited'
+        }, {
+            sortable: true,
+            field: 'oldvalue',
+            title: 'Old Value'
+        }, {
+            sortable: true,
+            field: 'newvalue',
+            title: 'New Value'
+        }]
+    });
 
 }
 //for editting

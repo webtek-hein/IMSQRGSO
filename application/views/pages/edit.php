@@ -65,10 +65,10 @@
 </div>
 
 
-<div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="editlogmodal" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div id="editlogmodal" class="modal-content">
+        <div  class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">×</span>
@@ -78,16 +78,8 @@
 
             <div class="modal-body">
 
-                    <table id="editlog datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
+                    <table id="editlog" data-pagination="true" data-search="true"
                            class="table table-striped table-bordered table-sm">
-                        <thead>
-                        <tr>
-                            <th data-sortable="true" data-field="timestamp">Timestamp</th>
-                            <th data-sortable="true" data-field="fieldedited">Field Edited</th>
-                            <th data-sortable="true" data-field="oldvalue">Old Value</th>
-                            <th data-sortable="true" data-field="newvalue">New Value</th>
-                        </tr>
-                        </thead>
                     </table>
             </div>
         </div>

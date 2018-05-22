@@ -74,6 +74,7 @@ class Logs extends CI_Controller
 
         foreach ($edit as $list) {
             $data[] = array(
+                'id' =>$list['item_id'],
                 'name' => $list['item_name'],
                 'description' => $list['item_description'],
                 'type' => $list['item_type'],
@@ -82,12 +83,12 @@ class Logs extends CI_Controller
         }
         echo json_encode($data);
     }
-    public function editLog($type)
+    public function editLog($itemid)
     {
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
 
-        $edit = $this->logs->edit_log($type,$position,$user_id);
+        $edit = $this->logs->edit_log($itemid,$position,$user_id);
         $data = [];
         foreach ($edit as $list) {
             $data[] = array(
