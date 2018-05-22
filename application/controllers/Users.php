@@ -22,6 +22,7 @@ class Users extends CI_Controller {
             'username' => $list['username'],
             'position' => $list['position'],
             'department' => $list['department'],
+            'date_created' => $list['date_created'],
             'status' => $list['status']
         );
         }

@@ -338,6 +338,24 @@ $(document).ready(function () {
         modal();
         init_bulkFucntion();
     }
+// add contact supplier
+    var max_fields      = 5; //maximum input boxes allowed
+    var wrapper         = $(".input_contact"); //Fields wrapper
+    var add_button      = $(".add"); //Add button ID
+
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div><input id="contactno" name="contact[]" >' +
+                '<button class="remove_field"><i class="fa fa-times"></i></button></div>'); //add input box
+        }
+    });
+
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
 });
 
 //action for returns
@@ -825,12 +843,28 @@ function init_inventory() {
                 title: 'Supplier Name'
             }, {
                 sortable: true,
-                field: 'contact',
-                title: 'Contact number'
-            }, {
-                sortable: true,
                 field: 'address',
                 title: 'Address'
+            },{
+                sortable: true,
+                field: 'postal',
+                title: 'Postal Code'
+            },{
+                sortable: true,
+                field: 'contact',
+                title: 'Primary Contact number'
+            },  {
+                sortable: true,
+                field: 'email',
+                title: 'Email'
+            }, {
+                sortable: true,
+                field: 'TIN',
+                title: 'TIN'
+            }, {
+                sortable: true,
+                field: 'status',
+                title: 'Status'
             }]
         });
     $userTable.bootstrapTable('refresh', {url: 'Users/display_users'})
@@ -841,7 +875,11 @@ function init_inventory() {
                 userDetail(data.id);
             },
             resizable: true,
-            columns: [{
+            columns: [ {
+                sortable: true,
+                field: 'date_created',
+                title: 'Date Created'
+            }, {
                 sortable: true,
                 field: 'name',
                 title: 'Name'
@@ -1876,10 +1914,6 @@ function viewQr() {
 
 }
 
-//print QR to pdf
-function download() {
-
-}
 
 function closeSerial() {
     $('.serialdrop').click();
@@ -1926,9 +1960,9 @@ function reconcile() {
     $q = [];
     $p = [];
     $r = [];
-    let counter = 0;
-    let serializedItems = $('#serializedItems');
-    let ns = $('#withoutSerial');
+     counter = 0;
+     serializedItems = $('#serializedItems');
+     ns = $('#withoutSerial');
     if($status === 1){
         $recon = serializedItems.find('.reconitem ');
         $quantity = serializedItems.find('.quantity');
@@ -1940,7 +1974,7 @@ function reconcile() {
         $remarks = ns.find('.remarks');
         $reconID = ns.find('.reconid');
     }
-    for (let i = 0; i <= $recon.length - 1; i++) {
+    for ( i = 0; i <= $recon.length - 1; i++) {
         if($quantity[i].textContent !== $recon[i].value){
             counter++;
         }
@@ -2111,11 +2145,11 @@ function getAllSerial() {
     $q = [];
     $p = [];
     $r = [];
-    let counter = 0;
-    let $recon = $('.reconitem ');
-    let quantity = $('.quantity');
+     counter = 0;
+     $recon = $('.reconitem ');
+     quantity = $('.quantity');
 
-    for (let i = 0; i <= $recon.length - 1; i++) {
+    for ( i = 0; i <= $recon.length - 1; i++) {
         if(quantity[i].textContent !== $recon[i].value){
             counter++;
         }
@@ -2137,4 +2171,14 @@ function getAllSerial() {
             location.reload();
         }
     })
+}
+
+function download(){
+
+    var originalContents = $(document.body).html();
+    var header = '<h1>Serial Codes</h1><br><p>General Service Office</p>'
+    var printContents =   $('#airForm').html();
+    document.body.innerHTML = header+printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
 }

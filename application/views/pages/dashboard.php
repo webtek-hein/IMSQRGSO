@@ -19,7 +19,7 @@ if ($position === 'Admin') {
               <div class="mr-5" id="itemsrec">New Item Received</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
-              <span class="float-left">View Details</span>
+              <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -36,7 +36,7 @@ if ($position === 'Admin') {
               <div class="mr-5" id="itemsiss">Issued Item</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/decreased">
-              <span class="float-left">View Details</span>
+              <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -53,7 +53,7 @@ if ($position === 'Admin') {
               <div class="mr-5" id="retitem">Returned Items</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/return_log">
-              <span class="float-left">View Details</span>
+              <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -70,7 +70,7 @@ if ($position === 'Admin') {
               <div class="mr-5" id="expitems">Expired Item</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
-              <span class="float-left">View Details</span>
+              <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -91,7 +91,7 @@ if ($position === 'Custodian') {
               <div class="mr-5" id="itemsrec">New Item Received</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
-              <span class="float-left">View Details</span>
+              <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -108,7 +108,7 @@ if ($position === 'Custodian') {
               <div class="mr-5" id="itemsiss">Issued Item</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/decreased">
-              <span class="float-left">View Details</span>
+              <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -125,7 +125,7 @@ if ($position === 'Custodian') {
               <div class="mr-5" id="retitem">Returned Items</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/return_log">
-              <span class="float-left">View Details</span>
+              <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -142,7 +142,7 @@ if ($position === 'Custodian') {
               <div class="mr-5" id="expitems">Expired Item</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
-              <span class="float-left">View Details</span>
+              <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -163,7 +163,7 @@ if ($position === 'Supply Officer') {
               <div class="mr-5" id="itemsrec">New Item Received</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
-              <span class="float-left">View Details</span>
+              <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -180,7 +180,7 @@ if ($position === 'Supply Officer') {
               <div class="mr-5" id="itemsiss">Issued Item</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/decreased">
-              <span class="float-left">View Details</span>
+              <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -197,7 +197,7 @@ if ($position === 'Supply Officer') {
               <div class="mr-5" id="retitem">Returned Items</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/return_log">
-              <span class="float-left">View Details</span>
+              <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -214,7 +214,7 @@ if ($position === 'Supply Officer') {
               <div class="mr-5" id="expitems">Expired Item</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
-              <span class="float-left">View Details</span>
+              <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
