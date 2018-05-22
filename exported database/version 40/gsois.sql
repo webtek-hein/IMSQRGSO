@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2018 at 02:48 AM
+-- Generation Time: May 22, 2018 at 03:03 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -287,13 +287,14 @@ CREATE TABLE IF NOT EXISTS `mooedistribution` (
 DROP TABLE IF EXISTS `reconciliation`;
 CREATE TABLE IF NOT EXISTS `reconciliation` (
   `recon_id` int(15) NOT NULL AUTO_INCREMENT,
-  `inventory_date` date NOT NULL,
+  `inventory_date` date DEFAULT NULL,
   `physical_count` int(15) NOT NULL,
   `last_quantity` int(15) NOT NULL,
   `ending_cost` double NOT NULL,
   `remarks` varchar(250) NOT NULL,
   `item_id` int(15) NOT NULL,
   `dist_id` int(15) NOT NULL,
+  `beginning_inventory` date DEFAULT NULL,
   PRIMARY KEY (`recon_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

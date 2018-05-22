@@ -700,7 +700,7 @@ function init_inventory() {
 
         columns: [{
             formatter: function (data, row) {
-                return "<input class=reconid hidden value=" + data + "></input>";
+                return "<input class=reconid hidden value=" + data + ">";
             },
             field: 'id'
         }, {
