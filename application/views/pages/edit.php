@@ -43,30 +43,17 @@
                             <!-- Capital Outaly tab-->
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
-                                <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
+                                <table id="editlogco" data-pagination="true" data-search="true" 
                                        data-url="logs/editlogitem/CO" class="table table-striped table-bordered table-sm">
-                                    <thead>
-                                    <tr>
-                                        <th data-sortable="true" data-field="name">Item Name</th>
-                                        <th data-sortable="true" data-field="description">Description</th>
-                                        <th data-sortable="true" data-field="unit">Unit</th>
-                                        <th data-sortable="true" data-field="type">Type</th>
-                                    </tr>
+
                                 </table>
 
                             </div>
                             <!--MOOE Tab-->
                             <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
-                                <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
+                                <table id="editlogmooe" data-pagination="true" data-search="true"
                                        data-url="logs/editlogitem/MOOE" class="table table-striped table-bordered table-sm">
-                                    <thead>
-                                    <tr>
-                                        <th data-sortable="true" data-field="timestamp">Timestamp</th>
-                                        <th data-sortable="true" data-field="fieldedited">Field Edited</th>
-                                        <th data-sortable="true" data-field="oldvalue">Old Value</th>
-                                        <th data-sortable="true" data-field="newvalue">New Value</th>
-                                    </tr>
-                                    </thead>
+
                                 </table>
                             </div>
                         </div>
@@ -78,4 +65,32 @@
 </div>
 
 
+<div class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div id="editlogmodal" class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Edit Log </h4>
+            </div>
+
+            <div class="modal-body">
+
+                    <table id="editlog datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
+                           class="table table-striped table-bordered table-sm">
+                        <thead>
+                        <tr>
+                            <th data-sortable="true" data-field="timestamp">Timestamp</th>
+                            <th data-sortable="true" data-field="fieldedited">Field Edited</th>
+                            <th data-sortable="true" data-field="oldvalue">Old Value</th>
+                            <th data-sortable="true" data-field="newvalue">New Value</th>
+                        </tr>
+                        </thead>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>
 

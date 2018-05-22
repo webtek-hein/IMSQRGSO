@@ -347,6 +347,7 @@ $(document).ready(function () {
         init_list();
         modal();
         init_bulkFucntion();
+        init_editlog();
     }
 // add contact supplier
     var max_fields      = 5; //maximum input boxes allowed
@@ -1238,7 +1239,66 @@ function init_list() {
 
     console.log('init_list');
 }
+function init_editlog(){
+    var $editlogtableco = $('#editlogco');
+    var $editlogtablemooe = $('#editlogmooe');
 
+    $editlogtableco.bootstrapTable({
+        pageSize: 10,
+        url: 'logs/editlogitem/CO',
+        onClickRow: function (data, row) {
+            editlogdet(data.id);
+        },
+        resizable: true,
+        columns: [{
+            sortable: true,
+            field: 'name',
+            title: 'Item Name'
+        }, {
+            sortable: true,
+            field: 'description',
+            title: 'Item Description'
+        }, {
+            sortable: true,
+            field: 'type',
+            title: 'Item Type'
+        }, {
+            sortable: true,
+            field: 'unit',
+            title: 'Unit'
+        }]
+    });
+    $editlogtablemooe.bootstrapTable({
+        pageSize: 10,
+        url: 'logs/editlog/MOOE ',
+        onClickRow: function (data, row) {
+            editlogdet(data.id);
+        },
+        resizable: true,
+        columns: [{
+            sortable: true,
+            field: 'name',
+            title: 'Item Name'
+        }, {
+            sortable: true,
+            field: 'description',
+            title: 'Item Description'
+        }, {
+            sortable: true,
+            field: 'type',
+            title: 'Item Type'
+        }, {
+            sortable: true,
+            field: 'unit',
+            title: 'Unit'
+        }]
+    });
+
+}
+
+function editlogdet(id){
+
+}
 //for editting
 function serialize_forms() {
     $('.serialForm')
@@ -1762,6 +1822,7 @@ function init_bulkFucntion() {
     });
 
 }
+
 
 //add input fields
 // function addinputFields() {

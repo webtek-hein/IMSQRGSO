@@ -42,7 +42,12 @@ class Logs_model extends CI_Model
 
     public function edit_log_item($type, $position, $id){
         $this->db->select('editlog.item_id,item.item_name,item.item_description,item.item_type,item.unit');
-        $this->db->join('gsois.item ','item.item_id = editlog.item_id','inner');
+        $this->db->join('gsois.item ','item.item_id = editlog.item_id','left');
+        if ($position !== 'Admin') {
+            $this->db->join('gsois.user u', 'editlog.userid =' . $id);
+        }
+        $this->db->where('item.item_type', $type);
+        $this->db->group_by('editlog.userid');
         $query = $this->db->get('logs.editlog');
         return $query->result_array();
     }
