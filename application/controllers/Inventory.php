@@ -13,13 +13,23 @@ class Inventory extends CI_Controller
         //$this->load->library('csvimport');
     }
 
-    //add item
+    /**
+     *
+     *This allows an item to be saved.
+     *
+     * @param int   $counter  Saves an item.
+     */
     public function save($counter)
     {
         echo $this->inv->add_item($counter - 1);
     }
 
-    //add bulk of item
+    /**
+     *
+     * This will insert the data of the items
+     * in to the inventory.
+     *
+     * .*/
     public function saveAll()
     {
         $this->inv->saveAll();
@@ -31,7 +41,14 @@ class Inventory extends CI_Controller
         $this->inv->insert();
     }
 
-
+    /**
+     *
+     * This allows viewing of the items in
+     * the inventory.
+     *
+     * @param $type If the item is CO/MMOE.
+     *
+     */
     public function viewItem($type)
     {
         $position = $this->session->userdata['logged_in']['position'];
@@ -80,6 +97,14 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     *
+     * This will allow the adding of quantity of the items.
+     *
+     * @param $item_det_id Retrieve the item detail ID.
+     * @param $counter  Counts the quantity to be added.
+     *
+     */
     public function addquant($item_det_id, $counter)
     {
         $list = $this->inv->addquant($item_det_id, $counter);
@@ -90,6 +115,12 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     *
+     * This will inventory of the receiver
+     * of the distributed items.
+     *
+     */
     public function distribute()
     {
         $position = $this->session->userdata['logged_in']['position'];
