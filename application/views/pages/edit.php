@@ -44,13 +44,13 @@
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
                                 <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
-                                       data-url="logs/editLog/CO" class="table table-striped table-bordered table-sm">
+                                       data-url="logs/editlogitem/CO" class="table table-striped table-bordered table-sm">
                                     <thead>
                                     <tr>
-                                        <th data-sortable="true" data-field="timestamp">Timestamp</th>
-                                        <th data-sortable="true" data-field="fieldedited">Field Edited</th>
-                                        <th data-sortable="true" data-field="oldvalue">Old Value</th>
-                                        <th data-sortable="true" data-field="newvalue">New Value</th>
+                                        <th data-sortable="true" data-field="name">Item Name</th>
+                                        <th data-sortable="true" data-field="description">Description</th>
+                                        <th data-sortable="true" data-field="unit">Unit</th>
+                                        <th data-sortable="true" data-field="type">Type</th>
                                     </tr>
                                 </table>
 
@@ -58,7 +58,7 @@
                             <!--MOOE Tab-->
                             <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
                                 <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
-                                       data-url="logs/editLog/MOOE" class="table table-striped table-bordered table-sm">
+                                       data-url="logs/editlogitem/MOOE" class="table table-striped table-bordered table-sm">
                                     <thead>
                                     <tr>
                                         <th data-sortable="true" data-field="timestamp">Timestamp</th>
