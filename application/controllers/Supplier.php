@@ -27,6 +27,10 @@ class Supplier extends CI_Controller
             $row['supplier'] = $suppliers['supplier_name'];
             $row['contact'] = $suppliers['contact'];
             $row['address'] = $suppliers['location'];
+            $row['postal'] = $suppliers['postal_code'];
+            $row['email'] = $suppliers['email'];
+            $row['tin'] = $suppliers['tin'];
+            $row['status'] = $suppliers['status'];
             $data[] = $row;
         }
         echo json_encode($data);

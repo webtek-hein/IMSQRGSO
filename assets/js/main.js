@@ -859,7 +859,7 @@ function init_inventory() {
                 title: 'Email'
             }, {
                 sortable: true,
-                field: 'TIN',
+                field: 'tin',
                 title: 'TIN'
             }, {
                 sortable: true,
