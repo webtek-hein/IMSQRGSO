@@ -67,6 +67,21 @@ class Logs extends CI_Controller
         echo json_encode($data);
     }
 
+    public function editlogitem($type){
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $edit = $this->logs->edit_log_item($type,$position,$user_id);
+
+        foreach ($edit as $list) {
+            $data[] = array(
+                'name' => $list['item_name'],
+                'description' => $list['item_description'],
+                'type' => $list['item_type'],
+                'unit' => $list['unit'],
+            );
+        }
+        echo json_encode($data);
+    }
     public function editLog($type)
     {
         $position = $this->session->userdata['logged_in']['position'];
