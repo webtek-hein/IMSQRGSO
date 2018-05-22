@@ -90,20 +90,26 @@ if (isset($this->session->userdata['logged_in'])) {
                                   </li>';
                 }
                 ?>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Logs</a>
+
 
                     <?php
-                    echo '<ul class="sub-menu children dropdown-menu">';
+                    echo '';
                     if ($position !== 'Supply Officer') {
-                        echo '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
-                            '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>'.
-                            '<li><a href=' . base_url() . 'edit>EDIT LOG</a></li>';
+                        echo ' <li class="menu-item-has-children dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Logs</a>
+                                                <ul class="sub-menu children dropdown-menu">'.
+                                '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
+                                '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>'.
+                                '<li><a href=' . base_url() . 'edit>EDIT LOG</a></li></ul>';
+
+                    }else{
+                        echo '<li id="li6">
+                                    <a href="' . base_url() . 'return_log"><i class="menu-icon fa fa-laptop"></i>RETURNS</a>
+                                  </li>';
 
                     }
-                    echo '<li><a href=' . base_url() . 'return_log>RETURN LOG</a></li>';
-                    echo '</ul></li>';
+                    echo '</li>';
                     ?>
             </ul>
         </div><!-- /.navbar-collapse -->
