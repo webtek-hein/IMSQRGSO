@@ -79,6 +79,9 @@ if (isset($this->session->userdata['logged_in'])) {
                 if ($position === 'Admin') {
                     echo '<li id="li4">
                                     <a href="Accounts"><i class="menu-icon fa fa-users"></i>USERS</a>
+                                  </li>' . 
+                        '<li id="li6">
+                                     <a href="AccountSettings"><i class="menu-icon fa fa-gears"></i>Change Password</a>
                                   </li>';
                 }
                 if ($position === 'Supply Officer' || $position === 'Custodian') {
