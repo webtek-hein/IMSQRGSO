@@ -1914,10 +1914,6 @@ function viewQr() {
 
 }
 
-//print QR to pdf
-function download() {
-
-}
 
 function closeSerial() {
     $('.serialdrop').click();
@@ -2149,11 +2145,11 @@ function getAllSerial() {
     $q = [];
     $p = [];
     $r = [];
-    let counter = 0;
-    let $recon = $('.reconitem ');
-    let quantity = $('.quantity');
+     counter = 0;
+     $recon = $('.reconitem ');
+     quantity = $('.quantity');
 
-    for (let i = 0; i <= $recon.length - 1; i++) {
+    for ( i = 0; i <= $recon.length - 1; i++) {
         if(quantity[i].textContent !== $recon[i].value){
             counter++;
         }
@@ -2175,4 +2171,14 @@ function getAllSerial() {
             location.reload();
         }
     })
+}
+
+function download(){
+
+    var originalContents = $(document.body).html();
+    var header = '<h1>Serial Codes</h1><br><p>General Service Office</p>'
+    var printContents =   $('#airForm').html();
+    document.body.innerHTML = header+printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
 }

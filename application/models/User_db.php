@@ -1,9 +1,15 @@
 <?php
 class User_db extends CI_Model {
-// Read data using username and password
+    /**
+     * This verifies if the username and password
+     * entered by the user is valid.
+     *
+     * @param  string   $data Data entered by user.
+     * @return bool     Returns true if user is valid.
+     *
+     */
     public function login($data)
     {
-
         $this->db->select('*')
             ->where('username like binary', $data['username'])
             ->where('status', 'active')
@@ -19,8 +25,13 @@ class User_db extends CI_Model {
             return false;
     }
 
-
-// Read data from database to show data in admin page
+    /**
+     *This checks if the entered username is registered in database
+     *then it will display the users data if it matches.
+     *
+     * @param string    $username Check username if registered in database.
+     * @return bool     Return query of user if it matches the username.
+     */
     public function read_user_information($username) {
         $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.user_id,user.email,
         user.contact_no,user.username,user.position,department.department,department.dept_id');
@@ -36,6 +47,12 @@ class User_db extends CI_Model {
         }
     }
 
+    /**
+     * This will get the users registered in the
+     * database to display.
+     *
+     * @return mixed[] Array of users for display.
+     */
     public function get_users()
     {
          $this->db->select('user_id,CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,
@@ -45,6 +62,12 @@ class User_db extends CI_Model {
         return $query->result_array();
     }
 
+    /**
+     * This will return data of the entered username.
+     *
+     * @param  string   $username It will display data of username that it matches.
+     * @return mixed[]  Returns the data of the matched user.
+     */
     public function getmobileuser($username)
     {
         $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.email,user.contact_no,user.position,dept.department');
@@ -54,6 +77,10 @@ class User_db extends CI_Model {
         return $query->result_array();
     }
 
+    /**
+     * This will register a user in the database. It also hash the password
+     * before it will register in to the database.
+     */
     public function insertUser(){
         $password = $this->input->post('password');
         $options = ['cost' => 12];
@@ -76,6 +103,11 @@ class User_db extends CI_Model {
         );
         $this->db->insert('user',$data);
     }
+
+    /**
+     * This allows a user's first name, last name, email, contact
+     * number, password, and status to be edited by the admin.
+     */
     public function edituser()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
@@ -108,7 +140,7 @@ class User_db extends CI_Model {
         $this->db->where('user_id', $id);
         $this->db->update('user');
 
-        // compare data
+        // compare the data
         $result1 = array_diff($data1, $data);
         $result2 = array_diff($data, $data1);
         foreach ($result1 as $key => $value) {
@@ -121,6 +153,12 @@ class User_db extends CI_Model {
         }
     }
 
+    /**
+     * This will return data of the user with the matched ID.
+     *
+     * @param  int      $id Look for user with the matched ID.
+     * @return mixed[]    Return the data with the matched ID.
+     */
     public function getUser($id)
     {
         $this->db->where('user_id', $id);
@@ -139,6 +177,12 @@ class User_db extends CI_Model {
       }
      }
 
+    /**
+     * This allows editing of users profile.
+     *
+     * @param string    $data Users data will be edited.
+     * @param int       $userid Matches the user's ID that it will change.
+     */
     public function edit_profile($data, $userid)
     {
         $this->db->where('user_id', $userid);
