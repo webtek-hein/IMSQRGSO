@@ -75,10 +75,28 @@
                                            data-error-message="Please Enter the Address">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Address" class=" form-control-label">Contact Number</label>
-                                    <input id="contactno" class="form-control has-feedback-left"
-                                           name="contact" data-required="true"
-                                           data-error-message="Please Enter Contact Number">
+                                    <label for="PostalCode" class=" form-control-label">Postal Code</label>
+                                    <input id="postal" name="postal"
+                                           data-required="true"
+                                           class="form-control has-feedback-left"
+                                           data-error-message="Please Enter the Postal Code">
+                                </div>
+                                <div class="input_contact form-group">
+                                    <label for="Contactno" class=" form-control-label">Contact Number/s</label>
+                                    <input id="contactno"
+                                           name="contact[]" data-required="true"
+                                           data-error-message="Please Enter Contact Number"><button type="button" class="add"><i class="fa fa-plus"></i></button>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class=" form-control-label">Email</label>
+                                    <input id="email" class="form-control has-feedback-left"
+                                           name="email" data-required="false"
+                                           data-error-message="Please Enter Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tin" class=" form-control-label">TIN</label>
+                                    <input id="tin" class="form-control has-feedback-left"
+                                           name="tin" data-required="false">
                                 </div>
                                 <hr>
                                 <div class="form-group">
@@ -91,6 +109,11 @@
                     </div>
                 </div>
             </div>
+            <script>
+                $(document).ready(function() {
+
+                });
+            </script>
             <div hidden class="col-lg-12 editSupplier-tab">
                 <div class="card">
                     <div class="card-header">
@@ -123,6 +146,18 @@
                                            data-error-message="Please Enter the Address" required>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="PostalCode" class="col-md-12">Postal Code</label>
+                                <div class="col-md-12">
+                                    <input id="location" name="postal"
+                                           data-required="true"
+                                           data-parsley-minlength="1"
+                                           data-parsley-maxlength="200"
+                                           class="form-control has-feedback-left"
+                                           data-error-message="Please Enter Postal Code" required>
+                                </div>
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="Address" class="col-md-12">Contact Number</label>
                                 <div class="col-md-12">
