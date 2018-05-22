@@ -46,7 +46,7 @@
                                  <button id="reconcileButton" class="btn btn-outline-success">
                                  <i class="fa fa-balance-scale"></i> RECONCILE</button>
                                 <button id="reconcileButton"  onclick="toggleDiv($(\'.airForm\'),$(\'.inventory-tab\'))" class="btn btn-outline-success">
-                                 <i class="fa fa-balance-scale"></i> Generate AIR </button>
+                                 <i class="fa fa-balance-scale"></i><a href="air"> Generate AIR</a></button>
                                 </div>';
                     }
                     ?>
@@ -420,7 +420,7 @@
                                 onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))">&times; Cancel
                         </button>
                     </div>
-                    <div class="card-body card-block col-lg-10 align-self-center">
+                    <div class="card-body card-block col-lg-8 align-self-center">
                         <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
                             <ul id="bulk" class="nav nav-tabs" id="DetailTab" role="tablist">
                                 <li class="nav-item">
@@ -445,7 +445,7 @@
                                     <div class="form-group">
                                         <label for="item" class=" form-control-label">Item Name</label>
                                         <input type="text" name="item[]"
-                                               class="form-control has-feedback-left"
+                                               class="form-control col-6 align-middle"
                                                data-parsley-group="set1"
                                                data-parsley-required-message="Item Name is required"
                                                placeholder="Enter the name of the item"
@@ -457,25 +457,24 @@
                                                 <label for="itemtype" class=" form-control-label">Item type
                                                 </label>
                                             </div>
-                                            <div class="col-10">
+                                            <div class="col-12">
                                                 <select data-parsley-group="set1" id="type"
                                                         list="typelist" name="Type[]"
-                                                        class="itemtype form-control" required>
+                                                        class="itemtype form-control col-6" required>
                                                     <option value="CO">Capital Outlay</option>
                                                     <option value="MOOE">MOOE</option>
                                                 </select>
                                             </div>
-                                            <div class="col-2 has-feedback">
+                                            <div class="col-12">
                                                 <input type="checkbox" tabindex="-1" name="serialStatus[]"
-                                                       style="width:30px;height:30px;background:white;border-radius:5px;border:2px solid #555;"
                                                        value="1"> With serial
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group has-feedback">
+                                    <div class="form-group">
                                         <label for="item" class=" form-control-label">Inital Quantity</label>
                                         <input type="number" name="quant[]"
-                                               class="form-control has-feedback-left"
+                                               class="form-control col-6"
                                                data-parsley-trigger="blur"
                                                data-parsley-group="set1"
                                                data-parsley-length="[1, 20]"
@@ -483,10 +482,10 @@
                                                placeholder="Enter the quantity" min="0"
                                                required>
                                     </div>
-                                    <div class="form-group has-feedback">
+                                    <div class="form-group">
                                         <label for="unit" class=" form-control-label">Unit</label>
                                         <input name="Unit[]" data-parsley-group="set1"
-                                               class="form-control has-feedback-left" class="unit"
+                                               class="form-control col-6" class="unit"
                                                list="list"
                                                data-parsley-required-message="Select the Unit"
                                                required>
@@ -501,19 +500,19 @@
                                             <option value="others">others</option>
                                         </datalist>
                                     </div>
-                                    <div class="form-group has-feedback">
+                                    <div class="form-group">
                                         <label for="unit" class=" form-control-label">Unit Cost</label>
                                         <input type="number" min='0' name="cost[]"
                                                data-parsley-group="set1"
-                                               class="form-control has-feedback-left"
+                                               class="form-control col-6"
                                                data-parsley-required-message="Please insert Unit Cost"
                                                required>
                                     </div>
-                                    <div class="form-group has-feedback">
+                                    <div class="form-group">
                                         <label for="unit" class=" form-control-label">Description</label>
                                         <textarea data-parsley-group="set1"
                                                   name="description[]" id="message"
-                                                  class="form-control"
+                                                  class="form-control col-6"
                                                   data-parsley-trigger="blur"
                                                   data-parsley-minlength="1"
                                                   data-parsley-maxlength="500"
@@ -524,47 +523,64 @@
                                     <hr>
                                     <h3>Additional Details</h3>
                                     <hr>
-                                    <div class="form-group has-feedback">
+                                    <div class="form-group">
                                         <label for="unit" class=" form-control-label">Delivery Date</label>
+                                        <div class="input-group">
                                         <input data-parsley-group="set1" type="date"
-                                               name="del[]" class="form-control has-feedback-left"
+                                               name="del[]" class="form-control col-6"
                                                data-parsley-required-message="Enter the Delivery Date"
                                                required>
+                                        <span class="input-group-addon"><i class="fa fa-calendar-plus-o"></i></span>
+                                        </div>
                                     </div>
-                                    <div class="form-group has-feedback">
-                                        <label for="unit" class=" form-control-label">Date Received</label>
-                                        <input data-parsley-group="set1" type="date"
-                                               name="rec[]" class="form-control has-feedback-left"
+                                    <div class="form-group">
+                                        <label for="unit" class="form-control-label">Date Received</label>
+                                        <div class="input-group date">
+                                        <input class="form-control col-6" type="date" name="rec[]"
                                                data-parsley-required-message="Enter the Date received"
                                                required>
+                                         <span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
+                                        </div>
                                     </div>
-                                    <div class="form-group has-feedback">
+                                    <div class="form-group">
                                         <label for="unit" class=" form-control-label">Expiration Date</label>
+                                        <div class="input-group">
                                         <input data-parsley-group="set1" type="date"
-                                               name="exp[]" class="form-control has-feedback-left"
+                                               name="exp[]" class="form-control col-6"
                                                data-parsley-required-message="Enter the Expiration Date"
                                                required>
+                                        <span class="input-group-addon"><i class="fa fa-calendar-times-o"></i></span>
+                                        </div>
                                     </div>
-                                    <div class="form-group has-feedback">
+                                    <div class="form-group">
                                         <label for="unit" class=" form-control-label">Supplier</label>
+                                        <div class="input-group">
                                         <select data-parsley-group="set1"
                                                 list="typelist" name="supp[]"
-                                                class="supplieropt form-control has-feedback-left"
+                                                class="supplieropt form-control col-6"
                                                 required>
                                         </select>
+                                        <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                                        </div>
                                     </div>
-                                    <div class="form-group has-feedback">
+                                    <div class="form-group">
                                         <label for="unit" class=" form-control-label">Official Receipt Number</label>
+                                        <div class="input-group">
                                         <input data-parsley-group="set1"
-                                               name="or[]" class="form-control has-feedback-left"
+                                               name="or[]" class="form-control col-6"
                                                data-parsley-required-message="Input Official Receipt"
                                                required>
+                                        <span class="input-group-addon"><i class="fa fa-ticket"></i></span>
+                                        </div>
                                     </div>
-                                    <div class="form-group has-feedback">
+                                    <div class="form-group">
                                         <label for="unit" class=" form-control-label">Purchse Order (PO)
                                             number</label>
+                                        <div class="input-group">
                                         <input data-parsley-group="set1"
-                                               name="PO[]" class="form-control">
+                                               name="PO[]" class="form-control col-6">
+                                        <span class="input-group-addon"><i class="fa fa-file-archive-o"></i></span>
+                                        </div>
                                     </div>
 
                                     <hr>
@@ -1087,112 +1103,6 @@
     </div>
 </div>
 <!--end of add inventory date-->
-
-<!--AIR FORM-->
-<div hidden class="airForm">
-
-    <div class="right-invoice">
-        <section id="memo">
-
-            <div class="clearfix"></div>
-
-            <section id="client-info">
-                <img src="logo.png" style="width:50px; height:50px;"></img>
-                <h3><b>City Government of Baguio</b></h3>
-                <h3 style="margin-top:-10px;"><b>ACCEPTANCE AND INSPECTION REPORT</b></h3>
-            </section>
-
-            <div class="clearfix"></div>
-
-
-            <div class="tg-wrap">
-                <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
-                    <thead>
-                    <tr>
-                        <th>
-                            <h4 style="position:left; float:left;">Supplier: <input type="text"></input></h4>
-                            <h4 style="position:right; float:right;">Invoice No.: <input type="text"></input></h4>
-                            <br>
-                            <h4 style="position:left; float:left; margin-left:-228px; margin-top:25px;">PO No.: <input type="text"> </input></h4>
-                            <h4 style="position:right; float:right; margin-right:23px; margin-top:-13px;">AIR No.: <input type="text"></input></h4>
-                            <br>
-                            <h4 style="position:left; float:left; margin-left:-220px; margin-top:10px;">Requisitioning Office/Department: <input type="text"></input></h4>
-                            <h4 style="position:right; float:right; margin-right:42px; margin-top:-13px;">Date: <input type="text"></input></h4>
-                        </th>
-                    </tr>
-                    </thead>
-                </table>
-
-                <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
-                    <thead>
-                    <tr>
-                        <th class="thead1"><b>ITEM</b></th>
-                        <th class="thead1"><b>QUANTITY</b></th>
-                        <th class="thead1"><b>UNIT</b></th>
-                        <th class="thead2"><b>DESCIPTION</b></th>
-                        <th class="thead1"><b>AMOUNT</b></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="tbody"></td>
-                        <td class="tbody"></td>
-                        <td class="tbody"></td>
-                        <td class="tbody"></td>
-                        <td class="tbody"></td>
-                    </tr>
-                    </tbody>
-                </table>
-
-                <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
-                    <tfoot>
-                    <tr>
-                        <td><br></td>
-                    </tr>
-                    <tfoot>
-                </table>
-                <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
-                    <tfoot>
-                    <tr>
-                        <td class="tfoot5" align="center">ACCEPTION</td>
-                        <td class="tfoot6" align="center">INSPECTION</td>
-                    </tr>
-                    <tr>
-                        <td class="tfoot7" valign="top">Date Received:
-                            <br></br>
-                            <center>Complete
-                                <input type="text" size="15px" class="input1"></input></center>
-                            <br>
-                            <center>Partial
-                                <input type="text" size="15px" class="input1"></input></center>
-                            <br></br>
-                            <center><b>ROMEO D. CONCIO</b>
-                                <hr width="200px"></hr>
-                                <span>City General Services OFficer</span>
-                        </td>
-                        <td class="tfoot8" valign="top">Date Inspected:
-                            <br></br>
-                            <input type="text" size="5px" class="input1">
-                            <p style="margin-left:75px; margin-top:-15px;">Inspected, verified and found acceptable</p><p style="margin-left:75px;"> as to quantity and specifications</p></input>
-                            <br></br>
-                            <center><b>ROMEO D. CONCIO</b>
-                                <hr></hr>
-                                <span>GSO Inspector</span>
-                        </td>
-                    </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <br></br>
-            <input type="text"></input>
-            <hr width="300px"></hr>
-            <center><b>END-USER</b></center>
-            <br>
-            <input id="printpagebutton" type="button" value="Print" onclick="download()"/>
-    </div>
-
-    <div class="clearfix"></div>
-    </div>
 
 
 </div>
