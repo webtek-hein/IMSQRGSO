@@ -14,8 +14,9 @@ class Login extends CI_Controller
         $this->load->library('form_validation');
     }
 
-    // Check for user login process
-
+    /**
+     * Checks for the users login process
+     */
     public function user_login_process()
     {
 
@@ -39,6 +40,7 @@ class Login extends CI_Controller
                 $username = $this->input->post('username');
                 $result = $this->user_db->read_user_information($username);
                 if ($result != false) {
+                   /** Add user data to session*/
                     $session_data = array(
                         'username' => $result[0]->username,
                         'position' => $result[0]->position,
@@ -47,7 +49,7 @@ class Login extends CI_Controller
                         'dept_id' => $result[0]->dept_id,
                         'password' => $result[0]->password,
                     );
-// Add user data in session
+
                     $user_data = array(
                         'name' => $result[0]->name,
                         'email' => $result[0]->email,
@@ -71,10 +73,11 @@ class Login extends CI_Controller
         }
     }
 
-// Logout from admin page
+    /**
+     * Destroy session to logout user
+     */
     public function logout()
     {
-// Removing session data
         $sess_array = array(
             'username' => ''
         );
