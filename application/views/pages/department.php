@@ -135,9 +135,6 @@
     </div>
 </div>
 
-
-
-
 <!--Transfer-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/userDistribute" method="POST"
       data-validate="parsley">

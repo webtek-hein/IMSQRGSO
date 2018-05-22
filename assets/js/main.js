@@ -10,7 +10,6 @@ $(document).ready(function () {
             }
         });
     });
-
     $('.AcceptReturn').on('show.bs.modal', function (e) {
         f = $(e.relatedTarget).data('func');
         $('#returnAct').attr('onclick', f);
@@ -1531,6 +1530,8 @@ function viewSerial(id) {
     });
 
 }
+
+
 function gettransferlog(id){
 
     var $historytable = $('#history');
@@ -1558,6 +1559,7 @@ function gettransferlog(id){
             });
 
 }
+
 function gettransfer(id) {
     $.ajax({
         url: 'inventory/gettransfer/' + id,
@@ -1575,6 +1577,7 @@ function gettransfer(id) {
         });
 
 }
+
 //get serial checkbox
 function getserialreturn(id, sid) {
     var serials = [];
@@ -1966,12 +1969,14 @@ function revertDetail($det_id, $serialStatus) {
 
 //for reconciliation
 function reconcile() {
+
     $date = $('#inventoryDate').val();
     $status = $('#serialTab').find('.active').data('status');
     $id = [];
     $q = [];
     $p = [];
     $r = [];
+    $missing = [];
      counter = 0;
      serializedItems = $('#serializedItems');
      ns = $('#withoutSerial');
@@ -1988,6 +1993,7 @@ function reconcile() {
     }
     for ( i = 0; i <= $recon.length - 1; i++) {
         if($quantity[i].textContent !== $recon[i].value){
+            $missing.push($quantity[i].textContent - $recon[i].value);
             counter++;
         }
         $q.push($quantity[i].textContent);
@@ -1998,6 +2004,8 @@ function reconcile() {
 
     if(counter >= 1){
         if($status === 1){
+            console.log($('.itemsDiv'));
+
             $('.invdate').modal('toggle');
             toggleDiv($('.inventory-tab'),$('.reconcilePage'));
             toggleDiv($('.discrepancies'),$('.inventory-tab'));
@@ -2010,7 +2018,8 @@ function reconcile() {
                 data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
                 success: function (data) {
                     for(i=0; i <= data.length - 1 ; i++){
-                        item_name.push('<h4>'+data[i].item_name+'</h4><div id="item'+data[i].item_id+'">'
+                        item_name.push('<h4>'+data[i].item_name+'</h4><div class="itemsDiv" data-missing="'+$missing[i]+'" ' +
+                            'id="item'+data[i].item_id+'">'
                             +data[i].serials+'</div>');
                     }
 
@@ -2127,6 +2136,7 @@ function printDiv() {
     window.print();
     document.body.innerHTML = originalContents;
 }
+
 function accountability (dist_id) {
     $accountabilitytable = $('#accountTable');
     $accountabilitytable.bootstrapTable('refresh', {url: 'inventory/getEndUser/'+dist_id})
