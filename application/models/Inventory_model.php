@@ -839,6 +839,7 @@ class Inventory_model extends CI_Model
             $this->db->join('distribution', 'distribution.dist_id = serial.dist_id');
         }
         $this->db->where('serial.item_det_id', $det_id);
+        $this->db->where('serial.record_status', '1');
         $query = $this->db->get('serial');
         return $query->result_array();
     }
@@ -1441,25 +1442,24 @@ class Inventory_model extends CI_Model
         $logical = $this->input->post('logical');
         $physical = $this->input->post('physical');
         $id = $this->input->post('id');
-        $data = array();
-        $item[] = array();
-        $missing = 0;
 
         $item_id = $this->db->select('item_id')->where_in('recon_id', $id)->get('reconciliation')->result_array();
+
 
         foreach ($id as $key => $value) {
             $missing = $logical[$key] - $physical[$key];
             if ($missing > 0) {
-                $item[] = array('item.item_id' => $item_id[$key]['item_id']);
+                $item[] = $item_id[$key]['item_id'];
             }
         }
+
         $serial = $this->db->select('item_name,item.item_id, GROUP_CONCAT(serial) as serials')
             ->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner')
             ->join('item', 'item.item_id = itemdetail.item_id', 'inner')
             ->where('serial !=', null, false)
             ->where('record_status', '1')
-            ->where_in($item)
-            ->group_by('item_id')
+            ->where_in('itemdetail.item_id',$item)
+            ->group_by('itemdetail.item_id')
             ->get('serial')->result_array();
 
 

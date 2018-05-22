@@ -1876,10 +1876,6 @@ function viewQr() {
 
 }
 
-//print QR to pdf
-function download() {
-
-}
 
 function closeSerial() {
     $('.serialdrop').click();
@@ -1926,9 +1922,9 @@ function reconcile() {
     $q = [];
     $p = [];
     $r = [];
-    let counter = 0;
-    let serializedItems = $('#serializedItems');
-    let ns = $('#withoutSerial');
+     counter = 0;
+     serializedItems = $('#serializedItems');
+     ns = $('#withoutSerial');
     if($status === 1){
         $recon = serializedItems.find('.reconitem ');
         $quantity = serializedItems.find('.quantity');
@@ -1940,7 +1936,7 @@ function reconcile() {
         $remarks = ns.find('.remarks');
         $reconID = ns.find('.reconid');
     }
-    for (let i = 0; i <= $recon.length - 1; i++) {
+    for ( i = 0; i <= $recon.length - 1; i++) {
         if($quantity[i].textContent !== $recon[i].value){
             counter++;
         }
@@ -2111,11 +2107,11 @@ function getAllSerial() {
     $q = [];
     $p = [];
     $r = [];
-    let counter = 0;
-    let $recon = $('.reconitem ');
-    let quantity = $('.quantity');
+     counter = 0;
+     $recon = $('.reconitem ');
+     quantity = $('.quantity');
 
-    for (let i = 0; i <= $recon.length - 1; i++) {
+    for ( i = 0; i <= $recon.length - 1; i++) {
         if(quantity[i].textContent !== $recon[i].value){
             counter++;
         }
@@ -2137,4 +2133,14 @@ function getAllSerial() {
             location.reload();
         }
     })
+}
+
+function download(){
+
+    var originalContents = $(document.body).html();
+    var header = '<h1>Serial Codes</h1><br><p>General Service Office</p>'
+    var printContents =   $('#airForm').html();
+    document.body.innerHTML = header+printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
 }
