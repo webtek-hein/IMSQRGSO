@@ -57,45 +57,48 @@
                         <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.addSupplier'))"
                                 class="btn btn-primary fa fa-arrow-left"></i> Back</a></button>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body card-block col-lg-8 align-self-center">
                         <div class="tab-content pl-3 p-1 AddSup hidden" id="myTabContent">
                             <form method="POST" action="supplier/addSupplier" data-validate="parsley">
                                 <div class="form-group">
                                     <label for="Supplier Name" class=" form-control-label">Supplier Name</label>
                                     <input name="supplier" id="supplier-name"
                                            data-required="true"
-                                           class="form-control has-feedback-left"
+                                           class="form-control col-6"
                                            data-error-message="Please enter the Supplier Name">
                                 </div>
                                 <div class="form-group">
                                     <label for="Address" class=" form-control-label">Address</label>
                                     <input id="address" name="address"
                                            data-required="true"
-                                           class="form-control has-feedback-left"
+                                           class="form-control col-6"
                                            data-error-message="Please Enter the Address">
                                 </div>
                                 <div class="form-group">
                                     <label for="PostalCode" class=" form-control-label">Postal Code</label>
                                     <input id="postal" name="postal"
                                            data-required="true"
-                                           class="form-control has-feedback-left"
+                                           class="form-control col-6"
                                            data-error-message="Please Enter the Postal Code">
                                 </div>
                                 <div class="input_contact form-group">
                                     <label for="Contactno" class=" form-control-label">Contact Number/s</label>
+                                    <div class="input-group">
                                     <input id="contactno"
                                            name="contact[]" data-required="true"
-                                           data-error-message="Please Enter Contact Number"><button type="button" class="add"><i class="fa fa-plus"></i></button>
+                                           data-error-message="Please Enter Contact Number"><button type="button" class="btn btn-primary btn-sm add">
+                                        <i class="fa fa-plus"></i></button>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class=" form-control-label">Email</label>
-                                    <input id="email" class="form-control has-feedback-left"
+                                    <input id="email" class="form-control col-6"
                                            name="email" data-required="false"
                                            data-error-message="Please Enter Email">
                                 </div>
                                 <div class="form-group">
                                     <label for="tin" class=" form-control-label">TIN</label>
-                                    <input id="tin" class="form-control has-feedback-left"
+                                    <input id="tin" class="form-control col-6"
                                            name="tin" data-required="false">
                                 </div>
                                 <hr>
