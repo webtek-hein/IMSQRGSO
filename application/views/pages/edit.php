@@ -43,7 +43,7 @@
                             <!-- Capital Outaly tab-->
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
-                                <table id="editlogco" data-pagination="true" data-search="true" 
+                                <table id="editlogco" data-pagination="true" data-search="true"
                                        data-url="logs/editlogitem/CO" class="table table-striped table-bordered table-sm">
 
                                 </table>
