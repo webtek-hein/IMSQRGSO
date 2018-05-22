@@ -105,18 +105,18 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
-    public function detail($dept, $id,$dept_id)
+    public function detail($dept, $id, $dept_id)
     {
         $position = $this->session->userdata['logged_in']['position'];
-        $returnquant = $this->inv->retquant($dept_id,$id);
+        $returnquant = $this->inv->retquant($dept_id, $id);
 
 
         if ($position === 'Supply Officer') {
             $dept_id = $this->session->userdata['logged_in']['dept_id'];
-            $list = $this->inv->viewDetailperDept( $id, $dept_id);
-        } elseif($position === 'Custodian' && $dept === 'dept'){
             $list = $this->inv->viewDetailperDept($id, $dept_id);
-        }else{
+        } elseif ($position === 'Custodian' && $dept === 'dept') {
+            $list = $this->inv->viewDetailperDept($id, $dept_id);
+        } else {
             $list = $this->inv->viewdetail($id, $position);
         }
 
@@ -136,22 +136,22 @@ class Inventory extends CI_Controller
 
                 } elseif ($position === 'Supply Officer') {
 
-                        foreach ($returnquant as $ret) {
-                            if ($detail['serialStatus'] !== '1') {
-                                $action =
-                                    "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed],$ret[retq])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a>";
-                            } else {
-                                $action =
-                                    "<button onclick='accountability($detail[did])' id=\"accountButton\" type=\'button\' class=\"btn btn-success\">Accountability</button>
+                    foreach ($returnquant as $ret) {
+                        if ($detail['serialStatus'] !== '1') {
+                            $action =
+                                "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed],$ret[retq])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a>";
+                        } else {
+                            $action =
+                                "<button onclick='accountability($detail[did])' id=\"accountButton\" type=\'button\' class=\"btn btn-success\">Accountability</button>
                             <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
                             <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
 
-                            }
                         }
+                    }
                 } elseif ($dept === 'dept') {
                     $action = $detail['dist_stat'];
                 } elseif ($detail['serialStatus'] !== '1') {
-                        $action = "<div class=\"dropdown\">
+                    $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id],$detail[quantity],0)\"data-toggle=\"modal\" 
@@ -187,7 +187,7 @@ class Inventory extends CI_Controller
                     'or' => $detail['OR_no'],
                     'action' => $action
                 );
-            } elseif($position === 'Admin'){
+            } elseif ($position === 'Admin') {
                 $cost = "PHP " . number_format($detail['unit_cost'], 2);
                 $data[] = array(
                     'PO' => $detail['PO_number'],
@@ -199,10 +199,10 @@ class Inventory extends CI_Controller
                     'sup' => $detail['supplier_name'],
                     'or' => $detail['OR_no'],
                 );
-            }else{
+            } else {
                 $cost = "PHP " . number_format($detail['unit_cost'], 2);
                 $data[] = array(
-                    'remove' => '<a onclick="removeDetail('.$detail['item_det_id'].','.$detail['serialStatus'].')"> <i class="fa fa-remove"></i></a>',
+                    'remove' => '<a onclick="removeDetail(' . $detail['item_det_id'] . ',' . $detail['serialStatus'] . ')"> <i class="fa fa-remove"></i></a>',
                     'PO' => $detail['PO_number'],
                     'quant' => $detail['quantity'],
                     'del' => $detail['date_delivered'],
@@ -298,14 +298,17 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    public function userDistribute(){
+    public function userDistribute()
+    {
         $position = $this->session->userdata['logged_in']['position'];
         $user = $this->session->userdata['logged_in']['user_id'];
 
         $this->inv->userdistrib($position, $user);
         redirect('department');
     }
-    public function getEndUser($dist_id){
+
+    public function getEndUser($dist_id)
+    {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
@@ -317,13 +320,13 @@ class Inventory extends CI_Controller
             $action = "<button onclick=gettransfer($serial[serial_id]);  id=\"transferButton\" class=\"btn btn-success\"  data-id='$serial[serial_id]' data-toggle=\"modal\" data-target=\".transfer\">Transfer</button>
                             <button onclick=gettransferlog($serial[serial_id]); type=\"button\" id=\"historyButton\" class=\"btn btn-primary\" data-id='$serial[serial_id]'>History</button>";
 
-                $data[] = array(
-                    'serial_id' => $serial['serial_id'],
-                    'serial' => $serial['serial'],
-                    'owner' => $serial['name'],
-                    'date' => $serial['accountability_date'] . ' to ' . date("Y-m-d"),
-                    'action' => $action
-                );
+            $data[] = array(
+                'serial_id' => $serial['serial_id'],
+                'serial' => $serial['serial'],
+                'owner' => $serial['name'],
+                'date' => $serial['accountability_date'] . ' to ' . date("Y-m-d"),
+                'action' => $action
+            );
         }
 
         echo json_encode($data);
@@ -340,13 +343,14 @@ class Inventory extends CI_Controller
         }
         echo json_encode($data);
     }
-    public function getSerialreturn($det_id,$sid)
+
+    public function getSerialreturn($det_id, $sid)
     {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
 
-        $list = $this->inv->getSerialReturn($det_id,$sid);
+        $list = $this->inv->getSerialReturn($det_id, $sid);
 
         $data = array();
         foreach ($list as $serial) {
@@ -362,6 +366,7 @@ class Inventory extends CI_Controller
         }
         echo json_encode($data);
     }
+
     //get serial
     public function getSerial($det_id)
     {
@@ -383,13 +388,14 @@ class Inventory extends CI_Controller
         }
         echo json_encode($data);
     }
-    public function getSerialbtn($det_id,$sid)
+
+    public function getSerialbtn($det_id, $sid)
     {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
 
-        $list = $this->inv->getSerialbtn($det_id, $position,$sid);
+        $list = $this->inv->getSerialbtn($det_id, $position, $sid);
 
         $data = array();
         foreach ($list as $serial) {
@@ -413,16 +419,16 @@ class Inventory extends CI_Controller
     {
         $department = $this->session->userdata['logged_in']['dept_id'];
         $position = $this->session->userdata['logged_in']['position'];
-        if($position == 'Supply Officer'){
-            $list = $this->inv->departmentInventory($type,$department);
-        }else {
+        if ($position == 'Supply Officer') {
+            $list = $this->inv->departmentInventory($type, $department);
+        } else {
             $list = $this->inv->departmentInventory($type, $id);
             $department = $id;
         }
         $data = array();
         foreach ($list as $item) {
             $data[] = array(
-                'dept_id'=> $department,
+                'dept_id' => $department,
                 'position' => $position,
                 'id' => $item['item_id'],
                 'name' => $item['item_name'],
@@ -469,9 +475,9 @@ class Inventory extends CI_Controller
 
     }
 
-    public function getItem($dept, $id,$dept_id)
+    public function getItem($dept, $id, $dept_id)
     {
-        $list = $this->inv->getItem($dept, $id,$dept_id);
+        $list = $this->inv->getItem($dept, $id, $dept_id);
         $minimum = $this->inv->countItem($id);
         $quantity = 0;
         if ($dept === 'dept') {
@@ -517,18 +523,18 @@ class Inventory extends CI_Controller
         foreach ($list as $item) {
             $cost = "PHP " . number_format($item['unit_cost'], 2);
             $balance = "PHP " . number_format($item['running_quantity'] * $item['unit_cost'], 2);
-            if($item['transaction'] !== 'added'){
+            if ($item['transaction'] !== 'added') {
                 $refIndication = 'PR #';
-            }else{
+            } else {
                 $refIndication = 'OR #';
             }
             $data[] = array(
                 'date' => $item['date'],
                 'quantity' => $item['quantity'],
-                'reference' => $refIndication." ".$item['transaction_number'],
+                'reference' => $refIndication . " " . $item['transaction_number'],
                 'increased' => $item['increased'],
                 'decreased' => $item['decreased'],
-                'running_quantity'=>$item['running_quantity'],
+                'running_quantity' => $item['running_quantity'],
                 'running_balance' => $balance,
                 'price' => $cost,
                 'transaction' => $item['transaction']
@@ -548,8 +554,8 @@ class Inventory extends CI_Controller
 
         foreach ($list as $rets) {
             if ($position === 'Custodian') {
-                $action = '<a type="button" data-func="return_action(0,' . $rets['return_id'].','.$rets['serialStatus']
-                    . ')" onclick="retData('.$rets['serialStatus'] .','.$rets['return_id'] .')" 
+                $action = '<a type="button" data-func="return_action(0,' . $rets['return_id'] . ',' . $rets['serialStatus']
+                    . ')" onclick="retData(' . $rets['serialStatus'] . ',' . $rets['return_id'] . ')" 
             data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-primary">Accept</a>
                 <button onclick="return_action(1,' . $rets['return_id'] . ')" class="btn btn-danger">Decline</button>';
 
@@ -558,7 +564,7 @@ class Inventory extends CI_Controller
             }
             $data[] = array(
                 'date' => $rets['date_returned'],
-                'quantity'=>$rets['return_quantity'],
+                'quantity' => $rets['return_quantity'],
                 'dept' => $rets['department'],
                 'item' => $rets['item_name'],
                 'desc' => $rets['item_description'],
@@ -580,7 +586,7 @@ class Inventory extends CI_Controller
         $return_id = $this->input->post('return_id');
         //accept
         if ($action === '0') {
-            echo $this->inv->acceptReturn($return_id,$serial);
+            echo $this->inv->acceptReturn($return_id, $serial);
             // decline
         } elseif ($action === '1') {
             echo $this->inv->declineReturn($return_id);
@@ -753,37 +759,50 @@ class Inventory extends CI_Controller
             echo json_encode($this->inv->supplierReport($type));
         }
     }
-    public function getInvDates(){
+
+    public function getInvDates()
+    {
         echo json_encode($this->inv->getInventoryDates());
     }
 
-    function getRetData($status,$id){
-        echo json_encode($this->inv->getRetData($status,$id));
+    function getRetData($status, $id)
+    {
+        echo json_encode($this->inv->getRetData($status, $id));
     }
 
-    function reconcileInventory(){
+    function reconcileInventory()
+    {
         echo json_encode($this->inv->reconcileInv());
     }
 
 
-    function getDiscrepancy(){
+    function getDiscrepancy()
+    {
         $list = $this->inv->getDiscrepancy();
+        var_dump($list);
+        die;
         $data = array();
         foreach ($list as $item) {
-                $data[] = array(
-                    'item_name' => $item['item_name'],
-                    'item_id' => $item['item_id'],
-                    'serials' => implode(array_map(function($serial){return('<input class="item" type="checkbox" value='.$serial.' //>'.$serial.'<br>');},
-                        explode(',',$item['serials'])))
-                );
+            $data[] = array(
+                'item_name' => $item['item_name'],
+                'item_id' => $item['item_id'],
+                'serials' => implode(array_map(function ($serial) {
+                    return ('<input class="item" type="checkbox" value=' . $serial . ' //>' . $serial . '<br>');
+                },
+                    explode(',', $item['serials'])))
+            );
         }
 
         echo json_encode($data);
     }
-    function recSerializedItems(){
+
+    function recSerializedItems()
+    {
         $this->inv->recSerializedItems();
     }
-    function viewItemPerStatus($status){
+
+    function viewItemPerStatus($status)
+    {
         $list = $this->inv->viewItemPerSerial($status);
         $data = array();
         foreach ($list as $item) {
@@ -816,7 +835,9 @@ class Inventory extends CI_Controller
         }
         echo json_encode($data);
     }
-    public function reconcileNS(){
+
+    public function reconcileNS()
+    {
         $this->inv->nonSerializedRec();
     }
 

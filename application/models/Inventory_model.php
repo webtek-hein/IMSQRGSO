@@ -1445,11 +1445,12 @@ class Inventory_model extends CI_Model
 
         $item_id = $this->db->select('item_id')->where_in('recon_id', $id)->get('reconciliation')->result_array();
 
-
         foreach ($id as $key => $value) {
             $missing = $logical[$key] - $physical[$key];
             if ($missing > 0) {
                 $item[] = $item_id[$key]['item_id'];
+                $m[] = array('missing'=>$missing);
+
             }
         }
 
@@ -1461,7 +1462,6 @@ class Inventory_model extends CI_Model
             ->where_in('itemdetail.item_id',$item)
             ->group_by('itemdetail.item_id')
             ->get('serial')->result_array();
-
 
         return $serial;
 
