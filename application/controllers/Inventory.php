@@ -142,7 +142,7 @@ class Inventory extends CI_Controller
                                 "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed],$ret[retq])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a>";
                         } else {
                             $action =
-                                "<button onclick='accountability($detail[did])' id=\"accountButton\" type=\'button\' class=\"btn btn-success\">Accountability</button>
+                                "<button onclick='accountability($detail[dist_id])' id=\"accountButton\" type=\'button\' class=\"btn btn-success\">Accountability</button>
                             <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
                             <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
 
@@ -779,8 +779,7 @@ class Inventory extends CI_Controller
     function getDiscrepancy()
     {
         $list = $this->inv->getDiscrepancy();
-        var_dump($list);
-        die;
+
         $data = array();
         foreach ($list as $item) {
             $data[] = array(

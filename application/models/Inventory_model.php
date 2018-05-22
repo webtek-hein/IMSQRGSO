@@ -609,8 +609,9 @@ class Inventory_model extends CI_Model
         $this->db->join('department', 'department.dept_id = distribution.dept_id');
         $this->db->where('department.dept_id', $dept_id);
         $this->db->where('itemdetail.item_id', $id);
-        $query = $this->db->get('returnitem');
-        return $query->result_array();
+        $query = $this->db->get('returnitem')->result_array();
+
+        return $query;
     }
 
     public
@@ -1459,6 +1460,7 @@ class Inventory_model extends CI_Model
             ->join('item', 'item.item_id = itemdetail.item_id', 'inner')
             ->where('serial !=', null, false)
             ->where('record_status', '1')
+            ->where('item_status', 'In-stock')
             ->where_in('itemdetail.item_id',$item)
             ->group_by('itemdetail.item_id')
             ->get('serial')->result_array();

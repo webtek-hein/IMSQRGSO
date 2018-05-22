@@ -1,5 +1,16 @@
 $(document).ready(function () {
 
+    var max_limit = 3; // Max Limit
+    $(document).ready(function (){
+        $(".game:input:checkbox").each(function (index){
+            this.checked = (".game:input:checkbox" < max_limit);
+        }).change(function (){
+            if ($(".game:input:checkbox:checked").length > max_limit){
+                this.checked = false;
+            }
+        });
+    });
+
     $('.AcceptReturn').on('show.bs.modal', function (e) {
         f = $(e.relatedTarget).data('func');
         $('#returnAct').attr('onclick', f);
@@ -1523,6 +1534,7 @@ function viewSerial(id) {
 function gettransferlog(id){
 
     var $historytable = $('#history');
+    toggleDiv($('#historyPage'),$('#account'));
     $historytable.bootstrapTable('destroy');
             $historytable.bootstrapTable({
                 url: 'logs/gettransfer/' + id,
@@ -2116,8 +2128,7 @@ function printDiv() {
     document.body.innerHTML = originalContents;
 }
 function accountability (dist_id) {
-    toggleDiv($('#account'),$('.detail-tab'));
-    $accountabilitytable = $('#account');
+    $accountabilitytable = $('#accountTable');
     $accountabilitytable.bootstrapTable('refresh', {url: 'inventory/getEndUser/'+dist_id})
    .bootstrapTable({
         url: 'inventory/getEndUser/'+dist_id,
@@ -2135,6 +2146,8 @@ function accountability (dist_id) {
             title: 'Action'
         }]
     });
+    toggleDiv($('#account'),$('.detail-tab'));
+
     serialize_forms();
 }
 

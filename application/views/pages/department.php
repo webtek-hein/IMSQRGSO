@@ -25,10 +25,10 @@
             <!-- Inventory-->
             <div class="col-lg-12 department-tab">
                 <?php
-                    $position = ($this->session->userdata['logged_in']['position']);
-                    if ($position === 'Custodian' || $position === 'Admin') {
-                        echo '<select id="select-dept" class="col-lg-5 deptopt form-control"></select>';
-                    }
+                $position = ($this->session->userdata['logged_in']['position']);
+                if ($position === 'Custodian' || $position === 'Admin') {
+                    echo '<select id="select-dept" class="col-lg-5 deptopt form-control"></select>';
+                }
                 ?>
                 <div class="card">
                     <div class="card-body">
@@ -49,7 +49,7 @@
                             <!-- Capital Outaly tab-->
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
-                                <table id="departmentTable" data-show-refresh = "true" data-url="inventory/viewDept/CO/11"
+                                <table id="departmentTable" data-show-refresh="true" data-url="inventory/viewDept/CO/11"
                                        class="table table-bordered table-sm"
                                        data-pagination="true" data-search="true">
                                 </table>
@@ -57,7 +57,9 @@
                             <!--MOOE Tab-->
                             <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
                                 <!-- Implement Bootsrap table-->
-                                <table id="deptMOOEtable" data-pagination="true" data-show-refresh = "true" data-search="true" data-url="inventory/viewDept/MOOE/11" class="table table-bordered table-sm">
+                                <table id="deptMOOEtable" data-pagination="true" data-show-refresh="true"
+                                       data-search="true" data-url="inventory/viewDept/MOOE/11"
+                                       class="table table-bordered table-sm">
                                 </table>
                             </div>
                         </div>
@@ -69,8 +71,9 @@
             <div hidden class="col-lg-12 detail-tab ">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button"  onclick="toggleDiv($('.department-tab'),$('.detail-tab '))"
-                                class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back</button>
+                        <button type="button" onclick="toggleDiv($('.department-tab'),$('.detail-tab '))"
+                                class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back
+                        </button>
                         <button type="button" id="#" class="btn btn-primary">Print ARE</button>
                     </div>
                     <div class="card-body">
@@ -111,123 +114,97 @@
                     </div>
                 </div>
             </div>
-            <!-- View Serial-->
-            <div hidden class="Serial col-lg-12 ">
-                <div class="card">
-                    <div class="card-header">
-                        <h4><b>List of Serial</b></h4>
-                    </div>
-                    <div class="card-body card-block">
-                        <form class="serial-form" method="POST" action="inventory/addSerial">
-                            <!-- Dynamic serial tabs here -->
-                            <ul id="serial-tabs" class="nav nav-tabs">
-                            </ul>
-                            <!-- end of serial tabs -->
-                            <div id="serial-tabcontent" class="tab-content">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- View Serial-->
-    <div hidden class="Serial  page-content">
-        <div id="data1" class="panel-collapse collapse" role="tabpanel">
-            <h4><b>List of Serial</b></h4>
-            <form class="serial-form" method="POST" action="inventory/addSerial">
-                <!-- Dynamic serial tabs here -->
-                <ul id="serial-tabs" class="nav nav-tabs">
-                </ul>
-                <!-- end of serial tabs -->
-                <div id="serial-tabcontent" class="tab-content">
-                </div>
-            </form>
-        </div>
-    </div>
-    <!--End of View Serial-->
 
-    <!-- Accountability-->
-    <div hidden id="account" class="accountability col-lg-12 accountability-tab">
-        <div class="card">
-            <div class="card-header">
-                <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability-tab '))"
-                        class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back</button>
-            </div>
-        <div class="card-body">
-                <table id="accountTable" class="table table-striped table-bordered table-sm">
-                </table>
-        </div>
+
         </div>
     </div>
-
 </div>
+
+<!-- Accountability-->
+<div hidden id="account" class="accountability col-lg-12 ">
+    <div class="card">
+        <div class="card-header">
+            <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability-tab '))"
+                    class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back
+            </button>
+        </div>
+        <div class="card-body">
+            <table id="accountTable" class="table table-striped table-bordered table-sm">
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
 
 <!--Transfer-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/userDistribute" method="POST"
       data-validate="parsley">
-<div class="modal fade transfer" tabindex="-1" role="dialog" aria-hidden="true" >
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <div class="modal fade transfer" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel2">Transfer</h4>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel2">Transfer</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <div class="serialsp col-md-10">
+                            <label for="name"></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="owner col-md-10">
+                            <label for="name">Current Owner:</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="name">Transfer to:</label>
+                            <input name="transfername" class="name form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="date">Date of Transfer</label>
+                            <input id="date" class="form-control col-md-7 col-xs-12"
+                                   data-validate-length-range="6"
+                                   data-validate-words="2" name="date" required type="date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="name">Remarks</label>
+                            <textarea id="itemdesc" data-parsley-group="set1"
+                                      name="description" id="message"
+                                      class="form-control"
+                                      data-parsley-trigger="blur"
+                                      data-parsley-minlength="1"
+                                      data-parsley-maxlength="500"
+                                      data-parsley-minlength-message="Description must"
+                                      data-parsley-validation-threshold="10"
+                                      data-parsley-required-messag="Put description of the items"
+                                      required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" name="serialid" id="save1" class="btn btn-primary btn-modal">Save
+                        changes
+                    </button>
+                </div>
+
             </div>
-
-            <div class="modal-body">
-
-                <div class="form-group">
-                    <div class="serialsp col-md-10">
-                        <label for="name"></label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="owner col-md-10">
-                        <label for="name">Current Owner:</label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <label for="name">Transfer to:</label>
-                        <input name="transfername" class="name form-control" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <label for="date">Date of Transfer</label>
-                        <input id="date" class="form-control col-md-7 col-xs-12"
-                               data-validate-length-range="6"
-                               data-validate-words="2" name="date" required type="date">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <label for="name">Remarks</label>
-                        <textarea id="itemdesc" data-parsley-group="set1"
-                                  name="description" id="message"
-                                  class="form-control"
-                                  data-parsley-trigger="blur"
-                                  data-parsley-minlength="1"
-                                  data-parsley-maxlength="500"
-                                  data-parsley-minlength-message="Description must"
-                                  data-parsley-validation-threshold="10"
-                                  data-parsley-required-messag="Put description of the items"
-                                  required></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" name="serialid" id="save1" class="btn btn-primary btn-modal">Save changes</button>
-            </div>
-
         </div>
     </div>
-</div>
 </form>
 
 <!--History-->
@@ -235,15 +212,15 @@
     <div class="card">
         <div class="card-header">
             <button type="button" onclick="toggleDiv($('.department-tab'),$('.history'))"
-                    class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back</button>
+                    class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back
+            </button>
         </div>
 
-            <div id = 'hist' class="table-responsive-sm-sm tab-content pl-3 p-1">
-                <table id="history" class="table table-striped table-bordered table-sm">
-                </table>
-            </div>
+        <div id='hist' class="table-responsive-sm-sm tab-content pl-3 p-1">
+            <table id="history" class="table table-striped table-bordered table-sm">
+            </table>
+        </div>
     </div>
-
 </div>
 
 <!--Reconcile Page-->
@@ -251,7 +228,8 @@
 <div hidden class="reconcilePage col-lg-12">
     <div class="card">
         <div class="card-header">
-            <button onclick="toggleDiv($('.department-tab'), $('.reconcilePage'))" class="btn btn-primary">Back</button>
+            <button onclick="toggleDiv($('.department-tab'), $('.reconcilePage'))" class="btn btn-primary">Back
+            </button>
         </div>
         <form id="compareitem" role="form"
               action="inventory/compare/" method="POST">
@@ -320,7 +298,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                     <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i
-                                class="fa fa-arrow-down"></i> Yes
+                            class="fa fa-arrow-down"></i> Yes
                     </button>
                 </div>
             </div>
@@ -360,12 +338,13 @@
 
                     <div class="form-group">
                         <label>Receiver</label>
-                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
+                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur"
+                               type="text"
                                name="receiver">
                     </div>
                     <div class="form-group">
                         <label for="name">Remarks<span
-                                    class="required">*</span>
+                                class="required">*</span>
                         </label>
                         <textarea class="form-control" name="remarks" id="remarks"></textarea>
                     </div>
