@@ -21,7 +21,7 @@ if ($position === 'Admin') {
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
               <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
-                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
@@ -38,7 +38,7 @@ if ($position === 'Admin') {
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/decreased">
               <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
-                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
@@ -55,7 +55,7 @@ if ($position === 'Admin') {
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/return_log">
               <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
-                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
@@ -72,7 +72,7 @@ if ($position === 'Admin') {
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
               <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
-                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
@@ -93,7 +93,7 @@ if ($position === 'Custodian') {
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
               <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
-                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
@@ -110,7 +110,7 @@ if ($position === 'Custodian') {
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/decreased">
               <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
-                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
@@ -127,7 +127,7 @@ if ($position === 'Custodian') {
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/return_log">
               <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
-                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
@@ -144,7 +144,7 @@ if ($position === 'Custodian') {
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
               <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
-                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
@@ -165,7 +165,7 @@ if ($position === 'Supply Officer') {
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
               <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
-                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
@@ -182,7 +182,7 @@ if ($position === 'Supply Officer') {
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/decreased">
               <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
-                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
@@ -199,7 +199,7 @@ if ($position === 'Supply Officer') {
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/return_log">
               <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
-                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
@@ -216,7 +216,7 @@ if ($position === 'Supply Officer') {
             <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
               <span class="float-left" style="color:black">View Details</span>
               <span class="float-right">
-                <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>

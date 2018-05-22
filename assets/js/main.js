@@ -349,7 +349,7 @@ $(document).ready(function () {
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
             $(wrapper).append('<div><input id="contactno" name="contact[]" >' +
-                '<button class="remove_field"><i class="fa fa-times"></i></button></div>'); //add input box
+                '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button></div>'); //add input box
         }
     });
 
