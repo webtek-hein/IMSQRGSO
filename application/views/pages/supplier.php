@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="PostalCode" class=" form-control-label">Postal Code</label>
-                                    <input id="postal" name="postal"
+                                    <input id="postal1" name="postal"
                                            data-required="true"
                                            class="form-control col-6"
                                            data-error-message="Please Enter the Postal Code">
@@ -160,13 +160,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class=" form-control-label">Email</label>
-                                    <input id="email" class="form-control col-6"
+                                    <input id="email1" class="form-control col-6"
                                            name="email" data-required="false"
                                            data-error-message="Please Enter Email">
                                 </div>
                                 <div class="form-group">
                                     <label for="tin" class=" form-control-label">TIN</label>
-                                    <input id="tin" class="form-control col-6"
+                                    <input id="tin1" class="form-control col-6"
                                            name="tin" data-required="false">
                                 </div>
                                 <div class="form-group">
