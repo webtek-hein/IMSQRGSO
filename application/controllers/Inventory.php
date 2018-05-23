@@ -13,13 +13,23 @@ class Inventory extends CI_Controller
         //$this->load->library('csvimport');
     }
 
-    //add item
+    /**
+     *
+     *This allows an item to be saved.
+     *
+     * @param int   $counter  Saves an item.
+     */
     public function save($counter)
     {
         echo $this->inv->add_item($counter - 1);
     }
 
-    //add bulk of item
+    /**
+     *
+     * This will insert the data of the items
+     * in to the inventory.
+     *
+     * .*/
     public function saveAll()
     {
         $this->inv->saveAll();
@@ -31,7 +41,14 @@ class Inventory extends CI_Controller
         $this->inv->insert();
     }
 
-
+    /**
+     *
+     * This allows viewing of the items in
+     * the inventory.
+     *
+     * @param $type If the item is CO/MMOE.
+     *
+     */
     public function viewItem($type)
     {
         $position = $this->session->userdata['logged_in']['position'];
@@ -80,6 +97,14 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     *
+     * This will allow the adding of quantity of the items.
+     *
+     * @param $item_det_id Retrieve the item detail ID.
+     * @param $counter  Counts the quantity to be added.
+     *
+     */
     public function addquant($item_det_id, $counter)
     {
         $list = $this->inv->addquant($item_det_id, $counter);
@@ -90,6 +115,12 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     *
+     * This will inventory of the receiver
+     * of the distributed items.
+     *
+     */
     public function distribute()
     {
         $position = $this->session->userdata['logged_in']['position'];
@@ -99,17 +130,33 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
+    /**
+     *
+     *This connects the edit model for items to be edited.
+     * Then will be redirected to the inventory.
+     *
+     */
     public function edititem()
     {
         $this->inv->edititem();
         redirect('inventory');
     }
 
+    /**
+     *
+     * This function is for the viewing of details,
+     * adding details and distribution of items with or
+     * without serial.
+     *
+     * @param $dept Departments available in the database.
+     * @param $id   ID for viewing the detail for each item.
+     * @param $dept_id Selected department will be displayed.
+     *
+     */
     public function detail($dept, $id, $dept_id)
     {
         $position = $this->session->userdata['logged_in']['position'];
         $returnquant = $this->inv->retquant($dept_id, $id);
-
 
         if ($position === 'Supply Officer') {
             $dept_id = $this->session->userdata['logged_in']['dept_id'];
@@ -220,6 +267,10 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * This gets the data of the item for
+     * mobile detail.
+     */
     public function mobiledetail()
     {
         $details = $this->inv->mobiledetail();
@@ -241,6 +292,9 @@ class Inventory extends CI_Controller
 
     }
 
+    /**
+     *This will get data of a selected department.
+     */
     public function getdept()
     {
         $departments = $this->inv->select_departments();
@@ -255,6 +309,9 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     *
+     */
     public function getacccodes()
     {
         $acc_code = $this->inv->select_acc_codes();
@@ -391,7 +448,7 @@ class Inventory extends CI_Controller
 
     public function getSerialbtn($det_id, $sid)
     {
-        //supply officer
+        //supply office
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
 
