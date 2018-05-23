@@ -1,15 +1,4 @@
 $(document).ready(function () {
-
-    var max_limit = 3; // Max Limit
-    $(document).ready(function (){
-        $(".game:input:checkbox").each(function (index){
-            this.checked = (".game:input:checkbox" < max_limit);
-        }).change(function (){
-            if ($(".game:input:checkbox:checked").length > max_limit){
-                this.checked = false;
-            }
-        });
-    });
     $('.AcceptReturn').on('show.bs.modal', function (e) {
         f = $(e.relatedTarget).data('func');
         $('#returnAct').attr('onclick', f);
@@ -350,22 +339,24 @@ $(document).ready(function () {
         init_editlog();
     }
 // add contact supplier
-   /* var max_fields      = 5; //maximum input boxes allowed
-    var wrapper         = $(".input_contact"); //Fields wrapper
-    var add_button      = $(".add"); //Add button ID
+    /* var max_fields      = 5; //maximum input boxes allowed
+     var wrapper         = $(".input_contact"); //Fields wrapper
+     var add_button      = $(".add"); //Add button ID
 
-    var x = 1; //initlal text box count
-    $(add_button).click(function(e){ //on add input button click
+     var x = 1; //initlal text box count
+     $(add_button).click(function(e){ //on add input button click
+         e.preventDefault();
+         if(x < max_fields){ //max input box allowed
+             x++; //text box increment
+             $(wrapper).append('<div><input id="contactno" name="contact[]" >' +
+                 '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button></div>'); //add input box
+         }
+     });*/
+
+    $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
         e.preventDefault();
-        if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-            $(wrapper).append('<div><input id="contactno" name="contact[]" >' +
-                '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button></div>'); //add input box
-        }
-    });*/
-
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
+        $(this).parent('div').remove();
+        x--;
     })
 });
 
@@ -383,7 +374,7 @@ function return_action($action, $retun_id, $s) {
         method: 'POST',
         data: {serial: $serial, action: $action, return_id: $retun_id},
         success: function (response) {
-          //  $('.AcceptReturn').modal('toggle');
+            //  $('.AcceptReturn').modal('toggle');
         }
     });
 }
@@ -408,24 +399,17 @@ function saveSerial() {
     });
 }
 
-function editSupplier(id) {
-    var $detailtable = $('#editSupplier-tab-table');
-    var supplier;
-    $.ajax({
-        url: 'supplier/getSupplier/' + id,
-        dataType: 'JSON',
-        success: function (data) {
-            toggleDiv($('.editSupplier-tab '), $('.supplier-tab'));
-            $('#edtbuttonsupplier').val(id);
-            $('#supplier').val(data.name);
-            $('#location').val(data.location);
-            $('#contactno1').val(data.contact);
-            $('#postal1').val(data.postal);
-            $('#email1').val(data.email);
-            $('#tin1').val(data.tin);
-            $('#status').val(data.status);
-        }
-    });
+function editSupplier(data) {
+    console.log(data);
+    toggleDiv($('.editSupplier-tab '), $('.supplier-tab'));
+    $('#edtbuttonsupplier').val(data.id);
+    $('#supplier').val(data.supplier);
+    $('#location').val(data.address);
+    $('#contactno1').val(data.contact);
+    $('#postal1').val(data.postal);
+    $('#email1').val(data.email);
+    $('#tin1').val(data.tin);
+    $('#status').val(data.status);
 }
 
 // go to detail
@@ -437,7 +421,7 @@ function detail(id) {
 
     var item;
     $.ajax({
-        url: 'inventory/getitem/inv/' + id+'/0',
+        url: 'inventory/getitem/inv/' + id + '/0',
         dataType: 'JSON',
         success: function (data) {
             $('#edtbutton').val(id);
@@ -451,9 +435,9 @@ function detail(id) {
 
             toggleDiv($('.detail-tab '), $('.inventory-tab'));
 
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + id+'/0'});
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + id + '/0'});
             $detailtable.bootstrapTable({
-                url: 'inventory/detail/inv/' + id +'/0',
+                url: 'inventory/detail/inv/' + id + '/0',
                 columns: [{
                     field: 'remove',
                     title: ''
@@ -567,13 +551,13 @@ function deptDet(id, position, dept_id) {
     var $detailTab = $('.detail-tab ');
     var item;
     if (position === 'Supply Officer') {
-      $visible = true;
+        $visible = true;
     } else {
         dept_id = $('#select-dept').val();
         $visible = false;
     }
     $.ajax({
-        url: 'inventory/getitem/dept/' + id+'/'+dept_id,
+        url: 'inventory/getitem/dept/' + id + '/' + dept_id,
         dataType: 'JSON',
         success: function (data) {
             $('#itemname').html(data.name);
@@ -584,9 +568,9 @@ function deptDet(id, position, dept_id) {
             toggleDiv($detailTab, $('.department-tab'));
             toggleDiv($detailTab, $('.inventory-tab'));
 
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/dept/' + id+'/'+dept_id})
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/dept/' + id + '/' + dept_id})
                 .bootstrapTable({
-                    url: 'inventory/detail/dept/' + id+'/'+dept_id,
+                    url: 'inventory/detail/dept/' + id + '/' + dept_id,
                     columns: [{
                         field: 'PR',
                         title: 'PR Number'
@@ -612,7 +596,7 @@ function deptDet(id, position, dept_id) {
                         field: 'or',
                         title: 'OR number'
                     }, {
-                        
+
                         field: 'action',
                         title: 'Action',
                         visible: $visible
@@ -849,7 +833,7 @@ function init_inventory() {
             pageSize: 10,
             url: 'supplier/viewsuppliers',
             onClickRow: function (data, row) {
-                editSupplier(data.id);
+                editSupplier(data);
             },
             resizable: true,
             columns: [{
@@ -860,15 +844,15 @@ function init_inventory() {
                 sortable: true,
                 field: 'address',
                 title: 'Address'
-            },{
+            }, {
                 sortable: true,
                 field: 'postal',
                 title: 'Postal Code'
-            },{
+            }, {
                 sortable: true,
                 field: 'contact',
                 title: 'Primary Contact number'
-            },  {
+            }, {
                 sortable: true,
                 field: 'email',
                 title: 'Email'
@@ -882,6 +866,7 @@ function init_inventory() {
                 title: 'Status'
             }]
         });
+
     $userTable.bootstrapTable('refresh', {url: 'Users/display_users'})
         .bootstrapTable({
             pageSize: 10,
@@ -890,7 +875,7 @@ function init_inventory() {
                 userDetail(data.id);
             },
             resizable: true,
-            columns: [ {
+            columns: [{
                 sortable: true,
                 field: 'date_created',
                 title: 'Date Created'
@@ -1243,7 +1228,8 @@ function init_list() {
 
     console.log('init_list');
 }
-function init_editlog(){
+
+function init_editlog() {
     var $editlogtableco = $('#editlogco');
     var $editlogtablemooe = $('#editlogmooe');
 
@@ -1286,7 +1272,7 @@ function init_editlog(){
         columns: [{
             field: 'id',
             visible: false
-        },{
+        }, {
             sortable: true,
             field: 'name',
             title: 'Item Name'
@@ -1307,15 +1293,15 @@ function init_editlog(){
 
 }
 
-function editlogdet(id){
+function editlogdet(id) {
 
-var editmodal = $('#editlogmodal');
-var $editmodaltable = $('#editlog');
-editmodal.modal("show");
+    var editmodal = $('#editlogmodal');
+    var $editmodaltable = $('#editlog');
+    editmodal.modal("show");
 
     $editmodaltable.bootstrapTable({
         pageSize: 10,
-        url: 'logs/editlog/'+id,
+        url: 'logs/editlog/' + id,
         resizable: true,
         columns: [{
             sortable: true,
@@ -1337,6 +1323,7 @@ editmodal.modal("show");
     });
 
 }
+
 //for editting
 function serialize_forms() {
     $('.serialForm')
@@ -1448,7 +1435,7 @@ function modal() {
     $(".transfer").on("hidden.bs.modal", function () {
         $(".serialsp").html("");
         $(".quantsp").html("");
-        })
+    })
     $(".acceptsp").on("hidden.bs.modal", function () {
         $(".serialsp").html("");
         $(".quantsp").html("");
@@ -1480,39 +1467,39 @@ function modal() {
 
 //add item save
 function save(counter) {
-        var list = $('#list' + counter);
-        var step = $('#step' + counter + 'B');
-        $.ajax({
-            type: 'POST',
-            url: 'Inventory/save/' + counter,
-            data: $('#addItemForm').serializeArray(),
-            success: function (response) {
-                if (response) {
-                    console.log($('#bulk').find('li').length);
-                    if ($('#bulk').find('li').length > 2) {
-                        if (!list.prev().length < 2) {
-                            list.prev().addClass('active');
-                            step.prev().addClass('active');
-                        } else {
-                            list.next().addClass('active');
-                            step.next().addClass('active');
-                        }
-                        list.remove();
-                        step.remove();
+    var list = $('#list' + counter);
+    var step = $('#step' + counter + 'B');
+    $.ajax({
+        type: 'POST',
+        url: 'Inventory/save/' + counter,
+        data: $('#addItemForm').serializeArray(),
+        success: function (response) {
+            if (response) {
+                console.log($('#bulk').find('li').length);
+                if ($('#bulk').find('li').length > 2) {
+                    if (!list.prev().length < 2) {
+                        list.prev().addClass('active');
+                        step.prev().addClass('active');
                     } else {
-                        location.reload();
+                        list.next().addClass('active');
+                        step.next().addClass('active');
                     }
-                }
-            },
-            statusCode: {
-                500: function () {
-                    BootstrapDialog.show({
-                        message: 'Duplicate item name and description.'
-                    });
+                    list.remove();
+                    step.remove();
+                } else {
+                    location.reload();
                 }
             }
+        },
+        statusCode: {
+            500: function () {
+                BootstrapDialog.show({
+                    message: 'Duplicate item name and description.'
+                });
+            }
+        }
 
-        });
+    });
 }
 
 
@@ -1560,7 +1547,7 @@ function viewSerial(id) {
             //if div reaches 10
             //create another div
             if (data.length > 10) {
-                var f=data.length;
+                var f = data.length;
 
                 for (i = 0; i < data.length; i++) {
                     if (serialTabCounter !== 1) {
@@ -1579,7 +1566,7 @@ function viewSerial(id) {
                             "data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
                         $serialContent.append(div);
                         $('#tab' + serialTabCounter).html(input.join('') + button);
-                        f-=input.length;
+                        f -= input.length;
                         div = [];
                         input = [];
                         serialTabCounter++;
@@ -1600,7 +1587,7 @@ function viewSerial(id) {
                 $serialContent.append(div);
                 $('#tab1').toggleClass('show').html(input.join('') + button);
             }
-            if(f>=1){
+            if (f >= 1) {
                 div.push("<div id=\"tab" + serialTabCounter + "\" class=\"tab-pane fade " + divClass + "\">");
                 list.push("<li class=\"" + listClass + "\"><a id=\"t" + serialTabCounter + "\"" +
                     "data-toggle=\"tab\" href=\"#tab" + serialTabCounter + "\">Set " + serialTabCounter + "</a></li>");
@@ -1630,31 +1617,31 @@ function viewSerial(id) {
 }
 
 
-function gettransferlog(id){
+function gettransferlog(id) {
 
     var $historytable = $('#history');
-    toggleDiv($('#historyPage'),$('#account'));
+    toggleDiv($('#historyPage'), $('#account'));
     $historytable.bootstrapTable('destroy');
-            $historytable.bootstrapTable({
-                url: 'logs/gettransfer/' + id,
-                columns: [{
-                    sortable: true,
-                    field: 'serial',
-                    title: 'Serial'
-                }, {
-                    sortable: true,
-                    field: 'transfer_date',
-                    title: 'Transfer date'
-                }, {
-                    sortable: true,
-                    field: 'current_owner',
-                    title: 'Current Owner'
-                }, {
-                    sortable: true,
-                    field: 'last_owner',
-                    title: 'Last Owner'
-                }]
-            });
+    $historytable.bootstrapTable({
+        url: 'logs/gettransfer/' + id,
+        columns: [{
+            sortable: true,
+            field: 'serial',
+            title: 'Serial'
+        }, {
+            sortable: true,
+            field: 'transfer_date',
+            title: 'Transfer date'
+        }, {
+            sortable: true,
+            field: 'current_owner',
+            title: 'Current Owner'
+        }, {
+            sortable: true,
+            field: 'last_owner',
+            title: 'Last Owner'
+        }]
+    });
 
 }
 
@@ -1672,7 +1659,7 @@ function gettransfer(id) {
                     " <input name=\"serial\" class=\"name form-control\" readonly value=" + data[i].serial + ">");
             }
         }
-        });
+    });
 
 }
 
@@ -2045,8 +2032,8 @@ function removeDetail($id, $serialStatus) {
         url: "inventory/removeDetail/" + $id + "/" + $serialStatus,
         method: "POST",
         success: function (data) {
-            $detailtable.bootstrapTable('refresh',{url:'inventory/detail/inv/'+$id+'/0'});
-            $rmItems.bootstrapTable('refresh',{url:'inventory/showRemovedItems/'+$id});
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $id + '/0'});
+            $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $id});
             $table.bootstrapTable('refresh');
         }
     });
@@ -2061,7 +2048,7 @@ function revertDetail($det_id, $serialStatus) {
         method: "POST",
         success: function (data) {
             $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $det_id});
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $det_id+'/0'});
+            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $det_id + '/0'});
         }
     });
 }
@@ -2076,22 +2063,22 @@ function reconcile() {
     $p = [];
     $r = [];
     $missing = [];
-     counter = 0;
-     serializedItems = $('#serializedItems');
-     ns = $('#withoutSerial');
-    if($status === 1){
+    counter = 0;
+    serializedItems = $('#serializedItems');
+    ns = $('#withoutSerial');
+    if ($status === 1) {
         $recon = serializedItems.find('.reconitem ');
         $quantity = serializedItems.find('.quantity');
         $remarks = serializedItems.find('.remarks');
         $reconID = serializedItems.find('.reconid');
-    }else{
+    } else {
         $recon = ns.find('.reconitem ');
         $quantity = ns.find('.quantity');
         $remarks = ns.find('.remarks');
         $reconID = ns.find('.reconid');
     }
-    for ( i = 0; i <= $recon.length - 1; i++) {
-        if($quantity[i].textContent !== $recon[i].value){
+    for (i = 0; i <= $recon.length - 1; i++) {
+        if ($quantity[i].textContent !== $recon[i].value) {
             $missing.push($quantity[i].textContent - $recon[i].value);
             counter++;
         }
@@ -2101,13 +2088,13 @@ function reconcile() {
         $id.push($reconID[i].value);
     }
 
-    if(counter >= 1){
-        if($status === 1){
+    if (counter >= 1) {
+        if ($status === 1) {
             console.log($('.itemsDiv'));
 
             $('.invdate').modal('toggle');
-            toggleDiv($('.inventory-tab'),$('.reconcilePage'));
-            toggleDiv($('.discrepancies'),$('.inventory-tab'));
+            toggleDiv($('.inventory-tab'), $('.reconcilePage'));
+            toggleDiv($('.discrepancies'), $('.inventory-tab'));
             item_name = [];
             serial = [];
             $.ajax({
@@ -2116,18 +2103,19 @@ function reconcile() {
                 dataType: 'JSON',
                 data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
                 success: function (data) {
-                    for(i=0; i <= data.length - 1 ; i++){
-                        item_name.push('<h4>'+data[i].item_name+'</h4><div class="itemsDiv" data-missing="'+$missing[i]+'" ' +
-                            'id="item'+data[i].item_id+'">'
-                            +data[i].serials+'</div>');
+                    for (i = 0; i <= data.length - 1; i++) {
+                        item_name.push('<h4>' + data[i].item_name + '</h4><div class="itemsDiv" data-missing="' + $missing[i] + '" ' +
+                            'id="item' + data[i].item_id + '">'
+                            + data[i].serials + '</div>');
                     }
 
                     $('#items').html(item_name);
 
+
                 }
             });
 
-        }else{
+        } else {
             $.ajax({
                 url: "Inventory/reconcileNS",
                 method: "POST",
@@ -2138,18 +2126,17 @@ function reconcile() {
                 }
             });
         }
-    }else{
+    } else {
         $.ajax({
-            url:"Inventory/reconcileInventory",
+            url: "Inventory/reconcileInventory",
             method: "POST",
             data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
             success: function (data) {
                 $('.invdate').modal('toggle');
-                console.log(data);
+                location.reload();
             }
         })
     }
-
 
 
 }
@@ -2177,17 +2164,17 @@ function printToPDFreport() {
     $report = $('#reportsOption').val();
     alert($report);
     var header;
-    if($report === '0'){
-       header  = '<h1>Delivered Items</h1><br><p>General Service Office</p>';
-    }else if($report === '1'){
+    if ($report === '0') {
+        header = '<h1>Delivered Items</h1><br><p>General Service Office</p>';
+    } else if ($report === '1') {
         header = '<h1>Distributed Items</h1><br><p>General Service Office</p>';
-    }else if($report === '2'){
+    } else if ($report === '2') {
         header = '<h1>Returned Items</h1><br><p>General Service Office</p>';
-    }else{
+    } else {
         header = '<h1>Supplier Items</h1><br><p>General Service Office</p>';
     }
     var printContents = $('.fixed-table-body').html();
-    document.body.innerHTML = header+printContents;
+    document.body.innerHTML = header + printContents;
     window.print();
     location.reload();
 }
@@ -2231,31 +2218,31 @@ function printDiv() {
     var originalContents = $(document.body).html();
     var header = '<h1>Serial Codes</h1><br><p>General Service Office</p>'
     var printContents = $('#QRImages').html();
-    document.body.innerHTML = header+printContents;
+    document.body.innerHTML = header + printContents;
     window.print();
     document.body.innerHTML = originalContents;
 }
 
-function accountability (dist_id) {
+function accountability(dist_id) {
     $accountabilitytable = $('#accountTable');
-    $accountabilitytable.bootstrapTable('refresh', {url: 'inventory/getEndUser/'+dist_id})
-   .bootstrapTable({
-        url: 'inventory/getEndUser/'+dist_id,
-        columns: [{
-            field: 'serial',
-            title: 'Serial'
-        }, {
-            field: 'owner',
-            title: 'Owner'
-        }, {
-            field: 'date',
-            title: 'Accountability Date'
-        }, {
-            field: 'action',
-            title: 'Action'
-        }]
-    });
-    toggleDiv($('#account'),$('.detail-tab'));
+    $accountabilitytable.bootstrapTable('refresh', {url: 'inventory/getEndUser/' + dist_id})
+        .bootstrapTable({
+            url: 'inventory/getEndUser/' + dist_id,
+            columns: [{
+                field: 'serial',
+                title: 'Serial'
+            }, {
+                field: 'owner',
+                title: 'Owner'
+            }, {
+                field: 'date',
+                title: 'Accountability Date'
+            }, {
+                field: 'action',
+                title: 'Action'
+            }]
+        });
+    toggleDiv($('#account'), $('.detail-tab'));
 
     serialize_forms();
 }
@@ -2267,12 +2254,12 @@ function getAllSerial() {
     $q = [];
     $p = [];
     $r = [];
-     counter = 0;
-     $recon = $('.reconitem ');
-     quantity = $('.quantity');
+    counter = 0;
+    $recon = $('.reconitem ');
+    quantity = $('.quantity');
 
-    for ( i = 0; i <= $recon.length - 1; i++) {
-        if(quantity[i].textContent !== $recon[i].value){
+    for (i = 0; i <= $recon.length - 1; i++) {
+        if (quantity[i].textContent !== $recon[i].value) {
             counter++;
         }
         $q.push(quantity[i].textContent);
@@ -2280,31 +2267,31 @@ function getAllSerial() {
         $r.push($('.remarks')[i].value)
         $id.push($('.reconid')[i].value)
     }
-    $serials= $('input.item:checked');
+    $serials = $('input.item:checked');
     serials = [];
-    for(i=0;i<=$serials.length-1;i++){
+    for (i = 0; i <= $serials.length - 1; i++) {
         serials.push($serials[i].value);
     }
     $.ajax({
         url: 'Inventory/recSerializedItems',
         method: 'POST',
-        data: {serials: serials,logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
+        data: {serials: serials, logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
         success: function () {
             location.reload();
         }
     })
 }
 
-function download(){
+function download() {
 
     var originalContents = $(document.body).html();
     var header = '<h1>Serial Codes</h1><br><p>General Service Office</p>'
-    var printContents =   $('#airForm').html();
-    document.body.innerHTML = header+printContents;
+    var printContents = $('#airForm').html();
+    document.body.innerHTML = header + printContents;
     window.print();
     document.body.innerHTML = originalContents;
 }
 
-function verifypass(){
-     $old = $('#old').val();
+function verifypass() {
+    $old = $('#old').val();
 }
