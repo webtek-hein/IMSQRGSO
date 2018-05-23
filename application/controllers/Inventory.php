@@ -130,6 +130,12 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
+    /**
+     *
+     *This connects the edit model for items to be edited.
+     * Then will be redirected to the inventory.
+     *
+     */
     public function edititem()
     {
         $this->inv->edititem();
