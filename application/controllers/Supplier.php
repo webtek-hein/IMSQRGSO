@@ -73,7 +73,12 @@ class Supplier extends CI_Controller
             'id' => $list->supplier_id,
             'name' => $list->supplier_name,
             'contact' => $list->contact,
-            'location' => $list->location
+            'location' => $list->location,
+            'email' => $list->email,
+            'postal' => $list->postal_code,
+            'tin' => $list->tin,
+            'status' => $list->status
+
         );
         echo json_encode($data);
     }

@@ -420,6 +420,10 @@ function editSupplier(id) {
             $('#supplier').val(data.name);
             $('#location').val(data.location);
             $('#cno').val(data.contact);
+            $('#postal').val(data.postal_code);
+            $('#email').val(data.email);
+            $('#tin').val(data.tin);
+            $('#status').val(data.status);
         }
     });
 }
