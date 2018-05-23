@@ -142,11 +142,21 @@ class Inventory extends CI_Controller
         redirect('inventory');
     }
 
+    /**
+     *
+     * This function is for the viewing of details,
+     * adding details and distribution of items with or
+     * without serial.
+     *
+     * @param $dept Departments available in the database.
+     * @param $id   ID for viewing the detail for each item.
+     * @param $dept_id Selected department will be displayed.
+     *
+     */
     public function detail($dept, $id, $dept_id)
     {
         $position = $this->session->userdata['logged_in']['position'];
         $returnquant = $this->inv->retquant($dept_id, $id);
-
 
         if ($position === 'Supply Officer') {
             $dept_id = $this->session->userdata['logged_in']['dept_id'];
@@ -257,6 +267,10 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * This gets the data of the item for
+     * mobile detail.
+     */
     public function mobiledetail()
     {
         $details = $this->inv->mobiledetail();
@@ -278,6 +292,9 @@ class Inventory extends CI_Controller
 
     }
 
+    /**
+     *This will get data of a selected department.
+     */
     public function getdept()
     {
         $departments = $this->inv->select_departments();
@@ -292,6 +309,9 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * 
+     */
     public function getacccodes()
     {
         $acc_code = $this->inv->select_acc_codes();
