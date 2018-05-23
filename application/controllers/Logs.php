@@ -22,8 +22,9 @@ class Logs extends CI_Controller
         $data = [];
         foreach ($inc as $list) {
             $cost = "PHP " . number_format($list['unit_cost'], 2);
+            $timestamp =  date("d F Y H:i:s", strtotime ($list['timestamp']));
             $data[] = array(
-                'timestamp' => $list['timestamp'],
+                'timestamp' => $timestamp,
                 'item' => $list['item_name'],
                 'description' => $list['item_description'],
                 'quantity' => $list['quantity'],
@@ -52,8 +53,9 @@ class Logs extends CI_Controller
             }else{
                 $receiver = '';
             }
+            $timestamp =  date("d F Y H:i:s", strtotime ($list['timestamp']));
             $data[] = array(
-                'timestamp' => $list['timestamp'],
+                'timestamp' => $timestamp,
                 'department' => $list['department'],
                 'item' => $list['item_name'],
                 'description' => $list['item_description'],
@@ -73,6 +75,7 @@ class Logs extends CI_Controller
         $edit = $this->logs->edit_log_item($type,$position,$user_id);
 
         foreach ($edit as $list) {
+
             $data[] = array(
                 'id' =>$list['item_id'],
                 'name' => $list['item_name'],
@@ -91,8 +94,9 @@ class Logs extends CI_Controller
         $edit = $this->logs->edit_log($itemid,$position,$user_id);
         $data = [];
         foreach ($edit as $list) {
+            $timestamp =  date("d F Y H:i:s", strtotime ($list['timestamp']));
             $data[] = array(
-                'timestamp' => $list['timestamp'],
+                'timestamp' => $timestamp,
                 'fieldedited' => $list['field_edited'],
                 'oldvalue' => $list['old_value'],
                 'newvalue' => $list['new_value'],
@@ -108,8 +112,9 @@ class Logs extends CI_Controller
         $ret = $this->logs->return_log($dept_id,$position,$type);
         $data = [];
         foreach ($ret as $list) {
+            $timestamp =  date("d F Y H:i:s", strtotime ($list['timestamp']));
             $data[] = array(
-                'timestamp' => $list['timestamp'],
+                'timestamp' => $timestamp,
                 'item' => $list['item_name'],
                 'description' => $list['item_description'],
                 'datereturned' => $list['date_returned'],

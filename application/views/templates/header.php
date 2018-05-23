@@ -101,11 +101,13 @@ if (isset($this->session->userdata['logged_in'])) {
                                                 <ul class="sub-menu children dropdown-menu">'.
                                 '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
                                 '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>'.
-                                '<li><a href=' . base_url() . 'edit>EDIT LOG</a></li></ul>';
+                                '<li><a href=' . base_url() . 'edit>EDIT LOG</a></li>'.
+                                '<li> <a href="' . base_url() . 'return_log">RETURN LOG</a>
+                                  </li></ul>';
 
                     }else{
                         echo '<li id="li6">
-                                    <a href="' . base_url() . 'return_log"><i class="menu-icon fa fa-laptop"></i>RETURNS</a>
+                                    <a href="' . base_url() . 'return_log"><i class="menu-icon fa fa-laptop"></i>RETURN LOG</a>
                                   </li>';
 
                     }
