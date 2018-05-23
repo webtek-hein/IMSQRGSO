@@ -25,7 +25,7 @@ class Profile extends CI_Controller
     }
     public function profile_update()
     {
-            $userid = ($this->session->userdata['logged_in']['userid']);
+            $userid = ($this->session->userdata['logged_in']['user_id']);
             $data = array(
                 'first_name' => $this->input->post('first_name'),
                 'last_name' => $this->input->post('last_name'),
@@ -36,9 +36,10 @@ class Profile extends CI_Controller
             $this->user_db->edit_profile($data, $userid);
             $this->session->set_flashdata('profilemsg', 'Successfully updated profile!');
 
-        $usersession = $this->user_db->get_user($userid);
-        print_r($usersession);
+        $usersession = $this->user_db->get_users($userid);
+       // print_r($usersession);
         $userdata = array(
+            'name' => $usersession->name,
             'firstname' => $usersession->first_name,
             'lastname' => $usersession->last_name,
             'contact_no' => $usersession->contact_no,
@@ -54,18 +55,15 @@ class Profile extends CI_Controller
         $this->form_validation->set_rules('new_password', 'Password', 'required');
         $this->form_validation->set_rules('con_new_password', 'Confirm Password', 'matches[new_password]');
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header');
-            $this->load->view('profile');
-            $this->load->view('templates/footer');
+            $this->session->set_flashdata('response',"Password does not match");
+            header('Location: ' . base_url() . 'profile');
         } else {
 
-            $userid = ($this->session->userdata['logged_in']['userid']);
+            $userid = ($this->session->userdata['logged_in']['user_id']);
             $password = $this->input->post('con_new_password');
             $options = ['cost' => 12];
 
-            $hashpassword = array(
-                'password' => password_hash($password, PASSWORD_DEFAULT, $options)
-            );
+            $hashpassword = password_hash($password, PASSWORD_DEFAULT, $options);
 
             $this->user_db->edit_profile($hashpassword, $userid);
             $this->session->set_flashdata('passwordmsg', 'Update will take effect on next login.');
@@ -93,7 +91,7 @@ class Profile extends CI_Controller
           }
           else
           {
-              $userid = ($this->session->userdata['logged_in']['userid']);
+              $userid = ($this->session->userdata['logged_in']['user_id']);
               $data = $this->upload->data();
               $name = array(
                   'image' => $data['file_name']);
@@ -110,8 +108,9 @@ class Profile extends CI_Controller
 
     }
     public function verifypass($oldpass){
-        $pass = $this->session->userdata['logged_in']['password'];
-        $hashpass = password_verify($oldpass, $pass);
+
+        $pass = ($this->session->userdata['logged_in']['password']);
+        $hashpass = password_verify($oldpass,$pass);
         if ($oldpass != $hashpass){
             $this->form_validation->set_message('verifypass', 'Input current password for old password field');
             return FALSE;

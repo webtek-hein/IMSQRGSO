@@ -33,8 +33,8 @@ class User_db extends CI_Model {
      * @return bool     Return query of user if it matches the username.
      */
     public function read_user_information($username) {
-        $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.user_id,user.email,
-        user.contact_no,user.username,user.position,department.department,department.dept_id');
+        $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.first_name,user.last_name,user.user_id,user.email,
+        user.contact_no,user.username,user.position,department.department,department.dept_id,user.image,user.password');
         $this->db->join('department', 'department.dept_id = user.dept_id', 'left')
                  ->where('username',$username)
                  ->limit(1);
@@ -185,8 +185,9 @@ class User_db extends CI_Model {
      */
     public function edit_profile($data, $userid)
     {
+        $this->db->set('password', $data);
         $this->db->where('user_id', $userid);
-        $this->db->update('user',$data);
+        $this->db->update('user');
     }
 
     public function get_email($email)
@@ -196,5 +197,14 @@ class User_db extends CI_Model {
             ->limit(1);
         return $this->db->get('user')->row();
 
+    }
+    public  function edit_image($name,$user_id){
+        $this->db->where('user_id', $user_id);
+        $this->db->update('user',$name);
+    }
+    public function get_image($user_id){
+        $this->db->select('image')
+            ->where('user_id', $user_id);
+        return $this->db->get('user')->row();
     }
 }

@@ -52,11 +52,17 @@ class Login extends CI_Controller
                         'password' => $result[0]->password,
                     );
                     $user_data = array(
+                        'firstname' => $result[0]->first_name,
+                        'lastname' => $result[0]->last_name,
                         'name' => $result[0]->name,
                         'email' => $result[0]->email,
                         'contact_no' => $result[0]->contact_no,);
+
+                    $image_data = array('image' => $result[0]->image);
+
                     $this->session->set_userdata('user_in', $user_data);
                     $this->session->set_userdata('logged_in', $session_data);
+                    $this->session->set_userdata('image_in', $image_data);
                     if ($result[0]->position == 'supplyofficer') {
                         redirect(base_url() . 'supplyofficer/dashboard');
                     } else if ($result[0]->position == 'admin') {

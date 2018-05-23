@@ -87,7 +87,7 @@
                   </div>
     <div class="form-group">
         <div style="padding: 0 10px 10px 90px;" class="col-sm-offset-8 col-sm-9">
-            <button type="submit" name="bts-submit" id="bts-submit" class="btn btn-success" disabled>Save</button>
+            <button type="submit" name="bts-submit" id="bts-submit" class="btn btn-success" >Save</button>
         </div>
     </div>
 </form>
@@ -100,9 +100,11 @@
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li><a href="" data-toggle="tab">Update Profile</a></li>
-
+                    <br>
                 <?php if($this->session->flashdata('passwordmsg')): ?>
                     <br><p><?php echo $this->session->flashdata('passwordmsg'); ?></p>
+                <?php elseif ($this->session->flashdata('response')):?>
+                    <br><p><?php echo $this->session->flashdata('response',"Password does not match"); ?></p>
                 <?php endif; ?>
             </ul>
 
@@ -115,14 +117,16 @@
 				           <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Old Password</label>
                     <div class="col-sm-9">
-                      <input type="password" required class="form-control" name="old_password" placeholder="old password">
+                      <input id="old" type="password" required class="form-control" name="old_password" placeholder="old password" >
                     </div>
+
                   </div>
                     <div class="form-group">
                         <label for="inputName" class="col-sm-2 control-label">New Password</label>
                         <div class="col-sm-9">
-                            <input type="password"  required class="form-control" name="new_password" placeholder="password">
+                            <input type="password"  required class="form-control" name="new_password" placeholder="password" pattern=".{6,}$">
                         </div>
+                        <small class="form-text text-muted">Format: > 5 characters</small>
                     </div>
                     <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Confirm New Password</label>

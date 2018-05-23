@@ -2304,3 +2304,7 @@ function download(){
     window.print();
     document.body.innerHTML = originalContents;
 }
+
+function verifypass(){
+     $old = $('#old').val();
+}
