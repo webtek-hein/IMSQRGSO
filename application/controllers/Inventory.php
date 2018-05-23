@@ -310,7 +310,7 @@ class Inventory extends CI_Controller
     }
 
     /**
-     * 
+     *
      */
     public function getacccodes()
     {
@@ -448,7 +448,7 @@ class Inventory extends CI_Controller
 
     public function getSerialbtn($det_id, $sid)
     {
-        //supply officer
+        //supply office
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
 
