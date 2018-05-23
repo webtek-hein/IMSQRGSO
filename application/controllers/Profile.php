@@ -79,7 +79,8 @@ class Profile extends CI_Controller
               'overwrite' => TRUE,
               'max_size' => "2048000", 
               'max_height' => "5768",
-              'max_width' => "5024"
+              'max_width' => "5024",
+              'encrypt_name' => TRUE
           );
 
           $this->load->library('upload', $config);
@@ -92,9 +93,9 @@ class Profile extends CI_Controller
           else
           {
               $userid = ($this->session->userdata['logged_in']['user_id']);
-              $data = $this->upload->data();
               $name = array(
-                  'image' => $data['file_name']);
+                  'image' => $this->upload->data('file_name'));
+
 
               $this->session->set_flashdata('mesg', 'Profile Picture changed!');
              $this->user_db->edit_image($name,$userid);
