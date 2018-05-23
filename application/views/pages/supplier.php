@@ -84,10 +84,14 @@
                                 <div class="input_contact form-group">
                                     <label for="Contactno" class=" form-control-label">Contact Number/s</label>
                                     <div class="input-group">
-                                    <input id="contactno"
-                                           name="contact[]" data-required="true"
-                                           data-error-message="Please Enter Contact Number"><button type="button" class="btn btn-primary btn-sm add">
-                                        <i class="fa fa-plus"></i></button>
+                                    <textarea id="contactno"
+                                           name="contact" data-required="true"
+                                           data-error-message="Please Enter Contact Number">
+                                        Cellphone Number/s:
+                                        Telephone Number:
+                                    </textarea>
+                                        <!--<button type="button" class="btn btn-primary btn-sm add">
+                                        <i class="fa fa-plus"></i></button>-->
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -152,10 +156,12 @@
                                 <div class="input_contact form-group">
                                     <label for="Contactno" class=" form-control-label">Contact Number/s</label>
                                     <div class="input-group">
-                                    <input id="cno"
-                                           name="contact[]" data-required="true"
-                                           data-error-message="Please Enter Contact Number"><button type="button" class="btn btn-primary btn-sm add">
-                                        <i class="fa fa-plus"></i></button>
+                                    <textarea id="contactno1"
+                                           name="contact" data-required="true"
+                                           data-error-message="Please Enter Contact Number">
+                                        Cellphone Number/s:
+                                        Telephone Number:
+                                    </textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -203,13 +209,13 @@
                             <div class="form-group">
                                 <label for="Address" class="col-md-12">Address</label>
                                 <div class="col-md-12">
-                                    <input id="location" name="address"
-                                           readonly="readonly"
-                                           data-required="true"
-                                           data-parsley-minlength="1"
-                                           data-parsley-maxlength="200"
-                                           class="form-control has-feedback-left"
-                                           data-error-message="Please Enter the Address" required>
+                                   <textarea id="contactno"
+                                            readonly = "readonly"
+                                           name="contact" data-required="true"
+                                           data-error-message="Please Enter Contact Number">
+                                        Cellphone Number/s:
+                                        Telephone Number:
+                                    </textarea>
                                 </div>
                             </div>
                             <div class="form-group">

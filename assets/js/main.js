@@ -350,7 +350,7 @@ $(document).ready(function () {
         init_editlog();
     }
 // add contact supplier
-    var max_fields      = 5; //maximum input boxes allowed
+   /* var max_fields      = 5; //maximum input boxes allowed
     var wrapper         = $(".input_contact"); //Fields wrapper
     var add_button      = $(".add"); //Add button ID
 
@@ -362,7 +362,7 @@ $(document).ready(function () {
             $(wrapper).append('<div><input id="contactno" name="contact[]" >' +
                 '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button></div>'); //add input box
         }
-    });
+    });*/
 
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').remove(); x--;
@@ -419,7 +419,7 @@ function editSupplier(id) {
             $('#edtbuttonsupplier').val(id);
             $('#supplier').val(data.name);
             $('#location').val(data.location);
-            $('#cno').val(data.contact);
+            $('#contactno1').val(data.contact);
             $('#postal1').val(data.postal);
             $('#email1').val(data.email);
             $('#tin1').val(data.tin);
