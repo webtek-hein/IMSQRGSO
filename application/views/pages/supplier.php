@@ -81,18 +81,31 @@
                                            class="form-control col-6"
                                            data-error-message="Please Enter the Postal Code">
                                 </div>
-                                <div class="input_contact form-group">
-                                    <label for="Contactno" class=" form-control-label">Contact Number/s</label>
-                                    <div class="input-group">
-                                    <textarea id="contactno"
+                                <div class="form-group col-12">
+                                    <label for="Contactno" class=" form-control-label">Contact Number/s:</label>
+
+                                    <div class="input_contact form-group col-12">
+                                    <label for="Contactno" class=" form-control-label pull-left">Cellphone Number/s:</label>
+                                    <div class="input-group col-4">
+                                    <input id="contactno" class="form-control"
                                            name="contact" data-required="true"
                                            data-error-message="Please Enter Contact Number">
-                                        Cellphone Number/s:
-                                        Telephone Number:
-                                    </textarea>
-                                        <!--<button type="button" class="btn btn-primary btn-sm add">
-                                        <i class="fa fa-plus"></i></button>-->
+                                    </input><button type="button" class="btn btn-primary btn-sm add">
+                                            <i class="fa fa-plus"></i></button>
                                     </div>
+                                    </div>
+
+                                    <div class="input_contact form-group col-12">
+                                        <label for="Contactno" class=" form-control-label pull-left">Telephone Number/s:</label>
+                                    <div class="input-group col-4">
+                                        <input id="contactno" class="form-control "
+                                               name="contact" data-required="true"
+                                               data-error-message="Please Enter Contact Number">
+                                        </input><button type="button" class="btn btn-primary btn-sm add">
+                                            <i class="fa fa-plus"></i></button>
+                                    </div>
+                                    </div>
+
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class=" form-control-label">Email</label>

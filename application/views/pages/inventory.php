@@ -45,7 +45,7 @@
                                     <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
                                  <button id="reconcileButton" class="btn btn-outline-success">
                                  <i class="fa fa-balance-scale"></i> RECONCILE</button>
-                                <button id="reconcileButton"  onclick="toggleDiv($(\'.airForm\'),$(\'.inventory-tab\'))" class="btn btn-outline-success">
+                                <button id="reconcileButton" onclick="toggleDiv($(\'.airForm\'),$(\'.inventory-tab\'))" class="btn btn-outline-success">
                                  <i class="fa fa-balance-scale"></i><a href="air"> Generate AIR</a></button>
                                 </div>';
                     }
