@@ -173,18 +173,17 @@
                                                        data-parsley-required-message="Select the Unit"
                                                        required>
                                                 <datalist id="list">
-                                                    <option value="piece">piece</option>
+                                                    <option value="pc/s">pc/s</option>
                                                     <option value="box">box</option>
                                                     <option value="set">set</option>
                                                     <option value="ream">ream</option>
                                                     <option value="dozen">dozen</option>
                                                     <option value="bundle">bundle</option>
                                                     <option value="sack">sack</option>
-                                                    <option value="others">others</option>
-                                                </datalist>
+                                               </datalist>
                                             </div>
                                         </div>
-
+                                                
                                         <div class="form-group">
                                             <label class="col-md-12">Type</label>
                                             <div class="col-md-12">

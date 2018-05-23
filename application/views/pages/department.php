@@ -340,10 +340,17 @@
                                name="receiver">
                     </div>
                     <div class="form-group">
-                        <label for="name">Remarks<span
-                                class="required">*</span>
-                        </label>
-                        <textarea class="form-control" name="remarks" id="remarks"></textarea>
+                            <label>Remarks</label>
+                                <input id="remarks" name="remarks" data-parsley-group="set1"
+                                       class="form-control"
+                                       list="list"
+                                       data-parsley-required-message="Select the Remarks"
+                                       required>
+                                <datalist id="list">
+                                    <option value="Disposal">Disposal</option>
+                                    <option value="Repair">Repair</option>
+                                    <option value="Replacement">Replacement</option>
+                                </datalist>
                     </div>
                 </div>
                 <div class="modal-footer">
