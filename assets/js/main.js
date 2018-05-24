@@ -1769,16 +1769,23 @@ function noserial(id, q, retquant) {
             "class=\'form-control col-md-12 col-xs-12\' required>" +
             "</label>" +
             "</div>");
-        quasp = ("<div class=\"quant form-group\">" +
-            "<label>Quantity<span class=\"required\">*</span>" +
-            "<input min=\"0\" max=\"" + result + "\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
-            "class=\'form-control col-md-12 col-xs-12\' required>" +
-            "</label>" +
-            "</div>");
+        if (result === 0) {
+            quasp = ("<div class=\"quant form-group\">" +
+                "<label>Quantity<span class=\"required\">*</span>" +
+                "<input min=\"0\" max=\"" + q + "\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
+                "class=\'form-control col-md-12 col-xs-12\' required>" +
+                "</label>" +
+                "</div>");
+        }else{
+            quasp = ("<div class=\"quant form-group\">" +
+                "<label>Quantity<span class=\"required\">*</span>" +
+                "<input min=\"0\" max=\"" + result + "\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
+                "class=\'form-control col-md-12 col-xs-12\' required>" +
+                "</label>" +
+                "</div>");
+        }
     } else {
         qua = ("<p>No stock left. Please restock.</p>");
-        quasp = ("<p>No stock left. Please restock.</p>");
-    }if(retquant === q){
         quasp = ("<p>No stock left. Please restock.</p>");
     }
     $('.quant').html(qua);
