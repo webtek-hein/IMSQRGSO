@@ -590,12 +590,14 @@ class Inventory_model extends CI_Model
     public
     function viewdetail($id, $position)
     {
-        $this->db->select('OR_no,PO_number,item.serialStatus,item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
-        item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
-        $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'inner');
+        $this->db->select('OR_no,PO_number,item.serialStatus,item_type,date_delivered,itemdetail.date_received,expiration_date,unit_cost,supplier_name,
+        item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id,distribution.dist_id');
+        $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'iner');
+        $this->db->join('distribution', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
         $this->db->where('itemdetail.status', 'active');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
         $this->db->order_by('itemdetail.item_det_id', 'desc');
+        $this->db->group_by('itemdetail.item_det_id');
         $query = $this->db->get_where('item', array('item.item_id' => $id));;
 
         return $query->result_array();
