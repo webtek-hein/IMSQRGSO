@@ -29,7 +29,7 @@
 
 
                         echo '<div class="card-header">
-                                  <button onclick="addSupplier()" class="btn btn-primary">
+                                  <button onclick="addSupplier()" class="btn btn-outline-primary">
                                   <i class="fa fa-plus"></i><span> Add Supplier</span>
                                   </button>
                               </div>';
@@ -55,7 +55,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.addSupplier'))"
-                                class="btn btn-primary fa fa-arrow-left"></i> Back</a></button>
+                                class="btn btn-info fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <div class="card-body card-block col-lg-8 align-self-center">
                         <div class="tab-content pl-3 p-1 AddSup hidden" id="myTabContent">

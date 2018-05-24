@@ -24,13 +24,16 @@
         <div class="row">
             <!-- Inventory-->
             <div class="col-lg-12 department-tab">
+                <div class="card">
+               <div class="card-header">
                 <?php
                 $position = ($this->session->userdata['logged_in']['position']);
                 if ($position === 'Custodian' || $position === 'Admin') {
                     echo '<select id="select-dept" class="col-lg-5 deptopt form-control"></select>';
                 }
                 ?>
-                <div class="card">
+               </div>
+
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item active">

@@ -27,7 +27,7 @@
             <div class=" col-lg-12 accounts-tab">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-primary" id="headingZero">
+                        <button class="btn btn-outline-primary" id="headingZero">
                             <i class="fa fa-plus"></i><span> Add User</span>
                         </button>
                     </div>
@@ -45,18 +45,18 @@
 </div>
 <div hidden class="col-lg-12 addUser ">
     <div class="card-header">
-        <button type="button" onclick="addUserBack()" class="btn btn-primary fa fa-arrow-left"> Back</a></button>
+        <button type="button" onclick="addUserBack()" class="btn btn-info fa fa-arrow-left"> Back</a></button>
     </div>
     <div class="form-group">
         <div class="card">
-            <div class="card-body card-block">
+            <div class="card-body card-block col-lg-8 align-self-center">
                         <form method="POST" action="Users/addUser" data-validate="parsley">
                             <div class="form-group">
                                 <label class=" form-control-user">First Name</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                     <input type="text" name="firstname" id="firstname"
-                                           placeholder="First Name" class="form-control has-feedback-left" required>
+                                           placeholder="First Name" class="form-control has-feedback-left col-6" required>
                                 </div>
                                 <small class="form-text text-muted">ex. George</small>
                             </div>
@@ -64,7 +64,7 @@
                                 <label class=" form-control-label">Last Name</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                    <input type="text" id="lastname" name="lastname" class="form-control has-feedback-left"
+                                    <input type="text" id="lastname" name="lastname" class="form-control has-feedback-left col-6"
                                            placeholder="Last Name" required>
                                 </div>
                                 <small class="form-text text-muted">ex. Andrews</small>
@@ -73,7 +73,7 @@
                                 <label class=" form-control-label">E-mail</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                    <input id="email" class="form-control has-feedback-left" type="email" name="email"
+                                    <input id="email" class="form-control has-feedback-left col-6" type="email" name="email"
                                            placeholder="E-mail">
                                 </div>
                                 <small class="form-text text-muted">ex. george_andrews@gmail.com</small>
@@ -82,7 +82,7 @@
                                 <label class=" form-control-label">Contact No.</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-                                    <input class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" name="contactno" placeholder="Contact No.">
+                                    <input class="form-control has-feedback-left col-6" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" name="contactno" placeholder="Contact No.">
                                 </div>
                                 <small class="form-text text-muted">format: +639XXXXXXXXX or 09XXXXXXXXX</small>
                             </div>
@@ -90,7 +90,8 @@
                                 <label class=" form-control-label">Username</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                    <input pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." name="username" id="username" class="form-control has-feedback-left" placeholder="Username" required> <span id="username_result"></span>
+                                    <input pattern="^[A-Za-z0-9_-]{4,}$" title="Username must be more than 4 characters, use letters and numbers only." name="username" id="username"
+                                           class="form-control has-feedback-left col-6" placeholder="Username" required> <span id="username_result"></span>
                                 </div>
                                 <small class="form-text text-muted">ex. george12g2</small>
                             </div>
@@ -98,7 +99,8 @@
                                 <label class=" form-control-label">Password</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-key"></i></div>
-                                    <input type="password" title="Must be longer that 5 characters." name="password" id="password" class="form-control has-feedback-left" pattern=".{6,}$"
+                                    <input type="password" title="Must be longer that 5 characters." name="password" id="password"
+                                           class="form-control has-feedback-left col-6" pattern=".{6,}$"
                                            placeholder="Password" required>
                                 </div>
                                 <small class="form-text text-muted">Format: >5 characters</small>
@@ -107,7 +109,7 @@
                                 <label class=" form-control-label">Position</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-briefcase"></i></div>
-                                    <select required class="fa fa-chevron-down align" center" id="position" name="position" onclick='select_dept()' >
+                                    <select required class="fa fa-chevron-down align-center col-6" id="position" name="position" onclick='select_dept()' >
                                     <option value="admin">Admin</option>
                                     <option value="custodian" selected>Custodian</option>
                                     <option value="supply officer">Supply Officer</option>
@@ -118,7 +120,7 @@
                                 <label class="form-control-label">Department</label>
                                 <div class="input-group" >
                                     <div class="input-group-addon"><i class="fa fa-building"></i></div>
-                                        <select id="select-dept" type="button" name="dment" class="col-lg-5 deptopt form-control"></select>
+                                        <select id="select-dept" type="button" name="dment" class="col-lg-5 deptopt form-control col-6"></select>
                                     </select>
                                 </div>
                             </div>

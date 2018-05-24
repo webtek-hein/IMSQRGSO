@@ -250,7 +250,8 @@ class Inventory extends CI_Controller
             } else {
                 $cost = "PHP " . number_format($detail['unit_cost'], 2);
                 $data[] = array(
-                    'remove' => '<a onclick="removeDetail(' . $detail['item_det_id'] . ',' . $detail['serialStatus'] . ')"> <i class="fa fa-remove"></i></a>',
+                    'remove' => '<a onclick="removeDetail(' . $detail['item_det_id'] . ',' . $detail['serialStatus'] . ')"> 
+                                    <i class="fa fa-remove" style="color:red"></i></a>',
                     'PO' => $detail['PO_number'],
                     'quant' => $detail['quantity'],
                     'del' => $detail['date_delivered'],

@@ -416,7 +416,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button class="btn btn-outline-primary" id="exit"
-                                onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))">&times; Cancel
+                                onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))"><i class="fa fa-times"></i> Cancel
                         </button>
                     </div>
                     <div class="card-body card-block col-lg-8 align-self-center">
@@ -604,10 +604,10 @@
     <div class="card">
         <div class="card-header">
             <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))"
-                    class="btn btn-primary fa fa-arrow-left">
+                    class="btn btn-info fa fa-arrow-left">
                 Back
             </button>
-            <button onclick="printToPDFreport()" class="btn btn-primary fa fa-download">Download as PDF</button>
+            <button onclick="printToPDFreport()" class="btn btn-info fa fa-download"> Download as PDF</button>
         </div>
         <div class="card-body">
             <div class="select">
@@ -1009,9 +1009,9 @@
     <div class="card">
         <div class="card-header">
             <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))"
-                    class="btn btn-primary fa fa-arrow-left"> Back
+                    class="btn btn-info fa fa-arrow-left"> Back
             </button>
-            <button onclick="printToPDFreconcile()" class="btn btn-primary fa fa-download"> Download as PDF</button>
+            <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download"> Download as PDF</button>
         </div>
         <div class="card-body">
 

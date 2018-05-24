@@ -118,31 +118,51 @@ if (isset($this->session->userdata['logged_in'])) {
         </div><!-- /.navbar-collapse -->
     </nav>
 </aside>
+
 <!-- /#left-panel -->
 <!-- Right Panel -->
 
-<div id="right-panel" class="right-panel">
-
+ <div id="right-panel" class="right-panel">
     <!-- Header-->
-    <header id="header" class="header">
+    <!--for Admin-->
+    <?php
+    if ($position === 'Admin'){
+        echo '<header id="header" class="header" style="background-color:#ffb6c0">';
+    }
+    ?>
+    <!--end-->
+    <!--for Supply Officer-->
+    <?php
+    if ($position === 'Supply Officer'){
+        echo '<header id="header" class="header" style="background-color:#90EE90">';
+    }
+    ?>
+    <!--End-->
+    <!--for Custodian-->
+    <?php
+    if ($position === 'Custodian'){
+        echo '<header id="header" class="header" style="background-color:#87CEFA">';
+    }
+    ?>
+    <!--End-->
 
-        <div class="header-menu">
-
+    <div class="header-menu">
             <div class="header-left">
-            <div class="col-sm-7" style="color:black;">
-                <a href="profile"> <?=$name?>
-                <img src="<?php echo base_url() ?>images/<?= $image ?>" class="img-circle" alt="User Image" style="width:6%"></a>
+            <div class="col-sm-7">
+                <a href="profile" style="color:black"> <?=$name?>
+                <!--img src="<?php echo base_url() ?>images/<?= $image ?>" class="img-circle" alt="User Image" style="width:6%"--></a>
                 <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-                    <h5><?= $position.' : '.$department?></h5>
+                    <h5 style="color:black"><?= $position.' : '.$department?></h5>
             </div>
             </div>
             <div class="col-sm-5">
                 <div class="float-right">
-                        <a class="" href="login/logout"><i class="fa fa-power-off"> Sign Out</i></a>
+                        <a class="" href="login/logout" style="color:black"><i class="fa fa-power-off"> Sign Out</i></a>
                 </div>
 
             </div>
         </div>
+
 
     </header>
     <!-- Header-->
