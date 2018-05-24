@@ -170,7 +170,12 @@ class Inventory extends CI_Controller
         $viewser = "";
         $action = "";
         foreach ($list as $detail) {
-            $returnquant = $this->inv->retquant($dept_id, $id,$detail['dist_id']);
+
+            if (array_key_exists('dist_id', $detail)) {
+                $returnquant = $this->inv->retquant($dept_id, $id, $detail['dist_id']);
+            }else {
+                $returnquant = $this->inv->retquant1($dept_id, $id);
+            }
             //if there is a serial
             if ($detail['serialStatus'] === '1') {
                 $viewser = "<a class=\"serialdrop dropdown-item\" onclick='viewSerial($detail[item_det_id])' data-toggle=\"collapse\" 
@@ -316,6 +321,7 @@ class Inventory extends CI_Controller
      */
     public function getacccodes()
     {
+        $data = array();
         $acc_code = $this->inv->select_acc_codes();
         foreach ($acc_code as $list) {
             $data[] = array(
