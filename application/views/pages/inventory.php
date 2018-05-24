@@ -633,8 +633,8 @@
                       <span class="fa fa-calendar-times-o form-control-feedback left"
                             aria-hidden="true"></span>
                   </div>-->
-            <div class="returnedReport">
-                <table id="reportTable" data-show-refresh="true" data-search="true" data-pagination="true"
+            <div id="returnedReport">
+                <table id="reportTable" data-pagination="true"
                        class="table-sm table table-bordered table-sm table-hover">
                 </table>
             </div>

@@ -2165,11 +2165,25 @@ function printToPDF() {
 }
 
 function printToPDFreport() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd = '0'+dd
+    }
+
+    if(mm<10) {
+        mm = '0'+mm
+    }
+
+    dateCreated = '<p>Date Created: '+mm + '/' + dd + '/' + yyyy+'</p>';
+
     $report = $('#reportsOption').val();
-    alert($report);
     var header;
     if ($report === '0') {
-        header = '<h1>Delivered Items</h1><br><p>General Service Office</p>';
+        header = '<h3>Delivered Items</h3><br><p>General Service Office</p>';
     } else if ($report === '1') {
         header = '<h1>Distributed Items</h1><br><p>General Service Office</p>';
     } else if ($report === '2') {
@@ -2177,8 +2191,8 @@ function printToPDFreport() {
     } else {
         header = '<h1>Supplier Items</h1><br><p>General Service Office</p>';
     }
-    var printContents = $('.fixed-table-body').html();
-    document.body.innerHTML = header + printContents;
+    var printContents = $('#returnedReport').html();
+    document.body.innerHTML = '<div class="text-center">'+header+'</div>' + dateCreated + printContents;
     window.print();
     location.reload();
 }
