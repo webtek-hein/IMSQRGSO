@@ -1777,6 +1777,9 @@ function noserial(id, q, retquant) {
             "</div>");
     } else {
         qua = ("<p>No stock left. Please restock.</p>");
+        quasp = ("<p>No stock left. Please restock.</p>");
+    }if(retquant === q){
+        quasp = ("<p>No stock left. Please restock.</p>");
     }
     $('.quant').html(qua);
     $('.quantsp').html(quasp);
