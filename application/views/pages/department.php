@@ -124,7 +124,7 @@
 <div hidden id="account" class="accountability col-lg-12 ">
     <div class="card">
         <div class="card-header">
-            <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability-tab '))"
+            <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability'))"
                     class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back
             </button>
         </div>

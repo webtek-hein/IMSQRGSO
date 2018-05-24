@@ -619,9 +619,8 @@ class Inventory_model extends CI_Model
     {
         $this->db->select('CONCAT(first_name," ",last_name) as receiver,
         distribution.dist_id,item.item_type,item.serialStatus,quantity_distributed,distribution.cost,
-        distribution.status as dist_stat,distribution.PR_no,itemdetail.*,department,supplier_name,serial.serial_id,serial.dist_id as did');
+        distribution.status as dist_stat,distribution.PR_no,itemdetail.*,department,supplier_name');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
-        $this->db->join('serial', 'serial.serial_id = distribution.dist_id', 'inner');
         $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
         $this->db->join('department', 'department.dept_id = distribution.dept_id', 'inner');
         $this->db->join('account_code', 'account_code.ac_id = distribution.ac_id ', 'inner');

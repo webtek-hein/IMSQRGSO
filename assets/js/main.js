@@ -965,11 +965,6 @@ function init_inventory() {
                     };
                 }
             }]
-            // }, {
-            //     sortable: true,
-            //     field: 'Price',
-            //     title: 'PRICE'
-            // }]
         });
     $MOOEtable.bootstrapTable('refresh', {url: 'inventory/viewItem/MOOE'})
         .bootstrapTable({
