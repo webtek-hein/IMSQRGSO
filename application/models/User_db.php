@@ -161,6 +161,7 @@ class User_db extends CI_Model {
      */
     public function getUser($id)
     {
+        $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,user.*');
         $this->db->where('user_id', $id);
         $query = $this->db->get('user');
         return $query->row();
@@ -189,7 +190,11 @@ class User_db extends CI_Model {
         $this->db->where('user_id', $userid);
         $this->db->update('user');
     }
-
+    public function edit_info($data, $userid)
+    {
+        $this->db->where('user_id', $userid);
+        $this->db->update('user',$data);
+    }
     public function get_email($email)
     {
         $this->db->select('*')

@@ -131,7 +131,7 @@ if (isset($this->session->userdata['logged_in'])) {
             <div class="header-left">
             <div class="col-sm-7" style="color:black;">
                 <a href="profile"> <?=$name?>
-                <img src="<?php echo base_url() ?>images/<?= $image ?>" class="img-circle" alt="User Image" style="width:10%"></a>
+                <img src="<?php echo base_url() ?>images/<?= $image ?>" class="img-circle" alt="User Image" style="width:6%"></a>
                 <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                     <h5><?= $position.' : '.$department?></h5>
             </div>

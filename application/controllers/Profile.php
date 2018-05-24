@@ -33,10 +33,10 @@ class Profile extends CI_Controller
                 'contact_no' => $this->input->post('contact_no'),
             );
 
-            $this->user_db->edit_profile($data, $userid);
+            $this->user_db->edit_info($data, $userid);
             $this->session->set_flashdata('profilemsg', 'Successfully updated profile!');
 
-        $usersession = $this->user_db->get_users($userid);
+        $usersession = $this->user_db->getUser($userid);
        // print_r($usersession);
         $userdata = array(
             'name' => $usersession->name,
