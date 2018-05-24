@@ -31,6 +31,14 @@ class Supplier extends CI_Controller
             $row['email'] = $suppliers['email'];
             $row['tin'] = $suppliers['tin'];
             $row['status'] = $suppliers['status'];
+            $row['contactInput'] =  implode(array_map(function ($contact) {
+                return ('<input class="item form-control" name="contact[]" value=' . $contact . ' //><br>');
+            },
+                explode(',', $suppliers['contact'])));
+            $row['contactList'] = implode(array_map(function ($contact) {
+                return ('<li>'.$contact.'</li>');
+            },
+                explode(',', $suppliers['contact'])));
             $data[] = $row;
         }
         echo json_encode($data);

@@ -339,19 +339,21 @@ $(document).ready(function () {
         init_editlog();
     }
 // add contact supplier
-    /* var max_fields      = 5; //maximum input boxes allowed
-     var wrapper         = $(".input_contact"); //Fields wrapper
-     var add_button      = $(".add"); //Add button ID
+    var maxFields = 5; //maximum input boxes allowed
+    var wrapper = $('.input_contact'); //Fields wrapper
+    var addButton = $('.add'); //Add button ID
 
-     var x = 1; //initlal text box count
-     $(add_button).click(function(e){ //on add input button click
-         e.preventDefault();
-         if(x < max_fields){ //max input box allowed
-             x++; //text box increment
-             $(wrapper).append('<div><input id="contactno" name="contact[]" >' +
-                 '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button></div>'); //add input box
-         }
-     });*/
+    var x = 1; //initlal text box count
+    $(addButton).click(function (e) { //on add input button click
+        e.preventDefault();
+        if (x < maxFields) { //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<br><input id="contactno" name="contact[]" >' +
+                '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button><br>'); //add input box
+        }else{
+            alert('You reached the maximum allowed number of contact number');
+        }
+    });
 
     $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
         e.preventDefault();
@@ -400,12 +402,11 @@ function saveSerial() {
 }
 
 function editSupplier(data) {
-    console.log(data);
     toggleDiv($('.editSupplier-tab '), $('.supplier-tab'));
     $('#edtbuttonsupplier').val(data.id);
     $('#supplier').val(data.supplier);
     $('#location').val(data.address);
-    $('#contactno1').val(data.contact);
+    $('#contactno1').html(data.contactInput);
     $('#postal1').val(data.postal);
     $('#email1').val(data.email);
     $('#tin1').val(data.tin);
@@ -850,7 +851,10 @@ function init_inventory() {
                 title: 'Postal Code'
             }, {
                 sortable: true,
-                field: 'contact',
+                field: 'contactList',
+                formatter: function(data,row){
+                    return '<ul class="list-unstyled">'+data+'</ul>';
+                },
                 title: 'Primary Contact number'
             }, {
                 sortable: true,
