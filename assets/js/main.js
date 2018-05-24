@@ -1761,7 +1761,6 @@ function noserial(id, q, retquant) {
     var qua = '';
     var quasp = '';
     var result = q - retquant;
-    // console.log(result);
     if (q !== 0) {
         qua = ("<div class=\"quant form-group\">" +
             "<label>Quantity<span class=\"required\">*</span>" +
@@ -1769,7 +1768,7 @@ function noserial(id, q, retquant) {
             "class=\'form-control col-md-12 col-xs-12\' required>" +
             "</label>" +
             "</div>");
-        if (result === 0) {
+        if (result === 0 || retquant === undefined) {
             quasp = ("<div class=\"quant form-group\">" +
                 "<label>Quantity<span class=\"required\">*</span>" +
                 "<input min=\"0\" max=\"" + q + "\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +

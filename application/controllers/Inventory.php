@@ -156,7 +156,6 @@ class Inventory extends CI_Controller
     public function detail($dept, $id, $dept_id)
     {
         $position = $this->session->userdata['logged_in']['position'];
-        $returnquant = $this->inv->retquant($dept_id, $id);
 
         if ($position === 'Supply Officer') {
             $dept_id = $this->session->userdata['logged_in']['dept_id'];
@@ -171,6 +170,7 @@ class Inventory extends CI_Controller
         $viewser = "";
         $action = "";
         foreach ($list as $detail) {
+            $returnquant = $this->inv->retquant($dept_id, $id,$detail['dist_id']);
             //if there is a serial
             if ($detail['serialStatus'] === '1') {
                 $viewser = "<a class=\"serialdrop dropdown-item\" onclick='viewSerial($detail[item_det_id])' data-toggle=\"collapse\" 
@@ -224,6 +224,7 @@ class Inventory extends CI_Controller
             if ($dept === 'dept') {
                 $cost = "PHP " . number_format($detail['cost'], 2);
                 $data[] = array(
+                    'dist_id' => $detail['dist_id'],
                     'PR' => $detail['PR_no'],
                     'receiver' => $detail['receiver'],
                     'quant' => $detail['quantity_distributed'],
