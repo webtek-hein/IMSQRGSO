@@ -570,7 +570,7 @@ class Inventory extends CI_Controller
     public function deptreturn()
     {
         $this->inv->returnitem();
-        redirect('inventory');
+        redirect('department');
     }
 
     public function getLedger($id)

@@ -1771,7 +1771,7 @@ function noserial(id, q, retquant) {
             "</div>");
         quasp = ("<div class=\"quant form-group\">" +
             "<label>Quantity<span class=\"required\">*</span>" +
-            "<input min=\"0\" max=\"" + q + "\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
+            "<input min=\"0\" max=\"" + result + "\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
             "class=\'form-control col-md-12 col-xs-12\' required>" +
             "</label>" +
             "</div>");

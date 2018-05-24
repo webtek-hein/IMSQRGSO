@@ -608,6 +608,7 @@ class Inventory_model extends CI_Model
         $this->db->join('distribution', 'distribution.dist_id = returnitem.dist_id');
         $this->db->join('department', 'department.dept_id = distribution.dept_id');
         $this->db->where('department.dept_id', $dept_id);
+        $this->db->where('returnitem.status','pending');
         $this->db->where('itemdetail.item_id', $id);
         $query = $this->db->get('returnitem')->result_array();
 
