@@ -337,6 +337,7 @@ $(document).ready(function () {
         modal();
         init_bulkFucntion();
         init_editlog();
+        serialize_forms();
     }
 // add contact supplier
     var max_fields      = 5; //maximum input boxes allowed
@@ -1329,7 +1330,7 @@ function editlogdet(id) {
 
 //for editting
 function serialize_forms() {
-    $('.serialForm')
+    $('.serialForm , .profileform')
         .each(function () {
             $(this).data('serialized', $(this).serialize());
         })
