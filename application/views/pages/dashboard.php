@@ -1,3 +1,5 @@
+
+
 <div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
@@ -7,6 +9,7 @@
         </div>
     </div>
 </div>
+
 
 <?php $position = $this->session->userdata['logged_in']['position'];
 if ($position === 'Admin') {
@@ -18,13 +21,22 @@ if ($position === 'Admin') {
               </div>
               <div class="mr-5" id="itemsrec">New Item Received</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
-              <span class="float-left" style="color:black">View Details</span>
+            <a class="card-footer text-white clearfix small z-1" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            
+              <span class="float-left" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
+          <div id="overlay">
+          <div class="collapse" id="collapseExample">
+  <div class="card card-body">
+   <ul>
+   <li>ajuhdfs</li>
+   </ul>
+  </div>
+</div></div>
         </div>'.
 
     '<div class="col-xl-3 col-sm-6 mb-3">
