@@ -112,7 +112,7 @@ class User_db extends CI_Model {
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $password = $this->input->post('pword');
-        $options = ['cost' => 12];
+        $options = array('cost' => 12);
         $hashpassword =  password_hash($password, PASSWORD_DEFAULT, $options);
         $id = $this->input->post('id');
         // select user
@@ -187,6 +187,12 @@ class User_db extends CI_Model {
     public function edit_profile($data, $userid)
     {
         $this->db->set('password', $data[password]);
+        $this->db->where('user_id', $userid);
+        $this->db->update('user');
+    }
+    public function edit_password($data, $userid)
+    {
+        $this->db->set('password', $data);
         $this->db->where('user_id', $userid);
         $this->db->update('user');
     }
