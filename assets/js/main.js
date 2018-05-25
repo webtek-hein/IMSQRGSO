@@ -638,6 +638,7 @@ function insertRow() {
     var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
         '<td  style=""></td>' +
+        '<td  style=""></td>' +
         '<td contenteditable style=""><input name="PO[' + counter + ']" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
         '<td style=""><input name="del[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="rec[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
