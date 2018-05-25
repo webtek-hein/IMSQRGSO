@@ -441,8 +441,12 @@ function detail(id) {
                 url: 'inventory/detail/inv/' + id + '/0',
                 columns: [{
                     field: 'remove',
-                    title: ''
+                    title: '',
+                    align: 'center'
                 }, {
+                    field: 'state',
+                    checkbox: 'true',
+                },{
                     field: 'PO',
                     title: 'PO number'
                 }, {
