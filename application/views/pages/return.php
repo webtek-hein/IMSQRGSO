@@ -25,7 +25,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <table id="returnTable" class="table table-bordered table-sm">
+                        <table id="returnTable" class="table table-bordered">
                         </table>
                     </div>
                 </div>

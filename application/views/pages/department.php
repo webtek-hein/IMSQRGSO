@@ -53,7 +53,7 @@
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
                                 <table id="departmentTable" data-show-refresh="true" data-url="inventory/viewDept/CO/11"
-                                       class="table table-bordered table-sm"
+                                       class="table table-bordered"
                                        data-pagination="true" data-search="true">
                                 </table>
                             </div>
@@ -62,7 +62,7 @@
                                 <!-- Implement Bootsrap table-->
                                 <table id="deptMOOEtable" data-pagination="true" data-show-refresh="true"
                                        data-search="true" data-url="inventory/viewDept/MOOE/11"
-                                       class="table table-bordered table-sm">
+                                       class="table table-bordered">
                                 </table>
                             </div>
                         </div>
@@ -80,10 +80,6 @@
 
                     </div>
                     <div class="card-body">
-
-                        <button type="button" id="#" class="btn btn-info" style="border-color: #0c0c0c">
-                            <i class="fa fa-print"></i> Print ARE</button>
-
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="DetInfo" data-toggle="tab" href="#Detail_Info"
@@ -114,7 +110,7 @@
                             <!--Detail-->
                             <div class="tab-pane fade" id="Detail_Det" role="tabpanel" aria-labelledby="Detail-tab">
                                 <!-- Implement Bootsrap table-->
-                                <table id="detail-tab-table" class="table table-bordered table-sm table-hover">
+                                <table id="detail-tab-table" class="table table-bordered table-hover">
                                 </table>
                             </div>
                         </div>
@@ -136,7 +132,7 @@
             </button>
         </div>
         <div class="card-body">
-            <table id="accountTable" class="table table-striped table-bordered table-sm">
+            <table id="accountTable" class="table table-striped table-bordered">
             </table>
         </div>
     </div>
@@ -221,7 +217,7 @@
         </div>
 
         <div id='hist' class="table-responsive-sm-sm tab-content pl-3 p-1">
-            <table id="history" class="table table-striped table-bordered table-sm">
+            <table id="history" class="table table-striped table-bordered">
             </table>
         </div>
     </div>
@@ -238,7 +234,7 @@
         <form id="compareitem" role="form"
               action="inventory/compare/" method="POST">
             <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                <table class="table table-bordered table-sm"
+                <table class="table table-bordered"
                        data-pagination="true" data-search="true" id="reconcileTable">
                 </table>
             </div>

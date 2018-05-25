@@ -200,7 +200,8 @@ class Inventory extends CI_Controller
                                         class=\"btn btn-success btn-sm\"><i class='fa fa-user-o'></i> </button>
                                 <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" 
                                         data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Return\" data-id='$detail[dist_id]' class=\"btn btn-danger btn-sm\"><i class='fa fa-refresh'></i></a>
-                                <a href=\"./are\" type=\'button\' class=\"btn btn-primary btn-sm\">Generate ARE</a>";
+                                <a href=\"./are\" type=\'button\' class=\"btn btn-primary btn-sm\"  data-toggle=\"tooltip\" 
+                                data-placement=\"bottom\" title=\"Generate ARE\"><i class='fa fa-print'></i></a>";
 
                         }
                     }

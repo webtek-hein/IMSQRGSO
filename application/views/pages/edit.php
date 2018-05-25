@@ -44,7 +44,7 @@
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
                                 <table id="editlogco" data-pagination="true" data-search="true"
-                                       data-url="logs/editlogitem/CO" class="table table-striped table-bordered table-sm">
+                                       data-url="logs/editlogitem/CO" class="table table-striped table-bordered">
 
                                 </table>
 
@@ -52,7 +52,7 @@
                             <!--MOOE Tab-->
                             <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
                                 <table id="editlogmooe" data-pagination="true" data-search="true"
-                                       data-url="logs/editlogitem/MOOE" class="table table-striped table-bordered table-sm">
+                                       data-url="logs/editlogitem/MOOE" class="table table-striped table-bordered">
 
                                 </table>
                             </div>
@@ -79,7 +79,7 @@
             <div class="modal-body">
 
                     <table id="editlog" data-pagination="true" data-search="true"
-                           class="table table-striped table-bordered table-sm">
+                           class="table table-striped table-bordered">
                     </table>
             </div>
         </div>
