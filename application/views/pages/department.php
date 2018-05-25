@@ -322,12 +322,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
+
+                    <div class="col-4">
                     <div class="form-group">
                         <div class="serialsp col-md-10">
                         </div>
                     </div>
+                    </div>
+
+                    <div class="col-7">
                     <div class="form-group">
-                        <div class=" quantsp form-group">
+                        <div class="quantsp form-group">
                         </div>
                     </div>
                     <div class="form-group ">
@@ -354,6 +359,7 @@
                                     <option value="Repair">Repair</option>
                                     <option value="Replacement">Replacement</option>
                                 </datalist>
+                    </div>
                     </div>
                 </div>
                 <div class="modal-footer">

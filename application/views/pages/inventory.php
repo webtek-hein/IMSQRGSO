@@ -716,7 +716,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="submit" name="id" id="save1" class="btn btn-primary btn-modal">Save</button>
+                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal"><i class="fa fa-arrow-down"></i> Save</button>
                 </div>
             </div>
         </div>
@@ -913,12 +913,12 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Remarks</label>
-                        <textarea class="form-control" name="remarks" id="remarks"></textarea>
+                        <textarea class="form-control col-12" name="remarks" id="remarks"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    <button type="submit" name="id" class="btn-modal btn btn-success" id="save1"><i
                                 class="fa fa-arrow-down"></i> Yes
                     </button>
                 </div>

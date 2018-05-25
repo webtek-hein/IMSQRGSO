@@ -634,9 +634,11 @@ class Inventory extends CI_Controller
         foreach ($list as $rets) {
             if ($position === 'Custodian') {
                 $action = '<a type="button" data-func="return_action(0,' . $rets['return_id'] . ',' . $rets['serialStatus']
-                    . ')" onclick="retData(' . $rets['serialStatus'] . ',' . $rets['return_id'] . ')" 
-            data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-primary">Accept</a>
-                <button onclick="return_action(1,' . $rets['return_id'] . ')" class="btn btn-danger">Decline</button>';
+                                . ')" onclick="retData(' . $rets['serialStatus'] . ',' . $rets['return_id'] . ')" 
+                                data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-success btn-sm" 
+                                data-toggle="tooltip" data-placement="bottom" title="Accept"><i class="	fa fa-check-square-o"></i></a>
+                           <button onclick="return_action(1,' . $rets['return_id'] . ')" class="btn btn-danger btn-sm"><i class="fa fa-times-rectangle"
+                                data-toggle="tooltip" data-placement="bottom" title="Decline"></i></button>';
 
             } else if ($position === 'Supply Officer') {
                 $action = '<button onclick="return_action(2,' . $rets['return_id'] . ')" class="btn btn-primary">Cancel</button>';
