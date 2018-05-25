@@ -388,7 +388,7 @@
                             <!--General Ledger-->
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
-                                <button onclick="printToPDF()" class="btn btn-primary fa fa-download">Download as PDF
+                                <button onclick="printToPDF()" class="btn btn-info fa fa-download"> Download as PDF
                                 </button>
                                 <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
@@ -529,7 +529,6 @@
                                                name="del[]" class="form-control col-6"
                                                data-parsley-required-message="Enter the Delivery Date"
                                                required>
-                                        <span class="input-group-addon"><i class="fa fa-calendar-plus-o"></i></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -538,7 +537,6 @@
                                         <input class="form-control col-6" type="date" name="rec[]"
                                                data-parsley-required-message="Enter the Date received"
                                                required>
-                                         <span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -548,7 +546,6 @@
                                                name="exp[]" class="form-control col-6"
                                                data-parsley-required-message="Enter the Expiration Date"
                                                required>
-                                        <span class="input-group-addon"><i class="fa fa-calendar-times-o"></i></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -559,7 +556,6 @@
                                                 class="supplieropt form-control col-6"
                                                 required>
                                         </select>
-                                        <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -569,7 +565,6 @@
                                                name="or[]" class="form-control col-6"
                                                data-parsley-required-message="Input Official Receipt"
                                                required>
-                                        <span class="input-group-addon"><i class="fa fa-ticket"></i></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -578,7 +573,6 @@
                                         <div class="input-group">
                                         <input data-parsley-group="set1"
                                                name="PO[]" class="form-control col-6">
-                                        <span class="input-group-addon"><i class="fa fa-file-archive-o"></i></span>
                                         </div>
                                     </div>
 
