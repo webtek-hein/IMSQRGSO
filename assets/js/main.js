@@ -441,8 +441,12 @@ function detail(id) {
                 url: 'inventory/detail/inv/' + id + '/0',
                 columns: [{
                     field: 'remove',
-                    title: ''
+                    title: '',
+                    align: 'center'
                 }, {
+                    field: 'state',
+                    checkbox: 'true',
+                },{
                     field: 'PO',
                     title: 'PO number'
                 }, {
@@ -633,6 +637,7 @@ var counter = 0;
 function insertRow() {
     var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
+        '<td  style=""></td>' +
         '<td  style=""></td>' +
         '<td contenteditable style=""><input name="PO[' + counter + ']" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
         '<td style=""><input name="del[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
