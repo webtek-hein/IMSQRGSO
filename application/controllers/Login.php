@@ -26,11 +26,7 @@ class Login extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
-            if (isset($this->session->userdata['logged_in'])) {
-                $this->load->view('templates/header');
-            } else {
-                $this->load->view('pages/login');
-            }
+            $this->session->set_flashdata('validationfailed', 'Both fields are required!');
         } else {
             $data = array(
                 'username' => $this->input->post('username'),
@@ -72,12 +68,10 @@ class Login extends CI_Controller
                     }
                 }
             } else {
-                $data = array(
-                    'error_message' => 'Invalid Username or Password'
-                );
-                $this->load->view('pages/login', $data);
+                $this->session->set_flashdata('userfailed', 'Invalid Username or Password');
             }
         }
+        header('Location: ' . base_url() . 'login');
     }
 
     /**
