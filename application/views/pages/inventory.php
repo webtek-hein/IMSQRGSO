@@ -333,8 +333,8 @@
                                  aria-labelledby="Detail-tab">
 
 
-                                <button id="reconcileButton" onclick="toggleDiv($('.airForm'),$('.inventory-tab'))" class="btn btn-success">
-                                    <i class="fa fa-balance-scale"></i><a href="air" style="color:white"> Generate AIR</a></button>
+
+                                <a href="air" class="btn btn-success"><i class="fa fa-check-square-o"></i> Generate AIR</a>
 
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
