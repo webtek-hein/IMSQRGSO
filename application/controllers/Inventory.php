@@ -195,7 +195,8 @@ class Inventory extends CI_Controller
                                         class=\"btn btn-success btn-sm\"><i class='fa fa-user-o'></i> </button>
                                 <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" 
                                         data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Return\" data-id='$detail[dist_id]' class=\"btn btn-danger btn-sm\"><i class='fa fa-refresh'></i></a>
-                                <a href=\"./are\" type=\'button\' class=\"btn btn-primary btn-sm\">Generate ARE</a>";
+                                <a href=\"./are\" type=\'button\' class=\"btn btn-primary btn-sm\"  data-toggle=\"tooltip\" 
+                                data-placement=\"bottom\" title=\"Generate ARE\"><i class='fa fa-print'></i></a>";
 
                         }
                     }
@@ -627,9 +628,11 @@ class Inventory extends CI_Controller
         foreach ($list as $rets) {
             if ($position === 'Custodian') {
                 $action = '<a type="button" data-func="return_action(0,' . $rets['return_id'] . ',' . $rets['serialStatus']
-                    . ')" onclick="retData(' . $rets['serialStatus'] . ',' . $rets['return_id'] . ')" 
-            data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-primary">Accept</a>
-                <button onclick="return_action(1,' . $rets['return_id'] . ')" class="btn btn-danger">Decline</button>';
+                                . ')" onclick="retData(' . $rets['serialStatus'] . ',' . $rets['return_id'] . ')" 
+                                data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-success btn-sm" 
+                                data-toggle="tooltip" data-placement="bottom" title="Accept"><i class="	fa fa-check-square-o"></i></a>
+                           <button onclick="return_action(1,' . $rets['return_id'] . ')" class="btn btn-danger btn-sm"><i class="fa fa-times-rectangle"
+                                data-toggle="tooltip" data-placement="bottom" title="Decline"></i></button>';
 
             } else if ($position === 'Supply Officer') {
                 $action = '<button onclick="return_action(2,' . $rets['return_id'] . ')" class="btn btn-primary">Cancel</button>';

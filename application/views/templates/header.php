@@ -134,7 +134,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <!--for Supply Officer-->
     <?php
     if ($position === 'Supply Officer'){
-        echo '<header id="header" class="header" style="background-color:#ead9c3">';
+        echo '<header id="header" class="header" style="background-color:#cde7ca">';
     }
     ?>
     <!--End-->

@@ -38,7 +38,7 @@
                     <div class="card-body">
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <table id="supplier-table" data-search="true" data-pagination="true"
-                                   class="table table-bordered table-sm">
+                                   class="table table-bordered">
                                 <thead>
                                 <tr>
                                     <th data-sortable="true" data-field="supplier">Supplier</th>

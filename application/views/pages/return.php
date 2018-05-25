@@ -25,7 +25,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <table id="returnTable" class="table table-bordered table-sm">
+                        <table id="returnTable" class="table table-bordered">
                         </table>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="save1"><i class="fa fa-arrow-down"></i> Save
+                    <button type="submit" class="btn btn-success" id="save1"><i class="fa fa-arrow-down"></i> Save
                     </button>
                     <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
                 </div>
@@ -143,8 +143,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <button name="id" class="btn btn-primary" id="returnAct"><i
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    <button name="id" class="btn btn-success" id="returnAct"><i
                                 class="fa fa-arrow-down"></i> Yes
                     </button>
                 </div>
