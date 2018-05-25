@@ -337,28 +337,27 @@ $(document).ready(function () {
         modal();
         init_bulkFucntion();
         init_editlog();
+        serialize_forms();
     }
 // add contact supplier
-    var maxFields = 5; //maximum input boxes allowed
-    var wrapper = $('.input_contact'); //Fields wrapper
-    var addButton = $('.add'); //Add button ID
+    var max_fields      = 5; //maximum input boxes allowed
+    var wrapper         = $(".input_contact"); //Fields wrapper
+    var add_button      = $(".add"); //Add button ID
 
     var x = 1; //initlal text box count
-    $(addButton).click(function (e) { //on add input button click
+    $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
-        if (x < maxFields) { //max input box allowed
+        if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<br><input id="contactno" name="contact[]" >' +
-                '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button><br>'); //add input box
+            $(wrapper).append('<div><input id="contactno" name="contact[]" >' +
+                '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button></div>'); //add input box
         }else{
             alert('You reached the maximum allowed number of contact number');
         }
     });
 
-    $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
-        e.preventDefault();
-        $(this).parent('div').remove();
-        x--;
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
     })
 });
 
@@ -396,6 +395,7 @@ function saveSerial() {
         success: function (response) {
             if (response >= 1) {
                 $('.serialdrop').click();
+                $('#detail-tab-table').bootstrapTable('refresh')
             }
         }
     });
@@ -1330,7 +1330,7 @@ function editlogdet(id) {
 
 //for editting
 function serialize_forms() {
-    $('.serialForm')
+    $('.serialForm , .profileform')
         .each(function () {
             $(this).data('serialized', $(this).serialize());
         })

@@ -899,6 +899,9 @@ class Inventory_model extends CI_Model
         foreach ($serial as $key => $value) {
             // if serial is not null
             if ($value !== 'null') {
+                if(empty($value)){
+                    $value = null;
+                }
                 $data[] = array(
                     'serial_id' => $key,
                     'serial' => $value,
