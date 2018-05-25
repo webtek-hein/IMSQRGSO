@@ -164,7 +164,7 @@ class Inventory extends CI_Controller
             $list = $this->inv->viewDetailperDept($id, $dept_id);
         } else {
             $list = $this->inv->viewdetail($id, $position);
-          //  $serial = $this->inv->getSerialNull($id, $position);
+            $serial = $this->inv->getSerialNull($id, $position);
         }
 
         //$serialvalue = ($serial[0]['serial']);
@@ -216,7 +216,7 @@ class Inventory extends CI_Controller
                             </div>
                             </div>";
                 } else {
-                   /* if(empty($serial)) {
+                    if(empty($serial)) {
                         $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
@@ -224,7 +224,7 @@ class Inventory extends CI_Controller
                             $viewser
                             </div> 
                           </div>";
-                    }else{*/
+                    }else{
                         $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
@@ -234,7 +234,7 @@ class Inventory extends CI_Controller
                             $viewser
                             </div> 
                           </div>";
-                  //  }
+                    }
                 }
             }
             if ($dept === 'dept') {

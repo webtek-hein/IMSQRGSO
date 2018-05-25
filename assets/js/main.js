@@ -394,6 +394,7 @@ function saveSerial() {
         success: function (response) {
             if (response >= 1) {
                 $('.serialdrop').click();
+                $('#detail-tab-table').bootstrapTable('refresh')
             }
         }
     });
