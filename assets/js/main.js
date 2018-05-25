@@ -1418,6 +1418,9 @@ function modal() {
         $('#quantity').val(quantity);
 
     });
+    $('#editlogmodal').on('hidden.bs.modal', function () {
+        $('#editlog').bootstrapTable('destroy');
+    });
     $('#Item_Detail').on('hidden.bs.modal', function () {
         $('#itemdet').bootstrapTable('destroy');
     });
