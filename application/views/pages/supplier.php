@@ -29,7 +29,7 @@
 
 
                         echo '<div class="card-header">
-                                  <button onclick="addSupplier()" class="btn btn-outline-primary">
+                                  <button onclick="addSupplier()" class="btn btn-info" style="border-color: #0c0c0c">
                                   <i class="fa fa-plus"></i><span> Add Supplier</span>
                                   </button>
                               </div>';
@@ -55,7 +55,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.addSupplier'))"
-                                class="btn btn-info fa fa-arrow-left"></i> Back</a></button>
+                                class="btn btn-dark fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <div class="card-body card-block col-lg-8 align-self-center">
                         <div class="tab-content pl-3 p-1 AddSup hidden" id="myTabContent">
@@ -123,7 +123,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.editSupplier-tab'))"
-                                class="btn btn-primary fa fa-arrow-left"></i> Back</a></button>
+                                class="btn btn-dark fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <?php if ($position === 'Custodian') {
                         echo '<div class="card-body">
@@ -179,7 +179,7 @@
                                 </div>
                             <br><hr>
                             <div class="form-group">
-                                <button class="btn btn-outline-info" type="submit" name="id" id="edtbuttonsupplier"><i class="fa fa-check"></i> Save</button>
+                                <button class="btn btn-success" type="submit" name="id" id="edtbuttonsupplier"><i class="fa fa-check"></i> Save</button>
                             </div>
                         </form>
                     </div>';
@@ -195,14 +195,14 @@
                                            readonly="readonly"
                                            id="supplier"
                                            data-required="true"
-                                           class="form-control"
+                                           class="form-control col-6"
                                            data-error-message="Please enter the Supplier Name" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="Address" class="col-md-12">Address</label>
                                 <div class="col-md-12">
-                                   <textarea id="contactno"
+                                   <textarea id="contactno" class="col-6"
                                             readonly = "readonly"
                                            name="address" data-required="true"
                                            data-error-message="Please Enter Contact Number">
@@ -214,7 +214,7 @@
                             <div class="form-group">
                                 <label for="Address" class="col-md-12">Contact Number</label>
                                 <div class="col-md-12">
-                                    <input id="cno" class="form-control"
+                                    <input id="cno" class="form-control col-6"
                                            readonly="readonly"
                                            name="contact" data-required="true"
                                            data-parsley-minlength="1"
