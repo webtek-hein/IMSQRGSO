@@ -483,7 +483,8 @@ class Inventory_model extends CI_Model
             }
 
             $data1 = array(
-                '<a onclick="removeDetail(' . $insert_id . ',' . $serialStatus . ')"> <i class="fa fa-remove"></i></a>',
+                '<a onclick="removeDetail(' . $insert_id . ',' . $serialStatus . ')"> <i class="fa fa-remove" style="color:red"></i></a>',
+                '<input type="checkbox">',
                 $po,
                 $this->input->post('del')[$counter],
                 $this->input->post('rec')[$counter],

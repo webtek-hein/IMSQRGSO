@@ -647,8 +647,8 @@ function insertRow() {
         '<td style=""><select name="supp[' + counter + ']" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
         '<td style=""><input name="quant[' + counter + ']" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><input name="or[' + counter + ']" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><i onclick="addquant(' + counter + ')" class="fa fa-check-circle-o" id="rowcheck"></i>' +
-        '<i onclick="removeRow(' + counter + ')" class="fa fa-times-circle-o" id="rowcancel"></i></td> ' +
+        '<td style=""><i onclick="addquant(' + counter + ')" class="fa fa-check" id="rowcheck"></i>' +
+        '<i onclick="removeRow(' + counter + ')" class="fa fa-times" id="rowcancel"></i></td> ' +
         '</tr>');
     $.ajax({
         url: 'supplier/supplieroption',
