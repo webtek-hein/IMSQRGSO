@@ -39,11 +39,11 @@
  
 
 
-                                <button id="headingTwo" class="btn btn-outline-success">
+                                <button id="headingTwo" class="btn btn-success" style="border-color: #0c0c0c">
                                     <i class=" fa fa-plus" ></i><span> New</span></button>
-                                <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" class="btn btn-outline-primary">
+                                <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" class="btn btn-info" style="border-color: #0c0c0c">
                                     <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
-                                 <button id="reconcileButton" class="btn btn-outline-success">
+                                 <button id="reconcileButton" class="btn btn-warning" style="border-color: #0c0c0c">
                                  <i class="fa fa-balance-scale"></i> RECONCILE</button>
                                 </div>';
                     }
@@ -97,7 +97,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.inventory-tab'),$('.detail-tab '))"
-                                class="btn btn-outline-primary fa fa-arrow-left"></i> Back</a></button>
+                                class="btn btn-dark fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -332,9 +332,8 @@
                             <div class="table-responsive tab-pane fade show active" id="Detail_Det" role="tabpanel"
                                  aria-labelledby="Detail-tab">
 
-
-
-                                <a href="air" class="btn btn-success"><i class="fa fa-check-square-o"></i> Generate AIR</a>
+                                <br/>
+                                <a href="air" class="btn btn-success" style="border-color:#0c0c0c"><i class="fa fa-check-square-o"></i> Generate AIR</a>
 
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
@@ -390,7 +389,8 @@
                             <!--General Ledger-->
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
-                                <button onclick="printToPDF()" class="btn btn-info fa fa-download"> Download as PDF
+                                <br/>
+                                <button onclick="printToPDF()" class="btn btn-info fa fa-download" style="border-color: #0c0c0c"> Download as PDF
                                 </button>
                                 <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
@@ -417,7 +417,7 @@
             <div hidden class="additemDiv col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-outline-primary" id="exit"
+                        <button class="btn btn-danger" id="exit" style="border-color: #0c0c0c"
                                 onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))"><i class="fa fa-times"></i> Cancel
                         </button>
                     </div>
@@ -600,12 +600,15 @@
     <div class="card">
         <div class="card-header">
             <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))"
-                    class="btn btn-info fa fa-arrow-left">
+                    class="btn btn-dark fa fa-arrow-left">
                 Back
             </button>
-            <button onclick="printToPDFreport()" class="btn btn-info fa fa-download"> Download as PDF</button>
+
         </div>
         <div class="card-body">
+
+            <button onclick="printToPDFreport()" class="btn btn-info fa fa-download"> Download as PDF</button>
+
             <div class="select">
                 <label>Reports on:</label>
                 <select id="reportsOption">
@@ -1005,11 +1008,14 @@
     <div class="card">
         <div class="card-header">
             <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))"
-                    class="btn btn-info fa fa-arrow-left"> Back
+                    class="btn btn-dark fa fa-arrow-left"> Back
             </button>
-            <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download"> Download as PDF</button>
+
         </div>
         <div class="card-body">
+
+            <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download"> Download as PDF</button>
+            <br/>
 
             <ul class="nav nav-tabs" id="serialTab" role="tablist">
                 <li class="nav-item">

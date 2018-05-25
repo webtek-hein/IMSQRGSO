@@ -27,7 +27,7 @@
             <div class=" col-lg-12 accounts-tab">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-outline-primary" id="headingZero">
+                        <button class="btn btn-info" id="headingZero" style="border-color: #0c0c0c">
                             <i class="fa fa-plus"></i><span> Add User</span>
                         </button>
                     </div>
@@ -45,7 +45,7 @@
 </div>
 <div hidden class="col-lg-12 addUser ">
     <div class="card-header">
-        <button type="button" onclick="addUserBack()" class="btn btn-info fa fa-arrow-left"> Back</a></button>
+        <button type="button" onclick="addUserBack()" class="btn btn-dark fa fa-arrow-left"> Back</a></button>
     </div>
     <div class="form-group">
         <div class="card">
@@ -141,7 +141,7 @@
             <div hidden class="col-lg-12 userDetail">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="EditUserBack()" class="btn btn-primary fa fa-arrow-left"></i> Back</a></button>
+                        <button type="button" onclick="EditUserBack()" class="btn btn-dark fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                     <form id="editAccounts" class="form-horizontal form-label-left" action="users/edituser" method="POST">
@@ -198,7 +198,7 @@
                                         </div>
                                     </div>
                                     <br><br>
-                                    <button class="btn btn-info" type="submit" name="id" id="edtbutton">
+                                    <button class="btn btn-success" type="submit" name="id" id="edtbutton">
                                         <i class="fa fa-check"></i> save changes
                                     </button>
 

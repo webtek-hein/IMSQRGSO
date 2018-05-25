@@ -75,11 +75,15 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.department-tab'),$('.detail-tab '))"
-                                class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back
+                                class="btn btn-dark"><i class=" fa fa-arrow-left"></i> Back
                         </button>
-                        <button type="button" id="#" class="btn btn-primary">Print ARE</button>
+
                     </div>
                     <div class="card-body">
+
+                        <button type="button" id="#" class="btn btn-info" style="border-color: #0c0c0c">
+                            <i class="fa fa-print"></i> Print ARE</button>
+
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="DetInfo" data-toggle="tab" href="#Detail_Info"
@@ -128,7 +132,7 @@
     <div class="card">
         <div class="card-header">
             <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability'))"
-                    class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back
+                    class="btn btn-dark"><i class=" fa fa-arrow-left"></i> Back
             </button>
         </div>
         <div class="card-body">
@@ -212,7 +216,7 @@
     <div class="card">
         <div class="card-header">
             <button type="button" onclick="toggleDiv($('.department-tab'),$('.history'))"
-                    class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back
+                    class="btn btn-dark"><i class=" fa fa-arrow-left"></i> Back
             </button>
         </div>
 
