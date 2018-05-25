@@ -151,7 +151,7 @@
                                            class="form-control col-6"
                                            data-error-message="Please Enter the Postal Code">
                                 </div>
-                                <div class="input_contact form-group">
+                                <div class="form-group">
                                     <label for="Contactno" class=" form-control-label">Contact Number/s</label>
                                     <div class="input-group">
                                     <div id="contactno1" name="contact[]"></div>
