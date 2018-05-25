@@ -186,7 +186,7 @@ class User_db extends CI_Model {
      */
     public function edit_profile($data, $userid)
     {
-        $this->db->set('password', $data);
+        $this->db->set('password', $data[password]);
         $this->db->where('user_id', $userid);
         $this->db->update('user');
     }

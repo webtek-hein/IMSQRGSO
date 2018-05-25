@@ -828,7 +828,16 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('serial');
         return $query->result_array();
     }
-
+    function getSerialNull($id, $position)
+    {
+        $this->db->select('serial.serial');
+        $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
+        $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
+        $this->db->where('item.item_id',$id);
+        $this->db->where('serial is NOT NULL',null,FALSE);
+        $query = $this->db->get('serial');
+        return $query->result_array();
+    }
     public
     function getSerialReturn($det_id, $sid)
     {
