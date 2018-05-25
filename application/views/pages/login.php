@@ -48,12 +48,11 @@
                     <?php echo form_open('Login/user_login_process'); ?>
                     <?php
                     echo "<div class='error_msg'>";
-                    if (isset($error_message)) {
-                        echo $error_message;
-                    }
-                    echo validation_errors();
-                    echo "</div>";
-                    ?>
+                    if($this->session->flashdata('validationfailed')): ?>
+                        <br><p><?php echo $this->session->flashdata('validationfailed'); ?></p>
+                    <?php elseif ($this->session->flashdata('userfailed')):?>
+                        <br><p><?php echo $this->session->flashdata('userfailed'); ?></p>
+                    <?php endif; ?>
 
                     <div class="form-group">
                         <label for="form2"> Username</label>

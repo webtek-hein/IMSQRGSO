@@ -164,8 +164,10 @@ class Inventory extends CI_Controller
             $list = $this->inv->viewDetailperDept($id, $dept_id);
         } else {
             $list = $this->inv->viewdetail($id, $position);
+          //  $serial = $this->inv->getSerialNull($id, $position);
         }
 
+        //$serialvalue = ($serial[0]['serial']);
         $data = array();
         $viewser = "";
         $action = "";
@@ -198,7 +200,7 @@ class Inventory extends CI_Controller
                 } elseif ($dept === 'dept') {
                     $action = $detail['dist_stat'];
                 } elseif ($detail['serialStatus'] !== '1') {
-                    $action = "<div class=\"dropdown\">
+                        $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id],$detail[quantity],0)\"data-toggle=\"modal\" 
@@ -208,17 +210,26 @@ class Inventory extends CI_Controller
                             $viewser
                             </div>
                             </div>";
-
                 } else {
-                    $action = "<div class=\"dropdown\">
+                   /* if(empty($serial)) {
+                        $action = "<div class=\"dropdown\">
+                            <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
+                            <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
+                        
+                            $viewser
+                            </div> 
+                          </div>";
+                    }else{*/
+                        $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\"
                              data-id='$detail[item_det_id]'data-target=\" .Distribute\" data-quantity=\"$detail[quantity]\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             $viewser
-                            </div>
-                            </div>";
+                            </div> 
+                          </div>";
+                  //  }
                 }
             }
             if ($dept === 'dept') {

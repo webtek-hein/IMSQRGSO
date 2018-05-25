@@ -441,8 +441,12 @@ function detail(id) {
                 url: 'inventory/detail/inv/' + id + '/0',
                 columns: [{
                     field: 'remove',
-                    title: ''
+                    title: '',
+                    align: 'center'
                 }, {
+                    field: 'state',
+                    checkbox: 'true',
+                },{
                     field: 'PO',
                     title: 'PO number'
                 }, {
@@ -634,6 +638,7 @@ function insertRow() {
     var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
         '<td  style=""></td>' +
+        '<td  style=""></td>' +
         '<td contenteditable style=""><input name="PO[' + counter + ']" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
         '<td style=""><input name="del[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="rec[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
@@ -642,8 +647,8 @@ function insertRow() {
         '<td style=""><select name="supp[' + counter + ']" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
         '<td style=""><input name="quant[' + counter + ']" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><input name="or[' + counter + ']" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><i onclick="addquant(' + counter + ')" class="fa fa-check-circle-o" id="rowcheck"></i>' +
-        '<i onclick="removeRow(' + counter + ')" class="fa fa-times-circle-o" id="rowcancel"></i></td> ' +
+        '<td style=""><i onclick="addquant(' + counter + ')" class="fa fa-check" id="rowcheck"></i>' +
+        '<i onclick="removeRow(' + counter + ')" class="fa fa-times" id="rowcancel"></i></td> ' +
         '</tr>');
     $.ajax({
         url: 'supplier/supplieroption',
@@ -1412,6 +1417,9 @@ function modal() {
 
         $('#quantity').val(quantity);
 
+    });
+    $('#editlogmodal').on('hidden.bs.modal', function () {
+        $('#editlog').bootstrapTable('destroy');
     });
     $('#Item_Detail').on('hidden.bs.modal', function () {
         $('#itemdet').bootstrapTable('destroy');

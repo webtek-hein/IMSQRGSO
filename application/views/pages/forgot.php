@@ -51,16 +51,12 @@
             <div class="form-actions">
                 <input type="submit" class="btn btn-primary" value="Reset" />
             </div>
-            <?php
-            echo "<div class='error_msg'>";
-            if (isset($error_message)) {
-                echo $error_message;
-            }elseif (isset($success_message)){
-                echo $success_message;
-            }
-            echo validation_errors();
-            echo "</div>";
-            ?>
+            <br>
+            <?php if($this->session->flashdata('resetsuccess')): ?>
+                <br><p><?php echo $this->session->flashdata('resetsuccess'); ?></p>
+            <?php elseif ($this->session->flashdata('resetfailed')):?>
+                <br><p><?php echo $this->session->flashdata('resetfailed'); ?></p>
+            <?php endif; ?>
             <a href="login" style="text-decoration:none; font-family:sans-serif; text-align: center;">Sign In</a>
             <br>
             <a href="<?php echo base_url() ?>signup" style="text-decoration:none; font-family:sans-serif;"></a>

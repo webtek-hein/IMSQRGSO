@@ -61,11 +61,11 @@ class Profile extends CI_Controller
 
             $userid = ($this->session->userdata['logged_in']['user_id']);
             $password = $this->input->post('con_new_password');
-            $options = ['cost' => 12];
+            $options = array('cost' => 12);
 
             $hashpassword = password_hash($password, PASSWORD_DEFAULT, $options);
 
-            $this->user_db->edit_profile($hashpassword, $userid);
+            $this->user_db->edit_password($hashpassword, $userid);
             $this->session->set_flashdata('passwordmsg', 'Update will take effect on next login.');
             header('Location: ' . base_url() . 'profile');
         }

@@ -483,7 +483,8 @@ class Inventory_model extends CI_Model
             }
 
             $data1 = array(
-                '<a onclick="removeDetail(' . $insert_id . ',' . $serialStatus . ')"> <i class="fa fa-remove"></i></a>',
+                '<a onclick="removeDetail(' . $insert_id . ',' . $serialStatus . ')"> <i class="fa fa-remove" style="color:red"></i></a>',
+                '<input type="checkbox">',
                 $po,
                 $this->input->post('del')[$counter],
                 $this->input->post('rec')[$counter],
@@ -828,7 +829,16 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('serial');
         return $query->result_array();
     }
-
+    function getSerialNull($id, $position)
+    {
+        $this->db->select('serial.serial');
+        $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
+        $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
+        $this->db->where('item.item_id',$id);
+        $this->db->where('serial is NOT NULL',null,FALSE);
+        $query = $this->db->get('serial');
+        return $query->result_array();
+    }
     public
     function getSerialReturn($det_id, $sid)
     {
