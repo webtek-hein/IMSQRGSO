@@ -341,3 +341,44 @@ if ($position === 'Supply Officer') {
     </div>
     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
+
+<div class="col-lg-4">
+    <div class="card" style="height:350px;">
+        <div class="card-header">
+            <h4>Daily Activity</h4>
+        </div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">Distribute on Department Name <span>03/26/2018</span></a>
+            <a href="#" class="list-group-item">Edit Item Name <span>03/26/2018</span></a>
+            <a href="#" class="list-group-item">Add Supplier <span>03/26/2018</span></a>
+        </div>
+    </div>
+    <!-- /# card -->
+</div>
+<div class="col-lg-4">
+    <div class="card" style="height:350px;">
+        <div class="card-header">
+            <h4>Daily Activity</h4>
+        </div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">Distribute on Department Name <span>03/26/2018</span></a>
+            <a href="#" class="list-group-item">Edit Item Name <span>03/26/2018</span></a>
+            <a href="#" class="list-group-item">Add Supplier <span>03/26/2018</span></a>
+        </div>
+    </div>
+    <!-- /# card -->
+</div>
+
+<div class="col-lg-4">
+    <div class="card" style="height:350px;">
+        <div class="card-header">
+            <h4>Daily Activity</h4>
+        </div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">Distribute on Department Name <span>03/26/2018</span></a>
+            <a href="#" class="list-group-item">Edit Item Name <span>03/26/2018</span></a>
+            <a href="#" class="list-group-item">Add Supplier <span>03/26/2018</span></a>
+        </div>
+    </div>
+    <!-- /# card -->
+</div>
