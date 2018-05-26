@@ -29,8 +29,9 @@
 
 
                         echo '<div class="card-header">
-                                  <button onclick="addSupplier()" class="btn btn-info" style="border-color: #0c0c0c">
-                                  <i class="fa fa-plus"></i><span> Add Supplier</span>
+                                  <button onclick="addSupplier()" class="btn btn-info" style="border-color: #0c0c0c"
+                                    data-toggle="tooltip" data-placement="bottom" title="Add Supplier">
+                                  <i class="fa fa-plus"></i><span></span>
                                   </button>
                               </div>';
                     }

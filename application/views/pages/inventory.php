@@ -36,19 +36,18 @@
                         // required accept=".csv" enctype="multipart/form-data">Import CSV</button>
                         // </form>
                         echo '<div class="card-header">
- 
-
-
-                                <button id="headingTwo" class="btn btn-success" style="border-color: #0c0c0c">
-                                    <i class=" fa fa-plus" ></i><span> New</span></button>
-                                <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" class="btn btn-info" style="border-color: #0c0c0c">
-                                    <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
-                                 <button id="reconcileButton" class="btn btn-warning" style="border-color: #0c0c0c">
-                                 <i class="fa fa-balance-scale"></i> RECONCILE</button>
+                                <button id="headingTwo" class="btn btn-success" style="border-color: #0c0c0c" data-toggle="tooltip" 
+                                data-placement="bottom" title="Add New Inventory"><i class=" fa fa-plus"></i></button>
+                                <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" 
+                                     class="btn btn-info" style="border-color: #0c0c0c" data-toggle="tooltip"
+                                     data-placement="bottom" title="Print Reports"><i class="fa fa-file-archive-o"></i></button> 
+                                 <button id="reconcileButton" class="btn btn-warning" style="border-color: #0c0c0c"
+                                        data-toggle="tooltip" data-placement="bottom" title="Reconcile">
+                                 <i class="	fa fa-check-square-o"></i></button>
                                 </div>';
                     }
                     ?>
-                    <div class="card-body">
+                        <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="CO-tab" data-toggle="tab" href="#tab_content1"
