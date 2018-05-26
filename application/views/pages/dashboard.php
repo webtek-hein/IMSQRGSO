@@ -29,15 +29,17 @@ if ($position === 'Admin') {
               </span>
             </a>
           </div>
-          <div id="overlay">
-          <div class="collapse" id="collapseExample">
-  <div class="card card-body">
-   <ul>
-   <li>ajuhdfs</li>
-   </ul>
-  </div>
-</div></div>
-        </div>'.
+            <div id="overlay">
+              <div class="collapse" id="collapseExample">
+              
+                <div class="card card-body">
+                  <ul>
+                    <li>ajuhdfs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>'.
 
     '<div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-warning o-hidden h-100">
@@ -47,14 +49,24 @@ if ($position === 'Admin') {
               </div>
               <div class="mr-5" id="itemsiss">Issued Item</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/decreased">
-              <span class="float-left" style="color:black">View Details</span>
+          <a class="card-footer text-white clearfix small z-1" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            
+              <span class="float-left" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
-        </div>'.
+            <div id="overlay">
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <ul>
+                    <li>ajuhdfs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>'.
 
     '<div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-success o-hidden h-100">
@@ -64,14 +76,24 @@ if ($position === 'Admin') {
               </div>
               <div class="mr-5" id="retitem">Returned Items</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/return_log">
-              <span class="float-left" style="color:black">View Details</span>
+            <a class="card-footer text-white clearfix small z-1" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            
+              <span class="float-left" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
-        </div>'.
+            <div id="overlay">
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <ul>
+                    <li>ajuhdfs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>'.
 
     '<div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-danger o-hidden h-100">
@@ -81,14 +103,24 @@ if ($position === 'Admin') {
               </div>
               <div class="mr-5" id="expitems">Expired Item</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
-              <span class="float-left" style="color:black">View Details</span>
+            <a class="card-footer text-white clearfix small z-1" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            
+              <span class="float-left" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
-        </div>';
+            <div id="overlay">
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <ul>
+                    <li>ajuhdfs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>';
     }
     ?>
 
@@ -102,14 +134,24 @@ if ($position === 'Custodian') {
               </div>
               <div class="mr-5" id="itemsrec">New Item Received</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
-              <span class="float-left" style="color:black">View Details</span>
+            <a class="card-footer text-white clearfix small z-1" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            
+              <span class="float-left" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
-        </div>'.
+            <div id="overlay">
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <ul>
+                    <li>ajuhdfs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>'.
 
         '<div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-warning o-hidden h-100">
@@ -119,14 +161,24 @@ if ($position === 'Custodian') {
               </div>
               <div class="mr-5" id="itemsiss">Issued Item</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/decreased">
-              <span class="float-left" style="color:black">View Details</span>
+            <a class="card-footer text-white clearfix small z-1" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            
+              <span class="float-left" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
-        </div>'.
+            <div id="overlay">
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <ul>
+                    <li>ajuhdfs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>'.
 
         '<div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-success o-hidden h-100">
@@ -136,14 +188,24 @@ if ($position === 'Custodian') {
               </div>
               <div class="mr-5" id="retitem">Returned Items</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/return_log">
-              <span class="float-left" style="color:black">View Details</span>
+            <a class="card-footer text-white clearfix small z-1" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            
+              <span class="float-left" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
-        </div>'.
+            <div id="overlay">
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <ul>
+                    <li>ajuhdfs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>'.
 
         '<div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-danger o-hidden h-100">
@@ -153,14 +215,24 @@ if ($position === 'Custodian') {
               </div>
               <div class="mr-5" id="expitems">Expired Item</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="../imsqrgso/inventory">
-              <span class="float-left" style="color:black">View Details</span>
+            <a class="card-footer text-white clearfix small z-1" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            
+              <span class="float-left" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color:black">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right" style="color:black"></i>
               </span>
             </a>
           </div>
-        </div>';
+            <div id="overlay">
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <ul>
+                    <li>ajuhdfs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>';
 }
 ?>
 
@@ -268,4 +340,45 @@ if ($position === 'Supply Officer') {
         <canvas id="myAreaChart" width="100%" height="30"></canvas>
     </div>
     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+
+<div class="col-lg-4">
+    <div class="card" style="height:350px;">
+        <div class="card-header">
+            <h4>Daily Activity</h4>
+        </div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">Distribute on Department Name <span>03/26/2018</span></a>
+            <a href="#" class="list-group-item">Edit Item Name <span>03/26/2018</span></a>
+            <a href="#" class="list-group-item">Add Supplier <span>03/26/2018</span></a>
+        </div>
+    </div>
+    <!-- /# card -->
+</div>
+<div class="col-lg-4">
+    <div class="card" style="height:350px;">
+        <div class="card-header">
+            <h4>Daily Activity</h4>
+        </div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">Distribute on Department Name <span>03/26/2018</span></a>
+            <a href="#" class="list-group-item">Edit Item Name <span>03/26/2018</span></a>
+            <a href="#" class="list-group-item">Add Supplier <span>03/26/2018</span></a>
+        </div>
+    </div>
+    <!-- /# card -->
+</div>
+
+<div class="col-lg-4">
+    <div class="card" style="height:350px;">
+        <div class="card-header">
+            <h4>Daily Activity</h4>
+        </div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">Distribute on Department Name <span>03/26/2018</span></a>
+            <a href="#" class="list-group-item">Edit Item Name <span>03/26/2018</span></a>
+            <a href="#" class="list-group-item">Add Supplier <span>03/26/2018</span></a>
+        </div>
+    </div>
+    <!-- /# card -->
 </div>
