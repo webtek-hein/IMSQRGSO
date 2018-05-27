@@ -13,11 +13,12 @@
 /* Bootstrap */
 @import url(../css/animate.css);
 
-.parsley-errors-list .parsley-required{
+.parsley-errors-list li{
   list-style: none;
   color: red;
   margin-left: 10px;
 }
+
 /*--Action--*/
 .dropdown #DetailDropDn{
   width: 15px;
@@ -54,12 +55,6 @@
 }
 /*--End of View Serial--*/
 
-/*--Reports Button Option--*/
-#reportsOption{
-  margin-top: 38px;
-  margin-left: 90px;
-}
-/*--Ends of Reports Button Option--*/
 
 /*--Inventory Detail Action--*/
 #detail-tab-table #rowcheck{

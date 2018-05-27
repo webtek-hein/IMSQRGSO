@@ -285,8 +285,6 @@ $(document).ready(function () {
     $('.selectpicker').selectpicker;
 
 
-
-
     $('#menuToggle').on('click', function (event) {
         $('body').toggleClass('open');
     });
@@ -2091,6 +2089,15 @@ function printToPDFreport() {
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
+    var from = $('#from').val();
+    var to = $('#to').val();
+    var type = $('input[type=radio][name=type]:checked').val();
+    var p = '';
+
+    if (from !== '' || to !== '') {
+        // $('#repdateBTN').click();
+        p = '<p>From: ' + from + ' To: ' + to + '</p>';
+    }
 
     if (dd < 10) {
         dd = '0' + dd
@@ -2114,9 +2121,12 @@ function printToPDFreport() {
         header = '<h1>Supplier Items</h1><br><p>General Service Office</p>';
     }
     var printContents = $('#returnedReport').html();
-    document.body.innerHTML = '<div class="text-center">' + header + '</div>' + dateCreated + printContents;
-    window.print();
-    location.reload();
+    document.body.innerHTML = '<div class="text-center">' + header + '</div>' +
+        '<div class="row"><div class="col-md-12 "><p>Type of Item: ' + type + '</p></div> ' +
+        '<div class="col-md-4 form-horizontal">' + p + '</div>' +
+        '</div>' + dateCreated + printContents;
+        window.print();
+        location.reload();
 }
 
 function printToPDFreconcile() {
@@ -2236,12 +2246,154 @@ function verifypass() {
     $old = $('#old').val();
 }
 
-function validateReconcile(){
+function validateReconcile() {
     $status = $('#serialTab').find('.active').data('status');
 
     $('#recValidate').parsley().whenValidate({
         group: $status
     }).done(function () {
         $('.invdate').modal('show');
+    });
+}
+
+function getreportDate() {
+    $('#reportDate').parsley().whenValidate().done(function () {
+        var from = $('#from').val();
+        var to = $('#to').val();
+        var type = $('input[type=radio][name=type]:checked').val();
+        $reportTable = $('#reportTable');
+        var $reportOption = $('#reportsOption').val();
+        var url = 'Inventory/getReportWithDate/' + $reportOption + '/' + type + '/' + from + '/' + to;
+
+        if ($reportOption === '0') {
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: url,
+                columns: [{
+                    field: 'OR_no',
+                    title: 'OR_number'
+                }, {
+                    field: 'date_delivered',
+                    title: 'Date Delivered'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type',
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'unit_cost',
+                    title: 'Unit Cost'
+                }, {
+                    field: 'supplier_name',
+                    title: 'Supplier'
+                }]
+            });
+        } else if ($reportOption === '1') {
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: url,
+                columns: [{
+                    field: 'PR_no',
+                    title: 'PR #'
+                }, {
+                    field: 'department',
+                    title: 'Department'
+                }, {
+                    field: 'date_received',
+                    title: 'Date'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type'
+                }, {
+                    field: 'quantity_distributed',
+                    title: 'Quantity'
+                }, {
+                    field: 'cost',
+                    title: 'Cost'
+                }, {
+                    field: 'account_code',
+                    title: 'Account Code'
+                }, {
+                    field: 'supply_officer',
+                    title: 'Supply Officer'
+                }]
+            });
+        } else if ($reportOption === '2') {
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: url,
+                columns: [{
+                    field: 'department',
+                    title: 'Department',
+                }, {
+                    field: 'date_returned',
+                    title: 'Date'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Returned'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type'
+                }, {
+                    field: 'return_quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'receiver',
+                    title: 'Returned to'
+                }, {
+                    field: 'status',
+                    title: 'Status'
+                }, {
+                    field: 'remarks',
+                    title: 'Remarks'
+                }]
+            });
+        } else {
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: url,
+                columns: [{
+                    field: 'supplier_name',
+                    title: 'Supplier',
+                }, {
+                    field: 'date_delivered',
+                    title: 'Date',
+                }, {
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type'
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'unit',
+                    title: 'Unit'
+                }, {
+                    field: 'cost',
+                    title: 'Cost'
+                }]
+            });
+        }
     });
 }

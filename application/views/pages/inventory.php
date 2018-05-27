@@ -47,7 +47,7 @@
                                 </div>';
                     }
                     ?>
-                        <div class="card-body">
+                    <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="CO-tab" data-toggle="tab" href="#tab_content1"
@@ -332,7 +332,8 @@
                                  aria-labelledby="Detail-tab">
 
                                 <br/>
-                                <a href="air" class="btn btn-success" style="border-color:#0c0c0c"><i class="fa fa-check-square-o"></i> Generate AIR</a>
+                                <a href="air" class="btn btn-success" style="border-color:#0c0c0c"><i
+                                            class="fa fa-check-square-o"></i> Generate AIR</a>
 
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
@@ -389,7 +390,8 @@
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
                                 <br/>
-                                <button onclick="printToPDF()" class="btn btn-info fa fa-download" style="border-color: #0c0c0c"> Download as PDF
+                                <button onclick="printToPDF()" class="btn btn-info fa fa-download"
+                                        style="border-color: #0c0c0c"> Download as PDF
                                 </button>
                                 <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
@@ -417,7 +419,8 @@
                 <div class="card">
                     <div class="card-header">
                         <button class="btn btn-danger" id="exit" style="border-color: #0c0c0c"
-                                onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))"><i class="fa fa-times"></i> Cancel
+                                onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))"><i class="fa fa-times"></i>
+                            Cancel
                         </button>
                     </div>
                     <div class="card-body card-block col-lg-8 align-self-center">
@@ -526,54 +529,54 @@
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Delivery Date</label>
                                         <div class="input-group">
-                                        <input data-parsley-group="set1" type="date"
-                                               name="del[]" class="form-control col-6"
-                                               data-parsley-required-message="Enter the Delivery Date"
-                                               required>
+                                            <input data-parsley-group="set1" type="date"
+                                                   name="del[]" class="form-control col-6"
+                                                   data-parsley-required-message="Enter the Delivery Date"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class="form-control-label">Date Received</label>
                                         <div class="input-group date">
-                                        <input class="form-control col-6" type="date" name="rec[]"
-                                               data-parsley-required-message="Enter the Date received"
-                                               required>
+                                            <input class="form-control col-6" type="date" name="rec[]"
+                                                   data-parsley-required-message="Enter the Date received"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Expiration Date</label>
                                         <div class="input-group">
-                                        <input data-parsley-group="set1" type="date"
-                                               name="exp[]" class="form-control col-6"
-                                               data-parsley-required-message="Enter the Expiration Date"
-                                               required>
+                                            <input data-parsley-group="set1" type="date"
+                                                   name="exp[]" class="form-control col-6"
+                                                   data-parsley-required-message="Enter the Expiration Date"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Supplier</label>
                                         <div class="input-group">
-                                        <select data-parsley-group="set1"
-                                                list="typelist" name="supp[]"
-                                                class="supplieropt form-control col-6"
-                                                required>
-                                        </select>
+                                            <select data-parsley-group="set1"
+                                                    list="typelist" name="supp[]"
+                                                    class="supplieropt form-control col-6"
+                                                    required>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Official Receipt Number</label>
                                         <div class="input-group">
-                                        <input data-parsley-group="set1"
-                                               name="or[]" class="form-control col-6"
-                                               data-parsley-required-message="Input Official Receipt"
-                                               required>
+                                            <input data-parsley-group="set1"
+                                                   name="or[]" class="form-control col-6"
+                                                   data-parsley-required-message="Input Official Receipt"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Purchse Order (PO)
                                             number</label>
                                         <div class="input-group">
-                                        <input data-parsley-group="set1"
-                                               name="PO[]" class="form-control col-6">
+                                            <input data-parsley-group="set1"
+                                                   name="PO[]" class="form-control col-6">
                                         </div>
                                     </div>
 
@@ -605,38 +608,47 @@
 
         </div>
         <div class="card-body">
-
             <button onclick="printToPDFreport()" class="btn btn-info fa fa-download"> Download as PDF</button>
-
-            <div class="select">
-                <label>Reports on:</label>
-                <select id="reportsOption">
-                    <option value="0">Delivered Item</option>
-                    <option value="1">Distributed Items</option>
-                    <option value="2">Returned Items</option>
-                    <option value="3">Supplier</option>
-                </select>
+            <hr>
+            <div class="row">
+                <div class="col-md-12 form-horizontal">
+                    <label>Select the type of Item:</label>
+                    <input value="ALL" type="radio" name="type" checked> All
+                    <input value="CO" type="radio" name="type"> Capital Outlay
+                    <input value="MOOE" type="radio" name="type"> MOOE
+                </div>
+                <div class="col-md-4 form-horizontal">
+                    <div class="select form-group">
+                        <label>Reports on:</label>
+                        <select class="form-control" id="reportsOption">
+                            <option value="0">Delivered Item</option>
+                            <option value="1">Distributed Items</option>
+                            <option value="2">Returned Items</option>
+                            <option value="3">Supplier</option>
+                        </select>
+                    </div>
+                </div>
+                <form id="reportDate" class="col-md-8 form-inline">
+                    <div class="form-group">
+                        <label for="from">From: </label>
+                        <input required type="date" class="form-control" id="from">
+                        </input>
+                    </div>
+                    <div class="form-group">
+                        <label for="to">To: </label>
+                        <input required type="date" class="form-control" id="to">
+                        </input>
+                    </div>
+                    <button type="button" id="repdateBTN" onclick="getreportDate()" class="btn btn-success">Go</button>
+                </form>
             </div>
-            <!--  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                      <label>From</label>
-                      <input type="date" name="from" data-validate-length-range="5,20"
-                             class="optional form-control has-feedback-left">
-                      <span class="fa fa-calendar-times-o form-control-feedback left"
-                            aria-hidden="true"></span>
-                  </div>
-                  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                      <label>To</label>
-                      <input type="date" name="to" data-validate-length-range="5,20"
-                             class="optional form-control has-feedback-left">
-                      <span class="fa fa-calendar-times-o form-control-feedback left"
-                            aria-hidden="true"></span>
-                  </div>-->
-            <div id="returnedReport">
-                <table id="reportTable" data-pagination="true"
-                       class="table table-bordered table-hover">
-                </table>
+            <div class="row">
+                <div id="returnedReport" class="col-md-12 table-responsive">
+                    <table id="reportTable" data-pagination="true"
+                           class="table table-bordered table-hover">
+                    </table>
+                </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -715,7 +727,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal"><i class="fa fa-arrow-down"></i> Save</button>
+                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal"><i
+                                class="fa fa-arrow-down"></i> Save
+                    </button>
                 </div>
             </div>
         </div>
@@ -1005,51 +1019,52 @@
 <!--Reconcile Page-->
 <div hidden class="reconcilePage col-lg-12">
     <form id="recValidate">
-    <div class="card">
-        <div class="card-header">
-            <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))"
-                    class="btn btn-dark fa fa-arrow-left"> Back
-            </button>
+        <div class="card">
+            <div class="card-header">
+                <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))"
+                        class="btn btn-dark fa fa-arrow-left"> Back
+                </button>
 
-        </div>
-        <div class="card-body">
+            </div>
+            <div class="card-body">
 
-            <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download"> Download as PDF</button>
-            <br/>
+                <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download"> Download as PDF</button>
+                <br/>
 
-            <ul class="nav nav-tabs" id="serialTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-status="1" id="non-serialized-tab" data-toggle="tab" href="#nonSerTab"
-                       role="tab"
-                       aria-controls="serialized" aria-selected="false">Serialized Items</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-status="0" id="serialized-tab" data-toggle="tab" href="#serTab"
-                       role="tab"
-                       aria-controls="co" aria-selected="true">non-Serialized Items</a>
-                </li>
+                <ul class="nav nav-tabs" id="serialTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-status="1" id="non-serialized-tab" data-toggle="tab"
+                           href="#nonSerTab"
+                           role="tab"
+                           aria-controls="serialized" aria-selected="false">Serialized Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-status="0" id="serialized-tab" data-toggle="tab" href="#serTab"
+                           role="tab"
+                           aria-controls="co" aria-selected="true">non-Serialized Items</a>
+                    </li>
 
-            </ul>
-            <div class="tab-content pl-3 p-1" id="">
-                <div class="table-responsive-sm tab-pane fade show active" id="nonSerTab" role="tabpanel"
-                     aria-labelledby="nonSer-tab">
+                </ul>
+                <div class="tab-content pl-3 p-1" id="">
+                    <div class="table-responsive-sm tab-pane fade show active" id="nonSerTab" role="tabpanel"
+                         aria-labelledby="nonSer-tab">
 
-                    <table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="serializedItems"
-                           class="table table-bordered table-hover"></table>
-                </div>
-                <div class="table-responsive-sm  tab-pane fade " id="serTab"
-                     role="tabpanel"
-                     aria-labelledby="nonSerialized-tab">
-                  <table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="withoutSerial"
-                                       class="table table-bordered table-hover"></table>
+                        <table data-show-refresh="true" data-pagination="true" data-search="true" id="serializedItems"
+                               class="table table-bordered table-hover"></table>
+                    </div>
+                    <div class="table-responsive-sm  tab-pane fade " id="serTab"
+                         role="tabpanel"
+                         aria-labelledby="nonSerialized-tab">
+                        <table data-show-refresh="true" data-pagination="true" data-search="true" id="withoutSerial"
+                               class="table table-bordered table-hover"></table>
 
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-    <a type="button" class="compare btn btn-success" onclick="validateReconcile()">Reconcile Items</a>
-    <a type="button" class="compare btn btn-success">Compare</a>
+        </div>
+        <a type="button" class="compare btn btn-success" onclick="validateReconcile()">Reconcile Items</a>
+        <a type="button" class="compare btn btn-success">Compare</a>
     </form>
 </div>
 

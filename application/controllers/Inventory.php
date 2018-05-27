@@ -841,6 +841,18 @@ class Inventory extends CI_Controller
             echo json_encode($this->inv->supplierReport($type));
         }
     }
+    public function getReportWithDate($report, $type,$from,$to)
+    {
+        if ($report === '0') {
+            echo json_encode($this->inv->deliveredReportsWithDate($type,$from,$to));
+        } elseif ($report === '1') {
+            echo json_encode($this->inv->issuedReportsWithDate($type,$from,$to));
+        } elseif ($report === '2') {
+            echo json_encode($this->inv->returnedReportsWithDate($type,$from,$to));
+        } else {
+            echo json_encode($this->inv->supplierReportWithDate($type,$from,$to));
+        }
+    }
 
     public function getInvDates()
     {
