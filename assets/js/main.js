@@ -5,7 +5,7 @@ $(document).ready(function () {
     });
 //load data dash
     setInterval(function () {
-        $("#tUser").load("inventory/totalUser");
+        /*$("#tUser").load("inventory/totalUser");
         $("#itemsrec").load("inventory/itemsReceived");
         $("#itemsiss").load("inventory/issuedItems");
         $("#retitem").load("inventory/returnedItems");
@@ -15,7 +15,7 @@ $(document).ready(function () {
         $("#pendItems").load("inventory/pendingItems");
         $("#tReturnedDay").load("inventory/itemsReturnedThisDay");
         $("#tExprdSO").load("inventory/itemsExpiredSO");
-        $("#tCostSO").load("inventory/itemTcostSO");
+        $("#tCostSO").load("inventory/itemTcostSO");*/
 
     }, 1000);
     $returnTable = $('#returnTable');
@@ -143,7 +143,7 @@ $(document).ready(function () {
                 url: url,
                 columns: [{
                     field: 'department',
-                    title: 'Department',
+                    title: 'Department'
                 }, {
                     field: 'date_returned',
                     title: 'Date'
@@ -177,10 +177,10 @@ $(document).ready(function () {
                 url: url,
                 columns: [{
                     field: 'supplier_name',
-                    title: 'Supplier',
+                    title: 'Supplier'
                 }, {
                     field: 'date_delivered',
-                    title: 'Date',
+                    title: 'Date'
                 }, {
                     field: 'item_name',
                     title: 'Item Name'
@@ -294,7 +294,7 @@ $(document).ready(function () {
                 url: url,
                 columns: [{
                     field: 'department',
-                    title: 'Department',
+                    title: 'Department'
                 }, {
                     field: 'date_returned',
                     title: 'Date'
@@ -328,10 +328,10 @@ $(document).ready(function () {
                 url: url,
                 columns: [{
                     field: 'supplier_name',
-                    title: 'Supplier',
+                    title: 'Supplier'
                 }, {
                     field: 'date_delivered',
-                    title: 'Date',
+                    title: 'Date'
                 }, {
                     field: 'item_name',
                     title: 'Item Name'
@@ -371,6 +371,84 @@ $(document).ready(function () {
         }
     });
 
+    //dashboard new items
+    var $notifitems = $('#increase');
+    var  detail = [];
+
+    $.ajax({
+        url: "inventory/itemsReceived",
+        dataType: 'JSON',
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].countinc !== '0') {
+                    detail += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' Added by ' + data[i].custodian + "</a></li>"
+                } else {
+                    detail = "<li>No Data Found!</li>"
+                }
+            }
+            $notifitems.html(detail);
+        }
+        });
+
+    //dashboard issued items to department
+    var $issueditems = $('#issued');
+    var  issued = [];
+
+    $.ajax({
+        url: "inventory/issuedItems",
+        dataType: 'JSON',
+        success: function (data) {
+            for (var i = 0; i < data.length ; i++) {
+                if (data[i].countinc !== '0') {
+                issued += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' Issued by ' + data[i].custodian + ' to ' +data[i].department +"</a></li>"
+            }else {
+                    issued = "<li>No Data Found!</li>"
+                }
+            }
+            $issueditems.html(issued);
+        }
+    });
+
+
+    //dashboard returned items
+    var $returneditems = $('#returned');
+    var  returned = [];
+
+    $.ajax({
+        url: "inventory/returnedItems",
+        dataType: 'JSON',
+        success: function (data) {
+
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].returncount !== '0') {
+                        returned += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' Returned by ' + data[i].department + "</a></li>"
+
+                    } else {
+                        returned = "<li>No Data Found!</li>"
+                    }
+                }
+            $returneditems.html(returned);
+        }
+    });
+
+    //dashboard expired items
+    var $expireditems = $('#expired');
+    var  expired = [];
+
+    $.ajax({
+        url: "inventory/totalExpired",
+        dataType: 'JSON',
+        success: function (data) {
+            for (var i = 0; i < data.length ; i++) {
+                if (data[i].expirecount !== '0') {
+                expired += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' has reached its life span' +"</a></li>"
+            }else{
+                    expired = "<li>No Data Found!</li>"
+                }
+            }
+            $expireditems.html(expired);
+        }
+    });
     //return table
 
     $returnTable.bootstrapTable('refresh', {url: 'inventory/viewReturn'}).bootstrapTable({
@@ -393,9 +471,6 @@ $(document).ready(function () {
         }, {
             field: 'reason',
             title: 'Reason'
-        }, {
-            field: 'returnperson',
-            title: 'Returned to'
         }, {
             field: 'receiver',
             title: 'Received by'
