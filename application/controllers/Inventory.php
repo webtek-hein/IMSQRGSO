@@ -333,6 +333,10 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * This allows the supply officer to return items
+     * to the custodian.
+     */
     public function returnitem()
     {
         //supply officer
@@ -363,6 +367,9 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * 
+     */
     public function userDistribute()
     {
         $position = $this->session->userdata['logged_in']['position'];
