@@ -642,40 +642,37 @@
 </div>
 <!--End of Genearate Report-->
 
-
 <!--Choose OR-->
-    <form role="form" class="form-horizontal form-label-left col-12" method="POST" data-validate="parsley">
-        <div class="chooseOR modal fade" id="pickOR" tabindex="-1" role="dialog" aria-labelledby="chooseOR-modal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5>Please choose OR number</h5>
-                    </div>
-                    <div class="modal-body">
-                        <input type="text" class="form-control col-6 pull-right" placeholder="search">
-                        <br/>
-                        <input type="checkbox"> sample 1
-                        <br/>
-                        <input type="checkbox"> sample 2
-                        <br/>
-                        <input type="checkbox"> sample 3
-                        <br/>
-                        <input type="checkbox"> sample 4
-                        <br/>
-                        <input type="checkbox"> sample 5
-                    </div>
-
-                    <div class="modal-footer">
-                         <a href="air" class="btn btn-success btn-modal"> Enter</a>
-                    </div>
-
+<form role="form" class="form-horizontal form-label-left col-12" method="POST" data-validate="parsley">
+    <div class="chooseOR modal fade" id="pickOR" tabindex="-1" role="dialog" aria-labelledby="chooseOR-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Please choose OR number</h5>
                 </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control col-6 pull-right" placeholder="search">
+                    <br/>
+                    <input type="checkbox"> sample 1
+                    <br/>
+                    <input type="checkbox"> sample 2
+                    <br/>
+                    <input type="checkbox"> sample 3
+                    <br/>
+                    <input type="checkbox"> sample 4
+                    <br/>
+                    <input type="checkbox"> sample 5
+                </div>
+
+                <div class="modal-footer">
+                    <a href="air" class="btn btn-success btn-modal"> Enter</a>
+                </div>
+
             </div>
         </div>
-    </form>
+    </div>
+</form>
 <!--End choose OR-->
-
-
 
 <!-- Distribution Modal -->
 <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST"
