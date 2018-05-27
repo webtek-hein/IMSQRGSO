@@ -6,6 +6,10 @@ class GenerateQR extends CI_Controller
     public function index(){
         $this->load->library('pdf');
     }
+
+    /**
+     * This allows  the saving of item's QR code as a PDF.
+     */
     function saveQR(){
 
         include "qrlib.php";
