@@ -701,7 +701,8 @@ function init_inventory() {
             formatter: function (data, row) {
                 return "<input class=reconid hidden value=" + data + ">";
             },
-            field: 'id'
+            field: 'state',
+            checkbox: 'true'
         }, {
             sortable: true,
             field: 'item',
@@ -765,7 +766,8 @@ function init_inventory() {
             formatter: function (data, row) {
                 return "<input class=reconid hidden value=" + data + "></input>";
             },
-            field: 'id'
+            field: 'id',
+            checkbox: 'true'
         }, {
             sortable: true,
             field: 'item',
