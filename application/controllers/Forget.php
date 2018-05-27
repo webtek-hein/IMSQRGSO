@@ -28,16 +28,11 @@ class Forget extends CI_Controller
         $user = $this->user_db->get_email($email);
         if ($user == true) {
             $this->resetpassword($user);
-            $success = array(
-                'success_message' => 'Password has been reset and has been sent to email : '. $email
-            );
-            $this->load->view('pages/forgot', $success);
+            $this->session->set_flashdata('resetsuccess', 'Password has been reset and has been sent to email: '. $email);
         } else {
-            $error = array(
-                'error_message' => 'Email not found'
-            );
-            $this->load->view('pages/forgot', $error);
+            $this->session->set_flashdata('resetfailed', 'email not found');
         }
+        header('Location: ' . base_url() . 'forgot');
     }
 
     public function resetpassword($user){

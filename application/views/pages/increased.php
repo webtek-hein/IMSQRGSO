@@ -46,7 +46,7 @@
                                  aria-labelledby="CO-tab">
                                 <table id="increaseLogsTable" data-pagination="true" data-search="true"
                                        data-toggle="table"
-                                       data-url="logs/increaseLog/CO" class="table table-bordered table-sm">
+                                       data-url="logs/increaseLog/CO" class="table table-bordered">
                                     <thead>
                                     <!-- Data-field for getting data  -->
                                     <tr data-toggle="collapse" data-target="#accordion" class="clickable">
@@ -67,7 +67,7 @@
                             <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
                                 <!-- Implement Bootsrap table-->
                                 <table id="" data-pagination="true" data-search="true" data-toggle="table"
-                                       data-url="logs/increaseLog/MOOE" class="table table-bordered table-sm">
+                                       data-url="logs/increaseLog/MOOE" class="table table-bordered">
                                     <thead>
                                     <!-- Data-field for getting data  -->
                                     <tr data-toggle="collapse" data-target="#accordion" class="clickable">

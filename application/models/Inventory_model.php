@@ -483,7 +483,8 @@ class Inventory_model extends CI_Model
             }
 
             $data1 = array(
-                '<a onclick="removeDetail(' . $insert_id . ',' . $serialStatus . ')"> <i class="fa fa-remove"></i></a>',
+                '<a onclick="removeDetail(' . $insert_id . ',' . $serialStatus . ')"> <i class="fa fa-remove" style="color:red"></i></a>',
+                '<input type="checkbox">',
                 $po,
                 $this->input->post('del')[$counter],
                 $this->input->post('rec')[$counter],
@@ -828,7 +829,16 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('serial');
         return $query->result_array();
     }
-
+    function getSerialNull($id, $position)
+    {
+        $this->db->select('serial.serial');
+        $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
+        $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
+        $this->db->where('item.item_id',$id);
+        $this->db->where('serial is NOT NULL',null,FALSE);
+        $query = $this->db->get('serial');
+        return $query->result_array();
+    }
     public
     function getSerialReturn($det_id, $sid)
     {
@@ -889,6 +899,9 @@ class Inventory_model extends CI_Model
         foreach ($serial as $key => $value) {
             // if serial is not null
             if ($value !== 'null') {
+                if(empty($value)){
+                    $value = null;
+                }
                 $data[] = array(
                     'serial_id' => $key,
                     'serial' => $value,
@@ -1344,6 +1357,22 @@ class Inventory_model extends CI_Model
         return $this->db->get('itemdetail')->result_array();
     }
 
+    public function deliveredReportsWithDate($type,$from,$to)
+    {
+        $this->db->select('item.item_name,item.item_description,item.item_type,itemdetail.*,supplier_name')
+            ->join('item', 'itemdetail.item_id = item.item_id')
+            ->join('supplier', 'itemdetail.supplier_id = supplier.supplier_id');
+
+        if ($type === 'CO') {
+            $this->db->where('item.item_type', $type);
+        } elseif ($type === 'MOOE') {
+            $this->db->where('item.item_type', $type);
+        }
+        $this->db->where('date_received BETWEEN '.$this->db->escape($from).' AND '.$this->db->escape($to));
+
+        return $this->db->get('itemdetail')->result_array();
+    }
+
     //items issued reports
     public function issuedReports($type)
     {
@@ -1360,6 +1389,24 @@ class Inventory_model extends CI_Model
         }
         $query = $this->db->get('distribution');
         return $query->result_array();
+    }
+
+    public function issuedReportsWithDate($type,$from,$to)
+    {
+        $this->db->select('PR_no,distribution.quantity_distributed,distribution.cost,department,distribution.date_received,CONCAT(first_name," ",last_name) as supply_officer,item.*,account_code');
+        $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
+        $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
+        $this->db->join('department', 'distribution.dept_id = department.dept_id');
+        $this->db->join('user', 'distribution.supply_officer_id = user.user_id');
+        $this->db->join('account_code', 'distribution.ac_id = account_code.ac_id');
+        if ($type === 'CO') {
+            $this->db->where('item.item_type', $type);
+        } elseif ($type === 'MOOE') {
+            $this->db->where('item.item_type', $type);
+        }
+        $this->db->where('distribution.date_received BETWEEN '.$this->db->escape($from).' AND '.$this->db->escape($to));
+
+        return $this->db->get('distribution')->result_array();
     }
 
     // items return reports
@@ -1382,6 +1429,28 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    public function returnedReportsWithDate($type,$from,$to)
+    {
+        $this->db->select('receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no');
+        $this->db->join('itemdetail', 'returnitem.item_det_id = itemdetail.item_det_id', 'inner');
+        $this->db->join('item', 'itemdetail.item_id = item.item_id', 'inner');
+        $this->db->join('distribution', 'returnitem.dist_id = distribution.dist_id', 'inner');
+        $this->db->join('department', 'department.dept_id = distribution.dept_id', 'inner');
+        $this->db->where('returnitem.status', 'accepted');
+        if ($type === 'CO') {
+            $this->db->where('item.item_type', $type);
+        } elseif ($type === 'MOOE') {
+            $this->db->where('item.item_type', $type);
+        }
+        $this->db->where('date_returned BETWEEN '.$this->db->escape($from).' AND '.$this->db->escape($to));
+
+        $query = $this->db->get('returnitem');
+
+        return $query->result_array();
+
+    }
+
+
     //supplier report
     public function supplierReport($type)
     {
@@ -1397,6 +1466,24 @@ class Inventory_model extends CI_Model
 
         return $query->result_array();
     }
+
+    public function supplierReportWithDate($type,$from,$to)
+    {
+        $this->db->select('supplier_name,item.*,itemdetail.date_delivered');
+        $this->db->join('itemdetail', 'itemdetail.supplier_id = supplier.supplier_id', 'inner');
+        $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
+        if ($type === 'CO') {
+            $this->db->where('item.item_type', $type);
+        } elseif ($type === 'MOOE') {
+            $this->db->where('item.item_type', $type);
+        }
+        $this->db->where('date_received BETWEEN '.$this->db->escape($from).' AND '.$this->db->escape($to));
+
+        $query = $this->db->get('supplier');
+
+        return $query->result_array();
+    }
+
 
     //reconciliation date
     public function getInventoryDates()

@@ -29,8 +29,9 @@
 
 
                         echo '<div class="card-header">
-                                  <button onclick="addSupplier()" class="btn btn-outline-primary">
-                                  <i class="fa fa-plus"></i><span> Add Supplier</span>
+                                  <button onclick="addSupplier()" class="btn btn-info" style="border-color: #0c0c0c"
+                                    data-toggle="tooltip" data-placement="bottom" title="Add Supplier">
+                                  <i class="fa fa-plus"></i><span></span>
                                   </button>
                               </div>';
                     }
@@ -38,7 +39,7 @@
                     <div class="card-body">
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <table id="supplier-table" data-search="true" data-pagination="true"
-                                   class="table table-bordered table-sm">
+                                   class="table table-bordered">
                                 <thead>
                                 <tr>
                                     <th data-sortable="true" data-field="supplier">Supplier</th>
@@ -55,7 +56,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.addSupplier'))"
-                                class="btn btn-info fa fa-arrow-left"></i> Back</a></button>
+                                class="btn btn-dark fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <div class="card-body card-block col-lg-8 align-self-center">
                         <div class="tab-content pl-3 p-1 AddSup hidden" id="myTabContent">
@@ -81,21 +82,17 @@
                                            class="form-control col-6"
                                            data-error-message="Please Enter the Postal Code">
                                 </div>
-                                <div class="form-group col-12">
 
-                                    <div class="input_contact form-group col-5">
-                                        <label for="Contactno" class=" form-control-label pull-left">Cellphone
-                                            Number/s:</label>
-                                        <div class="input-group">
-                                            <input id="contactno" class=" form-control"
-                                                   name="contact" data-required="true"
-                                                   data-error-message="Please Enter Contact Number">
-                                            </input>
-                                            <button type="button" class="btn btn-primary btn-sm add">
-                                                <i class="fa fa-plus"></i></button>
-                                        </div>
+                                <div class="input_contact form-group">
+                                    <label for="Contactno" class=" form-control-label">Contact Number/s</label>
+                                    <div class="input-group">
+                                        <input id="contactno"
+                                               name="contact[]" data-required="true"
+                                               data-error-message="Please Enter Contact Number"><button type="button" class="btn btn-primary btn-sm add">
+                                            <i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="email" class=" form-control-label">Email</label>
                                     <input id="email" class="form-control col-6"
@@ -127,7 +124,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.supplier-tab'),$('.editSupplier-tab'))"
-                                class="btn btn-primary fa fa-arrow-left"></i> Back</a></button>
+                                class="btn btn-dark fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <?php if ($position === 'Custodian') {
                         echo '<div class="card-body">
@@ -155,7 +152,7 @@
                                            class="form-control col-6"
                                            data-error-message="Please Enter the Postal Code">
                                 </div>
-                                <div class="input_contact form-group">
+                                <div class="form-group">
                                     <label for="Contactno" class=" form-control-label">Contact Number/s</label>
                                     <div class="input-group">
                                     <div id="contactno1" name="contact[]"></div>
@@ -183,7 +180,7 @@
                                 </div>
                             <br><hr>
                             <div class="form-group">
-                                <button class="btn btn-outline-info" type="submit" name="id" id="edtbuttonsupplier"><i class="fa fa-check"></i> Save</button>
+                                <button class="btn btn-success" type="submit" name="id" id="edtbuttonsupplier"><i class="fa fa-check"></i> Save</button>
                             </div>
                         </form>
                     </div>';
@@ -199,14 +196,14 @@
                                            readonly="readonly"
                                            id="supplier"
                                            data-required="true"
-                                           class="form-control"
+                                           class="form-control col-6"
                                            data-error-message="Please enter the Supplier Name" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="Address" class="col-md-12">Address</label>
                                 <div class="col-md-12">
-                                   <textarea id="contactno"
+                                   <textarea id="contactno" class="col-6"
                                             readonly = "readonly"
                                            name="address" data-required="true"
                                            data-error-message="Please Enter Contact Number">
@@ -218,7 +215,7 @@
                             <div class="form-group">
                                 <label for="Address" class="col-md-12">Contact Number</label>
                                 <div class="col-md-12">
-                                    <input id="cno" class="form-control"
+                                    <input id="cno" class="form-control col-6"
                                            readonly="readonly"
                                            name="contact" data-required="true"
                                            data-parsley-minlength="1"

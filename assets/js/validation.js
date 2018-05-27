@@ -1,4 +1,4 @@
-$( "input[type=number]" ).on("keypress paste",function () {
+$( 'input[type=number]' ).on('keypress paste',function () {
 
     var x = event.charCode;
     if(x === 101 || x === 45 || x === 43 || x === 69){
@@ -12,4 +12,9 @@ $('input[type=text]').keypress(function () {
     if(!(x >= 65 && x <= 122) && x !== 32 || x === 95 || x === 94 || x === 92){
         return false;
     }
+});
+
+$(document).ready(function () {
+    var quant = $('.recQuant');
+    var i = 0;
 });

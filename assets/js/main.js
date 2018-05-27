@@ -4,22 +4,20 @@ $(document).ready(function () {
         $('#returnAct').attr('onclick', f);
     });
 //load data dash
-    $(document).ready(function () {
-        setInterval(function () {
-            $("#tUser").load("inventory/totalUser");
-            $("#itemsrec").load("inventory/itemsReceived");
-            $("#itemsiss").load("inventory/issuedItems");
-            $("#retitem").load("inventory/returnedItems");
-            $("#expitems").load("inventory/totalExpired");
-            $("#tcost").load("inventory/totalCost");
-            $("#tItemsDay").load("inventory/itemsThisDay");
-            $("#pendItems").load("inventory/pendingItems");
-            $("#tReturnedDay").load("inventory/itemsReturnedThisDay");
-            $("#tExprdSO").load("inventory/itemsExpiredSO");
-            $("#tCostSO").load("inventory/itemTcostSO");
+    setInterval(function () {
+        $("#tUser").load("inventory/totalUser");
+        $("#itemsrec").load("inventory/itemsReceived");
+        $("#itemsiss").load("inventory/issuedItems");
+        $("#retitem").load("inventory/returnedItems");
+        $("#expitems").load("inventory/totalExpired");
+        $("#tcost").load("inventory/totalCost");
+        $("#tItemsDay").load("inventory/itemsThisDay");
+        $("#pendItems").load("inventory/pendingItems");
+        $("#tReturnedDay").load("inventory/itemsReturnedThisDay");
+        $("#tExprdSO").load("inventory/itemsExpiredSO");
+        $("#tCostSO").load("inventory/itemTcostSO");
 
-        }, 1000);
-    });
+    }, 1000);
     $returnTable = $('#returnTable');
     $reportTable = $('#reportTable');
     var $reportOption = $('#reportsOption');
@@ -56,12 +54,25 @@ $(document).ready(function () {
     //select report on change
 
     $reportOption.change(function () {
-        $selectValue = $(this).val();
-        //Item Returns
-        if ($selectValue === '0') {
+        var type = $('input[type=radio][name=type]:checked').val();
+        var visible = true;
+        var from = $('#from').val();
+        var to = $('#to').val();
+        var $reportOption = $(this).val();
+        $reportTable = $('#reportTable');
+        var url = 'Inventory/getReport/' + $reportOption + '/' + type;
+        if(from !== '' || to !== ''){
+            url = 'Inventory/getReportWithDate/' + $reportOption + '/' + type + '/' + from + '/' + to;
+        }
+
+
+        if(type !== 'ALL'){
+            visible = false;
+        }
+        if ($reportOption === '0') {
             $reportTable.bootstrapTable('destroy');
             $reportTable.bootstrapTable({
-                url: 'inventory/getReport/' + $selectValue + '/ALL',
+                url: url,
                 columns: [{
                     field: 'OR_no',
                     title: 'OR_number'
@@ -76,7 +87,8 @@ $(document).ready(function () {
                     title: 'Description'
                 }, {
                     field: 'item_type',
-                    title: 'Type'
+                    title: 'Type',
+                    visible: visible
                 }, {
                     field: 'quantity',
                     title: 'Quantity'
@@ -88,10 +100,10 @@ $(document).ready(function () {
                     title: 'Supplier'
                 }]
             });
-        } else if ($selectValue === '1') {
+        } else if ($reportOption === '1') {
             $reportTable.bootstrapTable('destroy');
             $reportTable.bootstrapTable({
-                url: 'inventory/getReport/' + $selectValue + '/ALL',
+                url: url,
                 columns: [{
                     field: 'PR_no',
                     title: 'PR #'
@@ -109,7 +121,8 @@ $(document).ready(function () {
                     title: 'Description'
                 }, {
                     field: 'item_type',
-                    title: 'Type'
+                    title: 'Type',
+                    visible: visible
                 }, {
                     field: 'quantity_distributed',
                     title: 'Quantity'
@@ -124,10 +137,10 @@ $(document).ready(function () {
                     title: 'Supply Officer'
                 }]
             });
-        } else if ($selectValue === '2') {
+        } else if ($reportOption === '2') {
             $reportTable.bootstrapTable('destroy');
             $reportTable.bootstrapTable({
-                url: 'inventory/getReport/' + $selectValue + '/ALL',
+                url: url,
                 columns: [{
                     field: 'department',
                     title: 'Department',
@@ -142,7 +155,8 @@ $(document).ready(function () {
                     title: 'Description'
                 }, {
                     field: 'item_type',
-                    title: 'Type'
+                    title: 'Type',
+                    visible: visible
                 }, {
                     field: 'return_quantity',
                     title: 'Quantity'
@@ -160,7 +174,7 @@ $(document).ready(function () {
         } else {
             $reportTable.bootstrapTable('destroy');
             $reportTable.bootstrapTable({
-                url: 'inventory/getReport/' + $selectValue + '/ALL',
+                url: url,
                 columns: [{
                     field: 'supplier_name',
                     title: 'Supplier',
@@ -175,7 +189,8 @@ $(document).ready(function () {
                     title: 'Description'
                 }, {
                     field: 'item_type',
-                    title: 'Type'
+                    title: 'Type',
+                    visible: visible
                 }, {
                     field: 'quantity',
                     title: 'Quantity'
@@ -190,9 +205,155 @@ $(document).ready(function () {
         }
     });
     $('input[type=radio][name=type]').change(function () {
-        $type = $(this).val();
-        $reportOptVal = $reportOption.val();
-        $returnTable.bootstrapTable('refresh', {url: 'inventory/getReport/' + $reportOptVal + '/' + $type});
+        var type = $(this).val();
+        var visible = true;
+        var from = $('#from').val();
+        var to = $('#to').val();
+        var $reportOption = $('#reportsOption').val();
+        $reportTable = $('#reportTable');
+        var url = 'Inventory/getReport/' + $reportOption + '/' + type;
+        if(from !== '' || to !== ''){
+            url = 'Inventory/getReportWithDate/' + $reportOption + '/' + type + '/' + from + '/' + to;
+        }
+
+
+        if(type !== 'ALL'){
+            visible = false;
+        }
+        if ($reportOption === '0') {
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: url,
+                columns: [{
+                    field: 'OR_no',
+                    title: 'OR_number'
+                }, {
+                    field: 'date_delivered',
+                    title: 'Date Delivered'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type',
+                    visible: visible
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'unit_cost',
+                    title: 'Unit Cost'
+                }, {
+                    field: 'supplier_name',
+                    title: 'Supplier'
+                }]
+            });
+        } else if ($reportOption === '1') {
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: url,
+                columns: [{
+                    field: 'PR_no',
+                    title: 'PR #'
+                }, {
+                    field: 'department',
+                    title: 'Department'
+                }, {
+                    field: 'date_received',
+                    title: 'Date'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type',
+                    visible: visible
+                }, {
+                    field: 'quantity_distributed',
+                    title: 'Quantity'
+                }, {
+                    field: 'cost',
+                    title: 'Cost'
+                }, {
+                    field: 'account_code',
+                    title: 'Account Code'
+                }, {
+                    field: 'supply_officer',
+                    title: 'Supply Officer'
+                }]
+            });
+        } else if ($reportOption === '2') {
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: url,
+                columns: [{
+                    field: 'department',
+                    title: 'Department',
+                }, {
+                    field: 'date_returned',
+                    title: 'Date'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Returned'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type',
+                    visible: visible
+                }, {
+                    field: 'return_quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'receiver',
+                    title: 'Returned to'
+                }, {
+                    field: 'status',
+                    title: 'Status'
+                }, {
+                    field: 'remarks',
+                    title: 'Remarks'
+                }]
+            });
+        } else {
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: url,
+                columns: [{
+                    field: 'supplier_name',
+                    title: 'Supplier',
+                }, {
+                    field: 'date_delivered',
+                    title: 'Date',
+                }, {
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type',
+                    visible: visible
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'unit',
+                    title: 'Unit'
+                }, {
+                    field: 'cost',
+                    title: 'Cost'
+                }]
+            });
+        }
     });
 
     //supply officer options
@@ -337,20 +498,21 @@ $(document).ready(function () {
         modal();
         init_bulkFucntion();
         init_editlog();
+        serialize_forms();
     }
 // add contact supplier
-    var maxFields = 5; //maximum input boxes allowed
-    var wrapper = $('.input_contact'); //Fields wrapper
-    var addButton = $('.add'); //Add button ID
+    var max_fields = 5; //maximum input boxes allowed
+    var wrapper = $(".input_contact"); //Fields wrapper
+    var add_button = $(".add"); //Add button ID
 
     var x = 1; //initlal text box count
-    $(addButton).click(function (e) { //on add input button click
+    $(add_button).click(function (e) { //on add input button click
         e.preventDefault();
-        if (x < maxFields) { //max input box allowed
+        if (x < max_fields) { //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<br><input id="contactno" name="contact[]" >' +
-                '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button><br>'); //add input box
-        }else{
+            $(wrapper).append('<div><input id="contactno" name="contact[]" >' +
+                '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button></div>'); //add input box
+        } else {
             alert('You reached the maximum allowed number of contact number');
         }
     });
@@ -376,17 +538,11 @@ function return_action($action, $retun_id, $s) {
         method: 'POST',
         data: {serial: $serial, action: $action, return_id: $retun_id},
         success: function (response) {
-            //  $('.AcceptReturn').modal('toggle');
+            location.reload();
         }
     });
 }
 
-// $('.user-area> a').on('click', function(event) {
-// 	event.preventDefault();
-// 	event.stopPropagation();
-// 	$('.user-menu').parent().removeClass('open');
-// 	$('.user-menu').parent().toggleClass('open');
-// });
 function saveSerial() {
     data = $('#viewSerialForm').serializeArray();
     $.ajax({
@@ -396,6 +552,7 @@ function saveSerial() {
         success: function (response) {
             if (response >= 1) {
                 $('.serialdrop').click();
+                $('#detail-tab-table').bootstrapTable('refresh')
             }
         }
     });
@@ -441,7 +598,11 @@ function detail(id) {
                 url: 'inventory/detail/inv/' + id + '/0',
                 columns: [{
                     field: 'remove',
-                    title: ''
+                    title: '',
+                    align: 'center'
+                }, {
+                    field: 'state',
+                    checkbox: 'true',
                 }, {
                     field: 'PO',
                     title: 'PO number'
@@ -634,6 +795,7 @@ function insertRow() {
     var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
         '<td  style=""></td>' +
+        '<td  style=""></td>' +
         '<td contenteditable style=""><input name="PO[' + counter + ']" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
         '<td style=""><input name="del[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="rec[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
@@ -642,8 +804,8 @@ function insertRow() {
         '<td style=""><select name="supp[' + counter + ']" list="typelist" class="supplieropt form-control form-control-sm"></select></td> ' +
         '<td style=""><input name="quant[' + counter + ']" class="form-control form-control-sm" type="text"></td> ' +
         '<td style=""><input name="or[' + counter + ']" class="form-control form-control-sm" type="text"></td> ' +
-        '<td style=""><i onclick="addquant(' + counter + ')" class="fa fa-check-circle-o" id="rowcheck"></i>' +
-        '<i onclick="removeRow(' + counter + ')" class="fa fa-times-circle-o" id="rowcancel"></i></td> ' +
+        '<td style=""><i onclick="addquant(' + counter + ')" class="fa fa-check" id="rowcheck"></i>' +
+        '<i onclick="removeRow(' + counter + ')" class="fa fa-times" id="rowcancel"></i></td> ' +
         '</tr>');
     $.ajax({
         url: 'supplier/supplieroption',
@@ -702,7 +864,8 @@ function init_inventory() {
             formatter: function (data, row) {
                 return "<input class=reconid hidden value=" + data + ">";
             },
-            field: 'id'
+            field: 'state',
+            checkbox: 'true'
         }, {
             sortable: true,
             field: 'item',
@@ -754,11 +917,7 @@ function init_inventory() {
             title: 'Remarks'
         }
         ]
-        // }, {
-        //     sortable: true,
-        //     field: 'Price',
-        //     title: 'PRICE'
-        // }]
+
     });
 
     $serializedItems.bootstrapTable({
@@ -770,7 +929,8 @@ function init_inventory() {
             formatter: function (data, row) {
                 return "<input class=reconid hidden value=" + data + "></input>";
             },
-            field: 'id'
+            field: 'id',
+            checkbox: 'true'
         }, {
             sortable: true,
             field: 'item',
@@ -852,8 +1012,8 @@ function init_inventory() {
             }, {
                 sortable: true,
                 field: 'contactList',
-                formatter: function(data,row){
-                    return '<ul class="list-unstyled">'+data+'</ul>';
+                formatter: function (data, row) {
+                    return '<ul class="list-unstyled">' + data + '</ul>';
                 },
                 title: 'Primary Contact number'
             }, {
@@ -1325,7 +1485,7 @@ function editlogdet(id) {
 
 //for editting
 function serialize_forms() {
-    $('.serialForm')
+    $('.serialForm , .profileform')
         .each(function () {
             $(this).data('serialized', $(this).serialize());
         })
@@ -1413,6 +1573,9 @@ function modal() {
         $('#quantity').val(quantity);
 
     });
+    $('#editlogmodal').on('hidden.bs.modal', function () {
+        $('#editlog').bootstrapTable('destroy');
+    });
     $('#Item_Detail').on('hidden.bs.modal', function () {
         $('#itemdet').bootstrapTable('destroy');
     });
@@ -1466,38 +1629,40 @@ function modal() {
 
 //add item save
 function save(counter) {
-    var list = $('#list' + counter);
-    var step = $('#step' + counter + 'B');
-    $.ajax({
-        type: 'POST',
-        url: 'Inventory/save/' + counter,
-        data: $('#addItemForm').serializeArray(),
-        success: function (response) {
-            if (response) {
-                console.log($('#bulk').find('li').length);
-                if ($('#bulk').find('li').length > 2) {
-                    if (!list.prev().length < 2) {
-                        list.prev().addClass('active');
-                        step.prev().addClass('active');
+    $('#addItemForm').parsley().whenValidate({group: 'set' + counter}).done(function () {
+        var list = $('#list' + counter);
+        var step = $('#step' + counter + 'B');
+        $.ajax({
+            type: 'POST',
+            url: 'inventory/save/' + counter,
+            data: $('#addItemForm').serializeArray(),
+            success: function (response) {
+                if (response) {
+                    console.log($('#bulk').find('li').length);
+                    if ($('#bulk').find('li').length > 2) {
+                        if (!list.prev().length < 2) {
+                            list.prev().addClass('active');
+                            step.prev().addClass('active');
+                        } else {
+                            list.next().addClass('active');
+                            step.next().addClass('active');
+                        }
+                        list.remove();
+                        step.remove();
                     } else {
-                        list.next().addClass('active');
-                        step.next().addClass('active');
+                        location.reload();
                     }
-                    list.remove();
-                    step.remove();
-                } else {
-                    location.reload();
+                }
+            },
+            statusCode: {
+                500: function () {
+                    BootstrapDialog.show({
+                        message: 'Duplicate item name and description.'
+                    });
                 }
             }
-        },
-        statusCode: {
-            500: function () {
-                BootstrapDialog.show({
-                    message: 'Duplicate item name and description.'
-                });
-            }
-        }
 
+        });
     });
 }
 
@@ -1516,7 +1681,7 @@ function userdetailBack() {
 }
 
 
-//view and edit serial
+//view +and edit serial
 function viewSerial(id) {
     var $ul = $('#serial-tabs');
     var serialTabCounter = 1;
@@ -1775,7 +1940,7 @@ function noserial(id, q, retquant) {
                 "class=\'form-control col-md-12 col-xs-12\' required>" +
                 "</label>" +
                 "</div>");
-        }else{
+        } else {
             quasp = ("<div class=\"quant form-group\">" +
                 "<label>Quantity<span class=\"required\">*</span>" +
                 "<input min=\"0\" max=\"" + result + "\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
@@ -1862,116 +2027,6 @@ function init_bulkFucntion() {
     });
 
 }
-
-
-//add input fields
-// function addinputFields() {
-//     var number = document.getElementById("dist").value;
-//     var $input = document.createElement("input");
-//     var $department = document.createElement("input");
-//     var $code = document.createElement("input");
-//     var $purchase_no = document.createElement("input");
-//     var $purchase_req = document.createElement("input");
-//     var $obl_r = document.createElement("input");
-//     var $next = $('#next');
-//
-//     //quantity
-//     var $quantity = document.createElement("input");
-//
-//     for (var i = 0; i < number; i++) {
-//
-//         $input.type = "text";
-//         $input.setAttribute('class', 'form-control col-md-7 col-xs-12');
-//         $input.setAttribute('name', 'serial' + '[' + [i] + ']');
-//         container1.appendChild($input);
-//
-//     }
-//
-//     for (i = 0; i < number; i++) {
-//         $input.type = "text";
-//         $input.setAttribute('class', 'form-control col-md-7 col-xs-12');
-//         $input.setAttribute('name', 'owner' + '[' + [i] + ']');
-//         container2.appendChild($input);
-//     }
-//
-//     $quantity.type = "text";
-//     $quantity.setAttribute('name', 'quant');
-//     $quantity.setAttribute('id', 'quan');
-//     $quantity.setAttribute('hidden', 'true');
-//
-//     container3.appendChild($quantity);
-//     $next.click("input", function () {
-//         var dist_quantity = $('#dist').val();
-//         $('#quan').val(dist_quantity);
-//     });
-//
-//     //deptopt
-//     $department.type = "text";
-//     $department.setAttribute('name', 'dept');
-//     $department.setAttribute('id', 'dept');
-//     $department.setAttribute('disabled', 'true');
-//     $department.setAttribute('hidden', 'true');
-//
-//     container3.appendChild($department);
-//     $next.click("input", function () {
-//         var department_no = $('#deptopt').val();
-//         $('#dept').val(department_no);
-//     });
-//
-//     //account code
-//     $code.type = "text";
-//     $code.setAttribute('name', 'Code');
-//     $code.setAttribute('id', 'code');
-//     $code.setAttribute('disabled', 'true');
-//     $code.setAttribute('hidden', 'true');
-//
-//     container3.appendChild($code);
-//     $next.click("input", function () {
-//         var accode = $('#accode').val();
-//         $('#code').val(accode);
-//     });
-//
-//     //po
-//     $purchase_no.type = "text";
-//     $purchase_no.setAttribute('name', 'po');
-//     $purchase_no.setAttribute('id', 'p_o');
-//     $purchase_no.setAttribute('disabled', 'true');
-//     $purchase_no.setAttribute('hidden', 'true');
-//
-//     container3.appendChild($purchase_no);
-//     $next.click("input", function () {
-//         var po = $('#po').val();
-//         $('#p_o').val(po);
-//     });
-//
-//     //pr
-//     $purchase_req.type = "text";
-//     $purchase_req.setAttribute('name', 'pr');
-//     $purchase_req.setAttribute('id', 'p_r');
-//     $purchase_req.setAttribute('disabled', 'true');
-//     $purchase_req.setAttribute('hidden', 'true');
-//
-//     container3.appendChild(purchase_req);
-//     $next.click("input", function () {
-//         var pr = $('#pr').val();
-//         $('#p_r').val(pr);
-//     });
-//
-//     //obr
-//     $obl_r.type = "text";
-//     $obl_r.setAttribute('name', 'obr');
-//     $obl_r.setAttribute('id', 'o_b_r');
-//     $obl_r.setAttribute('disabled', 'true');
-//     $obl_r.setAttribute('hidden', 'true');
-//
-//     container3.appendChild($obl_r);
-//     $next.click("input", function () {
-//         var obr = $('#obr').val();
-//         $('#o_b_r').val(obr);
-//     });
-//
-//
-// }
 
 //traverse to next element
 function nextTab(elem) {
@@ -2068,9 +2123,26 @@ function revertDetail($det_id, $serialStatus) {
     });
 }
 
+function checkboxLimit() {
+    var inputTags = document.getElementsByName('model_selection[]');
+    var total = 0;
+
+    for (var i = 0; i < inputTags.length; i++) {
+
+        if (inputTags[i].checked) {
+            total = total + 1;
+        }
+
+        if (total > 2) {
+            alert('Pick Just One Please')
+            inputTags[i].checked = false;
+            return false;
+        }
+    }
+}
+
 //for reconciliation
 function reconcile() {
-
     $date = $('#inventoryDate').val();
     $status = $('#serialTab').find('.active').data('status');
     $id = [];
@@ -2122,6 +2194,7 @@ function reconcile() {
                         item_name.push('<h4>' + data[i].item_name + '</h4><div class="itemsDiv" data-missing="' + $missing[i] + '" ' +
                             'id="item' + data[i].item_id + '">'
                             + data[i].serials + '</div>');
+
                     }
 
                     $('#items').html(item_name);
@@ -2156,6 +2229,7 @@ function reconcile() {
 
 }
 
+
 function printToPDF() {
 
     // $('#ledger').tableExport({
@@ -2178,18 +2252,26 @@ function printToPDF() {
 function printToPDFreport() {
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth()+1;
+    var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
+    var from = $('#from').val();
+    var to = $('#to').val();
+    var type = $('input[type=radio][name=type]:checked').val();
+    var p = '';
 
-    if(dd<10) {
-        dd = '0'+dd
+    if (from !== '' || to !== '') {
+        p = '<p>From: ' + from + ' To: ' + to + '</p>';
     }
 
-    if(mm<10) {
-        mm = '0'+mm
+    if (dd < 10) {
+        dd = '0' + dd
     }
 
-    dateCreated = '<p>Date Created: '+mm + '/' + dd + '/' + yyyy+'</p>';
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
+    dateCreated = '<p>Date Created: ' + mm + '/' + dd + '/' + yyyy + '</p>';
 
     $report = $('#reportsOption').val();
     var header;
@@ -2203,7 +2285,12 @@ function printToPDFreport() {
         header = '<h1>Supplier Items</h1><br><p>General Service Office</p>';
     }
     var printContents = $('#returnedReport').html();
-    document.body.innerHTML = '<div class="text-center">'+header+'</div>' + dateCreated + printContents;
+    document.body.innerHTML = '<div class="text-center">' + header + '</div>' +
+        '<div class="row"><div class="col-md-12 "><p>Type of Item: ' + type + '</p></div> ' +
+        '<div class="col-md-4 form-horizontal">' + p + '</div>' +
+        '</div>' + dateCreated + printContents;
+
+
     window.print();
     location.reload();
 }
@@ -2323,4 +2410,165 @@ function download() {
 
 function verifypass() {
     $old = $('#old').val();
+}
+
+function validateReconcile() {
+    $status = $('#serialTab').find('.active').data('status');
+
+    $('#recValidate').parsley().whenValidate({
+        group: $status
+    }).done(function () {
+        $('.invdate').modal('show');
+    });
+}
+
+function getreportDate() {
+    $('#reportDate').parsley().whenValidate().done(function () {
+        var from = $('#from').val();
+        var to = $('#to').val();
+        var type = $('input[type=radio][name=type]:checked').val();
+        $reportTable = $('#reportTable');
+        var $reportOption = $('#reportsOption').val();
+        var url = 'Inventory/getReportWithDate/' + $reportOption + '/' + type + '/' + from + '/' + to;
+        var visible = true;
+
+        if(type !== 'ALL'){
+            visible = false;
+        }
+
+        if ($reportOption === '0') {
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: url,
+                columns: [{
+                    field: 'OR_no',
+                    title: 'OR_number'
+                }, {
+                    field: 'date_delivered',
+                    title: 'Date Delivered'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type',
+                    visible: visible
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'unit_cost',
+                    title: 'Unit Cost'
+                }, {
+                    field: 'supplier_name',
+                    title: 'Supplier'
+                }]
+            });
+        } else if ($reportOption === '1') {
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: url,
+                columns: [{
+                    field: 'PR_no',
+                    title: 'PR #'
+                }, {
+                    field: 'department',
+                    title: 'Department'
+                }, {
+                    field: 'date_received',
+                    title: 'Date'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type',
+                    visible: visible
+                }, {
+                    field: 'quantity_distributed',
+                    title: 'Quantity'
+                }, {
+                    field: 'cost',
+                    title: 'Cost'
+                }, {
+                    field: 'account_code',
+                    title: 'Account Code'
+                }, {
+                    field: 'supply_officer',
+                    title: 'Supply Officer'
+                }]
+            });
+        } else if ($reportOption === '2') {
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: url,
+                columns: [{
+                    field: 'department',
+                    title: 'Department',
+                }, {
+                    field: 'date_returned',
+                    title: 'Date'
+                }, {
+                    field: 'item_name',
+                    title: 'Item Returned'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type',
+                    visible: visible
+                }, {
+                    field: 'return_quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'receiver',
+                    title: 'Returned to'
+                }, {
+                    field: 'status',
+                    title: 'Status'
+                }, {
+                    field: 'remarks',
+                    title: 'Remarks'
+                }]
+            });
+        } else {
+            $reportTable.bootstrapTable('destroy');
+            $reportTable.bootstrapTable({
+                url: url,
+                columns: [{
+                    field: 'supplier_name',
+                    title: 'Supplier',
+                }, {
+                    field: 'date_delivered',
+                    title: 'Date',
+                }, {
+                    field: 'item_name',
+                    title: 'Item Name'
+                }, {
+                    field: 'item_description',
+                    title: 'Description'
+                }, {
+                    field: 'item_type',
+                    title: 'Type',
+                    visible: visible
+                }, {
+                    field: 'quantity',
+                    title: 'Quantity'
+                }, {
+                    field: 'unit',
+                    title: 'Unit'
+                }, {
+                    field: 'cost',
+                    title: 'Cost'
+                }]
+            });
+        }
+    });
 }

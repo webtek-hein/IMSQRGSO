@@ -53,7 +53,7 @@
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
                                 <table id="departmentTable" data-show-refresh="true" data-url="inventory/viewDept/CO/11"
-                                       class="table table-bordered table-sm"
+                                       class="table table-bordered"
                                        data-pagination="true" data-search="true">
                                 </table>
                             </div>
@@ -62,7 +62,7 @@
                                 <!-- Implement Bootsrap table-->
                                 <table id="deptMOOEtable" data-pagination="true" data-show-refresh="true"
                                        data-search="true" data-url="inventory/viewDept/MOOE/11"
-                                       class="table table-bordered table-sm">
+                                       class="table table-bordered">
                                 </table>
                             </div>
                         </div>
@@ -75,9 +75,9 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.department-tab'),$('.detail-tab '))"
-                                class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back
+                                class="btn btn-dark"><i class=" fa fa-arrow-left"></i> Back
                         </button>
-                        <button type="button" id="#" class="btn btn-primary">Print ARE</button>
+
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -110,7 +110,7 @@
                             <!--Detail-->
                             <div class="tab-pane fade" id="Detail_Det" role="tabpanel" aria-labelledby="Detail-tab">
                                 <!-- Implement Bootsrap table-->
-                                <table id="detail-tab-table" class="table table-bordered table-sm table-hover">
+                                <table id="detail-tab-table" class="table table-bordered table-hover">
                                 </table>
                             </div>
                         </div>
@@ -128,11 +128,11 @@
     <div class="card">
         <div class="card-header">
             <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability'))"
-                    class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back
+                    class="btn btn-dark"><i class=" fa fa-arrow-left"></i> Back
             </button>
         </div>
         <div class="card-body">
-            <table id="accountTable" class="table table-striped table-bordered table-sm">
+            <table id="accountTable" class="table table-striped table-bordered">
             </table>
         </div>
     </div>
@@ -212,12 +212,12 @@
     <div class="card">
         <div class="card-header">
             <button type="button" onclick="toggleDiv($('.department-tab'),$('.history'))"
-                    class="btn btn-outline-primary"><i class=" fa fa-arrow-left"></i> Back
+                    class="btn btn-dark"><i class=" fa fa-arrow-left"></i> Back
             </button>
         </div>
 
         <div id='hist' class="table-responsive-sm-sm tab-content pl-3 p-1">
-            <table id="history" class="table table-striped table-bordered table-sm">
+            <table id="history" class="table table-striped table-bordered">
             </table>
         </div>
     </div>
@@ -234,7 +234,7 @@
         <form id="compareitem" role="form"
               action="inventory/compare/" method="POST">
             <div class="table-responsive-sm-sm tab-content pl-3 p-1">
-                <table class="table table-bordered table-sm"
+                <table class="table table-bordered"
                        data-pagination="true" data-search="true" id="reconcileTable">
                 </table>
             </div>
@@ -322,12 +322,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
+
+                    <div class="col-4">
                     <div class="form-group">
                         <div class="serialsp col-md-10">
                         </div>
                     </div>
+                    </div>
+
+                    <div class="col-7">
                     <div class="form-group">
-                        <div class=" quantsp form-group">
+                        <div class="quantsp form-group">
                         </div>
                     </div>
                     <div class="form-group ">
@@ -354,6 +359,7 @@
                                     <option value="Repair">Repair</option>
                                     <option value="Replacement">Replacement</option>
                                 </datalist>
+                    </div>
                     </div>
                 </div>
                 <div class="modal-footer">

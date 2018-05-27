@@ -27,8 +27,9 @@
             <div class=" col-lg-12 accounts-tab">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-outline-primary" id="headingZero">
-                            <i class="fa fa-plus"></i><span> Add User</span>
+                        <button class="btn btn-info" id="headingZero" style="border-color: #0c0c0c"
+                            data-toggle="tooltip" data-placement="bottom" title="Add user">
+                            <i class="fa fa-plus"></i><span></span>
                         </button>
                     </div>
                     <div class="card-body">
@@ -45,7 +46,7 @@
 </div>
 <div hidden class="col-lg-12 addUser ">
     <div class="card-header">
-        <button type="button" onclick="addUserBack()" class="btn btn-info fa fa-arrow-left"> Back</a></button>
+        <button type="button" onclick="addUserBack()" class="btn btn-dark fa fa-arrow-left"> Back</a></button>
     </div>
     <div class="form-group">
         <div class="card">
@@ -141,7 +142,7 @@
             <div hidden class="col-lg-12 userDetail">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="EditUserBack()" class="btn btn-primary fa fa-arrow-left"></i> Back</a></button>
+                        <button type="button" onclick="EditUserBack()" class="btn btn-dark fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                     <form id="editAccounts" class="form-horizontal form-label-left" action="users/edituser" method="POST">
@@ -150,21 +151,21 @@
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                 <input type="text" name="first" id="first" 
-                                       class="form-control has-feedback-left" required>
+                                       class="form-control has-feedback-left col-6" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Last Name</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                <input type="text" id="last" name="last" class="form-control has-feedback-left" required>
+                                <input type="text" id="last" name="last" class="form-control has-feedback-left col-6" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">E-mail</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                <input id="em" class="form-control has-feedback-left" type="email" name="em">
+                                <input id="em" class="form-control has-feedback-left col-6" type="email" name="em">
                             </div>
                             <small class="form-text text-muted">ex. person@gmail.com</small>
                         </div>
@@ -172,33 +173,33 @@
                             <label class=" form-control-label">Contact No.</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-                                <input type="text" class="form-control has-feedback-left" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" id="cno" name="cno">
+                                <input type="text" class="form-control has-feedback-left col-6" pattern="^(09|\+639)\d{9}$" title="ex. 0987654321" id="cno" name="cno">
                             </div>
                                 <small class="form-text text-muted">Format: +639XXXXXXXXX or 09XXXXXXXXX</small>
 
                         </div>
                    
                         <div class="form-group">
-                            <label class=" form-control-label">Password</label>
+                            <label class="form-control-label">Password</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-key"></i></div>
-                                <input type="password" name="pword" id="pword" class="form-control has-feedback-left" pattern=".{6,}$">
+                                <input type="password" name="pword" id="pword" class="form-control has-feedback-left col-6" pattern=".{6,}$">
                             </div>
                             <small class="form-text text-muted">Format: >5 characters</small>
                         </div>
                                     <div class="form-group">
-                                        <label class="col-md-12">Status</label>
-                                        <div class="col-md-12">
+                                        <label class="form-control-label">Status</label>
+                                        <div class="input-group">
                                             <select id="stat" data-parsley-group="set1"
                                                     list="statuslist" name="Stat"
-                                                    class="form-control" >
+                                                    class="form-control col-6" >
                                                 <option value="Inactive">Inactive</option>
                                                 <option value="Active">Activate</option>
                                             </select>
                                         </div>
                                     </div>
                                     <br><br>
-                                    <button class="btn btn-info" type="submit" name="id" id="edtbutton">
+                                    <button class="btn btn-success" type="submit" name="id" id="edtbutton">
                                         <i class="fa fa-check"></i> save changes
                                     </button>
 

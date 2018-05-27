@@ -51,9 +51,8 @@
              <div class="form-horizontal">
           <div class="tab-pane" id="settings">
               <?php echo validation_errors(); ?>
-              <?php echo form_open('profile/profile_update'); ?>
 
-<form>
+    <form id='profile' class="profileform" action="profile/profile_update" method="POST">
 
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">First Name</label>
@@ -87,10 +86,12 @@
                   </div>
     <div class="form-group">
         <div style="padding: 0 10px 10px 90px;" class="col-sm-offset-8 col-sm-9">
-            <button type="submit" name="bts-submit" id="bts-submit" class="btn btn-success" >Save</button>
+            <button class="btn btn-success" type="submit" name="id" id="edtbutton">
+                <i class="fa fa-check"></i> Save
+            </button>
         </div>
     </div>
-</form>
+    </form>
           </div>
              </div>
           </div>
@@ -138,7 +139,9 @@
 
                   <div class="form-group">
                     <div style="padding: 0 20px 10px 90px;" class="col-sm-offset-8 col-sm-9">
-                        <button type="submit" class="btn btn-success" >Save</button>
+                        <button class="btn btn-success" type="submit" name="id" id="edtbutton">
+                            <i class="fa fa-check"></i> Save
+                        </button>
                     </div>
                   </div>
 

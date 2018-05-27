@@ -164,8 +164,10 @@ class Inventory extends CI_Controller
             $list = $this->inv->viewDetailperDept($id, $dept_id);
         } else {
             $list = $this->inv->viewdetail($id, $position);
+            $serial = $this->inv->getSerialNull($id, $position);
         }
 
+        //$serialvalue = ($serial[0]['serial']);
         $data = array();
         $viewser = "";
         $action = "";
@@ -187,6 +189,7 @@ class Inventory extends CI_Controller
                 if ($this->session->userdata['logged_in']['position'] === 'Admin') {
 
                 } elseif ($position === 'Supply Officer') {
+                    $returnquant = $this->inv->retquant($dept_id, $id,$detail['dist_id']);
 
                     foreach ($returnquant as $ret) {
                         if ($detail['serialStatus'] !== '1') {
@@ -194,16 +197,19 @@ class Inventory extends CI_Controller
                                 "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed],$ret[retq])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a>";
                         } else {
                             $action =
-                                "<button onclick='accountability($detail[dist_id])' id=\"accountButton\" type=\'button\' class=\"btn btn-success\">Accountability</button>
-                            <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a></br>
-                            <a href=\"./are\" type=\'button\' class=\"btn btn-primary\">Generate Form (ARE)</a>";
+                                "<button onclick='accountability($detail[dist_id])' id=\"accountButton\" type=\'button\' data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Accountability\"
+                                        class=\"btn btn-success btn-sm\"><i class='fa fa-user-o'></i> </button>
+                                <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" 
+                                        data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Return\" data-id='$detail[dist_id]' class=\"btn btn-danger btn-sm\"><i class='fa fa-refresh'></i></a>
+                                <a href=\"./are\" type=\'button\' class=\"btn btn-primary btn-sm\"  data-toggle=\"tooltip\" 
+                                data-placement=\"bottom\" title=\"Generate ARE\"><i class='fa fa-print'></i></a>";
 
                         }
                     }
                 } elseif ($dept === 'dept') {
                     $action = $detail['dist_stat'];
                 } elseif ($detail['serialStatus'] !== '1') {
-                    $action = "<div class=\"dropdown\">
+                        $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id],$detail[quantity],0)\"data-toggle=\"modal\" 
@@ -213,17 +219,26 @@ class Inventory extends CI_Controller
                             $viewser
                             </div>
                             </div>";
-
                 } else {
-                    $action = "<div class=\"dropdown\">
+                    if(empty($serial)) {
+                        $action = "<div class=\"dropdown\">
+                            <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
+                            <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
+                        
+                            $viewser
+                            </div> 
+                          </div>";
+                    }else{
+                        $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
                             <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\"
                              data-id='$detail[item_det_id]'data-target=\" .Distribute\" data-quantity=\"$detail[quantity]\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             $viewser
-                            </div>
-                            </div>";
+                            </div> 
+                          </div>";
+                    }
                 }
             }
             if ($dept === 'dept') {
@@ -627,9 +642,11 @@ class Inventory extends CI_Controller
         foreach ($list as $rets) {
             if ($position === 'Custodian') {
                 $action = '<a type="button" data-func="return_action(0,' . $rets['return_id'] . ',' . $rets['serialStatus']
-                    . ')" onclick="retData(' . $rets['serialStatus'] . ',' . $rets['return_id'] . ')" 
-            data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-primary">Accept</a>
-                <button onclick="return_action(1,' . $rets['return_id'] . ')" class="btn btn-danger">Decline</button>';
+                                . ')" onclick="retData(' . $rets['serialStatus'] . ',' . $rets['return_id'] . ')" 
+                                data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-success btn-sm" 
+                                data-toggle="tooltip" data-placement="bottom" title="Accept"><i class="	fa fa-check-square-o"></i></a>
+                           <button onclick="return_action(1,' . $rets['return_id'] . ')" class="btn btn-danger btn-sm"><i class="fa fa-times-rectangle"
+                                data-toggle="tooltip" data-placement="bottom" title="Decline"></i></button>';
 
             } else if ($position === 'Supply Officer') {
                 $action = '<button onclick="return_action(2,' . $rets['return_id'] . ')" class="btn btn-primary">Cancel</button>';
@@ -831,6 +848,18 @@ class Inventory extends CI_Controller
             echo json_encode($this->inv->supplierReport($type));
         }
     }
+    public function getReportWithDate($report, $type,$from,$to)
+    {
+        if ($report === '0') {
+            echo json_encode($this->inv->deliveredReportsWithDate($type,$from,$to));
+        } elseif ($report === '1') {
+            echo json_encode($this->inv->issuedReportsWithDate($type,$from,$to));
+        } elseif ($report === '2') {
+            echo json_encode($this->inv->returnedReportsWithDate($type,$from,$to));
+        } else {
+            echo json_encode($this->inv->supplierReportWithDate($type,$from,$to));
+        }
+    }
 
     public function getInvDates()
     {
@@ -877,7 +906,10 @@ class Inventory extends CI_Controller
         $list = $this->inv->viewItemPerSerial($status);
         $data = array();
         foreach ($list as $item) {
-            $count_input = "<input autofocus type='number' min='0' name='reconcileitem[]' class='reconitem form-control' value=''>";
+            $count_input = "<input type='number' 
+            autofocus type='number' data-parsley-group=".$status." min='0' max=".$item['quantity']." 
+            name='reconcileitem[]' class='reconitem recQuant form-control' 
+            required>";
 
             $remarks_input = "<textarea autofocus type='text' name='remarks[]' class='remarks'></textarea>";
             $cost = "PHP " . number_format($item['cost'], 2);

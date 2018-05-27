@@ -36,17 +36,16 @@
                         // required accept=".csv" enctype="multipart/form-data">Import CSV</button>
                         // </form>
                         echo '<div class="card-header">
- 
-
-
-                                <button id="headingTwo" class="btn btn-outline-success">
-                                    <i class=" fa fa-plus" ></i><span> New</span></button>
-                                <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" class="btn btn-outline-primary">
-                                    <i class="fa fa-file-archive-o"></i><span> Reports</span></button> 
-                                 <button id="reconcileButton" class="btn btn-outline-success">
-                                 <i class="fa fa-balance-scale"></i> RECONCILE</button>
-                                <button id="reconcileButton" onclick="toggleDiv($(\'.airForm\'),$(\'.inventory-tab\'))" class="btn btn-outline-success">
-                                 <i class="fa fa-balance-scale"></i><a href="air"> Generate AIR</a></button>
+                                <button id="headingTwo" class="btn btn-success" style="border-color: #0c0c0c" data-toggle="tooltip" 
+                                data-placement="bottom" title="Add New Inventory"><i class=" fa fa-plus"></i></button>
+                                <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" 
+                                     class="btn btn-info" style="border-color: #0c0c0c" data-toggle="tooltip"
+                                     data-placement="bottom" title="Print Reports"><i class="fa fa-file-archive-o"></i></button> 
+                                 <button id="reconcileButton" class="btn btn-danger" style="border-color: #0c0c0c"
+                                        data-toggle="tooltip" data-placement="bottom" title="Reconcile">
+                                 <i class="	fa fa-check-square-o"></i></button>
+                                  <a href="air" class="btn btn-warning" style="border-color:#0c0c0c"
+                                    data-toggle="tooltip" data-placement="bottom" title="Generate AIR"><i class="fa fa-edit"></i></a>
                                 </div>';
                     }
                     ?>
@@ -71,10 +70,10 @@
                                  aria-labelledby="CO-tab">
                                 <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="itemtable"
-                                       class="table table-bordered table-sm table-hover"></table>';
+                                       class="table table-bordered table-hover"></table>';
                                 } else {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="departmentTable"
-                                       class="table table-bordered table-sm table-hover"></table>';
+                                       class="table table-bordered table-hover"></table>';
                                 }
                                 ?>
                             </div>
@@ -83,10 +82,10 @@
                                  aria-labelledby="MOOE-tab">
                                 <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="MOOEtable"
-                                       class="table table-bordered table-sm table-hover"></table>';
+                                       class="table table-bordered table-hover"></table>';
                                 } else {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="deptMOOEtable"
-                                       class="table table-bordered table-sm table-hover"></table>';
+                                       class="table table-bordered table-hover"></table>';
                                 }
                                 ?>
                             </div>
@@ -99,7 +98,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.inventory-tab'),$('.detail-tab '))"
-                                class="btn btn-outline-primary fa fa-arrow-left"></i> Back</a></button>
+                                class="btn btn-dark fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -234,32 +233,26 @@
                                     <form id="editInformation"
                                           class="serialForm form-horizontal form-label-left"
                                           action="inventory/edititem" method="POST">
-
+                                   
+                                   <div class="col-6 pull right">
+                                   
                                         <div class="form-group">
                                             <label class="col-md-12">Item Name</label>
-                                            <div class="col-md-5">
+                                            <div class="col-md-12">
                                                 <input id="itemname"
-                                                       readonly="readonly"
                                                        type="text" name="item"
                                                        class="form-control"
                                                        data-parsley-group="set1"
                                                        data-parsley-required-message="Please insert Item name"
+                                                       readonly
                                                        required>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-12"></label>
-                                            <div class="col-md-5">
-                                                <p id="total"></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
                                             <label class="col-md-12">Description</label>
-                                            <div class="col-md-5">
+                                            <div class="col-md-12">
                                             <textarea id="itemdesc" data-parsley-group="set1"
-                                                      readonly="readonly"
                                                       name="description" id="message"
                                                       class="form-control"
                                                       data-parsley-trigger="blur"
@@ -268,10 +261,48 @@
                                                       data-parsley-minlength-message="Description must"
                                                       data-parsley-validation-threshold="10"
                                                       data-parsley-required-messag="Put description of the items"
-                                                      required></textarea>
+                                                      required
+                                                      readonly></textarea>
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label class="col-md-12">Unit</label>
+                                            <div class="col-md-12">
+                                                <input id="unit" name="Unit" data-parsley-group="set1"
+                                                       class="form-control" class="unit"
+                                                       list="list"
+                                                       data-parsley-required-message="Select the Unit"
+                                                       required
+                                                       readonly>
+                                                <datalist id="list">
+                                                    <option value="pc/s">pc/s</option>
+                                                    <option value="box">box</option>
+                                                    <option value="set">set</option>
+                                                    <option value="ream">ream</option>
+                                                    <option value="dozen">dozen</option>
+                                                    <option value="bundle">bundle</option>
+                                                    <option value="sack">sack</option>
+                                               </datalist>
+                                            </div>
+                                        </div>
+                                                
+                                        <div class="form-group">
+                                            <label class="col-md-12">Type</label>
+                                            <div class="col-md-12">
+                                                <select id="itemtype" data-parsley-group="set1" id="type"
+                                                        list="typelist" name="Type"
+                                                        class="form-control" required
+                                                        readonly>
+                                                    <option value="CO">Capital Outlay</option>
+                                                    <option value="MOOE">MOOE</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                       
+                                   </div>
+                                        
+                                   <div class="col-6 pull-left">
                                         <div class="form-group">
                                             <label class="col-md-12">Total Quantity</label>
                                             <div class="col-md-5">
@@ -291,39 +322,7 @@
                                                 <p id="initialCost"></p>
                                             </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-12">Unit</label>
-                                            <div class="col-md-5">
-                                                <input id="unit" name="Unit" data-parsley-group="set1"
-                                                       readonly="readonly"
-                                                       class="form-control" class="unit"
-                                                       list="list"
-                                                       data-parsley-required-message="Select the Unit"
-                                                       required>
-                                                <datalist id="list">
-                                                    <option value="piece">piece</option>
-                                                    <option value="box">box</option>
-                                                    <option value="set">set</option>
-                                                    <option value="ream">ream</option>
-                                                    <option value="dozen">dozen</option>
-                                                    <option value="bundle">bundle</option>
-                                                    <option value="sack">sack</option>
-                                                    <option value="others">others</option>
-                                                </datalist>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-12">Type</label>
-                                            <div class="col-md-5">
-                                                <input id="itemtype" data-parsley-group="set1" id="type"
-                                                        readonly="readonly"
-                                                        list="typelist" name="Type"
-                                                        class="form-control" required>
-                                                </input>
-                                            </div>
-                                        </div>
+                                    </div>
                                     </form>
                                 </div>
                            ';
@@ -333,11 +332,10 @@
                             <!--Detail-->
                             <div class="table-responsive tab-pane fade show active" id="Detail_Det" role="tabpanel"
                                  aria-labelledby="Detail-tab">
-
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
                                     <table id="detail-tab-table" data-search="true"
-                                           class="table table-bordered table-sm table-hover">
+                                           class="table table-bordered table-hover">
                                     </table>
                                 </form>
 
@@ -388,12 +386,14 @@
                             <!--General Ledger-->
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
-                                <button onclick="printToPDF()" class="btn btn-primary fa fa-download">Download as PDF
+                                <br/>
+                                <button onclick="printToPDF()" class="btn btn-info fa fa-download"
+                                        style="border-color: #0c0c0c"> Download as PDF
                                 </button>
                                 <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
-                                       class="table-sm table table-bordered table-sm table-hover">
+                                       class="table table-bordered table-hover">
                                 </table>
                             </div>
                             <!--End of General Ledger-->
@@ -402,7 +402,7 @@
                             <div class="tab-pane fade" id="removed_Items" role="tabpanel"
                                  aria-labelledby="removed-tab">
                                 <table id="removed-table" data-search="true" data-show-refresh='true'
-                                       class="table-sm table table-bordered table-sm table-hover">
+                                       class="table table-bordered table-hover">
                                 </table>
                             </div>
                             <!--End of Removed Items-->
@@ -415,8 +415,9 @@
             <div hidden class="additemDiv col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-outline-primary" id="exit"
-                                onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))"><i class="fa fa-times"></i> Cancel
+                        <button class="btn btn-danger" id="exit" style="border-color: #0c0c0c"
+                                onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))"><i class="fa fa-times"></i>
+                            Cancel
                         </button>
                     </div>
                     <div class="card-body card-block col-lg-8 align-self-center">
@@ -525,60 +526,54 @@
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Delivery Date</label>
                                         <div class="input-group">
-                                        <input data-parsley-group="set1" type="date"
-                                               name="del[]" class="form-control col-6"
-                                               data-parsley-required-message="Enter the Delivery Date"
-                                               required>
-                                        <span class="input-group-addon"><i class="fa fa-calendar-plus-o"></i></span>
+                                            <input data-parsley-group="set1" type="date"
+                                                   name="del[]" class="form-control col-6"
+                                                   data-parsley-required-message="Enter the Delivery Date"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class="form-control-label">Date Received</label>
                                         <div class="input-group date">
-                                        <input class="form-control col-6" type="date" name="rec[]"
-                                               data-parsley-required-message="Enter the Date received"
-                                               required>
-                                         <span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
+                                            <input class="form-control col-6" type="date" name="rec[]"
+                                                   data-parsley-required-message="Enter the Date received"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Expiration Date</label>
                                         <div class="input-group">
-                                        <input data-parsley-group="set1" type="date"
-                                               name="exp[]" class="form-control col-6"
-                                               data-parsley-required-message="Enter the Expiration Date"
-                                               required>
-                                        <span class="input-group-addon"><i class="fa fa-calendar-times-o"></i></span>
+                                            <input data-parsley-group="set1" type="date"
+                                                   name="exp[]" class="form-control col-6"
+                                                   data-parsley-required-message="Enter the Expiration Date"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Supplier</label>
                                         <div class="input-group">
-                                        <select data-parsley-group="set1"
-                                                list="typelist" name="supp[]"
-                                                class="supplieropt form-control col-6"
-                                                required>
-                                        </select>
-                                        <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                                            <select data-parsley-group="set1"
+                                                    list="typelist" name="supp[]"
+                                                    class="supplieropt form-control col-6"
+                                                    required>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Official Receipt Number</label>
                                         <div class="input-group">
-                                        <input data-parsley-group="set1"
-                                               name="or[]" class="form-control col-6"
-                                               data-parsley-required-message="Input Official Receipt"
-                                               required>
-                                        <span class="input-group-addon"><i class="fa fa-ticket"></i></span>
+                                            <input data-parsley-group="set1"
+                                                   name="or[]" class="form-control col-6"
+                                                   data-parsley-required-message="Input Official Receipt"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Purchse Order (PO)
                                             number</label>
                                         <div class="input-group">
-                                        <input data-parsley-group="set1"
-                                               name="PO[]" class="form-control col-6">
-                                        <span class="input-group-addon"><i class="fa fa-file-archive-o"></i></span>
+                                            <input data-parsley-group="set1"
+                                                   name="PO[]" class="form-control col-6">
                                         </div>
                                     </div>
 
@@ -604,41 +599,53 @@
     <div class="card">
         <div class="card-header">
             <button onclick="toggleDiv($('.inventory-tab'),$('.generateReport'))"
-                    class="btn btn-info fa fa-arrow-left">
+                    class="btn btn-dark fa fa-arrow-left">
                 Back
             </button>
-            <button onclick="printToPDFreport()" class="btn btn-info fa fa-download"> Download as PDF</button>
+
         </div>
         <div class="card-body">
-            <div class="select">
-                <label>Reports on:</label>
-                <select id="reportsOption">
-                    <option value="0">Delivered Item</option>
-                    <option value="1">Distributed Items</option>
-                    <option value="2">Returned Items</option>
-                    <option value="3">Supplier</option>
-                </select>
+            <button onclick="printToPDFreport()" class="btn btn-info fa fa-download"> Download as PDF</button>
+            <hr>
+            <div class="row">
+                <div class="col-md-12 form-horizontal">
+                    <label>Select the type of Item:</label>
+                    <input value="ALL" type="radio" name="type" checked> All
+                    <input value="CO" type="radio" name="type"> Capital Outlay
+                    <input value="MOOE" type="radio" name="type"> MOOE
+                </div>
+                <div class="col-md-4 form-horizontal">
+                    <div class="select form-group">
+                        <label>Reports on:</label>
+                        <select class="form-control" id="reportsOption">
+                            <option value="0">Delivered Item</option>
+                            <option value="1">Distributed Items</option>
+                            <option value="2">Returned Items</option>
+                            <option value="3">Supplier</option>
+                        </select>
+                    </div>
+                </div>
+                <form id="reportDate" class="col-md-8 form-inline">
+                    <div class="form-group">
+                        <label for="from">From: </label>
+                        <input required type="date" class="form-control" id="from">
+                        </input>
+                    </div>
+                    <div class="form-group">
+                        <label for="to">To: </label>
+                        <input required type="date" class="form-control" id="to">
+                        </input>
+                    </div>
+                    <button type="button" id="repdateBTN" onclick="getreportDate()" class="btn btn-success">Go</button>
+                </form>
             </div>
-            <!--  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                      <label>From</label>
-                      <input type="date" name="from" data-validate-length-range="5,20"
-                             class="optional form-control has-feedback-left">
-                      <span class="fa fa-calendar-times-o form-control-feedback left"
-                            aria-hidden="true"></span>
-                  </div>
-                  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                      <label>To</label>
-                      <input type="date" name="to" data-validate-length-range="5,20"
-                             class="optional form-control has-feedback-left">
-                      <span class="fa fa-calendar-times-o form-control-feedback left"
-                            aria-hidden="true"></span>
-                  </div>-->
-            <div id="returnedReport">
-                <table id="reportTable" data-pagination="true"
-                       class="table-sm table table-bordered table-sm table-hover">
-                </table>
+            <div class="row">
+                <div id="returnedReport" class="col-md-12 table-responsive">
+                    <table id="reportTable" data-pagination="true"
+                           class="table table-bordered table-hover">
+                    </table>
+                </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -717,7 +724,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="submit" name="id" id="save1" class="btn btn-primary btn-modal">Save</button>
+                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal"><i
+                                class="fa fa-arrow-down"></i> Save
+                    </button>
                 </div>
             </div>
         </div>
@@ -914,12 +923,12 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Remarks</label>
-                        <textarea class="form-control" name="remarks" id="remarks"></textarea>
+                        <textarea class="form-control col-12" name="remarks" id="remarks"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <button type="submit" name="id" class="btn-modal btn btn-primary" id="save1"><i
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    <button type="submit" name="id" class="btn-modal btn btn-success" id="save1"><i
                                 class="fa fa-arrow-down"></i> Yes
                     </button>
                 </div>
@@ -1006,50 +1015,54 @@
 <!--end of Return-->
 <!--Reconcile Page-->
 <div hidden class="reconcilePage col-lg-12">
-    <div class="card">
-        <div class="card-header">
-            <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))"
-                    class="btn btn-info fa fa-arrow-left"> Back
-            </button>
-            <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download"> Download as PDF</button>
-        </div>
-        <div class="card-body">
-
-            <ul class="nav nav-tabs" id="serialTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-status="1" id="non-serialized-tab" data-toggle="tab" href="#nonSerTab"
-                       role="tab"
-                       aria-controls="serialized" aria-selected="false">Serialized Items</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-status="0" id="serialized-tab" data-toggle="tab" href="#serTab"
-                       role="tab"
-                       aria-controls="co" aria-selected="true">non-Serialized Items</a>
-                </li>
-
-            </ul>
-            <div class="tab-content pl-3 p-1" id="">
-                <div class="table-responsive-sm tab-pane fade show active" id="nonSerTab" role="tabpanel"
-                     aria-labelledby="nonSer-tab">
-                    <table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="serializedItems"
-                           class="table table-bordered table-sm table-hover"></table>
-                </div>
-                <div class="table-responsive-sm  tab-pane fade " id="serTab"
-                     role="tabpanel"
-                     aria-labelledby="nonSerialized-tab">
-                  <table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="withoutSerial"
-                                       class="table table-bordered table-sm table-hover"></table>
-
-                </div>
+    <form id="recValidate">
+        <div class="card">
+            <div class="card-header">
+                <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))"
+                        class="btn btn-dark fa fa-arrow-left"> Back
+                </button>
 
             </div>
+            <div class="card-body">
+
+                <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download"> Download as PDF</button>
+                <br/>
+
+                <ul class="nav nav-tabs" id="serialTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-status="1" id="non-serialized-tab" data-toggle="tab"
+                           href="#nonSerTab"
+                           role="tab"
+                           aria-controls="serialized" aria-selected="false">Serialized Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-status="0" id="serialized-tab" data-toggle="tab" href="#serTab"
+                           role="tab"
+                           aria-controls="co" aria-selected="true">non-Serialized Items</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content pl-3 p-1" id="">
+                    <div class="table-responsive-sm tab-pane fade show active" id="nonSerTab" role="tabpanel"
+                         aria-labelledby="nonSer-tab">
+
+                        <table data-show-refresh="true" data-pagination="true" data-search="true" id="serializedItems"
+                               class="table table-bordered table-hover"></table>
+                    </div>
+                    <div class="table-responsive-sm  tab-pane fade " id="serTab"
+                         role="tabpanel"
+                         aria-labelledby="nonSerialized-tab">
+                        <table data-show-refresh="true" data-pagination="true" data-search="true" id="withoutSerial"
+                               class="table table-bordered table-hover"></table>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
-
-    </div>
-    <a type="button" class="compare btn btn-success" data-toggle="modal"
-       data-target=".invdate">Reconcile Items</a>
-    <a type="button" class="compare btn btn-success">Compare</a>
-
+        <a type="button" class="compare btn btn-success" onclick="validateReconcile()">Reconcile Items</a>
+        <a type="button" class="compare btn btn-success">Compare</a>
+    </form>
 </div>
 
 <div hidden class="discrepancies col-lg-12">
