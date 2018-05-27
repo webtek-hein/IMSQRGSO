@@ -41,9 +41,11 @@
                                 <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" 
                                      class="btn btn-info" style="border-color: #0c0c0c" data-toggle="tooltip"
                                      data-placement="bottom" title="Print Reports"><i class="fa fa-file-archive-o"></i></button> 
-                                 <button id="reconcileButton" class="btn btn-warning" style="border-color: #0c0c0c"
+                                 <button id="reconcileButton" class="btn btn-danger" style="border-color: #0c0c0c"
                                         data-toggle="tooltip" data-placement="bottom" title="Reconcile">
                                  <i class="	fa fa-check-square-o"></i></button>
+                                  <a href="air" class="btn btn-warning" style="border-color:#0c0c0c"
+                                    data-toggle="tooltip" data-placement="bottom" title="Generate AIR"><i class="fa fa-edit"></i></a>
                                 </div>';
                     }
                     ?>
@@ -330,10 +332,6 @@
                             <!--Detail-->
                             <div class="table-responsive tab-pane fade show active" id="Detail_Det" role="tabpanel"
                                  aria-labelledby="Detail-tab">
-
-                                <br/>
-                                <a href="air" class="btn btn-success" style="border-color:#0c0c0c"><i class="fa fa-check-square-o"></i> Generate AIR</a>
-
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
                                     <table id="detail-tab-table" data-search="true"
