@@ -190,17 +190,42 @@ class User_db extends CI_Model {
         $this->db->where('user_id', $userid);
         $this->db->update('user');
     }
+
+    /**
+     *
+     * This method allows account password to be edited.
+     *
+     * @param string    $data new data entered password
+     * @param int       $userid ID of the user
+     */
     public function edit_password($data, $userid)
     {
         $this->db->set('password', $data);
         $this->db->where('user_id', $userid);
         $this->db->update('user');
     }
+
+    /**
+     *
+     * This method allows accounts information to be edited.
+     *
+     * @param $data data that will be edited
+     * @param $userid ID of the user
+     */
     public function edit_info($data, $userid)
     {
         $this->db->where('user_id', $userid);
         $this->db->update('user',$data);
     }
+
+    /**
+     *
+     * This method retrieves the account with
+     * email matching with email from database.
+     *
+     * @param $email email of the user.
+     * @return mixed result of the query.
+     */
     public function get_email($email)
     {
         $this->db->select('*')
@@ -209,10 +234,26 @@ class User_db extends CI_Model {
         return $this->db->get('user')->row();
 
     }
+
+    /**
+     *
+     * This method is for editing  profile pictures.
+     *
+     * @param string    $name name of the owner of the image
+     * @param int       $user_id ID of the user
+     */
     public  function edit_image($name,$user_id){
         $this->db->where('user_id', $user_id);
         $this->db->update('user',$name);
     }
+
+    /**
+     *
+     * This method gets the image of the user.
+     *
+     * @param int   $user_id ID of the user.
+     * @return mixed result of the query.
+     */
     public function get_image($user_id){
         $this->db->select('image')
             ->where('user_id', $user_id);

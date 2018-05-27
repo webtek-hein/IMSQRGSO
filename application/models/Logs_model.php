@@ -3,7 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Logs_model extends CI_Model
 {
-    //forlogs
+    /**
+     *
+     * This method gets the data of the increase log that will be displayed.
+     *
+     * @param string    $type type of item
+     * @param string    $position position of the user
+     * @param int       $id id of the method
+     * @return mixed result of query
+     */
     public function increase_log($type, $position, $id)
     {
         $this->db->Select('increase.timestamp,item.item_name,item.item_description,increase.quantity,item.unit,
@@ -21,6 +29,15 @@ class Logs_model extends CI_Model
         return $query->result_array();
     }
 
+    /**
+     *
+     * This method gets the data of the decrease log that will be displayed.
+     *
+     * @param string    $type type of item
+     * @param string    $position position of the user
+     * @param int       $id id of the method
+     * @return mixed result of query
+     */
     public function decrease_log($type, $position, $id)
     {
         if ($position !== 'Admin') {
@@ -40,6 +57,15 @@ class Logs_model extends CI_Model
         return $query->result_array();
     }
 
+    /**
+     *
+     * This method gets the data of the edit log of item that will be displayed.
+     *
+     * @param string    $type type of item
+     * @param string    $position position of the user
+     * @param int       $id id of the method
+     * @return mixed result of query
+     */
     public function edit_log_item($type, $position, $id){
         $this->db->select('editlog.item_id,item.item_name,item.item_description,item.item_type,item.unit');
         $this->db->join('gsois.item ','item.item_id = editlog.item_id');
@@ -51,6 +77,16 @@ class Logs_model extends CI_Model
         $query = $this->db->get('logs.editlog');
         return $query->result_array();
     }
+
+    /**
+     *
+     * This method gets the data of the increase log that will be displayed.
+     *
+     * @param string    $type type of item
+     * @param string    $position position of the user
+     * @param int       $id id of the method
+     * @return mixed result of query
+     */
     public function edit_log($itemid, $position, $id)
     {
         $this->db->select('edit.item_id,edit.timestamp,edit.field_edited,edit.old_value,edit.new_value');
@@ -65,6 +101,15 @@ class Logs_model extends CI_Model
 
     }
 
+    /**
+     *
+     * This method gets the data of the return log that will be displayed.
+     *
+     * @param string    $type type of item
+     * @param string    $position position of the user
+     * @param int       $id id of the method
+     * @return mixed result of query
+     */
     public function return_log($position, $dept,$type)
     {
 
@@ -82,6 +127,14 @@ class Logs_model extends CI_Model
         return $query->result_array();
     }
 
+    /**
+     *
+     * This method gets the data of the transfered items to be
+     * displayed.
+     *
+     * @param int   $serialid ID of the serial.
+     * @return mixed result of the query
+     */
     public function transfer_log($serialid){
 
         $this->db->select('transferlog.*,serial.serial');

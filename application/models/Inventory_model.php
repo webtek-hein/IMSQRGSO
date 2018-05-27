@@ -3,7 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Inventory_model extends CI_Model
 {
-    //Adding of Item to the inventory
+    /**
+     *
+     *This method is for adding items in the inventory.
+     *
+     * @param int   $counter For counting items to be registered.
+     * @return Exception for errors.
+     */
     public function add_item($counter)
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
@@ -88,7 +94,10 @@ class Inventory_model extends CI_Model
         }
     }
 
-    //Adding bulk of Item to the inventory
+    /**
+     * This method is for adding more than one items or in bulk
+     *in the custodian inventory .
+     */
     public function saveAll()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
@@ -195,7 +204,13 @@ class Inventory_model extends CI_Model
 
     }
 
-    //Distribute item
+    /**
+     *
+     * This method is for the distribution of items.
+     *
+     * @param string    $position position of the user.
+     * @param string    $user user to be distribute to/from.
+     */
     public function distrib($position, $user)
     {
         $owner = $this->input->post('owner');
@@ -321,8 +336,10 @@ class Inventory_model extends CI_Model
 
     }
 
-    public
-    function insert()
+    /**
+     * This method is for inserting item in to the inventory.
+     */
+    public function insert()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $filename = ($_FILES["csv_file"]["tmp_name"]) or die("can't open file");
@@ -375,17 +392,27 @@ class Inventory_model extends CI_Model
 
     }
 
-    public
-    function viewincrease()
+    /**
+     *
+     * This method retrieved data of an item.
+     *
+     * @return mixed result of the query.
+     */
+    public function viewincrease()
     {
         $query = $this->db->get('item');
         return $query->result_array();
 
     }
 
-
-    public
-    function select_item($type)
+    /**
+     *
+     * This allows the selection of item.
+     *
+     * @param string    $type type of the item
+     * @return mixed result of the query.
+     */
+    public function select_item($type)
     {
         $this->db->select('item.*,(cost*quantity) as totalcost,recon_id');
         $this->db->where('item_type', $type);
@@ -396,9 +423,15 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-
-    public
-    function viewItemPerSerial($status)
+    /**
+     *
+     * This gets serial from database so serials could be displayed on
+     * an item.
+     *
+     * @param string    $status status of the serial.
+     * @return mixed result of the query
+     */
+    public function viewItemPerSerial($status)
     {
         $this->db->select('item.*,(cost*quantity) as totalcost,recon_id');
         $this->db->where('serialStatus', $status);
@@ -409,10 +442,15 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-//Add quantity to a specific item
-
-    public
-    function addquant($item_det_id, $counter)
+    /**
+     *
+     * This is for adding quantity to an specified item.
+     *
+     * @param int   $item_det_id ID for item details.
+     * @param int   $counter
+     * @return array|Exception
+     */
+    public function addquant($item_det_id, $counter)
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $quantity = $this->input->post('quant')[$counter];
@@ -526,8 +564,17 @@ class Inventory_model extends CI_Model
         }
     }
 
-    public
-    function getItem($dept, $id, $dept_id)
+    /**
+     *
+     * This is for getting a data of an item
+     * which is distributed.
+     *
+     * @param string    $dept name of department
+     * @param int       $id ID of the method.
+     * @param int       $dept_id ID of the department.
+     * @return mixed result of the query
+     */
+    public function getItem($dept, $id, $dept_id)
     {
         $this->db->where('item.item_id', $id);
 
@@ -544,8 +591,10 @@ class Inventory_model extends CI_Model
         return $query->row();
     }
 
-    public
-    function edititem()
+    /**
+     * This method allows an item's data to be edited.
+     */
+    public function edititem()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $values = [];
@@ -588,8 +637,15 @@ class Inventory_model extends CI_Model
         $this->db->insert_batch('logs.editLog', $values);
     }
 
-    public
-    function viewdetail($id, $position)
+    /**
+     *
+     * This method is for getting items detail to be displayed.
+     *
+     * @param int       $id ID of the method
+     * @param string    $position position of the user
+     * @return mixed result of the query
+     */
+    public function viewdetail($id, $position)
     {
         $this->db->select('OR_no,PO_number,item.serialStatus,item_type,date_delivered,itemdetail.date_received,expiration_date,unit_cost,supplier_name,
         item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
@@ -604,6 +660,15 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    /**
+     *
+     * This allows an item to be returned.
+     *
+     * @param int   $dept_id ID of the department
+     * @param int   $id ID of the method
+     * @param int   $dist_id ID of the distribution
+     * @return mixed result of the query
+     */
     public function retquant($dept_id, $id,$dist_id)
     {
         $status = array('pending');
@@ -619,6 +684,15 @@ class Inventory_model extends CI_Model
 
         return $query;
     }
+
+    /**
+     *
+     * This method allows the returning of items.
+     *
+     * @param int   $dept_id ID of the department
+     * @param int   $id ID of the method.
+     * @return mixed result of the query.
+     */
     public function retquant1($dept_id, $id)
     {
         $status = array('pending');
@@ -634,8 +708,16 @@ class Inventory_model extends CI_Model
         return $query;
     }
 
-    public
-    function viewDetailperDept($id, $dept_id)
+    /**
+     *
+     * This gets the data for displaying item details of an
+     * item per department.
+     *
+     * @param $id ID of the method.
+     * @param $dept_id ID of the department
+     * @return mixed result of the query
+     */
+    public function viewDetailperDept($id, $dept_id)
     {
         $this->db->select('CONCAT(first_name," ",last_name) as receiver,
         distribution.dist_id,item.item_type,item.serialStatus,quantity_distributed,distribution.cost,
@@ -653,8 +735,15 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public
-    function departmentInventory($type, $id)
+    /**
+     *
+     * This method is for getting the inventory of a department.
+     *
+     * @param $type type of the item
+     * @param $id ID of the method
+     * @return mixed result of the query
+     */
+    public function departmentInventory($type, $id)
     {
         $this->db->select('item.*,sum(quantity_distributed) as quant');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
@@ -667,8 +756,15 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public
-    function reconcile($type, $id)
+    /**
+     *
+     * This method gets the data of reconciled items from database.
+     *
+     * @param string    $type type of item.
+     * @param int       $id ID of the method
+     * @return mixed result of the query
+     */
+    public function reconcile($type, $id)
     {
         $this->db->select('item.*,sum(quantity_distributed) as quant,reconciliation.physical_count as pc,reconciliation.remarks,reconciliation.*');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
@@ -682,8 +778,10 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public
-    function endingInventory()
+    /**
+     * This method is for the ending inventory
+     */
+    public function endingInventory()
     {
         $remarks = $this->input->post('remarks');
         $logical = $this->input->post('logical');
@@ -736,23 +834,38 @@ class Inventory_model extends CI_Model
         $this->db->update_batch('item', $item_data, 'item_id');
     }
 
-    public
-    function selectdetails()
+    /**
+     *
+     * This method is for selecting details of an item.
+     *
+     * @return mixed result of the query
+     */
+    public function selectdetails()
     {
         $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'inner');
         $query = $this->db->get('item');
         return $query->result_array();
     }
 
-    public
-    function select_departments()
+    /**
+     *
+     * This method is for selecting departments.
+     *
+     * @return mixed result of the query
+     */
+    public function select_departments()
     {
         $query = $this->db->get('department');
         return $query->result_array();
     }
 
-    public
-    function get_department_list()
+    /**
+     *
+     * This method is for getting the department list.
+     *
+     * @return mixed result of the query
+     */
+    public function get_department_list()
     {
         $this->db->order_by('res_center_code');
         $query = $this->db->get('department');
@@ -760,13 +873,25 @@ class Inventory_model extends CI_Model
 
     }
 
-    public
-    function select_acc_codes()
+    /**
+     *
+     * This method is for selecting account codes.
+     *
+     * @return mixed result of the query
+     */
+    public function select_acc_codes()
     {
         $query = $this->db->get('account_code');
         return $query->result_array();
     }
 
+    /**
+     *
+     * This method getting the end user of a distribution.
+     *
+     * @param int   $dist_id ID of the distribution
+     * @return mixed result of the query
+     */
     public function getEndUserDist($dist_id)
     {
 
@@ -778,13 +903,25 @@ class Inventory_model extends CI_Model
 
     }
 
-    public
-    function return_item()
+    /**
+     * This metod is for returning items
+     *
+     * @return mixed result of the query
+     */
+    public function return_item()
     {
         $query = $this->db->get('return');
         return $query->result_array();
     }
 
+    /**
+     *
+     *This method is for user distribution and transfer
+     * of items of end users.
+     *
+     * @param string    $position position of the user
+     * @param string    $user the user for distribution
+     */
     public function userdistrib($position, $user)
     {
 
@@ -821,6 +958,13 @@ class Inventory_model extends CI_Model
 
     }
 
+    /**
+     *
+     * This method gets the serial of the item for transfer of items.
+     *
+     * @param $serialid ID of the serial
+     * @return mixed result of the query
+     */
     public function getTrans($serialid)
     {
         $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,serial.serial,serial.serial_id');
@@ -829,6 +973,15 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('serial');
         return $query->result_array();
     }
+
+    /**
+     *
+     * This method is for geting  items with no serial.
+     *
+     * @param int       $id ID for the methid
+     * @param string    $position  position of the user
+     * @return mixed result of the query
+     */
     function getSerialNull($id, $position)
     {
         $this->db->select('serial.serial');
@@ -839,8 +992,16 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('serial');
         return $query->result_array();
     }
-    public
-    function getSerialReturn($det_id, $sid)
+
+    /**
+     *
+     * This method is for getting the serial of the return.
+     *
+     * @param int   $det_id ID of the department
+     * @param int   $sid ID of the serial
+     * @return mixed result of the query
+     */
+    public function getSerialReturn($det_id, $sid)
     {
         $status = array('Distributed', 'UserDistributed');
         $this->db->select('item.serialStatus,serial.*');
@@ -854,8 +1015,15 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public
-    function getSerial($det_id, $position)
+    /**
+     *
+     * This method gets the serial of an item.
+     *
+     * @param int       $det_id ID of the deparment
+     * @param string    $position position of the user
+     * @return mixed result of the query
+     */
+    public function getSerial($det_id, $position)
     {
 
         $this->db->select('item.serialStatus,serial_id,serial.serial,serial.item_status');
@@ -873,6 +1041,15 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    /**
+     *
+     * This method is for getting the serial of a button.
+     *
+     * @param int       $det_id ID of the details
+     * @param string    $position position of the user
+     * @param int       $sid ID of the serial
+     * @return mixed result of the query
+     */
     public function getSerialbtn($det_id, $position, $sid)
     {
 
@@ -891,8 +1068,13 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public
-    function addSerial()
+    /**
+     *
+     * This method is for adding serial to an item.
+     *
+     * @return mixed result of the query
+     */
+    public function addSerial()
     {
         $serial = $this->input->post('serial');
         $data = array();
@@ -912,8 +1094,14 @@ class Inventory_model extends CI_Model
 
     }
 
-    public
-    function countItem($id)
+    /**
+     *
+     * This method is for counting the items.
+     *
+     * @param int   $id ID of the method.
+     * @return mixed result of the query
+     */
+    public function countItem($id)
     {
         $minimum = $this->db->select('count(*) as min')
             ->join('itemdetail', 'item.item_id = itemdetail.item_id ', 'inner')
@@ -925,8 +1113,10 @@ class Inventory_model extends CI_Model
         return $minimum;
     }
 
-    public
-    function editquant()
+    /**
+     * This method is for editing quantity of the item.
+     */
+    public function editquant()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $values = [];
@@ -968,8 +1158,10 @@ class Inventory_model extends CI_Model
 
     }
 
-    public
-    function accept()
+    /**
+     * This method is for accepting items issued.
+     */
+    public function accept()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $dist_id = $this->input->post('id');
@@ -982,8 +1174,13 @@ class Inventory_model extends CI_Model
 
     }
 
-    public
-    function mobiledetail()
+    /**
+     *
+     * This method is for displaying item details for mobile.
+     *
+     * @return mixed result of the query
+     */
+    public function mobiledetail()
     {
         $this->db->select('serial.serial_id, item.item_name, serial.serial, account_code.account_code, account_code.description, item.item_description, itemdetail.unit_cost, item.item_type, itemdetail.expiration_date, serial.employee');
         $this->db->distinct();
@@ -996,8 +1193,10 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    public
-    function returnitem()
+    /**
+     * This method is for returning item.
+     */
+    public function returnitem()
     {
 
         $user_id = $this->session->userdata['logged_in']['user_id'];
@@ -1057,6 +1256,13 @@ class Inventory_model extends CI_Model
         ));
     }
 
+    /**
+     *
+     * This method is for general ledger of items.
+     *
+     * @param int   $id ID of the method
+     * @return mixed result of the query
+     */
     public function ledger($id)
     {
         $this->db->where('transaction.item_id', $id);
