@@ -1273,6 +1273,14 @@ class Inventory_model extends CI_Model
 
     }
 
+    /**
+     *
+     * This method is for the return of items after issuing.
+     *
+     * @param string    $department department of the user
+     * @param string     $position position of the user
+     * @return mixed result of the query
+     */
     public function returns($department, $position)
     {
 
@@ -1291,6 +1299,14 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    /**
+     *
+     * This method is for accepting returned items.
+     *
+     * @param int   $return_id ID of the return.
+     * @param int   $serial serial of an item
+     * @return mixed result of the query
+     */
     public function acceptReturn($return_id, $serial)
     {
         $query = $this->db
@@ -1345,6 +1361,12 @@ class Inventory_model extends CI_Model
         return $this->db->update('returnitem');
     }
 
+    /**
+     *
+     * This method is for declining item/s that are returned.
+     *
+     * @param $return_id ID of the return
+     */
     public function declineReturn($return_id)
     {
         $this->db->set('status', 'declined');
@@ -1356,6 +1378,12 @@ class Inventory_model extends CI_Model
         $this->db->update('serial');
     }
 
+    /**
+     *
+     * This method is for canceling the return of item/s.
+     *
+     * @param $return_id ID of the return
+     */
     public function cancelReturn($return_id)
     {
         $this->db->set('status', 'cancelled');
@@ -1367,7 +1395,13 @@ class Inventory_model extends CI_Model
         $this->db->update('serial');
     }
 
-    //count total items received dash custodian
+    /**
+     *
+     * This method is for counting total items received
+     * for custodian dashboard.
+     *
+     * @return mixed result of the query
+     */
     public function itemsrec()
     {
         $this->db->SELECT('COUNT(inc_log_id) as countInc,item.*,CONCAT(first_name," ",last_name) as custodian');
@@ -1379,7 +1413,13 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //count issued items dash custodian
+    /**
+     *
+     * This method is for counting total items issued
+     * for custodian dashboard.
+     *
+     * @return mixed result of the query
+     */
     public function issued()
     {
         $this->db->SELECT('COUNT(dec_log_id) as countDec,i.*,dept.department,CONCAT(first_name," ",last_name) as custodian');
@@ -1394,7 +1434,13 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //count return items dash custodian
+    /**
+     *
+     * This method is for counting total items returned
+     * for custodian dashboard.
+     *
+     * @return mixed result of the query
+     */
     public function returndash()
     {
         $this->db->SELECT('COUNT(ret_log_id) as countRet,i.*,dept.department');
@@ -1408,7 +1454,13 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //total cost dash custodian
+    /**
+     *
+     * This method is for counting total items cost
+     * for custodian dashboard.
+     *
+     * @return mixed result of the query
+     */
     public function totalcost()
     {
         $this->db->SELECT('sum(unit_cost * quantity) as totalcost');
@@ -1416,7 +1468,13 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //total expired items dash custodian and admin
+    /**
+     *
+     * This method is for counting total items expired
+     * for custodian dashboard.
+     *
+     * @return mixed result of the query
+     */
     public function totalexpired()
     {
         $this->db->SELECT('count(expiration_date) as countExp,item.*');
@@ -1426,15 +1484,29 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //total user dash admin
+    /**
+     *
+     * This method is for counting total users registered
+     * for admin dashboard.
+     *
+     * @return mixed result of the query
+     */
     public function totaluser()
     {
         $this->db->SELECT('count(user_id) as totaluser');
         $query = $this->db->get('gsois.user');
         return $query->result_array();
     }
-//Supply Dashboard
-    //
+
+
+    //supply officer dashboard
+    /**
+     *
+     * This method is for pending items in the
+     * supply officer dashboard.
+     *
+     * @return mixed result of the query
+     */
     public function pendingItem()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
@@ -1446,7 +1518,13 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //count items issued for the day
+    /**
+     *
+     * This method is for counting items issued
+     * for the day, for supply officer dashboard.
+     *
+     * @return mixed result of the query
+     */
     public function itemsThisDay()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
@@ -1459,7 +1537,14 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //count items returned for the day
+    /**
+     *
+     * This method is for counting items
+     * returned for the day, for supply officer
+     * dashboard.
+     *
+     * @return mixed result of the query
+     */
     public function itemsReturnedThisDay()
     {
         $user_id = $this->session->userdata['logged_in']['user_id'];
@@ -1472,7 +1557,13 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //count expired items supply officer
+    /**
+     *
+     * This method is for counting items expired for
+     * the supply officer dashboard .
+     *
+     * @return mixed result of the query
+     */
     public function itemsExpired()
     {
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
@@ -1485,7 +1576,13 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //total cost supply officer
+    /**
+     *
+     * This method is for counting  total cost of the
+     * inventory of the department of a supply officer.
+     *
+     * @return mixed result of the query
+     */
     public function itemsTcost()
     {
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
@@ -1496,7 +1593,15 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-//end of supplier dashboard
+//end of supply officer dashboard
+
+    /**
+     *
+     * This method is for removing details of an item.
+     *
+     * @param int       $id ID of the method
+     * @param string    $serialStatus status of the serial
+     */
     public function rmDet($id, $serialStatus)
     {
         $this->db->set('status', 'removed');
@@ -1521,6 +1626,13 @@ class Inventory_model extends CI_Model
         $this->db->update('item');
     }
 
+    /**
+     *
+     * This method is for getting item details that were removed.
+     *
+     * @param int   $id ID of the method
+     * @return mixed result of the query
+     */
     public function rmItems($id)
     {
         $this->db->select('OR_no,PO_number,item.serialStatus,item_type,date_delivered,date_received,expiration_date,unit_cost,supplier_name,
@@ -1532,6 +1644,13 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    /**
+     *
+     * This method is for reverting status serial.
+     *
+     * @param int       $id ID of the method
+     * @param string    $serialStatus status of the serial
+     */
     public function revert($id, $serialStatus)
     {
         $this->db->set('status', 'active');
@@ -1555,6 +1674,13 @@ class Inventory_model extends CI_Model
         $this->db->update('item');
     }
 
+    /**
+     *
+     * This method is for getting the names supply officers.
+     *
+     * @param  int  $id ID for the method
+     * @return mixed result of the query
+     */
     public function getSuppOfficers($id)
     {
         return $this->db->select('user_id,CONCAT(first_name," ",last_name) as name')
@@ -1563,7 +1689,13 @@ class Inventory_model extends CI_Model
             ->get('user')->result_array();
     }
 
-    //items delivered/added report
+    /**
+     *
+     * This method is for items delivered/added report.
+     *
+     * @param string    $type result of the query
+     * @return mixed result of the query
+     */
     public function deliveredReports($type)
     {
         $this->db->select('item.item_name,item.item_description,item.item_type,itemdetail.*,supplier_name')
@@ -1578,6 +1710,15 @@ class Inventory_model extends CI_Model
         return $this->db->get('itemdetail')->result_array();
     }
 
+    /**
+     *
+     * This method is for getting delivered reports with date.
+     *
+     * @param string    $type type of the item
+     * @param string    $from from whom
+     * @param string    $to to whom
+     * @return mixed result of the query
+     */
     public function deliveredReportsWithDate($type,$from,$to)
     {
         $this->db->select('item.item_name,item.item_description,item.item_type,itemdetail.*,supplier_name')
@@ -1594,7 +1735,13 @@ class Inventory_model extends CI_Model
         return $this->db->get('itemdetail')->result_array();
     }
 
-    //items issued reports
+    /**
+     *
+     * This method is for items issued reports.
+     *
+     * @param string    $type type of an item
+     * @return mixed result of the query
+     */
     public function issuedReports($type)
     {
         $this->db->select('PR_no,distribution.quantity_distributed,distribution.cost,department,distribution.date_received,CONCAT(first_name," ",last_name) as supply_officer,item.*,account_code');
@@ -1612,6 +1759,15 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    /**
+     *
+     * This method is for items issued with dates
+     *
+     * @param string    $type type of the item
+     * @param string    $from from whom
+     * @param string    $to to whom
+     * @return mixed result of the query
+     */
     public function issuedReportsWithDate($type,$from,$to)
     {
         $this->db->select('PR_no,distribution.quantity_distributed,distribution.cost,department,distribution.date_received,CONCAT(first_name," ",last_name) as supply_officer,item.*,account_code');
@@ -1630,7 +1786,13 @@ class Inventory_model extends CI_Model
         return $this->db->get('distribution')->result_array();
     }
 
-    // items return reports
+    /**
+     *
+     * This method is for the return reports.
+     *
+     * @param string    $type type of an item
+     * @return mixed result of the query
+     */
     public function returnedReports($type)
     {
         $this->db->select('receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no');
@@ -1650,6 +1812,15 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    /**
+     *
+     * This method is for returned report with date.
+     *
+     * @param string    $type type of the user
+     * @param string    $from from whom
+     * @param string    $to to whom
+     * @return mixed result of the query
+     */
     public function returnedReportsWithDate($type,$from,$to)
     {
         $this->db->select('receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no');
@@ -1672,7 +1843,13 @@ class Inventory_model extends CI_Model
     }
 
 
-    //supplier report
+    /**
+     *
+     * This method is for the supplier report.
+     *
+     * @param $type type of the user
+     * @return mixed result of the query
+     */
     public function supplierReport($type)
     {
         $this->db->select('supplier_name,item.*,itemdetail.date_delivered');
@@ -1688,6 +1865,15 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
+    /**
+     *
+     * This method is for supplier report with date.
+     *
+     * @param string    $type type of the user
+     * @param string    $from from whom
+     * @param string    $to to whom
+     * @return mixed result of the query
+     */
     public function supplierReportWithDate($type,$from,$to)
     {
         $this->db->select('supplier_name,item.*,itemdetail.date_delivered');
@@ -1706,7 +1892,9 @@ class Inventory_model extends CI_Model
     }
 
 
-    //reconciliation date
+    /**
+     * This method is for getting reconciliation dates.
+     */
     public function getInventoryDates()
     {
         $this->db->select('inventory_date');
@@ -1714,7 +1902,14 @@ class Inventory_model extends CI_Model
         $this->db->get('reconciliation');
     }
 
-    //get return data
+    /**
+     *
+     * This method is for getting return data.
+     *
+     * @param int   $serialStatus status of the serial
+     * @param int   $id ID of the method
+     * @return mixed result of the query
+     */
     public function getRetData($serialStatus, $id)
     {
         if ($serialStatus === '1') {
@@ -1729,7 +1924,9 @@ class Inventory_model extends CI_Model
         return $query->result_array();
     }
 
-    //inventory with no discrepancy
+    /**
+     * This method is for inventory with no discrepancy
+     */
     public function reconcileInv()
     {
         $remarks = $this->input->post('remarks');
@@ -1764,6 +1961,12 @@ class Inventory_model extends CI_Model
         $this->db->insert_batch('reconciliation', $newReconcileData);
     }
 
+    /**
+     *
+     * This method is for getting discrepancy.
+     *
+     * @return mixed result of  the query
+     */
     public function getDiscrepancy()
     {
         $logical = $this->input->post('logical');
@@ -1795,6 +1998,9 @@ class Inventory_model extends CI_Model
 
     }
 
+    /**
+     * This method is for reconciliation of serialized items.
+     */
     function recSerializedItems()
     {
         $remarks = $this->input->post('remarks');
@@ -1861,6 +2067,10 @@ class Inventory_model extends CI_Model
 
     }
 
+    /**
+     * This method is for reconciliation of items
+     * with no serials.
+     */
     public function nonSerializedRec()
     {
         $remarks = $this->input->post('remarks');
