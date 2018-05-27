@@ -4,22 +4,20 @@ $(document).ready(function () {
         $('#returnAct').attr('onclick', f);
     });
 //load data dash
-    $(document).ready(function () {
-        setInterval(function () {
-            $("#tUser").load("inventory/totalUser");
-            $("#itemsrec").load("inventory/itemsReceived");
-            $("#itemsiss").load("inventory/issuedItems");
-            $("#retitem").load("inventory/returnedItems");
-            $("#expitems").load("inventory/totalExpired");
-            $("#tcost").load("inventory/totalCost");
-            $("#tItemsDay").load("inventory/itemsThisDay");
-            $("#pendItems").load("inventory/pendingItems");
-            $("#tReturnedDay").load("inventory/itemsReturnedThisDay");
-            $("#tExprdSO").load("inventory/itemsExpiredSO");
-            $("#tCostSO").load("inventory/itemTcostSO");
+    setInterval(function () {
+        $("#tUser").load("inventory/totalUser");
+        $("#itemsrec").load("inventory/itemsReceived");
+        $("#itemsiss").load("inventory/issuedItems");
+        $("#retitem").load("inventory/returnedItems");
+        $("#expitems").load("inventory/totalExpired");
+        $("#tcost").load("inventory/totalCost");
+        $("#tItemsDay").load("inventory/itemsThisDay");
+        $("#pendItems").load("inventory/pendingItems");
+        $("#tReturnedDay").load("inventory/itemsReturnedThisDay");
+        $("#tExprdSO").load("inventory/itemsExpiredSO");
+        $("#tCostSO").load("inventory/itemTcostSO");
 
-        }, 1000);
-    });
+    }, 1000);
     $returnTable = $('#returnTable');
     $reportTable = $('#reportTable');
     var $reportOption = $('#reportsOption');
@@ -287,6 +285,8 @@ $(document).ready(function () {
     $('.selectpicker').selectpicker;
 
 
+
+
     $('#menuToggle').on('click', function (event) {
         $('body').toggleClass('open');
     });
@@ -340,24 +340,26 @@ $(document).ready(function () {
         serialize_forms();
     }
 // add contact supplier
-    var max_fields      = 5; //maximum input boxes allowed
-    var wrapper         = $(".input_contact"); //Fields wrapper
-    var add_button      = $(".add"); //Add button ID
+    var max_fields = 5; //maximum input boxes allowed
+    var wrapper = $(".input_contact"); //Fields wrapper
+    var add_button = $(".add"); //Add button ID
 
     var x = 1; //initlal text box count
-    $(add_button).click(function(e){ //on add input button click
+    $(add_button).click(function (e) { //on add input button click
         e.preventDefault();
-        if(x < max_fields){ //max input box allowed
+        if (x < max_fields) { //max input box allowed
             x++; //text box increment
             $(wrapper).append('<div><input id="contactno" name="contact[]" >' +
                 '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button></div>'); //add input box
-        }else{
+        } else {
             alert('You reached the maximum allowed number of contact number');
         }
     });
 
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
+    $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
     })
 });
 
@@ -380,12 +382,6 @@ function return_action($action, $retun_id, $s) {
     });
 }
 
-// $('.user-area> a').on('click', function(event) {
-// 	event.preventDefault();
-// 	event.stopPropagation();
-// 	$('.user-menu').parent().removeClass('open');
-// 	$('.user-menu').parent().toggleClass('open');
-// });
 function saveSerial() {
     data = $('#viewSerialForm').serializeArray();
     $.ajax({
@@ -446,7 +442,7 @@ function detail(id) {
                 }, {
                     field: 'state',
                     checkbox: 'true',
-                },{
+                }, {
                     field: 'PO',
                     title: 'PO number'
                 }, {
@@ -759,11 +755,7 @@ function init_inventory() {
             title: 'Remarks'
         }
         ]
-        // }, {
-        //     sortable: true,
-        //     field: 'Price',
-        //     title: 'PRICE'
-        // }]
+
     });
 
     $serializedItems.bootstrapTable({
@@ -857,8 +849,8 @@ function init_inventory() {
             }, {
                 sortable: true,
                 field: 'contactList',
-                formatter: function(data,row){
-                    return '<ul class="list-unstyled">'+data+'</ul>';
+                formatter: function (data, row) {
+                    return '<ul class="list-unstyled">' + data + '</ul>';
                 },
                 title: 'Primary Contact number'
             }, {
@@ -1474,38 +1466,40 @@ function modal() {
 
 //add item save
 function save(counter) {
-    var list = $('#list' + counter);
-    var step = $('#step' + counter + 'B');
-    $.ajax({
-        type: 'POST',
-        url: 'Inventory/save/' + counter,
-        data: $('#addItemForm').serializeArray(),
-        success: function (response) {
-            if (response) {
-                console.log($('#bulk').find('li').length);
-                if ($('#bulk').find('li').length > 2) {
-                    if (!list.prev().length < 2) {
-                        list.prev().addClass('active');
-                        step.prev().addClass('active');
+    $('#addItemForm').parsley().whenValidate({group: 'set' + counter}).done(function () {
+        var list = $('#list' + counter);
+        var step = $('#step' + counter + 'B');
+        $.ajax({
+            type: 'POST',
+            url: 'inventory/save/' + counter,
+            data: $('#addItemForm').serializeArray(),
+            success: function (response) {
+                if (response) {
+                    console.log($('#bulk').find('li').length);
+                    if ($('#bulk').find('li').length > 2) {
+                        if (!list.prev().length < 2) {
+                            list.prev().addClass('active');
+                            step.prev().addClass('active');
+                        } else {
+                            list.next().addClass('active');
+                            step.next().addClass('active');
+                        }
+                        list.remove();
+                        step.remove();
                     } else {
-                        list.next().addClass('active');
-                        step.next().addClass('active');
+                        location.reload();
                     }
-                    list.remove();
-                    step.remove();
-                } else {
-                    location.reload();
+                }
+            },
+            statusCode: {
+                500: function () {
+                    BootstrapDialog.show({
+                        message: 'Duplicate item name and description.'
+                    });
                 }
             }
-        },
-        statusCode: {
-            500: function () {
-                BootstrapDialog.show({
-                    message: 'Duplicate item name and description.'
-                });
-            }
-        }
 
+        });
     });
 }
 
@@ -1524,7 +1518,7 @@ function userdetailBack() {
 }
 
 
-//view and edit serial
+//view +and edit serial
 function viewSerial(id) {
     var $ul = $('#serial-tabs');
     var serialTabCounter = 1;
@@ -1783,7 +1777,7 @@ function noserial(id, q, retquant) {
                 "class=\'form-control col-md-12 col-xs-12\' required>" +
                 "</label>" +
                 "</div>");
-        }else{
+        } else {
             quasp = ("<div class=\"quant form-group\">" +
                 "<label>Quantity<span class=\"required\">*</span>" +
                 "<input min=\"0\" max=\"" + result + "\" type=\'number\' name=\'quantity\' placeholder='quantity\' " +
@@ -1870,116 +1864,6 @@ function init_bulkFucntion() {
     });
 
 }
-
-
-//add input fields
-// function addinputFields() {
-//     var number = document.getElementById("dist").value;
-//     var $input = document.createElement("input");
-//     var $department = document.createElement("input");
-//     var $code = document.createElement("input");
-//     var $purchase_no = document.createElement("input");
-//     var $purchase_req = document.createElement("input");
-//     var $obl_r = document.createElement("input");
-//     var $next = $('#next');
-//
-//     //quantity
-//     var $quantity = document.createElement("input");
-//
-//     for (var i = 0; i < number; i++) {
-//
-//         $input.type = "text";
-//         $input.setAttribute('class', 'form-control col-md-7 col-xs-12');
-//         $input.setAttribute('name', 'serial' + '[' + [i] + ']');
-//         container1.appendChild($input);
-//
-//     }
-//
-//     for (i = 0; i < number; i++) {
-//         $input.type = "text";
-//         $input.setAttribute('class', 'form-control col-md-7 col-xs-12');
-//         $input.setAttribute('name', 'owner' + '[' + [i] + ']');
-//         container2.appendChild($input);
-//     }
-//
-//     $quantity.type = "text";
-//     $quantity.setAttribute('name', 'quant');
-//     $quantity.setAttribute('id', 'quan');
-//     $quantity.setAttribute('hidden', 'true');
-//
-//     container3.appendChild($quantity);
-//     $next.click("input", function () {
-//         var dist_quantity = $('#dist').val();
-//         $('#quan').val(dist_quantity);
-//     });
-//
-//     //deptopt
-//     $department.type = "text";
-//     $department.setAttribute('name', 'dept');
-//     $department.setAttribute('id', 'dept');
-//     $department.setAttribute('disabled', 'true');
-//     $department.setAttribute('hidden', 'true');
-//
-//     container3.appendChild($department);
-//     $next.click("input", function () {
-//         var department_no = $('#deptopt').val();
-//         $('#dept').val(department_no);
-//     });
-//
-//     //account code
-//     $code.type = "text";
-//     $code.setAttribute('name', 'Code');
-//     $code.setAttribute('id', 'code');
-//     $code.setAttribute('disabled', 'true');
-//     $code.setAttribute('hidden', 'true');
-//
-//     container3.appendChild($code);
-//     $next.click("input", function () {
-//         var accode = $('#accode').val();
-//         $('#code').val(accode);
-//     });
-//
-//     //po
-//     $purchase_no.type = "text";
-//     $purchase_no.setAttribute('name', 'po');
-//     $purchase_no.setAttribute('id', 'p_o');
-//     $purchase_no.setAttribute('disabled', 'true');
-//     $purchase_no.setAttribute('hidden', 'true');
-//
-//     container3.appendChild($purchase_no);
-//     $next.click("input", function () {
-//         var po = $('#po').val();
-//         $('#p_o').val(po);
-//     });
-//
-//     //pr
-//     $purchase_req.type = "text";
-//     $purchase_req.setAttribute('name', 'pr');
-//     $purchase_req.setAttribute('id', 'p_r');
-//     $purchase_req.setAttribute('disabled', 'true');
-//     $purchase_req.setAttribute('hidden', 'true');
-//
-//     container3.appendChild(purchase_req);
-//     $next.click("input", function () {
-//         var pr = $('#pr').val();
-//         $('#p_r').val(pr);
-//     });
-//
-//     //obr
-//     $obl_r.type = "text";
-//     $obl_r.setAttribute('name', 'obr');
-//     $obl_r.setAttribute('id', 'o_b_r');
-//     $obl_r.setAttribute('disabled', 'true');
-//     $obl_r.setAttribute('hidden', 'true');
-//
-//     container3.appendChild($obl_r);
-//     $next.click("input", function () {
-//         var obr = $('#obr').val();
-//         $('#o_b_r').val(obr);
-//     });
-//
-//
-// }
 
 //traverse to next element
 function nextTab(elem) {
@@ -2076,9 +1960,26 @@ function revertDetail($det_id, $serialStatus) {
     });
 }
 
+function checkboxLimit() {
+    var inputTags = document.getElementsByName('model_selection[]');
+    var total = 0;
+
+    for (var i = 0; i < inputTags.length; i++) {
+
+        if (inputTags[i].checked) {
+            total = total + 1;
+        }
+
+        if (total > 2) {
+            alert('Pick Just One Please')
+            inputTags[i].checked = false;
+            return false;
+        }
+    }
+}
+
 //for reconciliation
 function reconcile() {
-
     $date = $('#inventoryDate').val();
     $status = $('#serialTab').find('.active').data('status');
     $id = [];
@@ -2130,6 +2031,7 @@ function reconcile() {
                         item_name.push('<h4>' + data[i].item_name + '</h4><div class="itemsDiv" data-missing="' + $missing[i] + '" ' +
                             'id="item' + data[i].item_id + '">'
                             + data[i].serials + '</div>');
+
                     }
 
                     $('#items').html(item_name);
@@ -2164,6 +2066,7 @@ function reconcile() {
 
 }
 
+
 function printToPDF() {
 
     // $('#ledger').tableExport({
@@ -2186,18 +2089,18 @@ function printToPDF() {
 function printToPDFreport() {
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth()+1;
+    var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
 
-    if(dd<10) {
-        dd = '0'+dd
+    if (dd < 10) {
+        dd = '0' + dd
     }
 
-    if(mm<10) {
-        mm = '0'+mm
+    if (mm < 10) {
+        mm = '0' + mm
     }
 
-    dateCreated = '<p>Date Created: '+mm + '/' + dd + '/' + yyyy+'</p>';
+    dateCreated = '<p>Date Created: ' + mm + '/' + dd + '/' + yyyy + '</p>';
 
     $report = $('#reportsOption').val();
     var header;
@@ -2211,7 +2114,7 @@ function printToPDFreport() {
         header = '<h1>Supplier Items</h1><br><p>General Service Office</p>';
     }
     var printContents = $('#returnedReport').html();
-    document.body.innerHTML = '<div class="text-center">'+header+'</div>' + dateCreated + printContents;
+    document.body.innerHTML = '<div class="text-center">' + header + '</div>' + dateCreated + printContents;
     window.print();
     location.reload();
 }
@@ -2331,4 +2234,14 @@ function download() {
 
 function verifypass() {
     $old = $('#old').val();
+}
+
+function validateReconcile(){
+    $status = $('#serialTab').find('.active').data('status');
+
+    $('#recValidate').parsley().whenValidate({
+        group: $status
+    }).done(function () {
+        $('.invdate').modal('show');
+    });
 }

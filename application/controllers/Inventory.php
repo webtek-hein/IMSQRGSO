@@ -172,6 +172,12 @@ class Inventory extends CI_Controller
         $viewser = "";
         $action = "";
         foreach ($list as $detail) {
+
+            if (array_key_exists('dist_id', $detail)) {
+                $returnquant = $this->inv->retquant($dept_id, $id, $detail['dist_id']);
+            }else {
+                $returnquant = $this->inv->retquant1($dept_id, $id);
+            }
             //if there is a serial
             if ($detail['serialStatus'] === '1') {
                 $viewser = "<a class=\"serialdrop dropdown-item\" onclick='viewSerial($detail[item_det_id])' data-toggle=\"collapse\" 
@@ -330,6 +336,7 @@ class Inventory extends CI_Controller
      */
     public function getacccodes()
     {
+        $data = array();
         $acc_code = $this->inv->select_acc_codes();
         foreach ($acc_code as $list) {
             $data[] = array(
@@ -880,7 +887,10 @@ class Inventory extends CI_Controller
         $list = $this->inv->viewItemPerSerial($status);
         $data = array();
         foreach ($list as $item) {
-            $count_input = "<input autofocus type='number' min='0' name='reconcileitem[]' class='reconitem form-control' value=''>";
+            $count_input = "<input type='number' 
+            autofocus type='number' data-parsley-group=".$status." min='0' max=".$item['quantity']." 
+            name='reconcileitem[]' class='reconitem recQuant form-control' 
+            required>";
 
             $remarks_input = "<textarea autofocus type='text' name='remarks[]' class='remarks'></textarea>";
             $cost = "PHP " . number_format($item['cost'], 2);

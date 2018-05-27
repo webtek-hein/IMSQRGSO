@@ -1004,6 +1004,7 @@
 <!--end of Return-->
 <!--Reconcile Page-->
 <div hidden class="reconcilePage col-lg-12">
+    <form id="recValidate">
     <div class="card">
         <div class="card-header">
             <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))"
@@ -1032,6 +1033,7 @@
             <div class="tab-content pl-3 p-1" id="">
                 <div class="table-responsive-sm tab-pane fade show active" id="nonSerTab" role="tabpanel"
                      aria-labelledby="nonSer-tab">
+
                     <table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="serializedItems"
                            class="table table-bordered table-hover"></table>
                 </div>
@@ -1042,15 +1044,13 @@
                                        class="table table-bordered table-hover"></table>
 
                 </div>
-
             </div>
         </div>
 
     </div>
-    <a type="button" class="compare btn btn-success" data-toggle="modal"
-       data-target=".invdate">Reconcile Items</a>
+    <a type="button" class="compare btn btn-success" onclick="validateReconcile()">Reconcile Items</a>
     <a type="button" class="compare btn btn-success">Compare</a>
-
+    </form>
 </div>
 
 <div hidden class="discrepancies col-lg-12">
