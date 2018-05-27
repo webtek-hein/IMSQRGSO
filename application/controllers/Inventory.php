@@ -651,7 +651,6 @@ class Inventory extends CI_Controller
                 'item' => $rets['item_name'],
                 'desc' => $rets['item_description'],
                 'reason' => $rets['remarks'],
-                'returnperson' => $rets['receiver'],
                 'receiver' => $rets['receiver'],
                 'status' => $rets['status'],
                 'action' => $action
@@ -683,8 +682,13 @@ class Inventory extends CI_Controller
     {
         $itemsreceivedCount = $this->inv->itemsrec();
         foreach ($itemsreceivedCount as $list) {
-            echo $list['countInc'];
+            $data[] = array(
+                'countinc' => $list['countInc'],
+                'itemname' => $list['item_name'],
+                'custodian' => $list['custodian']
+            );
         }
+        echo json_encode($data);
     }
 
     //total issued items dash custodian and admin
@@ -692,8 +696,14 @@ class Inventory extends CI_Controller
     {
         $issueditemsCount = $this->inv->issued();
         foreach ($issueditemsCount as $list) {
-            echo $list['issued'];
+            $data[] = array(
+                'issuedcount' => $list['countDec'],
+                'itemname' => $list['item_name'],
+                'custodian' => $list['custodian'],
+                'department' => $list['department']
+            );
         }
+        echo json_encode($data);
     }
 
     //total returned items dash custodian and admin
@@ -701,8 +711,13 @@ class Inventory extends CI_Controller
     {
         $returneditemsCount = $this->inv->returndash();
         foreach ($returneditemsCount as $list) {
-            echo $list['returned'];
+            $data[] = array(
+                'returncount' => $list['countRet'],
+                'itemname' => $list['item_name'],
+                'department' => $list['department']
+            );
         }
+        echo json_encode($data);
     }
 
     //total cost dash custodian and admin
@@ -724,8 +739,12 @@ class Inventory extends CI_Controller
     {
         $totalexpiredCount = $this->inv->totalexpired();
         foreach ($totalexpiredCount as $list) {
-            echo $list['expired'];
+            $data[] = array(
+                'expirecount' => $list['countExp'],
+                'itemname' => $list['item_name']
+            );
         }
+        echo json_encode($data);
     }
 
     //total user dash admin
