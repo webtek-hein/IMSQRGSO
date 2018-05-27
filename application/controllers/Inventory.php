@@ -348,6 +348,10 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * This allows the supply officer to return items
+     * to the custodian.
+     */
     public function returnitem()
     {
         //supply officer
@@ -378,6 +382,9 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * This allows distribution of items to departments.
+     */
     public function userDistribute()
     {
         $position = $this->session->userdata['logged_in']['position'];
@@ -387,6 +394,13 @@ class Inventory extends CI_Controller
         redirect('department');
     }
 
+    /**
+     *
+     * This allows a supply  officer to get the owner of the item
+     * to be transfered to other end user.
+     *
+     * @param int   $dist_id ID of the receiver of the distributed item.
+     */
     public function getEndUser($dist_id)
     {
         //supply officer
@@ -412,6 +426,12 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     *
+     *This get the data of the next owner of the item.
+     *
+     * @param int   $serialid ID for the items.
+     */
     public function getTransfer($serialid)
     {
         $name = $this->inv->getTrans($serialid);
@@ -424,6 +444,13 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     *
+     * This gets the data if the item and serial for display.
+     *
+     * @param int   $det_id This is the department ID.
+     * @param int   $sid This is the serial ID.
+     */
     public function getSerialreturn($det_id, $sid)
     {
         //supply officer
@@ -469,6 +496,14 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     *
+     * This get the data of the serial button to display
+     * the list of serials of an item.
+     *
+     * @param int   $det_id Department ID
+     * @param int   $sid    Serial ID.
+     */
     public function getSerialbtn($det_id, $sid)
     {
         //supply office
@@ -490,11 +525,22 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * This allows adding of serial to some items.
+     */
     public function addSerial()
     {
         echo json_encode($this->inv->addSerial());
     }
 
+    /**
+     *
+     * This allows the viewing of departments together
+     * with their inventory.
+     *
+     * @param string    $type Type of the item.
+     * @param int       $id ID of the the method.
+     */
     public function viewDept($type, $id)
     {
         $department = $this->session->userdata['logged_in']['dept_id'];
@@ -521,6 +567,13 @@ class Inventory extends CI_Controller
 
     }
 
+    /**
+     *
+     * This allows viewing of the reconciled items.
+     *
+     * @param string    $type Type of the item.
+     * @param int       $id ID for the method.
+     */
     public function reconcileview($type, $id)
     {
         $list = $this->inv->reconcile($type, $id);
@@ -549,12 +602,23 @@ class Inventory extends CI_Controller
 
     }
 
+    /**
+     * This is for reconciling items.
+     */
     public function reconcile()
     {
         echo json_encode($this->inv->endingInventory());
 
     }
 
+    /**
+     *
+     * This allows the item's data to be displayed.
+     *
+     * @param string    $dept Department.
+     * @param int       $id ID for the method.
+     * @param int       $dept_id Department ID.
+     */
     public function getItem($dept, $id, $dept_id)
     {
         $list = $this->inv->getItem($dept, $id, $dept_id);
@@ -578,24 +642,39 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * This allows item's quantity to be edited.
+     */
     public function editquantity()
     {
         $this->inv->editquant();
         redirect('inventory');
     }
 
+    /**
+     * This allows a supply officer the accepting of items.
+     */
     public function acceptitem()
     {
         $this->inv->accept();
         redirect('inventory');
     }
 
+    /**
+     * This allows a supply officer to return items.
+     */
     public function deptreturn()
     {
         $this->inv->returnitem();
         redirect('department');
     }
 
+    /**
+     *
+     *This allows data of the general ledger to be displayed.
+     *
+     * @param int   $id Parameter for the ID.
+     */
     public function getLedger($id)
     {
         $list = $this->inv->ledger($id);
@@ -623,6 +702,9 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * This allows the data of the returned items to be displayed.
+     */
     public function viewReturn()
     {
         $position = $this->session->userdata['logged_in']['position'];
@@ -659,7 +741,9 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    //actions for returning
+    /**
+     * This allows the returned item to be accepted, returned or canceled.
+     */
     public function return_actions()
     {
         $action = $this->input->post('action');
@@ -677,7 +761,9 @@ class Inventory extends CI_Controller
         }
     }
 
-    //total items received dash custodian and admin
+    /**
+     * This gets the total items received for custodian and admin dashboard.
+     */
     public function itemsReceived()
     {
         $itemsreceivedCount = $this->inv->itemsrec();
@@ -691,7 +777,9 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    //total issued items dash custodian and admin
+    /**
+     * This gets the total issued items for custodian and admin dashboard.
+     */
     public function issuedItems()
     {
         $issueditemsCount = $this->inv->issued();
@@ -706,7 +794,9 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    //total returned items dash custodian and admin
+    /**
+     * This gets the total returned item for custodian and admin.
+     */
     public function returnedItems()
     {
         $returneditemsCount = $this->inv->returndash();
@@ -720,7 +810,9 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    //total cost dash custodian and admin
+    /**
+     * This get the total cost of items in the inventory for custodian and admin.
+     */
     public function totalCost()
     {
         $totalcostSum = $this->inv->totalcost();
@@ -734,7 +826,9 @@ class Inventory extends CI_Controller
         }
     }
 
-    //total expired items dash custodian and admin
+    /**
+     * This gets the total expired items for custodian and admin.
+     */
     public function totalExpired()
     {
         $totalexpiredCount = $this->inv->totalexpired();
@@ -746,8 +840,9 @@ class Inventory extends CI_Controller
         }
         echo json_encode($data);
     }
-
-    //total user dash admin
+    /**
+     * This gets the total users registered.
+     */
     public function totalUser()
     {
         $totaluserCount = $this->inv->totaluser();
@@ -756,13 +851,24 @@ class Inventory extends CI_Controller
         }
     }
 
-    //remove detail
+    /**
+     *
+     * This allows a detail of an item to be removed.
+     *
+     * @param int       $id ID for the method.
+     * @param string    $serialStatus Status of the serial.
+     */
     public function removeDetail($id, $serialStatus)
     {
         $this->inv->rmDet($id, $serialStatus);
     }
 
-    //show removed items
+    /**
+     *
+     * This allows the data of removed items to be displayed.
+     *
+     * @param $id ID for the method
+     */
     public function showRemovedItems($id)
     {
         $list = $this->inv->rmItems($id);
@@ -783,21 +889,35 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
-    //revert removed details
+    /**
+     *
+     * Allows the deleted item details to be reverted.
+     *
+     * @param int       $id ID of the method.
+     * @param string    $serialStatus Status of the serial.
+     */
     public function revert($id, $serialStatus)
     {
         $this->inv->revert($id, $serialStatus);
     }
 
-    //get list of supply officer
+    /**
+     *
+     * This gets the list of supply officer.
+     *
+     * @param int   $id ID for the method.
+     */
     public function getSupplyOfficers($id)
     {
         $list = $this->inv->getSuppOfficers($id);
 
         echo json_encode($list);
     }
-//supplier dashboard
-    //count items issued for the supplier for this day
+
+    /**
+     * This count items issued for the supplier for this day
+     * for the supply officer dashboard.
+     */
     public function itemsThisDay()
     {
         $itemsIssuedCount = $this->inv->itemsThisDay();
@@ -806,7 +926,10 @@ class Inventory extends CI_Controller
         }
     }
 
-    //count pending items for the supplier
+    /**
+     * This count pending items for the supplier
+     * for the supply officer dashboard.
+     */
     public function pendingItems()
     {
         $itemsPendCount = $this->inv->pendingItem();
@@ -815,7 +938,10 @@ class Inventory extends CI_Controller
         }
     }
 
-    //items returned for the supplier for this day
+    /**
+     * This count items returned for this day
+     * for the supply officer dashboard.
+     */
     public function itemsReturnedThisDay()
     {
         $totalReturned = $this->inv->itemsReturnedThisDay();
@@ -824,7 +950,10 @@ class Inventory extends CI_Controller
         }
     }
 
-    //items expired for SupplyOfficer
+    /**
+     * This items expired as of the day
+     * for the supply officer dashboard.
+     */
     public function itemsExpiredSO()
     {
         $totalEx = $this->inv->itemsExpired();
@@ -833,7 +962,10 @@ class Inventory extends CI_Controller
         }
     }
 
-    //total items cost Supply
+    /**
+     * This is for computing the total cost of
+     * items in the supply officer inventory.
+     */
     public function itemTcostSO()
     {
         $totalcostSum = $this->inv->itemsTcost();
@@ -847,7 +979,13 @@ class Inventory extends CI_Controller
         }
     }
 
-    //deliver Reports
+    /**
+     *
+     * This allows the data to be displayed for the reports.
+     *
+     * @param int       $report For counting reports.
+     * @param string    $type Type of the item.
+     */
     public function getReport($report, $type)
     {
         if ($report === '0') {
@@ -860,6 +998,17 @@ class Inventory extends CI_Controller
             echo json_encode($this->inv->supplierReport($type));
         }
     }
+
+    /**
+     *
+     * This allows the generating of reports with date
+     * included.
+     *
+     * @param int       $report The count of reports.
+     * @param string    $type The type of item.
+     * @param string    $from The sender of the report.
+     * @param string    $to The receiver of the report.
+     */
     public function getReportWithDate($report, $type,$from,$to)
     {
         if ($report === '0') {
@@ -873,22 +1022,38 @@ class Inventory extends CI_Controller
         }
     }
 
+    /**
+     * This is for getting inventory dates.
+     */
     public function getInvDates()
     {
         echo json_encode($this->inv->getInventoryDates());
     }
 
+    /**
+     *
+     * Gets the data of the return.
+     *
+     * @param string    $status Status of the serial.
+     * @param int       $id ID for the method.
+     */
     function getRetData($status, $id)
     {
         echo json_encode($this->inv->getRetData($status, $id));
     }
 
+    /**
+     * This is for reconciling inventory.
+     * For items only with no discrepancy
+     */
     function reconcileInventory()
     {
         echo json_encode($this->inv->reconcileInv());
     }
 
-
+    /**
+     * This is for getting discrepancy of items.
+     */
     function getDiscrepancy()
     {
         $list = $this->inv->getDiscrepancy();
@@ -908,11 +1073,20 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * This is for recording serialized items.
+     */
     function recSerializedItems()
     {
         $this->inv->recSerializedItems();
     }
 
+    /**
+     *
+     * This allows viewing of item per status.
+     *
+     * @param String    $status Status of the serial.
+     */
     function viewItemPerStatus($status)
     {
         $list = $this->inv->viewItemPerSerial($status);
@@ -951,6 +1125,9 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * This is for reconciliation of items with no serial.
+     */
     public function reconcileNS()
     {
         $this->inv->nonSerializedRec();

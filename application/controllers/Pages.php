@@ -9,6 +9,11 @@ class Pages extends CI_Controller {
         $this->load->model('Inventory_model','inv');
     }
 
+    /**
+     * This is for the redirection of pages.
+     *
+     * @param string $page Page of redirection.
+     */
     public function view($page = 'dashboard')
     {
         if(!file_exists(APPPATH.'views/pages/'.$page.'.php')){

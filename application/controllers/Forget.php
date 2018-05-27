@@ -22,6 +22,10 @@ class Forget extends CI_Controller
 
     }
 
+    /**
+     * This allows email to be entered if ever a user forgot
+     * his/her password for a change password request.
+     */
     public function doforget()
     {
         $email = $this->input->post('email');
@@ -35,6 +39,12 @@ class Forget extends CI_Controller
         header('Location: ' . base_url() . 'forgot');
     }
 
+    /**
+     *
+     * This is for resetting password of user's.
+     *
+     * @param $user The user of the account that needs password reset.
+     */
     public function resetpassword($user){
 
         date_default_timezone_set('GMT');

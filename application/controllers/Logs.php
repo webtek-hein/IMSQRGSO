@@ -12,6 +12,12 @@ class Logs extends CI_Controller
         $this->load->model('Logs_model', 'logs');
     }
 
+    /**
+     *
+     * This is for logging the items added in the inventory.
+     *
+     * @param String    $type Type of item.
+     */
     public function increaseLog($type)
     {
         //supply officer
@@ -38,6 +44,12 @@ class Logs extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     *
+     * This is for logging items which has been distributed to supply officers.
+     *
+     * @param string $type Type of item.
+     */
     public function decreaseLog($type)
     {
         //supply officer
@@ -71,6 +83,12 @@ class Logs extends CI_Controller
         }
     }
 
+    /**
+     *
+     * This is for logging the edit on the items data.
+     *
+     * @param string $type Type of the item.
+     */
     public function editlogitem($type){
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
@@ -88,6 +106,13 @@ class Logs extends CI_Controller
         }
         echo json_encode($data);
     }
+
+    /**
+     *
+     * This is for logging the edit on the items data.
+     *
+     * @param int   $itemid ID of the item.
+     */
     public function editLog($itemid)
     {
         $position = $this->session->userdata['logged_in']['position'];
@@ -107,6 +132,12 @@ class Logs extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     *
+     * This is for logging returned items.
+     *
+     * @param String    $type Type of the item.
+     */
     public function returnLog($type)
     {
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
@@ -129,6 +160,12 @@ class Logs extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     *
+     * This gets the data of transfer of items.
+     *
+     * @param $serialid ID for the serial.
+     */
     public function gettransfer($serialid){
         $dept_id = $this->session->userdata['logged_in']['dept_id'];
         $position = $this->session->userdata['logged_in']['position'];

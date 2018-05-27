@@ -11,12 +11,18 @@ class Supplier extends CI_Controller
         $this->load->model('Supplier_model', 'supp');
     }
 
+    /**
+     * This is for adding supplier.
+     */
     public function addSupplier()
     {
         $this->supp->insertSupplier();
         redirect('supplier');
     }
 
+    /**
+     * This allows the list of suppliers to be displayed.
+     */
     public function viewSuppliers()
     {
         $list = $this->supp->getSupplier();
@@ -44,6 +50,9 @@ class Supplier extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * This allows the viewing of account code.
+     */
     public function viewAccountCode()
     {
         $list = $this->supp->getAccountCodes();
@@ -59,6 +68,9 @@ class Supplier extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * This is for displaying data of a supplier.
+     */
     public function supplierOption()
     {
         $list = $this->supp->getSupplier();
@@ -73,6 +85,12 @@ class Supplier extends CI_Controller
 
     }
 
+    /**
+     *
+     * This gets the data of a supplier for displaying.
+     *
+     * @param int   $id ID of the method.
+     */
     public function getSupplier($id)
     {
         $list = $this->supp->retrieveSupplier($id);
@@ -91,6 +109,9 @@ class Supplier extends CI_Controller
         echo json_encode($data);
     }
 
+    /**
+     * Allows data on the supplier to be edited.
+     */
     public function editSupplier()
     {
         $this->supp->editSupplier();

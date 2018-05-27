@@ -2,6 +2,9 @@
 
 class Search extends CI_Controller {
 
+    /**
+     * This is for checking if username is registered or not.
+     */
  public function checkUsername()
  {
   	$this->load->model('user_db');
