@@ -24,7 +24,7 @@
             <div id="air" class="right-invoice">
                 <section id="memo">
                     <section id="client-info">
-                        <img src="logo.png" style="width:50px; height:50px;"></img>
+                        <img src="./assets/images/logo.png" style="width:50px; height:50px;"></img>
                         <h6><b>City Government of Baguio</b></h6>
                         <br>
                         <h6 style="margin-top:-10px;"><b>ACCEPTANCE AND INSPECTION REPORT</b></h6>
