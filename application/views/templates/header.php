@@ -62,14 +62,14 @@ if (isset($this->session->userdata['logged_in'])) {
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="<?php echo base_url() ?>dashboard"><i class="menu-icon fa fa-dashboard"></i> DASHBOARD </a>
+                    <a href="<?php echo base_url() ?>dashboard" data-toggle="tooltip" data-placement="left" title="DASHBOARD"><i class="menu-icon fa fa-dashboard"></i> DASHBOARD </a>
                 </li>
                 <li>
                     <?php 
                     if ($position === 'Supply Officer') {
-                    echo '<a href="department"><i class="menu-icon fa fa-book"></i> INVENTORY</a>';
+                    echo '<a href="department" data-toggle="tooltip" data-placement="left" title="INVENTORY"><i class="menu-icon fa fa-book"></i> INVENTORY</a>';
                     }else{
-                        echo '<a href="inventory"><i class="menu-icon fa fa-book"></i> INVENTORY</a>';
+                        echo '<a href="inventory" data-toggle="tooltip" data-placement="left" title="INVENTORY"><i class="menu-icon fa fa-book"></i> INVENTORY</a>';
                     }
                     ?>
                 </li>
@@ -77,20 +77,20 @@ if (isset($this->session->userdata['logged_in'])) {
                 <?php
                 if ($position === 'Admin' || $position === 'Custodian') {
                     echo '<li id="dept">
-                                     <a href="department"><i class="menu-icon fa fa-institution"></i>DEPARTMENT</a>
+                                     <a href="department" data-toggle="tooltip" data-placement="left" title="DEPARTMENT"><i class="menu-icon fa fa-institution"></i>DEPARTMENT</a>
                                   </li>' .
                         '<li id="li3">
-                                    <a href="supplier"><i class="menu-icon fa fa-truck"></i>SUPPLIER</a>
+                                    <a href="supplier" data-toggle="tooltip" data-placement="left" title="SUPPLIER"><i class="menu-icon fa fa-truck"></i>SUPPLIER</a>
                                  </li>';
                 }
                 if ($position === 'Admin') {
                     echo '<li id="li4">
-                                    <a href="Accounts"><i class="menu-icon fa fa-users"></i>USERS</a>
+                                    <a href="Accounts" data-toggle="tooltip" data-placement="left" title="USERS"><i class="menu-icon fa fa-users"></i>USERS</a>
                                   </li>';
                 }
                 if ($position === 'Supply Officer' || $position === 'Custodian') {
                 echo '<li id="li5">
-                                    <a href="return"><i class="menu-icon fa fa-undo"></i>RETURNS</a>
+                                    <a href="return" data-toggle="tooltip" data-placement="left" title="RETURNS"><i class="menu-icon fa fa-undo"></i>RETURNS</a>
                                   </li>';
                 }
                 ?>
@@ -101,7 +101,7 @@ if (isset($this->session->userdata['logged_in'])) {
                     if ($position !== 'Supply Officer') {
                         echo ' <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Logs</a>
+                       aria-expanded="false"> <i class="menu-icon fa fa-laptop" data-toggle="tooltip" data-placement="left" title="LOGS"></i>Logs</a>
                                                 <ul class="sub-menu children dropdown-menu">'.
                                 '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
                                 '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>'.

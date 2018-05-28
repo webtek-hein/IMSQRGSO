@@ -27,9 +27,8 @@
             <div class=" col-lg-12 accounts-tab">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-info" id="headingZero" style="border-color: #0c0c0c"
-                            data-toggle="tooltip" data-placement="bottom" title="Add user">
-                            <i class="fa fa-plus"></i><span></span>
+                        <button class="btn btn-info" id="headingZero">
+                            <i class="fa fa-plus"></i><span> Add User</span>
                         </button>
                     </div>
                     <div class="card-body">
