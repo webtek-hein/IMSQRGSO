@@ -46,6 +46,10 @@
 <script src="assets/js/sb-admin-datatables.min.js"></script>
 <script src="assets/js/sb-admin-charts.min.js"></script>
 <script src="assets/js/sb-admin.min.js"></script>
-
+    <script src="assets/js/lib/peitychart/jquery.peity.min.js"></script>
+    <!-- scripit init-->
+    <script src="assets/js/lib/peitychart/peitychart.init.js"></script>
+    <script src="assets/js/lib/chart-js/Chart.bundle.js"></script>
+    <script src="assets/js/lib/chart-js/chartjs-init.js"></script>
 </body>
 </html>
