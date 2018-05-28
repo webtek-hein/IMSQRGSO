@@ -6,7 +6,6 @@
     $email = ($this->session->userdata['user_in']['email']);
     $contact_no = ($this->session->userdata['user_in']['contact_no']);
     $password = ($this->session->userdata['logged_in']['password']);
-    $image = ($this->session->userdata['image_in']['image']);
 ?>
 <link rel="stylesheet" type="text/css" href="assets/css/profile.css">
   <div class="content-wrapper">
@@ -14,29 +13,6 @@
     <section class="content">
 
       <div class="row">
-	  <div class="col-md-3">
-          <!-- Profile Image -->
-          <?php echo form_open_multipart('profile/upload_image'); ?>
-          <form>
-          <div style="width:200px" class="box box-primary">
-
-              <div class="box-body box-profile">
-                  <?php if($this->session->flashdata('mesg')): ?>
-                      <br><p><?php echo $this->session->flashdata('mesg'); ?></p>
-                  <?php endif; ?>
-
-                  <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>/images/<?php echo $image ?>" alt="User profile picture">
-
-                  <h3 class="profile-username text-center"><?php echo $firstname.' '.$lastname ?></h3>
-                  <div style="padding: 0 0 10px 0;"  class="col-sm-offset-0 col-sm-5">
-                      <input type="file" name="userfile" size="20" />
-                      <input type="submit" name="upload" value="Upload" />
-                  </div>
-              </div>
-          </div>
-          </form>
-          <!-- /.box -->
-		</div>
         <!-- /.col -->
         <div class="col-md-9">
           <div class="nav-tabs-custom">
@@ -78,14 +54,13 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label" >Contact no</label>
-
+                    <label for="inputCon" class="col-sm-2 control-label" >Contact no</label>
                     <div class="col-sm-9">
-                      <input type="number" required pattern="^(09|\+639)\d{9}$" class="form-control" id="inputName" name="contact_no" value="<?php echo $contact_no ?>">
+                      <input type="number" required pattern="^(09|\+639)\d{9}$" class="form-control has-feedback-left col-6" id="inputName" name="contact_no" value="<?php echo $contact_no ?>">
                     </div>
                   </div>
     <div class="form-group">
-        <div style="padding: 0 10px 10px 90px;" class="col-sm-offset-8 col-sm-9">
+        <div class="col-sm-offset-8 col-sm-9">
             <button class="btn btn-success" type="submit" name="id" id="edtbutton">
                 <i class="fa fa-check"></i> Save
             </button>
@@ -100,7 +75,7 @@
     <div class="col-md-9">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li><a href="" data-toggle="tab">Update Profile</a></li>
+                <li><a href="" data-toggle="tab">Update Password</a></li>
                     <br>
                 <?php if($this->session->flashdata('passwordmsg')): ?>
                     <br><p><?php echo $this->session->flashdata('passwordmsg'); ?></p>
@@ -114,25 +89,26 @@
                     <?php echo validation_errors(); ?>
                     <?php echo form_open('profile/changepass'); ?>
 
-
+                    FORMAT: must be more than 5 characters
 				           <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Old Password</label>
+                    <label for="inputName" class="col-sm-2 control-label"></label>
                     <div class="col-sm-9">
                       <input id="old" type="password" required class="form-control" name="old_password" placeholder="old password" >
                     </div>
-
                   </div>
+                  <br>
                     <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label">New Password</label>
+                        <label for="inputName" class="col-sm-2 control-label"></label>
                         <div class="col-sm-9">
-                            <input type="password"  required class="form-control" name="new_password" placeholder="password" pattern=".{6,}$">
+                            <input type="password"  required class="form-control" name="new_password" placeholder="new password" pattern=".{6,}$">
                         </div>
-                        <small class="form-text text-muted">Format: > 5 characters</small>
+                        <small class="form-text text-muted"></small>
                     </div>
+                    <br>
                     <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Confirm New Password</label>
+                    <label for="inputName" class="col-sm-2 control-label"></label>
                     <div class="col-sm-9">
-                      <input type="password" required class="form-control" id="inputPasswordAgain" name="con_new_password" placeholder="password">
+                      <input type="password" required class="form-control" id="inputPasswordAgain" name="con_new_password" placeholder="confirm password">
                     </div>
                   </div>
 
