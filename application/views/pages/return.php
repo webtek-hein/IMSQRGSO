@@ -120,7 +120,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <i class="fa fa-refresh"></i>
-                    <button type="button" class="btn btn-danger btn-sm pull-right" data-dismiss="modal"><i class="fa fa-times"></i></button>
                 </div>
                 <div class="modal-body">
                     <h5 class="modal-title" id="myModalLabel">Are you sure you want to Accept?</h5>

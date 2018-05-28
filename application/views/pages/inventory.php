@@ -765,8 +765,8 @@
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
                                 <br/>
-                                <button onclick="printToPDF()" class="btn btn-info fa fa-download"
-                                        style="border-color: #0c0c0c"> Download as PDF
+                                <button onclick="printToPDF()" class="btn btn-info fa fa-download">
+                                    Download as PDF
                                 </button>
                                 <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
@@ -793,8 +793,7 @@
             <div hidden class="additemDiv col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-danger" id="exit" style="border-color: #0c0c0c"
-                                onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))"><i class="fa fa-times"></i>
+                        <button class="btn btn-danger" id="exit" onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))">
                             Cancel
                         </button>
                     </div>
@@ -1064,8 +1063,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="largeModalLabel">Distribution</h5>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>
-                    </button>
+                    <i class="fa fa-times" data-dismiss="modal" style="color:red"></i>
                 </div>
                 <div class="modal-body">
 
@@ -1128,8 +1126,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal"
-                            style="border-color: #0c0c0c"><i class="fa fa-arrow-down"></i> Save
+                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal">
+                        <i class="fa fa-arrow-down"></i> Save
                     </button>
                 </div>
             </div>
@@ -1428,9 +1426,10 @@
 
             </div>
             <div class="card-body">
+                <a type="button" class="compare btn btn-success " onclick="validateReconcile()">Reconcile Items</a>
+                <a type="button" class="compare btn btn-success ">Compare</a>
 
-                <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download"> Download as PDF</button>
-                <br/>
+                <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download pull-right"> Download as PDF</button>
 
                 <ul class="nav nav-tabs" id="serialTab" role="tablist">
                     <li class="nav-item">
@@ -1464,8 +1463,6 @@
             </div>
 
         </div>
-        <a type="button" class="compare btn btn-success" onclick="validateReconcile()">Reconcile Items</a>
-        <a type="button" class="compare btn btn-success">Compare</a>
     </form>
 </div>
 
