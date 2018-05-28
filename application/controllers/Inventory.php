@@ -725,7 +725,8 @@ class Inventory extends CI_Controller
                                 data-toggle="tooltip" data-placement="bottom" title="Decline"></i></button>';
 
             } else if ($position === 'Supply Officer') {
-                $action = '<button onclick="return_action(2,' . $rets['return_id'] . ')" class="btn btn-primary">Cancel</button>';
+                $action = '<i onclick="return_action(2,' . $rets['return_id'] . ')" class="btn btn-lg fa fa-times-circle" 
+                                data-toggle="tooltip" data-placement="bottom" title="Cancel" style="color:red;font-size:20px"</i>';
             }
             $data[] = array(
                 'date' => $rets['date_returned'],

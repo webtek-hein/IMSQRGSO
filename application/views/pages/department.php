@@ -25,14 +25,12 @@
             <!-- Inventory-->
             <div class="col-lg-12 department-tab">
                 <div class="card">
-               <div class="card-header">
                 <?php
                 $position = ($this->session->userdata['logged_in']['position']);
                 if ($position === 'Custodian' || $position === 'Admin') {
                     echo '<select id="select-dept" class="col-lg-5 deptopt form-control"></select>';
                 }
                 ?>
-               </div>
 
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -75,7 +73,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="button" onclick="toggleDiv($('.department-tab'),$('.detail-tab '))"
-                                class="btn btn-dark"><i class=" fa fa-arrow-left"></i> Back
+                                class="btn btn-dark btn-sm"><i class=" fa fa-arrow-left"></i> Back
                         </button>
 
                     </div>
@@ -128,7 +126,7 @@
     <div class="card">
         <div class="card-header">
             <button type="button" onclick="toggleDiv($('.department-tab'),$('.accountability'))"
-                    class="btn btn-dark"><i class=" fa fa-arrow-left"></i> Back
+                    class="btn btn-dark btn-sm"><i class=" fa fa-arrow-left"></i> Back
             </button>
         </div>
         <div class="card-body">
@@ -147,6 +145,7 @@
 
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel2">Transfer</h4>
+                    <i class="fa fa-times" data-dismiss="modal" style="color:red"></i>
                 </div>
 
                 <div class="modal-body">
@@ -196,10 +195,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" name="serialid" id="save1" class="btn btn-primary btn-modal">Save
-                        changes
-                    </button>
+                    <button type="submit" name="serialid" id="save1" class="btn btn-success btn-modal"><i class="fa fa-check"></i> Save Changes</button>
                 </div>
 
             </div>
@@ -212,7 +208,7 @@
     <div class="card">
         <div class="card-header">
             <button type="button" onclick="toggleDiv($('.department-tab'),$('.history'))"
-                    class="btn btn-dark"><i class=" fa fa-arrow-left"></i> Back
+                    class="btn btn-dark btn-sm"><i class=" fa fa-arrow-left"></i> Back
             </button>
         </div>
 
@@ -317,9 +313,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="largeModalLabel">Return</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <i data-dismiss="modal" class="fa fa-times" style="color:red"></i>
                 </div>
                 <div class="modal-body">
 
@@ -363,9 +357,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" name="id" class="btn btn-primary btn-modal" id="save1">
-                        <i class="fa fa-arrow-down"></i> Save
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal"> Cancel</button>
+                    <button type="submit" name="id" class="btn btn-success btn-modal" id="save1">
+                        <i class="fa fa-check"></i> Save
                     </button>
                 </div>
             </div>
@@ -383,6 +377,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="largeModalLabel">Transfer</h5>
+                    <i class="fa fa-times" style="color:red"></i>
                 </div>
                 <div class="modal-body">
 
@@ -445,8 +440,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="submit" name="id" id="save1" class="btn btn-primary btn-modal">Save</button>
+                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal"><i class="fa fa-check"></i> Save</button>
                 </div>
             </div>
         </div>

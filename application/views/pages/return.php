@@ -119,9 +119,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Are you sure you want to Accept?</h5>
+                    <i class="fa fa-refresh"></i>
+                    <button type="button" class="btn btn-danger btn-sm pull-right" data-dismiss="modal"><i class="fa fa-times"></i></button>
                 </div>
                 <div class="modal-body">
+                    <h5 class="modal-title" id="myModalLabel">Are you sure you want to Accept?</h5>
+                    <br/>
+
                     <div class="col-4">
                         <div class="form-group">
                             <div class="serial">
@@ -143,10 +147,9 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                    <button name="id" class="btn btn-success" id="returnAct"><i
-                                class="fa fa-arrow-down"></i> Yes
-                    </button>
+                    <button name="id" class="btn btn-outline-success" id="returnAct"><i class="fa fa-arrow-down"></i> Yes</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"> Cancel</button>
+
                 </div>
             </div>
         </div>
