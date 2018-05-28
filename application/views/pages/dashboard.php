@@ -28,7 +28,7 @@ if ($position === 'Admin') {
                </span>
              </a>
            <div id="demo" class="collapse" style="color:black">
-        <div class="list-group">
+        <div class="list-group ScrollStyle">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Add Supplier <span>03/26/2018</span></a>
@@ -52,7 +52,7 @@ if ($position === 'Admin') {
                </span>
              </a>
            
-           <div id="demo1" class="collapse" style="color:black">
+           <div id="demo1" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -76,7 +76,7 @@ if ($position === 'Admin') {
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
              </a>
-           <div id="demo2" class="collapse" style="color:black">
+           <div id="demo2" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -102,7 +102,7 @@ if ($position === 'Admin') {
                </span>
              </a>
            
-           <div id="demo3" class="collapse" style="color:black">
+           <div id="demo3" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -126,7 +126,7 @@ if ($position === 'Admin') {
                </span>
              </a>
            
-           <div id="demo4" class="collapse" style="color:black">
+           <div id="demo4" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -150,7 +150,7 @@ if ($position === 'Admin') {
                </span>
              </a>
            
-           <div id="demo5" class="collapse" style="color:black">
+           <div id="demo5" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -223,7 +223,7 @@ if ($position === 'Custodian') {
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
              </a>
-           <div id="demo" class="collapse" style="color:black">
+           <div id="demo" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -248,7 +248,7 @@ if ($position === 'Custodian') {
                </span>
              </a>
            
-           <div id="demo1" class="collapse" style="color:black">
+           <div id="demo1" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -272,7 +272,7 @@ if ($position === 'Custodian') {
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
              </a>
-           <div id="demo2" class="collapse" style="color:black">
+           <div id="demo2" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -298,7 +298,7 @@ if ($position === 'Custodian') {
                </span>
              </a>
            
-           <div id="demo3" class="collapse" style="color:black">
+           <div id="demo3" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -322,7 +322,7 @@ if ($position === 'Custodian') {
                </span>
              </a>
            
-           <div id="demo4" class="collapse" style="color:black">
+           <div id="demo4" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -346,7 +346,7 @@ if ($position === 'Custodian') {
                </span>
              </a>
            
-           <div id="demo5" class="collapse" style="color:black">
+           <div id="demo5" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -419,7 +419,7 @@ if ($position === 'Supply Officer') {
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
              </a>
-           <div id="demo" class="collapse" style="color:black">
+           <div id="demo" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -444,7 +444,7 @@ if ($position === 'Supply Officer') {
                </span>
              </a>
            
-           <div id="demo1" class="collapse" style="color:black">
+           <div id="demo1" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -468,7 +468,7 @@ if ($position === 'Supply Officer') {
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
              </a>
-           <div id="demo2" class="collapse" style="color:black">
+           <div id="demo2" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -493,7 +493,7 @@ if ($position === 'Supply Officer') {
                </span>
              </a>
            
-           <div id="demo3" class="collapse" style="color:black">
+           <div id="demo3" class="collapse ScrollStyle" style="color:black">
         <div class="list-group">
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
@@ -547,109 +547,3 @@ if ($position === 'Supply Officer') {
 </div>';
 }
 ?>
-
-<!-- Example Bar Chart Card-->
-<!-- <div class="content mt-3">
-<div class="col-lg-8">
-<div class="card mb-3">
-    <div class="card-header">
-        <i class="fa fa-bar-chart"></i> Bar Chart Example</div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-sm-8 my-auto">
-                <canvas id="myBarChart" width="100" height="50"></canvas>
-            </div>
-            <div class="col-sm-4 text-center my-auto">
-                <div class="h4 mb-0 text-primary">$34,693</div>
-                <div class="small text-muted">YTD Revenue</div>
-                <hr>
-                <div class="h4 mb-0 text-warning">$18,474</div>
-                <div class="small text-muted">YTD Expenses</div>
-                <hr>
-                <div class="h4 mb-0 text-success">$16,219</div>
-                <div class="small text-muted">YTD Margin</div>
-            </div>
-        </div>
-    </div>
-    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-</div>
-</div>
-  <div class="col-lg-4">
-      <div class="col-lg-12">
-           <div class="card">
-               <div class="card-header">
-                  <i class="fa fa-pie-chart"></i>Pie Chart
-              </div>
-            <div class="card-body">
-       <h4 class="mb-3">Pie Chart </h4>
-       <canvas id="pieChart"></canvas>
-       </div><div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
-      </div>
-    </div> 
-</div>
-
-<div class="content mt-3">
-<div class="col-lg-4">
-    <div class="card" style="height:350px;">
-        <div class="card-header text-white bg-primary o-hidden">
-            <h4><i class="fa fa fa-cubes"></i>New Item Received</h4>
-        </div>
-        <div class="list-group">
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Add Supplier <span>03/26/2018</span></a>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4">
-    <div class="card" style="height:350px;">
-        <div class="card-header text-white bg-secondary o-hidden">
-            <h4><i class="fa fa-list"></i>Issued Item</h4>
-        </div>
-        <div class="list-group">
-            <a class="list-group-item"><i class="fa fa-list"></i>Distribute on Department Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa-list"></i>Edit Item Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa-list"></i>Add Supplier <span>03/26/2018</span></a>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4">
-    <div class="card" style="height:350px;">
-        <div class="card-header text-white bg-success o-hidden">
-            <h4><i class="fa fa-shopping-cart"></i>Returned Items</h4>
-        </div>
-        <div class="list-group">
-            <a class="list-group-item"><i class="fa fa-shopping-cart"></i>Distribute on Department Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa-shopping-cart"></i>Edit Item Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa-shopping-cart"></i>Add Supplier <span>03/26/2018</span></a>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4">
-    <div class="card" style="height:350px;">
-        <div class="card-header text-white bg-danger o-hidden">
-            <h4><i class="fa fa-support"></i>Expired Item</h4>
-        </div>
-        <div class="list-group">
-            <a class="list-group-item"><i class="fa fa-support"></i>Distribute on Department Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa-support"></i>Edit Item Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa-support"></i>Add Supplier <span>03/26/2018</span></a>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4">
-    <div class="card" style="height:350px;">
-        <div class="card-header text-white bg-warning o-hidden">
-            <h4><i class="fa fa-archive"></i>Low Stock</h4>
-        </div>
-        <div class="list-group">
-            <a class="list-group-item"><i class="fa fa-archive"></i>Distribute on Department Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa-archive"></i>Edit Item Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa-archive"></i>Add Supplier <span>03/26/2018</span></a>
-        </div>
-    </div>
-</div>
- </div>
-
- -->

@@ -32,7 +32,13 @@ if (isset($this->session->userdata['logged_in'])) {
     <link rel="stylesheet" href="assets/css/sb-admin.css">
 
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
-
+<style>
+.ScrollStyle
+{
+    max-height: 150px;
+    overflow-y: scroll;
+}
+</style>
     <!--<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>-->
     <script
             src="assets/js/jquery-3.3.1.min.js"
