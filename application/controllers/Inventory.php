@@ -816,6 +816,22 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    public function editedItems()
+    {
+        $editeditemsCount = $this->inv->editedItems();
+        foreach ($editeditemsCount as $list) {
+            $data[] = array(
+                'editcount' => $list['countEdit'],
+                'itemname' => $list['item_name'],
+                'custodian' => $list['custodian'],
+                'oldvalue' => $list['old_value'],
+                'newvalue' => $list['new_value'],
+                'fieldedit' => $list['field_edited']
+            );
+        }
+        echo json_encode($data);
+    }
+
     /**
      * This get the total cost of items in the inventory for custodian and admin.
      */
