@@ -10,10 +10,10 @@
     </div>
 </div>
 
-
 <?php $position = $this->session->userdata['logged_in']['position'];
 if ($position === 'Admin') {
-    echo '<div class="col-xl-3 col-sm-6 mb-3">
+    echo '
+    <div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-primary o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
@@ -21,12 +21,8 @@ if ($position === 'Admin') {
               </div>
               <div class="mr-5" id="itemsrec">New Item Received</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1">
-              <span class="float-left" style="color:black">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right" style="color:black"></i>
-              </span>
-            </a>
+            <div class="progress progress-xs mt-3 mb-0 bg-light" style="width: 40%; height: 5px;">
+          </div>
           </div>
           </div>'.
 
@@ -38,12 +34,8 @@ if ($position === 'Admin') {
               </div>
               <div class="mr-5" id="itemsiss">Issued Item</div>
             </div>
-         <a class="card-footer text-white clearfix small z-1">
-              <span class="float-left" style="color:black">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right" style="color:black"></i>
-              </span>
-            </a>
+         <div class="progress progress-xs mt-3 mb-0 bg-light" style="width: 40%; height: 5px;">
+          </div>
           </div>
           </div>'.
 
@@ -55,12 +47,8 @@ if ($position === 'Admin') {
               </div>
               <div class="mr-5" id="retitem">Returned Items</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1">
-              <span class="float-left" style="color:black">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right" style="color:black"></i>
-              </span>
-            </a>
+            <div class="progress progress-xs mt-3 mb-0 bg-light" style="width: 40%; height: 5px;">
+          </div>
           </div>
           </div>'.
 
@@ -72,12 +60,8 @@ if ($position === 'Admin') {
               </div>
               <div class="mr-5" id="expitems">Expired Item</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1">
-              <span class="float-left" style="color:black">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right" style="color:black"></i>
-              </span>
-            </a>
+            <div class="progress progress-xs mt-3 mb-0 bg-light" style="width: 40%; height: 5px;">
+          </div>
           </div>
           </div>'.
 
@@ -89,12 +73,8 @@ if ($position === 'Admin') {
               </div>
               <div class="mr-5" id="expitems">Low Stock</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1">
-              <span class="float-left" style="color:black">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right" style="color:black"></i>
-              </span>
-            </a>
+            <div class="progress progress-xs mt-3 mb-0 bg-light" style="width: 40%; height: 5px;">
+          </div>
           </div>
           </div>';
     }
@@ -110,12 +90,8 @@ if ($position === 'Custodian') {
               </div>
               <div class="mr-5" id="itemsrec">New Item Received</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1">
-              <span class="float-left" style="color:black">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right" style="color:black"></i>
-              </span>
-            </a>
+            <div class="progress progress-xs mt-3 mb-0 bg-light" style="width: 40%; height: 5px;">
+          </div>
           </div>
           </div>'.
 
@@ -127,12 +103,8 @@ if ($position === 'Custodian') {
               </div>
               <div class="mr-5" id="itemsiss">Issued Item</div>
             </div>
-         <a class="card-footer text-white clearfix small z-1">
-              <span class="float-left" style="color:black">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right" style="color:black"></i>
-              </span>
-            </a>
+         <div class="progress progress-xs mt-3 mb-0 bg-light" style="width: 40%; height: 5px;">
+          </div>
           </div>
           </div>'.
 
@@ -144,12 +116,8 @@ if ($position === 'Custodian') {
               </div>
               <div class="mr-5" id="retitem">Returned Items</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1">
-              <span class="float-left" style="color:black">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right" style="color:black"></i>
-              </span>
-            </a>
+            <div class="progress progress-xs mt-3 mb-0 bg-light" style="width: 40%; height: 5px;">
+          </div>
           </div>
           </div>'.
 
@@ -161,12 +129,8 @@ if ($position === 'Custodian') {
               </div>
               <div class="mr-5" id="expitems">Expired Item</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1">
-              <span class="float-left" style="color:black">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right" style="color:black"></i>
-              </span>
-            </a>
+            <div class="progress progress-xs mt-3 mb-0 bg-light" style="width: 40%; height: 5px;">
+          </div>
           </div>
           </div>'.
 
@@ -178,12 +142,8 @@ if ($position === 'Custodian') {
               </div>
               <div class="mr-5" id="expitems">Low Stock</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1">
-              <span class="float-left" style="color:black">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right" style="color:black"></i>
-              </span>
-            </a>
+            <div class="progress progress-xs mt-3 mb-0 bg-light" style="width: 40%; height: 5px;">
+          </div>
           </div>
           </div>';
 }
