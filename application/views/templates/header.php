@@ -35,7 +35,7 @@ if (isset($this->session->userdata['logged_in'])) {
 <style>
 .ScrollStyle
 {
-    max-height: 150px;
+    max-height: 280px;
     overflow-y: scroll;
 }
 </style>

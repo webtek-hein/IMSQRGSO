@@ -32,6 +32,12 @@ if ($position === 'Admin') {
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Add Supplier <span>03/26/2018</span></a>
+             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Add Supplier <span>03/26/2018</span></a>
+             <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Add Supplier <span>03/26/2018</span></a>
         </div>
         </div>
         </div>
