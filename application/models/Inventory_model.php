@@ -2145,4 +2145,18 @@ class Inventory_model extends CI_Model
         $this->db->insert_batch('itemdetail',$newItemDetail);
 
     }
+    public function getOR(){
+        return $this->db->select('OR_no')
+            ->group_by('OR_no')
+            ->get('itemdetail')->result_array();
+    }
+    public function createAIR($or){
+        return $this->db->select('OR_no,date_received,PO_number,supplier_name,unit,item_name,itemdetail.quantity,item_description,
+        (itemdetail.unit_cost*itemdetail.quantity) as amount')
+            ->join('item','item.item_id = itemdetail.item_id','inner')
+            ->join('supplier','supplier.supplier_id = itemdetail.supplier_id')
+            ->where('OR_no',$or)
+            ->group_by('item.item_id, itemdetail.item_det_id')
+            ->get('itemdetail')->result_array();
+    }
 }

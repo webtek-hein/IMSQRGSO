@@ -1133,4 +1133,11 @@ class Inventory extends CI_Controller
         $this->inv->nonSerializedRec();
     }
 
+    public function getOR(){
+        echo json_encode($this->inv->getOR());
+    }
+    public function createAIR($or){
+        echo json_encode($this->inv->createAIR($or));
+    }
+
 }

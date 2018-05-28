@@ -61,12 +61,12 @@ $(document).ready(function () {
         var $reportOption = $(this).val();
         $reportTable = $('#reportTable');
         var url = 'Inventory/getReport/' + $reportOption + '/' + type;
-        if(from !== '' || to !== ''){
+        if (from !== '' || to !== '') {
             url = 'Inventory/getReportWithDate/' + $reportOption + '/' + type + '/' + from + '/' + to;
         }
 
 
-        if(type !== 'ALL'){
+        if (type !== 'ALL') {
             visible = false;
         }
         if ($reportOption === '0') {
@@ -212,12 +212,12 @@ $(document).ready(function () {
         var $reportOption = $('#reportsOption').val();
         $reportTable = $('#reportTable');
         var url = 'Inventory/getReport/' + $reportOption + '/' + type;
-        if(from !== '' || to !== ''){
+        if (from !== '' || to !== '') {
             url = 'Inventory/getReportWithDate/' + $reportOption + '/' + type + '/' + from + '/' + to;
         }
 
 
-        if(type !== 'ALL'){
+        if (type !== 'ALL') {
             visible = false;
         }
         if ($reportOption === '0') {
@@ -373,7 +373,7 @@ $(document).ready(function () {
 
     //dashboard new items
     var $notifitems = $('#increase');
-    var  detail = [];
+    var detail = [];
 
     $.ajax({
         url: "inventory/itemsReceived",
@@ -388,20 +388,20 @@ $(document).ready(function () {
             }
             $notifitems.html(detail);
         }
-        });
+    });
 
     //dashboard issued items to department
     var $issueditems = $('#issued');
-    var  issued = [];
+    var issued = [];
 
     $.ajax({
         url: "inventory/issuedItems",
         dataType: 'JSON',
         success: function (data) {
-            for (var i = 0; i < data.length ; i++) {
+            for (var i = 0; i < data.length; i++) {
                 if (data[i].countinc !== '0') {
-                issued += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' Issued by ' + data[i].custodian + ' to ' +data[i].department +"</a></li>"
-            }else {
+                    issued += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' Issued by ' + data[i].custodian + ' to ' + data[i].department + "</a></li>"
+                } else {
                     issued = "<li>No Data Found!</li>"
                 }
             }
@@ -412,37 +412,37 @@ $(document).ready(function () {
 
     //dashboard returned items
     var $returneditems = $('#returned');
-    var  returned = [];
+    var returned = [];
 
     $.ajax({
         url: "inventory/returnedItems",
         dataType: 'JSON',
         success: function (data) {
 
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].returncount !== '0') {
-                        returned += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' Returned by ' + data[i].department + "</a></li>"
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].returncount !== '0') {
+                    returned += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' Returned by ' + data[i].department + "</a></li>"
 
-                    } else {
-                        returned = "<li>No Data Found!</li>"
-                    }
+                } else {
+                    returned = "<li>No Data Found!</li>"
                 }
+            }
             $returneditems.html(returned);
         }
     });
 
     //dashboard expired items
     var $expireditems = $('#expired');
-    var  expired = [];
+    var expired = [];
 
     $.ajax({
         url: "inventory/totalExpired",
         dataType: 'JSON',
         success: function (data) {
-            for (var i = 0; i < data.length ; i++) {
+            for (var i = 0; i < data.length; i++) {
                 if (data[i].expirecount !== '0') {
-                expired += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' has reached its life span' +"</a></li>"
-            }else{
+                    expired += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' has reached its life span' + "</a></li>"
+                } else {
                     expired = "<li>No Data Found!</li>"
                 }
             }
@@ -2507,7 +2507,7 @@ function getreportDate() {
         var url = 'Inventory/getReportWithDate/' + $reportOption + '/' + type + '/' + from + '/' + to;
         var visible = true;
 
-        if(type !== 'ALL'){
+        if (type !== 'ALL') {
             visible = false;
         }
 
@@ -2646,4 +2646,55 @@ function getreportDate() {
             });
         }
     });
+}
+
+function getOR() {
+    var options = [];
+    $.ajax({
+        url: 'Inventory/getOR',
+        dataType: 'JSON',
+        success: function (data) {
+            for (var i = 0; i <= data.length - 1; i++) {
+                options.push('<option value=' + data[i].OR_no + '>' + data[i].OR_no + '</option>');
+            }
+            $('#or_no').html(options);
+        }
+    });
+}
+
+function createReport() {
+    var or = $('#or_no').val();
+    var tbody = $('#tg-umsCj tbody');
+    var tr = [];
+
+    toggleDiv($('#AIRcont'), $('.inventory-tab'));
+
+
+    $.ajax({
+        url: 'Inventory/createAIR/' + or,
+        dataType: 'JSON',
+        success: function (data) {
+            $('#supplier').val(data[0].supplier_name);
+            $('#PO_num').val(data[0].PO_number);
+            $('#OR_no').val(data[0].OR_no);
+            $('#date_received').val(data[0].date_received);
+            for (var i = 0; i <= data.length - 1; i++) {
+                tr.push('<tr>' +
+                    '<td class="tbody">'+data[i].item_name+'</td>' +
+                    '<td class="tbody">'+data[i].quantity+'</td>' +
+                    '<td class="tbody">'+data[i].item_description+'</td>' +
+                    '<td class="tbody">'+data[i].unit+'</td>' +
+                    '<td class="tbody">'+data[i].amount+'</td>' +
+                    '</tr>');
+            }
+            tbody.html(tr);
+        }
+    });
+}
+function printAIR() {
+    var originalContents = $(document.body).html();
+    var printContents = $('#air').html();
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
 }
