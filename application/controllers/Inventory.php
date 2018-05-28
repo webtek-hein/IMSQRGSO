@@ -207,7 +207,8 @@ class Inventory extends CI_Controller
                         }
                     }
                 } elseif ($dept === 'dept') {
-                    $action = $detail['dist_stat'];
+                    $action = "<button onclick='accountability($detail[dist_id])' id=\"accountButton\" type=\'button\' data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Accountability\"
+                                        class=\"btn btn-success btn-sm\"><i class='fa fa-user-o'></i> </button>";
                 } elseif ($detail['serialStatus'] !== '1') {
                         $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\">
@@ -412,9 +413,12 @@ class Inventory extends CI_Controller
 
         $data = array();
         foreach ($list as $serial) {
-            $action = "<button onclick=gettransfer($serial[serial_id]);  id=\"transferButton\" class=\"btn btn-success\"  data-id='$serial[serial_id]' data-toggle=\"modal\" data-target=\".transfer\">Transfer</button>
+            if($position === 'Supply Officer') {
+                $action = "<button onclick=gettransfer($serial[serial_id]);  id=\"transferButton\" class=\"btn btn-success\"  data-id='$serial[serial_id]' data-toggle=\"modal\" data-target=\".transfer\">Transfer</button>
                             <button onclick=gettransferlog($serial[serial_id]); type=\"button\" id=\"historyButton\" class=\"btn btn-primary\" data-id='$serial[serial_id]'>History</button>";
-
+            }else{
+                $action = " <button onclick=gettransferlog($serial[serial_id]); type=\"button\" id=\"historyButton\" class=\"btn btn-primary\" data-id='$serial[serial_id]'>History</button>";
+            }
             $data[] = array(
                 'serial_id' => $serial['serial_id'],
                 'serial' => $serial['serial'],

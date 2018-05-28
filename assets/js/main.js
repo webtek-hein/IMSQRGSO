@@ -787,12 +787,7 @@ function deptDet(id, position, dept_id) {
     var $detailtable = $('#detail-tab-table');
     var $detailTab = $('.detail-tab ');
     var item;
-    if (position === 'Supply Officer') {
-        $visible = true;
-    } else {
-        dept_id = $('#select-dept').val();
-        $visible = false;
-    }
+
     $.ajax({
         url: 'inventory/getitem/dept/' + id + '/' + dept_id,
         dataType: 'JSON',
@@ -835,8 +830,7 @@ function deptDet(id, position, dept_id) {
                     }, {
 
                         field: 'action',
-                        title: 'Action',
-                        visible: $visible
+                        title: 'Action'
                     }]
                 });
 
