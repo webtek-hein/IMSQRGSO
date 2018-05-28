@@ -5,9 +5,9 @@
         <div class="clearfix"></div>
 
         <section id="client-info">
-          <img src="logo.png" style="width:50px; height:50px;"></img>
-          <h3><b>City Government of Baguio</b></h3>
-          <h3 style="margin-top:-10px;"><b>ACCEPTANCE AND INSPECTION REPORT</b></h3>
+           <img src="logo.png" style="width:50px; height:50px;"></img>
+          <h2><b>REPUBLIC OF THE PHILIPPINES</b></h2>
+          <span>City Government of Baguio</span>
         </section>
         
         <div class="clearfix"></div>
@@ -17,15 +17,12 @@
           <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
             <thead>
                 <tr>
-                <th>
-                <h4 style="position:left; float:left;">Supplier: <input type="text"></input></h4>
-                <h4 style="position:right; float:right;">Invoice No.: <input type="text"></input></h4>
+                <th><h3 style="margin-top:10px;"><b>ACKNOWLEDGEMENT RECEIPT FOR EQUIPMENT</b></h3>
                 <br>
-                 <h4 style="position:left; float:left; margin-left:-228px; margin-top:25px;">PO No.: <input type="text"> </input></h4>
-                 <h4 style="position:right; float:right; margin-right:23px; margin-top:-13px;">AIR No.: <input type="text"></input></h4>
-                 <br>
-                 <h4 style="position:left; float:left; margin-left:-220px; margin-top:10px;">Requisitioning Office/Department: <input type="text"></input></h4>
-                 <h4 style="position:right; float:right; margin-right:42px; margin-top:-13px;">Date: <input type="text"></input></h4>
+                <h4 style="position:left; float:left; margin-top:-10px;">Department <input type="text"> </input></h4>
+                 <h4 style="position:right; float:right; margin-top:-10px;">ARE NO. <input type="text"> </input></h4>
+                <br>
+                <h4 style="position:right; float:right; margin-top:-5px; margin-right:-204px;">Date: <input type="text"> </input></h4>
                 </th>
                 </tr>
           </thead>
@@ -34,16 +31,21 @@
         <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
             <thead>
            <tr>
-            <th class="thead1"><b>ITEM</b></th>
-            <th class="thead1"><b>QUANTITY</b></th>
-            <th class="thead1"><b>UNIT</b></th>
-            <th class="thead2"><b>DESCIPTION</b></th>
-            <th class="thead1"><b>AMOUNT</b></th>
+            <th class="thead1">QTY</th>
+            <th class="thead1">UNIT</th>
+            <th class="thead2">NAME AND DESCIPTION</th>
+            <th class="thead3">DATE ACQUIRED</th>
+            <th class="thead3">PROPERTY NO.</th>
+            <th class="thead3">ACCOUNT CODE</th>
+            <th class="thead3">UNIT VALUE</th>
+            <th class="thead3">TOTAL VALUE VALUE</th>
            </tr>
            </thead>
            <tbody>
            <tr>
             <td class="tbody"></td>
+            <td class="tbody"></td>
+            <td class="tbody"><hr></hr></td>
             <td class="tbody"></td>
             <td class="tbody"></td>
             <td class="tbody"></td>
@@ -55,52 +57,40 @@
         <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
             <tfoot>
            <tr>
-            <td><br></td>
+            <td>REMARKS:</td>
             </tr>
             <tfoot>
         </table>
+
         <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
           <tfoot>
           <tr>
-            <td class="tfoot5" align="center">ACCEPTION</td>
-            <td class="tfoot6" align="center">INSPECTION</td>
-          </tr>
-          <tr>
-            <td class="tfoot7" valign="top">Date Received:
-              <br></br>
-              <center>Complete
-              <input type="text" size="15px" class="input1"></input></center>
+            <td class="tfoot3">Received from:
               <br>
-              <center>Partial
-              <input type="text" size="15px" class="input1"></input></center>
-              <br></br>
-              <center><b>ROMEO D. CONCIO</b>
-                <hr width="200px"></hr>
-                <span>City General Services OFficer</span>
+              <h4 style="text-align:center; margin-top:50px;">EUGENE D. BUYUCAN</h4>
+              <span style="text-align:center; margin-left:118px;">Asst. City General Services Officer</span>
+              <br><br><br><br>
+              <hr style="width:100px;"></hr>
+              <h4 style="text-align:center; margin-top:10px;">Date</h4>
             </td>
-            <td class="tfoot8" valign="top">Date Inspected:
-              <br></br>
-              <input type="text" size="5px" class="input1">
-              <p style="margin-left:75px; margin-top:-15px;">Inspected, verified and found acceptable</p><p style="margin-left:75px;"> as to quantity and specifications</p></input>
-              <br></br>
-               <center><b>ROMEO D. CONCIO</b>
-                <hr></hr>
-                <span>GSO Inspector</span>
+            <td class="tfoot4">Received by:
+              <br>
+              <h4 style="text-align:center; margin-top:50px;">ATTY. CARLOS M. CANILAO</h4>
+              <span style="text-align:center; margin-left:80px;">City Administrator</span>
+              <br><br><br><br>
+              <hr style="width:100px;"></hr>
+              <h4 style="text-align:center; margin-top:10px;">Date</h4>
             </td>
           </tr>
           </tfoot>
         </table>
+
         </div>
-        <br></br>
-        <input type="text"></input>
-         <hr width="300px"></hr>
-        <center><b>END-USER</b></center>
-        <br>
         <input id="printpagebutton" type="button" value="Print" onclick="download()"/>
          </div>
  
         <div class="clearfix"></div>
-        
+
 <STYLE TYPE="text/css">
 html {
   line-height: 1;
@@ -178,9 +168,8 @@ b, strong, .bold {
 
 
 input[type="text"] { 
-    border: none; 
+    border: none 
 }
-
 
 table {
   table-layout: fixed;
@@ -272,7 +261,7 @@ table {
 }
 
 .tg .tbody{
-  height: 450px;
+  height: 500px;
 }
 
 .tg .tfoot1{
@@ -290,13 +279,6 @@ table {
 .tg .tfoot4{
  height: 100px;
 }
-
-.tg .tfoot5{
- width: 300px;
-}
-.tg .tfoot7{
-  height:170px;
-  }
 
 
 
@@ -326,18 +308,9 @@ table {
     margin-top: 20px;
 }
 
+@media print{
 
-@media print {
-  /* Here goes your print styles */
-  table { page-break-after:auto; }
-  tr    { page-break-inside:avoid; page-break-after:auto; }
-  td    { page-break-inside:avoid; page-break-after:auto; }
-  thead { display:table-header-group;}
-  tfoot { display:table-footer-group; }
-  }
-
-
-}
+    }
 @page {
   size: 21cm 29.7cm;   /*A4*/
   margin: 0; /*webkit says no*/
@@ -346,7 +319,7 @@ table {
 </STYLE>
 
 <script type="text/javascript">
-function download(){
+function download() {
         //Get the print button and put it into a variable
         var printButton = document.getElementById("printpagebutton");
         //Set the print button visibility to 'hidden' 
