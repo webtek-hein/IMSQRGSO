@@ -390,9 +390,9 @@ if ($position === 'Supply Officer') {
             <h4>New Item Received</h4>
         </div>
         <div class="list-group">
-            <a href="#" class="list-group-item">Distribute on Department Name <span>03/26/2018</span></a>
-            <a href="#" class="list-group-item">Edit Item Name <span>03/26/2018</span></a>
-            <a href="#" class="list-group-item">Add Supplier <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Add Supplier <span>03/26/2018</span></a>
         </div>
     </div>
     <!-- /# card -->
@@ -403,9 +403,9 @@ if ($position === 'Supply Officer') {
             <h4>Issued Item</h4>
         </div>
         <div class="list-group">
-            <a href="#" class="list-group-item">Distribute on Department Name <span>03/26/2018</span></a>
-            <a href="#" class="list-group-item">Edit Item Name <span>03/26/2018</span></a>
-            <a href="#" class="list-group-item">Add Supplier <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa-list"></i>Distribute on Department Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa-list"></i>Edit Item Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa-list"></i>Add Supplier <span>03/26/2018</span></a>
         </div>
     </div>
     <!-- /# card -->
@@ -416,9 +416,9 @@ if ($position === 'Supply Officer') {
             <h4>Returned Items</h4>
         </div>
         <div class="list-group">
-            <a href="#" class="list-group-item">Distribute on Department Name <span>03/26/2018</span></a>
-            <a href="#" class="list-group-item">Edit Item Name <span>03/26/2018</span></a>
-            <a href="#" class="list-group-item">Add Supplier <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa-shopping-cart"></i>Distribute on Department Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa-shopping-cart"></i>Edit Item Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa-shopping-cart"></i>Add Supplier <span>03/26/2018</span></a>
         </div>
     </div>
     <!-- /# card -->
@@ -429,9 +429,9 @@ if ($position === 'Supply Officer') {
             <h4>Expired Item</h4>
         </div>
         <div class="list-group">
-            <a href="#" class="list-group-item">Distribute on Department Name <span>03/26/2018</span></a>
-            <a href="#" class="list-group-item">Edit Item Name <span>03/26/2018</span></a>
-            <a href="#" class="list-group-item">Add Supplier <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa-support"></i>Distribute on Department Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa-support"></i>Edit Item Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa-support"></i>Add Supplier <span>03/26/2018</span></a>
         </div>
     </div>
     <!-- /# card -->
@@ -442,9 +442,9 @@ if ($position === 'Supply Officer') {
             <h4>Low Stock</h4>
         </div>
         <div class="list-group">
-            <a href="#" class="list-group-item">Distribute on Department Name <span>03/26/2018</span></a>
-            <a href="#" class="list-group-item">Edit Item Name <span>03/26/2018</span></a>
-            <a href="#" class="list-group-item">Add Supplier <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa-archive"></i>Distribute on Department Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa-archive"></i>Edit Item Name <span>03/26/2018</span></a>
+            <a class="list-group-item"><i class="fa fa-archive"></i>Add Supplier <span>03/26/2018</span></a>
         </div>
     </div>
     <!-- /# card -->
