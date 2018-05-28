@@ -32,7 +32,13 @@ if (isset($this->session->userdata['logged_in'])) {
     <link rel="stylesheet" href="assets/css/sb-admin.css">
 
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
-
+<style>
+.ScrollStyle
+{
+    max-height: 280px;
+    overflow-y: scroll;
+}
+</style>
     <!--<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>-->
     <script
             src="assets/js/jquery-3.3.1.min.js"
@@ -80,9 +86,6 @@ if (isset($this->session->userdata['logged_in'])) {
                 if ($position === 'Admin') {
                     echo '<li id="li4">
                                     <a href="Accounts"><i class="menu-icon fa fa-users"></i>USERS</a>
-                                  </li>' . 
-                        '<li id="li6">
-                                     <a href="AccountSettings"><i class="menu-icon fa fa-gears"></i>Change Password</a>
                                   </li>';
                 }
                 if ($position === 'Supply Officer' || $position === 'Custodian') {
@@ -149,8 +152,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <div class="header-menu">
             <div class="header-left">
             <div class="col-sm-7">
-                <a href="profile" style="color:black"> <?=$name?>
-                <!--img src="<?php echo base_url() ?>images/<?= $image ?>" class="img-circle" alt="User Image" style="width:6%"--></a>
+                <?=$name?> &nbsp <a href="profile" style="color:black" class="fa fa-gears"></a>
                 <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                     <h5 style="color:black"><?= $position.' : '.$department?></h5>
             </div>

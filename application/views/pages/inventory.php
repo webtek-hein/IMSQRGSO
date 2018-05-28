@@ -18,9 +18,385 @@
     </div>
 </div>
 
+<div hidden id="AIRcont">
+    <div class="card">
+        <div class="card-body">
+            <div id="air" class="right-invoice">
+                <section id="memo">
+                    <section id="client-info">
+                        <img src="./assets/images/logo.png" style="width:50px; height:50px;"></img>
+                        <h6><b>City Government of Baguio</b></h6>
+                        <br>
+                        <h6 style="margin-top:-10px;"><b>ACCEPTANCE AND INSPECTION REPORT</b></h6>
+                    </section>
+                </section>
+                <div class="clearfix"></div>
+                <div class="tg-wrap">
+                    <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 750px">
+                        <thead>
+                        <tr>
+                            <th>
+                                <h7 style="position:left; float:left;">Supplier: <input id="supplier" type="text">
+                                </h7>
+                                <h7 style="position:right; float:right;">Invoice No.: <input id="OR_no" type="text">
+                                </h7>
+                                <br></br>
+                                <h7 style="position:left; float:left; margin-top:-10px;">PO No.: <input id="PO_num"
+                                                                                                        type="text"> </input>
+                                </h7>
+                                <h7 style="position:right; float:right; margin-right:20px; margin-top:-13px;">
+                                    AIR No.: <input type="text"></input></h7>
+                                <br></br>
+                                <h7 style="position:left; float:left; margin-top:-20px;">Requisitioning
+                                    Office/Department: <input type="text"></input></h7>
+                                <h7 style="position:right; float:right; margin-right:40px; margin-top:-20px;">
+                                    Date: <input type="text"></input></h7>
+                            </th>
+                        </tr>
+                        </thead>
+                    </table>
+
+                    <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 750px">
+                        <thead>
+                        <tr>
+                            <th class="thead1"><b>ITEM</b></th>
+                            <th class="thead1"><b>QUANTITY</b></th>
+                            <th class="thead1"><b>UNIT</b></th>
+                            <th class="thead2"><b>DESCIPTION</b></th>
+                            <th class="thead1"><b>AMOUNT</b></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tbody"></td>
+                            <td class="tbody"></td>
+                            <td class="tbody"></td>
+                            <td class="tbody"></td>
+                            <td class="tbody"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 750px">
+                        <tfoot>
+                        <tr>
+                            <td><br></td>
+                        </tr>
+                        <tfoot>
+                    </table>
+                    <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 750px">
+                        <tfoot>
+                        <tr>
+                            <td class="tfoot5" align="center">ACCEPTION</td>
+                            <td class="tfoot6" align="center">INSPECTION</td>
+                        </tr>
+                        <tr>
+                            <td class="tfoot7" valign="top">Date Received:
+                                <input id="date_received" type="text">
+                                <br></br>
+                                <center>Complete
+                                    <input type="text" size="15px" class="input1"></input></center>
+                                <br>
+                                <center>Partial
+                                    <input type="text" size="15px" class="input1"></input></center>
+                                <br></br>
+                                <center><p style="margin-top:-10px;color: black;"><b> <input type="text" size="15px"
+                                                                                             class="input1"></b></p>
+                                    <hr width="200px"></hr>
+                                    <span> <input type="text" size="15px" class="input1"> Officer</span>
+                            </td>
+                            <td class="tfoot8" valign="top">Date Inspected: <input type="text" size="15px"
+                                                                                   class="input1"></input>
+                                <br></br>
+                                <p style="margin-left:75px; margin-top:-10px; font-size: small;">Inspected,
+                                    verified and found acceptable</p>
+                                <p style="margin-left:75px; margin-top:-20px; font-size: small;"> as to
+                                    quantity and specifications</p></input>
+                                <br></br>
+                                <center><p style="margin-top:-10px; color: black;"><b> <input type="text" size="15px"
+                                                                                              class="input1"></b>
+                                    </p>
+                                    <hr></hr>
+                                    <span>GSO Inspector</span>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <br></br>
+                <hr width="300px"></hr>
+                <center><b>END-USER</b></center>
+
+
+                <div class="clearfix"></div>
+
+
+                <STYLE TYPE="text/css">
+                    html {
+                        line-height: 1;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        border-spacing: 0;
+                    }
+
+                    html, body {
+                        /* MOVE ALONG, NOTHING TO CHANGE HERE! */
+                    }
+
+                    /**
+                     * IMPORTANT NOTICE: DON'T USE '!important' otherwise this may lead to broken print layout.
+                     * Some browsers may require '!important' in oder to work properly but be careful with it.
+                     */
+                    .clearfix {
+                        display: block;
+                        clear: both;
+                    }
+
+                    .x-hidden {
+                        display: none !important;
+                    }
+
+                    .hidden {
+                        display: none;
+                    }
+
+                    b, strong, .bold {
+                        font-weight: bold;
+                    }
+
+                    #container {
+                        font: normal 13px/1.4em 'Open Sans', Sans-serif;
+                        margin: 0 auto;
+                        min-height: 1158px;
+                        position: relative;
+                        width: 850px;
+                        width: 850px;
+                    }
+
+                    .right-invoice {
+                        padding: 50px 50px 50px 50px;
+                        min-height: 1078px;
+                    }
+
+                    #memo:after {
+                        content: '';
+                        display: block;
+                        clear: both;
+                    }
+
+                    #client-info {
+                        float: center;
+                        text-align: right;
+                        min-width: 220px;
+                        text-align: center;
+                    }
+
+                    #client-info span {
+                        display: block;
+                        min-width: 20px;
+                        text-align: center;
+                    }
+
+                    #client-info > span {
+                        color: #858585;
+                        font-size: 15px;
+                        margin-bottom: 20px;
+                    }
+
+                    input[type="text"] {
+                        border: none;
+                        background-color: ghostwhite;
+                    }
+
+                    table {
+                        table-layout: fixed;
+                    }
+
+                    /**table**/
+                    .tg-wrap {
+                        border-style: solid;
+                        border-width: 1px;
+                    }
+
+                    .tg {
+                        border-collapse: collapse;
+                        border-spacing: 0;
+                        margin: 0px auto;
+
+                    }
+
+                    .tg tr td {
+                        border-style: solid;
+                        border-width: 1px;
+                    }
+
+                    .tg td {
+                        font-family: Arial, sans-serif;
+                        font-size: 12px;
+                        padding: 5px 5px;
+                        border-style: solid;
+                        border-width: 1px;
+                        overflow: hidden;
+                        word-break: normal;
+                    }
+
+                    .tg th {
+                        font-family: Arial, sans-serif;
+                        font-size: 13px;
+                        font-weight: normal;
+                        padding: 5px 5px;
+                        border-style: solid;
+                        border-width: 1px;
+                        overflow: hidden;
+                        word-break: normal;
+                    }
+
+                    .tg .tg-yw41 {
+                        vertical-align: top;
+                        width: 220px;
+                    }
+
+                    .tg .tg-yw42 {
+                        vertical-align: top;
+                        width: 180px;
+                    }
+
+                    .tg .tg-yw43 {
+                        vertical-align: top;
+                        width: 140px;
+                    }
+
+                    .tg .tg-yw44 {
+                        vertical-align: top;
+                        width: 100px;
+                    }
+
+                    .tg .tg-yw51 {
+                        vertical-align: top;
+                        width: 350px;
+                        height: 15px;
+                        text-align: center;
+                    }
+
+                    .tg .tg-yw52 {
+                        vertical-align: top;
+                        width: 120px;
+                        height: 15px;
+                        text-align: center;
+                    }
+
+                    .tg .thead1 {
+                        width: 30px;
+                        text-align: center;
+                    }
+
+                    .tg .thead2 {
+                        width: 147px;
+                        text-align: center;
+                    }
+
+                    .tg .thead3 {
+                        width: 50px;
+                        text-align: center;
+                    }
+
+                    .tg .tbody {
+                        height: 450px;
+                    }
+
+                    .tg .tfoot1 {
+                        width: 57px;
+                    }
+
+                    .tg .tfoot2 {
+                        width: 240px;
+                    }
+
+                    .tg .tfoot3 {
+                        height: 100px;
+                    }
+
+                    .tg .tfoot4 {
+                        height: 100px;
+                    }
+
+                    .tg .tfoot5 {
+                        width: 300px;
+                    }
+
+                    .tg .tfoot7 {
+                        height: 170px;
+                    }
+
+                    .tg .sign1 {
+                        height: 40px;
+                        width: 143px;
+                        vertical-align: bottom;
+                    }
+
+                    .tg .sign {
+                        height: 55px;
+                        text-align: center;
+                        vertical-align: top;
+                    }
+
+                    .tg .sign hr {
+                        color: black;
+                        border-style: solid;
+                        border-width: 1px;
+                    }
+
+                    .tg .name {
+                        text-align: center;
+                    }
+
+                    #printpagebutton {
+                        margin-top: 20px;
+                    }
+
+                    @media print {
+                        /* Here goes your print styles */
+                        table {
+                            page-break-after: auto;
+                        }
+
+                        tr {
+                            page-break-inside: avoid;
+                            page-break-after: auto;
+                        }
+
+                        td {
+                            page-break-inside: avoid;
+                            page-break-after: auto;
+                        }
+
+                        thead {
+                            display: table-header-group;
+                        }
+
+                        tfoot {
+                            display: table-footer-group;
+                        }
+                    }
+
+                    }
+                    @page {
+                        size: 21cm 29.7cm;   /*A4*/
+                        margin: 0; /*webkit says no*/
+                    }
+
+                </STYLE>
+            </div>
+        </div>
+        <button onclick="printAIR()" class="btn btn-primary">PRINT</button>
+    </div>
+</div>
 <div class="content mt-3">
     <div class="animated fadeIn">
         <div class="row">
+
             <!-- Inventory-->
             <div class="inventory-tab col-lg-12">
                 <div class="card">
@@ -46,12 +422,12 @@
                                  <i class="	fa fa-check-square-o"></i></button>
                                  <!-- <a href="air" class="btn btn-warning" style="border-color:#0c0c0c"
                                     data-toggle="tooltip" data-placement="bottom" title="Generate AIR"><i class="fa fa-edit"></i></a>-->
-                                    <a class="btn btn-success" type="button" style="border-color:#0c0c0c" data-toggle="modal"
+                                    <a class="btn btn-success" type="button" style="border-color:#0c0c0c" onclick="getOR()" data-toggle="modal"
                                     data-target=".chooseOR" data-toggle="tooltip" data-placement="bottom" title="Generate AIR"><i class="fa fa-edit"></i></a>
                                 </div>';
                     }
                     ?>
-                        <div class="card-body">
+                    <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="CO-tab" data-toggle="tab" href="#tab_content1"
@@ -389,7 +765,8 @@
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
                                 <br/>
-                                <button onclick="printToPDF()" class="btn btn-info fa fa-download" style="border-color: #0c0c0c"> Download as PDF
+                                <button onclick="printToPDF()" class="btn btn-info fa fa-download"
+                                        style="border-color: #0c0c0c"> Download as PDF
                                 </button>
                                 <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
@@ -416,7 +793,9 @@
             <div hidden class="additemDiv col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-danger btn-sm" id="exit" onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))"><i class="fa fa-times"></i> Cancel
+                        <button class="btn btn-danger" id="exit" style="border-color: #0c0c0c"
+                                onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))"><i class="fa fa-times"></i>
+                            Cancel
                         </button>
                     </div>
                     <div class="card-body card-block col-lg-8 align-self-center">
@@ -525,54 +904,54 @@
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Delivery Date</label>
                                         <div class="input-group">
-                                        <input data-parsley-group="set1" type="date"
-                                               name="del[]" class="form-control col-6"
-                                               data-parsley-required-message="Enter the Delivery Date"
-                                               required>
+                                            <input data-parsley-group="set1" type="date"
+                                                   name="del[]" class="form-control col-6"
+                                                   data-parsley-required-message="Enter the Delivery Date"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class="form-control-label">Date Received</label>
                                         <div class="input-group date">
-                                        <input class="form-control col-6" type="date" name="rec[]"
-                                               data-parsley-required-message="Enter the Date received"
-                                               required>
+                                            <input class="form-control col-6" type="date" name="rec[]"
+                                                   data-parsley-required-message="Enter the Date received"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Expiration Date</label>
                                         <div class="input-group">
-                                        <input data-parsley-group="set1" type="date"
-                                               name="exp[]" class="form-control col-6"
-                                               data-parsley-required-message="Enter the Expiration Date"
-                                               required>
+                                            <input data-parsley-group="set1" type="date"
+                                                   name="exp[]" class="form-control col-6"
+                                                   data-parsley-required-message="Enter the Expiration Date"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Supplier</label>
                                         <div class="input-group">
-                                        <select data-parsley-group="set1"
-                                                list="typelist" name="supp[]"
-                                                class="supplieropt form-control col-6"
-                                                required>
-                                        </select>
+                                            <select data-parsley-group="set1"
+                                                    list="typelist" name="supp[]"
+                                                    class="supplieropt form-control col-6"
+                                                    required>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Official Receipt Number</label>
                                         <div class="input-group">
-                                        <input data-parsley-group="set1"
-                                               name="or[]" class="form-control col-6"
-                                               data-parsley-required-message="Input Official Receipt"
-                                               required>
+                                            <input data-parsley-group="set1"
+                                                   name="or[]" class="form-control col-6"
+                                                   data-parsley-required-message="Input Official Receipt"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class=" form-control-label">Purchse Order (PO)
                                             number</label>
                                         <div class="input-group">
-                                        <input data-parsley-group="set1"
-                                               name="PO[]" class="form-control col-6">
+                                            <input data-parsley-group="set1"
+                                                   name="PO[]" class="form-control col-6">
                                         </div>
                                     </div>
 
@@ -643,28 +1022,22 @@
 
 <!--Choose OR-->
 <form role="form" class="form-horizontal form-label-left col-12" method="POST" data-validate="parsley">
-    <div class="chooseOR modal fade" id="pickOR" tabindex="-1" role="dialog" aria-labelledby="chooseOR-modal" aria-hidden="true">
+    <div class="chooseOR modal fade" id="pickOR" tabindex="-1" role="dialog" aria-labelledby="chooseOR-modal"
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5>Please choose OR number</h5>
                 </div>
                 <div class="modal-body">
-                    <input type="text" class="form-control col-6 pull-right" placeholder="search">
-                    <br/>
-                    <input type="checkbox"> sample 1
-                    <br/>
-                    <input type="checkbox"> sample 2
-                    <br/>
-                    <input type="checkbox"> sample 3
-                    <br/>
-                    <input type="checkbox"> sample 4
-                    <br/>
-                    <input type="checkbox"> sample 5
+                    <label>Please select Official Receipt Number: </label>
+                    <select class="form-control" id="or_no">
+                        <option>-No Official Receipt Numbers -</option>
+                    </select>
                 </div>
 
                 <div class="modal-footer">
-                    <a href="air" class="btn btn-success btn-modal"> Enter</a>
+                    <a onclick="createReport()" data-dismiss="modal" class="btn btn-success btn-modal">Create Form</a>
                 </div>
 
             </div>
@@ -683,7 +1056,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="largeModalLabel">Distribution</h5>
-                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" style="border-color: #0c0c0c"><i class="fa fa-times"></i></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>
+                    </button>
                 </div>
                 <div class="modal-body">
 
@@ -746,8 +1120,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" name="id" id="save1" class="btn btn-success " >
-                        <i class="fa fa-arrow-down"></i> Save</button>
+                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal"
+                            style="border-color: #0c0c0c"><i class="fa fa-arrow-down"></i> Save
+                    </button>
                 </div>
             </div>
         </div>
@@ -1037,51 +1412,52 @@
 <!--Reconcile Page-->
 <div hidden class="reconcilePage col-lg-12">
     <form id="recValidate">
-    <div class="card">
-        <div class="card-header">
-            <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))"
-                    class="btn btn-dark fa fa-arrow-left"> Back
-            </button>
+        <div class="card">
+            <div class="card-header">
+                <button onclick="toggleDiv($('.inventory-tab'),$('.reconcilePage'))"
+                        class="btn btn-dark fa fa-arrow-left"> Back
+                </button>
 
-        </div>
-        <div class="card-body">
+            </div>
+            <div class="card-body">
 
-            <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download"> Download as PDF</button>
-            <br/>
+                <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download"> Download as PDF</button>
+                <br/>
 
-            <ul class="nav nav-tabs" id="serialTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-status="1" id="non-serialized-tab" data-toggle="tab" href="#nonSerTab"
-                       role="tab"
-                       aria-controls="serialized" aria-selected="false">Serialized Items</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-status="0" id="serialized-tab" data-toggle="tab" href="#serTab"
-                       role="tab"
-                       aria-controls="co" aria-selected="true">non-Serialized Items</a>
-                </li>
+                <ul class="nav nav-tabs" id="serialTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-status="1" id="non-serialized-tab" data-toggle="tab"
+                           href="#nonSerTab"
+                           role="tab"
+                           aria-controls="serialized" aria-selected="false">Serialized Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-status="0" id="serialized-tab" data-toggle="tab" href="#serTab"
+                           role="tab"
+                           aria-controls="co" aria-selected="true">non-Serialized Items</a>
+                    </li>
 
-            </ul>
-            <div class="tab-content pl-3 p-1" id="">
-                <div class="table-responsive-sm tab-pane fade show active" id="nonSerTab" role="tabpanel"
-                     aria-labelledby="nonSer-tab">
+                </ul>
+                <div class="tab-content pl-3 p-1" id="">
+                    <div class="table-responsive-sm tab-pane fade show active" id="nonSerTab" role="tabpanel"
+                         aria-labelledby="nonSer-tab">
 
-                    <table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="serializedItems"
-                           class="table table-bordered table-hover"></table>
-                </div>
-                <div class="table-responsive-sm  tab-pane fade " id="serTab"
-                     role="tabpanel"
-                     aria-labelledby="nonSerialized-tab">
-                  <table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="withoutSerial"
-                                       class="table table-bordered table-hover"></table>
+                        <table data-show-refresh="true" data-pagination="true" data-search="true" id="serializedItems"
+                               class="table table-bordered table-hover"></table>
+                    </div>
+                    <div class="table-responsive-sm  tab-pane fade " id="serTab"
+                         role="tabpanel"
+                         aria-labelledby="nonSerialized-tab">
+                        <table data-show-refresh="true" data-pagination="true" data-search="true" id="withoutSerial"
+                               class="table table-bordered table-hover"></table>
 
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-    <a type="button" class="compare btn btn-success" onclick="validateReconcile()">Reconcile Items</a>
-    <a type="button" class="compare btn btn-success">Compare</a>
+        </div>
+        <a type="button" class="compare btn btn-success" onclick="validateReconcile()">Reconcile Items</a>
+        <a type="button" class="compare btn btn-success">Compare</a>
     </form>
 </div>
 
