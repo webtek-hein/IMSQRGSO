@@ -1456,7 +1456,7 @@
                          role="tabpanel"
                          aria-labelledby="nonSerialized-tab">
                         <table data-show-refresh="true" data-pagination="true" data-search="true" id="withoutSerial"
-                               class="table table-bordered table-hover"></table>
+                               class="table table-bordered table-hover table-responsive"></table>
 
                     </div>
                 </div>
