@@ -5,9 +5,8 @@
         <div class="clearfix"></div>
 
         <section id="client-info">
-          <img src="logo.png" style="width:50px; height:50px;"></img>
-          <h3><b>City Government of Baguio</b></h3>
-          <h3 style="margin-top:-10px;"><b>ACCEPTANCE AND INSPECTION REPORT</b></h3>
+          <h2><b>REQUISITION AND ISSUE SLIP</b></h2>
+          <span>City Government of Baguio</span>
         </section>
         
         <div class="clearfix"></div>
@@ -17,32 +16,48 @@
           <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
             <thead>
                 <tr>
-                <th>
-                <h4 style="position:left; float:left;">Supplier: <input type="text"></input></h4>
-                <h4 style="position:right; float:right;">Invoice No.: <input type="text"></input></h4>
-                <br>
-                 <h4 style="position:left; float:left; margin-left:-228px; margin-top:25px;">PO No.: <input type="text"> </input></h4>
-                 <h4 style="position:right; float:right; margin-right:23px; margin-top:-13px;">AIR No.: <input type="text"></input></h4>
-                 <br>
-                 <h4 style="position:left; float:left; margin-left:-220px; margin-top:10px;">Requisitioning Office/Department: <input type="text"></input></h4>
-                 <h4 style="position:right; float:right; margin-right:42px; margin-top:-13px;">Date: <input type="text"></input></h4>
+                <th class="tg-yw41">
+                  Division: <input type="text"> </input>
+                  <br>
+                  Office: <input type="text"> </input>
                 </th>
-                </tr>
+                <th class="tg-yw42">Responsibility Center
+                    <br>Code: <input type="text" size="15px"> </input>
+                    <br>OBR#: <input type="text" size="15px"> </input>
+                </th>
+                <th class="tg-yw43" size="350px;">RIS No.: <input type="text" size="8px">
+                    <br>AIR No.: <input type="text" size="8px">
+                    <br>PR#:<input type="text" size="12px">
+                </th>
+                <th class="tg-yw44">Date:<input type="text" size="6px">
+                    <br>Date:<input type="text" size="6px">
+                </th>
+          </tr>
           </thead>
       </table>
-       
+        <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
+             <thead>
+           <tr>
+            <td class="tg-yw51"><b>REQUISITION</b></td>
+            <td class="tg-yw52"><b>ISSUANCE</b></td>
+           </tr>
+            </thead>
+        </table>
+
         <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
             <thead>
            <tr>
-            <th class="thead1"><b>ITEM</b></th>
-            <th class="thead1"><b>QUANTITY</b></th>
+            <th class="thead1"><b>STOCK No.</b></th>
             <th class="thead1"><b>UNIT</b></th>
-            <th class="thead2"><b>DESCIPTION</b></th>
-            <th class="thead1"><b>AMOUNT</b></th>
+            <th class="thead2"><b>DESCRIPTION</b></th>
+            <th class="thead1"><b>QUANTITY</b></th>
+            <th class="thead1"><b>QUANTITY</b></th>
+            <th class="thead3"><b>REMARKS</b></th>
            </tr>
            </thead>
            <tbody>
            <tr>
+            <td class="tbody"></td>
             <td class="tbody"></td>
             <td class="tbody"></td>
             <td class="tbody"></td>
@@ -55,52 +70,46 @@
         <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
             <tfoot>
            <tr>
-            <td><br></td>
+            <td class="tfoot1"><b>PURPOSE:</b></td>
+            <td class="tfoot2">Maintinance Supply c/o GSO</td>
             </tr>
             <tfoot>
         </table>
         <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 720px">
-          <tfoot>
           <tr>
-            <td class="tfoot5" align="center">ACCEPTION</td>
-            <td class="tfoot6" align="center">INSPECTION</td>
+            <td class="sign1"><b>SIGNATURE</b></td>
+            <td class="sign"><b>Approved by:<hr></hr></b><input type="text"></td>
+            <td class="sign"><b>Issues by:<hr></hr></b><input type="text"></td>
+            <td class="sign"><b>Received by:<hr></hr></b><input type="text"></td>
+          </tr>
+
+          <tr>
+            <td><b>PRINTED NAME</b></td>
+            <td><input type="text" style="font-weight: bold; text-transform: uppercase;"></td>
+            <td class="name"><b>BONIFACIO S. DE VERA</b></td>
+            <td><input type="text" style="font-weight: bold; text-transform: uppercase;"></td>
           </tr>
           <tr>
-            <td class="tfoot7" valign="top">Date Received:
-              <br></br>
-              <center>Complete
-              <input type="text" size="15px" class="input1"></input></center>
-              <br>
-              <center>Partial
-              <input type="text" size="15px" class="input1"></input></center>
-              <br></br>
-              <center><b>ROMEO D. CONCIO</b>
-                <hr width="200px"></hr>
-                <span>City General Services OFficer</span>
-            </td>
-            <td class="tfoot8" valign="top">Date Inspected:
-              <br></br>
-              <input type="text" size="5px" class="input1">
-              <p style="margin-left:75px; margin-top:-15px;">Inspected, verified and found acceptable</p><p style="margin-left:75px;"> as to quantity and specifications</p></input>
-              <br></br>
-               <center><b>ROMEO D. CONCIO</b>
-                <hr></hr>
-                <span>GSO Inspector</span>
-            </td>
+            <td><b>DESIGNATION</b></td>
+            <td><input type="text"></td>
+            <td class="name">Admin Officer V</td>
+            <td><input type="text"></td>
           </tr>
-          </tfoot>
+          <tr>
+            <td><b>DATE</b></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+
         </table>
+
         </div>
-        <br></br>
-        <input type="text"></input>
-         <hr width="300px"></hr>
-        <center><b>END-USER</b></center>
-        <br>
-        <input id="printpagebutton" type="button" value="Print" onclick="download()"/>
+        <input id="printpagebutton" type="button" value="Download" onclick="download()"/>
          </div>
  
         <div class="clearfix"></div>
-        
+
 <STYLE TYPE="text/css">
 html {
   line-height: 1;
@@ -178,9 +187,8 @@ b, strong, .bold {
 
 
 input[type="text"] { 
-    border: none; 
+    border: none 
 }
-
 
 table {
   table-layout: fixed;
@@ -272,7 +280,7 @@ table {
 }
 
 .tg .tbody{
-  height: 450px;
+  height: 650px;
 }
 
 .tg .tfoot1{
@@ -282,23 +290,6 @@ table {
 .tg .tfoot2{
   width: 240px;
 }
-
-.tg .tfoot3{
-  height: 100px;
-}
-
-.tg .tfoot4{
- height: 100px;
-}
-
-.tg .tfoot5{
- width: 300px;
-}
-.tg .tfoot7{
-  height:170px;
-  }
-
-
 
 .tg .sign1{
   height: 40px;
@@ -329,24 +320,22 @@ table {
 
 @media print {
   /* Here goes your print styles */
-  table { page-break-after:auto; }
+   table { page-break-after:auto; }
   tr    { page-break-inside:avoid; page-break-after:auto; }
   td    { page-break-inside:avoid; page-break-after:auto; }
   thead { display:table-header-group;}
   tfoot { display:table-footer-group; }
-  }
-
-
+  
 }
 @page {
-  size: 21cm 29.7cm;   /*A4*/
-  margin: 0; /*webkit says no*/
+  size: 21cm 29.7cm;   /*A4*
+/  margin: 0; /*webkit says no*/
 }
 
 </STYLE>
 
 <script type="text/javascript">
-function download(){
+function download() {
         //Get the print button and put it into a variable
         var printButton = document.getElementById("printpagebutton");
         //Set the print button visibility to 'hidden' 
