@@ -448,10 +448,10 @@
                                  aria-labelledby="CO-tab">
                                 <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="itemtable"
-                                       class="table table-bordered table-hover"></table>';
+                                       class="table table-bordered table-hover table-responsive"></table>';
                                 } else {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="departmentTable"
-                                       class="table table-bordered table-hover"></table>';
+                                       class="table table-bordered table-hover table-responsive"></table>';
                                 }
                                 ?>
                             </div>
@@ -460,10 +460,10 @@
                                  aria-labelledby="MOOE-tab">
                                 <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="MOOEtable"
-                                       class="table table-bordered table-hover"></table>';
+                                       class="table table-bordered table-hover table-responsive"></table>';
                                 } else {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="deptMOOEtable"
-                                       class="table table-bordered table-hover"></table>';
+                                       class="table table-bordered table-hover table-responsive"></table>';
                                 }
                                 ?>
                             </div>
@@ -713,7 +713,7 @@
                                 <form id="addQuant">
                                     <!-- Implement Bootsrap table-->
                                     <table id="detail-tab-table" data-search="true"
-                                           class="table table-bordered table-hover">
+                                           class="table table-bordered table-hover table-responsive">
                                     </table>
                                 </form>
 
@@ -771,7 +771,7 @@
                                 <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
-                                       class="table table-bordered table-hover">
+                                       class="table table-bordered table-hover table-responsive">
                                 </table>
                             </div>
                             <!--End of General Ledger-->
@@ -780,7 +780,7 @@
                             <div class="tab-pane fade" id="removed_Items" role="tabpanel"
                                  aria-labelledby="removed-tab">
                                 <table id="removed-table" data-search="true" data-show-refresh='true'
-                                       class="table table-bordered table-hover">
+                                       class="table table-bordered table-hover table-responsive">
                                 </table>
                             </div>
                             <!--End of Removed Items-->
@@ -1018,7 +1018,7 @@
             <div class="row">
                 <div id="returnedReport" class="col-md-12 table-responsive">
                     <table id="reportTable" data-pagination="true"
-                           class="table table-bordered table-hover">
+                           class="table table-bordered table-hover table-responsive">
                     </table>
                 </div>
             </div>
@@ -1450,13 +1450,13 @@
                          aria-labelledby="nonSer-tab">
 
                         <table data-show-refresh="true" data-pagination="true" data-search="true" id="serializedItems"
-                               class="table table-bordered table-hover"></table>
+                               class="table table-bordered table-hover table-responsive"></table>
                     </div>
                     <div class="table-responsive-sm  tab-pane fade " id="serTab"
                          role="tabpanel"
                          aria-labelledby="nonSerialized-tab">
                         <table data-show-refresh="true" data-pagination="true" data-search="true" id="withoutSerial"
-                               class="table table-bordered table-hover"></table>
+                               class="table table-bordered table-hover table-responsive"></table>
 
                     </div>
                 </div>
