@@ -2673,12 +2673,12 @@ function createReport() {
             $('#OR_no').val(data[0].OR_no);
             $('#date_received').val(data[0].date_received);
             for (var i = 0; i <= data.length - 1; i++) {
-                tr.push('<tr>' +
-                    '<td class="tbody">'+data[i].item_name+'</td>' +
-                    '<td class="tbody">'+data[i].quantity+'</td>' +
-                    '<td class="tbody">'+data[i].item_description+'</td>' +
-                    '<td class="tbody">'+data[i].unit+'</td>' +
-                    '<td class="tbody">'+data[i].amount+'</td>' +
+                tr.push('<tr class="tbody">' +
+                    '<td >'+data[i].item_name+'</td>' +
+                    '<td >'+data[i].quantity+'</td>' +
+                    '<td >'+data[i].item_description+'</td>' +
+                    '<td >'+data[i].unit+'</td>' +
+                    '<td >'+data[i].amount+'</td>' +
                     '</tr>');
             }
             tbody.html(tr);
