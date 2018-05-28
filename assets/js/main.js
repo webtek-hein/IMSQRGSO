@@ -381,9 +381,9 @@ $(document).ready(function () {
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
                 if (data[i].countinc !== '0') {
-                    detail += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' Added by ' + data[i].custodian + "</a></li>"
+                    detail += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Added by ' + data[i].custodian + "</a>"
                 } else {
-                    detail = "<li>No Data Found!</li>"
+                    detail = "No Data Found!"
                 }
             }
             $notifitems.html(detail);
@@ -399,10 +399,10 @@ $(document).ready(function () {
         dataType: 'JSON',
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
-                if (data[i].countinc !== '0') {
-                    issued += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' Issued by ' + data[i].custodian + ' to ' + data[i].department + "</a></li>"
+                if (data[i].issuedcount !== '0') {
+                    issued += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Issued by ' + data[i].custodian + ' to ' + data[i].department + "</a>"
                 } else {
-                    issued = "<li>No Data Found!</li>"
+                    issued = "No Data Found!"
                 }
             }
             $issueditems.html(issued);
@@ -421,10 +421,10 @@ $(document).ready(function () {
 
             for (var i = 0; i < data.length; i++) {
                 if (data[i].returncount !== '0') {
-                    returned += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' Returned by ' + data[i].department + "</a></li>"
+                    returned += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Returned by ' + data[i].department + "</a>"
 
                 } else {
-                    returned = "<li>No Data Found!</li>"
+                    returned = "No Data Found!"
                 }
             }
             $returneditems.html(returned);
@@ -441,12 +441,31 @@ $(document).ready(function () {
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
                 if (data[i].expirecount !== '0') {
-                    expired += "<li><a href='#'>" + 'Item ' + data[i].itemname + ' has reached its life span' + "</a></li>"
+                    expired += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' has reached its life span' + "</a>"
                 } else {
-                    expired = "<li>No Data Found!</li>"
+                    expired = "No Data Found!"
                 }
             }
             $expireditems.html(expired);
+        }
+    });
+
+    //dashboard edited items
+    var $editeditems = $('#edited');
+    var edited = [];
+
+    $.ajax({
+        url: "inventory/editedItems",
+        dataType: 'JSON',
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].expirecount !== '0') {
+                    edited += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" +  data[i].custodian + ' changed ' + data[i].fieldedit + ' of '+ data[i].oldvalue+ ' to '+ data[i].newvalue +"</a>"
+                } else {
+                    edited = "No Data Found!"
+                }
+            }
+            $editeditems.html(edited);
         }
     });
     //return table

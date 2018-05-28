@@ -1461,6 +1461,14 @@ class Inventory_model extends CI_Model
      *
      * @return mixed result of the query
      */
+
+    public function editedItems(){
+        $this->db->select('COUNT(edit_log_id) as countEdit,item.*,CONCAT(first_name," ",last_name) as custodian,edit.*');
+        $this->db->join('gsois.item item', 'item.item_id = edit.item_id');
+        $this->db->join('gsois.user u', 'edit.userid = u.user_id');
+        $query = $this->db->get('logs.editlog edit');
+        return $query->result_array();
+    }
     public function totalcost()
     {
         $this->db->SELECT('sum(unit_cost * quantity) as totalcost');

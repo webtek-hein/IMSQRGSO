@@ -19,7 +19,7 @@ if ($position === 'Admin') {
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5" id="itemsrec">New Item Received</div>
+              <div class="mr-5" id="itemsrec">New Items Received</div>
             </div>
             <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo">
               <span class="float-left" style="color:black">View Details</span>
@@ -49,7 +49,7 @@ if ($position === 'Admin') {
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5" id="itemsiss">Issued Item</div>
+              <div class="mr-5" id="itemsiss">Issued Items</div>
             </div>
          <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo1">
               <span class="float-left" style="color:black">View Details</span>
@@ -221,7 +221,7 @@ if ($position === 'Custodian') {
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5" id="itemsrec">New Item Received</div>
+              <div class="mr-5" id="itemsrec">New Items Received</div>
             </div>
             <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo">
               <span class="float-left" style="color:black">View Details</span>
@@ -230,10 +230,8 @@ if ($position === 'Custodian') {
                </span>
              </a>
            <div id="demo" class="collapse ScrollStyle" style="color:black">
-        <div class="list-group">
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Add Supplier <span>03/26/2018</span></a>
+        <div class="list-group" id="increase">
+           
         </div>
         </div>
         </div>
@@ -245,7 +243,7 @@ if ($position === 'Custodian') {
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5" id="itemsiss">Issued Item</div>
+              <div class="mr-5" id="itemsiss">Issued Items</div>
             </div>
          <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo1">
               <span class="float-left" style="color:black">View Details</span>
@@ -255,10 +253,8 @@ if ($position === 'Custodian') {
              </a>
            
            <div id="demo1" class="collapse ScrollStyle" style="color:black">
-        <div class="list-group">
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Add Supplier <span>03/26/2018</span></a>
+        <div class="list-group" id="issued">
+           
         </div>
         </div>
         </div>
@@ -279,10 +275,8 @@ if ($position === 'Custodian') {
                </span>
              </a>
            <div id="demo2" class="collapse ScrollStyle" style="color:black">
-        <div class="list-group">
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Add Supplier <span>03/26/2018</span></a>
+        <div class="list-group" id="returned">
+           
         </div>
         </div>
         </div>
@@ -305,10 +299,8 @@ if ($position === 'Custodian') {
              </a>
            
            <div id="demo3" class="collapse ScrollStyle" style="color:black">
-        <div class="list-group">
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Add Supplier <span>03/26/2018</span></a>
+        <div class="list-group" id="expired">
+           
         </div>
         </div>
         </div>
@@ -329,15 +321,13 @@ if ($position === 'Custodian') {
              </a>
            
            <div id="demo4" class="collapse ScrollStyle" style="color:black">
-        <div class="list-group">
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Distribute on Department Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Edit Item Name <span>03/26/2018</span></a>
-            <a class="list-group-item"><i class="fa fa fa-cubes"></i>Add Supplier <span>03/26/2018</span></a>
+        <div class="list-group" id="edited">
+            
         </div>
         </div>
         </div>
         </div>'.
-      '<div class="col-xl-4 col-sm-6 mb-3">
+      /*'<div class="col-xl-4 col-sm-6 mb-3">
           <div class="card text-white bg-warning o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
@@ -361,8 +351,8 @@ if ($position === 'Custodian') {
         </div>
         </div>
         </div>
-          </div>'.
-          
+          </div>'.*/
+
 
 '<!-- Example Bar Chart Card-->
 <div class="content">
