@@ -1722,7 +1722,7 @@ function save(counter) {
         var step = $('#step' + counter + 'B');
         $.ajax({
             type: 'POST',
-            url: 'inventory/save/' + counter,
+            url: 'Inventory/save/' + counter,
             data: $('#addItemForm').serializeArray(),
             success: function (response) {
                 if (response) {
@@ -1744,9 +1744,7 @@ function save(counter) {
             },
             statusCode: {
                 500: function () {
-                    BootstrapDialog.show({
-                        message: 'Duplicate item name and description.'
-                    });
+                    alert('Duplicate item name and description.');
                 }
             }
 

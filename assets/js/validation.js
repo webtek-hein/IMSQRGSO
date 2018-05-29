@@ -14,7 +14,82 @@ $('input[type=text]').keypress(function () {
     }
 });
 
-$(document).ready(function () {
-    var quant = $('.recQuant');
-    var i = 0;
+$( 'input[name^=cost]' ).on('keypress paste',function () {
+    var x = event.charCode;
+    if(x === 101 ||  x === 45 || x === 43 || x === 69){
+        return false;
+    }
+});
+$('input[name^=cost]').on('blur',function () {
+    var regex  = /^(\d+\.{0,1}\d{1,2})/;
+    if (!regex.test($(this).val())){
+        $(this).val('');
+        $('.cost-error-msg').html('Cost is invalid');
+        return false;
+    }
+
+});
+$('input[name^=del]').on('blur',function () {
+   var delDate = $(this).val();
+   var recDate = $('input[name^=rec]').val();
+   var expDate = $('input[name^=exp]').val();
+
+   if(recDate !== ''){
+       if(delDate > recDate){
+           $(this).val('');
+           $('.del-error-msg').html('Delivery date must not be greater than date received.');
+       }
+   }
+   if(expDate !== ''){
+       if(delDate > expDate){
+           $(this).val('');
+           $('.del1-error-msg').html('Delivery date must not be greater than expiration date.');
+       }
+   }
+});
+
+$('input[name^=rec]').on('blur',function () {
+    var recDate = $(this).val();
+    var delDate = $('input[name^=del]').val();
+    var expDate = $('input[name^=exp]').val();
+
+    if(delDate !== ''){
+        if(recDate < delDate ){
+            $(this).val('');
+            $('.rec-error-msg').html('Delivery received must not be less than date delivered.');
+        }else{
+            $('.rec-error-msg').html('');
+        }
+    }
+    if(expDate !== ''){
+        if(recDate > expDate){
+            $(this).val('');
+            $('.rec1-error-msg').html('Date received must not be greater than expiration date.');
+        }else{
+            $('.rec1-error-msg').html('');
+        }
+    }
+});
+
+$('input[name^=exp]').on('blur',function () {
+    var expDate = $(this).val();
+    var delDate = $('input[name^=del]').val();
+    var recDate = $('input[name^=rec]').val();
+
+    if(delDate !== ''){
+        if(expDate < delDate ){
+            $(this).val('');
+            $('.exp-error-msg').html('Expiration date must not be less than date delivered.');
+        }else{
+            $('.exp-error-msg').html('');
+        }
+    }
+    if(recDate !== ''){
+        if(expDate < recDate){
+            $(this).val('');
+            $('.exp1-error-msg').html('Expiration date must not be less than date received.');
+        }else{
+            $('.exp1-error-msg').html('');
+        }
+    }
 });

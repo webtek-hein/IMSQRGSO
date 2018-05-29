@@ -878,6 +878,9 @@
                                                class="addItemInput form-control col-6"
                                                data-parsley-required-message="Please insert Unit Cost"
                                                required>
+                                        <ul class="list-unstyled">
+                                            <li class="text-danger cost-error-msg"></li>
+                                        </ul>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class="addItemLabel form-control-label">Description</label>
@@ -904,14 +907,23 @@
                                                    data-parsley-required-message="Enter the Delivery Date"
                                                    required>
                                         </div>
+                                        <ul class="list-unstyled">
+                                            <li class="text-danger del-error-msg"></li>
+                                            <li class="text-danger del1-error-msg"></li>
+                                        </ul>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class="addItemLabel form-control-label">Date Received</label>
                                         <div class="input-group date">
                                             <input class="addItemInput form-control col-6" type="date" name="rec[]"
                                                    data-parsley-required-message="Enter the Date received"
+                                                   data-parsley-group="set1"
                                                    required>
                                         </div>
+                                        <ul class="list-unstyled">
+                                            <li class="text-danger rec-error-msg"></li>
+                                            <li class="text-danger rec1-error-msg"></li>
+                                        </ul>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class="addItemLabel form-control-label">Expiration Date</label>
@@ -921,6 +933,10 @@
                                                    data-parsley-required-message="Enter the Expiration Date"
                                                    required>
                                         </div>
+                                        <ul class="list-unstyled">
+                                            <li class="text-danger exp-error-msg"></li>
+                                            <li class="text-danger exp1-error-msg"></li>
+                                        </ul>
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class="addItemLabel form-control-label">Supplier</label>
