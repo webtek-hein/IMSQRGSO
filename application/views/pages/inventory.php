@@ -57,7 +57,7 @@
                     </table>
 
                     <table id="tg-umsCj" class="tg" style="undefined;table-layout: fixed; width: 750px">
-                        <thead>
+                        <thead class="table-secondary">
                         <tr>
                             <th class="thead1"><b>ITEM</b></th>
                             <th class="thead1"><b>QUANTITY</b></th>
@@ -448,10 +448,10 @@
                                  aria-labelledby="CO-tab">
                                 <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="itemtable"
-                                       class="table table-bordered table-hover"></table>';
+                                       class="table table-bordered table-hover"><thead class="table-secondary"></thead></table>';
                                 } else {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="departmentTable"
-                                       class="table table-bordered table-hover"></table>';
+                                       class="table table-bordered table-hover"><thead class="table-secondary"></thead></table>';
                                 }
                                 ?>
                             </div>
@@ -460,10 +460,10 @@
                                  aria-labelledby="MOOE-tab">
                                 <?php if ($position !== 'Supply Officer') {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="MOOEtable"
-                                       class="table table-bordered table-hover"></table>';
+                                       class="table table-bordered table-hover"><thead class="table-secondary"></thead></table>';
                                 } else {
                                     echo '<table data-show-refresh = "true" data-pagination="true" data-search= "true" id ="deptMOOEtable"
-                                       class="table table-bordered table-hover"></table>';
+                                       class="table table-bordered table-hover"><thead class="table-secondary"></thead></table>';
                                 }
                                 ?>
                             </div>
@@ -714,6 +714,7 @@
                                     <!-- Implement Bootsrap table-->
                                     <table id="detail-tab-table" data-search="true"
                                            class="table table-bordered table-hover">
+                                           <thead class="table-secondary"></thead>
                                     </table>
                                 </form>
 
@@ -772,6 +773,7 @@
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
                                        class="table table-bordered table-hover">
+                                       <thead class="table-secondary"></thead>
                                 </table>
                             </div>
                             <!--End of General Ledger-->
@@ -781,6 +783,7 @@
                                  aria-labelledby="removed-tab">
                                 <table id="removed-table" data-search="true" data-show-refresh='true'
                                        class="table table-bordered table-hover">
+                                       <thead class="table-secondary"></thead>
                                 </table>
                             </div>
                             <!--End of Removed Items-->

@@ -55,6 +55,7 @@
                                 <table id="departmentTable" data-show-refresh="true" data-url="inventory/viewDept/CO/11"
                                        class="table table-bordered"
                                        data-pagination="true" data-search="true">
+                                       <thead class="table-secondary"></thead>
                                 </table>
                             </div>
                             <!--MOOE Tab-->
@@ -63,6 +64,7 @@
                                 <table id="deptMOOEtable" data-pagination="true" data-show-refresh="true"
                                        data-search="true" data-url="inventory/viewDept/MOOE/11"
                                        class="table table-bordered">
+                                       <thead class="table-secondary"></thead>
                                 </table>
                             </div>
                         </div>
@@ -111,6 +113,7 @@
                             <div class="tab-pane fade" id="Detail_Det" role="tabpanel" aria-labelledby="Detail-tab">
                                 <!-- Implement Bootsrap table-->
                                 <table id="detail-tab-table" class="table table-bordered table-hover">
+                                    <thead class="table-secondary"></thead>
                                 </table>
                             </div>
                         </div>
@@ -133,6 +136,7 @@
         </div>
         <div class="card-body">
             <table id="accountTable" class="table table-striped table-bordered">
+                <thead class="table-secondary"></thead>
             </table>
         </div>
     </div>
@@ -216,6 +220,7 @@
 
         <div id='hist' class="table-responsive-sm-sm tab-content pl-3 p-1">
             <table id="history" class="table table-striped table-bordered">
+                <thead class="table-secondary"></thead>
             </table>
         </div>
     </div>
@@ -234,6 +239,7 @@
             <div class="table-responsive-sm-sm tab-content pl-3 p-1">
                 <table class="table table-bordered"
                        data-pagination="true" data-search="true" id="reconcileTable">
+                       <thead class="table-secondary"></thead>
                 </table>
             </div>
     </div>

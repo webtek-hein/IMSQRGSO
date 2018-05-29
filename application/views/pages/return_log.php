@@ -45,7 +45,7 @@
                                  aria-labelledby="CO-tab">
                                 <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
                                        data-url="logs/returnLog/CO" class="table table-bordered">
-                                    <thead>
+                                    <thead class="table-secondary">
                                     <tr>
                                         <th data-sortable="true" data-field="timestamp">Timestamp</th>
                                         <th data-sortable="true" data-field="item">Returned Item</th>
@@ -66,7 +66,7 @@
                             <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
                                 <table id="datatable-buttons" data-pagination="true" data-search="true" data-toggle="table"
                                        data-url="logs/returnLog/MOOE" class="table table-bordered">
-                                    <thead>
+                                    <thead class="table-secondary">
                                     <tr>
                                         <th data-sortable="true" data-field="timestamp">Timestamp</th>
                                         <th data-sortable="true" data-field="item">Returned Item</th>

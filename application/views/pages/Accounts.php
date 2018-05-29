@@ -35,6 +35,7 @@
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <table id="user-table" data-pagination="true" data-search="true"
                                    class="table table-no-bordered">
+                                   <thead class="table-secondary"></thead>
                             </table>
                         </div>
                     </div>

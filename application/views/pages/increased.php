@@ -47,7 +47,7 @@
                                 <table id="increaseLogsTable" data-pagination="true" data-search="true"
                                        data-toggle="table"
                                        data-url="logs/increaseLog/CO" class="table table-bordered">
-                                    <thead>
+                                    <thead class="table-secondary">
                                     <!-- Data-field for getting data  -->
                                     <tr data-toggle="collapse" data-target="#accordion" class="clickable">
                                         <th data-sortable="true" data-field="timestamp">Timestamp</th>
@@ -68,7 +68,7 @@
                                 <!-- Implement Bootsrap table-->
                                 <table id="" data-pagination="true" data-search="true" data-toggle="table"
                                        data-url="logs/increaseLog/MOOE" class="table table-bordered">
-                                    <thead>
+                                    <thead class="table-secondary">
                                     <!-- Data-field for getting data  -->
                                     <tr data-toggle="collapse" data-target="#accordion" class="clickable">
                                         <th data-sortable="true" data-field="timestamp">Timestamp</th>

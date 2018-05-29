@@ -26,6 +26,7 @@
                 <div class="card">
                     <div class="card-body">
                         <table id="returnTable" class="table table-bordered">
+                            <thead class="table-secondary"></thead>
                         </table>
                     </div>
                 </div>

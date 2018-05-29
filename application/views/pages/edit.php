@@ -45,7 +45,7 @@
                                  aria-labelledby="CO-tab">
                                 <table id="editlogco" data-pagination="true" data-search="true"
                                        data-url="logs/editlogitem/CO" class="table table-striped table-bordered">
-
+                                        <thead class="table-secondary"></thead>
                                 </table>
 
                             </div>
@@ -53,6 +53,7 @@
                             <div class="tab-pane fade" id="tab_content2" role="tabpanel" aria-labelledby="MOOE-tab">
                                 <table id="editlogmooe" data-pagination="true" data-search="true"
                                        data-url="logs/editlogitem/MOOE" class="table table-striped table-bordered">
+                                       <thead class="table-secondary"></thead>
 
                                 </table>
                             </div>
