@@ -412,17 +412,16 @@
                         // required accept=".csv" enctype="multipart/form-data">Import CSV</button>
                         // </form>
                         echo '<div class="card-header">
-                                <button id="headingTwo" class="btn btn-success" style="border-color: #0c0c0c" data-toggle="tooltip" 
-                                data-placement="bottom" title="Add New Inventory"><i class=" fa fa-plus"></i></button>
+                                <button id="headingTwo" class="btn btn-success" data-toggle="tooltip" 
+                                data-placement="bottom" title="Add New Item"><i class=" fa fa-plus"></i></button>
                                 <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" 
-                                     class="btn btn-info" style="border-color: #0c0c0c" data-toggle="tooltip"
+                                     class="btn btn-info" data-toggle="tooltip"
                                      data-placement="bottom" title="Print Reports"><i class="fa fa-file-archive-o"></i></button> 
-                                 <button id="reconcileButton" class="btn btn-danger" style="border-color: #0c0c0c"
-                                        data-toggle="tooltip" data-placement="bottom" title="Reconcile">
+                                 <button id="reconcileButton" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Reconcile">
                                  <i class="	fa fa-check-square-o"></i></button>
                                  <!-- <a href="air" class="btn btn-warning" style="border-color:#0c0c0c"
                                     data-toggle="tooltip" data-placement="bottom" title="Generate AIR"><i class="fa fa-edit"></i></a>-->
-                                    <a class="btn btn-success" type="button" style="border-color:#0c0c0c" onclick="getOR()" data-toggle="modal"
+                                    <a class="btn btn-success" type="button" onclick="getOR()" data-toggle="modal"
                                     data-target=".chooseOR" data-toggle="tooltip" data-placement="bottom" title="Generate AIR"><i class="fa fa-edit"></i></a>
                                 </div>';
                     }
@@ -796,9 +795,9 @@
             <div hidden class="additemDiv col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-danger" id="exit"
+                        <button class="btn btn-danger btn-sm" id="exit"
                                 onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))">
-                            Cancel
+                                <i class="fa fa-times"></i> Cancel
                         </button>
                     </div>
                     <div class="card-body card-block col-lg-12">
@@ -810,51 +809,54 @@
                                        aria-controls="step1" aria-selected="true">Item 1</a>
                                 </li>
                                 <li id="another">
-                                    <button id="addanother" class="btn btn-primary"
-                                            role="tab"><i class="ti-plus"></i>
+                                    <button id="addanother" class="btn btn-primary" role="tab" data-toggle="tooltip" data-placement="bottom" title="Add another Item">
+                                        <i class="ti-plus"></i>
                                     </button>
                                 </li>
                             </ul>
                         </div>
-                        <form class="form-horizontal form-label-left input_mask" id="addItemForm" role="form"
+                    <br/>
+
+                        <form class="forUIaddItem form-horizontal form-label-left input_mask col-8" id="addItemForm" role="form"
                               action="Inventory/saveAll" method="POST">
-                            <hr/>
+
                             <div id="bulkdiv" class="tab-content">
-                                <h3 id="addItemh3">Item Information</h3>
-                                <hr/>
+                                <h5 id="addItemh3">Item Information</h5>
+                                <br/>
+
                                 <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
                                     <div class="form-group">
-                                        <label for="item">Item Name</label>
+                                        <label class="addItemLabel" for="item">Item Name</label>
                                         <input name="item[]"
-                                               class="form-control col-6 align-middle"
+                                               class="addItemInput form-control col-6 align-middle"
                                                data-parsley-group="set1"
                                                placeholder="Enter the name of the item"
                                                required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="itemtype">Item type
+                                        <label class="addItemLabel" for="itemtype">Item type
                                         </label>
                                         <select data-parsley-group="set1"
                                                 list="typelist" name="Type[]"
-                                                class="itemtype form-control col-6" required>
+                                                class="addItemSelect itemtype form-control col-6" required>
                                             <option value="CO">Capital Outlay</option>
                                             <option value="MOOE">MOOE</option>
                                         </select>
-                                        <input type="checkbox" tabindex="-1" name="serialStatus[]"
+                                        <input class="addItemInput" type="checkbox" tabindex="-1" name="serialStatus[]"
                                                value="1"> With serial
                                     </div>
                                     <div class="form-group">
-                                        <label for="quantity">Quantity</label>
+                                        <label class="addItemLabel" for="quantity">Quantity</label>
                                         <input type="number" name="quant[]"
-                                               class="form-control col-6"
+                                               class="addItemInput form-control col-6"
                                                data-parsley-group="set1"
                                                placeholder="Enter the quantity" min="0"
                                                required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="unit" class=" form-control-label">Unit</label>
+                                        <label for="unit" class="addItemLabel form-control-label">Unit</label>
                                         <input name="Unit[]" data-parsley-group="set1"
-                                               class="form-control col-6" class="unit"
+                                               class="addItemInput form-control col-6" class="unit"
                                                list="list"
                                                data-parsley-required-message="Select the Unit"
                                                required>
@@ -870,18 +872,18 @@
                                         </datalist>
                                     </div>
                                     <div class="form-group">
-                                        <label for="unit" class=" form-control-label">Unit Cost</label>
+                                        <label for="unit" class="addItemLabel form-control-label">Unit Cost</label>
                                         <input type="number" min='0' name="cost[]"
                                                data-parsley-group="set1"
-                                               class="form-control col-6"
+                                               class="addItemInput form-control col-6"
                                                data-parsley-required-message="Please insert Unit Cost"
                                                required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="unit" class=" form-control-label">Description</label>
+                                        <label for="unit" class="addItemLabel form-control-label">Description</label>
                                         <textarea data-parsley-group="set1"
                                                   name="description[]" id="message"
-                                                  class="form-control col-6"
+                                                  class="addItemTextarea form-control col-6"
                                                   data-parsley-trigger="blur"
                                                   data-parsley-minlength="1"
                                                   data-parsley-maxlength="500"
@@ -889,66 +891,67 @@
                                                   data-parsley-required-messag="Put description of the items"
                                                   required></textarea>
                                     </div>
-                                    <hr>
-                                    <h3>Additional Details</h3>
-                                    <hr>
+
+                                    <br/>
+                                    <h5>Additional Details</h5>
+                                    <br/>
+
                                     <div class="form-group">
-                                        <label for="unit" class=" form-control-label">Delivery Date</label>
+                                        <label for="unit" class="addItemLabel form-control-label">Delivery Date</label>
                                         <div class="input-group">
                                             <input data-parsley-group="set1" type="date"
-                                                   name="del[]" class="form-control col-6"
+                                                   name="del[]" class="addItemInput form-control col-6"
                                                    data-parsley-required-message="Enter the Delivery Date"
                                                    required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="unit" class="form-control-label">Date Received</label>
+                                        <label for="unit" class="addItemLabel form-control-label">Date Received</label>
                                         <div class="input-group date">
-                                            <input class="form-control col-6" type="date" name="rec[]"
+                                            <input class="addItemInput form-control col-6" type="date" name="rec[]"
                                                    data-parsley-required-message="Enter the Date received"
                                                    required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="unit" class=" form-control-label">Expiration Date</label>
+                                        <label for="unit" class="addItemLabel form-control-label">Expiration Date</label>
                                         <div class="input-group">
                                             <input data-parsley-group="set1" type="date"
-                                                   name="exp[]" class="form-control col-6"
+                                                   name="exp[]" class="addItemInput form-control col-6"
                                                    data-parsley-required-message="Enter the Expiration Date"
                                                    required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="unit" class=" form-control-label">Supplier</label>
+                                        <label for="unit" class="addItemLabel form-control-label">Supplier</label>
                                         <div class="input-group">
                                             <select data-parsley-group="set1"
                                                     list="typelist" name="supp[]"
-                                                    class="supplieropt form-control col-6"
+                                                    class="addItemSelect supplieropt form-control col-6"
                                                     required>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="unit" class=" form-control-label">Official Receipt Number</label>
+                                        <label for="unit" class="addItemLabel form-control-label">Official Receipt Number</label>
                                         <div class="input-group">
                                             <input data-parsley-group="set1"
-                                                   name="or[]" class="form-control col-6"
+                                                   name="or[]" class="addItemInput form-control col-6"
                                                    data-parsley-required-message="Input Official Receipt"
                                                    required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="unit" class=" form-control-label">Purchse Order (PO)
+                                        <label for="unit" class="addItemLabel form-control-label">Purchse Order (PO)
                                             number</label>
                                         <div class="input-group">
                                             <input data-parsley-group="set1"
-                                                   name="PO[]" class="form-control col-6">
+                                                   name="PO[]" class="addItemInput form-control col-6">
                                         </div>
                                     </div>
 
-                                    <hr>
                                     <button id="buttonCounter1" type="button" onclick="save(1)"
-                                            class="savebtn btn btn-primary"><i class="fa fa-arrow-down"></i>
+                                            class="savebtn btn btn-outline-success"><i class="fa fa-arrow-down"></i>
                                         Save
                                     </button>
                                     <button type="submit" id="saveALL" class="btn btn-success"><i

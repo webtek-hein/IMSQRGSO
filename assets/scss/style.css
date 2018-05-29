@@ -13,11 +13,33 @@
 /* Bootstrap */
 @import url(../css/animate.css);
 
+
+/*--Inventory Add Item--*/
+.additemDiv #addItemForm{
+  margin-left:50px;
+}
+
+.additemDiv #addItemForm h5{
+  background-color: #00b3ee;
+  padding: 10px;
+
+}
+.additemDiv #addItemForm .addItemLabel, .addItemInput, .addItemSelect, .addItemTextarea{
+  margin-left: 50px;
+}
+.additemDiv #addItemForm h5{
+  margin-left:30px;
+}
+.additemDiv #addItemForm #buttonCounter1, #saveALL{
+  margin-left: 50px;
+}
+
 .parsley-errors-list li{
   list-style: none;
   color: red;
   margin-left: 10px;
 }
+/*End of Inventory Add Item*/
 
 /*--Action--*/
 .dropdown #DetailDropDn{

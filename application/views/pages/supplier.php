@@ -29,7 +29,7 @@
 
 
                         echo '<div class="card-header">
-                                  <button onclick="addSupplier()" class="btn btn-info">
+                                  <button onclick="addSupplier()" class="btn btn-info btn-sm">
                                   <i class="fa fa-plus"></i><span> Add Supplier</span>
                                   </button>
                               </div>';
