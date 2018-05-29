@@ -66,14 +66,14 @@
 
 
 <div id="editlogmodal" class="modal fade Add_Item" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div  class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Edit Log </h4>
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Edit Log </h4>
             </div>
 
             <div class="modal-body">

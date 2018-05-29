@@ -412,17 +412,16 @@
                         // required accept=".csv" enctype="multipart/form-data">Import CSV</button>
                         // </form>
                         echo '<div class="card-header">
-                                <button id="headingTwo" class="btn btn-success" style="border-color: #0c0c0c" data-toggle="tooltip" 
+                                <button id="headingTwo" class="btn btn-success" data-toggle="tooltip" 
                                 data-placement="bottom" title="Add New Inventory"><i class=" fa fa-plus"></i></button>
                                 <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" 
-                                     class="btn btn-info" style="border-color: #0c0c0c" data-toggle="tooltip"
+                                     class="btn btn-info" data-toggle="tooltip"
                                      data-placement="bottom" title="Print Reports"><i class="fa fa-file-archive-o"></i></button> 
-                                 <button id="reconcileButton" class="btn btn-danger" style="border-color: #0c0c0c"
-                                        data-toggle="tooltip" data-placement="bottom" title="Reconcile">
+                                 <button id="reconcileButton" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Reconcile">
                                  <i class="	fa fa-check-square-o"></i></button>
                                  <!-- <a href="air" class="btn btn-warning" style="border-color:#0c0c0c"
                                     data-toggle="tooltip" data-placement="bottom" title="Generate AIR"><i class="fa fa-edit"></i></a>-->
-                                    <a class="btn btn-success" type="button" style="border-color:#0c0c0c" onclick="getOR()" data-toggle="modal"
+                                    <a class="btn btn-success" type="button" onclick="getOR()" data-toggle="modal"
                                     data-target=".chooseOR" data-toggle="tooltip" data-placement="bottom" title="Generate AIR"><i class="fa fa-edit"></i></a>
                                 </div>';
                     }
@@ -1007,6 +1006,7 @@
                         <input required type="date" class="form-control" id="from">
                         </input>
                     </div>
+
                     <div class="form-group">
                         <label for="to">To: </label>
                         <input required type="date" class="form-control" id="to">
