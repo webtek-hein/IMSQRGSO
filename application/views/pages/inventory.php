@@ -793,11 +793,12 @@
             <div hidden class="additemDiv col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-danger" id="exit" onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))">
+                        <button class="btn btn-danger" id="exit"
+                                onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))">
                             Cancel
                         </button>
                     </div>
-                    <div class="card-body card-block col-lg-8 align-self-center">
+                    <div class="card-body card-block col-lg-12">
                         <div role="tabpanel" data-example-id="togglable-tabs" class="togle">
                             <ul id="bulk" class="nav nav-tabs" id="DetailTab" role="tablist">
                                 <li class="nav-item">
@@ -813,49 +814,37 @@
                             </ul>
                         </div>
                         <form class="form-horizontal form-label-left input_mask" id="addItemForm" role="form"
-                              action="inventory/saveAll" method="POST" data-parsley-validate="">
+                              action="Inventory/saveAll" method="POST">
+                            <hr/>
                             <div id="bulkdiv" class="tab-content">
-                                <hr/>
                                 <h3 id="addItemh3">Item Information</h3>
                                 <hr/>
                                 <div class="clone-tab tab-pane active" role="tabpanel" id="step1B">
                                     <div class="form-group">
-                                        <label for="item" class=" form-control-label">Item Name</label>
-                                        <input type="text" name="item[]"
+                                        <label for="item">Item Name</label>
+                                        <input name="item[]"
                                                class="form-control col-6 align-middle"
                                                data-parsley-group="set1"
-                                               data-parsley-required-message="Item Name is required"
                                                placeholder="Enter the name of the item"
                                                required>
                                     </div>
                                     <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <label for="itemtype" class=" form-control-label">Item type
-                                                </label>
-                                            </div>
-                                            <div class="col-12">
-                                                <select data-parsley-group="set1" id="type"
-                                                        list="typelist" name="Type[]"
-                                                        class="itemtype form-control col-6" required>
-                                                    <option value="CO">Capital Outlay</option>
-                                                    <option value="MOOE">MOOE</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-12">
-                                                <input type="checkbox" tabindex="-1" name="serialStatus[]"
-                                                       value="1"> With serial
-                                            </div>
-                                        </div>
+                                        <label for="itemtype">Item type
+                                        </label>
+                                        <select data-parsley-group="set1"
+                                                list="typelist" name="Type[]"
+                                                class="itemtype form-control col-6" required>
+                                            <option value="CO">Capital Outlay</option>
+                                            <option value="MOOE">MOOE</option>
+                                        </select>
+                                        <input type="checkbox" tabindex="-1" name="serialStatus[]"
+                                               value="1"> With serial
                                     </div>
                                     <div class="form-group">
-                                        <label for="item" class=" form-control-label">Inital Quantity</label>
+                                        <label for="quantity">Quantity</label>
                                         <input type="number" name="quant[]"
                                                class="form-control col-6"
-                                               data-parsley-trigger="blur"
                                                data-parsley-group="set1"
-                                               data-parsley-length="[1, 20]"
-                                               data-parsley-required-message="Item quantity is required"
                                                placeholder="Enter the quantity" min="0"
                                                required>
                                     </div>
@@ -963,6 +952,7 @@
                                                 class="fa fa-download"></i> Save All
                                     </button>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -1429,7 +1419,9 @@
                 <a type="button" class="compare btn btn-success " onclick="validateReconcile()">Reconcile Items</a>
                 <a type="button" class="compare btn btn-success ">Compare</a>
 
-                <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download pull-right"> Download as PDF</button>
+                <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download pull-right"> Download as
+                    PDF
+                </button>
 
                 <ul class="nav nav-tabs" id="serialTab" role="tablist">
                     <li class="nav-item">
