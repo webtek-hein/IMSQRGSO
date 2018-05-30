@@ -87,16 +87,20 @@
                                     <div class="input-group">
                                         <input id="contactno"
                                                name="contact[]" data-required="true"
-                                               data-error-message="Please Enter Contact Number"><button type="button" class="btn btn-primary btn-sm add">
+                                               data-error-message="Please Enter Contact Number"><button type="button" class="btn btn-primary btn-sm contact_add">
                                             <i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="input_email form-group">
                                     <label for="email" class=" form-control-label">Email</label>
-                                    <input id="email" class="form-control col-6"
-                                           name="email" data-required="false"
+                                    <div class="input-group">
+                                    <input id="email"
+                                           name="email[]" data-required="false"
                                            data-error-message="Please Enter Email">
+                                    <button type="button" class="btn btn-primary btn-sm email_add">
+                                        <i class="fa fa-plus"></i></button>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="tin" class=" form-control-label">TIN</label>

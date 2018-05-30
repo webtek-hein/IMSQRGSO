@@ -108,7 +108,7 @@ class Inventory extends CI_Controller
     public function addquant($item_det_id, $counter)
     {
         $list = $this->inv->addquant($item_det_id, $counter);
-        $data = [];
+        $data = array();
         foreach ($list as $val) {
             $data[] = '<td>' . $val . '</td>';
         }

@@ -10,12 +10,13 @@ class Supplier_model extends CI_Model{
     public function insertSupplier(){
 
         $contact = implode(',',$this->input->post('contact'));
+        $email = implode(',',$this->input->post('email'));
             $data = array(
                 'supplier_name' => $this->input->post('supplier'),
                 'contact' =>$contact,
                 'location' => $this->input->post('address'),
                 'postal_code' => $this->input->post('postal'),
-                'email' => $this->input->post('email'),
+                'email' => $email,
                 'tin' => $this->input->post('tin'),
             );
 
