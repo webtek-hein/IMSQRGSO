@@ -48,10 +48,12 @@ $(document).ready(function () {
             title: 'Type'
         }, {
             field: 'quantity',
-            title: 'Quantity'
+            title: 'Quantity',
+            class: 'quantityCol'
         }, {
             field: 'unit_cost',
-            title: 'Unit Cost'
+            title: 'Unit Cost',
+            class: 'unitCostCol'
         }, {
             field: 'supplier_name',
             title: 'Supplier'
@@ -97,10 +99,12 @@ $(document).ready(function () {
                     visible: visible
                 }, {
                     field: 'quantity',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'unit_cost',
-                    title: 'Unit Cost'
+                    title: 'Unit Cost',
+                    class: 'unitCostCol'
                 }, {
                     field: 'supplier_name',
                     title: 'Supplier'
@@ -131,7 +135,8 @@ $(document).ready(function () {
                     visible: visible
                 }, {
                     field: 'quantity_distributed',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'cost',
                     title: 'Cost'
@@ -165,7 +170,8 @@ $(document).ready(function () {
                     visible: visible
                 }, {
                     field: 'return_quantity',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'receiver',
                     title: 'Returned to'
@@ -199,7 +205,8 @@ $(document).ready(function () {
                     visible: visible
                 }, {
                     field: 'quantity',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'unit',
                     title: 'Unit'
@@ -248,10 +255,12 @@ $(document).ready(function () {
                     visible: visible
                 }, {
                     field: 'quantity',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'unit_cost',
-                    title: 'Unit Cost'
+                    title: 'Unit Cost',
+                    class: 'unitCostCol'
                 }, {
                     field: 'supplier_name',
                     title: 'Supplier'
@@ -282,7 +291,8 @@ $(document).ready(function () {
                     visible: visible
                 }, {
                     field: 'quantity_distributed',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'cost',
                     title: 'Cost'
@@ -316,7 +326,8 @@ $(document).ready(function () {
                     visible: visible
                 }, {
                     field: 'return_quantity',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'receiver',
                     title: 'Returned to'
@@ -350,7 +361,8 @@ $(document).ready(function () {
                     visible: visible
                 }, {
                     field: 'quantity',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'unit',
                     title: 'Unit'
@@ -498,7 +510,8 @@ $(document).ready(function () {
             title: 'Description'
         }, {
             field: 'quantity',
-            title: 'Quantity'
+            title: 'Quantity',
+            class: 'quantityCol'
         }, {
             field: 'date',
             title: 'Date Returned'
@@ -767,13 +780,15 @@ function detail(id) {
                     title: 'Estimated Useful Life'
                 }, {
                     field: 'cost',
-                    title: 'Unit Cost'
+                    title: 'Unit Cost',
+                    class: 'unitCostCol'
                 }, {
                     field: 'sup',
                     title: 'Supplier'
                 }, {
                     field: 'quant',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'or',
                     title: 'OR number'
@@ -806,15 +821,18 @@ function detail(id) {
                 }, {
                     sortable: true,
                     field: 'price',
-                    title: 'Unit Cost'
+                    title: 'Unit Cost',
+                    class: 'unitCostCol'
                 }, {
                     sortable: true,
                     field: 'running_quantity',
-                    title: 'Running Quantity'
+                    title: 'Running Quantity',
+                    class: 'quantityCol'
                 }, {
                     sortable: true,
                     field: 'running_balance',
-                    title: 'Running Balance'
+                    title: 'Running Balance',
+                    class: 'quantityCol'
                 }, {
                     sortable: true,
                     field: 'transaction',
@@ -838,13 +856,15 @@ function detail(id) {
                     title: 'Estimated Useful Life'
                 }, {
                     field: 'cost',
-                    title: 'Unit Cost'
+                    title: 'Unit Cost',
+                    class: 'unitCostCol'
                 }, {
                     field: 'sup',
                     title: 'Supplier'
                 }, {
                     field: 'quant',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'or',
                     title: 'OR number'
@@ -892,13 +912,15 @@ function deptDet(id, position, dept_id) {
                         title: 'Estimated Useful Life'
                     }, {
                         field: 'cost',
-                        title: 'Unit Cost'
+                        title: 'Unit Cost',
+                        class: 'unitCostCol'
                     }, {
                         field: 'sup',
                         title: 'Supplier'
                     }, {
                         field: 'quant',
-                        title: 'Quantity'
+                        title: 'Quantity',
+                        class: 'quantityCol'
                     }, {
                         field: 'or',
                         title: 'OR number'
@@ -1027,7 +1049,9 @@ function init_inventory() {
                 };
             },
             field: 'quantity',
-            title: 'In-Stock'
+            title: 'In-Stock',
+            class: 'inStockCol'
+
         }, {
             sortable: true,
             field: 'unit',
@@ -1035,11 +1059,13 @@ function init_inventory() {
         }, {
             sortable: true,
             field: 'cost',
-            title: 'Unit Cost'
+            title: 'Unit Cost',
+            class: 'unitCostCol'
         }, {
             sortable: true,
             field: 'totalcost',
-            title: 'Total Cost'
+            title: 'Total Cost',
+            class: 'totalCostCol'
         }, {
             sortable: true,
             field: 'count',
@@ -1092,7 +1118,8 @@ function init_inventory() {
                 };
             },
             field: 'quantity',
-            title: 'In-Stock'
+            title: 'In-Stock',
+            class: 'inStockCol'
         }, {
             sortable: true,
             field: 'unit',
@@ -1100,11 +1127,13 @@ function init_inventory() {
         }, {
             sortable: true,
             field: 'cost',
-            title: 'Unit Cost'
+            title: 'Unit Cost',
+            class: 'unitCostCol'
         }, {
             sortable: true,
             field: 'totalcost',
-            title: 'Total Cost'
+            title: 'Total Cost',
+            class: 'totalCostCol'
         }, {
             sortable: true,
             field: 'count',
@@ -1246,7 +1275,9 @@ function init_inventory() {
                     };
                 },
                 field: 'quantity',
-                title: 'In-Stock'
+                title: 'In-Stock',
+                class: 'inStockCol'
+
             }, {
                 sortable: true,
                 field: 'unit',
@@ -1254,11 +1285,13 @@ function init_inventory() {
             }, {
                 sortable: true,
                 field: 'cost',
-                title: 'Unit Cost'
+                title: 'Unit Cost',
+                class: 'unitCostCol'
             }, {
                 sortable: true,
                 field: 'totalcost',
-                title: 'Total Cost'
+                title: 'Total Cost',
+                class: 'totalCostCol'
             }, {
                 sortable: true,
                 field: 'serialStatus',
@@ -1299,7 +1332,8 @@ function init_inventory() {
                     };
                 },
                 field: 'quantity',
-                title: 'In-Stock'
+                title: 'In-Stock',
+                class: 'inStockCol'
             }, {
                 sortable: true,
                 field: 'unit',
@@ -1307,11 +1341,13 @@ function init_inventory() {
             }, {
                 sortable: true,
                 field: 'cost',
-                title: 'Unit COST'
+                title: 'Unit COST',
+                class: 'unitCostCol'
             }, {
                 sortable: true,
                 field: 'totalcost',
-                title: 'Total Cost'
+                title: 'Total Cost',
+                class: 'totalCostCol'
             }, {
                 sortable: true,
                 field: 'serialStatus',
@@ -1469,7 +1505,8 @@ function init_list() {
                 };
             },
             field: 'quant',
-            title: 'Quantity Distributed'
+            title: 'Quantity Distributed',
+            class: 'quantityCol'
         }]
     });
     $deptMOOEtable.bootstrapTable({
@@ -1499,7 +1536,8 @@ function init_list() {
                 };
             },
             field: 'quant',
-            title: 'Quantity Distributed'
+            title: 'Quantity Distributed',
+            class: 'quantityCol'
         }]
         // }, {
         //     sortable: true,
@@ -2642,10 +2680,12 @@ function getreportDate() {
                     visible: visible
                 }, {
                     field: 'quantity',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'unit_cost',
-                    title: 'Unit Cost'
+                    title: 'Unit Cost',
+                    class: 'unitCostCol'
                 }, {
                     field: 'supplier_name',
                     title: 'Supplier'
@@ -2676,7 +2716,8 @@ function getreportDate() {
                     visible: visible
                 }, {
                     field: 'quantity_distributed',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'cost',
                     title: 'Cost'
@@ -2710,7 +2751,8 @@ function getreportDate() {
                     visible: visible
                 }, {
                     field: 'return_quantity',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'receiver',
                     title: 'Returned to'
@@ -2744,7 +2786,8 @@ function getreportDate() {
                     visible: visible
                 }, {
                     field: 'quantity',
-                    title: 'Quantity'
+                    title: 'Quantity',
+                    class: 'quantityCol'
                 }, {
                     field: 'unit',
                     title: 'Unit'

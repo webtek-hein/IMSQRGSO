@@ -1017,12 +1017,12 @@
                 </div>
                 <form id="reportDate" class="col-md-8 form-inline">
                     <div class="form-group">
-                        <label for="from">From: </label>
+                        <label for="from"> From: </label>
                         <input required type="date" class="form-control" id="from">
                         </input>
                     </div>
                     <div class="form-group">
-                        <label for="to">To: </label>
+                        <label for="to"> To: </label>
                         <input required type="date" class="form-control" id="to">
                         </input>
                     </div>
