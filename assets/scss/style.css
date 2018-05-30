@@ -14,6 +14,19 @@
 @import url(../css/animate.css);
 
 
+.inStockCol{
+text-align: right;
+}
+.unitCostCol{
+text-align: right;
+}
+.totalCostCol{
+  text-align: right;
+}
+.quantityCol{
+  text-align: right;
+}
+
 /*--Inventory Add Item--*/
 .additemDiv #addItemForm{
   margin-left:50px;
