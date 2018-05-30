@@ -1726,7 +1726,6 @@ function save(counter) {
             data: $('#addItemForm').serializeArray(),
             success: function (response) {
                 if (response) {
-                    console.log($('#bulk').find('li').length);
                     if ($('#bulk').find('li').length > 2) {
                         if (!list.prev().length < 2) {
                             list.prev().addClass('active');
@@ -2318,21 +2317,21 @@ function reconcile() {
 
 function printToPDF() {
 
-    // $('#ledger').tableExport({
-    //     type: 'pdf',
-    //     jspdf: {
-    //         orientation: 'l',
-    //         format: 'a4',
-    //         margins: {left: 10, right: 10, top: 20, bottom: 20},
-    //         autotable: {
-    //             styles: {
-    //                 fillColor: 'inherit',
-    //                 textColor: 'inherit'
-    //             },
-    //             tableWidth: 'auto'
-    //         }
-    //     }
-    // });
+    $('#ledger').tableExport({
+        type: 'pdf',
+        jspdf: {
+            orientation: 'l',
+            format: 'a4',
+            margins: {left: 10, right: 10, top: 20, bottom: 20},
+            autotable: {
+                styles: {
+                    fillColor: 'inherit',
+                    textColor: 'inherit'
+                },
+                tableWidth: 'auto'
+            }
+        }
+    });
 }
 
 function printToPDFreport() {
