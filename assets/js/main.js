@@ -1468,7 +1468,7 @@ function init_list() {
                 };
             },
             field: 'quant',
-            title: 'Qauntity Distributed'
+            title: 'Quantity Distributed'
         }, {
             sortable: true,
             field: 'unit',
