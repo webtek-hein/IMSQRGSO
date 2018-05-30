@@ -358,7 +358,7 @@ class Inventory extends CI_Controller
     {
         //supply officer
         $position = $this->session->userdata['logged_in']['position'];
-        $user_id = $this->session->userdata['logged_in']['userid'];
+        $user_id = $this->session->userdata['logged_in']['user_id'];
 
         if ($position == 'Custodian' || $position == 'Admin') {
             $return = $this->Inventory_model->return_item();
@@ -772,7 +772,9 @@ class Inventory extends CI_Controller
      */
     public function itemsReceived()
     {
-        $itemsreceivedCount = $this->inv->itemsrec();
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $itemsreceivedCount = $this->inv->itemsrec($position,$user_id);
         foreach ($itemsreceivedCount as $list) {
             $data[] = array(
                 'countinc' => $list['countInc'],
@@ -805,7 +807,9 @@ class Inventory extends CI_Controller
      */
     public function returnedItems()
     {
-        $returneditemsCount = $this->inv->returndash();
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $returneditemsCount = $this->inv->returndash($position,$user_id);
         foreach ($returneditemsCount as $list) {
             $data[] = array(
                 'returncount' => $list['countRet'],
@@ -853,7 +857,9 @@ class Inventory extends CI_Controller
      */
     public function totalExpired()
     {
-        $totalexpiredCount = $this->inv->totalexpired();
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $totalexpiredCount = $this->inv->totalexpired($position,$user_id);
         foreach ($totalexpiredCount as $list) {
             $data[] = array(
                 'expirecount' => $list['countExp'],

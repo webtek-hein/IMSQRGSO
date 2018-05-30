@@ -1407,12 +1407,16 @@ class Inventory_model extends CI_Model
      *
      * @return mixed result of the query
      */
-    public function itemsrec()
+    public function itemsrec($position,$user_id)
     {
         $this->db->SELECT('COUNT(inc_log_id) as countInc,item.*,CONCAT(first_name," ",last_name) as custodian');
         $this->db->join('gsois.itemdetail detail', 'detail.item_det_id = increaselog.item_det_id');
         $this->db->join('gsois.item item', 'item.item_id = detail.item_id');
-        $this->db->join('gsois.user u', 'u.user_id = increaselog.userid' );
+        if ($position === 'Supply Officer') {
+            $this->db->where('gsois.user u', 'u.user_id' === $user_id);
+        }else {
+            $this->db->join('gsois.user u', 'u.user_id = increaselog.userid');
+        }
         $this->db->where('date(timestamp)', 'CURDATE()', false);
         $query = $this->db->get('logs.increaselog');
         return $query->result_array();
@@ -1446,7 +1450,7 @@ class Inventory_model extends CI_Model
      *
      * @return mixed result of the query
      */
-    public function returndash()
+    public function returndash($position,$user_id)
     {
         $this->db->SELECT('COUNT(ret_log_id) as countRet,i.*,dept.department');
         $this->db->join('gsois.returnitem ret', 'ret.return_id = retlog.return_id', 'inner');
@@ -1454,6 +1458,9 @@ class Inventory_model extends CI_Model
         $this->db->join('gsois.department dept', ' dist.dept_id = dept.dept_id', 'inner');
         $this->db->join('gsois.itemdetail det', ' det.item_det_id = dist.item_det_id', 'inner');
         $this->db->join('gsois.item i', ' i.item_id = det.item_id', 'inner');
+        if ($position === 'Supply Officer') {
+            $this->db->where('gsois.user u', 'u.user_id' === $user_id);
+        }
         $this->db->where('date(timestamp)', 'CURDATE()', false);
         $query = $this->db->get('logs.returnlog retlog');
         return $query->result_array();
@@ -1488,11 +1495,14 @@ class Inventory_model extends CI_Model
      *
      * @return mixed result of the query
      */
-    public function totalexpired()
+    public function totalexpired($position,$user_id)
     {
         $this->db->SELECT('count(expiration_date) as countExp,item.*');
         $this->db->join('gsois.item item', 'item.item_id = itemdetail.item_id');
         $this->db->where('expiration_date <=', 'CURDATE()', false);
+        if ($position === 'Supply Officer') {
+            $this->db->where('gsois.user u', 'u.user_id' === $user_id);
+        }
         $query = $this->db->get('gsois.itemdetail');
         return $query->result_array();
     }
