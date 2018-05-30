@@ -734,17 +734,18 @@
 
                                                     <!-- qr button -->
                                                     <?php if ($position === 'Custodian') {
-                                                        echo '<a class="btn btn-primary" onclick="closeSerial()"> Close</a>
-                                                        <a class="btn btn-primary" onclick="viewQr()"> View QR Code</a>';
+                                                        echo '<a class="btn btn-danger btn-sm" onclick="closeSerial()" style="color:white"
+                                                                    data-toggle="tooltip" data-placement="bottom" title="Cancel">
+                                                                    <i class="fa fa-times"></i></a>
+                                                              <a class="btn btn-success btn-sm" onclick="viewQr()" style="color:white"> View QR Code</a>
+                                                              <hr/>';
                                                     }
                                                     ?>
                                                     <!-- end of qr button -->
-
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox" class="check" id="checkAll"
-                                                                   style="width:20px;height:20px;background:white;border-radius:5px;border:2px solid #555;">
-                                                            Check All
+                                                            <input type="checkbox" class="check" id="checkAll"> Check All
+
                                                         </label>
                                                     </div>
                                                     <div id="serial-err-msg"></div>
@@ -1499,10 +1500,11 @@
 </div>
 <!--End of Reconcile Page-->
 
+<!--Reconcile Page Modal-->
 <div class="invdate modal fade" id="addinvdate" tabindex="-1" role="dialog"
      aria-labelledby="largeModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="largeModalLabel">Date of Inventory</h5>
@@ -1522,8 +1524,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" onclick="reconcile()" name="id" class="btn btn-primary btn-modal" id="save1">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" onclick="reconcile()" name="id" class="btn btn-success btn-modal" id="save1">
                     <i class="fa fa-arrow-down"></i> Save
                 </button>
             </div>
