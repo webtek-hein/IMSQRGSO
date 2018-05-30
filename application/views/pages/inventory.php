@@ -747,6 +747,7 @@
                                                             Check All
                                                         </label>
                                                     </div>
+                                                    <div id="serial-err-msg"></div>
 
                                                     <ul id="serial-tabs" class="nav nav-tabs">
                                                     </ul>

@@ -502,6 +502,7 @@ $(document).ready(function () {
         }]
     });
 
+
     $('#uname').change(function () {
         var username = $('#uname').val();
         if (username != '') {
@@ -1782,7 +1783,6 @@ function userdetailBack() {
 
 //view +and edit serial
 function viewSerial(id) {
-    alert(id);
     var $ul = $('#serial-tabs');
     var serialTabCounter = 1;
     var $serialContent = $('#serial-tabcontent');
@@ -1875,6 +1875,45 @@ function viewSerial(id) {
             });
 
             $('#t1').click();
+
+
+            $('input[name^=serial]').on('blur', function () {
+                var serial = $(this).val();
+                var counter = 0;
+                var unique = true;
+                data = $('#viewSerialForm').serializeArray();
+                var name = $(this).attr('name');
+
+                if (serial !== '') {
+
+                    for (i = 0; i <= data.length - 1; i++) {
+
+                        if(data[i].value !== 'null' && data[i].name !== name){
+                            if (serial === data[i].value) {
+                                counter++
+                            }
+                        }
+
+                    }
+
+                    if (counter > 0) {
+                        text = '<label class="text-danger"><span><i class="fa fa-times" aria-hidden="true"></i> There are serials which are not unique.</span></label>';
+                        $('#serial-err-msg').html(text);
+                        $('#serialS').attr('disabled','true');
+                    } else {
+                        $('#serialS').attr('disabled','false');
+                        $.ajax({
+                            url: "Inventory/validateSerial",
+                            method: "POST",
+                            data: {serial: serial},
+                            success: function (data) {
+                                console.log(data);
+                                $('#serial-err-msg').html(data);
+                            }
+                        });
+                    }
+                }
+            })
         }
     });
 

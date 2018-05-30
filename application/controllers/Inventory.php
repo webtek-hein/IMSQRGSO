@@ -17,7 +17,7 @@ class Inventory extends CI_Controller
      *
      *This allows an item to be saved.
      *
-     * @param int   $counter  Saves an item.
+     * @param int $counter Saves an item.
      */
     public function save($counter)
     {
@@ -175,7 +175,7 @@ class Inventory extends CI_Controller
 
             if (array_key_exists('dist_id', $detail)) {
                 $returnquant = $this->inv->retquant($dept_id, $id, $detail['dist_id']);
-            }else {
+            } else {
                 $returnquant = $this->inv->retquant1($dept_id, $id);
             }
             //if there is a serial
@@ -189,7 +189,7 @@ class Inventory extends CI_Controller
                 if ($this->session->userdata['logged_in']['position'] === 'Admin') {
 
                 } elseif ($position === 'Supply Officer') {
-                    $returnquant = $this->inv->retquant($dept_id, $id,$detail['dist_id']);
+                    $returnquant = $this->inv->retquant($dept_id, $id, $detail['dist_id']);
 
                     foreach ($returnquant as $ret) {
                         if ($detail['serialStatus'] !== '1') {
@@ -210,7 +210,7 @@ class Inventory extends CI_Controller
                     $action = "<button onclick='accountability($detail[dist_id])' id=\"accountButton\" type=\'button\' data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Accountability\"
                                         class=\"btn btn-success btn-sm\"><i class='fa fa-user-o'></i> </button>";
                 } elseif ($detail['serialStatus'] !== '1') {
-                        $action = "<div class=\"dropdown\">
+                    $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\">
                             <span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
@@ -222,7 +222,7 @@ class Inventory extends CI_Controller
                             </div>
                             </div>";
                 } else {
-                    if(empty($serial)) {
+                    if (empty($serial)) {
                         $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
@@ -230,7 +230,7 @@ class Inventory extends CI_Controller
                             $viewser
                             </div> 
                           </div>";
-                    }else{
+                    } else {
                         $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
@@ -401,7 +401,7 @@ class Inventory extends CI_Controller
      * This allows a supply  officer to get the owner of the item
      * to be transfered to other end user.
      *
-     * @param int   $dist_id ID of the receiver of the distributed item.
+     * @param int $dist_id ID of the receiver of the distributed item.
      */
     public function getEndUser($dist_id)
     {
@@ -413,10 +413,10 @@ class Inventory extends CI_Controller
 
         $data = array();
         foreach ($list as $serial) {
-            if($position === 'Supply Officer') {
+            if ($position === 'Supply Officer') {
                 $action = "<button onclick=gettransfer($serial[serial_id]);  id=\"transferButton\" class=\"btn btn-success\"  data-id='$serial[serial_id]' data-toggle=\"modal\" data-target=\".transfer\">Transfer</button>
                             <button onclick=gettransferlog($serial[serial_id]); type=\"button\" id=\"historyButton\" class=\"btn btn-primary\" data-id='$serial[serial_id]'>History</button>";
-            }else{
+            } else {
                 $action = " <button onclick=gettransferlog($serial[serial_id]); type=\"button\" id=\"historyButton\" class=\"btn btn-primary\" data-id='$serial[serial_id]'>History</button>";
             }
             $data[] = array(
@@ -435,7 +435,7 @@ class Inventory extends CI_Controller
      *
      *This get the data of the next owner of the item.
      *
-     * @param int   $serialid ID for the items.
+     * @param int $serialid ID for the items.
      */
     public function getTransfer($serialid)
     {
@@ -453,8 +453,8 @@ class Inventory extends CI_Controller
      *
      * This gets the data if the item and serial for display.
      *
-     * @param int   $det_id This is the department ID.
-     * @param int   $sid This is the serial ID.
+     * @param int $det_id This is the department ID.
+     * @param int $sid This is the serial ID.
      */
     public function getSerialreturn($det_id, $sid)
     {
@@ -506,8 +506,8 @@ class Inventory extends CI_Controller
      * This get the data of the serial button to display
      * the list of serials of an item.
      *
-     * @param int   $det_id Department ID
-     * @param int   $sid    Serial ID.
+     * @param int $det_id Department ID
+     * @param int $sid Serial ID.
      */
     public function getSerialbtn($det_id, $sid)
     {
@@ -543,8 +543,8 @@ class Inventory extends CI_Controller
      * This allows the viewing of departments together
      * with their inventory.
      *
-     * @param string    $type Type of the item.
-     * @param int       $id ID of the the method.
+     * @param string $type Type of the item.
+     * @param int $id ID of the the method.
      */
     public function viewDept($type, $id)
     {
@@ -576,8 +576,8 @@ class Inventory extends CI_Controller
      *
      * This allows viewing of the reconciled items.
      *
-     * @param string    $type Type of the item.
-     * @param int       $id ID for the method.
+     * @param string $type Type of the item.
+     * @param int $id ID for the method.
      */
     public function reconcileview($type, $id)
     {
@@ -620,9 +620,9 @@ class Inventory extends CI_Controller
      *
      * This allows the item's data to be displayed.
      *
-     * @param string    $dept Department.
-     * @param int       $id ID for the method.
-     * @param int       $dept_id Department ID.
+     * @param string $dept Department.
+     * @param int $id ID for the method.
+     * @param int $dept_id Department ID.
      */
     public function getItem($dept, $id, $dept_id)
     {
@@ -678,7 +678,7 @@ class Inventory extends CI_Controller
      *
      *This allows data of the general ledger to be displayed.
      *
-     * @param int   $id Parameter for the ID.
+     * @param int $id Parameter for the ID.
      */
     public function getLedger($id)
     {
@@ -722,7 +722,7 @@ class Inventory extends CI_Controller
         foreach ($list as $rets) {
             if ($position === 'Custodian') {
                 $action = '<a type="button" data-func="return_action(0,' . $rets['return_id'] . ',' . $rets['serialStatus']
-                                . ')" onclick="retData(' . $rets['serialStatus'] . ',' . $rets['return_id'] . ')" 
+                    . ')" onclick="retData(' . $rets['serialStatus'] . ',' . $rets['return_id'] . ')" 
                                 data-toggle="modal" data-target=".AcceptReturn" class=" btn btn-success btn-sm" 
                                 data-toggle="tooltip" data-placement="bottom" title="Accept"><i class="	fa fa-check-square-o"></i></a>
                            <button onclick="return_action(1,' . $rets['return_id'] . ')" class="btn btn-danger btn-sm"><i class="fa fa-times-rectangle"
@@ -868,6 +868,7 @@ class Inventory extends CI_Controller
         }
         echo json_encode($data);
     }
+
     /**
      * This gets the total users registered.
      */
@@ -883,8 +884,8 @@ class Inventory extends CI_Controller
      *
      * This allows a detail of an item to be removed.
      *
-     * @param int       $id ID for the method.
-     * @param string    $serialStatus Status of the serial.
+     * @param int $id ID for the method.
+     * @param string $serialStatus Status of the serial.
      */
     public function removeDetail($id, $serialStatus)
     {
@@ -921,8 +922,8 @@ class Inventory extends CI_Controller
      *
      * Allows the deleted item details to be reverted.
      *
-     * @param int       $id ID of the method.
-     * @param string    $serialStatus Status of the serial.
+     * @param int $id ID of the method.
+     * @param string $serialStatus Status of the serial.
      */
     public function revert($id, $serialStatus)
     {
@@ -933,7 +934,7 @@ class Inventory extends CI_Controller
      *
      * This gets the list of supply officer.
      *
-     * @param int   $id ID for the method.
+     * @param int $id ID for the method.
      */
     public function getSupplyOfficers($id)
     {
@@ -1011,8 +1012,8 @@ class Inventory extends CI_Controller
      *
      * This allows the data to be displayed for the reports.
      *
-     * @param int       $report For counting reports.
-     * @param string    $type Type of the item.
+     * @param int $report For counting reports.
+     * @param string $type Type of the item.
      */
     public function getReport($report, $type)
     {
@@ -1032,21 +1033,21 @@ class Inventory extends CI_Controller
      * This allows the generating of reports with date
      * included.
      *
-     * @param int       $report The count of reports.
-     * @param string    $type The type of item.
-     * @param string    $from The sender of the report.
-     * @param string    $to The receiver of the report.
+     * @param int $report The count of reports.
+     * @param string $type The type of item.
+     * @param string $from The sender of the report.
+     * @param string $to The receiver of the report.
      */
-    public function getReportWithDate($report, $type,$from,$to)
+    public function getReportWithDate($report, $type, $from, $to)
     {
         if ($report === '0') {
-            echo json_encode($this->inv->deliveredReportsWithDate($type,$from,$to));
+            echo json_encode($this->inv->deliveredReportsWithDate($type, $from, $to));
         } elseif ($report === '1') {
-            echo json_encode($this->inv->issuedReportsWithDate($type,$from,$to));
+            echo json_encode($this->inv->issuedReportsWithDate($type, $from, $to));
         } elseif ($report === '2') {
-            echo json_encode($this->inv->returnedReportsWithDate($type,$from,$to));
+            echo json_encode($this->inv->returnedReportsWithDate($type, $from, $to));
         } else {
-            echo json_encode($this->inv->supplierReportWithDate($type,$from,$to));
+            echo json_encode($this->inv->supplierReportWithDate($type, $from, $to));
         }
     }
 
@@ -1062,8 +1063,8 @@ class Inventory extends CI_Controller
      *
      * Gets the data of the return.
      *
-     * @param string    $status Status of the serial.
-     * @param int       $id ID for the method.
+     * @param string $status Status of the serial.
+     * @param int $id ID for the method.
      */
     function getRetData($status, $id)
     {
@@ -1113,7 +1114,7 @@ class Inventory extends CI_Controller
      *
      * This allows viewing of item per status.
      *
-     * @param String    $status Status of the serial.
+     * @param String $status Status of the serial.
      */
     function viewItemPerStatus($status)
     {
@@ -1121,7 +1122,7 @@ class Inventory extends CI_Controller
         $data = array();
         foreach ($list as $item) {
             $count_input = "<input type='number' 
-            autofocus type='number' data-parsley-group=".$status." min='0' max=".$item['quantity']." 
+            autofocus type='number' data-parsley-group=" . $status . " min='0' max=" . $item['quantity'] . " 
             name='reconcileitem[]' class='reconitem recQuant form-control' 
             required>";
 
@@ -1161,11 +1162,23 @@ class Inventory extends CI_Controller
         $this->inv->nonSerializedRec();
     }
 
-    public function getOR(){
+    public function getOR()
+    {
         echo json_encode($this->inv->getOR());
     }
-    public function createAIR($or){
+
+    public function createAIR($or)
+    {
         echo json_encode($this->inv->createAIR($or));
+    }
+
+    public function validateSerial()
+    {
+        if ($this->inv->validateSerial($this->input->post('serial'))) {
+            echo '<label class="text-danger"><span><i class="fa fa-times" aria-hidden="true"></i> There are serials which are not unique.</span></label> <script>document.getElementById("serialS").disabled = true;</script>';
+        } else {
+            echo '<label class="text-success"><span><i class="fa fa-check-circle-o" aria-hidden="true"></i> All serials are unique is unique</span></label> <script>document.getElementById("serialS").disabled = false;</script>';
+        }
     }
 
 }
