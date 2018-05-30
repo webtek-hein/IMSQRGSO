@@ -2168,4 +2168,14 @@ class Inventory_model extends CI_Model
             ->group_by('item.item_id, itemdetail.item_det_id')
             ->get('itemdetail')->result_array();
     }
+    public function validateSerial($serial){
+            $this->db->where('serial' , $serial);
+            $query = $this->db->get('serial');
+            if($query->num_rows()>0){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
 }
