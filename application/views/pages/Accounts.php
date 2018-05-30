@@ -73,6 +73,7 @@
                     </div>
                     <div class="form-group">
                         <label class=" form-control-label">E-mail</label>
+                        <div id="email-res"></div>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                             <input id="email" class="form-control has-feedback-left col-6" type="email" name="email"
@@ -91,15 +92,16 @@
                     </div>
                     <div class="form-group">
                         <label class=" form-control-label">Username</label>
+                        <div id="username_result"></div>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-user"></i></div>
                             <input pattern="^[A-Za-z0-9_-]{4,}$"
                                    title="Username must be more than 4 characters, use letters and numbers only."
                                    name="username" id="username"
-                                   class="form-control has-feedback-left col-6" placeholder="Username" required> <span
-                                    id="username_result"></span>
+                                   class="form-control has-feedback-left col-6" placeholder="Username" required>
                         </div>
                         <small class="form-text text-muted">ex. george12g2</small>
+
                     </div>
                     <div class="form-group">
                         <label class=" form-control-label">Password</label>
