@@ -1768,6 +1768,7 @@ function userdetailBack() {
 
 //view +and edit serial
 function viewSerial(id) {
+    alert(id);
     var $ul = $('#serial-tabs');
     var serialTabCounter = 1;
     var $serialContent = $('#serial-tabcontent');
