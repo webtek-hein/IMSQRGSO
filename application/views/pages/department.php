@@ -52,10 +52,9 @@
                             <!-- Capital Outaly tab-->
                             <div class="tab-pane fade show active" id="tab_content1" role="tabpanel"
                                  aria-labelledby="CO-tab">
-                                <table id="departmentTable" data-show-refresh="true" data-url="inventory/viewDept/CO/11"
+                                <table id="departmentTable" data-show-refresh="true"
                                        class="table table-bordered"
                                        data-pagination="true" data-search="true">
-                                       <thead class="table-secondary"></thead>
                                 </table>
                             </div>
                             <!--MOOE Tab-->

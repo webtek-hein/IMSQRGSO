@@ -1402,7 +1402,6 @@ function init_list() {
     });
 
     $deptTable.bootstrapTable({
-        pageSize: 10,
         url: 'inventory/viewdept/CO/11',
         onClickRow: function (data, row) {
             deptDet(data.id, data.position, data.dept_id);
@@ -1470,6 +1469,9 @@ function init_list() {
     $('#select-dept').change(function () {
         var id = $(this).val();
         var type = $('#myTab').find('[aria-selected=true]')[0].id;
+        if(id ===null){
+            id=11;
+        }
         if (type === 'CO-tab') {
             $deptTable.bootstrapTable('refresh', {url: 'inventory/viewdept/CO/' + id});
         } else {
