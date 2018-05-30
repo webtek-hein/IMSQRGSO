@@ -1432,6 +1432,11 @@ function init_list() {
             title: 'Description'
         }, {
             sortable: true,
+            field: 'unit',
+            title: 'Unit'
+
+        }, {
+            sortable: true,
             cellStyle: function (data) {
                 return {
                     css: {"color": "green"}
@@ -1439,10 +1444,6 @@ function init_list() {
             },
             field: 'quant',
             title: 'Quantity Distributed'
-        }, {
-            sortable: true,
-            field: 'unit',
-            title: 'Unit'
         }]
     });
     $deptMOOEtable.bootstrapTable({
@@ -1455,11 +1456,15 @@ function init_list() {
         columns: [{
             sortable: true,
             field: 'name',
-            title: 'Name'
+            title: 'Nssame'
         }, {
             sortable: true,
             field: 'description',
             title: 'Description'
+        }, {
+            sortable: true,
+            field: 'unit',
+            title: 'Unit'
         }, {
             sortable: true,
             cellStyle: function (data) {
@@ -1469,10 +1474,6 @@ function init_list() {
             },
             field: 'quant',
             title: 'Quantity Distributed'
-        }, {
-            sortable: true,
-            field: 'unit',
-            title: 'Unit'
         }]
         // }, {
         //     sortable: true,
