@@ -2000,7 +2000,7 @@ function gettransfer(id) {
                 $('.owner').html("<label for=\"name\">Current Owner:</label>" +
                     " <input name=\"currentuser\" class=\"name form-control\" readonly value=" + name + ">");
                 $('.serialsp').html("<label for=\"name\">Serial:</label>" +
-                    " <input name=\"serial\" class=\"name form-control\" readonly value=" + data[i].serial + ">");
+                    " <input  name=\"serial\" class=\"name form-control\" readonly value=" + data[i].serial + ">");
             }
         }
     });
@@ -2019,7 +2019,7 @@ function getserialreturn(id, sid) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null && (status === 'Distributed' || status === 'UserDistributed')) {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
@@ -2046,10 +2046,10 @@ function getserial(id) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null && status !== 'Distributed') {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (data[i].serial !== null && status === 'Distributed') {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
@@ -2079,10 +2079,10 @@ function getserialbtn(id, sid) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null && status !== 'Distributed') {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (data[i].serial !== null && status === 'Distributed') {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
