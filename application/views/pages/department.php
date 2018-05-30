@@ -55,6 +55,7 @@
                                 <table id="departmentTable" data-show-refresh="true"
                                        class="table table-bordered"
                                        data-pagination="true" data-search="true">
+                                       <thead class="table-secondary"></thead>
                                 </table>
                             </div>
                             <!--MOOE Tab-->
