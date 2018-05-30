@@ -14,7 +14,7 @@
 
       <div class="row">
         <!-- /.col -->
-        <div class="col-md-9">
+        <div class="col-lg-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li><a href="" data-toggle="tab">Update Profile</a></li>
@@ -29,7 +29,7 @@
               <?php echo validation_errors(); ?>
 
     <form id='profile' class="profileform" action="profile/profile_update" method="POST">
-
+<div class="card-body">
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">First Name</label>
 
@@ -59,13 +59,13 @@
                       <input type="number" required pattern="^(09|\+639)\d{9}$" class="form-control has-feedback-left col-6" id="inputName" name="contact_no" value="<?php echo $contact_no ?>">
                     </div>
                   </div>
-    <div class="form-group">
-        <div class="col-sm-offset-8 col-sm-9">
-            <button class="btn btn-success" type="submit" name="id" id="edtbutton">
-                <i class="fa fa-check"></i> Save
-            </button>
-        </div>
-    </div>
+                  <div class="form-group">
+                      <div class="col-sm-offset-8 col-sm-9">
+                          <button class="btn btn-success" type="submit" name="id" id="edtbutton">
+                              <i class="fa fa-check"></i> Save
+                          </button>
+                      </div>
+                  </div>
     </form>
           </div>
              </div>
