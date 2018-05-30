@@ -17,6 +17,12 @@ $(document).ready(function () {
         $("#tExprdSO").load("inventory/itemsExpiredSO");
         $("#tCostSO").load("inventory/itemTcostSO");*/
 
+        increasedit();
+        issuedit();
+        returnit();
+        expiredit();
+        editit();
+
     }, 1000);
     $returnTable = $('#returnTable');
     $reportTable = $('#reportTable');
@@ -372,25 +378,28 @@ $(document).ready(function () {
     });
 
     //dashboard new items
-    var $notifitems = $('#increase');
-    var detail = [];
+    function increasedit() {
+        var $notifitems = $('#increase');
+        var detail = [];
 
-    $.ajax({
-        url: "inventory/itemsReceived",
-        dataType: 'JSON',
-        success: function (data) {
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].countinc !== '0') {
-                    detail += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Added by ' + data[i].custodian + "</a>"
-                } else {
-                    detail = "No Data Found!"
+        $.ajax({
+            url: "inventory/itemsReceived",
+            dataType: 'JSON',
+            success: function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].countinc !== '0') {
+                        detail += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Added by ' + data[i].custodian + "</a>"
+                    } else {
+                        detail = "No Data Found!"
+                    }
                 }
+                $notifitems.html(detail);
             }
-            $notifitems.html(detail);
-        }
-    });
+        });
+    }
 
     //dashboard issued items to department
+    function issuedit() {
     var $issueditems = $('#issued');
     var issued = [];
 
@@ -408,68 +417,74 @@ $(document).ready(function () {
             $issueditems.html(issued);
         }
     });
+}
 
 
     //dashboard returned items
-    var $returneditems = $('#returned');
-    var returned = [];
+    function returnit() {
+        var $returneditems = $('#returned');
+        var returned = [];
 
-    $.ajax({
-        url: "inventory/returnedItems",
-        dataType: 'JSON',
-        success: function (data) {
+        $.ajax({
+            url: "inventory/returnedItems",
+            dataType: 'JSON',
+            success: function (data) {
 
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].returncount !== '0') {
-                    returned += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Returned by ' + data[i].department + "</a>"
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].returncount !== '0') {
+                        returned += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Returned by ' + data[i].department + "</a>"
 
-                } else {
-                    returned = "No Data Found!"
+                    } else {
+                        returned = "No Data Found!"
+                    }
                 }
+                $returneditems.html(returned);
             }
-            $returneditems.html(returned);
-        }
-    });
+        });
+    }
 
     //dashboard expired items
-    var $expireditems = $('#expired');
-    var expired = [];
+    function expiredit() {
+        var $expireditems = $('#expired');
+        var expired = [];
 
-    $.ajax({
-        url: "inventory/totalExpired",
-        dataType: 'JSON',
-        success: function (data) {
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].expirecount !== '0') {
-                    expired += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' has reached its life span' + "</a>"
-                } else {
-                    expired = "No Data Found!"
+        $.ajax({
+            url: "inventory/totalExpired",
+            dataType: 'JSON',
+            success: function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].expirecount !== '0') {
+                        expired += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' has reached its life span' + "</a>"
+                    } else {
+                        expired = "No Data Found!"
+                    }
                 }
+                $expireditems.html(expired);
             }
-            $expireditems.html(expired);
-        }
-    });
+        });
+    }
 
     //dashboard edited items
-    var $editeditems = $('#edited');
-    var edited = [];
+    function editit() {
+        var $editeditems = $('#edited');
+        var edited = [];
 
-    $.ajax({
-        url: "inventory/editedItems",
-        dataType: 'JSON',
-        success: function (data) {
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].editcount !== '0') {
-                    edited += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + data[i].custodian + ' changed ' + data[i].fieldedit + ' of ' + data[i].oldvalue + ' to ' + data[i].newvalue + "</a>"
-                } else {
-                    edited = "No Data Found!"
+        $.ajax({
+            url: "inventory/editedItems",
+            dataType: 'JSON',
+            success: function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].editcount !== '0') {
+                        edited += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + data[i].custodian + ' changed ' + data[i].fieldedit + ' of ' + data[i].oldvalue + ' to ' + data[i].newvalue + "</a>"
+                    } else {
+                        edited = "No Data Found!"
+                    }
                 }
+                $editeditems.html(edited);
             }
-            $editeditems.html(edited);
-        }
-    });
-    //return table
-
+        });
+        //return table
+    }
     $returnTable.bootstrapTable('refresh', {url: 'inventory/viewReturn'}).bootstrapTable({
         url: 'inventory/viewReturn',
         columns: [{
