@@ -772,9 +772,8 @@ class Inventory extends CI_Controller
      */
     public function itemsReceived()
     {
-        $position = $this->session->userdata['logged_in']['position'];
-        $user_id = $this->session->userdata['logged_in']['user_id'];
-        $itemsreceivedCount = $this->inv->itemsrec($position,$user_id);
+
+        $itemsreceivedCount = $this->inv->itemsrec();
         foreach ($itemsreceivedCount as $list) {
             $data[] = array(
                 'countinc' => $list['countInc'],
@@ -790,7 +789,9 @@ class Inventory extends CI_Controller
      */
     public function issuedItems()
     {
-        $issueditemsCount = $this->inv->issued();
+        $position = $this->session->userdata['logged_in']['position'];
+        $user_id = $this->session->userdata['logged_in']['user_id'];
+        $issueditemsCount = $this->inv->issued($position,$user_id);
         foreach ($issueditemsCount as $list) {
             $data[] = array(
                 'issuedcount' => $list['countDec'],

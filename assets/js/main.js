@@ -459,7 +459,7 @@ $(document).ready(function () {
         dataType: 'JSON',
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
-                if (data[i].expirecount !== '0') {
+                if (data[i].editcount !== '0') {
                     edited += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + data[i].custodian + ' changed ' + data[i].fieldedit + ' of ' + data[i].oldvalue + ' to ' + data[i].newvalue + "</a>"
                 } else {
                     edited = "No Data Found!"
