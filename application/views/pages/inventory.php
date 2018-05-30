@@ -1460,18 +1460,18 @@
                     </li>
 
                 </ul>
-                <div class="tab-content pl-3 p-1" id="">
+                <div class="tab-content pl-3 p-1" id="serTab">
                     <div class="table-responsive-sm tab-pane fade show active" id="nonSerTab" role="tabpanel"
                          aria-labelledby="nonSer-tab">
 
                         <table data-show-refresh="true" data-pagination="true" data-search="true" id="serializedItems"
-                               class="table table-bordered table-hover table-responsive"></table>
+                               class="table table-bordered table-hover table-responsive"><thead class="table-secondary"></table>
                     </div>
                     <div class="table-responsive-sm  tab-pane fade " id="serTab"
                          role="tabpanel"
                          aria-labelledby="nonSerialized-tab">
                         <table data-show-refresh="true" data-pagination="true" data-search="true" id="withoutSerial"
-                               class="table table-bordered table-hover table-responsive"></table>
+                               class="table table-bordered table-hover table-responsive"><thead class="table-secondary"></thead></table>
 
                     </div>
                 </div>
