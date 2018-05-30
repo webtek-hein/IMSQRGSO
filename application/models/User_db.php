@@ -259,4 +259,15 @@ class User_db extends CI_Model {
             ->where('user_id', $user_id);
         return $this->db->get('user')->row();
     }
+
+    public function validateEmail($email){
+        $this->db->where('email' , $email);
+        $query = $this->db->get('user');
+        if($query->num_rows()>0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

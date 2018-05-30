@@ -460,7 +460,7 @@ $(document).ready(function () {
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
                 if (data[i].expirecount !== '0') {
-                    edited += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" +  data[i].custodian + ' changed ' + data[i].fieldedit + ' of '+ data[i].oldvalue+ ' to '+ data[i].newvalue +"</a>"
+                    edited += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + data[i].custodian + ' changed ' + data[i].fieldedit + ' of ' + data[i].oldvalue + ' to ' + data[i].newvalue + "</a>"
                 } else {
                     edited = "No Data Found!"
                 }
@@ -511,6 +511,20 @@ $(document).ready(function () {
                 data: {username: username},
                 success: function (data) {
                     $('#uname_result').html(data);
+                }
+            });
+        }
+    });
+
+    $('#email').on('blur', function () {
+        var email = $(this).val();
+        if (email !== '') {
+            $.ajax({
+                url: 'Search/checkEmail',
+                method: 'POST',
+                data: {email: email},
+                success: function (data) {
+                    $('#email-res').html(data);
                 }
             });
         }
@@ -1768,6 +1782,7 @@ function userdetailBack() {
 
 //view +and edit serial
 function viewSerial(id) {
+    alert(id);
     var $ul = $('#serial-tabs');
     var serialTabCounter = 1;
     var $serialContent = $('#serial-tabcontent');
@@ -2664,10 +2679,12 @@ function getOR() {
         url: 'Inventory/getOR',
         dataType: 'JSON',
         success: function (data) {
-            for (var i = 0; i <= data.length - 1; i++) {
-                options.push('<option value=' + data[i].OR_no + '>' + data[i].OR_no + '</option>');
+            if (data) {
+                for (var i = 0; i <= data.length - 1; i++) {
+                    options.push('<option value=' + data[i].OR_no + '>' + data[i].OR_no + '</option>');
+                }
+                $('#or_no').html(options);
             }
-            $('#or_no').html(options);
         }
     });
 }
@@ -2690,17 +2707,18 @@ function createReport() {
             $('#date_received').val(data[0].date_received);
             for (var i = 0; i <= data.length - 1; i++) {
                 tr.push('<tr class="tbody">' +
-                    '<td >'+data[i].item_name+'</td>' +
-                    '<td >'+data[i].quantity+'</td>' +
-                    '<td >'+data[i].item_description+'</td>' +
-                    '<td >'+data[i].unit+'</td>' +
-                    '<td >'+data[i].amount+'</td>' +
+                    '<td >' + data[i].item_name + '</td>' +
+                    '<td >' + data[i].quantity + '</td>' +
+                    '<td >' + data[i].item_description + '</td>' +
+                    '<td >' + data[i].unit + '</td>' +
+                    '<td >' + data[i].amount + '</td>' +
                     '</tr>');
             }
             tbody.html(tr);
         }
     });
 }
+
 function printAIR() {
     var originalContents = $(document.body).html();
     var printContents = $('#air').html();

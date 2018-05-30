@@ -20,15 +20,7 @@ $( 'input[name^=cost]' ).on('keypress paste',function () {
         return false;
     }
 });
-$('input[name^=cost]').on('blur',function () {
-    var regex  = /^(\d+\.{0,1}\d{1,2})/;
-    if (!regex.test($(this).val())){
-        $(this).val('');
-        $('.cost-error-msg').html('Cost is invalid');
-        return false;
-    }
 
-});
 $('input[name^=del]').on('blur',function () {
    var delDate = $(this).val();
    var recDate = $('input[name^=rec]').val();

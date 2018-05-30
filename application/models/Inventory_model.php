@@ -20,15 +20,10 @@ class Inventory_model extends CI_Model
         $cost = $this->input->post('cost')[$counter];
         $date = $this->input->post('rec')[$counter];
         $transaction_number = $this->input->post('or')[$counter];
-
-        $item_id = md5(uniqid (rand(), true));
-        $item_det_id = md5(rand(1,15));
         if ($serialStatus === null) {
             $serialStatus = '0';
         }
-
         $data = array(
-            'item_id'=>$item_id,
             'item_name' => $this->input->post('item')[$counter],
             'quantity' => $quantity,
             'item_description' => $this->input->post('description')[$counter],
@@ -41,7 +36,6 @@ class Inventory_model extends CI_Model
         );
 
         $data1 = array(
-            'item_det_id'=>$item_det_id,
             'PO_number' => $this->input->post('PO')[$counter],
             'date_delivered' => $this->input->post('del')[$counter],
             'date_received' => $date,
@@ -58,7 +52,7 @@ class Inventory_model extends CI_Model
             //  1. Insert into item
             $this->db->insert('item', $data);
             //item insert id
-            $item_id = array('item_id' => $item_id);
+            $item_id = array('item_id' => $this->db->insert_id());
 
 
             $this->db->insert('reconciliation', $item_id + array('beginning_inventory' => $date));
@@ -66,10 +60,12 @@ class Inventory_model extends CI_Model
             // 2. Insert to item detail
             $this->db->insert('itemdetail', $data1 + $item_id);
 
+            //item detail insert id
+            $insert_id = $this->db->insert_id();
 
             //create an array of serial for items with serial
             if ($serialStatus === '1') {
-                $serial = array_fill(1, $quantity, array('item_det_id' => $item_det_id));
+                $serial = array_fill(1, $quantity, array('item_det_id' => $insert_id));
                 $this->db->insert_batch('serial', $serial);
             }
             $this->db->insert('transaction',
@@ -83,7 +79,7 @@ class Inventory_model extends CI_Model
                     'transaction' => 'added'
                 ));
             // 3. Insert into logs
-            $this->db->insert('logs.increaselog', array('userid' => $user_id, 'item_det_id' => $item_det_id, 'quantity' => $quantity));
+            $this->db->insert('logs.increaselog', array('userid' => $user_id, 'item_det_id' => $insert_id, 'quantity' => $quantity));
             if ($this->db->trans_status() === FALSE) {
                 $this->db->trans_rollback();
                 throw new Exception($this->db->trans_status());
