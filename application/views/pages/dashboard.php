@@ -290,10 +290,9 @@ if ($position === 'Supply Officer') {
         </div>
         </div>
         </div>
-        </div>
         </div>'.
 
-        '<div class="content"><div class="col-xl-4 col-sm-6 mb-3">
+        '<div class="col-xl-4 col-sm-6 mb-3">
           <div class="card text-white bg-danger o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
