@@ -120,7 +120,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <i class="fa fa-refresh"></i>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                 </div>
                 <div class="modal-body">
                     <h5 class="modal-title" id="myModalLabel">Are you sure you want to Accept?</h5>
@@ -138,12 +139,21 @@
                         </div>
                     </div>
 
-                    <div class="col-8">
+                  <!--  <div class="col-4">
                         <div class="form-group">
-                            <label for="name">Remarks</label>
-                            <textarea class="form-control" name="remarks" id="remarks"></textarea>
+                            <label>Item Status</label>
+                            <input id="itemstatus" name="status" data-parsley-group="set1"
+                                   class="form-control"
+                                   list="list1"
+                                   data-parsley-required-message="Select the status"
+                                   required>
+                            <datalist id="list1">
+                                <option value="Disposal">Disposal</option>
+                                <option value="Repair">Repair</option>
+                                <option value="Replacement">Replacement</option>
+                            </datalist>
                         </div>
-                    </div>
+                    </div>-->
 
                 </div>
                 <div class="modal-footer">

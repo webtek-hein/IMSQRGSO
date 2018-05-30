@@ -51,6 +51,7 @@
                                         <th data-sortable="true" data-field="item">Returned Item</th>
                                         <th data-sortable="true" data-field="description">Description</th>
                                         <th data-sortable="true" data-field="datereturned">Date Returned</th>
+                                        <th data-sortable="true" data-field="itemstatus">Item Status</th>
                                         <th data-sortable="true" data-field="reason">Reason</th>
                                         <th data-sortable="true" data-field="returnedby">Returned By</th>
                                         <th data-sortable="true" data-field="receivedby">Received By</th>
@@ -72,6 +73,7 @@
                                         <th data-sortable="true" data-field="item">Returned Item</th>
                                         <th data-sortable="true" data-field="description">Description</th>
                                         <th data-sortable="true" data-field="datereturned">Date Returned</th>
+                                        <th data-sortable="true" data-field="itemstatus">Item Status</th>
                                         <th data-sortable="true" data-field="reason">Reason</th>
                                         <th data-sortable="true" data-field="returnedby">Returned By</th>
                                         <th data-sortable="true" data-field="receivedby">Received By</th>

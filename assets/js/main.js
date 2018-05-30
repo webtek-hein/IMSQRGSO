@@ -17,12 +17,12 @@ $(document).ready(function () {
         $("#tExprdSO").load("inventory/itemsExpiredSO");
         $("#tCostSO").load("inventory/itemTcostSO");*/
 
-        increasedit();
+       /* increasedit();
         issuedit();
         returnit();
         expiredit();
         editit();
-
+*/
     }, 1000);
     $returnTable = $('#returnTable');
     $reportTable = $('#reportTable');
@@ -503,6 +503,9 @@ $(document).ready(function () {
             field: 'date',
             title: 'Date Returned'
         }, {
+            field: 'itemstatus',
+            title: 'Item Status'
+        },{
             field: 'reason',
             title: 'Reason'
         }, {
@@ -2033,6 +2036,7 @@ function getserialreturn(id, sid) {
             }
         }
     });
+
 }
 
 function getserial(id) {

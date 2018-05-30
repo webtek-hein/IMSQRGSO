@@ -296,7 +296,16 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Remarks</label>
-                        <textarea class="form-control" name="remarks" id="remarks"></textarea>
+                        <textarea class="form-control" name="remarks" id="remarks"
+                                  class="form-control"
+                                  data-parsley-trigger="blur"
+                                  data-parsley-minlength="1"
+                                  data-parsley-maxlength="500"
+                                  data-parsley-minlength-message="Description must"
+                                  data-parsley-validation-threshold="10"
+                                  data-parsley-required-messag="Put description of the items"
+                                  required></textarea>
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -350,7 +359,7 @@
                                name="receiver">
                     </div>
                     <div class="form-group">
-                            <label>Remarks</label>
+                            <label>Item Status</label>
                                 <input id="remarks" name="remarks" data-parsley-group="set1"
                                        class="form-control"
                                        list="list"
@@ -362,6 +371,14 @@
                                     <option value="Replacement">Replacement</option>
                                 </datalist>
                     </div>
+                        <div class="form-group">
+                            <label>Reason</label>
+                            <textarea id="reason" name="reason" data-parsley-group="set1"
+                                   class="form-control"
+                                   data-parsley-required-message="Reason Required"
+                                   required>
+                            </textarea>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

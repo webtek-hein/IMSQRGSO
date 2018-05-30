@@ -738,7 +738,8 @@ class Inventory extends CI_Controller
                 'dept' => $rets['department'],
                 'item' => $rets['item_name'],
                 'desc' => $rets['item_description'],
-                'reason' => $rets['remarks'],
+                'itemstatus' => $rets['item_status'],
+                'reason' => $rets['reason'],
                 'receiver' => $rets['receiver'],
                 'status' => $rets['status'],
                 'action' => $action
@@ -755,9 +756,11 @@ class Inventory extends CI_Controller
         $action = $this->input->post('action');
         $serial = $this->input->post('serial');
         $return_id = $this->input->post('return_id');
+        $item_status = $this->input->post('status');
+
         //accept
         if ($action === '0') {
-            echo $this->inv->acceptReturn($return_id, $serial);
+            echo $this->inv->acceptReturn($return_id, $serial,$item_status);
             // decline
         } elseif ($action === '1') {
             echo $this->inv->declineReturn($return_id);
