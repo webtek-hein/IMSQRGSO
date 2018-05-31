@@ -938,6 +938,7 @@
                                         <ul class="list-unstyled">
                                             <li class="text-danger exp-error-msg"></li>
                                             <li class="text-danger exp1-error-msg"></li>
+                                            <li class="text-danger exp2-error-msg"></li>
                                         </ul>
                                     </div>
                                     <div class="form-group">
@@ -1113,12 +1114,18 @@
                         </div>
 
                         <div class="form-group">
+                            <ul class="list-unstyled">
+                                <li class="text-danger distrib-err-msg"></li>
+                            </ul>
                             <div class="col-md-10">
+                                <div class="text-danger dist-error-msg"></div>
                                 <label for="date">Date of Distribution</label>
                                 <input id="date" class="form-control col-md-7 col-xs-12"
                                        data-validate-length-range="6"
                                        data-validate-words="2" name="date" required type="date">
                             </div>
+
+
                         </div>
 
                         <div class="form-group">

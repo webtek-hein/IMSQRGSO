@@ -171,7 +171,9 @@ class Inventory extends CI_Controller
         $data = array();
         $viewser = "";
         $action = "";
+
         foreach ($list as $detail) {
+
 
             if (array_key_exists('dist_id', $detail)) {
                 $returnquant = $this->inv->retquant($dept_id, $id, $detail['dist_id']);
@@ -180,7 +182,7 @@ class Inventory extends CI_Controller
             }
             //if there is a serial
             if ($detail['serialStatus'] === '1') {
-                $viewser = "<a class=\"serialdrop dropdown-item\" onclick='viewSerial($detail[item_det_id])' data-toggle=\"collapse\" 
+                $viewser = "<a class=\"serialdrop dropdown-item\" onclick='viewSerial($detail[item_det_id],$detail[date_delivered])' data-toggle=\"collapse\" 
                     href=\"#serialpage\" role=\"button\" aria-expanded=\"false\" aria-controls=\"serialpage\"><i class=\"fa fa-folder-open\"></i>
                               </i > View Serial</a>";
             }
@@ -193,13 +195,14 @@ class Inventory extends CI_Controller
 
                     foreach ($returnquant as $ret) {
                         if ($detail['serialStatus'] !== '1') {
+
                             $action =
-                                "<a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed],$ret[retq])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a>";
+                                "<a href=\'#\' data-deldate = '$detail[date_delivered]' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"noserial($detail[item_det_id],$detail[quantity_distributed])\" data-id='$detail[dist_id]' class=\"btn btn-danger\">Return</a>";
                         } else {
                             $action =
                                 "<button onclick='accountability($detail[dist_id])' id=\"accountButton\" type=\'button\' data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Accountability\"
                                         class=\"btn btn-success btn-sm\"><i class='fa fa-user-o'></i> </button>
-                                <a href=\'#\' type=\'button\' data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" 
+                                <a href=\'#\' type=\'button\' data-deldate = '$detail[date_delivered]'  data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" 
                                         data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Return\" data-id='$detail[dist_id]' class=\"btn btn-danger btn-sm\"><i class='fa fa-refresh'></i></a>
                                 <a href=\"./are\" type=\'button\' class=\"btn btn-primary btn-sm\"  data-toggle=\"tooltip\" 
                                 data-placement=\"bottom\" title=\"Generate ARE\"><i class='fa fa-print'></i></a>";
@@ -214,7 +217,7 @@ class Inventory extends CI_Controller
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\">
                             <span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
-                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"noserial($detail[item_det_id],$detail[quantity],0)\"data-toggle=\"modal\" 
+                            <a class=\"dropdown-item\" data-deldate = ".$detail['date_delivered']." href=\"#\" onclick=\"noserial($detail[item_det_id],$detail[quantity],0)\"data-toggle=\"modal\" 
                             data-id='$detail[item_det_id]'data-target=\" .Distribute\" data-quantity=\"$detail[quantity]\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             </div>
@@ -234,7 +237,7 @@ class Inventory extends CI_Controller
                         $action = "<div class=\"dropdown\">
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\"><span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
-                            <a class=\"dropdown-item\"  href=\"#\" onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\"
+                            <a class=\"dropdown-item\"  href=\"#\" data-deldate = '$detail[date_delivered]' onclick=\"getserial($detail[item_det_id])\"data-toggle=\"modal\"
                              data-id='$detail[item_det_id]'data-target=\" .Distribute\" data-quantity=\"$detail[quantity]\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             $viewser
@@ -244,6 +247,9 @@ class Inventory extends CI_Controller
                 }
             }
             if ($dept === 'dept') {
+                if($detail['quantity_distributed'] === 0){
+                    $action = '';
+                }
                 $cost = "PHP " . number_format($detail['cost'], 2);
                 $data[] = array(
                     'dist_id' => $detail['dist_id'],
@@ -1183,6 +1189,10 @@ class Inventory extends CI_Controller
         } else {
             echo '<label class="text-success"><span><i class="fa fa-check-circle-o" aria-hidden="true"></i> All serials are unique</span></label> <script>document.getElementById("serialS").disabled = false;</script>';
         }
+    }
+
+    public function getDelDate($id){
+        echo json_encode($this->inv->getDelDate($id));
     }
 
 }

@@ -347,24 +347,19 @@
                         </div>
                     </div>
                     <div class="form-group ">
+                        <div class="text-danger ret-error-msg"></div>
                         <label>Date Returned</label>
-                        <input type="date" name="returndate" data-validate-length-range="5,20"
-                               class="optional form-control has-feedback-left">
+                        <input required type="date" name="returndate" class="optional form-control has-feedback-left">
                     </div>
 
                     <div class="form-group">
                         <label>Receiver</label>
-                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur"
-                               type="text"
-                               name="receiver">
+                        <input required class="form-control" type="text" name="receiver">
                     </div>
                     <div class="form-group">
                             <label>Item Status</label>
-                                <input id="remarks" name="remarks" data-parsley-group="set1"
-                                       class="form-control"
-                                       list="list"
-                                       data-parsley-required-message="Select the Remarks"
-                                       required>
+                                <input id="remarks" name="remarks" class="form-control"
+                                       list="list" required>
                                 <datalist id="list">
                                     <option value="Disposal">Disposal</option>
                                     <option value="Repair">Repair</option>
@@ -373,10 +368,7 @@
                     </div>
                         <div class="form-group">
                             <label>Reason</label>
-                            <textarea id="reason" name="reason" data-parsley-group="set1"
-                                   class="form-control"
-                                   data-parsley-required-message="Reason Required"
-                                   required>
+                            <textarea id="reason" name="reason" class="form-control" required>
                             </textarea>
                         </div>
                     </div>

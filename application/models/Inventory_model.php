@@ -7,7 +7,7 @@ class Inventory_model extends CI_Model
      *
      *This method is for adding items in the inventory.
      *
-     * @param int   $counter For the index of items to be registered.
+     * @param int $counter For the index of items to be registered.
      * @return Exception for errors.
      */
     public function add_item($counter)
@@ -208,8 +208,8 @@ class Inventory_model extends CI_Model
      *
      * This method is for the distribution of items.
      *
-     * @param string    $position position of the user.
-     * @param string    $user user to be distribute to/from.
+     * @param string $position position of the user.
+     * @param string $user user to be distribute to/from.
      */
     public function distrib($position, $user)
     {
@@ -409,7 +409,7 @@ class Inventory_model extends CI_Model
      *
      * This allows the selection of item.
      *
-     * @param string    $type type of the item
+     * @param string $type type of the item
      * @return mixed result of the query.
      */
     public function select_item($type)
@@ -428,7 +428,7 @@ class Inventory_model extends CI_Model
      * This gets serial from database so serials could be displayed on
      * an item.
      *
-     * @param string    $status status of the serial.
+     * @param string $status status of the serial.
      * @return mixed result of the query
      */
     public function viewItemPerSerial($status)
@@ -446,8 +446,8 @@ class Inventory_model extends CI_Model
      *
      * This is for adding quantity to an specified item.
      *
-     * @param int   $item_det_id ID for item details.
-     * @param int   $counter
+     * @param int $item_det_id ID for item details.
+     * @param int $counter
      * @return array|Exception
      */
     public function addquant($item_det_id, $counter)
@@ -569,9 +569,9 @@ class Inventory_model extends CI_Model
      * This is for getting a data of an item
      * which is distributed.
      *
-     * @param string    $dept name of department
-     * @param int       $id ID of the method.
-     * @param int       $dept_id ID of the department.
+     * @param string $dept name of department
+     * @param int $id ID of the method.
+     * @param int $dept_id ID of the department.
      * @return mixed result of the query
      */
     public function getItem($dept, $id, $dept_id)
@@ -641,8 +641,8 @@ class Inventory_model extends CI_Model
      *
      * This method is for getting items detail to be displayed.
      *
-     * @param int       $id ID of the method
-     * @param string    $position position of the user
+     * @param int $id ID of the method
+     * @param string $position position of the user
      * @return mixed result of the query
      */
     public function viewdetail($id, $position)
@@ -650,7 +650,7 @@ class Inventory_model extends CI_Model
         $this->db->select('OR_no,PO_number,item.serialStatus,item_type,date_delivered,itemdetail.date_received,expiration_date,unit_cost,supplier_name,
         item_name,item_description,item.quantity as total,unit,itemdetail.quantity,itemdetail.item_det_id,item.item_id');
         $this->db->join('itemdetail', 'item.item_id = itemdetail.item_id', 'iner');
-       // $this->db->join('distribution', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
+        // $this->db->join('distribution', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
         $this->db->where('itemdetail.status', 'active');
         $this->db->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id', 'inner');
         $this->db->order_by('itemdetail.item_det_id', 'desc');
@@ -664,12 +664,12 @@ class Inventory_model extends CI_Model
      *
      * This allows an item to be returned.
      *
-     * @param int   $dept_id ID of the department
-     * @param int   $id ID of the method
-     * @param int   $dist_id ID of the distribution
+     * @param int $dept_id ID of the department
+     * @param int $id ID of the method
+     * @param int $dist_id ID of the distribution
      * @return mixed result of the query
      */
-    public function retquant($dept_id, $id,$dist_id)
+    public function retquant($dept_id, $id, $dist_id)
     {
         $status = array('pending');
         $this->db->select('sum(returnitem.return_quantity) as retq');
@@ -678,7 +678,7 @@ class Inventory_model extends CI_Model
         $this->db->join('department', 'department.dept_id = distribution.dept_id');
         $this->db->where('department.dept_id', $dept_id);
         $this->db->where('returnitem.dist_id', $dist_id);
-        $this->db->where_in('returnitem.status',$status);
+        $this->db->where_in('returnitem.status', $status);
         $this->db->where('itemdetail.item_id', $id);
         $query = $this->db->get('returnitem')->result_array();
 
@@ -689,8 +689,8 @@ class Inventory_model extends CI_Model
      *
      * This method allows the returning of items.
      *
-     * @param int   $dept_id ID of the department
-     * @param int   $id ID of the method.
+     * @param int $dept_id ID of the department
+     * @param int $id ID of the method.
      * @return mixed result of the query.
      */
     public function retquant1($dept_id, $id)
@@ -701,7 +701,7 @@ class Inventory_model extends CI_Model
         $this->db->join('distribution', 'distribution.dist_id = returnitem.dist_id');
         $this->db->join('department', 'department.dept_id = distribution.dept_id');
         $this->db->where('department.dept_id', $dept_id);
-        $this->db->where_in('returnitem.status',$status);
+        $this->db->where_in('returnitem.status', $status);
         $this->db->where('itemdetail.item_id', $id);
         $query = $this->db->get('returnitem')->result_array();
 
@@ -760,8 +760,8 @@ class Inventory_model extends CI_Model
      *
      * This method gets the data of reconciled items from database.
      *
-     * @param string    $type type of item.
-     * @param int       $id ID of the method
+     * @param string $type type of item.
+     * @param int $id ID of the method
      * @return mixed result of the query
      */
     public function reconcile($type, $id)
@@ -889,7 +889,7 @@ class Inventory_model extends CI_Model
      *
      * This method getting the end user of a distribution.
      *
-     * @param int   $dist_id ID of the distribution
+     * @param int $dist_id ID of the distribution
      * @return mixed result of the query
      */
     public function getEndUserDist($dist_id)
@@ -919,8 +919,8 @@ class Inventory_model extends CI_Model
      *This method is for user distribution and transfer
      * of items of end users.
      *
-     * @param string    $position position of the user
-     * @param string    $user the user for distribution
+     * @param string $position position of the user
+     * @param string $user the user for distribution
      */
     public function userdistrib($position, $user)
     {
@@ -978,8 +978,8 @@ class Inventory_model extends CI_Model
      *
      * This method is for geting  items with no serial.
      *
-     * @param int       $id ID for the methid
-     * @param string    $position  position of the user
+     * @param int $id ID for the methid
+     * @param string $position position of the user
      * @return mixed result of the query
      */
     function getSerialNull($id, $position)
@@ -987,9 +987,9 @@ class Inventory_model extends CI_Model
         $this->db->select('serial.serial');
         $this->db->join('itemdetail', 'itemdetail.item_det_id = serial.item_det_id', 'inner');
         $this->db->join('item', 'item.item_id = itemdetail.item_id', 'inner');
-        $this->db->where('item.item_id',$id);
-        $this->db->where('serial is NOT NULL',null,FALSE);
-        $this->db->where('item_status','In-stock');
+        $this->db->where('item.item_id', $id);
+        $this->db->where('serial is NOT NULL', null, FALSE);
+        $this->db->where('item_status', 'In-stock');
         $query = $this->db->get('serial');
         return $query->result_array();
     }
@@ -998,8 +998,8 @@ class Inventory_model extends CI_Model
      *
      * This method is for getting the serial of the return.
      *
-     * @param int   $det_id ID of the department
-     * @param int   $sid ID of the serial
+     * @param int $det_id ID of the department
+     * @param int $sid ID of the serial
      * @return mixed result of the query
      */
     public function getSerialReturn($det_id, $sid)
@@ -1020,8 +1020,8 @@ class Inventory_model extends CI_Model
      *
      * This method gets the serial of an item.
      *
-     * @param int       $det_id ID of the deparment
-     * @param string    $position position of the user
+     * @param int $det_id ID of the deparment
+     * @param string $position position of the user
      * @return mixed result of the query
      */
     public function getSerial($det_id, $position)
@@ -1046,9 +1046,9 @@ class Inventory_model extends CI_Model
      *
      * This method is for getting the serial of a button.
      *
-     * @param int       $det_id ID of the details
-     * @param string    $position position of the user
-     * @param int       $sid ID of the serial
+     * @param int $det_id ID of the details
+     * @param string $position position of the user
+     * @param int $sid ID of the serial
      * @return mixed result of the query
      */
     public function getSerialbtn($det_id, $position, $sid)
@@ -1082,7 +1082,7 @@ class Inventory_model extends CI_Model
         foreach ($serial as $key => $value) {
             // if serial is not null
             if ($value !== 'null') {
-                if(empty($value)){
+                if (empty($value)) {
                     $value = null;
                 }
                 $data[] = array(
@@ -1099,7 +1099,7 @@ class Inventory_model extends CI_Model
      *
      * This method is for counting the items.
      *
-     * @param int   $id ID of the method.
+     * @param int $id ID of the method.
      * @return mixed result of the query
      */
     public function countItem($id)
@@ -1262,7 +1262,7 @@ class Inventory_model extends CI_Model
      *
      * This method is for general ledger of items.
      *
-     * @param int   $id ID of the method
+     * @param int $id ID of the method
      * @return mixed result of the query
      */
     public function ledger($id)
@@ -1279,8 +1279,8 @@ class Inventory_model extends CI_Model
      *
      * This method is for the return of items after issuing.
      *
-     * @param string    $department department of the user
-     * @param string     $position position of the user
+     * @param string $department department of the user
+     * @param string $position position of the user
      * @return mixed result of the query
      */
     public function returns($department, $position)
@@ -1305,11 +1305,11 @@ class Inventory_model extends CI_Model
      *
      * This method is for accepting returned items.
      *
-     * @param int   $return_id ID of the return.
-     * @param int   $serial serial of an item
+     * @param int $return_id ID of the return.
+     * @param int $serial serial of an item
      * @return mixed result of the query
      */
-    public function acceptReturn($return_id, $serial,$item_status)
+    public function acceptReturn($return_id, $serial, $item_status)
     {
 
         $query = $this->db
@@ -1360,7 +1360,7 @@ class Inventory_model extends CI_Model
                 'transaction' => 'returned'
             ));
         $this->db->set('status', 'accepted');
-       // $this->db->set('item_status',$item_status);
+        // $this->db->set('item_status',$item_status);
         $this->db->where('return_id', $return_id);
         return $this->db->update('returnitem');
     }
@@ -1425,7 +1425,7 @@ class Inventory_model extends CI_Model
      *
      * @return mixed result of the query
      */
-    public function issued($position,$user_id)
+    public function issued($position, $user_id)
     {
         $this->db->SELECT('COUNT(dec_log_id) as countDec,i.*,dept.department,CONCAT(first_name," ",last_name) as custodian');
         $this->db->join('gsois.distribution dist', 'decreaselog.dist_id = dist.dist_id');
@@ -1447,7 +1447,7 @@ class Inventory_model extends CI_Model
      *
      * @return mixed result of the query
      */
-    public function returndash($position,$user_id)
+    public function returndash($position, $user_id)
     {
         $this->db->SELECT('COUNT(ret_log_id) as countRet,i.*,dept.department');
         $this->db->join('gsois.returnitem ret', 'ret.return_id = retlog.return_id', 'inner');
@@ -1469,7 +1469,8 @@ class Inventory_model extends CI_Model
      * @return mixed result of the query
      */
 
-    public function editedItems(){
+    public function editedItems()
+    {
         $this->db->select('COUNT(edit_log_id) as countEdit,item.*,CONCAT(first_name," ",last_name) as custodian,edit.*');
         $this->db->join('gsois.item item', 'item.item_id = edit.item_id');
         $this->db->join('gsois.user u', 'edit.userid = u.user_id');
@@ -1477,6 +1478,7 @@ class Inventory_model extends CI_Model
         $query = $this->db->get('logs.editlog edit');
         return $query->result_array();
     }
+
     public function totalcost()
     {
         $this->db->SELECT('sum(unit_cost * quantity) as totalcost');
@@ -1491,7 +1493,7 @@ class Inventory_model extends CI_Model
      *
      * @return mixed result of the query
      */
-    public function totalexpired($position,$user_id)
+    public function totalexpired($position, $user_id)
     {
         $this->db->SELECT('count(expiration_date) as countExp,item.*');
         $this->db->join('gsois.item item', 'item.item_id = itemdetail.item_id');
@@ -1517,6 +1519,7 @@ class Inventory_model extends CI_Model
 
 
     //supply officer dashboard
+
     /**
      *
      * This method is for pending items in the
@@ -1616,8 +1619,8 @@ class Inventory_model extends CI_Model
      *
      * This method is for removing details of an item.
      *
-     * @param int       $id ID of the method
-     * @param string    $serialStatus status of the serial
+     * @param int $id ID of the method
+     * @param string $serialStatus status of the serial
      */
     public function rmDet($id, $serialStatus)
     {
@@ -1647,7 +1650,7 @@ class Inventory_model extends CI_Model
      *
      * This method is for getting item details that were removed.
      *
-     * @param int   $id ID of the method
+     * @param int $id ID of the method
      * @return mixed result of the query
      */
     public function rmItems($id)
@@ -1665,8 +1668,8 @@ class Inventory_model extends CI_Model
      *
      * This method is for reverting status serial.
      *
-     * @param int       $id ID of the method
-     * @param string    $serialStatus status of the serial
+     * @param int $id ID of the method
+     * @param string $serialStatus status of the serial
      */
     public function revert($id, $serialStatus)
     {
@@ -1695,7 +1698,7 @@ class Inventory_model extends CI_Model
      *
      * This method is for getting the names supply officers.
      *
-     * @param  int  $id ID for the method
+     * @param  int $id ID for the method
      * @return mixed result of the query
      */
     public function getSuppOfficers($id)
@@ -1710,7 +1713,7 @@ class Inventory_model extends CI_Model
      *
      * This method is for items delivered/added report.
      *
-     * @param string    $type result of the query
+     * @param string $type result of the query
      * @return mixed result of the query
      */
     public function deliveredReports($type)
@@ -1731,12 +1734,12 @@ class Inventory_model extends CI_Model
      *
      * This method is for getting delivered reports with date.
      *
-     * @param string    $type type of the item
-     * @param string    $from from whom
-     * @param string    $to to whom
+     * @param string $type type of the item
+     * @param string $from from whom
+     * @param string $to to whom
      * @return mixed result of the query
      */
-    public function deliveredReportsWithDate($type,$from,$to)
+    public function deliveredReportsWithDate($type, $from, $to)
     {
         $this->db->select('item.item_name,item.item_description,item.item_type,itemdetail.*,supplier_name')
             ->join('item', 'itemdetail.item_id = item.item_id')
@@ -1747,7 +1750,7 @@ class Inventory_model extends CI_Model
         } elseif ($type === 'MOOE') {
             $this->db->where('item.item_type', $type);
         }
-        $this->db->where('date_received BETWEEN '.$this->db->escape($from).' AND '.$this->db->escape($to));
+        $this->db->where('date_received BETWEEN ' . $this->db->escape($from) . ' AND ' . $this->db->escape($to));
 
         return $this->db->get('itemdetail')->result_array();
     }
@@ -1756,7 +1759,7 @@ class Inventory_model extends CI_Model
      *
      * This method is for items issued reports.
      *
-     * @param string    $type type of an item
+     * @param string $type type of an item
      * @return mixed result of the query
      */
     public function issuedReports($type)
@@ -1780,12 +1783,12 @@ class Inventory_model extends CI_Model
      *
      * This method is for items issued with dates
      *
-     * @param string    $type type of the item
-     * @param string    $from from whom
-     * @param string    $to to whom
+     * @param string $type type of the item
+     * @param string $from from whom
+     * @param string $to to whom
      * @return mixed result of the query
      */
-    public function issuedReportsWithDate($type,$from,$to)
+    public function issuedReportsWithDate($type, $from, $to)
     {
         $this->db->select('PR_no,distribution.quantity_distributed,distribution.cost,department,distribution.date_received,CONCAT(first_name," ",last_name) as supply_officer,item.*,account_code');
         $this->db->join('itemdetail', 'distribution.item_det_id = itemdetail.item_det_id', 'inner');
@@ -1798,7 +1801,7 @@ class Inventory_model extends CI_Model
         } elseif ($type === 'MOOE') {
             $this->db->where('item.item_type', $type);
         }
-        $this->db->where('distribution.date_received BETWEEN '.$this->db->escape($from).' AND '.$this->db->escape($to));
+        $this->db->where('distribution.date_received BETWEEN ' . $this->db->escape($from) . ' AND ' . $this->db->escape($to));
 
         return $this->db->get('distribution')->result_array();
     }
@@ -1807,7 +1810,7 @@ class Inventory_model extends CI_Model
      *
      * This method is for the return reports.
      *
-     * @param string    $type type of an item
+     * @param string $type type of an item
      * @return mixed result of the query
      */
     public function returnedReports($type)
@@ -1833,12 +1836,12 @@ class Inventory_model extends CI_Model
      *
      * This method is for returned report with date.
      *
-     * @param string    $type type of the user
-     * @param string    $from from whom
-     * @param string    $to to whom
+     * @param string $type type of the user
+     * @param string $from from whom
+     * @param string $to to whom
      * @return mixed result of the query
      */
-    public function returnedReportsWithDate($type,$from,$to)
+    public function returnedReportsWithDate($type, $from, $to)
     {
         $this->db->select('receiver,date_returned,item.*,returnitem.*,department,distribution.PR_no');
         $this->db->join('itemdetail', 'returnitem.item_det_id = itemdetail.item_det_id', 'inner');
@@ -1851,7 +1854,7 @@ class Inventory_model extends CI_Model
         } elseif ($type === 'MOOE') {
             $this->db->where('item.item_type', $type);
         }
-        $this->db->where('date_returned BETWEEN '.$this->db->escape($from).' AND '.$this->db->escape($to));
+        $this->db->where('date_returned BETWEEN ' . $this->db->escape($from) . ' AND ' . $this->db->escape($to));
 
         $query = $this->db->get('returnitem');
 
@@ -1886,12 +1889,12 @@ class Inventory_model extends CI_Model
      *
      * This method is for supplier report with date.
      *
-     * @param string    $type type of the user
-     * @param string    $from from whom
-     * @param string    $to to whom
+     * @param string $type type of the user
+     * @param string $from from whom
+     * @param string $to to whom
      * @return mixed result of the query
      */
-    public function supplierReportWithDate($type,$from,$to)
+    public function supplierReportWithDate($type, $from, $to)
     {
         $this->db->select('supplier_name,item.*,itemdetail.date_delivered');
         $this->db->join('itemdetail', 'itemdetail.supplier_id = supplier.supplier_id', 'inner');
@@ -1901,7 +1904,7 @@ class Inventory_model extends CI_Model
         } elseif ($type === 'MOOE') {
             $this->db->where('item.item_type', $type);
         }
-        $this->db->where('date_received BETWEEN '.$this->db->escape($from).' AND '.$this->db->escape($to));
+        $this->db->where('date_received BETWEEN ' . $this->db->escape($from) . ' AND ' . $this->db->escape($to));
 
         $query = $this->db->get('supplier');
 
@@ -1923,8 +1926,8 @@ class Inventory_model extends CI_Model
      *
      * This method is for getting return data.
      *
-     * @param int   $serialStatus status of the serial
-     * @param int   $id ID of the method
+     * @param int $serialStatus status of the serial
+     * @param int $id ID of the method
      * @return mixed result of the query
      */
     public function getRetData($serialStatus, $id)
@@ -1996,7 +1999,7 @@ class Inventory_model extends CI_Model
             $missing = $logical[$key] - $physical[$key];
             if ($missing > 0) {
                 $item[] = $item_id[$key]['item_id'];
-                $m[] = array('missing'=>$missing);
+                $m[] = array('missing' => $missing);
 
             }
         }
@@ -2007,7 +2010,7 @@ class Inventory_model extends CI_Model
             ->where('serial !=', null, false)
             ->where('record_status', '1')
             ->where('item_status', 'In-stock')
-            ->where_in('itemdetail.item_id',$item)
+            ->where_in('itemdetail.item_id', $item)
             ->group_by('itemdetail.item_id')
             ->get('serial')->result_array();
 
@@ -2103,13 +2106,13 @@ class Inventory_model extends CI_Model
             ->where_in('recon_id', $id)
             ->get('reconciliation')->result_array();
 
-        foreach ($query as $list){
+        foreach ($query as $list) {
             $item_id[] = $list['item_id'];
         }
 
         $item_detail = $this->db->select(' max(date_delivered) as maxDate, `itemdetail`.*')
-            ->where('status','active')
-            ->where_in('item_id',$item_id)
+            ->where('status', 'active')
+            ->where_in('item_id', $item_id)
             ->group_by('itemdetail.item_det_id')
             ->get('itemdetail')->result_array();
 
@@ -2145,8 +2148,8 @@ class Inventory_model extends CI_Model
                 'supplier_id' => $item_detail[$key]['supplier_id'],
             );
             $itemdetID[] = array(
-                'item_det_id'=> $item_detail[$key]['item_det_id'],
-                'status'=>'inactive'
+                'item_det_id' => $item_detail[$key]['item_det_id'],
+                'status' => 'inactive'
             );
         }
 
@@ -2159,31 +2162,43 @@ class Inventory_model extends CI_Model
 
         $this->db->update_batch('item', $item_ID, 'item_id');
 
-        $this->db->insert_batch('itemdetail',$newItemDetail);
+        $this->db->insert_batch('itemdetail', $newItemDetail);
 
     }
-    public function getOR(){
+
+    public function getOR()
+    {
         return $this->db->select('OR_no')
             ->group_by('OR_no')
             ->get('itemdetail')->result_array();
     }
-    public function createAIR($or){
+
+    public function createAIR($or)
+    {
         return $this->db->select('OR_no,date_received,PO_number,supplier_name,unit,item_name,itemdetail.quantity,item_description,
         (itemdetail.unit_cost*itemdetail.quantity) as amount')
-            ->join('item','item.item_id = itemdetail.item_id','inner')
-            ->join('supplier','supplier.supplier_id = itemdetail.supplier_id')
-            ->where('OR_no',$or)
+            ->join('item', 'item.item_id = itemdetail.item_id', 'inner')
+            ->join('supplier', 'supplier.supplier_id = itemdetail.supplier_id')
+            ->where('OR_no', $or)
             ->group_by('item.item_id, itemdetail.item_det_id')
             ->get('itemdetail')->result_array();
     }
-    public function validateSerial($serial){
-            $this->db->where('serial' , $serial);
-            $query = $this->db->get('serial');
-            if($query->num_rows()>0){
-                return true;
-            }
-            else {
-                return false;
-            }
+
+    public function validateSerial($serial)
+    {
+        $this->db->where('serial', $serial);
+        $query = $this->db->get('serial');
+        if ($query->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
         }
+    }
+
+    public function getDelDate($id){
+        return $this->db->select('date_delivered')
+            ->where('item_det_id',$id)
+            ->get('itemdetail')->row()->date_delivered;
+
+    }
 }

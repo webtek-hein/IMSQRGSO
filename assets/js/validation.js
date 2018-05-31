@@ -67,7 +67,20 @@ $('input[name^=exp]').on('blur',function () {
     var expDate = $(this).val();
     var delDate = $('input[name^=del]').val();
     var recDate = $('input[name^=rec]').val();
+    var today = new Date();
+    var currentDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var inputToDate;
+    var todayToDate;
 
+
+    if(expDate !== '') {
+        inputToDate = Date.parse(expDate);
+        todayToDate = Date.parse(currentDate);
+        if (inputToDate < todayToDate) {
+            $(this).val('');
+            $('.exp2-error-msg').html('Expiration date must not be less than the current date.');
+        }
+    }
     if(delDate !== ''){
         if(expDate < delDate ){
             $(this).val('');
@@ -82,6 +95,32 @@ $('input[name^=exp]').on('blur',function () {
             $('.exp1-error-msg').html('Expiration date must not be less than date received.');
         }else{
             $('.exp1-error-msg').html('');
+        }
+    }
+});
+
+$('#date').on('blur',function () {
+    var delDate = $(this).data('deldate');
+    var dateDistributed = $(this).val();
+    if(dateDistributed !== ''){
+        if(delDate > dateDistributed){
+            $(this).val('');
+            $('.dist-error-msg').html('Expiration date must not be less than date delivered.');
+        }else{
+            $('.dist-error-msg').html('');
+        }
+    }
+})
+
+$('input[name=returndate]').on('blur',function () {
+    var delDate = $(this).data('deldate');
+    var returnDate = $(this).val();
+    if(returnDate !== ''){
+        if(delDate > returnDate){
+            $(this).val('');
+            $('.ret-error-msg').html('Return date must not be less than date delivered.');
+        }else{
+            $('.ret-error-msg').html('');
         }
     }
 });

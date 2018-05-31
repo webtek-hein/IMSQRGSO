@@ -17,12 +17,12 @@ $(document).ready(function () {
         $("#tExprdSO").load("inventory/itemsExpiredSO");
         $("#tCostSO").load("inventory/itemTcostSO");*/
 
-       /* increasedit();
-        issuedit();
-        returnit();
-        expiredit();
-        editit();
-*/
+        /* increasedit();
+         issuedit();
+         returnit();
+         expiredit();
+         editit();
+ */
     }, 1000);
     $returnTable = $('#returnTable');
     $reportTable = $('#reportTable');
@@ -412,24 +412,24 @@ $(document).ready(function () {
 
     //dashboard issued items to department
     function issuedit() {
-    var $issueditems = $('#issued');
-    var issued = [];
+        var $issueditems = $('#issued');
+        var issued = [];
 
-    $.ajax({
-        url: "inventory/issuedItems",
-        dataType: 'JSON',
-        success: function (data) {
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].issuedcount !== '0') {
-                    issued += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Issued by ' + data[i].custodian + ' to ' + data[i].department + "</a>"
-                } else {
-                    issued = "No Data Found!"
+        $.ajax({
+            url: "inventory/issuedItems",
+            dataType: 'JSON',
+            success: function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].issuedcount !== '0') {
+                        issued += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Issued by ' + data[i].custodian + ' to ' + data[i].department + "</a>"
+                    } else {
+                        issued = "No Data Found!"
+                    }
                 }
+                $issueditems.html(issued);
             }
-            $issueditems.html(issued);
-        }
-    });
-}
+        });
+    }
 
 
     //dashboard returned items
@@ -497,6 +497,7 @@ $(document).ready(function () {
         });
         //return table
     }
+
     $returnTable.bootstrapTable('refresh', {url: 'inventory/viewReturn'}).bootstrapTable({
         url: 'inventory/viewReturn',
         columns: [{
@@ -518,7 +519,7 @@ $(document).ready(function () {
         }, {
             field: 'itemstatus',
             title: 'Item Status'
-        },{
+        }, {
             field: 'reason',
             title: 'Reason'
         }, {
@@ -1549,8 +1550,8 @@ function init_list() {
     $('#select-dept').change(function () {
         var id = $(this).val();
         var type = $('#myTab').find('[aria-selected=true]')[0].id;
-        if(id ===null){
-            id=11;
+        if (id === null) {
+            id = 11;
         }
         if (type === 'CO-tab') {
             $deptTable.bootstrapTable('refresh', {url: 'inventory/viewdept/CO/' + id});
@@ -1870,6 +1871,7 @@ function viewSerial(id) {
     var $serialContent = $('#serial-tabcontent');
     var $serial = $('.Serial');
     var $inventory = $('.inventory-tab');
+
     $.ajax({
         url: 'inventory/getSerial/' + id,
         dataType: 'JSON',
@@ -1970,7 +1972,7 @@ function viewSerial(id) {
 
                     for (i = 0; i <= data.length - 1; i++) {
 
-                        if(data[i].value !== 'null' && data[i].name !== name){
+                        if (data[i].value !== 'null' && data[i].name !== name) {
                             if (serial === data[i].value) {
                                 counter++
                             }
@@ -1981,9 +1983,9 @@ function viewSerial(id) {
                     if (counter > 0) {
                         text = '<label class="text-danger"><span><i class="fa fa-times" aria-hidden="true"></i> There are serials which are not unique.</span></label>';
                         $('#serial-err-msg').html(text);
-                        $('#serialS').attr('disabled','true');
+                        $('#serialS').attr('disabled', 'true');
                     } else {
-                        $('#serialS').attr('disabled','false');
+                        $('#serialS').attr('disabled', 'false');
                         $.ajax({
                             url: "Inventory/validateSerial",
                             method: "POST",
@@ -2052,6 +2054,9 @@ function gettransfer(id) {
 function getserialreturn(id, sid) {
     var serials = [];
     var mooe = [];
+    var delDate = $(event.target).data('deldate')
+    $('#date').attr('data-delDate', delDate);
+    $('input[name=returndate]').attr('data-delDate', delDate);
     $.ajax({
         url: 'inventory/getSerialreturn/' + id + '/' + sid,
         dataType: 'JSON',
@@ -2080,6 +2085,9 @@ function getserialreturn(id, sid) {
 function getserial(id) {
     var serials = [];
     var mooe = [];
+    var delDate = $(event.target).data('deldate')
+    $('#date').attr('data-delDate', delDate);
+    $('input[name=returndate]').attr('data-delDate', delDate);
     $.ajax({
         url: 'inventory/getSerial/' + id,
         dataType: 'JSON',
@@ -2088,10 +2096,10 @@ function getserial(id) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null && status !== 'Distributed') {
-                    serials.push("<input required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (data[i].serial !== null && status === 'Distributed') {
-                    serials.push("<input required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
@@ -2144,10 +2152,14 @@ function getserialbtn(id, sid) {
 }
 
 function noserial(id, q, retquant) {
-    //console.log(retquant);
+    var delDate = $(event.target).data('deldate')
     var qua = '';
     var quasp = '';
     var result = q - retquant;
+
+    $('#date').attr('data-delDate', delDate);
+    $('input[name=returndate]').attr('data-delDate', delDate);
+
     if (q !== 0) {
         qua = ("<div class=\"quant form-group\">" +
             "<label>Quantity<span class=\"required\">*</span>" +
