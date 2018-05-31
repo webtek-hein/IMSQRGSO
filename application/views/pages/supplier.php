@@ -163,9 +163,7 @@
                                 </div>
                             <div class="form-group">
                                     <label for="email" class=" form-control-label">Email</label>
-                                    <input id="email1" class="form-control col-6"
-                                           name="email" data-required="false"
-                                           data-error-message="Please Enter Email">
+                                     <div id="email1" name="email[]"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="tin" class=" form-control-label">TIN</label>

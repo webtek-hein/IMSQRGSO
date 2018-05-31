@@ -706,7 +706,7 @@ function editSupplier(data) {
     $('#location').val(data.address);
     $('#contactno1').html(data.contactInput);
     $('#postal1').val(data.postal);
-    $('#email1').val(data.email);
+    $('#email1').html(data.emailInput);
     $('#tin1').val(data.tin);
     $('#status').val(data.status);
 }
@@ -1168,8 +1168,11 @@ function init_inventory() {
                 title: 'Primary Contact number'
             }, {
                 sortable: true,
-                field: 'email',
-                title: 'Email'
+                field: 'emailList',
+                title: 'Email',
+                formatter: function (data, row) {
+                    return '<ul class="list-unstyled">' + data + '</ul>';
+                },
             }, {
                 sortable: true,
                 field: 'tin',
@@ -2495,7 +2498,10 @@ function printToPDFreport() {
     } else {
         header = '<h1>Supplier Items</h1><br><p>General Service Office</p>';
     }
+    $('#reportTable').bootstrapTable({pagination: false});
     var printContents = $('#returnedReport').html();
+
+
     document.body.innerHTML = '<div class="text-center">' + header + '</div>' +
         '<div class="row"><div class="col-md-12 "><p>Type of Item: ' + type + '</p></div> ' +
         '<div class="col-md-4 form-horizontal">' + p + '</div>' +
