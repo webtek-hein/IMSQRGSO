@@ -107,10 +107,7 @@ class Inventory_model extends CI_Model
         $counter = 0;
 
         foreach ($item_name as $key => $value) {
-            $counter++;
-            //var_dump($this->input->post('serialStatus')[$counter -1 ]);
-            if (($this->input->post('serialStatus')[$counter - 1]) === '1') {
-                //var_dump($this->input->post('serialStatus')[$counter -1 ]);
+            if (isset($this->input->post('serialStatus')[$key])) {
                 $serialStatus = '1';
             } else {
                 $serialStatus = '0';
@@ -127,9 +124,6 @@ class Inventory_model extends CI_Model
                 'initialCost' => $this->input->post('cost')[$key]
             );
         }
-
-        //var_dump($data);
-        //die;
 
         $this->db->trans_start();
         // 1. Insert into item
@@ -194,7 +188,7 @@ class Inventory_model extends CI_Model
             $serialStatus = $this->input->post('serialStatus');
 
             //serial
-            if ($item_type[$key] === 'CO' && $serialStatus[$key] === '1') {
+            if ($serialStatus[$key] === '1') {
                 $serial = array_fill(1, $quantity[$key], array('item_det_id' => $item_detail_id[$key]));
                 if (isset($serial)) {
                     $this->db->insert_batch('serial', $serial);
