@@ -100,7 +100,7 @@
                                Partial
                                     <input type="radio" size="15px" class="input1" id="partial" name="rad">
                                 <br>
-                                
+
                                 <p style="margin-top:-10px;color: black;"><b> <input type="text" size="15px" class="input1"></b></p>
                                     <hr width="200px">
                                     <span> <input type="text" size="15px" class="input1"> Officer</span>
