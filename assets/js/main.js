@@ -606,7 +606,6 @@ $(document).ready(function () {
     });
 
 
-
     //initialize
     init_inventory();
     init_list();
@@ -627,8 +626,8 @@ $(document).ready(function () {
     $(contact_add_button).click(function (e) { //on add input button click
         e.preventDefault();
         if (x < contact_max_fields) { //max input box allowed
-                x++; //text box increment
-                $(contact_wrapper).append('<div><input id="contactno" name="contact[]" >' +
+            x++; //text box increment
+            $(contact_wrapper).append('<div><input id="contactno" name="contact[]" >' +
                 '<button class="remove_field btn btn-danger btn-sm contact"><i class="fa fa-times "></i></button></div>'); //add input box
         } else {
             alert('You reached the maximum allowed number of contact number');
@@ -676,7 +675,7 @@ function return_action($action, $retun_id, $s) {
     $.ajax({
         url: 'Inventory/return_actions',
         method: 'POST',
-        data: {serial: $serial, action: $action, return_id: $retun_id,item_status:status},
+        data: {serial: $serial, action: $action, return_id: $retun_id, item_status: status},
         success: function (response) {
             // location.reload();
         }
@@ -1358,6 +1357,7 @@ function init_inventory() {
     });
 
     $('.compare').on('click', function () {
+        $status = $('#serialTab').find('.active').data('status');
         var quant = [];
         var pc = [];
         var $result = [];
@@ -1370,7 +1370,15 @@ function init_inventory() {
             } else if ($result === $q) {
                 $result = 'no input';
             } else if ($result > 0) {
-                $result = ($result) + ' missing';
+                if ($status === 1) {
+                    $result = ($result) + ' missing. Select the missing serial.' +
+                        '<a class="btn btn-primary" data-toggle="modal" data-target="#reconSerialSelect">\n' +
+                        ' Select Serial\n' +
+                        '</a>\n';
+                } else {
+                    $result = ($result) + ' missing';
+                }
+
             } else if (($result) < 0) {
                 $result = 'more than ' + Math.abs($result);
             } else {
@@ -2356,92 +2364,96 @@ function checkboxLimit() {
 
 //for reconciliation
 function reconcile() {
-    $date = $('#inventoryDate').val();
-    $status = $('#serialTab').find('.active').data('status');
-    $id = [];
-    $q = [];
-    $p = [];
-    $r = [];
-    $missing = [];
-    counter = 0;
-    serializedItems = $('#serializedItems');
-    ns = $('#withoutSerial');
-    if ($status === 1) {
-        $recon = serializedItems.find('.reconitem ');
-        $quantity = serializedItems.find('.quantity');
-        $remarks = serializedItems.find('.remarks');
-        $reconID = serializedItems.find('.reconid');
-    } else {
-        $recon = ns.find('.reconitem ');
-        $quantity = ns.find('.quantity');
-        $remarks = ns.find('.remarks');
-        $reconID = ns.find('.reconid');
-    }
-    for (i = 0; i <= $recon.length - 1; i++) {
-        if ($quantity[i].textContent !== $recon[i].value) {
-            $missing.push($quantity[i].textContent - $recon[i].value);
-            counter++;
-        }
-        $q.push($quantity[i].textContent);
-        $p.push($recon[i].value);
-        $r.push($remarks[i].value);
-        $id.push($reconID[i].value);
-    }
-
-    if (counter >= 1) {
+    $('#dateInv').parsley().whenValidate().done(function () {
+        $date = $('#inventoryDate').val();
+        $status = $('#serialTab').find('.active').data('status');
+        $id = [];
+        $q = [];
+        $p = [];
+        $r = [];
+        $missing = [];
+        counter = 0;
+        serializedItems = $('#serializedItems');
+        ns = $('#withoutSerial');
         if ($status === 1) {
-            console.log($('.itemsDiv'));
+            $recon = serializedItems.find('.reconitem ');
+            $quantity = serializedItems.find('.quantity');
+            $remarks = serializedItems.find('.remarks');
+            $reconID = serializedItems.find('.reconid');
+        } else {
+            $recon = ns.find('.reconitem ');
+            $quantity = ns.find('.quantity');
+            $remarks = ns.find('.remarks');
+            $reconID = ns.find('.reconid');
+        }
+        for (i = 0; i <= $recon.length - 1; i++) {
+            if ($quantity[i].textContent !== $recon[i].value) {
+                $missing.push($quantity[i].textContent - $recon[i].value);
+                counter++;
+            }
+            $q.push($quantity[i].textContent);
+            $p.push($recon[i].value);
+            $r.push($remarks[i].value);
+            $id.push($reconID[i].value);
+        }
 
-            $('.invdate').modal('toggle');
-            toggleDiv($('.inventory-tab'), $('.reconcilePage'));
-            toggleDiv($('.discrepancies'), $('.inventory-tab'));
-            item_name = [];
-            serial = [];
-            $.ajax({
-                url: "Inventory/getDiscrepancy",
-                method: "POST",
-                dataType: 'JSON',
-                data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
-                success: function (data) {
-                    for (i = 0; i <= data.length - 1; i++) {
-                        item_name.push('<h4>' + data[i].item_name + '</h4><div class="itemsDiv" data-missing="' + $missing[i] + '" ' +
-                            'id="item' + data[i].item_id + '">'
-                            + data[i].serials + '</div>');
+        if (counter >= 1) {
+            if ($status === 1) {
+                console.log($('.itemsDiv'));
+
+                $('.invdate').modal('toggle');
+                toggleDiv($('.inventory-tab'), $('.reconcilePage'));
+                toggleDiv($('.discrepancies'), $('.inventory-tab'));
+                item_name = [];
+                serial = [];
+                $.ajax({
+                    url: "Inventory/getDiscrepancy",
+                    method: "POST",
+                    dataType: 'JSON',
+                    data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
+                    success: function (data) {
+                        for (i = 0; i <= data.length - 1; i++) {
+                            item_name.push('<h4>' + data[i].item_name + '</h4><div class="itemsDiv" data-missing="' + $missing[i] + '" ' +
+                                'id="item' + data[i].item_id + '">'
+                                + data[i].serials + '</div>');
+
+                        }
+
+                        $('#items').html(item_name);
+
 
                     }
+                });
 
-                    $('#items').html(item_name);
-
-
-                }
-            });
-
+            } else {
+                $.ajax({
+                    url: "Inventory/reconcileNS",
+                    method: "POST",
+                    data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
+                    success: function (data) {
+                        $('.invdate').modal('toggle');
+                        location.reload();
+                    }
+                });
+            }
         } else {
             $.ajax({
-                url: "Inventory/reconcileNS",
+                url: "Inventory/reconcileInventory",
                 method: "POST",
                 data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
                 success: function (data) {
                     $('.invdate').modal('toggle');
                     location.reload();
                 }
-            });
+            })
         }
-    } else {
-        $.ajax({
-            url: "Inventory/reconcileInventory",
-            method: "POST",
-            data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
-            success: function (data) {
-                $('.invdate').modal('toggle');
-                location.reload();
-            }
-        })
-    }
 
+    })
 
 }
 
+function validateSerial() {
+}
 
 function printToPDF() {
 
@@ -2497,7 +2509,7 @@ function printToPDFreport() {
     } else {
         header = '<h1>Supplier Items</h1><br><p>General Service Office</p>';
     }
-    $('#reportTable').attr('data-pagination','false');
+    $('#reportTable').attr('data-pagination', 'false');
     var printContents = $('#returnedReport').html();
 
 
@@ -2847,42 +2859,37 @@ function printAIR() {
     window.print();
     document.body.innerHTML = originalContents;
 }
-function valreturn(){
+
+function valreturn() {
     var chks = $('.serialCheck');
-   if(chks.length == 0 ){
-       return true;
-   }
+    if (chks.length == 0) {
+        return true;
+    }
     var hasChecked = false;
-    for (var i = 0; i < chks.length; i++)
-    {
-        if (chks[i].checked)
-        {
+    for (var i = 0; i < chks.length; i++) {
+        if (chks[i].checked) {
             hasChecked = true;
             break;
         }
     }
-    if (hasChecked === false)
-    {
+    if (hasChecked === false) {
         alert("Please select at least one serial");
         return false;
     }
     return true;
 }
 
-function valdist(){
+function valdist() {
     var chks = document.getElementById('form').getElementsByTagName('input');
     console.log(chks);
     var hasChecked = false;
-    for (var i = 0; i < chks.length; i++)
-    {
-        if (chks[i].checked)
-        {
+    for (var i = 0; i < chks.length; i++) {
+        if (chks[i].checked) {
             hasChecked = true;
             break;
         }
     }
-    if (hasChecked === false)
-    {
+    if (hasChecked === false) {
         alert("Please select at least one serial");
         return false;
     }
