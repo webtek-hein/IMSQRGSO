@@ -95,15 +95,16 @@
                                 <input id="date_received" type="text">
                                 <br></br>
                                 <center> Complete
-                                    <input type="radio" size="15px" class="input1" id="complete"checked name="rad">
+                                <input type="radio" size="15px" class="input1" id="complete" checked name="rad">
                                 <br>
-                                    <center>Partial
+                               <center>Partial
                                     <input type="radio" size="15px" class="input1" id="partial" name="rad">
-                                        <br></br>
+                                <br></br>
 
-                                        <center> <p style="margin-top:-10px;color: black;"><b> <input type="text" size="15px" class="input1"></b></p>
-                                    <hr width="200px">
-                                    <span> <input type="text" size="15px" class="input1"> Officer</span>
+                                        <center> <p style="margin-top:-10px;color: black;"><b> <input type="text" size="15px"
+                                                                                     class="input1"></b></p>
+                                <hr width="200px">
+                                <span> <input type="text" size="15px" class="input1"> Officer</span>
                             </td>
                             <td class="tfoot8" valign="top">Date Inspected: <input type="text" size="15px"
                                                                                    class="input1"></input>
@@ -713,7 +714,7 @@
                                     <!-- Implement Bootsrap table-->
                                     <table id="detail-tab-table" data-search="true"
                                            class="table table-bordered table-hover">
-                                           <thead class="table-secondary"></thead>
+                                        <thead class="table-secondary"></thead>
                                     </table>
                                 </form>
 
@@ -744,7 +745,8 @@
                                                     <!-- end of qr button -->
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox" class="check" id="checkAll"> Check All
+                                                            <input type="checkbox" class="check" id="checkAll"> Check
+                                                            All
 
                                                         </label>
                                                     </div>
@@ -774,7 +776,7 @@
                                 <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
                                        class="table table-bordered table-hover">
-                                       <thead class="table-secondary"></thead>
+                                    <thead class="table-secondary"></thead>
                                 </table>
                             </div>
                             <!--End of General Ledger-->
@@ -784,7 +786,7 @@
                                  aria-labelledby="removed-tab">
                                 <table id="removed-table" data-search="true" data-show-refresh='true'
                                        class="table table-bordered table-hover">
-                                       <thead class="table-secondary"></thead>
+                                    <thead class="table-secondary"></thead>
                                 </table>
                             </div>
                             <!--End of Removed Items-->
@@ -799,7 +801,7 @@
                     <div class="card-header">
                         <button class="btn btn-danger btn-sm" id="exit"
                                 onclick="toggleDiv($('.inventory-tab'), $('.additemDiv'))">
-                                <i class="fa fa-times"></i> Cancel
+                            <i class="fa fa-times"></i> Cancel
                         </button>
                     </div>
                     <div class="card-body card-block col-lg-12">
@@ -811,15 +813,17 @@
                                        aria-controls="step1" aria-selected="true">Item 1</a>
                                 </li>
                                 <li id="another">
-                                    <button id="addanother" class="btn btn-primary" role="tab" data-toggle="tooltip" data-placement="bottom" title="Add another Item">
+                                    <button id="addanother" class="btn btn-primary" role="tab" data-toggle="tooltip"
+                                            data-placement="bottom" title="Add another Item">
                                         <i class="ti-plus"></i>
                                     </button>
                                 </li>
                             </ul>
                         </div>
-                    <br/>
+                        <br/>
 
-                        <form class="forUIaddItem form-horizontal form-label-left input_mask col-8" id="addItemForm" role="form"
+                        <form class="forUIaddItem form-horizontal form-label-left input_mask col-8" id="addItemForm"
+                              role="form"
                               action="Inventory/saveAll" method="POST">
 
                             <div id="bulkdiv" class="tab-content">
@@ -929,7 +933,8 @@
                                         </ul>
                                     </div>
                                     <div class="form-group">
-                                        <label for="unit" class="addItemLabel form-control-label">Expiration Date</label>
+                                        <label for="unit" class="addItemLabel form-control-label">Expiration
+                                            Date</label>
                                         <div class="input-group">
                                             <input data-parsley-group="set1" type="date"
                                                    name="exp[]" class="addItemInput form-control col-6"
@@ -953,7 +958,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="unit" class="addItemLabel form-control-label">Official Receipt Number</label>
+                                        <label for="unit" class="addItemLabel form-control-label">Official Receipt
+                                            Number</label>
                                         <div class="input-group">
                                             <input data-parsley-group="set1"
                                                    name="or[]" class="addItemInput form-control col-6"
@@ -1093,9 +1099,9 @@
                             <p>Quantity Left: <span id="quantLeft"></span></p>
                             <br>
                             <div class="form-group options">
-                            <div class="serial">
-                                <label for="name"></label>
-                            </div>
+                                <div class="serial">
+                                    <label for="name"></label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -1155,7 +1161,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal" onclick="return valreturn();">
+                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal"
+                            onclick="return valreturn();">
                         <i class="fa fa-arrow-down"></i> Save
                     </button>
                 </div>
@@ -1447,6 +1454,27 @@
 <!--end of Return-->
 <!--Reconcile Page-->
 <div hidden class="reconcilePage col-lg-12">
+    <!-- Modal -->
+    <div class="modal fade" id="reconSerialSelect" tabindex="-1" role="dialog" aria-labelledby="reconSerialSelect"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <form id="recValidate">
         <div class="card">
             <div class="card-header">
@@ -1482,13 +1510,17 @@
                          aria-labelledby="nonSer-tab">
 
                         <table data-show-refresh="true" data-pagination="true" data-search="true" id="serializedItems"
-                               class="table table-bordered table-hover table-responsive"><thead class="table-secondary"></table>
+                               class="table table-bordered table-hover table-responsive">
+                            <thead class="table-secondary">
+                        </table>
                     </div>
                     <div class="table-responsive-sm  tab-pane fade " id="serTab"
                          role="tabpanel"
                          aria-labelledby="nonSerialized-tab">
                         <table data-show-refresh="true" data-pagination="true" data-search="true" id="withoutSerial"
-                               class="table table-bordered table-hover table-responsive"><thead class="table-secondary"></thead></table>
+                               class="table table-bordered table-hover table-responsive">
+                            <thead class="table-secondary"></thead>
+                        </table>
 
                     </div>
                 </div>
@@ -1521,32 +1553,34 @@
      aria-labelledby="largeModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="largeModalLabel">Date of Inventory</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
+        <form id="dateInv">
 
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <label for="invdate">Date of Inventory</label>
-                        <input id="inventoryDate" class="form-control col-md-7 col-xs-12"
-                               data-validate-length-range="6"
-                               data-validate-words="2" name="date" required type="date">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="largeModalLabel">Date of Inventory</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label for="invdate">Date of Inventory</label>
+                            <input required id="inventoryDate" class="form-control col-md-7 col-xs-12"
+                                   data-validate-length-range="6"
+                                   data-validate-words="2" name="date" required type="date">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="button" onclick="reconcile()" name="id" class="btn btn-success btn-modal" id="save1">
-                    <i class="fa fa-arrow-down"></i> Save
-                </button>
-            </div>
-        </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="button" onclick="reconcile()" name="id" class="btn btn-success btn-modal" id="save1">
+                        <i class="fa fa-arrow-down"></i> Save
+                    </button>
+                </div>
+        </form>
     </div>
+</div>
 </div>
 <!--end of add inventory date-->
 
