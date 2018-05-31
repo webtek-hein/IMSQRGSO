@@ -20,6 +20,16 @@ $( 'input[name^=cost]' ).on('keypress paste',function () {
         return false;
     }
 });
+$( 'input[name^=cost]' ).on('blur',function(){
+    var value = parseFloat($(this).val());
+    if(isNaN(value)){
+        $(this).val('');
+        $('.cost-err-msg').html('Invalid Cost.');
+    }else{
+        $(this).val(value);
+        $('.cost-err-msg').html('');
+    }
+})
 
 $('input[name^=del]').on('blur',function () {
    var delDate = $(this).val();
@@ -110,7 +120,10 @@ $('#date').on('blur',function () {
             $('.dist-error-msg').html('');
         }
     }
-})
+});
+
+
+
 
 $('input[name=returndate]').on('blur',function () {
     var delDate = $(this).data('deldate');

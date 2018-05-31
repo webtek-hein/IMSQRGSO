@@ -882,6 +882,7 @@
                                                required>
                                         <ul class="list-unstyled">
                                             <li class="text-danger cost-error-msg"></li>
+                                            <li class="text-danger cost-err-msg"></li>
                                         </ul>
                                     </div>
                                     <div class="form-group">
