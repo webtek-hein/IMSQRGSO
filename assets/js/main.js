@@ -2851,6 +2851,9 @@ function printAIR() {
 }
 function valreturn(){
     var chks = $('.serialCheck');
+   if(chks.length == 0 ){
+       return true;
+   }
     var hasChecked = false;
     for (var i = 0; i < chks.length; i++)
     {
