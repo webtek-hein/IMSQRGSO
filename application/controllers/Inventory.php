@@ -1185,9 +1185,9 @@ class Inventory extends CI_Controller
     public function validateSerial()
     {
         if ($this->inv->validateSerial($this->input->post('serial'))) {
-            echo '<label class="text-danger"><span><i class="fa fa-times" aria-hidden="true"></i> There are serials which are not unique.</span></label> <script>document.getElementById("serialS").disabled = true;</script>';
+            echo '<label class="text-danger"><span><i class="fa fa-times" aria-hidden="true"></i> There are serials which are not unique.</span></label> <script>  $(\'.serialBTN\').attr(\'disabled\', \'disabled\');</script>';
         } else {
-            echo '<label class="text-success"><span><i class="fa fa-check-circle-o" aria-hidden="true"></i> All serials are unique</span></label> <script>document.getElementById("serialS").disabled = false;</script>';
+            echo '<label class="text-success"><span><i class="fa fa-check-circle-o" aria-hidden="true"></i> All serials are unique</span></label> <script>  $(\'.serialBTN\').removeAttr(\'disabled\');</script>';
         }
     }
 

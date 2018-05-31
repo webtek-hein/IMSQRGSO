@@ -1888,7 +1888,7 @@ function viewSerial(id) {
             if (data[0]['position'] === 'Custodian') {
                 button = "<br><div class=\"col-md-offset-3\">\n" +
                     "<button id=\"serialP\" type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Previous</button>" +
-                    "<button id=\"serialS\" onclick = \"saveSerial()\" type=\"button\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Save</a></button>" +
+                    "<button id=\"serialS\" onclick = \"saveSerial()\" type=\"button\" class=\"serialBTN btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Save</a></button>" +
                     "<button id=\"serialN\" type=\"button\" class=\"next-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>" +
                     " </div>";
             }
@@ -1983,15 +1983,16 @@ function viewSerial(id) {
                     if (counter > 0) {
                         text = '<label class="text-danger"><span><i class="fa fa-times" aria-hidden="true"></i> There are serials which are not unique.</span></label>';
                         $('#serial-err-msg').html(text);
-                        $('#serialS').attr('disabled', 'true');
+                        $('.serialBTN').attr('disabled', 'disabled');
                     } else {
-                        $('#serialS').attr('disabled', 'false');
+                        text = '<label class="text-success"><span><i class="fa fa-check-circle-o" aria-hidden="true"></i> All serials are unique</span></label> ';
+                        $('#serial-err-msg').html(text);
+                        $('.serialBTN').removeAttr('disabled');
                         $.ajax({
                             url: "Inventory/validateSerial",
                             method: "POST",
                             data: {serial: serial},
                             success: function (data) {
-                                console.log(data);
                                 $('#serial-err-msg').html(data);
                             }
                         });
