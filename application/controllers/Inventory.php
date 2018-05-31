@@ -215,7 +215,7 @@ class Inventory extends CI_Controller
                             <a data-toggle=\"dropdown\" class=\"btn btn-default btn-sm dropdown-toggle\" type=\"button\" aria-expanded=\"false\">
                             <span class=\"caret\"></span></a>
                             <div id=\"DetailDropDn\" role=\"menu\" class=\"dropdown-menu\">
-                            <a class=\"dropdown-item\" data-deldate = ".$detail['date_delivered']." href=\"#\" onclick=\"noserial($detail[item_det_id],$detail[quantity],0)\"data-toggle=\"modal\" 
+                            <a class=\"dropdown-item\" data-deldate = " . $detail['date_delivered'] . " href=\"#\" onclick=\"noserial($detail[item_det_id],$detail[quantity],0)\"data-toggle=\"modal\" 
                             data-id='$detail[item_det_id]'data-target=\" .Distribute\" data-quantity=\"$detail[quantity]\">
                             <i class=\" fa fa-share-square-o\" ></i > Distribute</a >
                             </div>
@@ -245,7 +245,7 @@ class Inventory extends CI_Controller
                 }
             }
             if ($dept === 'dept') {
-                if($detail['quantity_distributed'] === 0){
+                if ($detail['quantity_distributed'] === 0) {
                     $action = '';
                 }
                 $cost = "PHP " . number_format($detail['cost'], 2);
@@ -764,7 +764,7 @@ class Inventory extends CI_Controller
 
         //accept
         if ($action === '0') {
-            echo $this->inv->acceptReturn($return_id, $serial,$item_status);
+            echo $this->inv->acceptReturn($return_id, $serial, $item_status);
             // decline
         } elseif ($action === '1') {
             echo $this->inv->declineReturn($return_id);
@@ -798,7 +798,7 @@ class Inventory extends CI_Controller
     {
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
-        $issueditemsCount = $this->inv->issued($position,$user_id);
+        $issueditemsCount = $this->inv->issued($position, $user_id);
         foreach ($issueditemsCount as $list) {
             $data[] = array(
                 'issuedcount' => $list['countDec'],
@@ -817,7 +817,7 @@ class Inventory extends CI_Controller
     {
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
-        $returneditemsCount = $this->inv->returndash($position,$user_id);
+        $returneditemsCount = $this->inv->returndash($position, $user_id);
         foreach ($returneditemsCount as $list) {
             $data[] = array(
                 'returncount' => $list['countRet'],
@@ -867,7 +867,7 @@ class Inventory extends CI_Controller
     {
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
-        $totalexpiredCount = $this->inv->totalexpired($position,$user_id);
+        $totalexpiredCount = $this->inv->totalexpired($position, $user_id);
         foreach ($totalexpiredCount as $list) {
             $data[] = array(
                 'expirecount' => $list['countExp'],
@@ -1089,28 +1089,6 @@ class Inventory extends CI_Controller
     }
 
     /**
-     * This is for getting discrepancy of items.
-     */
-    function getDiscrepancy()
-    {
-        $list = $this->inv->getDiscrepancy();
-
-        $data = array();
-        foreach ($list as $item) {
-            $data[] = array(
-                'item_name' => $item['item_name'],
-                'item_id' => $item['item_id'],
-                'serials' => implode(array_map(function ($serial) {
-                    return ('<input class="item" type="checkbox" value=' . $serial . ' //>' . $serial . '<br>');
-                },
-                    explode(',', $item['serials'])))
-            );
-        }
-
-        echo json_encode($data);
-    }
-
-    /**
      * This is for recording serialized items.
      */
     function recSerializedItems()
@@ -1189,8 +1167,19 @@ class Inventory extends CI_Controller
         }
     }
 
-    public function getDelDate($id){
+    public function getDelDate($id)
+    {
         echo json_encode($this->inv->getDelDate($id));
+    }
+
+    public function checkSerial()
+    {
+        echo json_encode($this->inv->checkSer());
+    }
+
+    public function getRecSerial($id)
+    {
+        echo json_encode($this->inv->getRecSerial($id));
     }
 
 }

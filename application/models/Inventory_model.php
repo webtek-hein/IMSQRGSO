@@ -2200,4 +2200,26 @@ class Inventory_model extends CI_Model
             ->get('itemdetail')->row()->date_delivered;
 
     }
+
+    public function checkSer(){
+        $query =  $this->db->select('serial')
+            ->where('serial',null,false)
+            ->get('serial');
+        if ($query->num_rows() === 0) {
+           return true;
+        } else {
+            return false;
+        }
+
+    }
+    public function getRecSerial($id){
+        return $this->db->select('item.item_id,item.item_name,serial')
+            ->join('reconciliation','reconciliation.item_id = item.item_id')
+            ->join('itemdetail','itemdetail.item_id = reconciliation.item_id')
+            ->join('serial','serial.item_det_id = itemdetail.item_det_id')
+            ->where('reconciliation.recon_id',$id)
+            ->where('serial.item_status','In-stock')
+            ->where('serial.record_status','1')
+            ->get('item')->result_array();
+    }
 }

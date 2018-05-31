@@ -1,4 +1,57 @@
 $(document).ready(function () {
+    $('.serialSave').click(function (e) {
+        serial = [];
+        var missing = $('#itemSet').data('missing');
+        var btn = '#' + $('#itemSet').data('btn');
+        var selected = $('.itemCheckboxes:checked').length;
+        if (selected > missing) {
+            alert('You have selected too many serial. Remove ' + (selected - missing) + ' serial to continue.');
+        } else if (selected < missing) {
+            alert('You neeed to select ' + (missing - selected) + ' more serial to continue.');
+        } else {
+            $(btn).remove();
+            $('#reconSerialSelect').modal('toggle');
+            if (localStorage.getItem('serial') !== null) {
+                serial = JSON.parse(localStorage.getItem('serial'));
+            }
+            $("input[name^=serial]:checked").each(function () {
+                serial.push($(this).val());
+            });
+            localStorage.setItem('serial', JSON.stringify(serial));
+
+
+        }
+        var visible = $('.serial-btn:visible');
+        if (visible.length === 0) {
+            $('#reconcile-btn').removeAttr('hidden');
+            $('#compare-btn').attr('hidden', 'hidden');
+        }
+
+    });
+    $('#reconSerialSelect').on('show.bs.modal', function (e) {
+        btn = $(e.relatedTarget).attr('id');
+        $status = $('#serialTab').find('.active').data('status');
+        id = $(e.relatedTarget).data('id');
+        $missing = $(e.relatedTarget).data('missing');
+        if ($status === 1) {
+            item_name = [];
+            serial = [];
+            $.ajax({
+                url: "Inventory/getRecSerial/" + id,
+                method: "POST",
+                dataType: 'JSON',
+                success: function (data) {
+                    for (i = 0; i <= data.length - 1; i++) {
+                        item_name.push('<input name="serial[]" class="itemCheckboxes" type="checkbox" value=' + data[i].serial + '>' + data[i].serial + '<br>');
+
+                    }
+
+                    $('#items').html('<div id="itemSet" data-btn=' + btn + ' data-missing=' + $missing + '><h4>' + data[0].item_name + '</h4>' + item_name.join('') + '</div>');
+                }
+            });
+        }
+
+    })
     $('.AcceptReturn').on('show.bs.modal', function (e) {
         f = $(e.relatedTarget).data('func');
         $('#returnAct').attr('onclick', f);
@@ -1357,36 +1410,39 @@ function init_inventory() {
     });
 
     $('.compare').on('click', function () {
-        $status = $('#serialTab').find('.active').data('status');
-        var quant = [];
-        var pc = [];
-        var $result = [];
-        var $recon = $('.reconitem ');
-        for (var i = 0; i <= $recon.length - 1; i++) {
-            $q = $('.quantity')[i].textContent;
-            $result = $q - $recon[i].value;
-            if ($result === 0) {
-                $result = 'equal';
-            } else if ($result === $q) {
-                $result = 'no input';
-            } else if ($result > 0) {
-                if ($status === 1) {
-                    $result = ($result) + ' missing. Select the missing serial.' +
-                        '<a class="btn btn-primary" data-toggle="modal" data-target="#reconSerialSelect">\n' +
-                        ' Select Serial\n' +
-                        '</a>\n';
-                } else {
-                    $result = ($result) + ' missing';
-                }
+            $status = $('#serialTab').find('.active').data('status');
+            var quant = [];
+            var pc = [];
+            var $result = [];
+            var $recon = $('.reconitem ');
+            for (var i = 0; i <= $recon.length - 1; i++) {
+                $q = $('.quantity')[i].textContent;
+                reconID = $('.reconid')[i].value;
+                $result = $q - $recon[i].value;
+                if ($result === 0) {
+                    $result = 'equal';
+                } else if ($result === $q) {
+                    $result = 'no input';
+                } else if ($result > 0) {
+                    if ($status === 1) {
+                        $result = ($result) + ' missing. Select the missing serial.' +
+                            '<a id=itemRec' + reconID + ' class="serial-btn btn btn-primary" data-id=' + reconID + ' data-missing=' + $result + ' ' +
+                            'data-toggle="modal" data-target="#reconSerialSelect">\n' +
+                            ' Select Serial\n' +
+                            '</a>\n';
+                    } else {
+                        $result = ($result) + ' missing';
+                    }
 
-            } else if (($result) < 0) {
-                $result = 'more than ' + Math.abs($result);
-            } else {
-                $result = '';
+                } else if (($result) < 0) {
+                    $result = 'more than ' + Math.abs($result);
+                } else {
+                    $result = '';
+                }
+                $('.result')[i].innerHTML = $result;
             }
-            $('.result')[i].innerHTML = $result;
-        }
     });
+
 
     $('select.itemtype').change(function () {
         $('.hideInput').toggleClass('hidden');
@@ -1395,26 +1451,21 @@ function init_inventory() {
         toggleDiv($('.generateReport'), $('.inventory-tab'));
     });
     $('#reconcileButton').on('click', function () {
-        var $select = $('#inventoryDates');
-        var options = [];
+        localStorage.clear();
         $.ajax({
-            url: "inventory/getInvDates",
+            url: "Inventory/checkSerial",
             dataType: 'JSON',
             success: function (data) {
-                if (data === null) {
-                    options += '<option>NO Inventory Dates</option>';
+                if (data === false) {
+                    alert('Please input all serial before reconciling.');
                 } else {
-                    for (var i = 0; i <= data.length - 1; i++) {
-                        options += '<option>' + data + '</option>';
-                    }
+                    toggleDiv($('.reconcilePage'), $('.inventory-tab'));
                 }
-                $select.html(options);
-                toggleDiv($('.reconcilePage'), $('.inventory-tab'));
             }
         });
-
     });
     console.log('init_inventory');
+
 }
 
 //initialize lists
@@ -2364,91 +2415,66 @@ function checkboxLimit() {
 
 //for reconciliation
 function reconcile() {
-    $('#dateInv').parsley().whenValidate().done(function () {
-        $date = $('#inventoryDate').val();
-        $status = $('#serialTab').find('.active').data('status');
-        $id = [];
-        $q = [];
-        $p = [];
-        $r = [];
-        $missing = [];
-        counter = 0;
-        serializedItems = $('#serializedItems');
-        ns = $('#withoutSerial');
+    $date = $('#inventoryDate').val();
+    $status = $('#serialTab').find('.active').data('status');
+    $id = [];
+    $q = [];
+    $p = [];
+    $r = [];
+    $missing = [];
+    counter = 0;
+    serializedItems = $('#serializedItems');
+    ns = $('#withoutSerial');
+    if ($status === 1) {
+        $recon = serializedItems.find('.reconitem ');
+        $quantity = serializedItems.find('.quantity');
+        $remarks = serializedItems.find('.remarks');
+        $reconID = serializedItems.find('.reconid');
+    } else {
+        $recon = ns.find('.reconitem ');
+        $quantity = ns.find('.quantity');
+        $remarks = ns.find('.remarks');
+        $reconID = ns.find('.reconid');
+    }
+    for (i = 0; i <= $recon.length - 1; i++) {
+        if ($quantity[i].textContent !== $recon[i].value) {
+            $missing.push($quantity[i].textContent - $recon[i].value);
+            counter++;
+        }
+        $q.push($quantity[i].textContent);
+        $p.push($recon[i].value);
+        $r.push($remarks[i].value);
+        $id.push($reconID[i].value);
+    }
+
+    if (counter >= 1) {
         if ($status === 1) {
-            $recon = serializedItems.find('.reconitem ');
-            $quantity = serializedItems.find('.quantity');
-            $remarks = serializedItems.find('.remarks');
-            $reconID = serializedItems.find('.reconid');
-        } else {
-            $recon = ns.find('.reconitem ');
-            $quantity = ns.find('.quantity');
-            $remarks = ns.find('.remarks');
-            $reconID = ns.find('.reconid');
-        }
-        for (i = 0; i <= $recon.length - 1; i++) {
-            if ($quantity[i].textContent !== $recon[i].value) {
-                $missing.push($quantity[i].textContent - $recon[i].value);
-                counter++;
-            }
-            $q.push($quantity[i].textContent);
-            $p.push($recon[i].value);
-            $r.push($remarks[i].value);
-            $id.push($reconID[i].value);
-        }
-
-        if (counter >= 1) {
-            if ($status === 1) {
-                console.log($('.itemsDiv'));
-
-                $('.invdate').modal('toggle');
-                toggleDiv($('.inventory-tab'), $('.reconcilePage'));
-                toggleDiv($('.discrepancies'), $('.inventory-tab'));
-                item_name = [];
-                serial = [];
-                $.ajax({
-                    url: "Inventory/getDiscrepancy",
-                    method: "POST",
-                    dataType: 'JSON',
-                    data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
-                    success: function (data) {
-                        for (i = 0; i <= data.length - 1; i++) {
-                            item_name.push('<h4>' + data[i].item_name + '</h4><div class="itemsDiv" data-missing="' + $missing[i] + '" ' +
-                                'id="item' + data[i].item_id + '">'
-                                + data[i].serials + '</div>');
-
-                        }
-
-                        $('#items').html(item_name);
-
-
-                    }
-                });
-
-            } else {
-                $.ajax({
-                    url: "Inventory/reconcileNS",
-                    method: "POST",
-                    data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
-                    success: function (data) {
-                        $('.invdate').modal('toggle');
-                        location.reload();
-                    }
-                });
-            }
+            alert();
+            getAllSerial()
         } else {
             $.ajax({
-                url: "Inventory/reconcileInventory",
+                url: "Inventory/reconcileNS",
                 method: "POST",
                 data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
                 success: function (data) {
                     $('.invdate').modal('toggle');
                     location.reload();
                 }
-            })
-        }
+            });
 
-    })
+        }
+    } else {
+        $.ajax({
+            url: "Inventory/reconcileInventory",
+            method: "POST",
+            data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
+            success: function (data) {
+                $('.invdate').modal('toggle');
+                location.reload();
+            }
+        })
+    }
+
 
 }
 
@@ -2611,10 +2637,8 @@ function getAllSerial() {
         $r.push($('.remarks')[i].value)
         $id.push($('.reconid')[i].value)
     }
-    $serials = $('input.item:checked');
-    serials = [];
-    for (i = 0; i <= $serials.length - 1; i++) {
-        serials.push($serials[i].value);
+    if (localStorage.getItem('serial') !== null) {
+        serials = JSON.parse(localStorage.getItem('serial'));
     }
     $.ajax({
         url: 'Inventory/recSerializedItems',
