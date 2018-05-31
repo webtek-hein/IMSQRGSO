@@ -666,6 +666,7 @@ $(document).ready(function () {
 //action for returns
 function return_action($action, $retun_id, $s) {
     var $serial = [];
+    var status = $('#itemstatus').val();
     if ($s === 1) {
         $ser = $('.ser');
         for (var i = 0; i <= $ser.length - 1; i++) {
@@ -673,11 +674,11 @@ function return_action($action, $retun_id, $s) {
         }
     }
     $.ajax({
-        url: 'inventory/return_actions',
+        url: 'Inventory/return_actions',
         method: 'POST',
-        data: {serial: $serial, action: $action, return_id: $retun_id},
+        data: {serial: $serial, action: $action, return_id: $retun_id,item_status:status},
         success: function (response) {
-            location.reload();
+            // location.reload();
         }
     });
 }

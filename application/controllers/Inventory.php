@@ -203,9 +203,7 @@ class Inventory extends CI_Controller
                                 "<button onclick='accountability($detail[dist_id])' id=\"accountButton\" type=\'button\' data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Accountability\"
                                         class=\"btn btn-success btn-sm\"><i class='fa fa-user-o'></i> </button>
                                 <a href=\'#\' type=\'button\' data-deldate = '$detail[date_delivered]'  data-toggle=\"modal\" data-target=\".Return\" onclick=\"getserialreturn($detail[item_det_id],$detail[dist_id])\" 
-                                        data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Return\" data-id='$detail[dist_id]' class=\"btn btn-danger btn-sm\"><i class='fa fa-refresh'></i></a>
-                                <a href=\"./are\" type=\'button\' class=\"btn btn-primary btn-sm\"  data-toggle=\"tooltip\" 
-                                data-placement=\"bottom\" title=\"Generate ARE\"><i class='fa fa-print'></i></a>";
+                                        data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Return\" data-id='$detail[dist_id]' class=\"btn btn-danger btn-sm\"><i class='fa fa-refresh'></i></a>";
 
                         }
                     }
@@ -762,7 +760,7 @@ class Inventory extends CI_Controller
         $action = $this->input->post('action');
         $serial = $this->input->post('serial');
         $return_id = $this->input->post('return_id');
-        $item_status = $this->input->post('status');
+        $item_status = $this->input->post('item_status');
 
         //accept
         if ($action === '0') {

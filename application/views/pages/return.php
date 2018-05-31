@@ -142,7 +142,7 @@
                     <div class="col-4">
                         <div class="form-group">
                             <label>Item Status</label>
-                            <input id="itemstatus" name="status" data-parsley-group="set1"
+                            <input id="itemstatus" name="item_status" data-parsley-group="set1"
                                    class="form-control"
                                    list="list1"
                                    data-parsley-required-message="Select the status"

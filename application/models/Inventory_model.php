@@ -1316,7 +1316,6 @@ class Inventory_model extends CI_Model
      */
     public function acceptReturn($return_id, $serial, $item_status)
     {
-
         $query = $this->db
             ->select('item.serialStatus,item.serialStatus,PR_no,item.quantity,returnitem.*,distribution.cost,item.item_id')
             ->where('return_id', $return_id)
@@ -1365,7 +1364,7 @@ class Inventory_model extends CI_Model
                 'transaction' => 'returned'
             ));
         $this->db->set('status', 'accepted');
-        // $this->db->set('item_status',$item_status);
+        $this->db->set('item_status',$item_status);
         $this->db->where('return_id', $return_id);
         return $this->db->update('returnitem');
     }
