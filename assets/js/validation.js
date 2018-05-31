@@ -89,6 +89,8 @@ $('input[name^=exp]').on('blur',function () {
         if (inputToDate < todayToDate) {
             $(this).val('');
             $('.exp2-error-msg').html('Expiration date must not be less than the current date.');
+        }else{
+            $('.exp2-error-msg').html('');
         }
     }
     if(delDate !== ''){

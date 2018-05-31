@@ -104,14 +104,17 @@ class Inventory_model extends CI_Model
         $item_name = $this->input->post('item');
         $data = [];
         $data1 = [];
+        $counter = 0;
 
         foreach ($item_name as $key => $value) {
-            if (isset($this->input->post('serialStatus')[$key])) {
-                $serialStatus = $this->input->post('serialStatus')[$key];
+            $counter++;
+            if (isset($this->input->post('serialStatus')[$counter])) {
+                var_dump($this->input->post('serialStatus')[$counter]);
+
+                $serialStatus = '1';
             } else {
                 $serialStatus = '0';
             }
-
             $data[] = array(
                 'item_name' => $item_name[$key],
                 'quantity' => $this->input->post('quant')[$key],
@@ -124,6 +127,9 @@ class Inventory_model extends CI_Model
                 'initialCost' => $this->input->post('cost')[$key]
             );
         }
+
+        var_dump($data);
+        die;
 
         $this->db->trans_start();
         // 1. Insert into item
@@ -1092,7 +1098,6 @@ class Inventory_model extends CI_Model
             }
         }
         return $this->db->update_batch('serial', $data, 'serial_id');
-
     }
 
     /**
@@ -2195,9 +2200,10 @@ class Inventory_model extends CI_Model
         }
     }
 
-    public function getDelDate($id){
+    public function getDelDate($id)
+    {
         return $this->db->select('date_delivered')
-            ->where('item_det_id',$id)
+            ->where('item_det_id', $id)
             ->get('itemdetail')->row()->date_delivered;
 
     }

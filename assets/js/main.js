@@ -604,43 +604,16 @@ $(document).ready(function () {
         event.stopPropagation();
         $('.search-trigger').parent('.header-left').removeClass('open');
     });
-    var active = localStorage.getItem('active');
-    var hidden = localStorage.getItem('hidden');
-    var detFunc = localStorage.getItem('detail');
 
-    $('#main-menu').find('li a').click(function () {
-        localStorage.clear();
-    });
-    if (active !== null) {
-        if (active.split(' ')[0] === 'detail-tab') {
-            $('td').attr('onclick', detFunc).click();
-        }
-    }
-    //get URL of the document
-    var $url = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
-    if ($url === 'dashboard') {
-        $('#vmap').vectorMap({
-            map: 'world_en',
-            backgroundColor: null,
-            color: '#ffffff',
-            hoverOpacity: 0.7,
-            selectedColor: '#1de9b6',
-            enableZoom: true,
-            showTooltip: true,
-            values: sample_data,
-            scaleColors: ['#1de9b6', '#03a9f5'],
-            normalizeFunction: 'polynomial'
-        });
-        console.log('vmap_loaded');
-    } else {
-        //initialize
-        init_inventory();
-        init_list();
-        modal();
-        init_bulkFucntion();
-        init_editlog();
-        serialize_forms();
-    }
+
+
+    //initialize
+    init_inventory();
+    init_list();
+    modal();
+    init_bulkFucntion();
+    init_editlog();
+    serialize_forms();
 // add contact supplier
     var max_fields = 5; //maximum input boxes allowed
     var contact_wrapper = $(".input_contact"); //Contact Fields wrapper
@@ -710,13 +683,15 @@ function return_action($action, $retun_id, $s) {
 function saveSerial() {
     data = $('#viewSerialForm').serializeArray();
     $.ajax({
-        url: 'inventory/addSerial',
+        url: 'Inventory/addSerial',
         method: 'POST',
         data: data,
         success: function (response) {
-            if (response >= 1) {
+            if (response > 0) {
                 $('.serialdrop').click();
                 $('#detail-tab-table').bootstrapTable('refresh')
+            } else {
+                alert('Serial not saved.');
             }
         }
     });
@@ -736,7 +711,6 @@ function editSupplier(data) {
 
 // go to detail
 function detail(id) {
-    localStorage.setItem('detail', 'detail(' + id + ')');
     var $detailtable = $('#detail-tab-table');
     var $ledger = $('#ledger');
     var $rmItems = $('#removed-table');
