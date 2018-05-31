@@ -1867,9 +1867,7 @@ function viewSerial(id) {
 
             if (data[0]['position'] === 'Custodian') {
                 button = "<br><div class=\"col-md-offset-3\">\n" +
-                    "<button id=\"serialP\" type=\"button\" class=\"prev-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-reply\"></i> Previous</button>" +
                     "<button id=\"serialS\" onclick = \"saveSerial()\" type=\"button\" class=\"serialBTN btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Save</a></button>" +
-                    "<button id=\"serialN\" type=\"button\" class=\"next-serialTab btn btn-default btn-sm\"><i class=\"fa fa-mail-forward\"></i> Next</button>" +
                     " </div>";
             }
             //if div reaches 10

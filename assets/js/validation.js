@@ -30,6 +30,21 @@ $( 'input[name^=cost]' ).on('blur',function(){
         $('.cost-err-msg').html('');
     }
 })
+$('#tin').on('blur',function () {
+    var tin = $(this).val();
+    var tinRegex = /^(?:\d{4}-\d{4}-\d{4})$/;
+    console.log(
+    );
+    if(tin !== ''){
+        if(!tinRegex.test(tin)){
+            $(this).val('');
+            $('.tin-err-msg').html('Enter a valid tin number: XXXX-XXXX-XXXX');
+        }else{
+            $('.tin-err-msg').html('');
+        }
+
+    }
+})
 
 $('input[name^=del]').on('blur',function () {
    var delDate = $(this).val();

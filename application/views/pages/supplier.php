@@ -104,8 +104,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="tin" class=" form-control-label">TIN</label>
+                                    <div class="text-danger tin-err-msg"><p>Example: 0000-0000-0000</p></div>
                                     <input id="tin" class="form-control col-6"
-                                           name="tin" data-required="true" pattern="[0-9][-]">
+                                           name="tin" data-required="true" required">
                                 </div>
                                 <hr>
                                 <div class="form-group">
@@ -163,7 +164,7 @@
                                 </div>
                             <div class="form-group">
                                     <label for="email" class=" form-control-label">Email</label>
-                                     <div id="email1" name="email[]" ></div>
+                                     <div type="email" id="email1" name="email[]" ></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="tin" class=" form-control-label">TIN</label>
