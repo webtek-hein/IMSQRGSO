@@ -2869,7 +2869,8 @@ function valreturn(){
 }
 
 function valdist(){
-    var chks = document.getElementsByTagName('input');
+    var chks = document.getElementById('form').getElementsByTagName('input');
+    console.log(chks);
     var hasChecked = false;
     for (var i = 0; i < chks.length; i++)
     {

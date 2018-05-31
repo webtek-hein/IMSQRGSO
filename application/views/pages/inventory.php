@@ -1071,7 +1071,7 @@
 
 <!-- Distribution Modal -->
 <form role="form" class="form-horizontal form-label-left" action="inventory/distribute" method="POST"
-      data-validate="parsley">
+      data-validate="parsley" id="form">
     <div class="Distribute dist modal fade" id="DitributeItem" tabindex="-1" role="dialog"
          aria-labelledby="distrib-modal"
          aria-hidden="true">
@@ -1085,16 +1085,7 @@
 
                     <div class="col-4">
                         <div class="form-group">
-                            <p>Quantity Left: <span id="quantLeft"></span></p>
-                            <br>
-                            <div class="form-group options">
-                            <div class="serial">
-                                <label for="name"></label>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="quant">
+                            <div class="serial col-md-10">
                             </div>
                         </div>
                     </div>
@@ -1150,7 +1141,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal" onclick="return valreturn();">
+                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal" onclick="return valdist();">
                         <i class="fa fa-arrow-down"></i> Save
                     </button>
                 </div>
