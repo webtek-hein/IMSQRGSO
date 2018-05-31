@@ -1085,7 +1085,16 @@
 
                     <div class="col-4">
                         <div class="form-group">
-                            <div class="serial col-md-10">
+                            <p>Quantity Left: <span id="quantLeft"></span></p>
+                            <br>
+                            <div class="form-group options">
+                            <div class="serial">
+                                <label for="name"></label>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="quant">
                             </div>
                         </div>
                     </div>
