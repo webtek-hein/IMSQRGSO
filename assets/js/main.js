@@ -2045,7 +2045,7 @@ function getserialreturn(id, sid) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null && (status === 'Distributed' || status === 'UserDistributed')) {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input class='serialCheck' name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
@@ -2076,10 +2076,10 @@ function getserial(id) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null && status !== 'Distributed') {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input class='serialCheck' name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (data[i].serial !== null && status === 'Distributed') {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input class='serialCheck' name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
@@ -2498,7 +2498,7 @@ function printToPDFreport() {
     } else {
         header = '<h1>Supplier Items</h1><br><p>General Service Office</p>';
     }
-    $('#reportTable').bootstrapTable({pagination: false});
+    $('#reportTable').attr('data-pagination','false');
     var printContents = $('#returnedReport').html();
 
 
@@ -2849,8 +2849,7 @@ function printAIR() {
     document.body.innerHTML = originalContents;
 }
 function valreturn(){
-    var chks = document.getElementsByTagName('input');
-   console.log(chks);
+    var chks = $('.serialCheck');
     var hasChecked = false;
     for (var i = 0; i < chks.length; i++)
     {
