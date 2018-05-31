@@ -108,9 +108,9 @@ class Inventory_model extends CI_Model
 
         foreach ($item_name as $key => $value) {
             $counter++;
-            if (isset($this->input->post('serialStatus')[$counter])) {
-                var_dump($this->input->post('serialStatus')[$counter]);
-
+            //var_dump($this->input->post('serialStatus')[$counter -1 ]);
+            if (($this->input->post('serialStatus')[$counter - 1]) === '1') {
+                //var_dump($this->input->post('serialStatus')[$counter -1 ]);
                 $serialStatus = '1';
             } else {
                 $serialStatus = '0';
@@ -128,8 +128,8 @@ class Inventory_model extends CI_Model
             );
         }
 
-        var_dump($data);
-        die;
+        //var_dump($data);
+        //die;
 
         $this->db->trans_start();
         // 1. Insert into item

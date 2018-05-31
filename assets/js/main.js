@@ -2191,7 +2191,7 @@ function init_bulkFucntion() {
             pul.removeChild(li);
             counter++;
             $button.attr('id', 'buttonCounter' + counter);
-            ($div.clone().find('input,textarea').val("")
+            ($div.clone().find("input:not(:checkbox),textarea").val("")
                 .attr('data-parsley-group', 'set' + counter)
                 .toggleClass('required').end()
                 .attr('id', 'step' + counter + 'B')
