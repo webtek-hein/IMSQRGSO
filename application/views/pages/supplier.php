@@ -97,7 +97,7 @@
                                     <div class="input-group">
                                     <input id="email"
                                            name="email[]" data-required="false"
-                                           data-error-message="Please Enter Email">
+                                           data-error-message="Please Enter Email" type="email">
                                     <button type="button" class="btn btn-primary btn-sm email_add">
                                         <i class="fa fa-plus"></i></button>
                                     </div>
@@ -163,7 +163,7 @@
                                 </div>
                             <div class="form-group">
                                     <label for="email" class=" form-control-label">Email</label>
-                                     <div id="email1" name="email[]"></div>
+                                     <div id="email1" name="email[]" ></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="tin" class=" form-control-label">TIN</label>

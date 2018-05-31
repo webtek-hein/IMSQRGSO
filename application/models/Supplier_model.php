@@ -57,13 +57,14 @@ class Supplier_model extends CI_Model{
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $supplier_id = $this->input->post('id');
         $contact = implode(',',$this->input->post('contact'));
+        $email = implode(',',$this->input->post('email'));
 
         $data = array(
             'supplier_name' => $this->input->post('supplier'),
             'contact' =>$contact,
             'location' => $this->input->post('address'),
             'postal_code' => $this->input->post('postal'),
-            'email' => $this->input->post('email'),
+            'email' => $email,
             'tin' => $this->input->post('tin'),
         );
         $this->db->set($data);

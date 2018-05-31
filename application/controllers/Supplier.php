@@ -42,7 +42,7 @@ class Supplier extends CI_Controller
             },
                 explode(',', $suppliers['contact'])));
             $row['emailInput'] =  implode(array_map(function ($email) {
-                return ('<input class="item form-control" name="email[]" value=' . $email . ' //><br>');
+                return ('<input  type="email" class="item form-control" name="email[]" value=' . $email . ' //><br>');
             },
                 explode(',', $suppliers['email'])));
             $row['contactList'] = implode(array_map(function ($contact) {
