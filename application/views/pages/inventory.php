@@ -93,15 +93,15 @@
                         <tr>
                             <td class="tfoot7" valign="top">Date Received:
                                 <input id="date_received" type="text">
-                                <br>
-                                Complete
+                                <br></br>
+                                <center> Complete
                                     <input type="radio" size="15px" class="input1" id="complete"checked name="rad">
                                 <br>
-                               Partial
+                                    <center>Partial
                                     <input type="radio" size="15px" class="input1" id="partial" name="rad">
-                                <br>
+                                        <br></br>
 
-                                <p style="margin-top:-10px;color: black;"><b> <input type="text" size="15px" class="input1"></b></p>
+                                        <center> <p style="margin-top:-10px;color: black;"><b> <input type="text" size="15px" class="input1"></b></p>
                                     <hr width="200px">
                                     <span> <input type="text" size="15px" class="input1"> Officer</span>
                             </td>
