@@ -144,7 +144,7 @@
 
 <!--Transfer-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/userDistribute" method="POST"
-      data-validate="parsley">
+      data-validate="parsley" >
     <div class="modal fade transfer" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -322,7 +322,7 @@
 
 <!--Return-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/deptreturn"
-      method="POST" data-validate="parsley">
+      method="POST" data-validate="parsley" id="returnform">
     <div class="Return returnsp modal fade" id="return" tabindex="-1" role="dialog"
          aria-labelledby="largeModalLabel"
          aria-hidden="true">
@@ -375,7 +375,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal"> Cancel</button>
-                    <button type="submit" name="id" class="btn btn-success btn-modal" id="save1">
+                    <button type="submit" name="id" class="btn btn-success btn-modal" id="save1" onclick="return valreturn();">
                         <i class="fa fa-check"></i> Save
                     </button>
                 </div>
@@ -402,7 +402,7 @@
                         <div class="form-group">
                             <p>Quantity Left: <span id="quantLeft"></span></p>
                             <br>
-                            <div class="serial">
+                            <div class="serial options">
                                 <label for="name"></label>
                             </div>
                         </div>
@@ -481,7 +481,7 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <div class="serialsp col-md-10">
+                        <div class="serialsp col-md-10 options">
                             <label for="name"></label>
                         </div>
                     </div>

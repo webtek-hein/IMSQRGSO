@@ -128,8 +128,8 @@
                     <br/>
 
                     <div class="col-4">
-                        <div class="form-group">
-                            <div class="serial">
+                        <div class="form-group options">
+                            <div class="serial ">
                                 <label for="name"></label>
                             </div>
                         </div>

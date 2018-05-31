@@ -2042,7 +2042,7 @@ function getserialreturn(id, sid) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null && (status === 'Distributed' || status === 'UserDistributed')) {
-                    serials.push("<input required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
@@ -2073,10 +2073,10 @@ function getserial(id) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null && status !== 'Distributed') {
-                    serials.push("<input required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (data[i].serial !== null && status === 'Distributed') {
-                    serials.push("<input  required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
@@ -2106,10 +2106,10 @@ function getserialbtn(id, sid) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null && status !== 'Distributed') {
-                    serials.push("<input required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input data-parsley-required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (data[i].serial !== null && status === 'Distributed') {
-                    serials.push("<input required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input  name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
@@ -2841,4 +2841,42 @@ function printAIR() {
     document.body.innerHTML = printContents;
     window.print();
     document.body.innerHTML = originalContents;
+}
+function valreturn(){
+    var chks = document.getElementsByTagName('input');
+   console.log(chks);
+    var hasChecked = false;
+    for (var i = 0; i < chks.length; i++)
+    {
+        if (chks[i].checked)
+        {
+            hasChecked = true;
+            break;
+        }
+    }
+    if (hasChecked === false)
+    {
+        alert("Please select at least one serial");
+        return false;
+    }
+    return true;
+}
+
+function valdist(){
+    var chks = document.getElementsByTagName('input');
+    var hasChecked = false;
+    for (var i = 0; i < chks.length; i++)
+    {
+        if (chks[i].checked)
+        {
+            hasChecked = true;
+            break;
+        }
+    }
+    if (hasChecked === false)
+    {
+        alert("Please select at least one serial");
+        return false;
+    }
+    return true;
 }

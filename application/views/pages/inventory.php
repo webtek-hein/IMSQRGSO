@@ -1087,8 +1087,10 @@
                         <div class="form-group">
                             <p>Quantity Left: <span id="quantLeft"></span></p>
                             <br>
+                            <div class="form-group options">
                             <div class="serial">
                                 <label for="name"></label>
+                            </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -1148,7 +1150,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal">
+                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal" onclick="return valreturn();">
                         <i class="fa fa-arrow-down"></i> Save
                     </button>
                 </div>
