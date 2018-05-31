@@ -615,19 +615,21 @@ $(document).ready(function () {
     init_editlog();
     serialize_forms();
 // add contact supplier
-    var max_fields = 5; //maximum input boxes allowed
+    var contact_max_fields = 5; //maximum input boxes allowed
     var contact_wrapper = $(".input_contact"); //Contact Fields wrapper
-    var contact_add_button = $(".contactadd"); //Contact Add button ID
+    var contact_add_button = $(".contact_add"); //Contact Add button ID
+    var email_max_fields = 5; //maximum input boxes allowed
     var email_wrapper = $(".input_email"); //Email Fields wrapper
-    var email_add_button = $(".emailadd"); // Email Add button ID
+    var email_add_button = $(".email_add"); // Email Add button ID
 
     var x = 1; //initlal text box count
+    var y = 1;
     $(contact_add_button).click(function (e) { //on add input button click
         e.preventDefault();
-        if (x < max_fields) { //max input box allowed
-            x++; //text box increment
-            $(contact_wrapper).append('<div><input id="contactno" name="contact[]" >' +
-                '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button></div>'); //add input box
+        if (x < contact_max_fields) { //max input box allowed
+                x++; //text box increment
+                $(contact_wrapper).append('<div><input id="contactno" name="contact[]" >' +
+                '<button class="remove_field btn btn-danger btn-sm contact"><i class="fa fa-times "></i></button></div>'); //add input box
         } else {
             alert('You reached the maximum allowed number of contact number');
         }
@@ -642,10 +644,10 @@ $(document).ready(function () {
 // add email supplier
     $(email_add_button).click(function (e) { //on add input button click
         e.preventDefault();
-        if (x < max_fields) { //max input box allowed
-            x++; //text box increment
+        if (y < email_max_fields) { //max input box allowed
+            y++; //text box increment
             $(email_wrapper).append('<div><input id="email" name="email[]" >' +
-                '<button class="remove_field btn btn-danger btn-sm"><i class="fa fa-times"></i></button></div>'); //add input box
+                '<button class="remove_field btn btn-danger btn-sm email"><i class="fa fa-times "></i></button></div>'); //add input box
         } else {
             alert('You reached the maximum allowed number of email accounts');
         }
@@ -654,7 +656,7 @@ $(document).ready(function () {
     $(email_wrapper).on("click", ".remove_field", function (e) { //user click on remove text
         e.preventDefault();
         $(this).parent('div').remove();
-        x--;
+        y--;
     })
 
 
@@ -2071,10 +2073,10 @@ function getserial(id) {
                 mooe = data[i].serial;
                 var status = data[i].item_status;
                 if (data[i].serial !== null && status !== 'Distributed') {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (data[i].serial !== null && status === 'Distributed') {
-                    serials.push("<input name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
+                    serials.push("<input  required name=\"serial[" + data[i]['serial_id'] + "]\" type=\"checkbox\" value=" + data[i].serial + ">" + data[i].serial + "<br>");
                 }
                 if (serials.length === 0) {
                     serials = "Please input serial first.";
