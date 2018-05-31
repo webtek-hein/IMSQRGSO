@@ -139,7 +139,7 @@
                         </div>
                     </div>
 
-                  <!--  <div class="col-4">
+                   <div class="col-4">
                         <div class="form-group">
                             <label>Item Status</label>
                             <input id="itemstatus" name="status" data-parsley-group="set1"
@@ -153,7 +153,7 @@
                                 <option value="Replacement">Replacement</option>
                             </datalist>
                         </div>
-                    </div>-->
+                    </div>
 
                 </div>
                 <div class="modal-footer">
