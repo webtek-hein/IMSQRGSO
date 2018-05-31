@@ -1037,6 +1037,11 @@
                            class="table table-bordered table-hover">
                     </table>
                 </div>
+                <div id="returnedReport" class="col-md-12 table-responsive">
+                    <table id="hiddenReptTable" data-pagination="true"
+                           class="table table-bordered table-hover" hidden>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
