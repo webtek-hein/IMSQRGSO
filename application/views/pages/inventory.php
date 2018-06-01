@@ -1162,7 +1162,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" name="id" id="save1" class="btn btn-success btn-modal"
-                            onclick="return valreturn();">
+                            onclick="return valdist();">
                         <i class="fa fa-arrow-down"></i> Save
                     </button>
                 </div>

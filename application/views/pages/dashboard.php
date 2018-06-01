@@ -12,7 +12,7 @@
 
 <?php $position = $this->session->userdata['logged_in']['position'];
 if ($position === 'Admin') {
-    echo '<div class="content mt-3">
+    echo '<div class="content mt-3" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <div class="col-xl-4 col-sm-6 mb-3">
           <div class="card text-white bg-primary o-hidden h-100">
             <div class="card-body">
@@ -24,8 +24,11 @@ if ($position === 'Admin') {
             <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+                <strong>
+               <span class="label label-pill label-danger inccount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            <div id="demo" class="collapse ScrollStyle" style="color:black">
         <div class="list-group" id="increase">
@@ -33,7 +36,7 @@ if ($position === 'Admin') {
         </div>
         </div>
         </div>
-        </div>'.
+        </div>' .
 
         '<div class="col-xl-4 col-sm-6 mb-3">
           <div class="card text-white bg-secondary o-hidden h-100">
@@ -46,8 +49,11 @@ if ($position === 'Admin') {
          <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo1">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+                <strong>
+               <span class="label label-pill label-danger issuecount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            
            <div id="demo1" class="collapse ScrollStyle" style="color:black">
@@ -69,8 +75,11 @@ if ($position === 'Admin') {
             <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo2">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+                <strong>
+               <span class="label label-pill label-danger retcount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            <div id="demo2" class="collapse ScrollStyle" style="color:black">
         <div class="list-group" id="returned">
@@ -92,8 +101,11 @@ if ($position === 'Admin') {
             <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo3">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+                <strong>
+               <span class="label label-pill label-danger expcount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            
            <div id="demo3" class="collapse ScrollStyle" style="color:black">
@@ -114,8 +126,11 @@ if ($position === 'Admin') {
             <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo4">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+                <strong>
+               <span class="label label-pill label-danger editcount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            
            <div id="demo4" class="collapse ScrollStyle" style="color:black">
@@ -129,7 +144,7 @@ if ($position === 'Admin') {
 
 <?php $position = $this->session->userdata['logged_in']['position'];
 if ($position === 'Custodian') {
-    echo '<div class="content mt-3">
+    echo '<div class="content mt-3" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <div class="col-xl-4 col-sm-6 mb-3">
           <div class="card text-white bg-primary o-hidden h-100">
             <div class="card-body">
@@ -141,8 +156,11 @@ if ($position === 'Custodian') {
             <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+              <strong>
+               <span class="label label-pill label-danger inccount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            <div id="demo" class="collapse ScrollStyle" style="color:black">
         <div class="list-group" id="increase">
@@ -150,7 +168,7 @@ if ($position === 'Custodian') {
         </div>
         </div>
         </div>
-        </div>'.
+        </div>' .
 
     '<div class="col-xl-4 col-sm-6 mb-3">
           <div class="card text-white bg-secondary o-hidden h-100">
@@ -163,8 +181,11 @@ if ($position === 'Custodian') {
          <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo1">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+                <strong>
+               <span class="label label-pill label-danger issuecount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            
            <div id="demo1" class="collapse ScrollStyle" style="color:black">
@@ -186,8 +207,11 @@ if ($position === 'Custodian') {
             <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo2">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+                <strong>
+               <span class="label label-pill label-danger retcount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            <div id="demo2" class="collapse ScrollStyle" style="color:black">
         <div class="list-group" id="returned">
@@ -209,8 +233,11 @@ if ($position === 'Custodian') {
             <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo3">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+                <strong>
+               <span class="label label-pill label-danger expcount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            
            <div id="demo3" class="collapse ScrollStyle" style="color:black">
@@ -231,8 +258,11 @@ if ($position === 'Custodian') {
             <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo4">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+                <strong>
+               <span class="label label-pill label-danger editcount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            
            <div id="demo4" class="collapse ScrollStyle" style="color:black">
@@ -258,8 +288,11 @@ if ($position === 'Supply Officer') {
          <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo1">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+                <strong>
+               <span class="label label-pill label-danger inccount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            
            <div id="demo1" class="collapse ScrollStyle" style="color:black">
@@ -281,8 +314,11 @@ if ($position === 'Supply Officer') {
             <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo2">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+                <strong>
+               <span class="label label-pill label-danger retcount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            <div id="demo2" class="collapse ScrollStyle" style="color:black">
         <div class="list-group" id="returned">
@@ -303,8 +339,11 @@ if ($position === 'Supply Officer') {
             <a type="button" class="card-footer text-white clearfix small z-1" data-toggle="collapse" data-target="#demo3">
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
+                <strong>
+               <span class="label label-pill label-danger expcount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
+               </strong>
              </a>
            
            <div id="demo3" class="collapse ScrollStyle" style="color:black">
