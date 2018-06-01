@@ -779,7 +779,7 @@ class Inventory extends CI_Controller
      */
     public function itemsReceived()
     {
-
+        $data = array();
         $itemsreceivedCount = $this->inv->itemsrec();
         foreach ($itemsreceivedCount as $list) {
             $data[] = array(
@@ -796,6 +796,7 @@ class Inventory extends CI_Controller
      */
     public function issuedItems()
     {
+        $data = array();
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $issueditemsCount = $this->inv->issued($position,$user_id);
@@ -815,6 +816,7 @@ class Inventory extends CI_Controller
      */
     public function returnedItems()
     {
+        $data = array();
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $returneditemsCount = $this->inv->returndash($position,$user_id);
@@ -830,6 +832,7 @@ class Inventory extends CI_Controller
 
     public function editedItems()
     {
+        $data = array();
         $editeditemsCount = $this->inv->editedItems();
         foreach ($editeditemsCount as $list) {
             $data[] = array(
@@ -865,6 +868,7 @@ class Inventory extends CI_Controller
      */
     public function totalExpired()
     {
+        $data = array();
         $position = $this->session->userdata['logged_in']['position'];
         $user_id = $this->session->userdata['logged_in']['user_id'];
         $totalexpiredCount = $this->inv->totalexpired($position,$user_id);

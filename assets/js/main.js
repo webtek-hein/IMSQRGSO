@@ -17,12 +17,12 @@ $(document).ready(function () {
         $("#tExprdSO").load("inventory/itemsExpiredSO");
         $("#tCostSO").load("inventory/itemTcostSO");*/
 
-        /* increasedit();
+         increasedit();
          issuedit();
          returnit();
          expiredit();
          editit();
- */
+
     }, 1000);
     $returnTable = $('#returnTable');
     $reportTable = $('#reportTable');
@@ -393,18 +393,21 @@ $(document).ready(function () {
     function increasedit() {
         var $notifitems = $('#increase');
         var detail = [];
-
+        var i = 0;
         $.ajax({
             url: "inventory/itemsReceived",
             dataType: 'JSON',
             success: function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].countinc !== '0') {
-                        detail += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Added by ' + data[i].custodian + "</a>"
-                    } else {
+                if(i < data.length) {
+                    for (i; i < data.length; i++) {
+                        if (data[i].countinc !== '0') {
+                            detail += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Added by ' + data[i].custodian + "</a>"
+                        }
+                    }
+                }else {
                         detail = "No Data Found!"
                     }
-                }
+
                 $notifitems.html(detail);
             }
         });
@@ -414,18 +417,21 @@ $(document).ready(function () {
     function issuedit() {
         var $issueditems = $('#issued');
         var issued = [];
-
+        var i = 0;
         $.ajax({
             url: "inventory/issuedItems",
             dataType: 'JSON',
             success: function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].issuedcount !== '0') {
-                        issued += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Issued by ' + data[i].custodian + ' to ' + data[i].department + "</a>"
-                    } else {
+                if(i < data.length) {
+                    for (i; i < data.length; i++) {
+                        if (data[i].issuedcount !== '0') {
+                            issued += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Issued by ' + data[i].custodian + ' to ' + data[i].department + "</a>"
+                        }
+                    }
+                }else {
                         issued = "No Data Found!"
                     }
-                }
+
                 $issueditems.html(issued);
             }
         });
@@ -436,20 +442,21 @@ $(document).ready(function () {
     function returnit() {
         var $returneditems = $('#returned');
         var returned = [];
-
+        var i = 0;
         $.ajax({
             url: "inventory/returnedItems",
             dataType: 'JSON',
             success: function (data) {
+                if(i < data.length) {
+                    for (i; i < data.length; i++) {
+                        if (data[i].returncount !== '0') {
+                            returned += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Returned by ' + data[i].department + "</a>"
 
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].returncount !== '0') {
-                        returned += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Returned by ' + data[i].department + "</a>"
-
-                    } else {
+                        }
+                    }
+                }else {
                         returned = "No Data Found!"
                     }
-                }
                 $returneditems.html(returned);
             }
         });
@@ -459,17 +466,20 @@ $(document).ready(function () {
     function expiredit() {
         var $expireditems = $('#expired');
         var expired = [];
-
+        var i = 0;
         $.ajax({
             url: "inventory/totalExpired",
             dataType: 'JSON',
             success: function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].expirecount !== '0') {
-                        expired += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' has reached its life span' + "</a>"
-                    } else {
-                        expired = "No Data Found!"
+                if(i < data.length) {
+                    for (i; i < data.length; i++) {
+                        if (data[i].expirecount !== '0') {
+                            expired += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' has reached its life span' + "</a>"
+                        }
                     }
+                }else {
+                        expired = "No Data Found!"
+
                 }
                 $expireditems.html(expired);
             }
@@ -480,17 +490,20 @@ $(document).ready(function () {
     function editit() {
         var $editeditems = $('#edited');
         var edited = [];
-
+        var i = 0;
         $.ajax({
             url: "inventory/editedItems",
             dataType: 'JSON',
             success: function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].editcount !== '0') {
-                        edited += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + data[i].custodian + ' changed ' + data[i].fieldedit + ' of ' + data[i].oldvalue + ' to ' + data[i].newvalue + "</a>"
-                    } else {
-                        edited = "No Data Found!"
+                if(i < data.length) {
+                    for (i; i < data.length; i++) {
+                        if (data[i].editcount !== '0') {
+                            edited += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + data[i].custodian + ' changed ' + data[i].fieldedit + ' of ' + data[i].oldvalue + ' to ' + data[i].newvalue + "</a>"
+                        }
                     }
+                }else {
+                        edited = "No Data Found!"
+
                 }
                 $editeditems.html(edited);
             }
