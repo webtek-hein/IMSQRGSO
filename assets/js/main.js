@@ -484,7 +484,8 @@ $(document).ready(function () {
                 if(i < data.length) {
                     for (i; i < data.length; i++) {
                         if (data[i].issuedcount !== '0') {
-                            issued += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Issued by ' + data[i].custodian + ' to ' + data[i].department + "</a>"
+                            issued += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Issued by ' +
+                                data[i].custodian + ' to ' + data[i].department + ' with qty: '+ data[i].quantity +  "</a>"
                             issuedcount = data[i].issuedcount;
                         }
                     }
@@ -513,7 +514,8 @@ $(document).ready(function () {
                 if(i < data.length) {
                     for (i; i < data.length; i++) {
                         if (data[i].returncount !== '0') {
-                            returned += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Returned by ' + data[i].department + "</a>"
+                            returned += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Returned by '
+                                + data[i].department + ' with qty: '+ data[i].quantity +  "</a>"
                             returncount = data[i].returncount;
                         }
                     }

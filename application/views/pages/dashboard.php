@@ -289,7 +289,7 @@ if ($position === 'Supply Officer') {
               <span class="float-left" style="color:black">View Details</span>
                <span class="float-right">
                 <strong>
-               <span class="label label-pill label-danger inccount" style="border-radius:10px; color:red;"></span>
+               <span class="label label-pill label-danger issuecount" style="border-radius:10px; color:red;"></span>
                  <i class="fa fa-angle-right" style="color:black"></i>
                </span>
                </strong>

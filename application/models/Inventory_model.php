@@ -1405,7 +1405,7 @@ class Inventory_model extends CI_Model
      */
     public function itemsrec()
     {
-        $this->db->SELECT('COUNT(inc_log_id) as countInc,item.*,CONCAT(first_name," ",last_name) as custodian');
+        $this->db->SELECT('(SUM(inc_log_id)) as countInc,item.*,CONCAT(first_name," ",last_name) as custodian');
         $this->db->join('gsois.itemdetail detail', 'detail.item_det_id = increaselog.item_det_id');
         $this->db->join('gsois.item item', 'item.item_id = detail.item_id');
         $this->db->join('gsois.user u', 'u.user_id = increaselog.userid');
@@ -1424,7 +1424,7 @@ class Inventory_model extends CI_Model
      */
     public function issued($position, $user_id)
     {
-        $this->db->SELECT('COUNT(dec_log_id) as countDec,i.*,dept.department,CONCAT(first_name," ",last_name) as custodian');
+        $this->db->SELECT('SUM(dec_log_id) as countDec,i.*,dept.department,CONCAT(first_name," ",last_name) as custodian,dist.quantity_distributed');
         $this->db->join('gsois.distribution dist', 'decreaselog.dist_id = dist.dist_id');
         $this->db->join(' gsois.department dept', 'dist.dept_id = dept.dept_id');
         $this->db->join('gsois.itemdetail det', 'det.item_det_id = dist.item_det_id');
@@ -1432,7 +1432,7 @@ class Inventory_model extends CI_Model
         $this->db->join('gsois.account_code ac', 'dist.ac_id = ac.ac_id');
         $this->db->join('gsois.user u', ' u.user_id = decreaselog.userid');
         $this->db->where('date(timestamp)', 'CURDATE()', false);
-        $this->db->group_by('i.item_id');
+        $this->db->group_by('dec_log_id');
         $query = $this->db->get('logs.decreaselog');
         return $query->result_array();
     }
@@ -1446,14 +1446,14 @@ class Inventory_model extends CI_Model
      */
     public function returndash($position, $user_id)
     {
-        $this->db->SELECT('COUNT(ret_log_id) as countRet,i.*,dept.department');
+        $this->db->SELECT('sum(ret_log_id) as countRet,i.*,dept.department,ret.return_quantity');
         $this->db->join('gsois.returnitem ret', 'ret.return_id = retlog.return_id', 'inner');
         $this->db->join('gsois.distribution dist', ' dist.dist_id = ret.dist_id', 'inner');
         $this->db->join('gsois.department dept', ' dist.dept_id = dept.dept_id', 'inner');
         $this->db->join('gsois.itemdetail det', ' det.item_det_id = dist.item_det_id', 'inner');
         $this->db->join('gsois.item i', ' i.item_id = det.item_id', 'inner');
         $this->db->where('date(timestamp)', 'CURDATE()', false);
-        $this->db->group_by('i.item_id');
+        $this->db->group_by('ret_log_id');
         $query = $this->db->get('logs.returnlog retlog');
         return $query->result_array();
     }
@@ -1468,7 +1468,7 @@ class Inventory_model extends CI_Model
 
     public function editedItems()
     {
-        $this->db->select('COUNT(edit_log_id) as countEdit,item.*,CONCAT(first_name," ",last_name) as custodian,edit.*');
+        $this->db->select('sum(edit_log_id) as countEdit,item.*,CONCAT(first_name," ",last_name) as custodian,edit.*');
         $this->db->join('gsois.item item', 'item.item_id = edit.item_id');
         $this->db->join('gsois.user u', 'edit.userid = u.user_id');
         $this->db->group_by('item.item_id');
@@ -1492,7 +1492,7 @@ class Inventory_model extends CI_Model
      */
     public function totalexpired($position, $user_id)
     {
-        $this->db->SELECT('count(expiration_date) as countExp,item.*');
+        $this->db->SELECT('sum(item_det_id) as countExp,item.*');
         $this->db->join('gsois.item item', 'item.item_id = itemdetail.item_id');
         $this->db->where('expiration_date <=', 'CURDATE()', false);
         $this->db->group_by('item.item_id');

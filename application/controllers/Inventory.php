@@ -809,7 +809,8 @@ class Inventory extends CI_Controller
                 'issuedcount' => $list['countDec'],
                 'itemname' => $list['item_name'],
                 'custodian' => $list['custodian'],
-                'department' => $list['department']
+                'department' => $list['department'],
+                'quantity' => $list['quantity_distributed']
             );
         }
         echo json_encode($data);
@@ -828,7 +829,8 @@ class Inventory extends CI_Controller
             $data[] = array(
                 'returncount' => $list['countRet'],
                 'itemname' => $list['item_name'],
-                'department' => $list['department']
+                'department' => $list['department'],
+                'quantity' => $list['return_quantity']
             );
         }
         echo json_encode($data);
