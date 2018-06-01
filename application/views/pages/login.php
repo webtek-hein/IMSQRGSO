@@ -7,15 +7,6 @@
 <!--===============================================================================================-->  
     <link rel="icon" type="image/png" href="<?php echo base_url() ?>assets/images/logogso.png"/>
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/vendors/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/vendors/animate/animate.css">
-<!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/vendors/select2/select2.min.css">
-<!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/util.css">
     <link rel="stylesheet" type="text/css" id="bootstrap-css" href="<?php echo base_url() ?>assets/css/login.css">
 <!--===============================================================================================-->
 
@@ -76,24 +67,6 @@
     </div><!--container-->
     </div>
 
-<!--===============================================================================================-->
-    <script src="assets/vendors/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-    <script src="assets/vendors/bootstrap/js/popper.js"></script>
-    <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-    <script src="assets/vendors/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-    <script src="assets/vendors/tilt/tilt.jquery.min.js"></script>
-    <script type="text/javascript" src="http://parsleyjs.org/dist/parsley.min.js"></script>
- <!--===============================================================================================-->
-
-    <script >
-        $('.js-tilt').tilt({
-            scale: 1.1
-        })
-    </script>
-<!--===============================================================================================-->
 
 
 </body>

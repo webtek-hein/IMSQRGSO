@@ -879,7 +879,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="unit" class="addItemLabel form-control-label">Unit Cost</label>
-                                        <input type="number" min='0' name="cost[]"
+                                        <input type="number" step="0.01" min='0' name="cost[]"
                                                data-parsley-group="set1"
                                                class="addItemInput form-control col-6"
                                                data-parsley-required-message="Please insert Unit Cost"
@@ -1460,17 +1460,17 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <h5 class="modal-title">Please select the serials that was lost:</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <div id="items">Serial not found.</div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="serialSave btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -1484,8 +1484,8 @@
 
             </div>
             <div class="card-body">
-                <a type="button" class="compare btn btn-success " onclick="validateReconcile()">Reconcile Items</a>
-                <a type="button" class="compare btn btn-success ">Compare</a>
+                <a id="reconcile-btn" hidden type="button" class="compare btn btn-success " onclick="validateReconcile()">Reconcile Items</a>
+                <a type="button" id="compare-btn" class="compare btn btn-success ">Compare</a>
 
                 <button onclick="printToPDFreconcile()" class="btn btn-info fa fa-download pull-right"> Download as
                     PDF
@@ -1505,7 +1505,7 @@
                     </li>
 
                 </ul>
-                <div class="tab-content pl-3 p-1" id="serTab">
+                <div class="tab-content pl-3 p-1">
                     <div class="table-responsive-sm tab-pane fade show active" id="nonSerTab" role="tabpanel"
                          aria-labelledby="nonSer-tab">
 
@@ -1528,23 +1528,6 @@
 
         </div>
     </form>
-</div>
-
-<div hidden class="discrepancies col-lg-12">
-    <div class="card">
-        <div class="card-header">
-            <button type="button" onclick="toggleDiv($('.inventory-tab'),$('.discrepancies'))"
-                    class="btn btn-primary fa fa-arrow-left"> Back
-            </button>
-        </div>
-
-        <div class="card-body">
-            <p>Please select the serials that was lost: </p>
-            <div id="items">Serial not found.</div>
-            <button type="button" onclick="toggleDiv($('.reconcilePage'),$('.discrepancies'));">Cancel</button>
-            <button type="button" onclick="getAllSerial()">Submit</button>
-        </div>
-    </div>
 </div>
 <!--End of Reconcile Page-->
 

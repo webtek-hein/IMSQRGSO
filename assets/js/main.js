@@ -1,4 +1,57 @@
 $(document).ready(function () {
+    $('.serialSave').click(function (e) {
+        serial = [];
+        var missing = $('#itemSet').data('missing');
+        var btn = '#' + $('#itemSet').data('btn');
+        var selected = $('.itemCheckboxes:checked').length;
+        if (selected > missing) {
+            alert('You have selected too many serial. Remove ' + (selected - missing) + ' serial to continue.');
+        } else if (selected < missing) {
+            alert('You neeed to select ' + (missing - selected) + ' more serial to continue.');
+        } else {
+            $(btn).remove();
+            $('#reconSerialSelect').modal('toggle');
+            if (localStorage.getItem('serial') !== null) {
+                serial = JSON.parse(localStorage.getItem('serial'));
+            }
+            $("input[name^=serial]:checked").each(function () {
+                serial.push($(this).val());
+            });
+            localStorage.setItem('serial', JSON.stringify(serial));
+
+
+        }
+        var visible = $('.serial-btn:visible');
+        if (visible.length === 0) {
+            $('#reconcile-btn').removeAttr('hidden');
+            $('#compare-btn').attr('hidden', 'hidden');
+        }
+
+    });
+    $('#reconSerialSelect').on('show.bs.modal', function (e) {
+        btn = $(e.relatedTarget).attr('id');
+        $status = $('#serialTab').find('.active').data('status');
+        id = $(e.relatedTarget).data('id');
+        $missing = $(e.relatedTarget).data('missing');
+        if ($status === 1) {
+            item_name = [];
+            serial = [];
+            $.ajax({
+                url: "Inventory/getRecSerial/" + id,
+                method: "POST",
+                dataType: 'JSON',
+                success: function (data) {
+                    for (i = 0; i <= data.length - 1; i++) {
+                        item_name.push('<input name="serial[]" class="itemCheckboxes" type="checkbox" value=' + data[i].serial + '>' + data[i].serial + '<br>');
+
+                    }
+
+                    $('#items').html('<div id="itemSet" data-btn=' + btn + ' data-missing=' + $missing + '><h4>' + data[0].item_name + '</h4>' + item_name.join('') + '</div>');
+                }
+            });
+        }
+
+    })
     $('.AcceptReturn').on('show.bs.modal', function (e) {
         f = $(e.relatedTarget).data('func');
         $('#returnAct').attr('onclick', f);
@@ -725,205 +778,211 @@ function editSupplier(data) {
 }
 
 // go to detail
-function detail(id) {
+function detail(data) {
     var $detailtable = $('#detail-tab-table');
     var $ledger = $('#ledger');
     var $rmItems = $('#removed-table');
 
-    var item;
-    $.ajax({
-        url: 'inventory/getitem/inv/' + id + '/0',
-        dataType: 'JSON',
-        success: function (data) {
-            $('#edtbutton').val(id);
-            $('#itemname').val(data.name);
-            $('#itemdesc').val(data.description);
-            $('#total').text(data.quant);
-            $('#itemtype').val(data.item_type);
-            $('#unit').val(data.unit);
-            $('#initialStock').text(data.initialStock);
-            $('#initialCost').text(data.initialCost);
+    $('#edtbutton').val(data.item_id);
+    $('#itemname').val(data.item);
+    $('#itemdesc').val(data.description);
+    $('#total').text(data.quantity);
+    $('#itemtype').val(data.item_type);
+    $('#unit').val(data.unit);
+    $('#initialStock').text(data.initialStock);
+    $('#initialCost').text(data.initialCost);
 
-            toggleDiv($('.detail-tab '), $('.inventory-tab'));
+    toggleDiv($('.detail-tab '), $('.inventory-tab'));
 
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + id + '/0'});
-            $detailtable.bootstrapTable({
-                url: 'inventory/detail/inv/' + id + '/0',
-                columns: [{
-                    field: 'remove',
-                    title: '',
-                    align: 'center'
-                }, {
-                    field: 'state',
-                    checkbox: 'true',
-                }, {
-                    field: 'PO',
-                    title: 'PO number'
-                }, {
-                    field: 'del',
-                    title: 'Delivery Date'
-                }, {
-                    field: 'rec',
-                    title: 'Date Received'
-                }, {
-                    field: 'exp',
-                    title: 'Estimated Useful Life'
-                }, {
-                    field: 'cost',
-                    title: 'Unit Cost',
-                    class: 'unitCostCol'
-                }, {
-                    field: 'sup',
-                    title: 'Supplier'
-                }, {
-                    field: 'quant',
-                    title: 'Quantity',
-                    class: 'quantityCol'
-                }, {
-                    field: 'or',
-                    title: 'OR number'
-                }, {
-                    field: 'action',
-                    title: 'Action'
-                }]
-            });
-            $ledger.bootstrapTable('refresh', {url: 'inventory/getLedger/' + id});
-            $ledger.bootstrapTable({
-                pageSize: 10,
-                url: 'inventory/getLedger/' + id,
-                resizable: true,
-                columns: [{
-                    sortable: true,
-                    field: 'date',
-                    title: 'Date'
-                }, {
-                    sortable: true,
-                    field: 'reference',
-                    title: 'Reference'
-                }, {
-                    sortable: true,
-                    field: 'increased',
-                    title: '+ Increased'
-                }, {
-                    sortable: true,
-                    field: 'decreased',
-                    title: '- Decreased'
-                }, {
-                    sortable: true,
-                    field: 'price',
-                    title: 'Unit Cost',
-                    class: 'unitCostCol'
-                }, {
-                    sortable: true,
-                    field: 'running_quantity',
-                    title: 'Running Quantity',
-                    class: 'quantityCol'
-                }, {
-                    sortable: true,
-                    field: 'running_balance',
-                    title: 'Running Balance',
-                    class: 'quantityCol'
-                }, {
-                    sortable: true,
-                    field: 'transaction',
-                    title: 'Transaction'
-                }]
-            });
-            $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + id});
-            $rmItems.bootstrapTable({
-                url: 'inventory/showRemovedItems/' + id,
-                columns: [{
-                    field: 'PO',
-                    title: 'PO Number'
-                }, {
-                    field: 'del',
-                    title: 'Delivery Date'
-                }, {
-                    field: 'rec',
-                    title: 'Date Received'
-                }, {
-                    field: 'exp',
-                    title: 'Estimated Useful Life'
-                }, {
-                    field: 'cost',
-                    title: 'Unit Cost',
-                    class: 'unitCostCol'
-                }, {
-                    field: 'sup',
-                    title: 'Supplier'
-                }, {
-                    field: 'quant',
-                    title: 'Quantity',
-                    class: 'quantityCol'
-                }, {
-                    field: 'or',
-                    title: 'OR number'
-                }, {
-                    field: 'action',
-                    title: 'Action'
-                }]
-            });
-            serialize_forms();
-        }
+    $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + data.item_id + '/0'});
+    $detailtable.bootstrapTable({
+        url: 'inventory/detail/inv/' + data.item_id + '/0',
+        columns: [{
+            field: 'remove',
+            title: '',
+            align: 'center',
+            width: '5%'
+        }, {
+            field: 'PO',
+            title: 'PO number',
+            width: '8%'
+        }, {
+            field: 'del',
+            title: 'Delivery Date',
+            width: '14%'
+
+        }, {
+            field: 'rec',
+            title: 'Date Received',
+            width: '14%'
+
+        }, {
+            field: 'exp',
+            title: 'Estimated Useful Life',
+            width: '14%'
+
+        }, {
+            field: 'cost',
+            title: 'Unit Cost',
+            class: 'unitCostCol',
+            width: '10%'
+
+        }, {
+            field: 'sup',
+            title: 'Supplier',
+            width: '10%'
+
+        }, {
+            field: 'quant',
+            title: 'Quantity',
+            class: 'quantityCol',
+            width: '9%'
+
+        }, {
+            field: 'or',
+            title: 'OR number',
+            width: '8%'
+
+        }, {
+            field: 'action',
+            title: 'Action',
+            width: '8%'
+
+        }]
     });
+    $ledger.bootstrapTable('refresh', {url: 'inventory/getLedger/' + data.item_id});
+    $ledger.bootstrapTable({
+        pageSize: 10,
+        url: 'inventory/getLedger/' + data.item_id,
+        resizable: true,
+        columns: [{
+            sortable: true,
+            field: 'date',
+            title: 'Date'
+        }, {
+            sortable: true,
+            field: 'reference',
+            title: 'Reference'
+        }, {
+            sortable: true,
+            field: 'increased',
+            title: '+ Increased'
+        }, {
+            sortable: true,
+            field: 'decreased',
+            title: '- Decreased'
+        }, {
+            sortable: true,
+            field: 'price',
+            title: 'Unit Cost',
+            class: 'unitCostCol'
+        }, {
+            sortable: true,
+            field: 'running_quantity',
+            title: 'Running Quantity',
+            class: 'quantityCol'
+        }, {
+            sortable: true,
+            field: 'running_balance',
+            title: 'Running Balance',
+            class: 'quantityCol'
+        }, {
+            sortable: true,
+            field: 'transaction',
+            title: 'Transaction'
+        }]
+    });
+    $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + data.item_id});
+    $rmItems.bootstrapTable({
+        url: 'inventory/showRemovedItems/' + data.item_id,
+        columns: [{
+            field: 'PO',
+            title: 'PO Number'
+        }, {
+            field: 'del',
+            title: 'Delivery Date'
+        }, {
+            field: 'rec',
+            title: 'Date Received'
+        }, {
+            field: 'exp',
+            title: 'Estimated Useful Life'
+        }, {
+            field: 'cost',
+            title: 'Unit Cost',
+            class: 'unitCostCol'
+        }, {
+            field: 'sup',
+            title: 'Supplier'
+        }, {
+            field: 'quant',
+            title: 'Quantity',
+            class: 'quantityCol'
+        }, {
+            field: 'or',
+            title: 'OR number'
+        }, {
+            field: 'action',
+            title: 'Action',
+            formatter: function (row, data) {
+                return '<button onclick=revertDetail(' + data['item_det_id'] + ',' + data['serialStatus'] + ') class=\"btn btn-success\">Revert</button>';
+            }
+        }]
+    });
+    serialize_forms();
+
 }
 
-function deptDet(id, position, dept_id) {
+function deptDet(data) {
     var $detailtable = $('#detail-tab-table');
     var $detailTab = $('.detail-tab ');
-    var item;
+    console.log(data);
 
-    $.ajax({
-        url: 'inventory/getitem/dept/' + id + '/' + dept_id,
-        dataType: 'JSON',
-        success: function (data) {
-            $('#itemname').html(data.name);
-            $('#itemdesc').html(data.description);
-            $('#total').html(data.quant);
-            $('#itemtype').html(data.item_type);
-            $('#unit').html(data.unit);
-            toggleDiv($detailTab, $('.department-tab'));
-            toggleDiv($detailTab, $('.inventory-tab'));
+    $('#itemname').html(data.name);
+    $('#itemdesc').html(data.description);
+    $('#total').html(data.quant);
+    $('#itemtype').html(data.item_type);
+    $('#unit').html(data.unit);
+    toggleDiv($detailTab, $('.department-tab'));
+    toggleDiv($detailTab, $('.inventory-tab'));
 
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/dept/' + id + '/' + dept_id})
-                .bootstrapTable({
-                    url: 'inventory/detail/dept/' + id + '/' + dept_id,
-                    columns: [{
-                        field: 'PR',
-                        title: 'PR Number'
-                    }, {
-                        field: 'receiver',
-                        title: 'Supply Officer'
-                    }, {
-                        field: 'rec',
-                        title: 'Date Received'
-                    }, {
-                        field: 'exp',
-                        title: 'Estimated Useful Life'
-                    }, {
-                        field: 'cost',
-                        title: 'Unit Cost',
-                        class: 'unitCostCol'
-                    }, {
-                        field: 'sup',
-                        title: 'Supplier'
-                    }, {
-                        field: 'quant',
-                        title: 'Quantity',
-                        class: 'quantityCol'
-                    }, {
-                        field: 'or',
-                        title: 'OR number'
-                    }, {
+    $detailtable.bootstrapTable('refresh', {url: 'Inventory/detail/dept/' + data.id + '/' + data.dept_id})
+        .bootstrapTable({
+            url: 'inventory/detail/dept/' + data.id + '/' + data.dept_id,
+            columns: [{
+                field: 'PR',
+                title: 'PR Number'
+            }, {
+                field: 'receiver',
+                title: 'Supply Officer'
+            }, {
+                field: 'rec',
+                title: 'Date Received'
+            }, {
+                field: 'exp',
+                title: 'Estimated Useful Life'
+            }, {
+                field: 'cost',
+                title: 'Unit Cost',
+                class: 'unitCostCol'
+            }, {
+                field: 'sup',
+                title: 'Supplier'
+            }, {
+                field: 'quant',
+                title: 'Quantity',
+                class: 'quantityCol'
+            }, {
+                field: 'or',
+                title: 'OR number'
+            }, {
 
-                        field: 'action',
-                        title: 'Action'
-                    }]
-                });
+                field: 'action',
+                title: 'Action'
+            }]
+        });
 
-            serialize_forms();
-        }
-    });
+    serialize_forms();
 }
 
 
@@ -951,8 +1010,7 @@ function insertRow() {
     var supplier = [];
     $('#detail-tab-table').find('tr:last').after('<tr id=detTab' + counter + '> ' +
         '<td  style=""></td>' +
-        '<td  style=""></td>' +
-        '<td contenteditable style=""><input name="PO[' + counter + ']" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
+        '<td style="width:"><input name="PO[' + counter + ']" class="form-control form-control-sm" placeholder="PO #" type="text"></td> ' +
         '<td style=""><input name="del[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="rec[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
         '<td style=""><input name="exp[' + counter + ']" class="form-control form-control-sm" type="date"></td> ' +
@@ -988,7 +1046,7 @@ function addquant(c) {
     console.log($det);
     var temp = [];
     $.ajax({
-        url: 'inventory/addquant/' + $item_det_id + '/' + c,
+        url: 'Inventory/addquant/' + $item_det_id + '/' + c,
         type: 'POST',
         data: data,
         success: function (result) {
@@ -1244,18 +1302,17 @@ function init_inventory() {
             pageSize: 10,
             url: 'inventory/viewItem/CO',
             onClickRow: function (data, row) {
-                console.log(data);
                 if (data.position === 'Supply Officer') {
-                    deptDet(data.item_id, data.position, data.det_id);
+                    deptDet(data);
                 } else {
-                    detail(data.item_id);
+                    detail(data);
                 }
             },
             resizable: true,
             columns: [{
                 sortable: true,
                 field: 'item',
-                title: 'Name'
+                title: 'Name',
             }, {
                 sortable: true,
                 field: 'description',
@@ -1302,9 +1359,9 @@ function init_inventory() {
             url: 'inventory/viewItem/MOOE',
             onClickRow: function (data, row) {
                 if (data.position === 'Supply Officer') {
-                    deptDet(data.item_id, data.position, data.dept_id);
+                    deptDet(data);
                 } else {
-                    detail(data.item_id);
+                    detail(data);
                 }
             },
             resizable: true,
@@ -1377,6 +1434,7 @@ function init_inventory() {
         var $recon = $('.reconitem ');
         for (var i = 0; i <= $recon.length - 1; i++) {
             $q = $('.quantity')[i].textContent;
+            reconID = $('.reconid')[i].value;
             $result = $q - $recon[i].value;
             if ($result === 0) {
                 $result = 'equal';
@@ -1385,7 +1443,8 @@ function init_inventory() {
             } else if ($result > 0) {
                 if ($status === 1) {
                     $result = ($result) + ' missing. Select the missing serial.' +
-                        '<a class="btn btn-primary" data-toggle="modal" data-target="#reconSerialSelect">\n' +
+                        '<a id=itemRec' + reconID + ' class="serial-btn btn btn-primary" data-id=' + reconID + ' data-missing=' + $result + ' ' +
+                        'data-toggle="modal" data-target="#reconSerialSelect">\n' +
                         ' Select Serial\n' +
                         '</a>\n';
                 } else {
@@ -1401,6 +1460,7 @@ function init_inventory() {
         }
     });
 
+
     $('select.itemtype').change(function () {
         $('.hideInput').toggleClass('hidden');
     });
@@ -1408,26 +1468,21 @@ function init_inventory() {
         toggleDiv($('.generateReport'), $('.inventory-tab'));
     });
     $('#reconcileButton').on('click', function () {
-        var $select = $('#inventoryDates');
-        var options = [];
+        localStorage.clear();
         $.ajax({
-            url: "inventory/getInvDates",
+            url: "Inventory/checkSerial",
             dataType: 'JSON',
             success: function (data) {
-                if (data === null) {
-                    options += '<option>NO Inventory Dates</option>';
+                if (data === false) {
+                    alert('Please input all serial before reconciling.');
                 } else {
-                    for (var i = 0; i <= data.length - 1; i++) {
-                        options += '<option>' + data + '</option>';
-                    }
+                    toggleDiv($('.reconcilePage'), $('.inventory-tab'));
                 }
-                $select.html(options);
-                toggleDiv($('.reconcilePage'), $('.inventory-tab'));
             }
         });
-
     });
     console.log('init_inventory');
+
 }
 
 //initialize lists
@@ -1483,7 +1538,7 @@ function init_list() {
     $deptTable.bootstrapTable({
         url: 'inventory/viewdept/CO/11',
         onClickRow: function (data, row) {
-            deptDet(data.id, data.position, data.dept_id);
+            deptDet(data);
         },
         resizable: true,
         columns: [{
@@ -1515,7 +1570,7 @@ function init_list() {
         pageSize: 10,
         url: 'inventory/viewdept/MOOE/11',
         onClickRow: function (data, row) {
-            deptDet(data.id, data.position, data.dept_id);
+            deptDet(data);
         },
         resizable: true,
         columns: [{
@@ -2326,33 +2381,22 @@ function closeSerial() {
 
 //remove Detail
 function removeDetail($id, $serialStatus) {
-    var $detailtable = $('#detail-tab-table');
-    var $rmItems = $('#removed-table');
-    $tab = $('.nav-link.active.show').attr('href');
-    $table = $($tab).find('table')[1];
-
-
     $.ajax({
         url: "inventory/removeDetail/" + $id + "/" + $serialStatus,
         method: "POST",
         success: function (data) {
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $id + '/0'});
-            $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $id});
-            $table.bootstrapTable('refresh');
+            location.reload();
         }
     });
 }
 
 //revert removed detail
 function revertDetail($det_id, $serialStatus) {
-    var $detailtable = $('#detail-tab-table');
-    var $rmItems = $('#removed-table');
     $.ajax({
         url: "inventory/revert/" + $det_id + "/" + $serialStatus,
         method: "POST",
         success: function (data) {
-            $rmItems.bootstrapTable('refresh', {url: 'inventory/showRemovedItems/' + $det_id});
-            $detailtable.bootstrapTable('refresh', {url: 'inventory/detail/inv/' + $det_id + '/0'});
+            location.reload();
         }
     });
 }
@@ -2377,91 +2421,66 @@ function checkboxLimit() {
 
 //for reconciliation
 function reconcile() {
-    $('#dateInv').parsley().whenValidate().done(function () {
-        $date = $('#inventoryDate').val();
-        $status = $('#serialTab').find('.active').data('status');
-        $id = [];
-        $q = [];
-        $p = [];
-        $r = [];
-        $missing = [];
-        counter = 0;
-        serializedItems = $('#serializedItems');
-        ns = $('#withoutSerial');
+    $date = $('#inventoryDate').val();
+    $status = $('#serialTab').find('.active').data('status');
+    $id = [];
+    $q = [];
+    $p = [];
+    $r = [];
+    $missing = [];
+    counter = 0;
+    serializedItems = $('#serializedItems');
+    ns = $('#withoutSerial');
+    if ($status === 1) {
+        $recon = serializedItems.find('.reconitem ');
+        $quantity = serializedItems.find('.quantity');
+        $remarks = serializedItems.find('.remarks');
+        $reconID = serializedItems.find('.reconid');
+    } else {
+        $recon = ns.find('.reconitem ');
+        $quantity = ns.find('.quantity');
+        $remarks = ns.find('.remarks');
+        $reconID = ns.find('.reconid');
+    }
+    for (i = 0; i <= $recon.length - 1; i++) {
+        if ($quantity[i].textContent !== $recon[i].value) {
+            $missing.push($quantity[i].textContent - $recon[i].value);
+            counter++;
+        }
+        $q.push($quantity[i].textContent);
+        $p.push($recon[i].value);
+        $r.push($remarks[i].value);
+        $id.push($reconID[i].value);
+    }
+
+    if (counter >= 1) {
         if ($status === 1) {
-            $recon = serializedItems.find('.reconitem ');
-            $quantity = serializedItems.find('.quantity');
-            $remarks = serializedItems.find('.remarks');
-            $reconID = serializedItems.find('.reconid');
-        } else {
-            $recon = ns.find('.reconitem ');
-            $quantity = ns.find('.quantity');
-            $remarks = ns.find('.remarks');
-            $reconID = ns.find('.reconid');
-        }
-        for (i = 0; i <= $recon.length - 1; i++) {
-            if ($quantity[i].textContent !== $recon[i].value) {
-                $missing.push($quantity[i].textContent - $recon[i].value);
-                counter++;
-            }
-            $q.push($quantity[i].textContent);
-            $p.push($recon[i].value);
-            $r.push($remarks[i].value);
-            $id.push($reconID[i].value);
-        }
-
-        if (counter >= 1) {
-            if ($status === 1) {
-                console.log($('.itemsDiv'));
-
-                $('.invdate').modal('toggle');
-                toggleDiv($('.inventory-tab'), $('.reconcilePage'));
-                toggleDiv($('.discrepancies'), $('.inventory-tab'));
-                item_name = [];
-                serial = [];
-                $.ajax({
-                    url: "Inventory/getDiscrepancy",
-                    method: "POST",
-                    dataType: 'JSON',
-                    data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
-                    success: function (data) {
-                        for (i = 0; i <= data.length - 1; i++) {
-                            item_name.push('<h4>' + data[i].item_name + '</h4><div class="itemsDiv" data-missing="' + $missing[i] + '" ' +
-                                'id="item' + data[i].item_id + '">'
-                                + data[i].serials + '</div>');
-
-                        }
-
-                        $('#items').html(item_name);
-
-
-                    }
-                });
-
-            } else {
-                $.ajax({
-                    url: "Inventory/reconcileNS",
-                    method: "POST",
-                    data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
-                    success: function (data) {
-                        $('.invdate').modal('toggle');
-                        location.reload();
-                    }
-                });
-            }
+            alert();
+            getAllSerial()
         } else {
             $.ajax({
-                url: "Inventory/reconcileInventory",
+                url: "Inventory/reconcileNS",
                 method: "POST",
                 data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
                 success: function (data) {
                     $('.invdate').modal('toggle');
                     location.reload();
                 }
-            })
-        }
+            });
 
-    })
+        }
+    } else {
+        $.ajax({
+            url: "Inventory/reconcileInventory",
+            method: "POST",
+            data: {logical: $q, physical: $p, remarks: $r, date: $date, id: $id},
+            success: function (data) {
+                $('.invdate').modal('toggle');
+                location.reload();
+            }
+        })
+    }
+
 
 }
 
@@ -2624,10 +2643,8 @@ function getAllSerial() {
         $r.push($('.remarks')[i].value)
         $id.push($('.reconid')[i].value)
     }
-    $serials = $('input.item:checked');
-    serials = [];
-    for (i = 0; i <= $serials.length - 1; i++) {
-        serials.push($serials[i].value);
+    if (localStorage.getItem('serial') !== null) {
+        serials = JSON.parse(localStorage.getItem('serial'));
     }
     $.ajax({
         url: 'Inventory/recSerializedItems',
