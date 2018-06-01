@@ -91,7 +91,10 @@ class Inventory extends CI_Controller
                 'button' => 'Accept',
                 'count' => $count_input,
                 'result' => 'Enter physical count',
-                'remarks' => $remarks_input
+                'remarks' => $remarks_input,
+                'item_type' => $item['item_type'],
+                'initialStock' => $item['initialStock'],
+                'initialCost' => $item['initialCost'],
             );
         }
         echo json_encode($data);
@@ -110,7 +113,7 @@ class Inventory extends CI_Controller
         $list = $this->inv->addquant($item_det_id, $counter);
         $data = array();
         foreach ($list as $val) {
-            $data[] = '<td>' . $val . '</td>';
+            $data[] = '<td style="text-align: center; ">' . $val . '</td>';
         }
         echo json_encode($data);
     }
@@ -569,7 +572,8 @@ class Inventory extends CI_Controller
                 'name' => $item['item_name'],
                 'description' => $item['item_description'],
                 'quant' => $item['quant'],
-                'unit' => $item['unit']
+                'unit' => $item['unit'],
+                'item_type'=>$item['item_type']
             );
         }
         echo json_encode($data);
@@ -920,7 +924,8 @@ class Inventory extends CI_Controller
                 'cost' => $removedItems['unit_cost'],
                 'sup' => $removedItems['supplier_name'],
                 'or' => $removedItems['OR_no'],
-                'action' => "<button onclick=\"revertDetail($removedItems[item_det_id],$removedItems[serialStatus])\" class=\"btn btn-success\">Revert</button>",
+                'item_det_id' => $removedItems['item_det_id'],
+                'serialStatus' => $removedItems['serialStatus']
             );
         }
         echo json_encode($data);
