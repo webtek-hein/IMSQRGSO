@@ -531,7 +531,6 @@
                                             <textarea id="itemdesc" data-parsley-group="set1"
                                                       name="description" id="message"
                                                       class="form-control"
-                                                      data-parsley-trigger="blur"
                                                       data-parsley-minlength="1"
                                                       data-parsley-maxlength="500"
                                                       data-parsley-minlength-message="Description must"
@@ -633,7 +632,6 @@
                                             <textarea id="itemdesc" data-parsley-group="set1"
                                                       name="description" id="message"
                                                       class="form-control"
-                                                      data-parsley-trigger="blur"
                                                       data-parsley-minlength="1"
                                                       data-parsley-maxlength="500"
                                                       data-parsley-minlength-message="Description must"
@@ -848,8 +846,11 @@
                                             <option value="CO">Capital Outlay</option>
                                             <option value="MOOE">MOOE</option>
                                         </select>
-                                        <input class="addItemInput" type="checkbox" tabindex="-1" name="serialStatus[]"
+                                        <input onchange="togglebox(1)" id="ws1" class="addItemInput chckboxIn" type="checkbox"
+                                               tabindex="-1" name="serialStatus[]"
                                                value="1"> With serial
+                                        <input hidden id="wo1" type="checkbox" class="wochk" tabindex="-1" name="serialStatus[]"
+                                               value="0">
                                     </div>
                                     <div class="form-group">
                                         <label class="addItemLabel" for="quantity">Quantity</label>
@@ -894,7 +895,6 @@
                                         <textarea data-parsley-group="set1"
                                                   name="description[]" id="message"
                                                   class="addItemTextarea form-control col-6"
-                                                  data-parsley-trigger="blur"
                                                   data-parsley-minlength="1"
                                                   data-parsley-maxlength="500"
                                                   data-parsley-validation-threshold="10"
@@ -1237,12 +1237,12 @@
             </div>
 
             <div class="modal-body">
-                <form class="form-horizontal form-label-left" action="inventory/addquant" method="POST"
+                <form class="form-horizontal form-label-left" action="Inventory/addquant" method="POST"
                       novalidate>
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                         <label>Quantity</label>
-                        <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
+                        <input data-parsley-group="set2" type="number"
                                name="quant[]" min=0
                                class="form-control has-feedback-left">
                         <span class="fa fa-plus-square-o form-control-feedback left"
@@ -1291,7 +1291,7 @@
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                         <label>Official Receipt Number</label>
-                        <input data-parsley-group="set2" data-parsley-trigger="blur" type="number"
+                        <input data-parsley-group="set2" type="number"
                                name="quant[]" min=0 class="form-control has-feedback-left">
                         <span class="fa fa-ticket form-control-feedback left"
                               aria-hidden="true"></span>
@@ -1408,7 +1408,7 @@
 
                     <div class="form-group">
                         <label>Receiver</label>
-                        <input class="form-control" data-parsley-group="set2" data-parsley-trigger="blur" type="text"
+                        <input class="form-control" data-parsley-group="set2" type="text"
                                name="receiver" required>
                     </div>
                     <div class="form-group">

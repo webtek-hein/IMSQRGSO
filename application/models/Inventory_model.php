@@ -104,14 +104,9 @@ class Inventory_model extends CI_Model
         $item_name = $this->input->post('item');
         $data = [];
         $data1 = [];
-        $counter = 0;
 
         foreach ($item_name as $key => $value) {
-            if (isset($this->input->post('serialStatus')[$key])) {
-                $serialStatus = '1';
-            } else {
-                $serialStatus = '0';
-            }
+
             $data[] = array(
                 'item_name' => $item_name[$key],
                 'quantity' => $this->input->post('quant')[$key],
@@ -119,7 +114,7 @@ class Inventory_model extends CI_Model
                 'item_description' => $this->input->post('description')[$key],
                 'unit' => $this->input->post('Unit')[$key],
                 'item_type' => $this->input->post('Type')[$key],
-                'serialStatus' => $serialStatus,
+                'serialStatus' => $this->input->post('serialStatus')[$key],
                 'initialStock' => $this->input->post('quant')[$key],
                 'initialCost' => $this->input->post('cost')[$key]
             );

@@ -57,7 +57,7 @@ $(document).ready(function () {
         $('#returnAct').attr('onclick', f);
     });
 //load data dash
-    setInterval(function () {
+//     setInterval(function () {
         /*$("#tUser").load("inventory/totalUser");
         $("#itemsrec").load("inventory/itemsReceived");
         $("#itemsiss").load("inventory/issuedItems");
@@ -76,7 +76,7 @@ $(document).ready(function () {
          expiredit();
          editit();
 
-    }, 1000);
+    // }, 1000);
     $returnTable = $('#returnTable');
     $reportTable = $('#reportTable');
     var $reportOption = $('#reportsOption');
@@ -2282,7 +2282,7 @@ function init_bulkFucntion() {
     var list;
     var counter = 1;
     $(document).on('click', '#addanother', function (e) {
-        $('#addItemForm').parsley().whenValidate({group: 'set' + counter}).done(function () {
+        // $('#addItemForm').parsley().whenValidate({group: 'set' + counter}).done(function () {
             var pul = document.getElementById('bulk');
             var li = document.getElementById('another');
             pul.removeChild(li);
@@ -2295,7 +2295,11 @@ function init_bulkFucntion() {
                 .appendTo('#bulkdiv')
                 .removeClass('active')
                 .find('#buttonCounter' + counter)
-                .attr('onclick', 'save(' + counter + ')'));
+                .attr('onclick', 'save(' + counter + ')')).end()
+                .find('.chckboxIn')
+                .attr('onchange','togglebox('+counter+')')
+                .attr('id','ws'+counter).end()
+                .find('.wochk').attr('id','wo'+counter);
             list = "<li id=\"list" + counter + "\" role=\"presentation\" class=\"nav-item\">" +
                 "<a class=\"nav-link \" href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
                 "Item" + counter +
@@ -2308,7 +2312,7 @@ function init_bulkFucntion() {
         });
 
 
-    });
+    // });
 
 
     console.log('init_bulkFunction');
@@ -2932,7 +2936,6 @@ function valreturn() {
 
 function valdist() {
     var chks = document.getElementById('form').getElementsByTagName('input');
-    console.log(chks);
     var hasChecked = false;
     for (var i = 0; i < chks.length; i++) {
         if (chks[i].checked) {
@@ -2945,4 +2948,12 @@ function valdist() {
         return false;
     }
     return true;
+}
+
+function togglebox(counter) {
+    if(!$('#ws'+counter).is(':checked')){
+        $('#wo'+counter).prop('checked', true);
+    }else{
+        $('#wo'+counter).prop('checked', false);
+    }
 }
