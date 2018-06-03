@@ -1007,23 +1007,6 @@ function deptDet(data) {
 }
 
 
-function userDetail(id) {
-    var item;
-    $.ajax({
-        url: 'users/getuser/' + id,
-        dataType: 'JSON',
-        success: function (data) {
-            toggleDiv($('.userDetail'), $('.accounts-tab'));
-            $('#edtbutton').val(id);
-            $('#first').val(data.firstname);
-            $('#last').val(data.lastname);
-            $('#em').val(data.email);
-            $('#cno').val(data.contactno);
-            $('#pword').val(data.password);
-            $('#stat').val(data.status);
-        }
-    });
-}
 
 var counter = 0;
 
@@ -1086,7 +1069,6 @@ function init_inventory() {
     var $itemTable = $('#itemtable');
     var $MOOEtable = $('#MOOEtable');
     var $supplier = $('#supplier-table');
-    var $userTable = $('#user-table');
     var $ws = $('#withoutSerial');
     var $serializedItems = $('#serializedItems');
 
@@ -1276,48 +1258,6 @@ function init_inventory() {
             }]
         });
 
-    $userTable.bootstrapTable('refresh', {url: 'Users/display_users'})
-        .bootstrapTable({
-            pageSize: 10,
-            url: 'Users/display_users',
-            onClickRow: function (data, row) {
-                userDetail(data.id);
-            },
-            resizable: true,
-            columns: [{
-                sortable: true,
-                field: 'date_created',
-                title: 'Date Created'
-            }, {
-                sortable: true,
-                field: 'name',
-                title: 'Name'
-            }, {
-                sortable: true,
-                field: 'email',
-                title: 'Email'
-            }, {
-                sortable: true,
-                field: 'contactno',
-                title: 'Contact'
-            }, {
-                sortable: true,
-                field: 'username',
-                title: 'Username'
-            }, {
-                sortable: true,
-                field: 'position',
-                title: 'Position'
-            }, {
-                sortable: true,
-                field: 'department',
-                title: 'Department'
-            }, {
-                sortable: true,
-                field: 'status',
-                title: 'Status'
-            }]
-        });
     $itemTable.bootstrapTable('refresh', {url: 'inventory/viewItem/CO'})
         .bootstrapTable({
             pageSize: 10,
@@ -1442,9 +1382,6 @@ function init_inventory() {
     });
     $('#headingOne').on('click', function () {
         toggleDiv($('.AddSup'), $('.inventory-tab'));
-    });
-    $('#headingZero').on('click', function () {
-        toggleDiv($('.addUser'), $('.accounts-tab'));
     });
 
     $('.compare').on('click', function () {
@@ -1657,7 +1594,6 @@ function init_editlog() {
 
     $editlogtableco.bootstrapTable({
         pageSize: 10,
-        url: 'logs/editlogitem/CO',
         onClickRow: function (data, row) {
             editlogdet(data.id);
 
@@ -2164,6 +2100,7 @@ function getserial(id) {
     var delDate = $(event.target).data('deldate')
     $('#date').attr('data-delDate', delDate);
     $('input[name=returndate]').attr('data-delDate', delDate);
+    $('#distSave').attr('onclick','return valdist()');
     $.ajax({
         url: 'inventory/getSerial/' + id,
         dataType: 'JSON',
@@ -2352,14 +2289,6 @@ function prevTab(elem) {
     elem.prev().find('a[data-toggle="tab"]').click();
 }
 
-function select_dept() {
-    if (document.getElementById('position').value === 'supply officer') {
-        document.getElementById('dmentselect').style.display = 'block';
-    } else {
-        document.getElementById('dmentselect').style.display = 'none';
-
-    }
-}
 
 //View QR list
 function viewQr() {
@@ -2566,7 +2495,7 @@ function printToPDFreport() {
     } else {
         header = '<h1>Supplier Items</h1><br><p>General Service Office</p>';
     }
-    $('#reportTable').attr('data-pagination', 'false');
+    $('#reportTable').bootstrapTable('togglePagination');
     var printContents = $('#returnedReport').html();
 
 

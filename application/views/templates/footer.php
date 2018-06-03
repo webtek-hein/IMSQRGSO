@@ -26,7 +26,13 @@
 <script type="text/javascript" src="assets/plugins/tableExport/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
 <script type="text/javascript" src="assets/plugins/tableExport/tableExport.min.js"></script>
 
-<script src="assets/js/main.js"></script>
+<?php
+if ($this->session->userdata['logged_in']['position'] === 'Admin') {
+    echo '<script src="assets/js/adfunc.js"></script>';
+} else {
+    echo '<script src="assets/js/main.js"></script>';
+}
+?>
 <script src="assets/js/validation.js"></script>
 
 <script src="assets/js/bootstrap-dialog.min.js"></script>

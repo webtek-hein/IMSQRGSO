@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<div class="content mt-3">
+<div id="supplierPageContent" class="content mt-3">
     <div class="animated fadeIn">
         <div class="row">
             <!-- Supplier-->

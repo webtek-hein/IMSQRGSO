@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<div class="content mt-3">
+<div id="editPageContent" class="content mt-3">
     <div class="animated fadeIn">
         <div class="row">
             <!-- Inventory-->
@@ -79,7 +79,9 @@
 
             <div class="modal-body">
 
-                    <table id="editlog" data-pagination="true" data-search="true"
+                    <table id="editlog"
+                           data-pagination="true"
+                           data-search="true"
                            class="table table-striped table-bordered">
                     </table>
             </div>

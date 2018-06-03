@@ -394,7 +394,7 @@
         <button onclick="printAIR()" class="btn btn-primary">PRINT</button>
     </div>
 </div>
-<div class="content mt-3">
+<div id="inventoryPageContent" class="content mt-3">
     <div class="animated fadeIn">
         <div class="row">
 
@@ -1039,13 +1039,9 @@
             </div>
             <div class="row">
                 <div id="returnedReport" class="col-md-12 table-responsive">
-                    <table id="reportTable" data-pagination="true"
+                    <table id="reportTable"
+                           data-pagination="true"
                            class="table table-bordered table-hover">
-                    </table>
-                </div>
-                <div id="returnedReport" class="col-md-12 table-responsive">
-                    <table id="hiddenReptTable" data-pagination="true"
-                           class="table table-bordered table-hover" hidden>
                     </table>
                 </div>
             </div>
@@ -1161,8 +1157,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" name="id" id="save1" class="btn btn-success btn-modal"
-                            onclick="return valdist();">
+                    <button type="submit" name="id" id="distSave" class="btn btn-success btn-modal">
                         <i class="fa fa-arrow-down"></i> Save
                     </button>
                 </div>
