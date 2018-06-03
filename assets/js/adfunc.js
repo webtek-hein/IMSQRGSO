@@ -1,5 +1,32 @@
 $(document).ready(function () {
 
+    $('#email').on('blur', function () {
+        var email = $(this).val();
+        if (email !== '') {
+            $.ajax({
+                url: 'Search/checkEmail',
+                method: 'POST',
+                data: {email: email},
+                success: function (data) {
+                    $('#email-res').html(data);
+                }
+            });
+        }
+    });
+
+    $('#username').change(function () {
+        var username = $('#username').val();
+        if (username != '') {
+            $.ajax({
+                url: "Search/checkUsername",
+                method: "POST",
+                data: {username: username},
+                success: function (data) {
+                    $('#username_result').html(data);
+                }
+            });
+        }
+    });
 
     $('#userSelectDept').click(function () {
         if ($(this).val() === 'supply officer') {
@@ -421,6 +448,7 @@ $(document).ready(function () {
     $('#addUserBack').click(function () {
         toggleDiv($('.accounts-tab'), $('.addUser'));
     });
+
     $('#editUserBack').click(function () {
         toggleDiv($('.accounts-tab'), $('.userDetail'));
     });

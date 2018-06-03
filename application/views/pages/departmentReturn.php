@@ -53,7 +53,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal"> Cancel</button>
-                    <button type="submit" name="id" class="btn btn-success btn-modal" id="save1" onclick="return valreturn();">
+                    <button type="submit" name="id" class="btn btn-success btn-modal" id="deptReturn">
                         <i class="fa fa-check"></i> Save
                     </button>
                 </div>

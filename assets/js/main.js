@@ -622,19 +622,6 @@ $(document).ready(function () {
     });
 
 
-    $('#uname').change(function () {
-        var username = $('#uname').val();
-        if (username != '') {
-            $.ajax({
-                url: "Search/checkUsername",
-                method: "POST",
-                data: {username: username},
-                success: function (data) {
-                    $('#uname_result').html(data);
-                }
-            });
-        }
-    });
 
     $('#email').on('blur', function () {
         var email = $(this).val();
@@ -652,20 +639,6 @@ $(document).ready(function () {
 
     $("#checkAll").click(function () {
         $(".check").prop('checked', $(this).prop('checked'));
-    });
-
-    $('#username').change(function () {
-        var username = $('#username').val();
-        if (username != '') {
-            $.ajax({
-                url: "Search/checkUsername",
-                method: "POST",
-                data: {username: username},
-                success: function (data) {
-                    $('#username_result').html(data);
-                }
-            });
-        }
     });
 
 
@@ -1862,17 +1835,8 @@ function save(counter) {
     });
 }
 
-function EditUserBack() {
-    ;
-}
 
-
-function userdetailBack() {
-    toggleDiv($('.accounts-tab'), $('.userDetail'));
-}
-
-
-//view +and edit serial
+//view and edit serial
 function viewSerial(id) {
     var $ul = $('#serial-tabs');
     var serialTabCounter = 1;
@@ -2010,7 +1974,6 @@ function viewSerial(id) {
 
 }
 
-
 function gettransferlog(id) {
 
     var $historytable = $('#history');
@@ -2061,7 +2024,9 @@ function gettransfer(id) {
 function getserialreturn(id, sid) {
     var serials = [];
     var mooe = [];
-    var delDate = $(event.target).data('deldate')
+
+    var delDate = $(event.target).data('deldate');
+    $('#deptReturn').attr('onclick','return valreturn()');
     $('#date').attr('data-delDate', delDate);
     $('input[name=returndate]').attr('data-delDate', delDate);
     $.ajax({

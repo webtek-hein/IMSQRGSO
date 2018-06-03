@@ -28,7 +28,6 @@ if ($position === 'Custodian') {
 <div id="inventoryPageContent" class="content mt-3">
     <div class="animated fadeIn">
         <div class="row">
-
             <!-- Inventory-->
             <div class="inventory-tab col-lg-12">
                 <div class="card">
@@ -390,11 +389,14 @@ if ($position === 'Custodian') {
                             <div class="tab-pane fade" id="Detail_Ledger" role="tabpanel"
                                  aria-labelledby="Ledger-tab">
                                 <br/>
-                                <button onclick="printToPDF()" class="btn btn-info fa fa-download">
-                                    Download as PDF
-                                </button>
-                                <!--  <label>From</label> <input type="date" value="<?php echo date("Y-m-d"); ?>">
-                                <label>To </label> <input type="date" value="<?php echo date("Y-m-d"); ?>"> -->
+                                <?php if ($position === 'Custodian') {
+                                    echo '<button onclick="printToPDF()" class="btn btn-info fa fa-download">
+                                            Download as PDF
+                                            </button>';
+                                }
+                                ?>
+
+
                                 <table id="ledger" data-show-refresh='true' data-pagination="true" data-search="true"
                                        class="table table-bordered table-hover">
                                     <thead class="table-secondary"></thead>
@@ -425,7 +427,7 @@ if ($position === 'Custodian') {
     </div>
 </div>
 <?php
-if ($position === 'Custodian'){
+if ($position === 'Custodian') {
     include 'generateReport.php';
     include 'custodianDistribution.php';
     include 'chooseOR.php';

@@ -33,6 +33,8 @@ if ($this->session->userdata['logged_in']['position'] === 'Admin') {
     echo '<script src="assets/js/main.js"></script>';
 }
 ?>
+<script src="assets/js/suppfunc.js"></script>;
+
 <script src="assets/js/validation.js"></script>
 
 <script src="assets/js/bootstrap-dialog.min.js"></script>
