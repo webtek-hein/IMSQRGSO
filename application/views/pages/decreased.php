@@ -1,3 +1,7 @@
+<?php if($this->session->userdata['logged_in']['position'] === 'Supply Officer'){
+    header('Location: Login/logout');
+}
+?>
 <div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
