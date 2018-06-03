@@ -1,7 +1,7 @@
 <!--Transfer-->
 <form role="form" class="form-horizontal form-label-left" action="inventory/userDistribute" method="POST"
       data-validate="parsley" >
-    <div class="modal fade transfer" id="account" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade transfer" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
 

@@ -35,14 +35,6 @@ if ($position === 'Custodian') {
                     <?php $position = $this->session->userdata['logged_in']['position'];
                     if ($position === 'Custodian') {
 
-                        // <form method="post" id="import_csv">
-                        // <div class="form-group">
-                        // <label>Select CSV File</label>
-                        // <input type="file" name="csv_file" id=""/>
-                        // </div>
-                        // <button type="submit" name="import_csv" class="btn btn-info btn-sm" id="import_csv_btn" method="post"
-                        // required accept=".csv" enctype="multipart/form-data">Import CSV</button>
-                        // </form>
                         echo '<div class="card-header">
                                 <button id="headingTwo" class="btn btn-success" data-toggle="tooltip" 
                                 data-placement="bottom" title="Add New Item"><i class=" fa fa-plus"></i></button>
