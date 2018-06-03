@@ -1,5 +1,16 @@
 $(document).ready(function () {
 
+    //dashboard
+    increasedit();
+    issuedit();
+    returnit();
+    expiredit();
+    editit();
+
+    $('#departmentBck').click(function () {
+        location.reload();
+    });
+
     $('#email').on('blur', function () {
         var email = $(this).val();
         if (email !== '') {
@@ -307,11 +318,7 @@ $(document).ready(function () {
                 title: 'Quantity Distributed',
                 class: 'quantityCol'
             }]
-            // }, {
-            //     sortable: true,
-            //     field: 'Price',
-            //     title: 'PRICE'
-            // }]
+
         });
         // on department change
         $('#select-dept').change(function () {
@@ -664,10 +671,6 @@ function deptDet(data) {
             }, {
                 field: 'or',
                 title: 'OR number'
-            }, {
-
-                field: 'action',
-                title: 'Action'
             }]
         });
 
@@ -721,6 +724,149 @@ function editlogdet(id) {
         }]
     });
 
+}
+
+//dashboard new items
+function increasedit() {
+    var $notifitems = $('#increase');
+    var $countitem = $('.inccount');
+    var detail = [];
+    var count = [];
+    var i = 0;
+    $.ajax({
+        url: "inventory/itemsReceived",
+        dataType: 'JSON',
+        success: function (data) {
+            if (i < data.length) {
+                for (i; i < data.length; i++) {
+                    if (data[i].countinc !== '0') {
+                        detail += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Added by ' + data[i].custodian + "</a>"
+                        count = data[i].countinc;
+                    }
+                }
+            } else {
+                detail = "No Data Found!"
+            }
+
+            $notifitems.html(detail);
+            $countitem.html(count);
+        }
+    });
+}
+
+//dashboard issued items to department
+function issuedit() {
+    var $issueditems = $('#issued');
+    var $issuecountitem = $('.issuecount');
+    var issued = [];
+    var issuedcount = [];
+    var i = 0;
+    $.ajax({
+        url: "inventory/issuedItems",
+        dataType: 'JSON',
+        success: function (data) {
+            if (i < data.length) {
+                for (i; i < data.length; i++) {
+                    if (data[i].issuedcount !== '0') {
+                        issued += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Issued by ' +
+                            data[i].custodian + ' to ' + data[i].department + ' with qty: ' + data[i].quantity + "</a>"
+                        issuedcount = data[i].issuedcount;
+                    }
+                }
+            } else {
+                issued = "No Data Found!"
+            }
+
+            $issueditems.html(issued);
+            $issuecountitem.html(issuedcount);
+        }
+    });
+}
+
+
+//dashboard returned items
+function returnit() {
+    var $returneditems = $('#returned');
+    var $returncountitem = $('.retcount');
+    var returned = [];
+    var returncount = [];
+    var i = 0;
+    $.ajax({
+        url: "inventory/returnedItems",
+        dataType: 'JSON',
+        success: function (data) {
+            if (i < data.length) {
+                for (i; i < data.length; i++) {
+                    if (data[i].returncount !== '0') {
+                        returned += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Returned by '
+                            + data[i].department + ' with qty: ' + data[i].quantity + "</a>"
+                        returncount = data[i].returncount;
+                    }
+                }
+            } else {
+                returned = "No Data Found!"
+            }
+            $returneditems.html(returned);
+            $returncountitem.html(returncount);
+        }
+    });
+}
+
+//dashboard expired items
+function expiredit() {
+    var $expireditems = $('#expired');
+    var $expirecountitem = $('.expcount');
+    var expired = [];
+    var expiredcount = [];
+    var i = 0;
+    $.ajax({
+        url: "inventory/totalExpired",
+        dataType: 'JSON',
+        success: function (data) {
+            if (i < data.length) {
+                for (i; i < data.length; i++) {
+                    if (data[i].expirecount !== '0') {
+                        expired += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' has reached its life span' + "</a>"
+                        expiredcount = data[i].expirecount;
+                    }
+                }
+            } else {
+                expired = "No Data Found!"
+
+            }
+            $expireditems.html(expired);
+            $expirecountitem.html(expiredcount);
+        }
+    });
+}
+
+//dashboard edited items
+function editit() {
+    var $editeditems = $('#edited');
+    var $editcountitem = $('.editcount');
+    var edited = [];
+    var editcount = [];
+    var i = 0;
+    $.ajax({
+        url: "inventory/editedItems",
+        dataType: 'JSON',
+        success: function (data) {
+            if (i < data.length) {
+                for (i; i < data.length; i++) {
+                    if (data[i].editcount !== '0') {
+                        edited += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + data[i].custodian + ' changed ' + data[i].fieldedit + ' of ' + data[i].oldvalue + ' to ' + data[i].newvalue + "</a>"
+                        editcount = data[i].editcount;
+                    }
+                }
+            } else {
+                edited = "No Data Found!"
+
+            }
+            $editeditems.html(edited);
+            $editcountitem.html(editcount);
+        }
+    });
+    //return table
 }
 
 

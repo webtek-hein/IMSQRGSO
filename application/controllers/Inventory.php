@@ -163,7 +163,7 @@ class Inventory extends CI_Controller
         if ($position === 'Supply Officer') {
             $dept_id = $this->session->userdata['logged_in']['dept_id'];
             $list = $this->inv->viewDetailperDept($id, $dept_id);
-        } elseif ($position === 'Custodian' && $dept === 'dept') {
+        } elseif (($position === 'Custodian' || $position === 'Admin') && $dept === 'dept') {
             $list = $this->inv->viewDetailperDept($id, $dept_id);
         } else {
             $list = $this->inv->viewdetail($id, $position);
