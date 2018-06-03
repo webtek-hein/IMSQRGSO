@@ -26,12 +26,12 @@
             <div class="col-lg-12 department-tab">
                 <div class="card">
                     <div class="card-header">
-                <?php
-                $position = ($this->session->userdata['logged_in']['position']);
-                if ($position === 'Custodian' || $position === 'Admin') {
-                    echo '<select id="select-dept" class="col-lg-5 deptopt form-control"></select>';
-                }
-                ?>
+                        <?php
+                        $position = ($this->session->userdata['logged_in']['position']);
+                        if ($position === 'Custodian' || $position === 'Admin') {
+                            echo '<select id="select-dept" class="col-lg-5 deptopt form-control"></select>';
+                        }
+                        ?>
                     </div>
 
                     <div class="card-body">
@@ -55,7 +55,7 @@
                                 <table id="departmentTable" data-show-refresh="true"
                                        class="table table-bordered"
                                        data-pagination="true" data-search="true">
-                                       <thead class="table-secondary"></thead>
+                                    <thead class="table-secondary"></thead>
                                 </table>
                             </div>
                             <!--MOOE Tab-->
@@ -64,7 +64,7 @@
                                 <table id="deptMOOEtable" data-pagination="true" data-show-refresh="true"
                                        data-search="true" data-url="inventory/viewDept/MOOE/11"
                                        class="table table-bordered">
-                                       <thead class="table-secondary"></thead>
+                                    <thead class="table-secondary"></thead>
                                 </table>
                             </div>
                         </div>
@@ -76,10 +76,9 @@
             <div hidden class="col-lg-12 detail-tab ">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" onclick="toggleDiv($('.department-tab'),$('.detail-tab '))"
+                        <button type="button" id="departmentBck" onclick=""
                                 class="btn btn-dark btn-sm"><i class=" fa fa-arrow-left"></i> Back
                         </button>
-
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="DetailTab" role="tablist">
@@ -128,7 +127,7 @@
 <?php
 include 'accountability.php';
 include 'history.php';
-if($position === 'Supply Officer'){
+if ($position === 'Supply Officer') {
     include 'transfer.php';
     include 'departmentReturn.php';
 }

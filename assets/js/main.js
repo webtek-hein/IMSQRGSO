@@ -56,27 +56,16 @@ $(document).ready(function () {
         f = $(e.relatedTarget).data('func');
         $('#returnAct').attr('onclick', f);
     });
-//load data dash
-//     setInterval(function () {
-        /*$("#tUser").load("inventory/totalUser");
-        $("#itemsrec").load("inventory/itemsReceived");
-        $("#itemsiss").load("inventory/issuedItems");
-        $("#retitem").load("inventory/returnedItems");
-        $("#expitems").load("inventory/totalExpired");
-        $("#tcost").load("inventory/totalCost");
-        $("#tItemsDay").load("inventory/itemsThisDay");
-        $("#pendItems").load("inventory/pendingItems");
-        $("#tReturnedDay").load("inventory/itemsReturnedThisDay");
-        $("#tExprdSO").load("inventory/itemsExpiredSO");
-        $("#tCostSO").load("inventory/itemTcostSO");*/
 
-         increasedit();
-         issuedit();
-         returnit();
-         expiredit();
-         editit();
+    increasedit();
+    issuedit();
+    returnit();
+    expiredit();
+    editit();
 
-    // }, 1000);
+    $('#departmentBck').click(function () {
+        location.reload();
+    });
     $returnTable = $('#returnTable');
     $reportTable = $('#reportTable');
     var $reportOption = $('#reportsOption');
@@ -453,16 +442,16 @@ $(document).ready(function () {
             url: "inventory/itemsReceived",
             dataType: 'JSON',
             success: function (data) {
-                if(i < data.length) {
+                if (i < data.length) {
                     for (i; i < data.length; i++) {
                         if (data[i].countinc !== '0') {
                             detail += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Added by ' + data[i].custodian + "</a>"
                             count = data[i].countinc;
                         }
                     }
-                }else {
-                        detail = "No Data Found!"
-                    }
+                } else {
+                    detail = "No Data Found!"
+                }
 
                 $notifitems.html(detail);
                 $countitem.html(count);
@@ -481,17 +470,17 @@ $(document).ready(function () {
             url: "inventory/issuedItems",
             dataType: 'JSON',
             success: function (data) {
-                if(i < data.length) {
+                if (i < data.length) {
                     for (i; i < data.length; i++) {
                         if (data[i].issuedcount !== '0') {
                             issued += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Issued by ' +
-                                data[i].custodian + ' to ' + data[i].department + ' with qty: '+ data[i].quantity +  "</a>"
+                                data[i].custodian + ' to ' + data[i].department + ' with qty: ' + data[i].quantity + "</a>"
                             issuedcount = data[i].issuedcount;
                         }
                     }
-                }else {
-                        issued = "No Data Found!"
-                    }
+                } else {
+                    issued = "No Data Found!"
+                }
 
                 $issueditems.html(issued);
                 $issuecountitem.html(issuedcount);
@@ -511,17 +500,17 @@ $(document).ready(function () {
             url: "inventory/returnedItems",
             dataType: 'JSON',
             success: function (data) {
-                if(i < data.length) {
+                if (i < data.length) {
                     for (i; i < data.length; i++) {
                         if (data[i].returncount !== '0') {
                             returned += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' Returned by '
-                                + data[i].department + ' with qty: '+ data[i].quantity +  "</a>"
+                                + data[i].department + ' with qty: ' + data[i].quantity + "</a>"
                             returncount = data[i].returncount;
                         }
                     }
-                }else {
-                        returned = "No Data Found!"
-                    }
+                } else {
+                    returned = "No Data Found!"
+                }
                 $returneditems.html(returned);
                 $returncountitem.html(returncount);
             }
@@ -539,15 +528,15 @@ $(document).ready(function () {
             url: "inventory/totalExpired",
             dataType: 'JSON',
             success: function (data) {
-                if(i < data.length) {
+                if (i < data.length) {
                     for (i; i < data.length; i++) {
                         if (data[i].expirecount !== '0') {
                             expired += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + 'Item ' + data[i].itemname + ' has reached its life span' + "</a>"
-                            expiredcount =  data[i].expirecount;
+                            expiredcount = data[i].expirecount;
                         }
                     }
-                }else {
-                        expired = "No Data Found!"
+                } else {
+                    expired = "No Data Found!"
 
                 }
                 $expireditems.html(expired);
@@ -567,15 +556,15 @@ $(document).ready(function () {
             url: "inventory/editedItems",
             dataType: 'JSON',
             success: function (data) {
-                if(i < data.length) {
+                if (i < data.length) {
                     for (i; i < data.length; i++) {
                         if (data[i].editcount !== '0') {
                             edited += "<a href='#' class=\"list-group-item\"><i class=\"fa fa fa-cubes\">" + data[i].custodian + ' changed ' + data[i].fieldedit + ' of ' + data[i].oldvalue + ' to ' + data[i].newvalue + "</a>"
-                        editcount = data[i].editcount;
+                            editcount = data[i].editcount;
                         }
                     }
-                }else {
-                        edited = "No Data Found!"
+                } else {
+                    edited = "No Data Found!"
 
                 }
                 $editeditems.html(edited);
@@ -620,7 +609,6 @@ $(document).ready(function () {
             title: 'Action'
         }]
     });
-
 
 
     $('#email').on('blur', function () {
@@ -737,7 +725,7 @@ function return_action($action, $retun_id, $s) {
         method: 'POST',
         data: {serial: $serial, action: $action, return_id: $retun_id, item_status: status},
         success: function (response) {
-             location.reload();
+            location.reload();
         }
     });
 }
@@ -978,7 +966,6 @@ function deptDet(data) {
 
     serialize_forms();
 }
-
 
 
 var counter = 0;
@@ -2026,7 +2013,7 @@ function getserialreturn(id, sid) {
     var mooe = [];
 
     var delDate = $(event.target).data('deldate');
-    $('#deptReturn').attr('onclick','return valreturn()');
+    $('#deptReturn').attr('onclick', 'return valreturn()');
     $('#date').attr('data-delDate', delDate);
     $('input[name=returndate]').attr('data-delDate', delDate);
     $.ajax({
@@ -2060,7 +2047,7 @@ function getserial(id) {
     var delDate = $(event.target).data('deldate')
     $('#date').attr('data-delDate', delDate);
     $('input[name=returndate]').attr('data-delDate', delDate);
-    $('#distSave').attr('onclick','return valdist()');
+    $('#distSave').attr('onclick', 'return valdist()');
     $.ajax({
         url: 'inventory/getSerial/' + id,
         dataType: 'JSON',
@@ -2180,33 +2167,33 @@ function init_bulkFucntion() {
     var counter = 1;
     $(document).on('click', '#addanother', function (e) {
         // $('#addItemForm').parsley().whenValidate({group: 'set' + counter}).done(function () {
-            var pul = document.getElementById('bulk');
-            var li = document.getElementById('another');
-            pul.removeChild(li);
-            counter++;
-            $button.attr('id', 'buttonCounter' + counter);
-            ($div.clone().find("input:not(:checkbox),textarea").val("")
-                .attr('data-parsley-group', 'set' + counter)
-                .toggleClass('required').end()
-                .attr('id', 'step' + counter + 'B')
-                .appendTo('#bulkdiv')
-                .removeClass('active')
-                .find('#buttonCounter' + counter)
-                .attr('onclick', 'save(' + counter + ')')).end()
-                .find('.chckboxIn')
-                .attr('onchange','togglebox('+counter+')')
-                .attr('id','ws'+counter).end()
-                .find('.wochk').attr('id','wo'+counter);
-            list = "<li id=\"list" + counter + "\" role=\"presentation\" class=\"nav-item\">" +
-                "<a class=\"nav-link \" href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
-                "Item" + counter +
-                "</a>" +
-                "</li>";
-            ($ul.append(list).find('#list' + counter + ' a').click());
-            $ul.append('<li id="another"><button id="addanother" class="btn btn-primary"\n' +
-                '                                            role="tab"><i class="ti-plus"></i>\n' +
-                '                                    </button></li>');
-        });
+        var pul = document.getElementById('bulk');
+        var li = document.getElementById('another');
+        pul.removeChild(li);
+        counter++;
+        $button.attr('id', 'buttonCounter' + counter);
+        ($div.clone().find("input:not(:checkbox),textarea").val("")
+            .attr('data-parsley-group', 'set' + counter)
+            .toggleClass('required').end()
+            .attr('id', 'step' + counter + 'B')
+            .appendTo('#bulkdiv')
+            .removeClass('active')
+            .find('#buttonCounter' + counter)
+            .attr('onclick', 'save(' + counter + ')')).end()
+            .find('.chckboxIn')
+            .attr('onchange', 'togglebox(' + counter + ')')
+            .attr('id', 'ws' + counter).end()
+            .find('.wochk').attr('id', 'wo' + counter);
+        list = "<li id=\"list" + counter + "\" role=\"presentation\" class=\"nav-item\">" +
+            "<a class=\"nav-link \" href=\"#step" + counter + "B\" data-toggle=\"tab\" aria-controls=\"step" + counter + "\" role=\"tab\" title=\"Step" + counter + "\">" +
+            "Item" + counter +
+            "</a>" +
+            "</li>";
+        ($ul.append(list).find('#list' + counter + ' a').click());
+        $ul.append('<li id="another"><button id="addanother" class="btn btn-primary"\n' +
+            '                                            role="tab"><i class="ti-plus"></i>\n' +
+            '                                    </button></li>');
+    });
 
 
     // });
@@ -2840,9 +2827,9 @@ function valdist() {
 }
 
 function togglebox(counter) {
-    if(!$('#ws'+counter).is(':checked')){
-        $('#wo'+counter).prop('checked', true);
-    }else{
-        $('#wo'+counter).prop('checked', false);
+    if (!$('#ws' + counter).is(':checked')) {
+        $('#wo' + counter).prop('checked', true);
+    } else {
+        $('#wo' + counter).prop('checked', false);
     }
 }
