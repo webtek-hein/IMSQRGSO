@@ -14,7 +14,7 @@
 
       <div class="row">
         <!-- /.col -->
-        <div class="col-lg-12">
+        <div class="col-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li><a href="" data-toggle="tab">Update Profile</a></li>
@@ -29,38 +29,36 @@
               <?php echo validation_errors(); ?>
 
     <form id='profile' class="profileform" action="profile/profile_update" method="POST">
-<div class="card-body">
+<div class="card-body col-12">
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">First Name</label>
+                    <label for="inputName" class="control-label">First Name</label>
 
-                    <div class="col-sm-9">
-                      <input type="text" required class="form-control" id="inputName" name="first_name" value="<?php echo $firstname ?>">
+                    <div class="input-group" >
+                      <input type="text" required class="form-control col-6" id="inputName" name="first_name" value="<?php echo $firstname ?>">
                     </div>
                   </div>
 
                  <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Last Name</label>
-
-                    <div class="col-sm-9">
-                      <input type="text" required class="form-control" id="inputName" name="last_name" value="<?php echo $lastname ?>">
+                    <label for="inputName" class=" control-label">Last Name</label>
+                    <div class="input-group">
+                      <input type="text" required class="form-control col-6" id="inputName" name="last_name" value="<?php echo $lastname ?>">
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                    <div class="col-sm-9">
-                      <input type="email" required class="form-control" id="inputEmail" name="email" value="<?php echo $email ?>">
+                    <label for="inputEmail" class="control-label">Email</label>
+                    <div class="input-group">
+                      <input type="email" required class="form-control col-6" id="inputEmail" name="email" value="<?php echo $email ?>">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputCon" class="col-sm-2 control-label" >Contact no</label>
-                    <div class="col-sm-9">
-                      <input type="number" required pattern="^(09|\+639)\d{9}$" class="form-control has-feedback-left col-6" id="inputName" name="contact_no" value="<?php echo $contact_no ?>">
+                    <label for="inputCon" class="control-label" >Contact no</label>
+                    <div class="input-group">
+                      <input type="number" required pattern="^(09|\+639)\d{9}$" class="form-control col-6" id="inputName" name="contact_no" value="<?php echo $contact_no ?>">
                     </div>
                   </div>
                   <div class="form-group">
-                      <div class="col-sm-offset-8 col-sm-9">
+                      <div>
                           <button class="btn btn-success" type="submit" name="id" id="edtbutton">
                               <i class="fa fa-check"></i> Save
                           </button>
@@ -72,7 +70,7 @@
           </div>
         </div>
 
-    <div class="col-md-9">
+    <div class="col-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li><a href="" data-toggle="tab">Update Password</a></li>
@@ -90,31 +88,30 @@
                     <?php echo form_open('profile/changepass'); ?>
 
                     FORMAT: must be more than 5 characters
-				           <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-9">
-                      <input id="old" type="password" required class="form-control" name="old_password" placeholder="old password" >
+                    <br/>
+                    <div class="form-group">
+                    <label for="inputName" class="control-label"></label>
+                    <div class="input-group">
+                      <input id="old" type="password" required class="form-control col-6" name="old_password" placeholder="old password" >
                     </div>
                   </div>
-                  <br>
                     <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label"></label>
-                        <div class="col-sm-9">
-                            <input type="password"  required class="form-control" name="new_password" placeholder="new password" pattern=".{6,}$">
+                        <label for="inputName" class="control-label"></label>
+                        <div class="input-group">
+                            <input type="password"  required class="form-control col-6" name="new_password" placeholder="new password" pattern=".{6,}$">
                         </div>
                         <small class="form-text text-muted"></small>
                     </div>
-                    <br>
                     <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-9">
-                      <input type="password" required class="form-control" id="inputPasswordAgain" name="con_new_password" placeholder="confirm password">
+                    <label for="inputName" class="control-label"></label>
+                    <div class="input-group">
+                      <input type="password" required class="form-control col-6" id="inputPasswordAgain" name="con_new_password" placeholder="confirm password">
                     </div>
                   </div>
 
 
                   <div class="form-group">
-                    <div style="padding: 0 20px 10px 90px;" class="col-sm-offset-8 col-sm-9">
+                    <div>
                         <button class="btn btn-success" type="submit" name="id" id="edtbutton">
                             <i class="fa fa-check"></i> Save
                         </button>
