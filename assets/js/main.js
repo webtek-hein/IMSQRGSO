@@ -1862,13 +1862,8 @@ function save(counter) {
     });
 }
 
-
-function addUserBack() {
-    toggleDiv($('.accounts-tab'), $('.addUser'));
-}
-
 function EditUserBack() {
-    toggleDiv($('.accounts-tab'), $('.userDetail'));
+    ;
 }
 
 

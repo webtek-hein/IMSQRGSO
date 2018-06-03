@@ -43,7 +43,7 @@
             <!-- Add user -->
             <div hidden class="col-lg-12 addUser ">
                 <div class="card-header">
-                    <button type="button" onclick="addUserBack()" class="btn btn-dark fa fa-arrow-left"> Back</a></button>
+                    <button type="button" id="addUserBack" class="btn btn-dark fa fa-arrow-left"> Back</a></button>
                 </div>
                 <div class="form-group">
                     <div class="card">
@@ -146,7 +146,7 @@
             <div hidden class="col-lg-12 userDetail">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" id="edtUserBack" class="btn btn-dark fa fa-arrow-left"></i> Back</a></button>
+                        <button type="button" id="editUserBack" class="btn btn-dark fa fa-arrow-left"></i> Back</a></button>
                     </div>
                     <div class="card-body">
                         <form id="editAccounts" class="form-horizontal form-label-left" action="users/edituser" method="POST">

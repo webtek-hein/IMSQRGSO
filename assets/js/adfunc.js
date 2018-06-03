@@ -418,6 +418,13 @@ $(document).ready(function () {
         toggleDiv($('.addUser'), $('.accounts-tab'));
     });
 
+    $('#addUserBack').click(function () {
+        toggleDiv($('.accounts-tab'), $('.addUser'));
+    });
+    $('#editUserBack').click(function () {
+        toggleDiv($('.accounts-tab'), $('.userDetail'));
+    });
+
 
 });
 
