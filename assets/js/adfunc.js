@@ -50,9 +50,6 @@ $(document).ready(function () {
             .bootstrapTable({
                 pageSize: 10,
                 url: 'supplier/viewsuppliers',
-                onClickRow: function (data, row) {
-                    editSupplier(data);
-                },
                 resizable: true,
                 columns: [{
                     sortable: true,
@@ -421,6 +418,13 @@ $(document).ready(function () {
         toggleDiv($('.addUser'), $('.accounts-tab'));
     });
 
+    $('#addUserBack').click(function () {
+        toggleDiv($('.accounts-tab'), $('.addUser'));
+    });
+    $('#editUserBack').click(function () {
+        toggleDiv($('.accounts-tab'), $('.userDetail'));
+    });
+
 
 });
 
@@ -442,19 +446,6 @@ function loadDepartmentOptions() {
     });
 
 
-}
-
-//edit supplier
-function editSupplier(data) {
-    toggleDiv($('.editSupplier-tab '), $('.supplier-tab'));
-    $('#edtbuttonsupplier').val(data.id);
-    $('#supplier').val(data.supplier);
-    $('#location').val(data.address);
-    $('#contactno1').html(data.contactInput);
-    $('#postal1').val(data.postal);
-    $('#email1').html(data.emailInput);
-    $('#tin1').val(data.tin);
-    $('#status').val(data.status);
 }
 
 //toggle hidden class of element
