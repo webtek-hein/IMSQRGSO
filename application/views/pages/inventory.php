@@ -19,7 +19,7 @@
 </div>
 <?php
 $position = $this->session->userdata['logged_in']['position'];
-if($position === 'Custodian'){
+if ($position === 'Custodian') {
     include 'air.php';
 }
 ?>
@@ -30,32 +30,6 @@ if($position === 'Custodian'){
             <!-- Inventory-->
             <div class="inventory-tab col-lg-12">
                 <div class="card">
-                    <?php $position = $this->session->userdata['logged_in']['position'];
-                    if ($position === 'Custodian') {
-
-                        // <form method="post" id="import_csv">
-                        // <div class="form-group">
-                        // <label>Select CSV File</label>
-                        // <input type="file" name="csv_file" id=""/>
-                        // </div>
-                        // <button type="submit" name="import_csv" class="btn btn-info btn-sm" id="import_csv_btn" method="post"
-                        // required accept=".csv" enctype="multipart/form-data">Import CSV</button>
-                        // </form>
-                        echo '<div class="card-header">
-                                <button id="headingTwo" class="btn btn-success" data-toggle="tooltip" 
-                                data-placement="bottom" title="Add New Item"><i class=" fa fa-plus"></i></button>
-                                <button id="genReport_Buttons" onclick="toggleDiv($(\'.generateReport\'),$(\'.inventory-tab\'))" 
-                                     class="btn btn-info" data-toggle="tooltip"
-                                     data-placement="bottom" title="Print Reports"><i class="fa fa-file-archive-o"></i></button> 
-                                 <button id="reconcileButton" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Reconcile">
-                                 <i class="	fa fa-check-square-o"></i></button>
-                                 <!-- <a href="air" class="btn btn-warning" style="border-color:#0c0c0c"
-                                    data-toggle="tooltip" data-placement="bottom" title="Generate AIR"><i class="fa fa-edit"></i></a>-->
-                                    <a class="btn btn-success" type="button" onclick="getOR()" data-toggle="modal"
-                                    data-target=".chooseOR" data-toggle="tooltip" data-placement="bottom" title="Generate AIR"><i class="fa fa-edit"></i></a>
-                                </div>';
-                    }
-                    ?>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
@@ -423,7 +397,7 @@ if($position === 'Custodian'){
                 </div>
             </div>
             <?php
-            if($position === 'Custodian'){
+            if ($position === 'Custodian') {
                 include 'addItem.php';
             }
             ?>
@@ -432,15 +406,12 @@ if($position === 'Custodian'){
     </div>
 </div>
 <?php
-if($position === 'Custodian'){
+if ($position === 'Custodian') {
     include 'generateReport.php';
     include 'chooseOR.php';
     include 'custDistribution.php';
     include 'generateQR.php';
     include 'reconcilePage.php';
-}else if($position === 'Supply Officer'){
-    include 'soDistribution.php';
-    include 'departmentReturn.php';
 }
 ?>
 </div>

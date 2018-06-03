@@ -15,14 +15,13 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <div class="serialsp col-md-10">
+                        <div class="serialsp col-md-10 options">
                             <label for="name"></label>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="quantsp col-md-10">
                         </div>
-
                     </div>
                     <div class="form-group">
                         <div class="col-md-10">
@@ -51,3 +50,4 @@
         </div>
     </div>
 </form>
+<!-- /page content -->
