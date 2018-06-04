@@ -1991,7 +1991,7 @@ function gettransferlog(id) {
 
 function gettransfer(id) {
     $.ajax({
-        url: 'inventory/gettransfer/' + id,
+        url: 'Inventory/gettransfer/' + id,
         dataType: 'JSON',
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
