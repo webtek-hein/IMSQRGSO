@@ -446,12 +446,23 @@ class Inventory extends CI_Controller
      */
     public function getTransfer($serialid)
     {
+        $data[] = array();
         $name = $this->inv->getTrans($serialid);
-        foreach ($name as $owner) {
-            $data[] = array(
-                'currentname' => $owner['name'],
-                'serial' => $owner['serial'],
-                'serial_id' => $owner['serial_id']);
+        if(empty($name)){
+            $getOrig = $this->inv->getTransOrig($serialid);
+            foreach ($getOrig as $owner) {
+                $data[] = array(
+                    'currentname' => $owner['name'],
+                    'serial' => $owner['serial'],
+                    'serial_id' => $owner['serial_id']);
+            }
+        }else {
+            foreach ($name as $owner) {
+                $data[] = array(
+                    'currentname' => $owner['current_owner'],
+                    'serial' => $owner['serial'],
+                    'serial_id' => $owner['serial_id']);
+            }
         }
         echo json_encode($data);
     }
