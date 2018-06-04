@@ -446,7 +446,7 @@ class Inventory extends CI_Controller
      */
     public function getTransfer($serialid)
     {
-        $data[] = array();
+        //$data[] = array();
         $name = $this->inv->getTrans($serialid);
         if(empty($name)){
             $getOrig = $this->inv->getTransOrig($serialid);
