@@ -963,21 +963,19 @@ class Inventory_model extends CI_Model
      */
     public function getTrans($serialid)
     {
-        $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,current_owner,serial.serial,serial.serial_id');
-        $this->db->join('user', 'user.user_id = serial.employee', 'inner');
-        $this->db->join('logs.transferlog', 'transferlog.serial_id = serial.serial_id');
+            $this->db->select('name,serial.serial,serial.serial_id');
+        $this->db->join('serial', 'serial.serial_id = enduser.serial_id', 'inner');
         $this->db->where('serial.serial_id', $serialid);
-        $this->db->order_by('3','desc');
         $this->db->limit(1);
-        $query = $this->db->get('serial');
+        $query = $this->db->get('enduser');
         return $query->result_array();
     }
+
     public function getTransOrig($serialid)
     {
         $this->db->select('CONCAT(user.first_name," ", user.last_name) AS name,serial.serial,serial.serial_id');
         $this->db->join('user', 'user.user_id = serial.employee', 'inner');
         $this->db->where('serial.serial_id', $serialid);
-        $this->db->order_by('2','desc');
         $this->db->limit(1);
         $query = $this->db->get('serial');
         return $query->result_array();

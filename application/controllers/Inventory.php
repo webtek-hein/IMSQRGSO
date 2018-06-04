@@ -457,9 +457,10 @@ class Inventory extends CI_Controller
                     'serial_id' => $owner['serial_id']);
             }
         }else {
+
             foreach ($name as $owner) {
                 $data[] = array(
-                    'currentname' => $owner['current_owner'],
+                    'currentname' => $owner['name'],
                     'serial' => $owner['serial'],
                     'serial_id' => $owner['serial_id']);
             }

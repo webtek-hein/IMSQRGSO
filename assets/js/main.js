@@ -1832,7 +1832,7 @@ function viewSerial(id) {
     var $inventory = $('.inventory-tab');
 
     $.ajax({
-        url: 'inventory/getSerial/' + id,
+        url: 'Inventory/getSerial/' + id,
         dataType: 'JSON',
         success: function (data) {
             var button = '';
@@ -1843,7 +1843,6 @@ function viewSerial(id) {
             var listClass = "active";
             var i = 0;
             var $active = $('#serial-tabs').find('.active');
-
             if (data[0]['position'] === 'Custodian') {
                 button = "<br><div class=\"col-md-offset-3\">\n" +
                     "<button id=\"serialS\" onclick = \"saveSerial()\" type=\"button\" class=\"serialBTN btn btn-success btn-sm\"><i class=\"fa fa-send\"></i> Save</a></button>" +
@@ -1991,7 +1990,7 @@ function gettransferlog(id) {
 
 function gettransfer(id) {
     $.ajax({
-        url: 'Inventory/gettransfer/' + id,
+        url: 'Inventory/getTransfer/' + id,
         dataType: 'JSON',
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
