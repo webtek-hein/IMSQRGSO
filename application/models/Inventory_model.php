@@ -916,7 +916,7 @@ class Inventory_model extends CI_Model
      * @param string $position position of the user
      * @param string $user the user for distribution
      */
-    public function userdistrib($position, $user)
+    public function userdistrib()
     {
 
         $lastowner = $this->input->post('currentuser');
@@ -924,6 +924,7 @@ class Inventory_model extends CI_Model
         $serial = $this->input->post('serial');
         $serialid = $this->input->post('serialid');
         $date = $this->input->post('date');
+        $remarks = $this->input->post('remarks');
         $data = array(
             'name' => $transferowner,
             'serial_id' => $serialid,
@@ -946,7 +947,8 @@ class Inventory_model extends CI_Model
             'serial_id' => $serialid,
             'last_owner' => $lastowner,
             'current_owner' => $transferowner,
-            'transfer_date' => $date
+            'transfer_date' => $date,
+            'remarks' => $remarks
         );
         $this->db->insert('logs.transferlog', $transfer_data);
 
