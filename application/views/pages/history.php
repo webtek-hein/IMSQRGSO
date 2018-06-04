@@ -9,7 +9,6 @@
 
         <div id='hist' class="table-responsive-sm-sm tab-content pl-3 p-1">
             <table id="history" class="table table-striped table-bordered">
-                <thead class="table-secondary"></thead>
             </table>
         </div>
     </div>

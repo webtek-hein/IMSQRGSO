@@ -44,7 +44,7 @@
                         <div class="col-md-10">
                             <label for="name">Remarks</label>
                             <textarea id="itemdesc" data-parsley-group="set1"
-                                      name="description" id="message"
+                                      name="remarks" id="message"
                                       class="form-control"
                                       data-parsley-trigger="blur"
                                       data-parsley-minlength="1"

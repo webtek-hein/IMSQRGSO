@@ -1967,7 +1967,7 @@ function gettransferlog(id) {
     toggleDiv($('#historyPage'), $('#account'));
     $historytable.bootstrapTable('destroy');
     $historytable.bootstrapTable({
-        url: 'logs/gettransfer/' + id,
+        url: 'Logs/gettransfer/' + id,
         columns: [{
             sortable: true,
             field: 'serial',

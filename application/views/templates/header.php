@@ -31,15 +31,12 @@ if (isset($this->session->userdata['logged_in'])) {
     <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="assets/css/sb-admin.css">
 
-    <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
-<style>
-.ScrollStyle
-{
-    max-height: 280px;
-    overflow-y: scroll;
-}
-</style>
-    <!--<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>-->
+    <style>
+        .ScrollStyle {
+            max-height: 280px;
+            overflow-y: scroll;
+        }
+    </style>
     <script
             src="assets/js/jquery-3.3.1.min.js"
             integrity=""
@@ -62,18 +59,18 @@ if (isset($this->session->userdata['logged_in'])) {
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="<?php echo base_url() ?>dashboard" data-toggle="tooltip" data-placement="left" title="DASHBOARD"><i class="menu-icon fa fa-dashboard"></i> DASHBOARD </a>
+                    <a href="<?php echo base_url() ?>dashboard" data-toggle="tooltip" data-placement="left"
+                       title="DASHBOARD"><i class="menu-icon fa fa-dashboard"></i> DASHBOARD </a>
                 </li>
                 <li>
-                    <?php 
+                    <?php
                     if ($position === 'Supply Officer') {
-                    echo '<a href="department" data-toggle="tooltip" data-placement="left" title="INVENTORY"><i class="menu-icon fa fa-book"></i> INVENTORY</a>';
-                    }else{
+                        echo '<a href="department" data-toggle="tooltip" data-placement="left" title="INVENTORY"><i class="menu-icon fa fa-book"></i> INVENTORY</a>';
+                    } else {
                         echo '<a href="inventory" data-toggle="tooltip" data-placement="left" title="INVENTORY"><i class="menu-icon fa fa-book"></i> INVENTORY</a>';
                     }
                     ?>
                 </li>
-
                 <?php
                 if ($position === 'Admin' || $position === 'Custodian') {
                     echo '<li id="dept">
@@ -89,34 +86,32 @@ if (isset($this->session->userdata['logged_in'])) {
                                   </li>';
                 }
                 if ($position === 'Supply Officer' || $position === 'Custodian') {
-                echo '<li id="li5">
+                    echo '<li id="li5">
                                     <a href="return" data-toggle="tooltip" data-placement="left" title="RETURNS"><i class="menu-icon fa fa-undo"></i>RETURNS</a>
                                   </li>';
                 }
                 ?>
-
-
-                    <?php
-                    echo '';
-                    if ($position !== 'Supply Officer') {
-                        echo ' <li class="menu-item-has-children dropdown">
+                <?php
+                echo '';
+                if ($position !== 'Supply Officer') {
+                    echo ' <li class="menu-item-has-children dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"> <i class="menu-icon fa fa-laptop" data-toggle="tooltip" data-placement="left" title="LOGS"></i>Logs</a>
-                                                <ul class="sub-menu children dropdown-menu">'.
-                                '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
-                                '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>'.
-                                '<li><a href=' . base_url() . 'edit>EDIT LOG</a></li>'.
-                                '<li> <a href="' . base_url() . 'return_log">RETURN LOG</a>
+                                                <ul class="sub-menu children dropdown-menu">' .
+                        '<li><a href=' . base_url() . 'increased>INCREASED</a></li>' .
+                        '<li><a href=' . base_url() . 'decreased>DECREASED</a></li>' .
+                        '<li><a href=' . base_url() . 'edit>EDIT LOG</a></li>' .
+                        '<li> <a href="' . base_url() . 'return_log">RETURN LOG</a>
                                   </li></ul>';
 
-                    }else{
-                        echo '<li id="li6">
+                } else {
+                    echo '<li id="li6">
                                     <a href="' . base_url() . 'return_log"><i class="menu-icon fa fa-laptop"></i>RETURN LOG</a>
                                   </li>';
 
-                    }
-                    echo '</li>';
-                    ?>
+                }
+                echo '</li>';
+                ?>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
@@ -125,45 +120,45 @@ if (isset($this->session->userdata['logged_in'])) {
 <!-- /#left-panel -->
 <!-- Right Panel -->
 
- <div id="right-panel" class="right-panel">
+<div id="right-panel" class="right-panel">
     <!-- Header-->
     <!--for Admin-->
     <?php
-    if ($position === 'Admin'){
+    if ($position === 'Admin') {
         echo '<header id="header" class="header" style="background-color:#ffb6c0">';
     }
     ?>
     <!--end-->
     <!--for Supply Officer-->
     <?php
-    if ($position === 'Supply Officer'){
+    if ($position === 'Supply Officer') {
         echo '<header id="header" class="header" style="background-color:#cde7ca">';
     }
     ?>
     <!--End-->
     <!--for Custodian-->
     <?php
-    if ($position === 'Custodian'){
+    if ($position === 'Custodian') {
         echo '<header id="header" class="header" style="background-color:#87CEFA">';
     }
     ?>
     <!--End-->
 
     <div class="header-menu">
-            <div class="header-left">
+        <div class="header-left">
             <div class="col-sm-7">
-                <?=$name?> &nbsp <a href="profile" style="color:black" class="fa fa-gears"></a>
+                <?= $name ?> &nbsp <a href="profile" style="color:black" class="fa fa-gears"></a>
                 <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-                    <h5 style="color:black"><?= $position.' : '.$department?></h5>
-            </div>
-            </div>
-            <div class="col-sm-5">
-                <div class="float-right">
-                        <a class="" href="login/logout" style="color:black"><i class="fa fa-power-off"> Sign Out</i></a>
-                </div>
-
+                <h5 style="color:black"><?= $position . ' : ' . $department ?></h5>
             </div>
         </div>
+        <div class="col-sm-5">
+            <div class="float-right">
+                <a class="" href="login/logout" style="color:black"><i class="fa fa-power-off"> Sign Out</i></a>
+            </div>
+
+        </div>
+    </div>
 
 
     </header>

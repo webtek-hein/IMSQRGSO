@@ -154,3 +154,14 @@ $('input[name=returndate]').on('blur',function () {
         }
     }
 });
+
+//validate transfer on the same name
+$('input[name=transfername]').on('blur',function () {
+   var currUser = ''+$('input[name=currentuser]').val().toLowerCase().replace(String.fromCharCode(160),' ');
+   var newUser = ''+$(this).val().toLowerCase().trim();
+
+   if(currUser === newUser){
+       alert('Item cannot be transfered to the same user.');
+       $(this).val('');
+   }
+});
