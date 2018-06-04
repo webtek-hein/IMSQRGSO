@@ -1481,6 +1481,7 @@ class Inventory_model extends CI_Model
         $this->db->select('sum(edit_log_id) as countEdit,item.*,CONCAT(first_name," ",last_name) as custodian,edit.*');
         $this->db->join('gsois.item item', 'item.item_id = edit.item_id');
         $this->db->join('gsois.user u', 'edit.userid = u.user_id');
+        $this->db->where('date(timestamp)', 'CURDATE()', false);
         $this->db->group_by('item.item_id');
         $query = $this->db->get('logs.editlog edit');
         return $query->result_array();
